@@ -91,19 +91,6 @@ const ROASChart = () => {
     ctx.textAlign = 'left';
     ctx.fillText('Campaign Performance (ROAS)', padding.left, padding.top - 15);
   }, []);
-  
-  return (
-    <section className="py-20 px-6 bg-background">
-      <div className="max-w-7xl mx-auto">
-        <div className="mb-12">
-          <h2 className="heading-elegant text-4xl lg:text-5xl mb-4">Campaign Performance</h2>
-          <p className="body-clean text-lg text-muted-foreground">Proven results across industries</p>
-        </div>
-        <div className="bg-card border border-border rounded-sm p-8">
-          <canvas ref={canvasRef} className="w-full h-[400px]" />
-        </div>
-      </div>
-    </section>
-  );
+  return;
 };
 export default ROASChart;
