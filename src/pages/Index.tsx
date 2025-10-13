@@ -6,8 +6,6 @@ import Teaching from "@/components/Teaching";
 import Travel from "@/components/Travel";
 import Testimonials from "@/components/Testimonials";
 import Timeline from "@/components/Timeline";
-import Blog from "@/components/Blog";
-import Resources from "@/components/Resources";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 
@@ -22,8 +20,6 @@ const Index = () => {
       <Travel />
       <Testimonials />
       <Timeline />
-      <Blog />
-      <Resources />
       <ContactForm />
       <Footer />
     </div>
