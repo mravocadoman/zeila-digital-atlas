@@ -1,29 +1,22 @@
 const Travel = () => {
-  const regions = [
-    {
-      name: "Europe",
-      countries: "15+ countries including Latvia, Denmark, Spain, Portugal, Turkey",
-      description: "Deep understanding of European business culture and digital marketing landscapes"
-    },
-    {
-      name: "Southeast Asia",
-      countries: "Thailand, Vietnam, Malaysia",
-      description: "Experience with emerging markets and diverse consumer behaviors"
-    },
-    {
-      name: "Africa",
-      countries: "Gambia, Kenya, Zambia",
-      description: "Implemented fin-tech and digital marketing solutions in developing economies"
-    },
-    {
-      name: "Middle East",
-      countries: "Palestine, Jordan",
-      description: "Cross-cultural marketing experience in complex markets"
-    }
-  ];
-
-  return (
-    <section id="travel" className="py-20 lg:py-32 px-6 bg-card">
+  const regions = [{
+    name: "Europe",
+    countries: "15+ countries including Latvia, Denmark, Spain, Portugal, Turkey",
+    description: "Deep understanding of European business culture and digital marketing landscapes"
+  }, {
+    name: "Southeast Asia",
+    countries: "Thailand, Vietnam, Malaysia",
+    description: "Experience with emerging markets and diverse consumer behaviors"
+  }, {
+    name: "Africa",
+    countries: "Gambia, Kenya, Zambia",
+    description: "Implemented fin-tech and digital marketing solutions in developing economies"
+  }, {
+    name: "Middle East",
+    countries: "Palestine, Jordan",
+    description: "Cross-cultural marketing experience in complex markets"
+  }];
+  return <section id="travel" className="py-20 lg:py-32 px-6 bg-card">
       <div className="max-w-7xl mx-auto">
         <h2 className="heading-elegant text-4xl lg:text-6xl mb-12">Global Perspective</h2>
 
@@ -34,13 +27,11 @@ const Travel = () => {
         </div>
 
         <div className="grid md:grid-cols-2 gap-6">
-          {regions.map((region) => (
-            <div key={region.name} className="card-luxury">
+          {regions.map(region => <div key={region.name} className="card-luxury">
               <h3 className="heading-elegant text-2xl mb-3">{region.name}</h3>
               <p className="body-clean text-sm text-muted-foreground mb-4">{region.countries}</p>
               <p className="body-clean text-muted-foreground">{region.description}</p>
-            </div>
-          ))}
+            </div>)}
         </div>
 
         {/* Simple world map representation */}
@@ -55,13 +46,11 @@ const Travel = () => {
             </svg>
           </div>
           <div className="relative text-center">
-            <p className="heading-elegant text-3xl">30+ Countries Visited</p>
+            <p className="heading-elegant text-3xl">35+ Countries Visited</p>
             <p className="body-clean text-muted-foreground mt-2">4 Continents • Endless Insights</p>
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Travel;
