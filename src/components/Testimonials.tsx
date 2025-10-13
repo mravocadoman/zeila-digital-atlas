@@ -1,24 +1,24 @@
 const Testimonials = () => {
   const testimonials = [
     {
-      quote: "Rihards resolved our growth blockers and significantly boosted campaign effectiveness. His strategic insights transformed our advertising approach.",
-      author: "Marketing Director",
-      company: "Aleph Client"
+      quote: "Rihards is an exceptional marketer with a deep understanding of the digital marketing ecosystem. From day 1, he promoted data-led decisions and highlighted the importance of measuring campaign performance. On top of being outstanding in digital marketing, Rihards is also a great colleague - open to challenges, performs very well in a fast-paced environment, great in communication and problem solving.",
+      author: "Bence Etele Baráth",
+      company: "AppsFlyer"
     },
     {
-      quote: "Outstanding lecturer with real-world expertise. The MBA course provided actionable strategies we implemented immediately.",
-      author: "MBA Student",
-      company: "Riga Business School"
+      quote: "Rihards is THE expert on Facebook advertising and the one I would go to for any question related to that. He has excellent communication skills and knowledge of design, marketing, project management, and web design. He is an excellent public speaker, easily getting the message to any audience. His international experience and focus on individual solutions make him an excellent choice for any organization.",
+      author: "Regita Zeiļa",
+      company: "Marketing Professional"
     },
     {
-      quote: "His ability to simplify complex marketing concepts while maintaining depth is remarkable. Students consistently rate his courses highly.",
-      author: "Academic Director",
-      company: "RISEBA"
+      quote: "Highly skilled, passionate and dedicated young man. Whenever I need an advice on digital marketing - I go to him. His international experience and valuable know-how excels his peers. Twice.",
+      author: "Kristina Berga",
+      company: "Digital Marketing Expert"
     },
     {
-      quote: "Working with Rihards on our digital transformation was a game-changer. His global perspective brought fresh solutions to our challenges.",
-      author: "Business Owner",
-      company: "Latvian SME"
+      quote: "Goal-oriented, brave and active professional who always strives for growth and development, while maintaining the belief that work should bring joy and be interesting. Rihards has excellent sales and persuasion skills. He creates a pleasant, open and friendly first impression. For any employer looking for a colleague with passion, Rihards will definitely be a suitable candidate.",
+      author: "Evita Jaunozola",
+      company: "StartSchooler"
     }
   ];
 
