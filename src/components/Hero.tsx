@@ -6,12 +6,12 @@ const Hero = () => {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Left: Content */}
           <div className="space-y-8">
-            <h2 className="heading-elegant text-3xl lg:text-4xl text-muted-foreground">
+            <h1 className="heading-elegant text-5xl lg:text-7xl">
               Rihards Zeiļa
-            </h2>
-            <h1 className="heading-elegant lg:text-7xl leading-tight text-5xl">
-              Helping Businesses Grow. Teaching Marketers. Building Impactful Projects.
             </h1>
+            <h2 className="heading-elegant text-3xl lg:text-5xl text-muted-foreground leading-tight">
+              Helping Businesses Grow. Teaching Marketers. Building Impactful Projects.
+            </h2>
             
             <p className="body-clean text-xl lg:text-2xl text-muted-foreground leading-relaxed">
               You don't need more clicks or views—you need a predictable system that turns traffic into revenue.
