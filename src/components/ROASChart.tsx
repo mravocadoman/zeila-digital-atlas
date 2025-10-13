@@ -91,6 +91,6 @@ const ROASChart = () => {
     ctx.textAlign = 'left';
     ctx.fillText('Campaign Performance (ROAS)', padding.left, padding.top - 15);
   }, []);
-  return;
+  return <canvas ref={canvasRef} className="w-full h-full" />;
 };
 export default ROASChart;
