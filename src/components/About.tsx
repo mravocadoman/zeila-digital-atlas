@@ -97,7 +97,8 @@ const About = () => {
                 
                 <div className="flex items-center gap-3 text-muted-foreground">
                   <MapPin className="w-5 h-5" />
-                  <span className="body-clean">Riga, Latvia</span>
+                  <span className="body-clean">Riga, Latvia (Remote in winters)
+                </span>
                 </div>
               </div>
 
