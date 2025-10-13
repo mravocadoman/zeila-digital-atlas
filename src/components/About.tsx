@@ -1,4 +1,5 @@
-import { Mail, Phone, MapPin, Linkedin, Instagram, Globe, Facebook } from "lucide-react";
+import { Mail, Phone, MapPin, Linkedin, Instagram, Facebook } from "lucide-react";
+import { FaTiktok } from "react-icons/fa";
 const About = () => {
   const skills = ["Meta Advertising", "Project Management", "Social Media Marketing", "Social Media Management", "Digital Marketing Consulting", "Digital Course Creation"];
   const tools = ["Meta Business Suite", "Google Ads", "GA4", "Zapier", "ChatGPT", "Midjourney", "Photoshop", "Canva", "HTML, CSS, JavaScript"];
@@ -112,7 +113,7 @@ const About = () => {
                     <Instagram className="w-6 h-6" />
                   </a>
                   <a href="https://www.tiktok.com/@rihards.ze" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors" aria-label="TikTok profile">
-                    <Globe className="w-6 h-6" />
+                    <FaTiktok className="w-6 h-6" />
                   </a>
                   <a href="https://www.facebook.com/profile.php?id=100000487541249" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors" aria-label="Facebook profile">
                     <Facebook className="w-6 h-6" />

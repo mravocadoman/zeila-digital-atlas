@@ -1,4 +1,5 @@
-import { Linkedin, Instagram, Globe, Mail, Phone, Facebook } from "lucide-react";
+import { Linkedin, Instagram, Mail, Phone, Facebook } from "lucide-react";
+import { FaTiktok } from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -75,7 +76,7 @@ const Footer = () => {
                 className="text-muted-foreground hover:text-foreground transition-colors"
                 aria-label="TikTok profile"
               >
-                <Globe className="w-5 h-5" />
+                <FaTiktok className="w-5 h-5" />
               </a>
               <a 
                 href="https://www.facebook.com/profile.php?id=100000487541249" 
