@@ -1,12 +1,9 @@
 import { useEffect, useRef } from "react";
-
 const ROASChart = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
@@ -16,19 +13,27 @@ const ROASChart = () => {
     canvas.width = rect.width * dpr;
     canvas.height = rect.height * dpr;
     ctx.scale(dpr, dpr);
-
     const width = rect.width;
     const height = rect.height;
 
     // Data
-    const data = [
-      { label: "The Brew Company", value: 13 },
-      { label: "Četras Zoles", value: 36 },
-      { label: "Aleph Clients", value: 10 }
-    ];
-
+    const data = [{
+      label: "The Brew Company",
+      value: 13
+    }, {
+      label: "Četras Zoles",
+      value: 36
+    }, {
+      label: "Aleph Clients",
+      value: 10
+    }];
     const maxValue = 40;
-    const padding = { top: 40, right: 40, bottom: 60, left: 60 };
+    const padding = {
+      top: 40,
+      right: 40,
+      bottom: 60,
+      left: 60
+    };
     const chartWidth = width - padding.left - padding.right;
     const chartHeight = height - padding.top - padding.bottom;
 
@@ -38,9 +43,8 @@ const ROASChart = () => {
     // Draw bars
     const barWidth = chartWidth / data.length / 1.5;
     const barSpacing = chartWidth / data.length;
-
     data.forEach((item, index) => {
-      const barHeight = (item.value / maxValue) * chartHeight;
+      const barHeight = item.value / maxValue * chartHeight;
       const x = padding.left + index * barSpacing + (barSpacing - barWidth) / 2;
       const y = padding.top + chartHeight - barHeight;
 
@@ -76,8 +80,8 @@ const ROASChart = () => {
     ctx.font = '12px Montserrat';
     ctx.textAlign = 'right';
     for (let i = 0; i <= 4; i++) {
-      const value = (maxValue / 4) * i;
-      const y = padding.top + chartHeight - (chartHeight / 4) * i;
+      const value = maxValue / 4 * i;
+      const y = padding.top + chartHeight - chartHeight / 4 * i;
       ctx.fillText(`${value}x`, padding.left - 10, y + 4);
     }
 
@@ -86,25 +90,7 @@ const ROASChart = () => {
     ctx.font = 'bold 16px Playfair Display';
     ctx.textAlign = 'left';
     ctx.fillText('Campaign Performance (ROAS)', padding.left, padding.top - 15);
-
   }, []);
-
-  return (
-    <section className="py-20 lg:py-32 px-6 bg-card">
-      <div className="max-w-7xl mx-auto">
-        <h2 className="heading-elegant text-4xl lg:text-6xl mb-12">Campaign Results</h2>
-        
-        <div className="max-w-4xl mx-auto">
-          <canvas 
-            ref={canvasRef} 
-            className="w-full border border-border rounded-sm"
-            style={{ height: '400px' }}
-            aria-label="Bar chart showing ROAS performance: The Brew Company 13x, Četras Zoles 36x, Aleph Clients 10x"
-          />
-        </div>
-      </div>
-    </section>
-  );
+  return;
 };
-
 export default ROASChart;
