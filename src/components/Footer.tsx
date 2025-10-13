@@ -1,4 +1,4 @@
-import { Linkedin, Instagram, Globe, Mail, Phone } from "lucide-react";
+import { Linkedin, Instagram, Globe, Mail, Phone, Facebook } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -51,7 +51,7 @@ const Footer = () => {
 
             <div className="flex gap-4">
               <a 
-                href="https://linkedin.com/in/rihardszeila" 
+                href="https://www.linkedin.com/in/rihards-ze/" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="text-muted-foreground hover:text-foreground transition-colors"
@@ -60,7 +60,7 @@ const Footer = () => {
                 <Linkedin className="w-5 h-5" />
               </a>
               <a 
-                href="https://instagram.com" 
+                href="https://www.instagram.com/rihards.ze/" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="text-muted-foreground hover:text-foreground transition-colors"
@@ -69,13 +69,22 @@ const Footer = () => {
                 <Instagram className="w-5 h-5" />
               </a>
               <a 
-                href="https://rihardszeila.com" 
+                href="https://www.tiktok.com/@rihards.ze" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="text-muted-foreground hover:text-foreground transition-colors"
-                aria-label="Personal website"
+                aria-label="TikTok profile"
               >
                 <Globe className="w-5 h-5" />
+              </a>
+              <a 
+                href="https://www.facebook.com/profile.php?id=100000487541249" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-muted-foreground hover:text-foreground transition-colors"
+                aria-label="Facebook profile"
+              >
+                <Facebook className="w-5 h-5" />
               </a>
             </div>
           </div>
