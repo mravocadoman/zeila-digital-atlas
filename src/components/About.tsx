@@ -1,38 +1,27 @@
 import { Mail, Phone, MapPin, Linkedin, Instagram, Globe } from "lucide-react";
-
 const About = () => {
-  const skills = [
-    "Meta Advertising",
-    "Project Management",
-    "Social Media Marketing",
-    "Social Media Management",
-    "Digital Marketing Consulting",
-    "Digital Course Creation"
-  ];
-
-  const tools = [
-    "Meta Business Suite",
-    "Google Ads",
-    "GA4",
-    "Zapier",
-    "ChatGPT",
-    "Midjourney",
-    "Photoshop",
-    "Canva",
-    "HTML, CSS, JavaScript"
-  ];
-
-  const languages = [
-    { name: "English", level: "Native or bilingual" },
-    { name: "Latvian", level: "Native or bilingual" },
-    { name: "Latgalian", level: "Native" },
-    { name: "Russian", level: "Professional working" },
-    { name: "Polish", level: "Professional working" },
-    { name: "Spanish", level: "Elementary" }
-  ];
-
-  return (
-    <section id="about" className="py-20 lg:py-32 px-6 bg-card">
+  const skills = ["Meta Advertising", "Project Management", "Social Media Marketing", "Social Media Management", "Digital Marketing Consulting", "Digital Course Creation"];
+  const tools = ["Meta Business Suite", "Google Ads", "GA4", "Zapier", "ChatGPT", "Midjourney", "Photoshop", "Canva", "HTML, CSS, JavaScript"];
+  const languages = [{
+    name: "English",
+    level: "Native or bilingual"
+  }, {
+    name: "Latvian",
+    level: "Native or bilingual"
+  }, {
+    name: "Latgalian",
+    level: "Native"
+  }, {
+    name: "Russian",
+    level: "Professional working"
+  }, {
+    name: "Polish",
+    level: "Professional working"
+  }, {
+    name: "Spanish",
+    level: "Elementary"
+  }];
+  return <section id="about" className="py-20 lg:py-32 px-6 bg-card">
       <div className="max-w-7xl mx-auto">
         <h2 className="heading-elegant text-4xl lg:text-6xl mb-12">About Me</h2>
 
@@ -62,11 +51,9 @@ const About = () => {
             <div className="pt-8">
               <h3 className="heading-elegant text-2xl mb-6">Core Skills</h3>
               <div className="grid md:grid-cols-2 gap-4">
-                {skills.map((skill) => (
-                  <div key={skill} className="border-hover p-4 rounded-sm">
+                {skills.map(skill => <div key={skill} className="border-hover p-4 rounded-sm">
                     <p className="body-clean font-medium">{skill}</p>
-                  </div>
-                ))}
+                  </div>)}
               </div>
             </div>
 
@@ -74,11 +61,9 @@ const About = () => {
             <div className="pt-8">
               <h3 className="heading-elegant text-2xl mb-6">Tools & Platforms</h3>
               <div className="flex flex-wrap gap-3">
-                {tools.map((tool) => (
-                  <span key={tool} className="body-clean px-4 py-2 border border-border rounded-sm text-sm">
+                {tools.map(tool => <span key={tool} className="body-clean px-4 py-2 border border-border rounded-sm text-sm">
                     {tool}
-                  </span>
-                ))}
+                  </span>)}
               </div>
             </div>
 
@@ -86,12 +71,10 @@ const About = () => {
             <div className="pt-8">
               <h3 className="heading-elegant text-2xl mb-6">Languages</h3>
               <div className="grid md:grid-cols-2 gap-4">
-                {languages.map((lang) => (
-                  <div key={lang.name} className="flex justify-between items-center border-b border-border pb-2">
+                {languages.map(lang => <div key={lang.name} className="flex justify-between items-center border-b border-border pb-2">
                     <span className="body-clean font-medium">{lang.name}</span>
                     <span className="body-clean text-sm text-muted-foreground">{lang.level}</span>
-                  </div>
-                ))}
+                  </div>)}
               </div>
             </div>
           </div>
@@ -136,7 +119,7 @@ const About = () => {
 
             {/* Honor */}
             <div className="card-luxury">
-              <h4 className="body-clean font-semibold mb-3">🏆 Honor</h4>
+              <h4 className="body-clean font-semibold mb-3">Honor</h4>
               <p className="body-clean text-sm text-muted-foreground leading-relaxed">
                 <a href="https://www.fonds.lv/lepojamies/stipendiati/senaki/2011-2016/20132014-akad-gads/kristapa-morberga-stipendija/rihards-zeila/" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary transition-colors">
                   Kristaps Morbergs' Scholarship of Excellence
@@ -146,8 +129,6 @@ const About = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default About;
