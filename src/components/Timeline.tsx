@@ -90,10 +90,9 @@ const Timeline = () => {
 
                 {/* Content */}
                 <div className={`flex-1 pl-20 md:pl-0 ${index % 2 === 0 ? 'md:pr-16 md:text-right' : 'md:pl-16'}`}>
-                  <div className="heading-elegant text-2xl mb-2">{milestone.year}</div>
+                  <div className="heading-elegant text-2xl mb-2">{milestone.period}</div>
                   <h3 className="heading-elegant text-xl mb-1">{milestone.title}</h3>
-                  <p className="body-clean text-foreground mb-1">{milestone.company}</p>
-                  <p className="body-clean text-sm text-muted-foreground mb-2">{milestone.period}</p>
+                  <p className="body-clean text-foreground mb-2">{milestone.company}</p>
                   <p className="body-clean text-muted-foreground">{milestone.description}</p>
                 </div>
 
