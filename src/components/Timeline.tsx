@@ -1,22 +1,77 @@
 const Timeline = () => {
   const milestones = [
-    { year: "2012", event: "Started BA in Economics at University of Latvia" },
-    { year: "2014-16", event: "International Study Exchange (Istanbul, Valencia, Lisbon, Chiang Mai)" },
-    { year: "2016", event: "Graduated with BA in Economics • Received Kristaps Morbergs' Scholarship" },
-    { year: "2017-18", event: "Digital Marketing Specialist at Reckitt, Copenhagen" },
-    { year: "2017-19", event: "AP in Multimedia Design • Copenhagen School of Business and Technology, Copenhagen" },
-    { year: "2018-19", event: "Digital Marketing Manager at Growthbond" },
-    { year: "2019", event: "Digital Marketing Consultant at International Trade Centre" },
-    { year: "2020", event: "Founded Marketinga Skola" },
-    { year: "2021", event: "Started MBA Lecturer role at Riga Business School" },
-    { year: "2022-24", event: "Key Account Lead at Aleph (managing $50k-$300k/mo accounts)" },
-    { year: "2025", event: "Continuing to scale businesses & educate marketers globally" }
+    { 
+      year: "2024", 
+      title: "Key Account Lead",
+      company: "Aleph",
+      period: "Sep 2022 - Jun 2024",
+      description: "Managed $50k-$300k/mo accounts on Meta, TikTok, Reddit, Pinterest. Resolved growth blockers and improved campaign performance."
+    },
+    { 
+      year: "2023", 
+      title: "BBA Lecturer - Social Media Marketing",
+      company: "RISEBA",
+      period: "Jan 2023 - Feb 2024",
+      description: "Created syllabus and recorded lectures on management, content strategy, and Meta advertising."
+    },
+    { 
+      year: "2021", 
+      title: "MBA Lecturer - Digital Marketing",
+      company: "Riga Business School",
+      period: "Sep 2021 - Present",
+      description: "Developed comprehensive syllabus covering trends, email marketing, social media, and KPIs with hands-on projects."
+    },
+    { 
+      year: "2020", 
+      title: "Founder - Marketinga Skola",
+      company: "Full-Funnel Marketing Agency",
+      period: "Jan 2020 - Present",
+      description: "Built predictable lead generation systems for Latvian SMEs. Services include social media management, advertising, and cold outreach."
+    },
+    { 
+      year: "2019", 
+      title: "AP in Multimedia Design",
+      company: "Copenhagen School of Business",
+      period: "2017 - 2019",
+      description: "Focused on interaction development (HTML/CSS/JS), UI/UX design, prototyping, and user testing."
+    },
+    { 
+      year: "2019", 
+      title: "Digital Marketing Consultant",
+      company: "International Trade Centre (ITC)",
+      period: "Jan - Mar 2019",
+      description: "Implemented fintech solutions in Kenya, Palestine, Gambia, and Jordan. Developed training materials and assessed 100+ students."
+    },
+    { 
+      year: "2018", 
+      title: "Social Media Specialist",
+      company: "Addtwo",
+      period: "Feb 2018 - Oct 2020",
+      description: "Streamlined client acquisition, managed campaign delivery, and designed Facebook/Instagram campaigns."
+    },
+    { 
+      year: "2016", 
+      title: "BA in Economics",
+      company: "University of Latvia",
+      period: "2012 - 2016",
+      description: "Grade 8.2/10. Leadership roles in Student Council and Fraternity 'Selonija'. International semesters in Istanbul, Valencia, Lisbon, and Chiang Mai."
+    },
+    { 
+      year: "2014", 
+      title: "Kristaps Morbergs' Scholarship of Excellence",
+      company: "Fonds.lv",
+      period: "2013-2014",
+      description: "Awarded to 15 top University of Latvia students for outstanding academic and extracurricular achievements."
+    }
   ];
 
   return (
     <section id="timeline" className="py-20 lg:py-32 px-6 bg-card">
       <div className="max-w-7xl mx-auto">
-        <h2 className="heading-elegant text-4xl lg:text-6xl mb-12">Journey</h2>
+        <h2 className="heading-elegant text-4xl lg:text-6xl mb-4">Career Journey</h2>
+        <p className="body-clean text-lg text-muted-foreground mb-12 max-w-3xl">
+          A decade of growth spanning marketing, education, and entrepreneurship across multiple continents.
+        </p>
 
         <div className="relative max-w-5xl mx-auto">
           {/* Timeline line */}
@@ -36,7 +91,10 @@ const Timeline = () => {
                 {/* Content */}
                 <div className={`flex-1 pl-20 md:pl-0 ${index % 2 === 0 ? 'md:pr-16 md:text-right' : 'md:pl-16'}`}>
                   <div className="heading-elegant text-2xl mb-2">{milestone.year}</div>
-                  <p className="body-clean text-muted-foreground">{milestone.event}</p>
+                  <h3 className="heading-elegant text-xl mb-1">{milestone.title}</h3>
+                  <p className="body-clean text-foreground mb-1">{milestone.company}</p>
+                  <p className="body-clean text-sm text-muted-foreground mb-2">{milestone.period}</p>
+                  <p className="body-clean text-muted-foreground">{milestone.description}</p>
                 </div>
 
                 {/* Spacer for alternating layout */}
