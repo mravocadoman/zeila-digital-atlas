@@ -30,13 +30,6 @@ const Timeline = () => {
     },
     { 
       year: "2019", 
-      title: "AP in Multimedia Design",
-      company: "Copenhagen School of Business",
-      period: "2017 - 2019",
-      description: "Focused on interaction development (HTML/CSS/JS), UI/UX design, prototyping, and user testing."
-    },
-    { 
-      year: "2019", 
       title: "Digital Marketing Consultant",
       company: "International Trade Centre (ITC)",
       period: "Jan - Mar 2019",
@@ -48,20 +41,6 @@ const Timeline = () => {
       company: "Addtwo",
       period: "Feb 2018 - Oct 2020",
       description: "Streamlined client acquisition, managed campaign delivery, and designed Facebook/Instagram campaigns."
-    },
-    { 
-      year: "2016", 
-      title: "BA in Economics",
-      company: "University of Latvia",
-      period: "2012 - 2016",
-      description: "Grade 8.2/10. Leadership roles in Student Council and Fraternity 'Selonija'. International semesters in Istanbul, Valencia, Lisbon, and Chiang Mai."
-    },
-    { 
-      year: "2014", 
-      title: "Kristaps Morbergs' Scholarship of Excellence",
-      company: "Fonds.lv",
-      period: "2013-2014",
-      description: "Awarded to 15 top University of Latvia students for outstanding academic and extracurricular achievements."
     }
   ];
 
