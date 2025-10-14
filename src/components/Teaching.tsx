@@ -17,7 +17,7 @@ const Teaching = () => {
   }];
   return <section id="teaching" className="py-20 lg:py-32 px-6">
       <div className="max-w-7xl mx-auto">
-        <h2 className="heading-elegant text-4xl lg:text-6xl mb-12">Teaching & Credentials</h2>
+        <h2 className="heading-elegant text-4xl lg:text-6xl mb-12">Education & Credentials</h2>
 
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Certifications */}
