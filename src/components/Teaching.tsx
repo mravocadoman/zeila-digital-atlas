@@ -1,5 +1,3 @@
-import { Award, GraduationCap } from "lucide-react";
-
 const Teaching = () => {
   const certifications = ["Meta Certified Media Buying Professional", "Meta Certified Media Planning Professional", "Pinterest Advertising Essentials Certification", "Amazon Advertising Foundations Certification", "Amazon Ads Retail Certification", "OpenAI Whisper, GPT3, Codex"];
   const courses = ["Advanced Coding Masterclass - HTML, CSS and JavaScript", "Ascend Viral - Instagram Domination", "Ben Malol's Social Marketing Masterclass", "Facebook Blueprint"];
@@ -26,17 +24,15 @@ const Teaching = () => {
           <div className="space-y-6">
             <h3 className="heading-elegant text-3xl mb-6">Certifications</h3>
             <div className="grid grid-cols-2 gap-4">
-              {certifications.map(cert => <div key={cert} className="neon-box p-6 rounded-sm flex flex-col items-center justify-center text-center min-h-[160px] hover:scale-105 transition-transform duration-300">
-                  <Award className="w-8 h-8 mb-3 text-primary" />
-                  <p className="body-clean text-sm leading-snug">{cert}</p>
+              {certifications.map(cert => <div key={cert} className="neon-box p-6 rounded-sm flex items-center justify-center text-center min-h-[160px] hover:scale-105 transition-transform duration-300">
+                  <p className="body-clean text-base leading-snug">{cert}</p>
                 </div>)}
             </div>
 
             <h3 className="heading-elegant text-3xl mb-6 mt-12">Advanced Courses</h3>
             <div className="grid grid-cols-2 gap-4">
-              {courses.map(course => <div key={course} className="neon-box p-6 rounded-sm flex flex-col items-center justify-center text-center min-h-[160px] hover:scale-105 transition-transform duration-300">
-                  <GraduationCap className="w-8 h-8 mb-3 text-primary" />
-                  <p className="body-clean text-sm leading-snug">{course}</p>
+              {courses.map(course => <div key={course} className="neon-box p-6 rounded-sm flex items-center justify-center text-center min-h-[160px] hover:scale-105 transition-transform duration-300">
+                  <p className="body-clean text-base leading-snug">{course}</p>
                 </div>)}
             </div>
           </div>
