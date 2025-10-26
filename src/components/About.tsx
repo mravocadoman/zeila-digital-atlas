@@ -6,7 +6,15 @@ const About = () => {
   const statsAnimation = useScrollAnimation(0.3);
   const skillsAnimation = useScrollAnimation(0.2);
   const toolsAnimation = useScrollAnimation(0.2);
-  const skills = ["Meta Advertising", "Project Management", "Social Media Marketing", "Social Media Management", "Digital Marketing Consulting", "Digital Course Creation"];
+  const skills = [
+    "Meta Advertising – Expert in full-funnel Meta ad systems that drive measurable ROAS and client acquisition.",
+    "Digital Marketing Strategy – Building scalable systems that combine paid, organic, and AI-driven growth.",
+    "Business Automations – Streamlining operations and client workflows with Make, n8n, and GoHighLevel.",
+    "Creative Strategy – Designing data-backed ad concepts, visuals, and copy that convert.",
+    "Analytics & Tracking – Implementing GA4, GTM, CAPI, and dashboards to measure every euro spent.",
+    "Digital Course Creation – Developing practical, high-ROI marketing courses for SMEs and professionals.",
+    "Leadership & Mentorship – Guiding teams, interns, and MBA students to think strategically and execute precisely."
+  ];
   const toolCategories = [{
     category: "Advertising & Analytics",
     tools: "Meta, Google Ads, LinkedIn, TikTok, GA4, CAPI, Hotjar, Looker Studio"
@@ -80,9 +88,13 @@ const About = () => {
                     <AccordionTrigger className="heading-elegant text-xl">Core Skills</AccordionTrigger>
                     <AccordionContent>
                       <div className="grid gap-4 pt-2">
-                        {skills.map(skill => <div key={skill} className="border-hover p-4 rounded-sm hover-scale">
-                            <p className="body-clean text-body font-medium">{skill}</p>
-                          </div>)}
+                        {skills.map(skill => {
+                          const [title, description] = skill.split(' – ');
+                          return <div key={skill} className="border-hover p-4 rounded-sm hover-scale">
+                            <p className="body-clean text-body font-semibold mb-1">{title}</p>
+                            <p className="body-clean text-sm text-muted-foreground">{description}</p>
+                          </div>
+                        })}
                       </div>
                     </AccordionContent>
                   </AccordionItem>
@@ -93,9 +105,13 @@ const About = () => {
               <div className="hidden lg:block">
                 <h3 className="heading-elegant text-xl lg:text-heading mb-4 lg:mb-6">Core Skills</h3>
                 <div ref={skillsAnimation.ref} className={`grid md:grid-cols-2 gap-4 transition-all duration-700 ${skillsAnimation.isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
-                  {skills.map((skill, index) => <div key={skill} className="border-hover p-4 rounded-sm hover-scale">
-                    <p className="body-clean text-body font-medium">{skill}</p>
-                  </div>)}
+                  {skills.map((skill, index) => {
+                    const [title, description] = skill.split(' – ');
+                    return <div key={skill} className="border-hover p-4 rounded-sm hover-scale">
+                      <p className="body-clean text-body font-semibold mb-1">{title}</p>
+                      <p className="body-clean text-sm text-muted-foreground">{description}</p>
+                    </div>
+                  })}
               </div>
               </div>
             </div>
