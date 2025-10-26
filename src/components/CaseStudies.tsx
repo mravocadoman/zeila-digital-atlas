@@ -61,18 +61,12 @@ const CaseStudies = () => {
   return (
     <section id="case-studies" ref={ref} className="py-20 px-6">
       <div className="max-w-6xl mx-auto">
-        <div
-          className={`text-center mb-12 transition-all duration-700 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-          }`}
-        >
-          <h2 className="heading-large font-bold mb-4 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
-            Case Studies
-          </h2>
-          <p className="body-large text-muted-foreground max-w-2xl mx-auto">
-            Real results from real campaigns — from e-commerce to coaching, fashion to fintech.
-          </p>
-        </div>
+        <h2 className="heading-elegant text-3xl lg:text-display mb-3 lg:mb-4 animate-fade-in text-center lg:text-left">
+          Case Studies
+        </h2>
+        <p className="body-clean lg:text-body text-muted-foreground mb-8 lg:mb-12 max-w-3xl text-center lg:text-left text-lg">
+          Real results from real campaigns — from e-commerce to coaching, fashion to fintech.
+        </p>
 
         {/* Slider Container */}
         <div
