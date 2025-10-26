@@ -28,7 +28,7 @@ const Teaching = () => {
               <AccordionTrigger className="heading-elegant text-xl">Certifications</AccordionTrigger>
               <AccordionContent>
                 <div className="grid grid-cols-1 gap-4 pt-2">
-                  {certifications.map(cert => <div key={cert} className="border border-border px-4 py-3 rounded-sm flex items-center justify-center text-center min-h-[100px]">
+                  {certifications.map(cert => <div key={cert} className="border border-border px-4 py-2 rounded-sm flex items-center justify-center text-center min-h-[100px]">
                       <p className="body-clean leading-snug text-lg">{cert}</p>
                     </div>)}
                 </div>
@@ -39,7 +39,7 @@ const Teaching = () => {
               <AccordionTrigger className="heading-elegant text-xl">Advanced Courses</AccordionTrigger>
               <AccordionContent>
                 <div className="grid grid-cols-1 gap-4 pt-2">
-                  {courses.map(course => <div key={course} className="border border-border px-4 py-3 rounded-sm flex items-center justify-center text-center min-h-[100px]">
+                  {courses.map(course => <div key={course} className="border border-border px-4 py-2 rounded-sm flex items-center justify-center text-center min-h-[100px]">
                       <p className="body-clean text-lg leading-snug">{course}</p>
                     </div>)}
                 </div>
@@ -83,7 +83,7 @@ const Teaching = () => {
           <div className="space-y-6">
             <h3 className="heading-elegant text-xl lg:text-heading mb-4 lg:mb-6">Certifications</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {certifications.map((cert, index) => <div key={cert} className="border border-border px-4 py-3 lg:px-6 lg:py-4 rounded-sm flex items-center justify-center text-center min-h-[100px] lg:min-h-[140px] transition-all duration-300 hover:border-primary hover:shadow-[0_0_20px_rgba(3,195,248,0.6)] hover-scale animate-fade-in" style={{
+              {certifications.map((cert, index) => <div key={cert} className="border border-border px-4 py-2 lg:px-6 lg:py-3 rounded-sm flex items-center justify-center text-center min-h-[100px] lg:min-h-[140px] transition-all duration-300 hover:border-primary hover:shadow-[0_0_20px_rgba(3,195,248,0.6)] hover-scale animate-fade-in" style={{
               animationDelay: `${0.1 * index}s`,
               animationFillMode: 'both'
             }}>
@@ -93,7 +93,7 @@ const Teaching = () => {
 
             <h3 className="heading-elegant text-xl lg:text-heading mb-4 lg:mb-6 mt-8 lg:mt-12">Advanced Courses</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {courses.map((course, index) => <div key={course} className="border border-border px-4 py-3 lg:px-6 lg:py-4 rounded-sm flex items-center justify-center text-center min-h-[100px] lg:min-h-[140px] transition-all duration-300 hover:border-primary hover:shadow-[0_0_20px_rgba(3,195,248,0.6)] hover-scale animate-fade-in" style={{
+              {courses.map((course, index) => <div key={course} className="border border-border px-4 py-2 lg:px-6 lg:py-3 rounded-sm flex items-center justify-center text-center min-h-[100px] lg:min-h-[140px] transition-all duration-300 hover:border-primary hover:shadow-[0_0_20px_rgba(3,195,248,0.6)] hover-scale animate-fade-in" style={{
               animationDelay: `${0.1 * index}s`,
               animationFillMode: 'both'
             }}>
