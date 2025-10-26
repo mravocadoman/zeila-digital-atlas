@@ -16,7 +16,7 @@ const Testimonials = () => {
     {
       quote: "Highly skilled, passionate and dedicated young man. Whenever I need an advice on digital marketing - I go to him. His international experience and valuable know-how excels his peers. Twice.",
       author: "Kristina Berga",
-      company: "Digital Marketing Expert"
+      company: "CEO of HuskySense"
     },
     {
       quote: "Goal-oriented, brave and active professional who always strives for growth and development, while maintaining the belief that work should bring joy and be interesting. Rihards has excellent sales and persuasion skills. He creates a pleasant, open and friendly first impression. For any employer looking for a colleague with passion, Rihards will definitely be a suitable candidate.",
