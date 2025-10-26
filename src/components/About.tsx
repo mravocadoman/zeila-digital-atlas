@@ -91,8 +91,8 @@ const About = () => {
                         {skills.map(skill => {
                           const [title, description] = skill.split(' – ');
                           return <div key={skill} className="border-hover p-4 rounded-sm hover-scale">
-                            <p className="body-clean text-large font-semibold mb-1">{title}</p>
-                            <p className="body-clean text-body text-muted-foreground">{description}</p>
+                            <p className="body-clean text-large font-bold mb-1">{title}</p>
+                            <p className="body-clean text-body text-muted-foreground font-bold">{description}</p>
                           </div>
                         })}
                       </div>
@@ -108,8 +108,8 @@ const About = () => {
                   {skills.map((skill, index) => {
                     const [title, description] = skill.split(' – ');
                     return <div key={skill} className="border-hover p-4 rounded-sm hover-scale">
-                      <p className="body-clean text-large font-semibold mb-1">{title}</p>
-                      <p className="body-clean text-body text-muted-foreground">{description}</p>
+                      <p className="body-clean text-large font-bold mb-1">{title}</p>
+                      <p className="body-clean text-body text-muted-foreground font-bold">{description}</p>
                     </div>
                   })}
               </div>
