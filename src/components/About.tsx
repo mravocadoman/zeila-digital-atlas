@@ -4,11 +4,14 @@ const About = () => {
   const skills = ["Meta Advertising", "Project Management", "Social Media Marketing", "Social Media Management", "Digital Marketing Consulting", "Digital Course Creation"];
   const tools = ["Meta Business Suite", "Google Ads", "GA4", "Zapier", "ChatGPT", "Midjourney", "Photoshop", "Canva", "HTML, CSS, JavaScript"];
   const languages = [{
-    name: "English",
-    level: "Native or bilingual"
-  }, {
     name: "Latvian",
     level: "Native"
+  }, {
+    name: "Latgalian",
+    level: "Native"
+  }, {
+    name: "English",
+    level: "Bilingual"
   }, {
     name: "Russian",
     level: "Professional working"
@@ -18,9 +21,6 @@ const About = () => {
   }, {
     name: "Spanish",
     level: "Elementary"
-  }, {
-    name: "Latgalian",
-    level: "Native"
   }];
   return <section id="about" className="py-20 lg:py-32 px-6 bg-card">
       <div className="max-w-7xl mx-auto">
