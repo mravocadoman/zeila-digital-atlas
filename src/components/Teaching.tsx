@@ -40,7 +40,7 @@ const Teaching = () => {
               <AccordionContent>
                 <div className="grid grid-cols-1 gap-4 pt-2">
                   {courses.map(course => <div key={course} className="border border-border px-4 py-3 rounded-sm flex items-center justify-center text-center min-h-[100px]">
-                      <p className="body-clean text-sm leading-snug">{course}</p>
+                      <p className="body-clean text-lg leading-snug">{course}</p>
                     </div>)}
                 </div>
               </AccordionContent>
