@@ -52,7 +52,7 @@ const About = () => {
         <div className="grid lg:grid-cols-3 gap-12">
           {/* Profile */}
           <div className="lg:col-span-2 space-y-8">
-            <p className="body-clean text-body leading-relaxed text-muted-foreground">
+            <p className="body-clean text-body leading-relaxed text-muted-foreground text-xl">
               Experienced <span className="text-foreground font-semibold">Digital Marketing Manager, Consultant, and Lecturer</span> with extensive experience building, maintaining, and running successful digital marketing and advertising campaigns with up to <span className="text-foreground font-semibold">$5M yearly ad spend</span>.
             </p>
 
