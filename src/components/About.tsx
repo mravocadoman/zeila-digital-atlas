@@ -2,32 +2,25 @@ import { Mail, Phone, MapPin, Linkedin, Instagram, Facebook } from "lucide-react
 import { FaTiktok } from "react-icons/fa";
 const About = () => {
   const skills = ["Meta Advertising", "Project Management", "Social Media Marketing", "Social Media Management", "Digital Marketing Consulting", "Digital Course Creation"];
-  const toolCategories = [
-    {
-      category: "Advertising & Analytics",
-      tools: "Meta, Google Ads, LinkedIn, TikTok, GA4, CAPI, Hotjar, Looker Studio"
-    },
-    {
-      category: "Automation & CRM",
-      tools: "Make, Zapier, GoHighLevel, Google Sheets"
-    },
-    {
-      category: "AI & Creative",
-      tools: "ChatGPT, Manus, Midjourney, VEO3, Photoshop, Canva"
-    },
-    {
-      category: "Web & Design",
-      tools: "Shopify, WordPress, HTML/CSS/JS, Figma, Lovable"
-    },
-    {
-      category: "SEO",
-      tools: "Ahrefs, Search Console"
-    },
-    {
-      category: "Email & Outreach",
-      tools: "MailerLite, Apollo, Instantly, Woodpecker, MillionVerifier"
-    }
-  ];
+  const toolCategories = [{
+    category: "Advertising & Analytics",
+    tools: "Meta, Google Ads, LinkedIn, TikTok, GA4, CAPI, Hotjar, Looker Studio"
+  }, {
+    category: "Automation & CRM",
+    tools: "Make, Zapier, GoHighLevel, Google Sheets"
+  }, {
+    category: "AI & Creative",
+    tools: "ChatGPT, Manus, Midjourney, VEO3, Photoshop, Canva"
+  }, {
+    category: "Web & Design",
+    tools: "Shopify, WordPress, HTML/CSS/JS, Figma, Lovable"
+  }, {
+    category: "SEO",
+    tools: "Ahrefs, Search Console"
+  }, {
+    category: "Email & Outreach",
+    tools: "MailerLite, Apollo, Instantly, Woodpecker, MillionVerifier"
+  }];
   const languages = [{
     name: "Latvian",
     level: "Native"
@@ -88,7 +81,9 @@ const About = () => {
               <h3 className="heading-elegant text-heading mb-6">Tools & Platforms</h3>
               <div className="grid md:grid-cols-2 gap-4">
                 {toolCategories.map(category => <div key={category.category} className="border-hover p-4 rounded-sm">
-                    <h4 className="body-clean font-bold text-foreground mb-2 text-large" style={{ textShadow: 'none' }}>{category.category}</h4>
+                    <h4 style={{
+                  textShadow: 'none'
+                }} className="body-clean text-foreground mb-2 text-large font-semibold">{category.category}</h4>
                     <p className="body-clean text-body text-muted-foreground">{category.tools}</p>
                   </div>)}
               </div>
