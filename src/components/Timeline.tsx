@@ -30,8 +30,8 @@ const Timeline = () => {
     },
     { 
       year: "2020", 
-      title: "Founder - Marketinga Skola",
-      company: "Full-Funnel Marketing Agency",
+      title: "Founder",
+      company: "Marketinga Skola",
       period: "Jan 2020 - Present",
       description: "Built predictable lead generation systems for Latvian SMEs. Services include social media management, advertising, and cold outreach."
     },
