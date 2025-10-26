@@ -21,7 +21,7 @@ const Hero = () => {
             <p style={{
             animationDelay: '0.4s',
             animationFillMode: 'both'
-          }} className="body-clean text-body text-muted-foreground leading-relaxed sm:text-lg md:text-xl lg:text-4xl animate-fade-in lg:text-left font-bold text-center text-xl">
+          }} className="body-clean text-body text-muted-foreground leading-relaxed sm:text-lg md:text-xl lg:text-4xl animate-fade-in lg:text-left font-bold text-xl text-center">
               You don't need more clicks or views—you need a predictable system that turns traffic into revenue.
             </p>
 
