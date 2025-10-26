@@ -20,9 +20,7 @@ const Hero = () => {
             </p>
 
             <div className="space-y-4">
-              <p className="body-clean text-body text-muted-foreground">
-                <span className="text-foreground font-semibold">Passionate about:</span> Travel, Improvisation, Entrepreneurship, Crypto & Generative AI
-              </p>
+              
             </div>
 
             <div className="pt-4">
