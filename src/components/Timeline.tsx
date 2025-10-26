@@ -57,14 +57,14 @@ const Timeline = () => {
             {milestones.map((milestone, index) => <AccordionItem key={index} value={milestone.title.toLowerCase()}>
                 <AccordionTrigger className="text-left py-6">
                   <div>
+                    <div className="heading-elegant text-xs mb-2 font-bold">{milestone.period}</div>
                     <h3 className="heading-elegant text-large text-foreground text-2xl uppercase !font-extrabold">{milestone.title}</h3>
                     <p className="body-clean text-foreground !font-bold text-lg">{milestone.company}</p>
                   </div>
                 </AccordionTrigger>
                 <AccordionContent>
                   <div className="pt-2 pb-4">
-                    <div className="heading-elegant text-[10px] mb-2 font-bold">{milestone.period}</div>
-                    <p className="body-clean text-base text-muted-foreground leading-relaxed">{milestone.description}</p>
+                    <p className="body-clean text-lg text-muted-foreground leading-relaxed">{milestone.description}</p>
                   </div>
                 </AccordionContent>
               </AccordionItem>)}
