@@ -8,9 +8,6 @@ const About = () => {
     level: "Native or bilingual"
   }, {
     name: "Latvian",
-    level: "Native or bilingual"
-  }, {
-    name: "Latgalian",
     level: "Native"
   }, {
     name: "Russian",
@@ -21,6 +18,9 @@ const About = () => {
   }, {
     name: "Spanish",
     level: "Elementary"
+  }, {
+    name: "Latgalian",
+    level: "Native"
   }];
   return <section id="about" className="py-20 lg:py-32 px-6 bg-card">
       <div className="max-w-7xl mx-auto">
@@ -72,9 +72,9 @@ const About = () => {
             <div className="pt-8">
               <h3 className="heading-elegant text-2xl mb-6">Languages</h3>
               <div className="grid md:grid-cols-2 gap-4">
-                {languages.map(lang => <div key={lang.name} className="flex justify-between items-center border-b border-border pb-2">
-                    <span className="body-clean font-medium">{lang.name}</span>
-                    <span className="body-clean text-sm text-muted-foreground">{lang.level}</span>
+                {languages.map(lang => <div key={lang.name} className="flex justify-between items-center border-b border-border pb-3">
+                    <span className="body-clean font-medium text-lg">{lang.name}</span>
+                    <span className="body-clean text-base text-muted-foreground">{lang.level}</span>
                   </div>)}
               </div>
             </div>
