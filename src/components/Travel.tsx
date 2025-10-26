@@ -35,46 +35,20 @@ const Travel = () => {
           </blockquote>
         </div>
 
-        {/* Mobile Accordion */}
-        <div className="lg:hidden">
-          <Accordion type="single" collapsible defaultValue="europe">
-            {regions.map((region) => (
-              <AccordionItem key={region.name} value={region.name.toLowerCase()}>
-                <AccordionTrigger className="heading-elegant text-lg">
-                  {region.name}
-                </AccordionTrigger>
-                <AccordionContent>
-                  <p className="body-clean text-base text-muted-foreground mb-3">{region.countries}</p>
-                  <p className="body-clean text-base text-muted-foreground">{region.description}</p>
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </div>
-
-        {/* Desktop Grid */}
-        <div className="hidden lg:grid md:grid-cols-2 gap-4 lg:gap-6">
-          {regions.map((region, index) => {
-            const RegionCard = () => {
-              const { ref, isVisible } = useScrollAnimation(0.2);
-              
-              return (
-                <div 
-                  ref={ref}
-                  className={`card-luxury hover-scale transition-all duration-700 ${
-                    isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-                  }`}
-                >
-                  <h3 className="heading-elegant text-lg lg:text-large mb-2 lg:mb-3">{region.name}</h3>
-                  <p className="body-clean text-base lg:text-large text-muted-foreground mb-3 lg:mb-4">{region.countries}</p>
-                  <p className="body-clean text-base lg:text-large text-muted-foreground">{region.description}</p>
-                </div>
-              );
-            };
-            
-            return <RegionCard key={region.name} />;
-          })}
-        </div>
+        {/* Accordion for both mobile and desktop */}
+        <Accordion type="single" collapsible defaultValue="europe">
+          {regions.map((region) => (
+            <AccordionItem key={region.name} value={region.name.toLowerCase()}>
+              <AccordionTrigger className="heading-elegant text-lg lg:text-xl">
+                {region.name}
+              </AccordionTrigger>
+              <AccordionContent>
+                <p className="body-clean text-base lg:text-lg text-muted-foreground mb-3">{region.countries}</p>
+                <p className="body-clean text-base lg:text-lg text-muted-foreground">{region.description}</p>
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
 
         {/* Simple world map representation */}
         <div 
