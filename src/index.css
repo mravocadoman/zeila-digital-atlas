@@ -21,6 +21,9 @@ All colors MUST be HSL.
     --primary: 196 97% 49%;  /* #03C3F8 - Neon cyan */
     --primary-foreground: 0 0% 100%;
 
+    --pink-neon: 320 100% 65%;  /* #FF4DFF - Neon pink */
+    --purple-neon: 280 90% 60%;  /* #A855F7 - Neon purple */
+
     --secondary: 205 100% 15%;
     --secondary-foreground: 0 0% 82%;
 
@@ -42,8 +45,10 @@ All colors MUST be HSL.
     /* Neon design tokens */
     --neon-glow: 0 0 10px hsl(196 97% 49% / 0.5), 0 0 20px hsl(196 97% 49% / 0.3), 0 0 30px hsl(196 97% 49% / 0.2);
     --neon-text-glow: 0 0 5px hsl(196 97% 49% / 0.8), 0 0 10px hsl(196 97% 49% / 0.6);
+    --pink-glow: 0 0 15px hsl(320 100% 65% / 0.6), 0 0 30px hsl(320 100% 65% / 0.4);
     --transition-smooth: all 0.3s ease;
     --gradient-neon: linear-gradient(135deg, hsl(196 97% 49%), hsl(280 90% 60%));
+    --gradient-sunset: linear-gradient(135deg, hsl(320 100% 65%), hsl(280 90% 60%), hsl(196 97% 49%));
   }
 }
 
@@ -99,5 +104,17 @@ All colors MUST be HSL.
       linear-gradient(hsl(196 97% 49% / 0.1) 1px, transparent 1px),
       linear-gradient(90deg, hsl(196 97% 49% / 0.1) 1px, transparent 1px);
     background-size: 50px 50px;
+  }
+
+  .pink-neon-text {
+    color: hsl(320 100% 65%);
+    text-shadow: var(--pink-glow);
+  }
+
+  .gradient-sunset {
+    background: var(--gradient-sunset);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 }
