@@ -128,7 +128,7 @@ const About = () => {
                         {toolCategories.map(category => <div key={category.category} className="border-hover p-4 rounded-sm hover-scale">
                             <h4 style={{
                           textShadow: 'none'
-                        }} className="body-clean text-foreground mb-2 text-large font-semibold">{category.category}</h4>
+                        }} className="body-clean text-foreground mb-2 text-large"><strong className="font-bold">{category.category}</strong></h4>
                             <p className="body-clean text-body text-muted-foreground">{category.tools}</p>
                           </div>)}
                       </div>
@@ -144,7 +144,7 @@ const About = () => {
                   {toolCategories.map((category, index) => <div key={category.category} className="border-hover p-4 rounded-sm hover-scale">
                     <h4 style={{
                     textShadow: 'none'
-                  }} className="body-clean text-foreground mb-2 text-large font-semibold">{category.category}</h4>
+                  }} className="body-clean text-foreground mb-2 text-large"><strong className="font-bold">{category.category}</strong></h4>
                     <p className="body-clean text-body text-muted-foreground">{category.tools}</p>
                   </div>)}
               </div>
