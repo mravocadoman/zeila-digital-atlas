@@ -153,10 +153,12 @@ const About = () => {
               </div>
               </div>
             </div>
-            </div>
+          </div>
 
+          {/* Contact Sidebar */}
+          <div className="space-y-6 animate-fade-in" style={{ animationDelay: '0.4s', animationFillMode: 'both' }}>
             {/* Languages */}
-            <div className="pt-6 lg:pt-8">
+            <div className="card-luxury">
               {/* Mobile Accordion */}
               <div className="lg:hidden">
                 <Accordion type="single" collapsible>
@@ -178,18 +180,16 @@ const About = () => {
 
               {/* Desktop View */}
               <div className="hidden lg:block">
-                <h3 className="heading-elegant text-xl lg:text-heading mb-4 lg:mb-6">Languages</h3>
-                <div className="grid md:grid-cols-2 gap-4">
-                {languages.map(lang => <div key={lang.name} className="flex justify-between items-center border-b border-border pb-3">
-                    <span className="body-clean font-medium text-body">{lang.name}</span>
-                    <span className="body-clean text-body text-muted-foreground">{lang.level}</span>
-                  </div>)}
+                <h3 className="heading-elegant text-large mb-4">Languages</h3>
+                <div className="space-y-4">
+                  {languages.map(lang => <div key={lang.name} className="flex justify-between items-center border-b border-border pb-3">
+                      <span className="body-clean font-medium text-body">{lang.name}</span>
+                      <span className="body-clean text-body text-muted-foreground">{lang.level}</span>
+                    </div>)}
+                </div>
               </div>
             </div>
-          </div>
-
-          {/* Contact Sidebar */}
-          <div className="space-y-6 animate-fade-in" style={{ animationDelay: '0.4s', animationFillMode: 'both' }}>
+            
             <div className="card-luxury space-y-6 hover-scale">
               <h3 className="heading-elegant text-large">Contact</h3>
               
