@@ -1,20 +1,24 @@
 const Travel = () => {
   const regions = [{
     name: "Europe",
-    countries: "15+ countries including Latvia, Denmark, Spain, Portugal, Turkey",
+    countries: "Latvia, Lithuania, Estonia, Poland, Finland, Sweden, Norway, Croatia, Romania, Italy, Germany, Denmark, Spain, Portugal, Austria, Czechia, Hungary",
     description: "Deep understanding of European business culture and digital marketing landscapes"
   }, {
     name: "Southeast Asia",
-    countries: "Thailand, Vietnam, Malaysia",
+    countries: "Thailand, Malaysia, Indonesia, Singapore",
     description: "Experience with emerging markets and diverse consumer behaviors"
   }, {
     name: "Africa",
-    countries: "Gambia, Kenya, Zambia",
+    countries: "Zambia, Botswana",
     description: "Implemented fin-tech and digital marketing solutions in developing economies"
   }, {
-    name: "Middle East",
-    countries: "Palestine, Jordan",
+    name: "Middle East & Caucasus",
+    countries: "Jordan, Israel, Turkey, Georgia, Greece",
     description: "Cross-cultural marketing experience in complex markets"
+  }, {
+    name: "Americas",
+    countries: "United States, Colombia, Mexico",
+    description: "Experience across diverse American markets from North to South"
   }];
   return <section id="travel" className="py-20 lg:py-32 px-6 bg-card">
       <div className="max-w-7xl mx-auto">
