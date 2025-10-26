@@ -29,7 +29,7 @@ const Teaching = () => {
               <AccordionContent>
                 <div className="grid grid-cols-1 gap-4 pt-2">
                   {certifications.map(cert => <div key={cert} className="border border-border px-4 py-2 rounded-sm flex items-center justify-center text-center min-h-[100px]">
-                      <p className="body-clean leading-snug text-lg">{cert}</p>
+                      <p className="body-clean leading-snug text-lg"><strong className="font-bold">{cert}</strong></p>
                     </div>)}
                 </div>
               </AccordionContent>
@@ -40,7 +40,7 @@ const Teaching = () => {
               <AccordionContent>
                 <div className="grid grid-cols-1 gap-4 pt-2">
                   {courses.map(course => <div key={course} className="border border-border px-4 py-2 rounded-sm flex items-center justify-center text-center min-h-[100px]">
-                      <p className="body-clean text-lg leading-snug">{course}</p>
+                      <p className="body-clean text-lg leading-snug"><strong className="font-bold">{course}</strong></p>
                     </div>)}
                 </div>
               </AccordionContent>
@@ -87,7 +87,7 @@ const Teaching = () => {
               animationDelay: `${0.1 * index}s`,
               animationFillMode: 'both'
             }}>
-                  <p className="body-clean text-sm lg:text-body leading-snug">{cert}</p>
+                  <p className="body-clean text-sm lg:text-body leading-snug"><strong className="font-bold">{cert}</strong></p>
                 </div>)}
             </div>
 
@@ -97,7 +97,7 @@ const Teaching = () => {
               animationDelay: `${0.1 * index}s`,
               animationFillMode: 'both'
             }}>
-                  <p className="body-clean text-sm lg:text-body leading-snug">{course}</p>
+                  <p className="body-clean text-sm lg:text-body leading-snug"><strong className="font-bold">{course}</strong></p>
                 </div>)}
             </div>
           </div>
