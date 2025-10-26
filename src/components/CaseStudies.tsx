@@ -44,6 +44,17 @@ const caseStudies = [
       { label: "Revenue", value: "€10K" },
     ],
   },
+  {
+    company: "LIFT Digitalisation Program",
+    description: "As part of the EU-funded LIFT initiative, I developed five digital marketing courses, built dedicated landing pages, and helped marketingaskola.lv rank #3 on Google for \"digitālā mārketinga kursi.\"",
+    details: "Using Meta ads, email outreach, and automations, I generated 300+ high-quality leads, resulting in 75–105 new course participants and B2B email reply rates of 5% (well above industry average).",
+    metrics: [
+      { label: "Google Ranking", value: "#3" },
+      { label: "Leads Generated", value: "300+" },
+      { label: "Participants", value: "75-105" },
+      { label: "B2B Reply Rate", value: "5%" },
+    ],
+  },
 ];
 
 const CaseStudies = () => {
