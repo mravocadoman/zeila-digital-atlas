@@ -24,11 +24,9 @@ const Hero = () => {
             </div>
 
             <div className="pt-4">
-              <Button size="lg" className="bg-secondary text-foreground border border-border hover:border-primary transition-all duration-200 px-8 py-6 text-lg rounded-sm" onClick={() => document.getElementById('contact')?.scrollIntoView({
+              <Button size="lg" onClick={() => document.getElementById('contact')?.scrollIntoView({
               behavior: 'smooth'
-            })}>
-                Get In Touch
-              </Button>
+            })} className="bg-secondary text-foreground border border-border hover:border-primary transition-all duration-200 px-8 py-6 rounded-md font-extrabold text-2xl">GET IN TOUCH</Button>
             </div>
           </div>
 
