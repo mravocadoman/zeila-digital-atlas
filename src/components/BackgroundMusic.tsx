@@ -19,18 +19,52 @@ const BackgroundMusic = () => {
   }, [volume, isMobile]);
 
   useEffect(() => {
-    // Autoplay on mount
+    const startAudio = () => {
+      if (audioRef.current && !isPlaying) {
+        audioRef.current.muted = false;
+        audioRef.current.play()
+          .then(() => {
+            setIsPlaying(true);
+          })
+          .catch((error) => {
+            console.log("Play after interaction failed:", error);
+          });
+      }
+    };
+
+    // Try autoplay on mount (muted for mobile)
     if (audioRef.current) {
+      audioRef.current.muted = true;
       audioRef.current.play()
         .then(() => {
-          setIsPlaying(true);
+          // For desktop, unmute immediately
+          if (!isMobile) {
+            audioRef.current!.muted = false;
+            setIsPlaying(true);
+          } else {
+            // For mobile, wait for first user interaction
+            const handleFirstInteraction = () => {
+              startAudio();
+              document.removeEventListener("touchstart", handleFirstInteraction);
+              document.removeEventListener("click", handleFirstInteraction);
+            };
+            document.addEventListener("touchstart", handleFirstInteraction, { once: true });
+            document.addEventListener("click", handleFirstInteraction, { once: true });
+          }
         })
         .catch((error) => {
           console.log("Autoplay prevented:", error);
-          // Autoplay was prevented, user will need to click play
+          // If muted autoplay fails, try on first interaction
+          const handleFirstInteraction = () => {
+            startAudio();
+            document.removeEventListener("touchstart", handleFirstInteraction);
+            document.removeEventListener("click", handleFirstInteraction);
+          };
+          document.addEventListener("touchstart", handleFirstInteraction, { once: true });
+          document.addEventListener("click", handleFirstInteraction, { once: true });
         });
     }
-  }, []);
+  }, [isMobile]);
 
   useEffect(() => {
     if (!isMobile) return;
