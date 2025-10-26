@@ -24,14 +24,14 @@ const Teaching = () => {
           <div className="space-y-6">
             <h3 className="heading-elegant text-3xl mb-6">Certifications</h3>
             <div className="grid grid-cols-2 gap-4">
-              {certifications.map(cert => <div key={cert} className="border-2 border-border p-6 rounded-sm flex items-center justify-center text-center min-h-[160px] transition-all duration-300 hover:border-primary hover:shadow-[0_0_20px_rgba(3,195,248,0.6)]">
+              {certifications.map(cert => <div key={cert} className="border border-border p-6 rounded-sm flex items-center justify-center text-center min-h-[160px] transition-all duration-300 hover:border-primary hover:shadow-[0_0_20px_rgba(3,195,248,0.6)]">
                   <p className="body-clean text-lg leading-snug">{cert}</p>
                 </div>)}
             </div>
 
             <h3 className="heading-elegant text-3xl mb-6 mt-12">Advanced Courses</h3>
             <div className="grid grid-cols-2 gap-4">
-              {courses.map(course => <div key={course} className="border-2 border-border p-6 rounded-sm flex items-center justify-center text-center min-h-[160px] transition-all duration-300 hover:border-primary hover:shadow-[0_0_20px_rgba(3,195,248,0.6)]">
+              {courses.map(course => <div key={course} className="border border-border p-6 rounded-sm flex items-center justify-center text-center min-h-[160px] transition-all duration-300 hover:border-primary hover:shadow-[0_0_20px_rgba(3,195,248,0.6)]">
                   <p className="body-clean text-lg leading-snug">{course}</p>
                 </div>)}
             </div>
