@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import headshotImage from "@/assets/rihards-headshot.png";
 import neonPalms from "@/assets/neon-palms.png";
-import retroSunset from "@/assets/retro-sunset.png";
 const Hero = () => {
   return <section className="min-h-screen flex items-center justify-center px-6 py-20 lg:py-32 relative overflow-hidden">
       {/* 80s Neon Background Graphics */}
@@ -9,16 +8,8 @@ const Hero = () => {
         <img 
           src={neonPalms} 
           alt="" 
-          className="absolute bottom-0 left-0 w-full h-2/3 object-cover opacity-20 mix-blend-screen"
+          className="absolute inset-0 w-full h-full object-cover opacity-30"
         />
-        <div className="absolute top-20 right-10 w-48 h-48 lg:w-64 lg:h-64 opacity-30">
-          <img 
-            src={retroSunset} 
-            alt="" 
-            className="w-full h-full object-contain animate-pulse"
-            style={{ animationDuration: '4s' }}
-          />
-        </div>
       </div>
 
       <div className="max-w-7xl mx-auto w-full relative z-10">

@@ -1,5 +1,3 @@
-import retroSunset from "@/assets/retro-sunset.png";
-
 const Travel = () => {
   const regions = [{
     name: "Europe",
@@ -23,11 +21,6 @@ const Travel = () => {
     description: "Experience across diverse American markets from North to South"
   }];
   return <section id="travel" className="py-20 lg:py-32 px-6 bg-card relative overflow-hidden">
-      {/* 80s Retro Decorative Element */}
-      <div className="absolute top-10 left-10 w-32 h-32 opacity-20 pointer-events-none">
-        <img src={retroSunset} alt="" className="w-full h-full object-contain" />
-      </div>
-      
       <div className="max-w-7xl mx-auto relative z-10">
         <h2 className="heading-elegant text-4xl lg:text-6xl mb-12">Global Perspective</h2>
 
