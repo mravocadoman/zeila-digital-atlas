@@ -5,7 +5,13 @@ const Hero = () => {
   return <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-16 py-12 sm:py-20 lg:py-32 relative overflow-hidden">
       {/* 80s Neon Background Graphics */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <img src={neonPalms} alt="" className="absolute inset-0 w-full h-full object-cover opacity-30" />
+        <img 
+          src={neonPalms} 
+          alt="" 
+          className="absolute inset-0 w-full h-full object-cover opacity-30"
+          loading="lazy"
+          aria-hidden="true"
+        />
       </div>
 
       <div className="max-w-7xl mx-auto w-full relative z-10">
@@ -41,7 +47,15 @@ const Hero = () => {
           animationFillMode: 'both'
         }}>
             <div className="relative">
-              <img src={headshotImage} alt="Rihards Zeila - Full-Stack Digital Marketer and Educator based in Riga, Latvia" className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-xs mx-auto rounded-sm border-3 border-primary hover-scale" style={{ boxShadow: '0 0 30px hsl(var(--primary))' }} />
+              <img 
+                src={headshotImage} 
+                alt="Rihards Zeila - Full-Stack Digital Marketer and Educator based in Riga, Latvia" 
+                className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-xs mx-auto rounded-sm border-3 border-primary hover-scale" 
+                style={{ boxShadow: '0 0 30px hsl(var(--primary))' }}
+                loading="eager"
+                width="400"
+                height="400"
+              />
             </div>
           </div>
         </div>

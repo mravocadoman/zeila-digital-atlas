@@ -11,13 +11,15 @@ import BackgroundMusic from "@/components/BackgroundMusic";
 const Index = () => {
   return (
     <div className="min-h-screen">
-      <Hero />
-      <About />
-      <Teaching />
-      <Travel />
-      <Testimonials />
-      <Timeline />
-      <ContactForm />
+      <main>
+        <Hero />
+        <About />
+        <Teaching />
+        <Travel />
+        <Testimonials />
+        <Timeline />
+        <ContactForm />
+      </main>
       <Footer />
       <BackgroundMusic />
     </div>
