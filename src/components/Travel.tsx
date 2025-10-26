@@ -6,20 +6,20 @@ const Travel = () => {
   
   const regions = [{
     name: "Europe",
-    countries: "Latvia, Lithuania, Estonia, Poland, Finland, Sweden, Norway, Croatia, Romania, Italy, Germany, Denmark, Spain, Portugal, Austria, Czechia, Hungary",
+    countries: "Latvia, Lithuania, Estonia, Poland, Finland, Sweden, Norway, Croatia, Romania, Italy, Germany, Denmark, Spain, Portugal, Austria, Czechia, Hungary, Greece, Turkey, Georgia",
     description: "Deep understanding of European business culture and digital marketing landscapes"
   }, {
     name: "Southeast Asia",
     countries: "Thailand, Malaysia, Indonesia, Singapore",
     description: "Experience with emerging markets and diverse consumer behaviors"
   }, {
+    name: "Middle East",
+    countries: "Jordan, Israel",
+    description: "Cross-cultural marketing experience in complex markets"
+  }, {
     name: "Africa",
     countries: "Zambia, Botswana",
     description: "Implemented fin-tech and digital marketing solutions in developing economies"
-  }, {
-    name: "Middle East & Caucasus",
-    countries: "Jordan, Israel, Turkey, Georgia, Greece",
-    description: "Cross-cultural marketing experience in complex markets"
   }, {
     name: "Americas",
     countries: "United States, Colombia, Mexico",
@@ -44,8 +44,8 @@ const Travel = () => {
                   {region.name}
                 </AccordionTrigger>
                 <AccordionContent>
-                  <p className="body-clean text-sm text-muted-foreground mb-3">{region.countries}</p>
-                  <p className="body-clean text-sm text-muted-foreground">{region.description}</p>
+                  <p className="body-clean text-base text-muted-foreground mb-3">{region.countries}</p>
+                  <p className="body-clean text-base text-muted-foreground">{region.description}</p>
                 </AccordionContent>
               </AccordionItem>
             ))}
@@ -66,8 +66,8 @@ const Travel = () => {
                   }`}
                 >
                   <h3 className="heading-elegant text-lg lg:text-large mb-2 lg:mb-3">{region.name}</h3>
-                  <p className="body-clean text-sm lg:text-body text-muted-foreground mb-3 lg:mb-4">{region.countries}</p>
-                  <p className="body-clean text-sm lg:text-body text-muted-foreground">{region.description}</p>
+                  <p className="body-clean text-base lg:text-large text-muted-foreground mb-3 lg:mb-4">{region.countries}</p>
+                  <p className="body-clean text-base lg:text-large text-muted-foreground">{region.description}</p>
                 </div>
               );
             };
