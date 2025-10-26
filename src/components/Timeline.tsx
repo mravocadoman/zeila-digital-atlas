@@ -2,6 +2,13 @@ const Timeline = () => {
   const milestones = [
     { 
       year: "2024", 
+      title: "Lecturer",
+      company: "LIFT",
+      period: "Nov 2024 - Present",
+      description: "Led monthly workshops for Latvian SMEs, teaching Meta ads and marketing automation. Created a lead generation system for entire LIFT digital marketing course cohort."
+    },
+    { 
+      year: "2024", 
       title: "Key Account Lead",
       company: "Aleph",
       period: "Sep 2022 - Jun 2024",
