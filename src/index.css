@@ -8,7 +8,7 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* 80s Neon Theme */
+    /* 80s Neon Theme - 4 Core Colors */
     --background: 205 100% 9%;  /* #00152C - Deep blue */
     --foreground: 0 0% 82%;  /* #D1D1D1 - Light gray body text */
 
@@ -49,6 +49,12 @@ All colors MUST be HSL.
     --transition-smooth: all 0.3s ease;
     --gradient-neon: linear-gradient(135deg, hsl(196 97% 49%), hsl(280 90% 60%));
     --gradient-sunset: linear-gradient(135deg, hsl(320 100% 65%), hsl(280 90% 60%), hsl(196 97% 49%));
+    
+    /* Typography Scale - 4 Sizes */
+    --text-body: 1.125rem;      /* 18px - Base body text */
+    --text-large: 1.5rem;       /* 24px - Large text/small headings */
+    --text-heading: 2.5rem;     /* 40px - Section headings (H2/H3) */
+    --text-display: 4rem;       /* 64px - Large section titles (H2) */
   }
 }
 
@@ -79,6 +85,27 @@ All colors MUST be HSL.
 
   .body-clean {
     @apply font-['Rajdhani'] font-medium;
+  }
+  
+  /* Typography Scale */
+  .text-display {
+    font-size: var(--text-display);
+    line-height: 1.1;
+  }
+  
+  .text-heading {
+    font-size: var(--text-heading);
+    line-height: 1.2;
+  }
+  
+  .text-large {
+    font-size: var(--text-large);
+    line-height: 1.4;
+  }
+  
+  .text-body {
+    font-size: var(--text-body);
+    line-height: 1.6;
   }
 
   .border-hover {

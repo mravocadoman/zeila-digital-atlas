@@ -22,19 +22,19 @@ const Travel = () => {
   }];
   return <section id="travel" className="py-20 lg:py-32 px-6 bg-card relative overflow-hidden">
       <div className="max-w-7xl mx-auto relative z-10">
-        <h2 className="heading-elegant text-4xl lg:text-6xl mb-12">Global Perspective</h2>
+        <h2 className="heading-elegant text-display mb-12">Global Perspective</h2>
 
         <div className="max-w-3xl mx-auto mb-16">
-          <blockquote className="heading-elegant text-2xl lg:text-3xl text-center italic border-l-4 border-foreground pl-8">
+          <blockquote className="heading-elegant text-large text-center italic border-l-4 border-foreground pl-8">
             "Every culture teaches something new about connection, communication, and creativity. These experiences directly influence how I solve marketing challenges."
           </blockquote>
         </div>
 
         <div className="grid md:grid-cols-2 gap-6">
           {regions.map(region => <div key={region.name} className="card-luxury">
-              <h3 className="heading-elegant text-2xl mb-3">{region.name}</h3>
-              <p className="body-clean text-sm text-muted-foreground mb-4">{region.countries}</p>
-              <p className="body-clean text-muted-foreground">{region.description}</p>
+              <h3 className="heading-elegant text-large mb-3">{region.name}</h3>
+              <p className="body-clean text-body text-muted-foreground mb-4">{region.countries}</p>
+              <p className="body-clean text-body text-muted-foreground">{region.description}</p>
             </div>)}
         </div>
 
@@ -50,8 +50,8 @@ const Travel = () => {
             </svg>
           </div>
           <div className="relative text-center">
-            <p className="heading-elegant text-3xl">35+ Countries Visited</p>
-            <p className="body-clean text-muted-foreground mt-2">4 Continents • Endless Insights</p>
+            <p className="heading-elegant text-heading">35+ Countries Visited</p>
+            <p className="body-clean text-body text-muted-foreground mt-2">4 Continents • Endless Insights</p>
           </div>
         </div>
       </div>

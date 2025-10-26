@@ -50,8 +50,8 @@ const ContactForm = () => {
     <section id="contact" className="py-20 lg:py-32 px-6">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="heading-elegant text-4xl lg:text-6xl mb-6">Let's Build Something Together</h2>
-          <p className="body-clean text-xl text-muted-foreground">
+          <h2 className="heading-elegant text-display mb-6">Let's Build Something Together</h2>
+          <p className="body-clean text-body text-muted-foreground">
             Open to high-impact projects, co-founder opportunities, and CMO roles
           </p>
         </div>
@@ -60,7 +60,7 @@ const ContactForm = () => {
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <label htmlFor="name" className="body-clean block mb-2 text-sm font-medium">
+                <label htmlFor="name" className="body-clean block mb-2 text-body font-medium">
                   Name
                 </label>
                 <Input
@@ -75,7 +75,7 @@ const ContactForm = () => {
               </div>
 
               <div>
-                <label htmlFor="email" className="body-clean block mb-2 text-sm font-medium">
+                <label htmlFor="email" className="body-clean block mb-2 text-body font-medium">
                   Email
                 </label>
                 <Input
@@ -91,7 +91,7 @@ const ContactForm = () => {
             </div>
 
             <div>
-              <label htmlFor="type" className="body-clean block mb-2 text-sm font-medium">
+              <label htmlFor="type" className="body-clean block mb-2 text-body font-medium">
                 Type of Inquiry
               </label>
               <Select value={formData.type} onValueChange={(value) => setFormData({ ...formData, type: value })}>
@@ -109,7 +109,7 @@ const ContactForm = () => {
             </div>
 
             <div>
-              <label htmlFor="message" className="body-clean block mb-2 text-sm font-medium">
+              <label htmlFor="message" className="body-clean block mb-2 text-body font-medium">
                 Message
               </label>
               <Textarea
@@ -132,7 +132,7 @@ const ContactForm = () => {
           </form>
 
           <div className="mt-8 pt-8 border-t border-border text-center">
-            <p className="body-clean text-muted-foreground">
+            <p className="body-clean text-body text-muted-foreground">
               Or email directly: <a href="mailto:rihards.zeila@gmail.com" className="text-foreground hover:text-primary transition-colors">rihards.zeila@gmail.com</a>
             </p>
           </div>

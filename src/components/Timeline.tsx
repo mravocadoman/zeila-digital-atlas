@@ -47,8 +47,8 @@ const Timeline = () => {
   return (
     <section id="timeline" className="py-20 lg:py-32 px-6 bg-card">
       <div className="max-w-7xl mx-auto">
-        <h2 className="heading-elegant text-4xl lg:text-6xl mb-4">Career Journey</h2>
-        <p className="body-clean text-lg text-muted-foreground mb-12 max-w-3xl">
+        <h2 className="heading-elegant text-display mb-4">Career Journey</h2>
+        <p className="body-clean text-body text-muted-foreground mb-12 max-w-3xl">
           A decade of growth spanning marketing, education, and entrepreneurship across multiple continents.
         </p>
 
@@ -69,10 +69,10 @@ const Timeline = () => {
 
                 {/* Content */}
                 <div className={`flex-1 pl-20 md:pl-0 ${index % 2 === 0 ? 'md:pr-16 md:text-right' : 'md:pl-16'}`}>
-                  <div className="heading-elegant text-2xl mb-2">{milestone.period}</div>
-                  <h3 className="heading-elegant text-xl mb-1">{milestone.title}</h3>
-                  <p className="body-clean text-foreground mb-2">{milestone.company}</p>
-                  <p className="body-clean text-muted-foreground">{milestone.description}</p>
+                  <div className="heading-elegant text-large mb-2">{milestone.period}</div>
+                  <h3 className="heading-elegant text-large mb-1">{milestone.title}</h3>
+                  <p className="body-clean text-body text-foreground mb-2">{milestone.company}</p>
+                  <p className="body-clean text-body text-muted-foreground">{milestone.description}</p>
                 </div>
 
                 {/* Spacer for alternating layout */}

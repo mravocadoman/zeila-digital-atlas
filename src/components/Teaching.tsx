@@ -17,38 +17,38 @@ const Teaching = () => {
   }];
   return <section id="teaching" className="py-20 lg:py-32 px-6">
       <div className="max-w-7xl mx-auto">
-        <h2 className="heading-elegant text-4xl lg:text-6xl mb-12">Education & Credentials</h2>
+        <h2 className="heading-elegant text-display mb-12">Education & Credentials</h2>
 
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Certifications */}
           <div className="space-y-6">
-            <h3 className="heading-elegant text-3xl mb-6">Certifications</h3>
+            <h3 className="heading-elegant text-heading mb-6">Certifications</h3>
             <div className="grid grid-cols-2 gap-4">
               {certifications.map(cert => <div key={cert} className="border border-border px-6 py-4 rounded-sm flex items-center justify-center text-center min-h-[140px] transition-all duration-300 hover:border-primary hover:shadow-[0_0_20px_rgba(3,195,248,0.6)]">
-                  <p className="body-clean text-lg leading-snug">{cert}</p>
+                  <p className="body-clean text-body leading-snug">{cert}</p>
                 </div>)}
             </div>
 
-            <h3 className="heading-elegant text-3xl mb-6 mt-12">Advanced Courses</h3>
+            <h3 className="heading-elegant text-heading mb-6 mt-12">Advanced Courses</h3>
             <div className="grid grid-cols-2 gap-4">
               {courses.map(course => <div key={course} className="border border-border px-6 py-4 rounded-sm flex items-center justify-center text-center min-h-[140px] transition-all duration-300 hover:border-primary hover:shadow-[0_0_20px_rgba(3,195,248,0.6)]">
-                  <p className="body-clean text-lg leading-snug">{course}</p>
+                  <p className="body-clean text-body leading-snug">{course}</p>
                 </div>)}
             </div>
           </div>
 
           {/* Education */}
           <div className="space-y-8">
-            <h3 className="heading-elegant text-3xl mb-6">Education</h3>
+            <h3 className="heading-elegant text-heading mb-6">Education</h3>
             {education.map((edu, index) => <div key={index} className="card-luxury">
-                <h4 className="heading-elegant text-2xl mb-2">{edu.degree}</h4>
-                <p className="body-clean text-xl text-muted-foreground mb-1">{edu.institution}</p>
-                <p className="body-clean text-base text-muted-foreground mb-4">
+                <h4 className="heading-elegant text-large mb-2">{edu.degree}</h4>
+                <p className="body-clean text-large text-muted-foreground mb-1">{edu.institution}</p>
+                <p className="body-clean text-body text-muted-foreground mb-4">
                   {edu.location} • {edu.period}
                   {edu.grade && ` • Grade: ${edu.grade}`}
                 </p>
                 <ul className="space-y-2 mt-4">
-                  {edu.details.map((detail, i) => <li key={i} className="body-clean text-base text-muted-foreground flex gap-3">
+                  {edu.details.map((detail, i) => <li key={i} className="body-clean text-body text-muted-foreground flex gap-3">
                       <span className="text-foreground mt-1 flex-shrink-0">•</span>
                       <span>{detail}</span>
                     </li>)}
@@ -56,8 +56,8 @@ const Teaching = () => {
               </div>)}
 
             <div className="card-luxury">
-              <h4 className="heading-elegant text-xl mb-3">International Study Semesters</h4>
-              <p className="body-clean text-base text-muted-foreground">
+              <h4 className="heading-elegant text-large mb-3">International Study Semesters</h4>
+              <p className="body-clean text-body text-muted-foreground">
                 Istanbul, Valencia, Lisbon, Chiang Mai | Erasmus+ (2014 - 2016)
               </p>
             </div>
