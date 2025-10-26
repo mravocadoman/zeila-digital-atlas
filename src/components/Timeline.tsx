@@ -60,7 +60,7 @@ const Timeline = () => {
 
                 {/* Content */}
                 <div className={`flex-1 pl-20 md:pl-0 ${index % 2 === 0 ? 'md:pr-16 md:text-right' : 'md:pl-16'}`}>
-                  <div className="body-clean text-sm mb-2 lowercase">{milestone.period}</div>
+                  <div className="body-clean text-lg mb-2 capitalize font-bold">{milestone.period}</div>
                   <h3 className="body-clean text-large mb-1 text-foreground font-extrabold text-3xl">{milestone.title}</h3>
                   <p className="body-clean text-body text-foreground mb-2 font-bold">{milestone.company}</p>
                   <p className="body-clean text-body text-muted-foreground">{milestone.description}</p>
