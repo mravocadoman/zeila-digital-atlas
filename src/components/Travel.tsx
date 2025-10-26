@@ -1,4 +1,5 @@
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 const Travel = () => {
   const mapAnimation = useScrollAnimation(0.3);
@@ -34,7 +35,25 @@ const Travel = () => {
           </blockquote>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-4 lg:gap-6">
+        {/* Mobile Accordion */}
+        <div className="lg:hidden">
+          <Accordion type="single" collapsible defaultValue="europe">
+            {regions.map((region) => (
+              <AccordionItem key={region.name} value={region.name.toLowerCase()}>
+                <AccordionTrigger className="heading-elegant text-lg">
+                  {region.name}
+                </AccordionTrigger>
+                <AccordionContent>
+                  <p className="body-clean text-sm text-muted-foreground mb-3">{region.countries}</p>
+                  <p className="body-clean text-sm text-muted-foreground">{region.description}</p>
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </div>
+
+        {/* Desktop Grid */}
+        <div className="hidden lg:grid md:grid-cols-2 gap-4 lg:gap-6">
           {regions.map((region, index) => {
             const RegionCard = () => {
               const { ref, isVisible } = useScrollAnimation(0.2);

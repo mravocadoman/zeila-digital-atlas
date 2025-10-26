@@ -1,6 +1,7 @@
 import { Mail, Phone, MapPin, Linkedin, Instagram, Facebook } from "lucide-react";
 import { FaTiktok } from "react-icons/fa";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 const About = () => {
   const statsAnimation = useScrollAnimation(0.3);
@@ -79,41 +80,106 @@ const About = () => {
 
             {/* Skills */}
             <div className="pt-6 lg:pt-8">
-              <h3 className="heading-elegant text-xl lg:text-heading mb-4 lg:mb-6">Core Skills</h3>
-              <div 
-                ref={skillsAnimation.ref}
-                className={`grid md:grid-cols-2 gap-4 transition-all duration-700 ${
-                  skillsAnimation.isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
-                }`}
-              >
-                {skills.map((skill, index) => <div key={skill} className="border-hover p-4 rounded-sm hover-scale">
+              {/* Mobile Accordion */}
+              <div className="lg:hidden">
+                <Accordion type="single" collapsible>
+                  <AccordionItem value="skills">
+                    <AccordionTrigger className="heading-elegant text-xl">Core Skills</AccordionTrigger>
+                    <AccordionContent>
+                      <div className="grid gap-4 pt-2">
+                        {skills.map((skill) => (
+                          <div key={skill} className="border-hover p-4 rounded-sm hover-scale">
+                            <p className="body-clean text-body font-medium">{skill}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </AccordionContent>
+                  </AccordionItem>
+                </Accordion>
+              </div>
+
+              {/* Desktop View */}
+              <div className="hidden lg:block">
+                <h3 className="heading-elegant text-xl lg:text-heading mb-4 lg:mb-6">Core Skills</h3>
+                <div 
+                  ref={skillsAnimation.ref}
+                  className={`grid md:grid-cols-2 gap-4 transition-all duration-700 ${
+                    skillsAnimation.isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
+                  }`}
+                >
+                  {skills.map((skill, index) => <div key={skill} className="border-hover p-4 rounded-sm hover-scale">
                     <p className="body-clean text-body font-medium">{skill}</p>
                   </div>)}
+              </div>
               </div>
             </div>
 
             {/* Tools */}
             <div className="pt-6 lg:pt-8">
-              <h3 className="heading-elegant text-xl lg:text-heading mb-4 lg:mb-6">Tools & Platforms</h3>
-              <div 
-                ref={toolsAnimation.ref}
-                className={`grid md:grid-cols-2 gap-4 transition-all duration-700 ${
-                  toolsAnimation.isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
-                }`}
-              >
-                {toolCategories.map((category, index) => <div key={category.category} className="border-hover p-4 rounded-sm hover-scale">
+              {/* Mobile Accordion */}
+              <div className="lg:hidden">
+                <Accordion type="single" collapsible>
+                  <AccordionItem value="tools">
+                    <AccordionTrigger className="heading-elegant text-xl">Tools & Platforms</AccordionTrigger>
+                    <AccordionContent>
+                      <div className="grid gap-4 pt-2">
+                        {toolCategories.map((category) => (
+                          <div key={category.category} className="border-hover p-4 rounded-sm hover-scale">
+                            <h4 style={{ textShadow: 'none' }} className="body-clean text-foreground mb-2 text-large font-semibold">{category.category}</h4>
+                            <p className="body-clean text-body text-muted-foreground">{category.tools}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </AccordionContent>
+                  </AccordionItem>
+                </Accordion>
+              </div>
+
+              {/* Desktop View */}
+              <div className="hidden lg:block">
+                <h3 className="heading-elegant text-xl lg:text-heading mb-4 lg:mb-6">Tools & Platforms</h3>
+                <div 
+                  ref={toolsAnimation.ref}
+                  className={`grid md:grid-cols-2 gap-4 transition-all duration-700 ${
+                    toolsAnimation.isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
+                  }`}
+                >
+                  {toolCategories.map((category, index) => <div key={category.category} className="border-hover p-4 rounded-sm hover-scale">
                     <h4 style={{
                   textShadow: 'none'
                 }} className="body-clean text-foreground mb-2 text-large font-semibold">{category.category}</h4>
                     <p className="body-clean text-body text-muted-foreground">{category.tools}</p>
                   </div>)}
               </div>
+              </div>
+            </div>
             </div>
 
             {/* Languages */}
             <div className="pt-6 lg:pt-8">
-              <h3 className="heading-elegant text-xl lg:text-heading mb-4 lg:mb-6">Languages</h3>
-              <div className="grid md:grid-cols-2 gap-4">
+              {/* Mobile Accordion */}
+              <div className="lg:hidden">
+                <Accordion type="single" collapsible>
+                  <AccordionItem value="languages">
+                    <AccordionTrigger className="heading-elegant text-xl">Languages</AccordionTrigger>
+                    <AccordionContent>
+                      <div className="grid gap-4 pt-2">
+                        {languages.map(lang => (
+                          <div key={lang.name} className="flex justify-between items-center border-b border-border pb-3">
+                            <span className="body-clean font-medium text-body">{lang.name}</span>
+                            <span className="body-clean text-body text-muted-foreground">{lang.level}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </AccordionContent>
+                  </AccordionItem>
+                </Accordion>
+              </div>
+
+              {/* Desktop View */}
+              <div className="hidden lg:block">
+                <h3 className="heading-elegant text-xl lg:text-heading mb-4 lg:mb-6">Languages</h3>
+                <div className="grid md:grid-cols-2 gap-4">
                 {languages.map(lang => <div key={lang.name} className="flex justify-between items-center border-b border-border pb-3">
                     <span className="body-clean font-medium text-body">{lang.name}</span>
                     <span className="body-clean text-body text-muted-foreground">{lang.level}</span>

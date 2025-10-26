@@ -1,4 +1,5 @@
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 const Timeline = () => {
   const milestones = [{
@@ -52,7 +53,30 @@ const Timeline = () => {
           A decade of growth spanning marketing, education, and entrepreneurship across multiple continents.
         </p>
 
-        <div className="relative max-w-5xl mx-auto">
+        {/* Mobile Accordion */}
+        <div className="lg:hidden">
+          <Accordion type="single" collapsible defaultValue={milestones[0].title.toLowerCase()}>
+            {milestones.map((milestone, index) => (
+              <AccordionItem key={index} value={milestone.title.toLowerCase()}>
+                <AccordionTrigger className="text-left">
+                  <div>
+                    <h3 className="body-clean text-large text-foreground font-extrabold text-lg uppercase">{milestone.title}</h3>
+                    <p className="body-clean text-foreground font-bold text-sm">{milestone.company}</p>
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent>
+                  <div className="pt-2">
+                    <div className="heading-elegant text-xs mb-1 capitalize font-bold">{milestone.period}</div>
+                    <p className="body-clean text-sm text-muted-foreground">{milestone.description}</p>
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </div>
+
+        {/* Desktop Timeline View */}
+        <div className="hidden lg:block relative max-w-5xl mx-auto">
           {/* Timeline line */}
           <div className="absolute left-6 top-0 bottom-0 w-px bg-border md:left-1/2" />
 

@@ -1,3 +1,6 @@
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+
 const Teaching = () => {
   const certifications = ["Meta Certified Media Buying Professional", "Meta Certified Media Planning Professional", "Pinterest Advertising Essentials Certification", "Amazon Advertising Foundations Certification", "Amazon Ads Retail Certification", "OpenAI Whisper, GPT3, Codex"];
   const courses = ["Advanced Coding Masterclass - HTML, CSS and JavaScript", "Ascend Viral - Instagram Domination", "Ben Malol's Social Marketing Masterclass", "Facebook Blueprint"];
@@ -19,7 +22,72 @@ const Teaching = () => {
       <div className="max-w-7xl mx-auto">
         <h2 className="heading-elegant text-3xl lg:text-display mb-8 lg:mb-12 animate-fade-in text-center lg:text-left">Education & Credentials</h2>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        {/* Mobile Accordion View */}
+        <div className="lg:hidden">
+          <Accordion type="multiple" defaultValue={["certifications"]}>
+            <AccordionItem value="certifications">
+              <AccordionTrigger className="heading-elegant text-xl">Certifications</AccordionTrigger>
+              <AccordionContent>
+                <div className="grid grid-cols-1 gap-4 pt-2">
+                  {certifications.map((cert) => (
+                    <div key={cert} className="border border-border px-4 py-3 rounded-sm flex items-center justify-center text-center min-h-[100px]">
+                      <p className="body-clean text-sm leading-snug">{cert}</p>
+                    </div>
+                  ))}
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="courses">
+              <AccordionTrigger className="heading-elegant text-xl">Advanced Courses</AccordionTrigger>
+              <AccordionContent>
+                <div className="grid grid-cols-1 gap-4 pt-2">
+                  {courses.map((course) => (
+                    <div key={course} className="border border-border px-4 py-3 rounded-sm flex items-center justify-center text-center min-h-[100px]">
+                      <p className="body-clean text-sm leading-snug">{course}</p>
+                    </div>
+                  ))}
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="education">
+              <AccordionTrigger className="heading-elegant text-xl">Education</AccordionTrigger>
+              <AccordionContent>
+                <div className="space-y-6 pt-2">
+                  {education.map((edu, index) => (
+                    <div key={index} className="card-luxury">
+                      <h4 className="heading-elegant text-large mb-2">{edu.degree}</h4>
+                      <p className="body-clean text-large text-muted-foreground mb-1">{edu.institution}</p>
+                      <p className="body-clean text-body text-muted-foreground mb-4">
+                        {edu.location} • {edu.period}
+                        {edu.grade && ` • Grade: ${edu.grade}`}
+                      </p>
+                      <ul className="space-y-2 mt-4">
+                        {edu.details.map((detail, i) => (
+                          <li key={i} className="body-clean text-body text-muted-foreground flex gap-3">
+                            <span className="text-foreground mt-1 flex-shrink-0">•</span>
+                            <span>{detail}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+
+                  <div className="card-luxury">
+                    <h4 className="heading-elegant text-large mb-3">International Study Semesters</h4>
+                    <p className="body-clean text-body text-muted-foreground">
+                      Istanbul, Valencia, Lisbon, Chiang Mai | Erasmus+ (2014 - 2016)
+                    </p>
+                  </div>
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+        </div>
+
+        {/* Desktop Grid View */}
+        <div className="hidden lg:grid lg:grid-cols-2 gap-12">
           {/* Certifications */}
           <div className="space-y-6">
             <h3 className="heading-elegant text-xl lg:text-heading mb-4 lg:mb-6">Certifications</h3>
