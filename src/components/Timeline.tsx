@@ -10,6 +10,12 @@ const Timeline = () => {
     description: "Led monthly workshops for Latvian SMEs, teaching Meta ads and marketing automation. Created a lead generation system for entire LIFT digital marketing course cohort."
   }, {
     year: "2024",
+    title: "Director",
+    company: "Social Entrepreneurship Association",
+    period: "2024 - Present",
+    description: "Leading strategic initiatives and organizational development for social entrepreneurship programs."
+  }, {
+    year: "2024",
     title: "Key Account Lead",
     company: "Aleph",
     period: "Sep 2022 - Jun 2024",
