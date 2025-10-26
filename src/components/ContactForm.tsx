@@ -68,8 +68,21 @@ const ContactForm = () => {
   };
 
   return (
-    <section id="contact" className="py-12 lg:py-32 px-6">
-      <div className="max-w-4xl mx-auto">
+    <section id="contact" className="py-12 lg:py-32 px-6 relative overflow-hidden">
+      {/* YouTube Video Background */}
+      <div className="absolute inset-0 w-full h-full pointer-events-none">
+        <iframe
+          className="absolute top-1/2 left-1/2 w-[200vw] h-[200vh] -translate-x-1/2 -translate-y-1/2 scale-150"
+          src="https://www.youtube.com/embed/uJ5XHdTOfzk?autoplay=1&mute=1&loop=1&playlist=uJ5XHdTOfzk&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1"
+          title="Background video"
+          allow="autoplay; encrypted-media"
+          style={{ border: 'none' }}
+        />
+        {/* Dark overlay for readability */}
+        <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" />
+      </div>
+      
+      <div className="max-w-4xl mx-auto relative z-10">
         <div className="text-center mb-8 lg:mb-12 animate-fade-in">
           <h2 className="heading-elegant text-3xl lg:text-display mb-4 lg:mb-6">Let's Build Something Together</h2>
           <p className="body-clean text-base lg:text-large text-muted-foreground">
