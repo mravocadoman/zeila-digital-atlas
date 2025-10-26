@@ -13,9 +13,9 @@ const Hero = () => {
           {/* Left: Content */}
           <div className="space-y-8">
             <h1 className="heading-elegant text-5xl lg:text-7xl">RIHARDS ZEILA</h1>
-            <h2 className="heading-elegant text-display text-foreground leading-tight text-3xl">Helping Businesses Grow. Building Impactful Projects.</h2>
+            <h2 className="heading-elegant text-display text-foreground leading-tight font-bold text-4xl">Helping Businesses Grow. Building Impactful Projects.</h2>
             
-            <p className="body-clean text-body text-muted-foreground leading-relaxed">
+            <p className="body-clean text-body text-muted-foreground leading-relaxed text-2xl font-semibold">
               You don't need more clicks or views—you need a predictable system that turns traffic into revenue.
             </p>
 
