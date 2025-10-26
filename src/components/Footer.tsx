@@ -7,7 +7,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto">
         <div className="grid md:grid-cols-3 gap-8 mb-8">
           {/* Brand */}
-          <div>
+          <div className="animate-fade-in" style={{ animationDelay: '0.1s', animationFillMode: 'both' }}>
             <h3 className="heading-elegant text-large mb-4">Rihards Zeila</h3>
             <p className="body-clean text-body text-muted-foreground leading-relaxed">
               Full-Stack Digital Marketer, Educator & Entrepreneur based in Riga, Latvia.
@@ -15,7 +15,7 @@ const Footer = () => {
           </div>
 
           {/* Quick Links */}
-          <div>
+          <div className="animate-fade-in" style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>
             <h4 className="body-clean font-semibold mb-4 text-large">Quick Links</h4>
             <nav className="space-y-2">
               <a href="#about" className="body-clean text-body text-muted-foreground hover:text-foreground transition-colors block">
@@ -37,7 +37,7 @@ const Footer = () => {
           </div>
 
           {/* Contact & Social */}
-          <div>
+          <div className="animate-fade-in" style={{ animationDelay: '0.3s', animationFillMode: 'both' }}>
             <h4 className="body-clean font-semibold mb-4 text-large">Connect</h4>
             <div className="space-y-3 mb-6">
               <a href="mailto:rihards.zeila@gmail.com" className="flex items-center gap-2 text-body text-muted-foreground hover:text-foreground transition-colors">
@@ -55,7 +55,7 @@ const Footer = () => {
                 href="https://www.linkedin.com/in/rihards-ze/" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="text-muted-foreground hover:text-foreground transition-colors"
+                className="text-muted-foreground hover:text-foreground transition-colors hover-scale"
                 aria-label="LinkedIn profile"
               >
                 <Linkedin className="w-5 h-5" />
@@ -64,7 +64,7 @@ const Footer = () => {
                 href="https://www.instagram.com/rihards.ze/" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="text-muted-foreground hover:text-foreground transition-colors"
+                className="text-muted-foreground hover:text-foreground transition-colors hover-scale"
                 aria-label="Instagram profile"
               >
                 <Instagram className="w-5 h-5" />
@@ -73,7 +73,7 @@ const Footer = () => {
                 href="https://www.tiktok.com/@rihards.ze" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="text-muted-foreground hover:text-foreground transition-colors"
+                className="text-muted-foreground hover:text-foreground transition-colors hover-scale"
                 aria-label="TikTok profile"
               >
                 <FaTiktok className="w-5 h-5" />
@@ -82,7 +82,7 @@ const Footer = () => {
                 href="https://www.facebook.com/profile.php?id=100000487541249" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="text-muted-foreground hover:text-foreground transition-colors"
+                className="text-muted-foreground hover:text-foreground transition-colors hover-scale"
                 aria-label="Facebook profile"
               >
                 <Facebook className="w-5 h-5" />

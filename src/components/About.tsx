@@ -42,7 +42,7 @@ const About = () => {
   }];
   return <section id="about" className="py-20 lg:py-32 px-6 bg-card">
       <div className="max-w-7xl mx-auto">
-        <h2 className="heading-elegant text-display mb-12">About Me</h2>
+        <h2 className="heading-elegant text-display mb-12 animate-fade-in">About Me</h2>
 
         <div className="grid lg:grid-cols-3 gap-12">
           {/* Profile */}
@@ -52,16 +52,16 @@ const About = () => {
             </p>
 
             <div className="grid md:grid-cols-3 gap-8 pt-8">
-              <div className="text-center">
-                <div className="heading-elegant text-heading mb-2">10+</div>
+              <div className="text-center animate-fade-in" style={{ animationDelay: '0.1s', animationFillMode: 'both' }}>
+                <div className="heading-elegant text-heading mb-2 neon-text">10+</div>
                 <div className="body-clean text-body text-muted-foreground">Years Experience</div>
               </div>
-              <div className="text-center">
-                <div className="heading-elegant text-heading mb-2">36x</div>
+              <div className="text-center animate-fade-in" style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>
+                <div className="heading-elegant text-heading mb-2 neon-text">36x</div>
                 <div className="body-clean text-body text-muted-foreground">Best ROAS</div>
               </div>
-              <div className="text-center">
-                <div className="heading-elegant text-heading mb-2">€1M+</div>
+              <div className="text-center animate-fade-in" style={{ animationDelay: '0.3s', animationFillMode: 'both' }}>
+                <div className="heading-elegant text-heading mb-2 neon-text">€1M+</div>
                 <div className="body-clean text-body text-muted-foreground">Revenue Generated</div>
               </div>
             </div>
@@ -70,7 +70,7 @@ const About = () => {
             <div className="pt-8">
               <h3 className="heading-elegant text-heading mb-6">Core Skills</h3>
               <div className="grid md:grid-cols-2 gap-4">
-                {skills.map(skill => <div key={skill} className="border-hover p-4 rounded-sm">
+                {skills.map((skill, index) => <div key={skill} className="border-hover p-4 rounded-sm hover-scale animate-fade-in" style={{ animationDelay: `${0.1 * index}s`, animationFillMode: 'both' }}>
                     <p className="body-clean text-body font-medium">{skill}</p>
                   </div>)}
               </div>
@@ -80,7 +80,7 @@ const About = () => {
             <div className="pt-8">
               <h3 className="heading-elegant text-heading mb-6">Tools & Platforms</h3>
               <div className="grid md:grid-cols-2 gap-4">
-                {toolCategories.map(category => <div key={category.category} className="border-hover p-4 rounded-sm">
+                {toolCategories.map((category, index) => <div key={category.category} className="border-hover p-4 rounded-sm hover-scale animate-fade-in" style={{ animationDelay: `${0.1 * index}s`, animationFillMode: 'both' }}>
                     <h4 style={{
                   textShadow: 'none'
                 }} className="body-clean text-foreground mb-2 text-large font-semibold">{category.category}</h4>
@@ -102,8 +102,8 @@ const About = () => {
           </div>
 
           {/* Contact Sidebar */}
-          <div className="space-y-6">
-            <div className="card-luxury space-y-6">
+          <div className="space-y-6 animate-fade-in" style={{ animationDelay: '0.4s', animationFillMode: 'both' }}>
+            <div className="card-luxury space-y-6 hover-scale">
               <h3 className="heading-elegant text-large">Contact</h3>
               
               <div className="space-y-4">

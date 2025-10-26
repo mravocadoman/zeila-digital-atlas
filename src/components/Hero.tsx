@@ -12,10 +12,10 @@ const Hero = () => {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Left: Content */}
           <div className="space-y-8">
-            <h1 className="heading-elegant text-5xl lg:text-7xl">RIHARDS ZEILA</h1>
-            <h2 className="heading-elegant text-display text-foreground leading-tight font-bold text-4xl">Helping Businesses Grow. Building Impactful Projects.</h2>
+            <h1 className="heading-elegant text-5xl lg:text-7xl animate-fade-in">RIHARDS ZEILA</h1>
+            <h2 className="heading-elegant text-display text-foreground leading-tight font-bold text-4xl animate-fade-in" style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>Helping Businesses Grow. Building Impactful Projects.</h2>
             
-            <p className="body-clean text-body text-muted-foreground leading-relaxed text-2xl font-semibold">
+            <p className="body-clean text-body text-muted-foreground leading-relaxed text-2xl font-semibold animate-fade-in" style={{ animationDelay: '0.4s', animationFillMode: 'both' }}>
               You don't need more clicks or views—you need a predictable system that turns traffic into revenue.
             </p>
 
@@ -23,17 +23,17 @@ const Hero = () => {
               
             </div>
 
-            <div className="pt-4">
+            <div className="pt-4 animate-fade-in" style={{ animationDelay: '0.6s', animationFillMode: 'both' }}>
               <Button size="lg" onClick={() => document.getElementById('contact')?.scrollIntoView({
               behavior: 'smooth'
-            })} className="bg-secondary text-foreground border border-border hover:border-primary transition-all duration-200 px-8 py-6 rounded-md font-extrabold text-2xl">GET IN TOUCH</Button>
+            })} className="bg-secondary text-foreground border border-border hover:border-primary transition-all duration-200 px-8 py-6 rounded-md font-extrabold text-2xl hover-scale">GET IN TOUCH</Button>
             </div>
           </div>
 
           {/* Right: Image & Video */}
-          <div className="space-y-8">
+          <div className="space-y-8 animate-fade-in" style={{ animationDelay: '0.3s', animationFillMode: 'both' }}>
             <div className="relative">
-              <img src={headshotImage} alt="Rihards Zeila - Full-Stack Digital Marketer and Educator based in Riga, Latvia" className="w-full max-w-md mx-auto rounded-sm border border-border" />
+              <img src={headshotImage} alt="Rihards Zeila - Full-Stack Digital Marketer and Educator based in Riga, Latvia" className="w-full max-w-md mx-auto rounded-sm border border-border hover-scale" />
             </div>
 
             {/* Video Embed Placeholder */}

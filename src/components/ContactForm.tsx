@@ -70,14 +70,14 @@ const ContactForm = () => {
   return (
     <section id="contact" className="py-20 lg:py-32 px-6">
       <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-12">
+        <div className="text-center mb-12 animate-fade-in">
           <h2 className="heading-elegant text-display mb-6">Let's Build Something Together</h2>
           <p className="body-clean text-large text-muted-foreground">
             Open to high-impact projects, co-founder opportunities, and CMO roles
           </p>
         </div>
 
-        <div className="card-luxury">
+        <div className="card-luxury hover-scale animate-fade-in" style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid md:grid-cols-2 gap-6">
               <div>
@@ -147,7 +147,7 @@ const ContactForm = () => {
               type="submit" 
               size="lg"
               disabled={isSubmitting}
-              className="w-full bg-foreground text-background hover:bg-foreground/90 transition-colors uppercase"
+              className="w-full bg-foreground text-background hover:bg-foreground/90 transition-colors uppercase hover-scale"
             >
               {isSubmitting ? "Sending..." : "Send Message"}
             </Button>

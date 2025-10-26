@@ -44,7 +44,7 @@ const Timeline = () => {
   }];
   return <section id="timeline" className="py-20 lg:py-32 px-6 bg-card">
       <div className="max-w-7xl mx-auto">
-        <h2 className="heading-elegant text-display mb-4">Career Journey</h2>
+        <h2 className="heading-elegant text-display mb-4 animate-fade-in">Career Journey</h2>
         <p className="body-clean text-body text-muted-foreground mb-12 max-w-3xl">
           A decade of growth spanning marketing, education, and entrepreneurship across multiple continents.
         </p>
@@ -54,7 +54,7 @@ const Timeline = () => {
           <div className="absolute left-8 top-0 bottom-0 w-px bg-border md:left-1/2" />
 
           <div className="space-y-12">
-            {milestones.map((milestone, index) => <div key={index} className={`relative flex items-start gap-8 ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
+            {milestones.map((milestone, index) => <div key={index} className={`relative flex items-start gap-8 animate-fade-in ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`} style={{ animationDelay: `${0.1 * index}s`, animationFillMode: 'both' }}>
                 {/* Dot */}
                 <div className="absolute left-8 w-4 h-4 rounded-full bg-foreground border-4 border-background md:left-1/2 md:-translate-x-1/2" />
 
