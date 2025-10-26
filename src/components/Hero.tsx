@@ -5,11 +5,7 @@ const Hero = () => {
   return <section className="min-h-screen flex items-center justify-center px-6 py-20 lg:py-32 relative overflow-hidden">
       {/* 80s Neon Background Graphics */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <img 
-          src={neonPalms} 
-          alt="" 
-          className="absolute inset-0 w-full h-full object-cover opacity-30"
-        />
+        <img src={neonPalms} alt="" className="absolute inset-0 w-full h-full object-cover opacity-30" />
       </div>
 
       <div className="max-w-7xl mx-auto w-full relative z-10">
@@ -17,7 +13,7 @@ const Hero = () => {
           {/* Left: Content */}
           <div className="space-y-8">
             <h1 className="heading-elegant text-5xl lg:text-7xl">RIHARDS ZEILA</h1>
-            <h2 className="heading-elegant text-display text-foreground leading-tight">Helping Businesses Grow. Building Impactful Projects.</h2>
+            <h2 className="heading-elegant text-display text-foreground leading-tight text-3xl">Helping Businesses Grow. Building Impactful Projects.</h2>
             
             <p className="body-clean text-body text-muted-foreground leading-relaxed">
               You don't need more clicks or views—you need a predictable system that turns traffic into revenue.
