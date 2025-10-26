@@ -34,11 +34,11 @@ const Testimonials = () => {
         <Accordion type="single" collapsible defaultValue="testimonial-0">
           {testimonials.map((testimonial, index) => (
             <AccordionItem key={index} value={`testimonial-${index}`}>
-              <AccordionTrigger className="body-clean font-semibold text-left text-base lg:text-lg">
+              <AccordionTrigger className="body-clean font-semibold text-left text-lg lg:text-xl">
                 {testimonial.author} - {testimonial.company}
               </AccordionTrigger>
               <AccordionContent>
-                <p className="body-clean text-sm lg:text-lg leading-relaxed italic text-muted-foreground">
+                <p className="body-clean text-base lg:text-xl leading-relaxed italic text-muted-foreground">
                   "{testimonial.quote}"
                 </p>
               </AccordionContent>
