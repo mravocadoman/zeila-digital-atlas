@@ -67,8 +67,6 @@ const BackgroundMusic = () => {
   }, [isMobile]);
 
   useEffect(() => {
-    if (!isMobile) return;
-
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       
@@ -83,7 +81,7 @@ const BackgroundMusic = () => {
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [isMobile]);
+  }, []);
 
   const togglePlay = () => {
     if (audioRef.current) {
@@ -98,7 +96,7 @@ const BackgroundMusic = () => {
 
   return (
     <div className={`fixed bottom-6 right-6 z-50 transition-all duration-300 ${
-      isMobile && !isVisible ? "translate-y-32 opacity-0" : "translate-y-0 opacity-100"
+      !isVisible ? "translate-y-32 opacity-0" : "translate-y-0 opacity-100"
     }`}>
       <div className={`flex items-center gap-3 bg-background/95 backdrop-blur-sm border border-border shadow-lg ${
         isMobile ? "rounded-full p-0" : "rounded-full px-4 py-2"
