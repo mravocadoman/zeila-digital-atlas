@@ -16,10 +16,10 @@ const Timeline = () => {
     },
     { 
       year: "2023", 
-      title: "BBA Lecturer - Social Media Marketing",
+      title: "BBA Lecturer",
       company: "RISEBA",
       period: "Jan 2023 - Feb 2024",
-      description: "Created syllabus and recorded lectures on management, content strategy, and Meta advertising."
+      description: "Created syllabus and recorded lectures on Social Media Marketing management, content strategy, and Meta advertising."
     },
     { 
       year: "2021", 
