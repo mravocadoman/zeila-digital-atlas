@@ -47,7 +47,7 @@ const Timeline = () => {
     year: "2015",
     title: "Founder",
     company: "Steampunk Tribe",
-    period: "Nov 2015 - Jun 2016",
+    period: "Nov 2015 - Jun 2017",
     description: "Created a Shopify dropshipping store targeting the U.S. market. Designed and tested Facebook ad campaigns, optimized product pages, and successfully generated international sales."
   }];
   return <section id="timeline" className="py-12 lg:py-32 px-6 lg:px-16 bg-card">
