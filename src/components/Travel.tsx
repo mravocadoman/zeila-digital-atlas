@@ -25,7 +25,7 @@ const Travel = () => {
     countries: "United States, Colombia, Mexico",
     description: "Experience across diverse American markets from North to South"
   }];
-  return <section id="travel" className="py-12 lg:py-32 px-6 bg-card relative overflow-hidden">
+  return <section id="travel" className="py-12 lg:py-32 px-6 lg:px-16 bg-card relative overflow-hidden">
       <div className="max-w-7xl mx-auto relative z-10">
         <h2 className="heading-elegant text-3xl lg:text-display mb-8 lg:mb-12 animate-fade-in text-center lg:text-left">Global Perspective</h2>
 

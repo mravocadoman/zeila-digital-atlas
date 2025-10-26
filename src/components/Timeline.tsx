@@ -44,7 +44,7 @@ const Timeline = () => {
     period: "Feb 2018 - Oct 2020",
     description: "Streamlined client acquisition, managed campaign delivery, and designed Facebook/Instagram campaigns."
   }];
-  return <section id="timeline" className="py-12 lg:py-32 px-6 bg-card">
+  return <section id="timeline" className="py-12 lg:py-32 px-6 lg:px-16 bg-card">
       <div className="max-w-7xl mx-auto">
         <h2 className="heading-elegant text-3xl lg:text-display mb-3 lg:mb-4 animate-fade-in text-center lg:text-left">Career Journey</h2>
         <p className="body-clean lg:text-body text-muted-foreground mb-8 lg:mb-12 max-w-3xl text-center lg:text-left text-lg">

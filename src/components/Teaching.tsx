@@ -17,7 +17,7 @@ const Teaching = () => {
     grade: "8.2 / 10",
     details: ["Developed leadership skills by organizing activities for new members of the Student Council", "Gained the ability to orient in the global economic and business environment during three study exchange semesters abroad", "Activities: Activist of the student council; Member of Student Fraternity 'Selonija'"]
   }];
-  return <section id="teaching" className="py-12 lg:py-32 px-6">
+  return <section id="teaching" className="py-12 lg:py-32 px-6 lg:px-16">
       <div className="max-w-7xl mx-auto">
         <h2 className="heading-elegant text-3xl lg:text-display mb-8 lg:mb-12 animate-fade-in text-center lg:text-left">Education & Credentials</h2>
 

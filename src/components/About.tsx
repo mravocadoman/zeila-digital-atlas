@@ -45,7 +45,7 @@ const About = () => {
     name: "Spanish",
     level: "Elementary"
   }];
-  return <section id="about" className="py-12 lg:py-32 px-6 bg-card">
+  return <section id="about" className="py-12 lg:py-32 px-6 lg:px-16 bg-card">
       <div className="max-w-7xl mx-auto">
         <h2 className="heading-elegant text-3xl lg:text-display mb-8 lg:mb-12 animate-fade-in text-center lg:text-left">About Me</h2>
 

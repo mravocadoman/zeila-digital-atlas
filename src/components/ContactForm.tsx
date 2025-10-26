@@ -68,7 +68,7 @@ const ContactForm = () => {
   };
 
   return (
-    <section id="contact" className="py-12 lg:py-32 px-6 relative overflow-hidden">
+    <section id="contact" className="py-12 lg:py-32 px-6 lg:px-16 relative overflow-hidden">
       {/* YouTube Video Background */}
       <div className="absolute inset-0 w-full h-full pointer-events-none">
         <iframe
