@@ -1,11 +1,4 @@
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
 import { Card, CardContent } from "@/components/ui/card";
 
 const caseStudies = [
@@ -70,57 +63,41 @@ const CaseStudies = () => {
         </div>
 
         <div
-          className={`transition-all duration-700 delay-200 ${
+          className={`grid grid-cols-1 md:grid-cols-2 gap-6 transition-all duration-700 delay-200 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
-          <Carousel
-            opts={{
-              align: "start",
-              loop: true,
-            }}
-            className="w-full"
-          >
-            <CarouselContent>
-              {caseStudies.map((study, index) => (
-                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/2">
-                  <div className="p-1">
-                    <Card className="border-primary/20 bg-card/50 backdrop-blur-sm hover:border-primary/40 transition-all duration-300 h-full">
-                      <CardContent className="p-6 flex flex-col h-full">
-                        <h3 className="heading-medium font-bold mb-3 text-primary">
-                          {study.company}
-                        </h3>
-                        
-                        {/* Key Metrics - Emphasized */}
-                        <div className="grid grid-cols-2 gap-3 mb-4 p-4 bg-primary/5 rounded-lg border border-primary/10">
-                          {study.metrics.map((metric, idx) => (
-                            <div key={idx} className="text-center">
-                              <div className="heading-large font-bold text-primary mb-1">
-                                {metric.value}
-                              </div>
-                              <div className="body-small text-muted-foreground">
-                                {metric.label}
-                              </div>
-                            </div>
-                          ))}
-                        </div>
+          {caseStudies.map((study, index) => (
+            <Card key={index} className="border-primary/20 bg-card/50 backdrop-blur-sm hover:border-primary/40 transition-all duration-300 h-full">
+              <CardContent className="p-6 flex flex-col h-full">
+                <h3 className="heading-medium font-bold mb-3 text-primary">
+                  {study.company}
+                </h3>
+                
+                {/* Key Metrics - Emphasized */}
+                <div className="grid grid-cols-2 gap-3 mb-4 p-4 bg-primary/5 rounded-lg border border-primary/10">
+                  {study.metrics.map((metric, idx) => (
+                    <div key={idx} className="text-center">
+                      <div className="heading-large font-bold text-primary mb-1">
+                        {metric.value}
+                      </div>
+                      <div className="body-small text-muted-foreground">
+                        {metric.label}
+                      </div>
+                    </div>
+                  ))}
+                </div>
 
-                        <p className="body-clean text-body text-foreground/80 mb-3">
-                          {study.description}
-                        </p>
-                        
-                        <p className="body-small text-muted-foreground mt-auto">
-                          {study.details}
-                        </p>
-                      </CardContent>
-                    </Card>
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious className="hidden md:flex" />
-            <CarouselNext className="hidden md:flex" />
-          </Carousel>
+                <p className="body-clean text-body text-foreground/80 mb-3">
+                  {study.description}
+                </p>
+                
+                <p className="body-small text-muted-foreground mt-auto">
+                  {study.details}
+                </p>
+              </CardContent>
+            </Card>
+          ))}
         </div>
       </div>
     </section>
