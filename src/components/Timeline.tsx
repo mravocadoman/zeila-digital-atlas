@@ -1,6 +1,5 @@
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-
 const Timeline = () => {
   const milestones = [{
     year: "2024",
@@ -45,19 +44,17 @@ const Timeline = () => {
     period: "Feb 2018 - Oct 2020",
     description: "Streamlined client acquisition, managed campaign delivery, and designed Facebook/Instagram campaigns."
   }];
-
   return <section id="timeline" className="py-12 lg:py-32 px-6 bg-card">
       <div className="max-w-7xl mx-auto">
         <h2 className="heading-elegant text-3xl lg:text-display mb-3 lg:mb-4 animate-fade-in text-center lg:text-left">Career Journey</h2>
-        <p className="body-clean text-sm lg:text-body text-muted-foreground mb-8 lg:mb-12 max-w-3xl text-center lg:text-left">
+        <p className="body-clean lg:text-body text-muted-foreground mb-8 lg:mb-12 max-w-3xl text-center lg:text-left text-lg">
           A decade of growth spanning marketing, education, and entrepreneurship across multiple continents.
         </p>
 
         {/* Mobile Accordion */}
         <div className="lg:hidden">
           <Accordion type="single" collapsible defaultValue={milestones[0].title.toLowerCase()}>
-            {milestones.map((milestone, index) => (
-              <AccordionItem key={index} value={milestone.title.toLowerCase()}>
+            {milestones.map((milestone, index) => <AccordionItem key={index} value={milestone.title.toLowerCase()}>
                 <AccordionTrigger className="text-left py-6">
                   <div>
                     <h3 className="body-clean text-large text-foreground font-extrabold text-2xl uppercase">{milestone.title}</h3>
@@ -70,8 +67,7 @@ const Timeline = () => {
                     <p className="body-clean text-base text-muted-foreground leading-relaxed">{milestone.description}</p>
                   </div>
                 </AccordionContent>
-              </AccordionItem>
-            ))}
+              </AccordionItem>)}
           </Accordion>
         </div>
 
@@ -82,16 +78,12 @@ const Timeline = () => {
 
           <div className="space-y-8 lg:space-y-12">
             {milestones.map((milestone, index) => {
-              const TimelineItem = () => {
-                const { ref, isVisible } = useScrollAnimation(0.2);
-                
-                return (
-                  <div 
-                    ref={ref}
-                    className={`relative flex items-start gap-8 transition-all duration-700 ${
-                      isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-                    } ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}
-                  >
+            const TimelineItem = () => {
+              const {
+                ref,
+                isVisible
+              } = useScrollAnimation(0.2);
+              return <div ref={ref} className={`relative flex items-start gap-8 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'} ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
                     {/* Dot */}
                     <div className="absolute left-6 w-3 lg:w-4 h-3 lg:h-4 rounded-full bg-foreground border-2 lg:border-4 border-background md:left-1/2 md:-translate-x-1/2" />
 
@@ -105,16 +97,13 @@ const Timeline = () => {
 
                     {/* Spacer for alternating layout */}
                     <div className="hidden md:block flex-1" />
-                  </div>
-                );
-              };
-              
-              return <TimelineItem key={index} />;
-            })}
+                  </div>;
+            };
+            return <TimelineItem key={index} />;
+          })}
           </div>
         </div>
       </div>
     </section>;
 };
-
 export default Timeline;
