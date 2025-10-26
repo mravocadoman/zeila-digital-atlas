@@ -44,7 +44,7 @@ const Travel = () => {
                   {region.name}
                 </AccordionTrigger>
                 <AccordionContent>
-                  <p className="body-clean text-base lg:text-lg text-muted-foreground mb-3">{region.countries}</p>
+                  <p className="body-clean text-lg lg:text-xl font-bold text-muted-foreground mb-3">{region.countries}</p>
                   <p className="body-clean text-base lg:text-lg text-muted-foreground">{region.description}</p>
                 </AccordionContent>
               </AccordionItem>
@@ -57,7 +57,7 @@ const Travel = () => {
                   {region.name}
                 </AccordionTrigger>
                 <AccordionContent>
-                  <p className="body-clean text-base lg:text-lg text-muted-foreground mb-3">{region.countries}</p>
+                  <p className="body-clean text-lg lg:text-xl font-bold text-muted-foreground mb-3">{region.countries}</p>
                   <p className="body-clean text-base lg:text-lg text-muted-foreground">{region.description}</p>
                 </AccordionContent>
               </AccordionItem>
