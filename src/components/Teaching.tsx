@@ -1,6 +1,5 @@
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-
 const Teaching = () => {
   const certifications = ["Meta Certified Media Buying Professional", "Meta Certified Media Planning Professional", "Pinterest Advertising Essentials Certification", "Amazon Advertising Foundations Certification", "Amazon Ads Retail Certification", "OpenAI Whisper, GPT3, Codex"];
   const courses = ["Advanced Coding Masterclass - HTML, CSS and JavaScript", "Ascend Viral - Instagram Domination", "Ben Malol's Social Marketing Masterclass", "Facebook Blueprint"];
@@ -29,11 +28,9 @@ const Teaching = () => {
               <AccordionTrigger className="heading-elegant text-xl">Certifications</AccordionTrigger>
               <AccordionContent>
                 <div className="grid grid-cols-1 gap-4 pt-2">
-                  {certifications.map((cert) => (
-                    <div key={cert} className="border border-border px-4 py-3 rounded-sm flex items-center justify-center text-center min-h-[100px]">
-                      <p className="body-clean text-sm leading-snug">{cert}</p>
-                    </div>
-                  ))}
+                  {certifications.map(cert => <div key={cert} className="border border-border px-4 py-3 rounded-sm flex items-center justify-center text-center min-h-[100px]">
+                      <p className="body-clean leading-snug text-lg">{cert}</p>
+                    </div>)}
                 </div>
               </AccordionContent>
             </AccordionItem>
@@ -42,11 +39,9 @@ const Teaching = () => {
               <AccordionTrigger className="heading-elegant text-xl">Advanced Courses</AccordionTrigger>
               <AccordionContent>
                 <div className="grid grid-cols-1 gap-4 pt-2">
-                  {courses.map((course) => (
-                    <div key={course} className="border border-border px-4 py-3 rounded-sm flex items-center justify-center text-center min-h-[100px]">
+                  {courses.map(course => <div key={course} className="border border-border px-4 py-3 rounded-sm flex items-center justify-center text-center min-h-[100px]">
                       <p className="body-clean text-sm leading-snug">{course}</p>
-                    </div>
-                  ))}
+                    </div>)}
                 </div>
               </AccordionContent>
             </AccordionItem>
@@ -55,8 +50,7 @@ const Teaching = () => {
               <AccordionTrigger className="heading-elegant text-xl">Education</AccordionTrigger>
               <AccordionContent>
                 <div className="space-y-6 pt-2">
-                  {education.map((edu, index) => (
-                    <div key={index} className="card-luxury">
+                  {education.map((edu, index) => <div key={index} className="card-luxury">
                       <h4 className="heading-elegant text-large mb-2">{edu.degree}</h4>
                       <p className="body-clean text-large text-muted-foreground mb-1">{edu.institution}</p>
                       <p className="body-clean text-body text-muted-foreground mb-4">
@@ -64,15 +58,12 @@ const Teaching = () => {
                         {edu.grade && ` • Grade: ${edu.grade}`}
                       </p>
                       <ul className="space-y-2 mt-4">
-                        {edu.details.map((detail, i) => (
-                          <li key={i} className="body-clean text-body text-muted-foreground flex gap-3">
+                        {edu.details.map((detail, i) => <li key={i} className="body-clean text-body text-muted-foreground flex gap-3">
                             <span className="text-foreground mt-1 flex-shrink-0">•</span>
                             <span>{detail}</span>
-                          </li>
-                        ))}
+                          </li>)}
                       </ul>
-                    </div>
-                  ))}
+                    </div>)}
 
                   <div className="card-luxury">
                     <h4 className="heading-elegant text-large mb-3">International Study Semesters</h4>
@@ -92,14 +83,20 @@ const Teaching = () => {
           <div className="space-y-6">
             <h3 className="heading-elegant text-xl lg:text-heading mb-4 lg:mb-6">Certifications</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {certifications.map((cert, index) => <div key={cert} className="border border-border px-4 py-3 lg:px-6 lg:py-4 rounded-sm flex items-center justify-center text-center min-h-[100px] lg:min-h-[140px] transition-all duration-300 hover:border-primary hover:shadow-[0_0_20px_rgba(3,195,248,0.6)] hover-scale animate-fade-in" style={{ animationDelay: `${0.1 * index}s`, animationFillMode: 'both' }}>
+              {certifications.map((cert, index) => <div key={cert} className="border border-border px-4 py-3 lg:px-6 lg:py-4 rounded-sm flex items-center justify-center text-center min-h-[100px] lg:min-h-[140px] transition-all duration-300 hover:border-primary hover:shadow-[0_0_20px_rgba(3,195,248,0.6)] hover-scale animate-fade-in" style={{
+              animationDelay: `${0.1 * index}s`,
+              animationFillMode: 'both'
+            }}>
                   <p className="body-clean text-sm lg:text-body leading-snug">{cert}</p>
                 </div>)}
             </div>
 
             <h3 className="heading-elegant text-xl lg:text-heading mb-4 lg:mb-6 mt-8 lg:mt-12">Advanced Courses</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {courses.map((course, index) => <div key={course} className="border border-border px-4 py-3 lg:px-6 lg:py-4 rounded-sm flex items-center justify-center text-center min-h-[100px] lg:min-h-[140px] transition-all duration-300 hover:border-primary hover:shadow-[0_0_20px_rgba(3,195,248,0.6)] hover-scale animate-fade-in" style={{ animationDelay: `${0.1 * index}s`, animationFillMode: 'both' }}>
+              {courses.map((course, index) => <div key={course} className="border border-border px-4 py-3 lg:px-6 lg:py-4 rounded-sm flex items-center justify-center text-center min-h-[100px] lg:min-h-[140px] transition-all duration-300 hover:border-primary hover:shadow-[0_0_20px_rgba(3,195,248,0.6)] hover-scale animate-fade-in" style={{
+              animationDelay: `${0.1 * index}s`,
+              animationFillMode: 'both'
+            }}>
                   <p className="body-clean text-sm lg:text-body leading-snug">{course}</p>
                 </div>)}
             </div>
@@ -108,7 +105,10 @@ const Teaching = () => {
           {/* Education */}
           <div className="space-y-6 lg:space-y-8">
             <h3 className="heading-elegant text-xl lg:text-heading mb-4 lg:mb-6">Education</h3>
-            {education.map((edu, index) => <div key={index} className="card-luxury hover-scale animate-fade-in" style={{ animationDelay: `${0.2 * index}s`, animationFillMode: 'both' }}>
+            {education.map((edu, index) => <div key={index} className="card-luxury hover-scale animate-fade-in" style={{
+            animationDelay: `${0.2 * index}s`,
+            animationFillMode: 'both'
+          }}>
                 <h4 className="heading-elegant text-large mb-2">{edu.degree}</h4>
                 <p className="body-clean text-large text-muted-foreground mb-1">{edu.institution}</p>
                 <p className="body-clean text-body text-muted-foreground mb-4">
