@@ -1,6 +1,12 @@
 import { Mail, Phone, MapPin, Linkedin, Instagram, Facebook } from "lucide-react";
 import { FaTiktok } from "react-icons/fa";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
+
 const About = () => {
+  const statsAnimation = useScrollAnimation(0.3);
+  const skillsAnimation = useScrollAnimation(0.2);
+  const toolsAnimation = useScrollAnimation(0.2);
+  
   const skills = ["Meta Advertising", "Project Management", "Social Media Marketing", "Social Media Management", "Digital Marketing Consulting", "Digital Course Creation"];
   const toolCategories = [{
     category: "Advertising & Analytics",
@@ -51,16 +57,21 @@ const About = () => {
               Experienced <span className="text-foreground font-semibold">Digital Marketing Manager, Consultant, and Lecturer</span> with extensive experience building, maintaining, and running successful digital marketing and advertising campaigns with up to <span className="text-foreground font-semibold">$5M yearly ad spend</span>.
             </p>
 
-            <div className="grid grid-cols-3 gap-4 lg:gap-8 pt-6 lg:pt-8">
-              <div className="text-center animate-fade-in" style={{ animationDelay: '0.1s', animationFillMode: 'both' }}>
+            <div 
+              ref={statsAnimation.ref}
+              className={`grid grid-cols-3 gap-4 lg:gap-8 pt-6 lg:pt-8 transition-all duration-700 ${
+                statsAnimation.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              }`}
+            >
+              <div className="text-center">
                 <div className="heading-elegant text-2xl lg:text-heading mb-1 lg:mb-2 neon-text">10+</div>
                 <div className="body-clean text-xs lg:text-body text-muted-foreground">Years Experience</div>
               </div>
-              <div className="text-center animate-fade-in" style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>
+              <div className="text-center">
                 <div className="heading-elegant text-2xl lg:text-heading mb-1 lg:mb-2 neon-text">36x</div>
                 <div className="body-clean text-xs lg:text-body text-muted-foreground">Best ROAS</div>
               </div>
-              <div className="text-center animate-fade-in" style={{ animationDelay: '0.3s', animationFillMode: 'both' }}>
+              <div className="text-center">
                 <div className="heading-elegant text-2xl lg:text-heading mb-1 lg:mb-2 neon-text">€1M+</div>
                 <div className="body-clean text-xs lg:text-body text-muted-foreground">Revenue Generated</div>
               </div>
@@ -69,8 +80,13 @@ const About = () => {
             {/* Skills */}
             <div className="pt-6 lg:pt-8">
               <h3 className="heading-elegant text-xl lg:text-heading mb-4 lg:mb-6">Core Skills</h3>
-              <div className="grid md:grid-cols-2 gap-4">
-                {skills.map((skill, index) => <div key={skill} className="border-hover p-4 rounded-sm hover-scale animate-fade-in" style={{ animationDelay: `${0.1 * index}s`, animationFillMode: 'both' }}>
+              <div 
+                ref={skillsAnimation.ref}
+                className={`grid md:grid-cols-2 gap-4 transition-all duration-700 ${
+                  skillsAnimation.isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
+                }`}
+              >
+                {skills.map((skill, index) => <div key={skill} className="border-hover p-4 rounded-sm hover-scale">
                     <p className="body-clean text-body font-medium">{skill}</p>
                   </div>)}
               </div>
@@ -79,8 +95,13 @@ const About = () => {
             {/* Tools */}
             <div className="pt-6 lg:pt-8">
               <h3 className="heading-elegant text-xl lg:text-heading mb-4 lg:mb-6">Tools & Platforms</h3>
-              <div className="grid md:grid-cols-2 gap-4">
-                {toolCategories.map((category, index) => <div key={category.category} className="border-hover p-4 rounded-sm hover-scale animate-fade-in" style={{ animationDelay: `${0.1 * index}s`, animationFillMode: 'both' }}>
+              <div 
+                ref={toolsAnimation.ref}
+                className={`grid md:grid-cols-2 gap-4 transition-all duration-700 ${
+                  toolsAnimation.isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
+                }`}
+              >
+                {toolCategories.map((category, index) => <div key={category.category} className="border-hover p-4 rounded-sm hover-scale">
                     <h4 style={{
                   textShadow: 'none'
                 }} className="body-clean text-foreground mb-2 text-large font-semibold">{category.category}</h4>

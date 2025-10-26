@@ -1,3 +1,5 @@
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
+
 const Testimonials = () => {
   const testimonials = [
     {
@@ -28,17 +30,30 @@ const Testimonials = () => {
         <h2 className="heading-elegant text-3xl lg:text-6xl mb-8 lg:mb-12 animate-fade-in text-center lg:text-left">What People Say</h2>
 
         <div className="grid md:grid-cols-2 gap-4 lg:gap-6">
-          {testimonials.map((testimonial, index) => (
-            <div key={index} className="card-luxury hover-scale animate-fade-in" style={{ animationDelay: `${0.15 * index}s`, animationFillMode: 'both' }}>
-              <p className="body-clean text-sm lg:text-lg leading-relaxed mb-4 lg:mb-6 italic">
-                "{testimonial.quote}"
-              </p>
+          {testimonials.map((testimonial, index) => {
+            const TestimonialCard = () => {
+              const { ref, isVisible } = useScrollAnimation(0.2);
+              
+              return (
+                <div 
+                  ref={ref}
+                  className={`card-luxury hover-scale transition-all duration-700 delay-${index * 100} ${
+                    isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+                  }`}
+                >
+                  <p className="body-clean text-sm lg:text-lg leading-relaxed mb-4 lg:mb-6 italic">
+                    "{testimonial.quote}"
+                  </p>
               <div className="border-t border-border pt-4">
                 <p className="body-clean font-semibold">{testimonial.author}</p>
                 <p className="body-clean text-sm text-muted-foreground">{testimonial.company}</p>
               </div>
             </div>
-          ))}
+            );
+          };
+          
+          return <TestimonialCard key={index} />;
+        })}
         </div>
       </div>
     </section>

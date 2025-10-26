@@ -1,4 +1,8 @@
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
+
 const Travel = () => {
+  const mapAnimation = useScrollAnimation(0.3);
+  
   const regions = [{
     name: "Europe",
     countries: "Latvia, Lithuania, Estonia, Poland, Finland, Sweden, Norway, Croatia, Romania, Italy, Germany, Denmark, Spain, Portugal, Austria, Czechia, Hungary",
@@ -31,15 +35,35 @@ const Travel = () => {
         </div>
 
         <div className="grid md:grid-cols-2 gap-4 lg:gap-6">
-          {regions.map((region, index) => <div key={region.name} className="card-luxury hover-scale animate-fade-in" style={{ animationDelay: `${0.1 * index}s`, animationFillMode: 'both' }}>
-              <h3 className="heading-elegant text-lg lg:text-large mb-2 lg:mb-3">{region.name}</h3>
-              <p className="body-clean text-sm lg:text-body text-muted-foreground mb-3 lg:mb-4">{region.countries}</p>
-              <p className="body-clean text-sm lg:text-body text-muted-foreground">{region.description}</p>
-            </div>)}
+          {regions.map((region, index) => {
+            const RegionCard = () => {
+              const { ref, isVisible } = useScrollAnimation(0.2);
+              
+              return (
+                <div 
+                  ref={ref}
+                  className={`card-luxury hover-scale transition-all duration-700 ${
+                    isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                  }`}
+                >
+                  <h3 className="heading-elegant text-lg lg:text-large mb-2 lg:mb-3">{region.name}</h3>
+                  <p className="body-clean text-sm lg:text-body text-muted-foreground mb-3 lg:mb-4">{region.countries}</p>
+                  <p className="body-clean text-sm lg:text-body text-muted-foreground">{region.description}</p>
+                </div>
+              );
+            };
+            
+            return <RegionCard key={region.name} />;
+          })}
         </div>
 
         {/* Simple world map representation */}
-        <div className="mt-12 lg:mt-16 p-6 lg:p-12 border border-border rounded-sm bg-background/50 relative overflow-hidden animate-fade-in" style={{ animationDelay: '0.6s', animationFillMode: 'both' }}>
+        <div 
+          ref={mapAnimation.ref}
+          className={`mt-12 lg:mt-16 p-6 lg:p-12 border border-border rounded-sm bg-background/50 relative overflow-hidden transition-all duration-700 ${
+            mapAnimation.isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+          }`}
+        >
           <div className="relative text-center">
             <p className="heading-elegant text-xl lg:text-heading text-white">35+ Countries Visited</p>
             <p className="body-clean text-sm lg:text-body text-muted-foreground mt-1 lg:mt-2">4 Continents • Endless Insights</p>

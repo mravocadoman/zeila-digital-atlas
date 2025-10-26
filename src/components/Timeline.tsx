@@ -1,3 +1,5 @@
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
+
 const Timeline = () => {
   const milestones = [{
     year: "2024",
@@ -42,6 +44,7 @@ const Timeline = () => {
     period: "Feb 2018 - Oct 2020",
     description: "Streamlined client acquisition, managed campaign delivery, and designed Facebook/Instagram campaigns."
   }];
+
   return <section id="timeline" className="py-12 lg:py-32 px-6 bg-card">
       <div className="max-w-7xl mx-auto">
         <h2 className="heading-elegant text-3xl lg:text-display mb-3 lg:mb-4 animate-fade-in text-center lg:text-left">Career Journey</h2>
@@ -54,24 +57,40 @@ const Timeline = () => {
           <div className="absolute left-6 top-0 bottom-0 w-px bg-border md:left-1/2" />
 
           <div className="space-y-8 lg:space-y-12">
-            {milestones.map((milestone, index) => <div key={index} className={`relative flex items-start gap-8 animate-fade-in ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`} style={{ animationDelay: `${0.1 * index}s`, animationFillMode: 'both' }}>
-                {/* Dot */}
-                <div className="absolute left-6 w-3 lg:w-4 h-3 lg:h-4 rounded-full bg-foreground border-2 lg:border-4 border-background md:left-1/2 md:-translate-x-1/2" />
+            {milestones.map((milestone, index) => {
+              const TimelineItem = () => {
+                const { ref, isVisible } = useScrollAnimation(0.2);
+                
+                return (
+                  <div 
+                    ref={ref}
+                    className={`relative flex items-start gap-8 transition-all duration-700 ${
+                      isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                    } ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}
+                  >
+                    {/* Dot */}
+                    <div className="absolute left-6 w-3 lg:w-4 h-3 lg:h-4 rounded-full bg-foreground border-2 lg:border-4 border-background md:left-1/2 md:-translate-x-1/2" />
 
-                {/* Content */}
-                <div className={`flex-1 pl-14 md:pl-0 ${index % 2 === 0 ? 'md:pr-16 md:text-right' : 'md:pl-16'}`}>
-                  <div className="heading-elegant text-xs lg:text-lg mb-1 lg:mb-2 capitalize font-bold">{milestone.period}</div>
-                  <h3 className="body-clean text-large mb-1 text-foreground font-extrabold text-xl lg:text-3xl uppercase">{milestone.title}</h3>
-                  <p className="body-clean text-body text-foreground mb-2 font-bold text-base lg:text-xl">{milestone.company}</p>
-                  <p className="body-clean text-sm lg:text-body text-muted-foreground">{milestone.description}</p>
-                </div>
+                    {/* Content */}
+                    <div className={`flex-1 pl-14 md:pl-0 ${index % 2 === 0 ? 'md:pr-16 md:text-right' : 'md:pl-16'}`}>
+                      <div className="heading-elegant text-xs lg:text-lg mb-1 lg:mb-2 capitalize font-bold">{milestone.period}</div>
+                      <h3 className="body-clean text-large mb-1 text-foreground font-extrabold text-xl lg:text-3xl uppercase">{milestone.title}</h3>
+                      <p className="body-clean text-body text-foreground mb-2 font-bold text-base lg:text-xl">{milestone.company}</p>
+                      <p className="body-clean text-sm lg:text-body text-muted-foreground">{milestone.description}</p>
+                    </div>
 
-                {/* Spacer for alternating layout */}
-                <div className="hidden md:block flex-1" />
-              </div>)}
+                    {/* Spacer for alternating layout */}
+                    <div className="hidden md:block flex-1" />
+                  </div>
+                );
+              };
+              
+              return <TimelineItem key={index} />;
+            })}
           </div>
         </div>
       </div>
     </section>;
 };
+
 export default Timeline;
