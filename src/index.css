@@ -8,24 +8,24 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* 80s Neon Theme */
-    --background: 205 100% 9%;  /* #00152C - Deep blue */
-    --foreground: 0 0% 82%;  /* #D1D1D1 - Light gray body text */
+    /* 80s Neon Theme - Light Mode */
+    --background: 0 0% 98%;  /* Light background */
+    --foreground: 205 100% 9%;  /* #00152C - Deep blue for text */
 
-    --card: 205 100% 12%;  /* Slightly lighter than background */
-    --card-foreground: 0 0% 82%;
+    --card: 0 0% 100%;  /* White cards */
+    --card-foreground: 205 100% 9%;
 
-    --popover: 205 100% 12%;
-    --popover-foreground: 0 0% 82%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 205 100% 9%;
 
     --primary: 196 97% 49%;  /* #03C3F8 - Neon cyan */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 205 100% 15%;
-    --secondary-foreground: 0 0% 82%;
+    --secondary: 0 0% 95%;
+    --secondary-foreground: 205 100% 9%;
 
-    --muted: 205 100% 15%;
-    --muted-foreground: 0 0% 70%;
+    --muted: 0 0% 95%;
+    --muted-foreground: 0 0% 35%;
 
     --accent: 196 97% 49%;  /* Neon cyan */
     --accent-foreground: 0 0% 100%;
@@ -34,7 +34,7 @@ All colors MUST be HSL.
     --destructive-foreground: 0 0% 100%;
 
     --border: 196 97% 49%;  /* Neon cyan borders */
-    --input: 205 100% 12%;
+    --input: 0 0% 100%;
     --ring: 196 97% 49%;
 
     --radius: 0.5rem;
@@ -60,7 +60,7 @@ All colors MUST be HSL.
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Orbitron', 'Courier New', monospace;
     font-weight: 700;
-    color: hsl(0 0% 100%);  /* White headings */
+    color: hsl(205 100% 9%);  /* Dark blue headings */
     text-shadow: var(--neon-text-glow);
   }
 }
