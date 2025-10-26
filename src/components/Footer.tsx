@@ -9,28 +9,28 @@ const Footer = () => {
           {/* Brand */}
           <div>
             <h3 className="heading-elegant text-2xl mb-4">Rihards Zeila</h3>
-            <p className="body-clean text-sm text-muted-foreground leading-relaxed">
+            <p className="body-clean text-base text-muted-foreground leading-relaxed">
               Full-Stack Digital Marketer, Educator & Entrepreneur based in Riga, Latvia.
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="body-clean font-semibold mb-4">Quick Links</h4>
+            <h4 className="body-clean font-semibold mb-4 text-lg">Quick Links</h4>
             <nav className="space-y-2">
-              <a href="#about" className="body-clean text-sm text-muted-foreground hover:text-foreground transition-colors block">
+              <a href="#about" className="body-clean text-base text-muted-foreground hover:text-foreground transition-colors block">
                 About
               </a>
-              <a href="#experience" className="body-clean text-sm text-muted-foreground hover:text-foreground transition-colors block">
+              <a href="#experience" className="body-clean text-base text-muted-foreground hover:text-foreground transition-colors block">
                 Experience
               </a>
-              <a href="#teaching" className="body-clean text-sm text-muted-foreground hover:text-foreground transition-colors block">
+              <a href="#teaching" className="body-clean text-base text-muted-foreground hover:text-foreground transition-colors block">
                 Teaching
               </a>
-              <a href="#blog" className="body-clean text-sm text-muted-foreground hover:text-foreground transition-colors block">
+              <a href="#blog" className="body-clean text-base text-muted-foreground hover:text-foreground transition-colors block">
                 Insights
               </a>
-              <a href="#contact" className="body-clean text-sm text-muted-foreground hover:text-foreground transition-colors block">
+              <a href="#contact" className="body-clean text-base text-muted-foreground hover:text-foreground transition-colors block">
                 Contact
               </a>
             </nav>
@@ -38,14 +38,14 @@ const Footer = () => {
 
           {/* Contact & Social */}
           <div>
-            <h4 className="body-clean font-semibold mb-4">Connect</h4>
+            <h4 className="body-clean font-semibold mb-4 text-lg">Connect</h4>
             <div className="space-y-3 mb-6">
-              <a href="mailto:rihards.zeila@gmail.com" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors">
-                <Mail className="w-4 h-4" />
+              <a href="mailto:rihards.zeila@gmail.com" className="flex items-center gap-2 text-base text-muted-foreground hover:text-foreground transition-colors">
+                <Mail className="w-5 h-5" />
                 <span className="body-clean">rihards.zeila@gmail.com</span>
               </a>
-              <a href="tel:+37126673384" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors">
-                <Phone className="w-4 h-4" />
+              <a href="tel:+37126673384" className="flex items-center gap-2 text-base text-muted-foreground hover:text-foreground transition-colors">
+                <Phone className="w-5 h-5" />
                 <span className="body-clean">+371 26673384</span>
               </a>
             </div>
@@ -92,10 +92,10 @@ const Footer = () => {
         </div>
 
         <div className="pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="body-clean text-sm text-muted-foreground">
+          <p className="body-clean text-base text-muted-foreground">
             © 2025 Rihards Zeila. All rights reserved.
           </p>
-          <p className="body-clean text-sm text-muted-foreground">
+          <p className="body-clean text-base text-muted-foreground">
             Designed with precision & purpose
           </p>
         </div>
