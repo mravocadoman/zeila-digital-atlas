@@ -40,9 +40,9 @@ const About = () => {
     name: "Spanish",
     level: "Elementary"
   }];
-  return <section id="about" className="py-20 lg:py-32 px-6 bg-card">
+  return <section id="about" className="py-12 lg:py-32 px-6 bg-card">
       <div className="max-w-7xl mx-auto">
-        <h2 className="heading-elegant text-display mb-12 animate-fade-in">About Me</h2>
+        <h2 className="heading-elegant text-3xl lg:text-display mb-8 lg:mb-12 animate-fade-in text-center lg:text-left">About Me</h2>
 
         <div className="grid lg:grid-cols-3 gap-12">
           {/* Profile */}
@@ -51,24 +51,24 @@ const About = () => {
               Experienced <span className="text-foreground font-semibold">Digital Marketing Manager, Consultant, and Lecturer</span> with extensive experience building, maintaining, and running successful digital marketing and advertising campaigns with up to <span className="text-foreground font-semibold">$5M yearly ad spend</span>.
             </p>
 
-            <div className="grid md:grid-cols-3 gap-8 pt-8">
+            <div className="grid grid-cols-3 gap-4 lg:gap-8 pt-6 lg:pt-8">
               <div className="text-center animate-fade-in" style={{ animationDelay: '0.1s', animationFillMode: 'both' }}>
-                <div className="heading-elegant text-heading mb-2 neon-text">10+</div>
-                <div className="body-clean text-body text-muted-foreground">Years Experience</div>
+                <div className="heading-elegant text-2xl lg:text-heading mb-1 lg:mb-2 neon-text">10+</div>
+                <div className="body-clean text-xs lg:text-body text-muted-foreground">Years Experience</div>
               </div>
               <div className="text-center animate-fade-in" style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>
-                <div className="heading-elegant text-heading mb-2 neon-text">36x</div>
-                <div className="body-clean text-body text-muted-foreground">Best ROAS</div>
+                <div className="heading-elegant text-2xl lg:text-heading mb-1 lg:mb-2 neon-text">36x</div>
+                <div className="body-clean text-xs lg:text-body text-muted-foreground">Best ROAS</div>
               </div>
               <div className="text-center animate-fade-in" style={{ animationDelay: '0.3s', animationFillMode: 'both' }}>
-                <div className="heading-elegant text-heading mb-2 neon-text">€1M+</div>
-                <div className="body-clean text-body text-muted-foreground">Revenue Generated</div>
+                <div className="heading-elegant text-2xl lg:text-heading mb-1 lg:mb-2 neon-text">€1M+</div>
+                <div className="body-clean text-xs lg:text-body text-muted-foreground">Revenue Generated</div>
               </div>
             </div>
 
             {/* Skills */}
-            <div className="pt-8">
-              <h3 className="heading-elegant text-heading mb-6">Core Skills</h3>
+            <div className="pt-6 lg:pt-8">
+              <h3 className="heading-elegant text-xl lg:text-heading mb-4 lg:mb-6">Core Skills</h3>
               <div className="grid md:grid-cols-2 gap-4">
                 {skills.map((skill, index) => <div key={skill} className="border-hover p-4 rounded-sm hover-scale animate-fade-in" style={{ animationDelay: `${0.1 * index}s`, animationFillMode: 'both' }}>
                     <p className="body-clean text-body font-medium">{skill}</p>
@@ -77,8 +77,8 @@ const About = () => {
             </div>
 
             {/* Tools */}
-            <div className="pt-8">
-              <h3 className="heading-elegant text-heading mb-6">Tools & Platforms</h3>
+            <div className="pt-6 lg:pt-8">
+              <h3 className="heading-elegant text-xl lg:text-heading mb-4 lg:mb-6">Tools & Platforms</h3>
               <div className="grid md:grid-cols-2 gap-4">
                 {toolCategories.map((category, index) => <div key={category.category} className="border-hover p-4 rounded-sm hover-scale animate-fade-in" style={{ animationDelay: `${0.1 * index}s`, animationFillMode: 'both' }}>
                     <h4 style={{
@@ -90,8 +90,8 @@ const About = () => {
             </div>
 
             {/* Languages */}
-            <div className="pt-8">
-              <h3 className="heading-elegant text-heading mb-6">Languages</h3>
+            <div className="pt-6 lg:pt-8">
+              <h3 className="heading-elegant text-xl lg:text-heading mb-4 lg:mb-6">Languages</h3>
               <div className="grid md:grid-cols-2 gap-4">
                 {languages.map(lang => <div key={lang.name} className="flex justify-between items-center border-b border-border pb-3">
                     <span className="body-clean font-medium text-body">{lang.name}</span>

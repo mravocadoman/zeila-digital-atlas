@@ -3,9 +3,9 @@ import { FaTiktok } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className="py-12 px-6 border-t border-border">
+    <footer className="py-8 lg:py-12 px-6 border-t border-border">
       <div className="max-w-7xl mx-auto">
-        <div className="grid md:grid-cols-3 gap-8 mb-8">
+        <div className="grid md:grid-cols-3 gap-6 lg:gap-8 mb-6 lg:mb-8">
           {/* Brand */}
           <div className="animate-fade-in" style={{ animationDelay: '0.1s', animationFillMode: 'both' }}>
             <h3 className="heading-elegant text-large mb-4">Rihards Zeila</h3>

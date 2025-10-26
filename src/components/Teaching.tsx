@@ -15,31 +15,31 @@ const Teaching = () => {
     grade: "8.2 / 10",
     details: ["Developed leadership skills by organizing activities for new members of the Student Council", "Gained the ability to orient in the global economic and business environment during three study exchange semesters abroad", "Activities: Activist of the student council; Member of Student Fraternity 'Selonija'"]
   }];
-  return <section id="teaching" className="py-20 lg:py-32 px-6">
+  return <section id="teaching" className="py-12 lg:py-32 px-6">
       <div className="max-w-7xl mx-auto">
-        <h2 className="heading-elegant text-display mb-12 animate-fade-in">Education & Credentials</h2>
+        <h2 className="heading-elegant text-3xl lg:text-display mb-8 lg:mb-12 animate-fade-in text-center lg:text-left">Education & Credentials</h2>
 
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Certifications */}
           <div className="space-y-6">
-            <h3 className="heading-elegant text-heading mb-6">Certifications</h3>
-            <div className="grid grid-cols-2 gap-4">
-              {certifications.map((cert, index) => <div key={cert} className="border border-border px-6 py-4 rounded-sm flex items-center justify-center text-center min-h-[140px] transition-all duration-300 hover:border-primary hover:shadow-[0_0_20px_rgba(3,195,248,0.6)] hover-scale animate-fade-in" style={{ animationDelay: `${0.1 * index}s`, animationFillMode: 'both' }}>
-                  <p className="body-clean text-body leading-snug">{cert}</p>
+            <h3 className="heading-elegant text-xl lg:text-heading mb-4 lg:mb-6">Certifications</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {certifications.map((cert, index) => <div key={cert} className="border border-border px-4 py-3 lg:px-6 lg:py-4 rounded-sm flex items-center justify-center text-center min-h-[100px] lg:min-h-[140px] transition-all duration-300 hover:border-primary hover:shadow-[0_0_20px_rgba(3,195,248,0.6)] hover-scale animate-fade-in" style={{ animationDelay: `${0.1 * index}s`, animationFillMode: 'both' }}>
+                  <p className="body-clean text-sm lg:text-body leading-snug">{cert}</p>
                 </div>)}
             </div>
 
-            <h3 className="heading-elegant text-heading mb-6 mt-12">Advanced Courses</h3>
-            <div className="grid grid-cols-2 gap-4">
-              {courses.map((course, index) => <div key={course} className="border border-border px-6 py-4 rounded-sm flex items-center justify-center text-center min-h-[140px] transition-all duration-300 hover:border-primary hover:shadow-[0_0_20px_rgba(3,195,248,0.6)] hover-scale animate-fade-in" style={{ animationDelay: `${0.1 * index}s`, animationFillMode: 'both' }}>
-                  <p className="body-clean text-body leading-snug">{course}</p>
+            <h3 className="heading-elegant text-xl lg:text-heading mb-4 lg:mb-6 mt-8 lg:mt-12">Advanced Courses</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {courses.map((course, index) => <div key={course} className="border border-border px-4 py-3 lg:px-6 lg:py-4 rounded-sm flex items-center justify-center text-center min-h-[100px] lg:min-h-[140px] transition-all duration-300 hover:border-primary hover:shadow-[0_0_20px_rgba(3,195,248,0.6)] hover-scale animate-fade-in" style={{ animationDelay: `${0.1 * index}s`, animationFillMode: 'both' }}>
+                  <p className="body-clean text-sm lg:text-body leading-snug">{course}</p>
                 </div>)}
             </div>
           </div>
 
           {/* Education */}
-          <div className="space-y-8">
-            <h3 className="heading-elegant text-heading mb-6">Education</h3>
+          <div className="space-y-6 lg:space-y-8">
+            <h3 className="heading-elegant text-xl lg:text-heading mb-4 lg:mb-6">Education</h3>
             {education.map((edu, index) => <div key={index} className="card-luxury hover-scale animate-fade-in" style={{ animationDelay: `${0.2 * index}s`, animationFillMode: 'both' }}>
                 <h4 className="heading-elegant text-large mb-2">{edu.degree}</h4>
                 <p className="body-clean text-large text-muted-foreground mb-1">{edu.institution}</p>

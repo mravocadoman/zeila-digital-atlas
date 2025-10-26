@@ -23,14 +23,14 @@ const Testimonials = () => {
   ];
 
   return (
-    <section id="testimonials" className="py-20 lg:py-32 px-6">
+    <section id="testimonials" className="py-12 lg:py-32 px-6">
       <div className="max-w-7xl mx-auto">
-        <h2 className="heading-elegant text-4xl lg:text-6xl mb-12 animate-fade-in">What People Say</h2>
+        <h2 className="heading-elegant text-3xl lg:text-6xl mb-8 lg:mb-12 animate-fade-in text-center lg:text-left">What People Say</h2>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 gap-4 lg:gap-6">
           {testimonials.map((testimonial, index) => (
             <div key={index} className="card-luxury hover-scale animate-fade-in" style={{ animationDelay: `${0.15 * index}s`, animationFillMode: 'both' }}>
-              <p className="body-clean text-lg leading-relaxed mb-6 italic">
+              <p className="body-clean text-sm lg:text-lg leading-relaxed mb-4 lg:mb-6 italic">
                 "{testimonial.quote}"
               </p>
               <div className="border-t border-border pt-4">

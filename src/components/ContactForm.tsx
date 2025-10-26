@@ -68,20 +68,20 @@ const ContactForm = () => {
   };
 
   return (
-    <section id="contact" className="py-20 lg:py-32 px-6">
+    <section id="contact" className="py-12 lg:py-32 px-6">
       <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-12 animate-fade-in">
-          <h2 className="heading-elegant text-display mb-6">Let's Build Something Together</h2>
-          <p className="body-clean text-large text-muted-foreground">
+        <div className="text-center mb-8 lg:mb-12 animate-fade-in">
+          <h2 className="heading-elegant text-3xl lg:text-display mb-4 lg:mb-6">Let's Build Something Together</h2>
+          <p className="body-clean text-base lg:text-large text-muted-foreground">
             Open to high-impact projects, co-founder opportunities, and CMO roles
           </p>
         </div>
 
         <div className="card-luxury hover-scale animate-fade-in" style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="grid md:grid-cols-2 gap-6">
+          <form onSubmit={handleSubmit} className="space-y-4 lg:space-y-6">
+            <div className="grid md:grid-cols-2 gap-4 lg:gap-6">
               <div>
-                <label htmlFor="name" className="body-clean block mb-2 text-large font-medium">
+                <label htmlFor="name" className="body-clean block mb-2 text-base lg:text-large font-medium">
                   Name
                 </label>
                 <Input
@@ -96,7 +96,7 @@ const ContactForm = () => {
               </div>
 
               <div>
-                <label htmlFor="email" className="body-clean block mb-2 text-large font-medium">
+                <label htmlFor="email" className="body-clean block mb-2 text-base lg:text-large font-medium">
                   Email
                 </label>
                 <Input
@@ -112,7 +112,7 @@ const ContactForm = () => {
             </div>
 
             <div>
-              <label htmlFor="type" className="body-clean block mb-2 text-large font-medium">
+              <label htmlFor="type" className="body-clean block mb-2 text-base lg:text-large font-medium">
                 Type of Inquiry
               </label>
               <Select value={formData.type} onValueChange={(value) => setFormData({ ...formData, type: value })}>
@@ -130,7 +130,7 @@ const ContactForm = () => {
             </div>
 
             <div>
-              <label htmlFor="message" className="body-clean block mb-2 text-large font-medium">
+              <label htmlFor="message" className="body-clean block mb-2 text-base lg:text-large font-medium">
                 Message
               </label>
               <Textarea
@@ -153,8 +153,8 @@ const ContactForm = () => {
             </Button>
           </form>
 
-          <div className="mt-8 pt-8 border-t border-border text-center">
-            <p className="body-clean text-large text-muted-foreground">
+          <div className="mt-6 lg:mt-8 pt-6 lg:pt-8 border-t border-border text-center">
+            <p className="body-clean text-sm lg:text-large text-muted-foreground">
               Or email directly: <a href="mailto:rihards.zeila@gmail.com" className="text-foreground hover:text-primary transition-colors">rihards.zeila@gmail.com</a>
             </p>
           </div>
