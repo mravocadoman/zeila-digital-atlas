@@ -12,8 +12,8 @@ const Hero = () => {
         <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-20 items-center">
           {/* Left: Content */}
           <div className="space-y-4 sm:space-y-6 lg:space-y-8 order-2 lg:order-1">
-            <h1 className="heading-elegant text-2xl sm:text-3xl md:text-4xl lg:text-7xl animate-fade-in text-center lg:text-left">RIHARDS ZEILA</h1>
-            <h2 className="heading-elegant text-display text-foreground leading-tight font-bold text-xl sm:text-2xl md:text-3xl lg:text-4xl animate-fade-in text-center lg:text-left" style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>Helping Businesses Grow. Building Impactful Projects.</h2>
+            <h1 className="heading-elegant text-[9vw] sm:text-4xl lg:text-7xl leading-snug tracking-normal break-words max-w-[92vw] mx-auto lg:mx-0 animate-fade-in text-center lg:text-left">RIHARDS ZEILA</h1>
+            <h2 className="heading-elegant text-foreground leading-snug font-bold text-[5.5vw] sm:text-2xl md:text-3xl lg:text-4xl max-w-[92vw] mx-auto lg:mx-0 animate-fade-in text-center lg:text-left" style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>Helping Businesses Grow. Building Impactful Projects.</h2>
             
             <p className="body-clean text-body text-muted-foreground leading-relaxed text-base sm:text-lg md:text-xl lg:text-2xl font-semibold animate-fade-in text-center lg:text-left" style={{ animationDelay: '0.4s', animationFillMode: 'both' }}>
               You don't need more clicks or views—you need a predictable system that turns traffic into revenue.
