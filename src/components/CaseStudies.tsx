@@ -22,6 +22,8 @@ const caseStudies = [
     metrics: [
       { label: "ROAS", value: "36.34" },
       { label: "Initial Spend", value: "€1K" },
+      { label: "Revenue", value: "€36K+" },
+      { label: "Platform", value: "Meta" },
     ],
   },
   {
@@ -31,6 +33,8 @@ const caseStudies = [
     metrics: [
       { label: "ROAS", value: "12.55" },
       { label: "Funnel Layers", value: "3" },
+      { label: "Regions", value: "DACH" },
+      { label: "Platform", value: "Meta" },
     ],
   },
   {
