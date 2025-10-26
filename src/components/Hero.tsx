@@ -41,7 +41,7 @@ const Hero = () => {
           animationFillMode: 'both'
         }}>
             <div className="relative">
-              <img src={headshotImage} alt="Rihards Zeila - Full-Stack Digital Marketer and Educator based in Riga, Latvia" className="w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto rounded-sm border border-border hover-scale" />
+              <img src={headshotImage} alt="Rihards Zeila - Full-Stack Digital Marketer and Educator based in Riga, Latvia" className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-xs mx-auto rounded-sm border-4 border-primary hover-scale" style={{ boxShadow: '0 0 30px hsl(var(--primary))' }} />
             </div>
           </div>
         </div>
