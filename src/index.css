@@ -55,6 +55,8 @@ All colors MUST be HSL.
   body {
     @apply bg-background text-foreground;
     font-family: 'Rajdhani', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -71,7 +73,7 @@ All colors MUST be HSL.
   }
 
   .body-clean {
-    @apply font-['Rajdhani'] font-normal;
+    @apply font-['Rajdhani'] font-medium;
   }
 
   .border-hover {
