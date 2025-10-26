@@ -6,43 +6,43 @@ const Timeline = () => {
     title: "Lecturer",
     company: "LIFT",
     period: "Nov 2024 - Present",
-    description: "Led monthly workshops for Latvian SMEs, teaching Meta ads and marketing automation. Created a lead generation system for entire LIFT digital marketing course cohort."
+    description: "Lead monthly workshops for Latvian SMEs on Meta ads and marketing automation. Built a unified lead generation system used across the full LIFT digital marketing cohort."
   }, {
     year: "2024",
     title: "Key Account Lead",
     company: "Aleph",
     period: "Sep 2022 - Jun 2024",
-    description: "Managed $50k-$300k/mo accounts on Meta, TikTok, Reddit, Pinterest. Resolved growth blockers and improved campaign performance."
+    description: "Managed $50K–$300K monthly budgets across Meta, TikTok, Reddit, and Pinterest. Identified growth blockers and optimized performance for top-tier clients."
   }, {
     year: "2023",
     title: "BBA Lecturer",
     company: "RISEBA",
     period: "Jan 2023 - Feb 2024",
-    description: "Created syllabus and recorded lectures on Social Media Marketing management, content strategy, and Meta advertising."
+    description: "Developed and recorded lectures on social media management, content strategy, and Meta advertising for undergraduate students."
   }, {
     year: "2021",
     title: "MBA Lecturer",
     company: "Riga Business School",
     period: "Sep 2021 - Present",
-    description: "Developed comprehensive Digital Marketing syllabus covering trends, email marketing, social media, and KPIs with hands-on projects."
+    description: "Created a hands-on digital marketing syllabus covering strategy, analytics, and performance KPIs. Mentored MBA students through live client projects."
   }, {
     year: "2020",
     title: "Founder",
-    company: "Marketinga Skola",
+    company: "Mārketinga Skola",
     period: "Jan 2020 - Present",
-    description: "Built predictable lead generation systems for Latvian SMEs. Services include social media management, advertising, and cold outreach."
+    description: "Founded and scaled a marketing education and agency platform helping Latvian SMEs build predictable lead generation systems through ads, automation, and strategy."
   }, {
     year: "2019",
     title: "Digital Marketing Consultant",
     company: "International Trade Centre (ITC)",
     period: "Jan - Mar 2019",
-    description: "Implemented fintech solutions in Kenya, Palestine, Gambia, and Jordan. Developed training materials and assessed 100+ students."
+    description: "Implemented digital marketing programs in Kenya, Palestine, Gambia, and Jordan. Trained 100+ students and delivered fintech solutions for international SMEs."
   }, {
     year: "2018",
     title: "Social Media Specialist",
     company: "Addtwo",
     period: "Feb 2018 - Oct 2020",
-    description: "Streamlined client acquisition, managed campaign delivery, and designed Facebook/Instagram campaigns."
+    description: "Streamlined client acquisition, built paid social strategies, and managed high-performing campaigns across Facebook and Instagram."
   }];
   return <section id="timeline" className="py-12 lg:py-32 px-6 lg:px-16 bg-card">
       <div className="max-w-7xl mx-auto">
