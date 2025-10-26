@@ -96,7 +96,15 @@ const Footer = () => {
             © 2025 Rihards Zeila. All rights reserved.
           </p>
           <p className="body-clean text-body text-muted-foreground">
-            Designed with precision & purpose
+            Designed by{" "}
+            <a 
+              href="https://marketingaskola.lv" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:text-foreground transition-colors underline"
+            >
+              marketingaskola.lv
+            </a>
           </p>
         </div>
       </div>
