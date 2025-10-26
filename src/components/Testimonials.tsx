@@ -11,7 +11,7 @@ const Testimonials = () => {
     {
       quote: "Rihards is THE expert on Facebook advertising and the one I would go to for any question related to that. He has excellent communication skills and knowledge of design, marketing, project management, and web design. He is an excellent public speaker, easily getting the message to any audience. His international experience and focus on individual solutions make him an excellent choice for any organization.",
       author: "Regita Zeiļa",
-      company: "Marketing Professional"
+      company: "Director of Social Entrepreneurship Association"
     },
     {
       quote: "Highly skilled, passionate and dedicated young man. Whenever I need an advice on digital marketing - I go to him. His international experience and valuable know-how excels his peers. Twice.",
