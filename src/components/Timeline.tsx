@@ -23,10 +23,10 @@ const Timeline = () => {
     },
     { 
       year: "2021", 
-      title: "MBA Lecturer - Digital Marketing",
+      title: "MBA Lecturer",
       company: "Riga Business School",
       period: "Sep 2021 - Present",
-      description: "Developed comprehensive syllabus covering trends, email marketing, social media, and KPIs with hands-on projects."
+      description: "Developed comprehensive Digital Marketing syllabus covering trends, email marketing, social media, and KPIs with hands-on projects."
     },
     { 
       year: "2020", 
