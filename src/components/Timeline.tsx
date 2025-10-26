@@ -58,16 +58,16 @@ const Timeline = () => {
           <Accordion type="single" collapsible defaultValue={milestones[0].title.toLowerCase()}>
             {milestones.map((milestone, index) => (
               <AccordionItem key={index} value={milestone.title.toLowerCase()}>
-                <AccordionTrigger className="text-left">
+                <AccordionTrigger className="text-left py-6">
                   <div>
-                    <h3 className="body-clean text-large text-foreground font-extrabold text-lg uppercase">{milestone.title}</h3>
-                    <p className="body-clean text-foreground font-bold text-sm">{milestone.company}</p>
+                    <h3 className="body-clean text-large text-foreground font-extrabold text-2xl uppercase">{milestone.title}</h3>
+                    <p className="body-clean text-foreground font-bold text-lg">{milestone.company}</p>
                   </div>
                 </AccordionTrigger>
                 <AccordionContent>
-                  <div className="pt-2">
-                    <div className="heading-elegant text-xs mb-1 capitalize font-bold">{milestone.period}</div>
-                    <p className="body-clean text-sm text-muted-foreground">{milestone.description}</p>
+                  <div className="pt-2 pb-4">
+                    <div className="heading-elegant text-sm mb-2 capitalize font-bold">{milestone.period}</div>
+                    <p className="body-clean text-base text-muted-foreground leading-relaxed">{milestone.description}</p>
                   </div>
                 </AccordionContent>
               </AccordionItem>
