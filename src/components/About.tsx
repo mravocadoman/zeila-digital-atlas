@@ -2,7 +2,32 @@ import { Mail, Phone, MapPin, Linkedin, Instagram, Facebook } from "lucide-react
 import { FaTiktok } from "react-icons/fa";
 const About = () => {
   const skills = ["Meta Advertising", "Project Management", "Social Media Marketing", "Social Media Management", "Digital Marketing Consulting", "Digital Course Creation"];
-  const tools = ["Meta Business Suite", "Google Ads", "GA4", "Zapier", "ChatGPT", "Midjourney", "Photoshop", "Canva", "HTML, CSS, JavaScript"];
+  const toolCategories = [
+    {
+      category: "Advertising & Analytics",
+      tools: "Meta, Google Ads, LinkedIn, TikTok, GA4, CAPI, Hotjar, Looker Studio"
+    },
+    {
+      category: "Automation & CRM",
+      tools: "Make, Zapier, GoHighLevel, Google Sheets"
+    },
+    {
+      category: "AI & Creative",
+      tools: "ChatGPT, Manus, Midjourney, VEO3, Photoshop, Canva"
+    },
+    {
+      category: "Web & Design",
+      tools: "Shopify, WordPress, HTML/CSS/JS, Figma, Lovable"
+    },
+    {
+      category: "SEO",
+      tools: "Ahrefs, Search Console"
+    },
+    {
+      category: "Email & Outreach",
+      tools: "MailerLite, Apollo, Instantly, Woodpecker, MillionVerifier"
+    }
+  ];
   const languages = [{
     name: "Latvian",
     level: "Native"
@@ -61,10 +86,11 @@ const About = () => {
             {/* Tools */}
             <div className="pt-8">
               <h3 className="heading-elegant text-2xl mb-6">Tools & Platforms</h3>
-              <div className="flex flex-wrap gap-3">
-                {tools.map(tool => <span key={tool} className="body-clean px-4 py-2 border border-border rounded-sm text-sm">
-                    {tool}
-                  </span>)}
+              <div className="grid md:grid-cols-2 gap-4">
+                {toolCategories.map(category => <div key={category.category} className="border border-border p-4 rounded-sm hover:border-primary transition-all duration-300">
+                    <h4 className="body-clean font-semibold text-foreground mb-2">{category.category}</h4>
+                    <p className="body-clean text-sm text-muted-foreground">{category.tools}</p>
+                  </div>)}
               </div>
             </div>
 
