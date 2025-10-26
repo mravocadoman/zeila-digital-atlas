@@ -7,8 +7,8 @@ import { Button } from "@/components/ui/button";
 const caseStudies = [
   {
     company: "The Brew Company",
-    description: "I helped The Brew Company, a specialty coffee brand, transition from traditional retail to a fully digital e-commerce model. I created and implemented a cross-channel advertising strategy using Meta (Facebook + Instagram), TikTok, Google, and YouTube Ads.",
-    details: "The collaboration started as a three-month pilot during Q4 — their most competitive season — and quickly turned into a long-term partnership after seeing strong results. I managed ad budgets exceeding €75,000 per month, achieving an average ROAS of 13.36 and generating over €1M in revenue. After the iOS14 privacy update (the ad apocalypse), results naturally normalized, yet I still maintained a consistent 4–7 ROAS, well above the industry average.",
+    description: "Helped a specialty coffee brand transition from retail to digital with a cross-channel strategy across Meta, TikTok, Google, and YouTube. Started as a Q4 pilot, turned into a long-term partnership.",
+    details: "Managed €75K+ monthly budgets with 13.36 peak ROAS, generating €1M+ in revenue. Post-iOS14, maintained 4–7 ROAS consistently above industry average.",
     metrics: [
       { label: "Monthly Budget", value: "€75K+" },
       { label: "Peak ROAS", value: "13.36" },
@@ -17,8 +17,8 @@ const caseStudies = [
   },
   {
     company: "Četras Zoles",
-    description: "Četras Zoles is a Latvian outlet store offering branded fashion at big discounts. The goal was simple: reach as many buyers as possible with minimal ad spend.",
-    details: "I focused on strong creative testing and Advantage+ Sales campaigns across Facebook and Instagram. The products already had strong appeal — my job was to let the algorithm do its magic with high-performing creatives. After the first €1,000 spent, the campaign delivered an incredible 36.34 ROAS. Sometimes, great products just need the right structure and creative direction.",
+    description: "Latvian outlet store selling branded fashion at major discounts. Goal: maximum reach, minimal spend.",
+    details: "Strong creative testing + Advantage+ campaigns on Meta. First €1K delivered 36.34 ROAS. Great products just need the right structure.",
     metrics: [
       { label: "ROAS", value: "36.34" },
       { label: "Initial Spend", value: "€1K" },
@@ -26,8 +26,8 @@ const caseStudies = [
   },
   {
     company: "Instant Change",
-    description: "For Daniel Weinstock, a German transformation coach active in Germany, Switzerland, and Austria, I built a three-layer Meta Ads funnel to fill his webinars and coaching events.",
-    details: "Video view campaigns to build awareness, remarketing to video viewers for webinar sign-ups, and conversion campaigns using lookalike audiences of registrants. The result was a seamless client-acquisition system with a 12.55 ROAS across all campaigns.",
+    description: "Built a three-layer Meta Ads funnel for a German transformation coach covering DACH region.",
+    details: "Video awareness → webinar remarketing → lookalike conversions. Seamless client acquisition with 12.55 ROAS.",
     metrics: [
       { label: "ROAS", value: "12.55" },
       { label: "Funnel Layers", value: "3" },
@@ -35,8 +35,8 @@ const caseStudies = [
   },
   {
     company: "Excel Know How",
-    description: "Excel Know How offers corporate and individual Excel and Power BI training. My goal was to turn educational content into a predictable lead-generation engine.",
-    details: "I designed a free live-webinar funnel, promoted through Facebook Ads. Registrants left their name and email, triggering an automated sequence leading to a paid course offer. With a €1,175 ad budget, I generated 2,000+ new leads at just €0.38 per email. Around 2% converted into €250 course buyers, resulting in €10,000 in revenue and an 8.5 ROAS.",
+    description: "Turned Excel and Power BI training into a predictable lead-gen engine with free webinar funnels.",
+    details: "€1,175 ad spend generated 2,000+ leads at €0.38 each. 2% converted to €250 courses = €10K revenue, 8.5 ROAS.",
     metrics: [
       { label: "Leads Generated", value: "2,000+" },
       { label: "Cost Per Lead", value: "€0.38" },
@@ -131,10 +131,10 @@ const CaseStudies = () => {
 
                       {/* Description */}
                       <div className="space-y-4">
-                        <p className="text-lg text-foreground/90 leading-relaxed">
+                        <p className="text-xl md:text-2xl text-foreground/90 leading-relaxed font-medium">
                           {study.description}
                         </p>
-                        <p className="text-base text-muted-foreground leading-relaxed">
+                        <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
                           {study.details}
                         </p>
                       </div>
