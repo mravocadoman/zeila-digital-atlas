@@ -31,20 +31,36 @@ const Testimonials = () => {
         <h2 className="heading-elegant text-3xl lg:text-6xl mb-8 lg:mb-12 animate-fade-in text-center lg:text-left">What People Say</h2>
 
         {/* Accordion for both mobile and desktop */}
-        <Accordion type="single" collapsible defaultValue="testimonial-0">
-          {testimonials.map((testimonial, index) => (
-            <AccordionItem key={index} value={`testimonial-${index}`}>
-              <AccordionTrigger className="body-clean font-semibold text-left text-lg lg:text-xl">
-                {testimonial.author} - {testimonial.company}
-              </AccordionTrigger>
-              <AccordionContent>
-                <p className="body-clean text-base lg:text-xl leading-relaxed italic text-muted-foreground">
-                  "{testimonial.quote}"
-                </p>
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
+        <div className="lg:grid lg:grid-cols-2 lg:gap-x-8">
+          <Accordion type="single" collapsible defaultValue="testimonial-0" className="lg:col-span-1">
+            {testimonials.slice(0, 2).map((testimonial, index) => (
+              <AccordionItem key={index} value={`testimonial-${index}`}>
+                <AccordionTrigger className="body-clean font-semibold text-left text-lg lg:text-xl">
+                  {testimonial.author} - {testimonial.company}
+                </AccordionTrigger>
+                <AccordionContent>
+                  <p className="body-clean text-base lg:text-xl leading-relaxed italic text-muted-foreground">
+                    "{testimonial.quote}"
+                  </p>
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+          <Accordion type="single" collapsible className="lg:col-span-1">
+            {testimonials.slice(2).map((testimonial, index) => (
+              <AccordionItem key={index + 2} value={`testimonial-${index + 2}`}>
+                <AccordionTrigger className="body-clean font-semibold text-left text-lg lg:text-xl">
+                  {testimonial.author} - {testimonial.company}
+                </AccordionTrigger>
+                <AccordionContent>
+                  <p className="body-clean text-base lg:text-xl leading-relaxed italic text-muted-foreground">
+                    "{testimonial.quote}"
+                  </p>
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </div>
       </div>
     </section>
   );

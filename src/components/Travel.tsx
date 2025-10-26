@@ -36,19 +36,34 @@ const Travel = () => {
         </div>
 
         {/* Accordion for both mobile and desktop */}
-        <Accordion type="single" collapsible defaultValue="europe">
-          {regions.map((region) => (
-            <AccordionItem key={region.name} value={region.name.toLowerCase()}>
-              <AccordionTrigger className="heading-elegant text-lg lg:text-xl">
-                {region.name}
-              </AccordionTrigger>
-              <AccordionContent>
-                <p className="body-clean text-base lg:text-lg text-muted-foreground mb-3">{region.countries}</p>
-                <p className="body-clean text-base lg:text-lg text-muted-foreground">{region.description}</p>
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
+        <div className="lg:grid lg:grid-cols-2 lg:gap-x-8">
+          <Accordion type="single" collapsible defaultValue="europe" className="lg:col-span-1">
+            {regions.slice(0, 3).map((region) => (
+              <AccordionItem key={region.name} value={region.name.toLowerCase()}>
+                <AccordionTrigger className="heading-elegant text-lg lg:text-xl">
+                  {region.name}
+                </AccordionTrigger>
+                <AccordionContent>
+                  <p className="body-clean text-base lg:text-lg text-muted-foreground mb-3">{region.countries}</p>
+                  <p className="body-clean text-base lg:text-lg text-muted-foreground">{region.description}</p>
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+          <Accordion type="single" collapsible className="lg:col-span-1">
+            {regions.slice(3).map((region) => (
+              <AccordionItem key={region.name} value={region.name.toLowerCase()}>
+                <AccordionTrigger className="heading-elegant text-lg lg:text-xl">
+                  {region.name}
+                </AccordionTrigger>
+                <AccordionContent>
+                  <p className="body-clean text-base lg:text-lg text-muted-foreground mb-3">{region.countries}</p>
+                  <p className="body-clean text-base lg:text-lg text-muted-foreground">{region.description}</p>
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </div>
 
         {/* Simple world map representation */}
         <div 
