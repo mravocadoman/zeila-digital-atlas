@@ -24,12 +24,13 @@ const Hero = () => {
             animationFillMode: 'both'
           }}>Helping Businesses Grow. Building Impactful Projects.</h2>
             
-            <p style={{
+            <div style={{
             animationDelay: '0.4s',
             animationFillMode: 'both'
-          }} className="body-clean text-body text-muted-foreground leading-relaxed text-xl sm:text-lg md:text-xl lg:text-xl animate-fade-in lg:text-left text-center font-extrabold">
-              You don't need more clicks or views—you need a predictable system that turns traffic into revenue.
-            </p>
+          }} className="body-clean text-body text-muted-foreground leading-relaxed text-xl sm:text-lg md:text-xl lg:text-xl animate-fade-in lg:text-left text-center font-extrabold space-y-4">
+              <p>You don't need more clicks or views — you need a predictable system that turns traffic into revenue.</p>
+              <p>I work with SMEs, e-commerce brands, and service-based businesses that want to generate consistent leads and sales through Meta ads, automation, and smart funnel design.</p>
+            </div>
 
             <div className="pt-2 sm:pt-4 animate-fade-in flex justify-center lg:justify-start" style={{
             animationDelay: '0.6s',
