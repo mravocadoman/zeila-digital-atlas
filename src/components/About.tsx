@@ -124,11 +124,9 @@ const About = () => {
 
             {/* Honor */}
             <div className="card-luxury">
-              <h4 className="body-clean font-semibold mb-3">Honor</h4>
-              <p className="body-clean text-sm text-muted-foreground leading-relaxed">
-                <a href="https://www.fonds.lv/lepojamies/stipendiati/senaki/2011-2016/20132014-akad-gads/kristapa-morberga-stipendija/rihards-zeila/" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary transition-colors">
-                  Kristaps Morbergs' Scholarship of Excellence
-                </a> - Annually awarded to 15 selected University of Latvia students for outstanding academic and extracurricular achievements.
+              <h4 className="body-clean font-semibold mb-3 text-lg">Honor</h4>
+              <p className="body-clean text-base text-muted-foreground leading-relaxed">
+                Kristaps Morbergs' Scholarship of Excellence - Annually awarded to 15 selected University of Latvia students for outstanding academic and extracurricular achievements.
               </p>
             </div>
           </div>
