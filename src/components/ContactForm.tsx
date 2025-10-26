@@ -4,9 +4,11 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 const ContactForm = () => {
   const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -14,7 +16,7 @@ const ContactForm = () => {
     message: ""
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     // Basic validation
@@ -38,12 +40,31 @@ const ContactForm = () => {
       return;
     }
 
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for reaching out. I'll get back to you soon."
-    });
+    setIsSubmitting(true);
 
-    setFormData({ name: "", email: "", type: "", message: "" });
+    try {
+      const { error } = await supabase.functions.invoke('send-contact-email', {
+        body: formData
+      });
+
+      if (error) throw error;
+
+      toast({
+        title: "Message Sent!",
+        description: "Thank you for reaching out. I'll get back to you soon."
+      });
+
+      setFormData({ name: "", email: "", type: "", message: "" });
+    } catch (error: any) {
+      console.error("Error sending email:", error);
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again or email directly.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -51,7 +72,7 @@ const ContactForm = () => {
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="heading-elegant text-display mb-6">Let's Build Something Together</h2>
-          <p className="body-clean text-body text-muted-foreground">
+          <p className="body-clean text-large text-muted-foreground">
             Open to high-impact projects, co-founder opportunities, and CMO roles
           </p>
         </div>
@@ -60,7 +81,7 @@ const ContactForm = () => {
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <label htmlFor="name" className="body-clean block mb-2 text-body font-medium">
+                <label htmlFor="name" className="body-clean block mb-2 text-large font-medium">
                   Name
                 </label>
                 <Input
@@ -75,7 +96,7 @@ const ContactForm = () => {
               </div>
 
               <div>
-                <label htmlFor="email" className="body-clean block mb-2 text-body font-medium">
+                <label htmlFor="email" className="body-clean block mb-2 text-large font-medium">
                   Email
                 </label>
                 <Input
@@ -91,7 +112,7 @@ const ContactForm = () => {
             </div>
 
             <div>
-              <label htmlFor="type" className="body-clean block mb-2 text-body font-medium">
+              <label htmlFor="type" className="body-clean block mb-2 text-large font-medium">
                 Type of Inquiry
               </label>
               <Select value={formData.type} onValueChange={(value) => setFormData({ ...formData, type: value })}>
@@ -109,7 +130,7 @@ const ContactForm = () => {
             </div>
 
             <div>
-              <label htmlFor="message" className="body-clean block mb-2 text-body font-medium">
+              <label htmlFor="message" className="body-clean block mb-2 text-large font-medium">
                 Message
               </label>
               <Textarea
@@ -125,14 +146,15 @@ const ContactForm = () => {
             <Button 
               type="submit" 
               size="lg"
-              className="w-full bg-foreground text-background hover:bg-foreground/90 transition-colors"
+              disabled={isSubmitting}
+              className="w-full bg-foreground text-background hover:bg-foreground/90 transition-colors uppercase"
             >
-              Send Message
+              {isSubmitting ? "Sending..." : "Send Message"}
             </Button>
           </form>
 
           <div className="mt-8 pt-8 border-t border-border text-center">
-            <p className="body-clean text-body text-muted-foreground">
+            <p className="body-clean text-large text-muted-foreground">
               Or email directly: <a href="mailto:rihards.zeila@gmail.com" className="text-foreground hover:text-primary transition-colors">rihards.zeila@gmail.com</a>
             </p>
           </div>
