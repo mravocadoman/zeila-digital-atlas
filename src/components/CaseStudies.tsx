@@ -106,7 +106,7 @@ const CaseStudies = () => {
                     <CardContent className="p-8 md:p-12">
                       {/* Company Name */}
                       <div className="text-center mb-8">
-                        <h3 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent mb-2">
+                        <h3 className="text-4xl md:text-5xl font-bold text-white mb-2">
                           {study.company}
                         </h3>
                         <div className="h-1 w-24 bg-gradient-to-r from-primary to-accent mx-auto rounded-full" />
