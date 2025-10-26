@@ -92,7 +92,7 @@ const About = () => {
                           const [title, description] = skill.split(' – ');
                           return <div key={skill} className="border-hover p-4 rounded-sm hover-scale">
                             <p className="body-clean text-large mb-1"><strong className="font-bold">{title}</strong></p>
-                            <p className="body-clean text-body text-muted-foreground"><strong className="font-bold">{description}</strong></p>
+                            <p className="body-clean text-body text-muted-foreground">{description}</p>
                           </div>
                         })}
                       </div>
@@ -109,7 +109,7 @@ const About = () => {
                     const [title, description] = skill.split(' – ');
                     return <div key={skill} className="border-hover p-4 rounded-sm hover-scale">
                       <p className="body-clean text-large mb-1"><strong className="font-bold">{title}</strong></p>
-                      <p className="body-clean text-body text-muted-foreground"><strong className="font-bold">{description}</strong></p>
+                      <p className="body-clean text-body text-muted-foreground">{description}</p>
                     </div>
                   })}
               </div>
