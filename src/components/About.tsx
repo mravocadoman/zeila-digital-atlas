@@ -88,8 +88,8 @@ const About = () => {
               <h3 className="heading-elegant text-2xl mb-6">Tools & Platforms</h3>
               <div className="grid md:grid-cols-2 gap-4">
                 {toolCategories.map(category => <div key={category.category} className="border border-border p-4 rounded-sm hover:border-primary transition-all duration-300">
-                    <h4 className="body-clean font-extrabold text-foreground mb-2 text-lg" style={{ textShadow: 'none' }}>{category.category}</h4>
-                    <p className="body-clean text-base text-muted-foreground">{category.tools}</p>
+                    <h4 className="body-clean font-black text-foreground mb-2 text-xl" style={{ textShadow: 'none' }}>{category.category}</h4>
+                    <p className="body-clean text-lg text-muted-foreground">{category.tools}</p>
                   </div>)}
               </div>
             </div>
