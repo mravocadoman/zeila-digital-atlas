@@ -51,15 +51,15 @@ const Timeline = () => {
 
         <div className="relative max-w-5xl mx-auto">
           {/* Timeline line */}
-          <div className="absolute left-6 lg:left-8 top-0 bottom-0 w-px bg-border md:left-1/2" />
+          <div className="absolute left-6 top-0 bottom-0 w-px bg-border md:left-1/2" />
 
           <div className="space-y-8 lg:space-y-12">
             {milestones.map((milestone, index) => <div key={index} className={`relative flex items-start gap-8 animate-fade-in ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`} style={{ animationDelay: `${0.1 * index}s`, animationFillMode: 'both' }}>
                 {/* Dot */}
-                <div className="absolute left-6 lg:left-8 w-3 h-3 lg:w-4 lg:h-4 rounded-full bg-foreground border-2 lg:border-4 border-background md:left-1/2 md:-translate-x-1/2" />
+                <div className="absolute left-6 w-3 lg:w-4 h-3 lg:h-4 rounded-full bg-foreground border-2 lg:border-4 border-background md:left-1/2 md:-translate-x-1/2" />
 
                 {/* Content */}
-                <div className={`flex-1 pl-14 lg:pl-20 md:pl-0 ${index % 2 === 0 ? 'md:pr-16 md:text-right' : 'md:pl-16'}`}>
+                <div className={`flex-1 pl-14 md:pl-0 ${index % 2 === 0 ? 'md:pr-16 md:text-right' : 'md:pl-16'}`}>
                   <div className="heading-elegant text-xs lg:text-lg mb-1 lg:mb-2 capitalize font-bold">{milestone.period}</div>
                   <h3 className="body-clean text-large mb-1 text-foreground font-extrabold text-xl lg:text-3xl uppercase">{milestone.title}</h3>
                   <p className="body-clean text-body text-foreground mb-2 font-bold text-base lg:text-xl">{milestone.company}</p>
