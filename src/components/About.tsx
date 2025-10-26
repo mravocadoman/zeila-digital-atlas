@@ -66,15 +66,15 @@ const About = () => {
             >
               <div className="text-center">
                 <div className="heading-elegant text-2xl lg:text-heading mb-1 lg:mb-2 text-white">10+</div>
-                <div className="body-clean text-xs lg:text-body text-muted-foreground">Years Experience</div>
+                <div className="body-clean text-sm lg:text-body text-muted-foreground">Years Experience</div>
               </div>
               <div className="text-center">
                 <div className="heading-elegant text-2xl lg:text-heading mb-1 lg:mb-2 text-white">36x</div>
-                <div className="body-clean text-xs lg:text-body text-muted-foreground">Best ROAS</div>
+                <div className="body-clean text-sm lg:text-body text-muted-foreground">Best ROAS</div>
               </div>
               <div className="text-center">
                 <div className="heading-elegant text-2xl lg:text-heading mb-1 lg:mb-2 text-white">€1M+</div>
-                <div className="body-clean text-xs lg:text-body text-muted-foreground">Revenue Generated</div>
+                <div className="body-clean text-sm lg:text-body text-muted-foreground">Revenue Generated</div>
               </div>
             </div>
 
