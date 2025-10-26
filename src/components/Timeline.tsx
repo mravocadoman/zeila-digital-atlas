@@ -43,6 +43,12 @@ const Timeline = () => {
     company: "Addtwo",
     period: "Feb 2018 - Oct 2020",
     description: "Streamlined client acquisition, built paid social strategies, and managed high-performing campaigns across Facebook and Instagram."
+  }, {
+    year: "2015",
+    title: "Founder",
+    company: "Steampunk Tribe",
+    period: "Nov 2015 - Jun 2016",
+    description: "Created a Shopify dropshipping store targeting the U.S. market. Designed and tested Facebook ad campaigns, optimized product pages, and successfully generated international sales — an early experiment that sparked my passion for performance marketing."
   }];
   return <section id="timeline" className="py-12 lg:py-32 px-6 lg:px-16 bg-card">
       <div className="max-w-7xl mx-auto">
