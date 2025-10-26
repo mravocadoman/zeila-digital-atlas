@@ -1,14 +1,14 @@
 import { Button } from "@/components/ui/button";
 import headshotImage from "@/assets/rihards-headshot.png";
-import neonPalms from "@/assets/neon-palms.png";
+import synthwaveSunset from "@/assets/synthwave-sunset.webp";
 const Hero = () => {
   return <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-16 py-12 sm:py-20 lg:py-32 relative overflow-hidden">
-      {/* 80s Neon Background Graphics */}
+      {/* 80s Synthwave Background */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <img 
-          src={neonPalms} 
+          src={synthwaveSunset} 
           alt="" 
-          className="absolute inset-0 w-full h-full object-cover opacity-30"
+          className="absolute inset-0 w-full h-full object-cover opacity-40"
           loading="lazy"
           aria-hidden="true"
         />
