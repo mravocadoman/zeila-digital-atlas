@@ -42,13 +42,13 @@ const Teaching = () => {
             <h3 className="heading-elegant text-3xl mb-6">Education</h3>
             {education.map((edu, index) => <div key={index} className="card-luxury">
                 <h4 className="heading-elegant text-2xl mb-2">{edu.degree}</h4>
-                <p className="body-clean text-lg text-muted-foreground mb-1">{edu.institution}</p>
-                <p className="body-clean text-sm text-muted-foreground mb-4">
+                <p className="body-clean text-xl text-muted-foreground mb-1">{edu.institution}</p>
+                <p className="body-clean text-base text-muted-foreground mb-4">
                   {edu.location} • {edu.period}
                   {edu.grade && ` • Grade: ${edu.grade}`}
                 </p>
                 <ul className="space-y-2 mt-4">
-                  {edu.details.map((detail, i) => <li key={i} className="body-clean text-sm text-muted-foreground flex gap-3">
+                  {edu.details.map((detail, i) => <li key={i} className="body-clean text-base text-muted-foreground flex gap-3">
                       <span className="text-foreground mt-1 flex-shrink-0">•</span>
                       <span>{detail}</span>
                     </li>)}
@@ -57,7 +57,7 @@ const Teaching = () => {
 
             <div className="card-luxury">
               <h4 className="heading-elegant text-xl mb-3">International Study Semesters</h4>
-              <p className="body-clean text-muted-foreground">
+              <p className="body-clean text-base text-muted-foreground">
                 Istanbul, Valencia, Lisbon, Chiang Mai | Erasmus+ (2014 - 2016)
               </p>
             </div>
