@@ -13,6 +13,20 @@ const BackgroundMusic = () => {
     }
   }, [volume]);
 
+  useEffect(() => {
+    // Autoplay on mount
+    if (audioRef.current) {
+      audioRef.current.play()
+        .then(() => {
+          setIsPlaying(true);
+        })
+        .catch((error) => {
+          console.log("Autoplay prevented:", error);
+          // Autoplay was prevented, user will need to click play
+        });
+    }
+  }, []);
+
   const togglePlay = () => {
     if (audioRef.current) {
       if (isPlaying) {
