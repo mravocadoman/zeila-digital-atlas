@@ -63,7 +63,7 @@ const Timeline = () => {
                 </AccordionTrigger>
                 <AccordionContent>
                   <div className="pt-2 pb-4">
-                    <div className="heading-elegant text-sm mb-2 capitalize font-bold">{milestone.period}</div>
+                    <div className="heading-elegant text-[10px] mb-2 font-bold">{milestone.period}</div>
                     <p className="body-clean text-base text-muted-foreground leading-relaxed">{milestone.description}</p>
                   </div>
                 </AccordionContent>
@@ -89,7 +89,7 @@ const Timeline = () => {
 
                     {/* Content */}
                     <div className={`flex-1 pl-14 md:pl-0 ${index % 2 === 0 ? 'md:pr-16 md:text-right' : 'md:pl-16'}`}>
-                      <div className="heading-elegant text-xs lg:text-lg mb-1 lg:mb-2 capitalize font-bold">{milestone.period}</div>
+                      <div className="heading-elegant text-[10px] lg:text-sm mb-1 lg:mb-2 font-bold">{milestone.period}</div>
                       <h3 className="heading-elegant text-large mb-1 text-foreground lg:text-3xl uppercase text-4xl !font-extrabold">{milestone.title}</h3>
                       <p className="body-clean text-body text-foreground mb-2 lg:text-xl !font-bold text-2xl">{milestone.company}</p>
                       <p className="body-clean text-sm lg:text-body text-muted-foreground">{milestone.description}</p>
