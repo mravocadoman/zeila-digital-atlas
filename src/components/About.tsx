@@ -11,7 +11,6 @@ const About = () => {
     "Digital Marketing Strategy – Building scalable systems that combine paid, organic, and AI-driven growth.",
     "Business Automations – Streamlining operations and client workflows with Make, n8n, and GoHighLevel.",
     "Creative Strategy – Designing data-backed ad concepts, visuals, and copy that convert.",
-    "Analytics & Tracking – Implementing GA4, GTM, CAPI, and dashboards to measure every euro spent.",
     "Digital Course Creation – Developing practical, high-ROI marketing courses for SMEs and professionals.",
     "Leadership & Mentorship – Guiding teams, interns, and MBA students to think strategically and execute precisely."
   ];
