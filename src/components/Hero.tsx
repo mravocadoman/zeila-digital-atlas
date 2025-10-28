@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import headshotImage from "@/assets/rihards-headshot.png";
+import headshotImage from "@/assets/rihards-synthwave.jpg";
 import neonPalms from "@/assets/neon-palms.png";
 const Hero = () => {
   return <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-16 py-12 sm:py-20 lg:py-32 relative overflow-hidden">
