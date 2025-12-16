@@ -102,7 +102,7 @@ const Credentials = () => {
     <section 
       ref={ref}
       id="credentials" 
-      className="py-12 lg:py-32 px-6 lg:px-16 bg-card"
+      className="py-12 lg:py-32 px-2 lg:px-16 bg-card"
     >
       <div className="max-w-7xl mx-auto">
         <div className={`transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
@@ -121,11 +121,11 @@ const Credentials = () => {
                   Core Skills
                 </AccordionTrigger>
                 <AccordionContent className="px-1 lg:px-6 pb-6">
-                  <div className="grid md:grid-cols-2 gap-4 pt-2">
+                  <div className="grid md:grid-cols-2 gap-2 lg:gap-4 pt-2">
                     {skills.map(skill => {
                       const [title, description] = skill.split(' – ');
                       return (
-                        <div key={skill} className="border-hover p-4 rounded-sm">
+                        <div key={skill} className="border-hover p-2 lg:p-4 rounded-sm">
                           <p className="body-clean text-large mb-1">
                             <strong className="font-bold">{title}</strong>
                           </p>
@@ -143,9 +143,9 @@ const Credentials = () => {
                   Tools & Platforms
                 </AccordionTrigger>
                 <AccordionContent className="px-1 lg:px-6 pb-6">
-                  <div className="grid md:grid-cols-2 gap-4 pt-2">
+                  <div className="grid md:grid-cols-2 gap-2 lg:gap-4 pt-2">
                     {toolCategories.map(category => (
-                      <div key={category.category} className="border-hover p-4 rounded-sm">
+                      <div key={category.category} className="border-hover p-2 lg:p-4 rounded-sm">
                         <h4 style={{ textShadow: 'none' }} className="body-clean text-foreground mb-2 text-large">
                           <strong className="font-bold">{category.category}</strong>
                         </h4>
@@ -168,7 +168,7 @@ const Credentials = () => {
                       <h4 className="heading-elegant text-large mb-4">Certifications</h4>
                       <div className="grid gap-2">
                         {certifications.map((cert) => (
-                          <div key={cert} className="border-hover p-3 rounded-sm">
+                          <div key={cert} className="border-hover p-2 lg:p-3 rounded-sm">
                             <p className="body-clean text-body">{cert}</p>
                           </div>
                         ))}
@@ -180,7 +180,7 @@ const Credentials = () => {
                       <h4 className="heading-elegant text-large mb-4">Advanced Courses</h4>
                       <div className="grid gap-2">
                         {courses.map((course) => (
-                          <div key={course} className="border-hover p-3 rounded-sm">
+                          <div key={course} className="border-hover p-2 lg:p-3 rounded-sm">
                             <p className="body-clean text-body">{course}</p>
                           </div>
                         ))}
@@ -190,9 +190,9 @@ const Credentials = () => {
                     {/* Education */}
                     <div>
                       <h4 className="heading-elegant text-large mb-4">Education</h4>
-                      <div className="grid gap-4">
+                      <div className="grid gap-2 lg:gap-4">
                         {education.map((edu) => (
-                          <div key={edu.degree} className="border-hover p-4 rounded-sm">
+                          <div key={edu.degree} className="border-hover p-2 lg:p-4 rounded-sm">
                             <h5 className="body-clean text-large font-bold mb-1">{edu.degree}</h5>
                             <p className="body-clean text-body text-muted-foreground mb-2">
                               {edu.institution}
@@ -219,7 +219,7 @@ const Credentials = () => {
                     {/* Honor */}
                     <div>
                       <h4 className="heading-elegant text-large mb-4">Honor</h4>
-                      <div className="border-hover p-4 rounded-sm">
+                      <div className="border-hover p-2 lg:p-4 rounded-sm">
                         <p className="body-clean text-body text-muted-foreground leading-relaxed">
                           Kristaps Morbergs' Scholarship of Excellence - Annually awarded to 15 selected University of Latvia students for outstanding academic and extracurricular achievements.
                         </p>
@@ -235,9 +235,9 @@ const Credentials = () => {
                   Languages
                 </AccordionTrigger>
                 <AccordionContent className="px-1 lg:px-6 pb-6">
-                  <div className="grid md:grid-cols-2 gap-4 pt-2">
+                  <div className="grid md:grid-cols-2 gap-2 lg:gap-4 pt-2">
                     {languages.map(lang => (
-                      <div key={lang.name} className="border-hover p-4 rounded-sm flex justify-between items-center">
+                      <div key={lang.name} className="border-hover p-2 lg:p-4 rounded-sm flex justify-between items-center">
                         <span className="body-clean font-medium text-body">{lang.name}</span>
                         <span className="body-clean text-body text-muted-foreground">{lang.level}</span>
                       </div>
