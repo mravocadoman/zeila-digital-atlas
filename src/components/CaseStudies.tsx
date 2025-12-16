@@ -79,7 +79,7 @@ const CaseStudies = () => {
         <h2 className="heading-elegant text-3xl lg:text-display mb-3 lg:mb-4 animate-fade-in text-center lg:text-left">
           Case Studies
         </h2>
-        <p className="body-clean lg:text-body text-muted-foreground mb-8 lg:mb-12 max-w-3xl text-center lg:text-left text-lg">
+        <p className="body-clean text-muted-foreground mb-8 lg:mb-12 max-w-3xl text-center lg:text-left text-lg lg:text-xl">
           Real results from real campaigns — from e-commerce to coaching, fashion to fintech.
         </p>
 
@@ -146,10 +146,10 @@ const CaseStudies = () => {
 
                       {/* Description */}
                       <div className="space-y-4">
-                        <p className="text-xl md:text-2xl text-foreground/90 leading-relaxed font-medium">
+                        <p className="text-lg lg:text-xl text-foreground/90 leading-relaxed font-medium">
                           {study.description}
                         </p>
-                        <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
+                        <p className="text-lg lg:text-xl text-muted-foreground leading-relaxed">
                           {study.details}
                         </p>
                       </div>

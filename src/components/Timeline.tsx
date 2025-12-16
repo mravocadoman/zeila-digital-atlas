@@ -53,7 +53,7 @@ const Timeline = () => {
   return <section id="timeline" className="py-12 lg:py-32 px-6 lg:px-16 bg-card">
       <div className="max-w-7xl mx-auto">
         <h2 className="heading-elegant text-3xl lg:text-display mb-3 lg:mb-4 animate-fade-in text-center lg:text-left">Career Journey</h2>
-        <p className="body-clean lg:text-body text-muted-foreground mb-8 lg:mb-12 max-w-3xl text-center lg:text-left text-lg">
+        <p className="body-clean text-muted-foreground mb-8 lg:mb-12 max-w-3xl text-center lg:text-left text-lg lg:text-xl">
           A decade of growth spanning marketing, education, and entrepreneurship across multiple continents.
         </p>
 
@@ -70,7 +70,7 @@ const Timeline = () => {
                 </AccordionTrigger>
                 <AccordionContent>
                   <div className="pt-2 pb-4">
-                    <p className="body-clean text-lg text-muted-foreground leading-relaxed">{milestone.description}</p>
+                    <p className="body-clean text-lg lg:text-xl text-muted-foreground leading-relaxed">{milestone.description}</p>
                   </div>
                 </AccordionContent>
               </AccordionItem>)}
@@ -98,7 +98,7 @@ const Timeline = () => {
                       <div className="heading-elegant text-[10px] lg:text-sm mb-1 lg:mb-2 font-bold">{milestone.period}</div>
                       <h3 className="heading-elegant text-large mb-1 text-foreground lg:text-3xl uppercase text-4xl !font-extrabold">{milestone.title}</h3>
                       <p className="body-clean text-body text-foreground mb-2 lg:text-xl !font-bold text-2xl">{milestone.company}</p>
-                      <p className="body-clean text-sm lg:text-body text-muted-foreground">{milestone.description}</p>
+                      <p className="body-clean text-lg lg:text-xl text-muted-foreground">{milestone.description}</p>
                     </div>
 
                     {/* Spacer for alternating layout */}

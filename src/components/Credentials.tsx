@@ -109,7 +109,7 @@ const Credentials = () => {
           <h2 className="heading-elegant text-3xl lg:text-display mb-4 lg:mb-6 text-center">
             Full Credentials & Background
           </h2>
-          <p className="body-clean text-body lg:text-large text-muted-foreground mb-8 lg:mb-12 text-center max-w-3xl mx-auto">
+          <p className="body-clean text-lg lg:text-xl text-muted-foreground mb-8 lg:mb-12 text-center max-w-3xl mx-auto">
             For those who want to dive deeper into my qualifications, tools, and experience.
           </p>
 
@@ -129,7 +129,7 @@ const Credentials = () => {
                           <p className="body-clean text-large mb-1">
                             <strong className="font-bold">{title}</strong>
                           </p>
-                          <p className="body-clean text-body text-muted-foreground">{description}</p>
+                          <p className="body-clean text-lg lg:text-xl text-muted-foreground">{description}</p>
                         </div>
                       );
                     })}
@@ -149,7 +149,7 @@ const Credentials = () => {
                         <h4 style={{ textShadow: 'none' }} className="body-clean text-foreground mb-2 text-large">
                           <strong className="font-bold">{category.category}</strong>
                         </h4>
-                        <p className="body-clean text-body text-muted-foreground">{category.tools}</p>
+                        <p className="body-clean text-lg lg:text-xl text-muted-foreground">{category.tools}</p>
                       </div>
                     ))}
                   </div>
@@ -169,7 +169,7 @@ const Credentials = () => {
                       <div className="grid gap-2">
                         {certifications.map((cert) => (
                           <div key={cert} className="border-hover p-2 lg:p-3 rounded-sm">
-                            <p className="body-clean text-body">{cert}</p>
+                            <p className="body-clean text-lg lg:text-xl">{cert}</p>
                           </div>
                         ))}
                       </div>
@@ -181,7 +181,7 @@ const Credentials = () => {
                       <div className="grid gap-2">
                         {courses.map((course) => (
                           <div key={course} className="border-hover p-2 lg:p-3 rounded-sm">
-                            <p className="body-clean text-body">{course}</p>
+                            <p className="body-clean text-lg lg:text-xl">{course}</p>
                           </div>
                         ))}
                       </div>
@@ -194,7 +194,7 @@ const Credentials = () => {
                         {education.map((edu) => (
                           <div key={edu.degree} className="border-hover p-2 lg:p-4 rounded-sm">
                             <h5 className="body-clean text-large font-bold mb-1">{edu.degree}</h5>
-                            <p className="body-clean text-body text-muted-foreground mb-2">
+                            <p className="body-clean text-lg lg:text-xl text-muted-foreground mb-2">
                               {edu.institution}
                             </p>
                             <p className="body-clean text-sm text-muted-foreground mb-2">
@@ -204,7 +204,7 @@ const Credentials = () => {
                             {edu.details && (
                               <ul className="space-y-1 mt-3">
                                 {edu.details.map((detail, idx) => (
-                                  <li key={idx} className="body-clean text-body text-muted-foreground text-sm flex items-start gap-2">
+                                  <li key={idx} className="body-clean text-muted-foreground text-lg lg:text-xl flex items-start gap-2">
                                     <span className="text-primary mt-1">•</span>
                                     <span>{detail}</span>
                                   </li>
@@ -220,7 +220,7 @@ const Credentials = () => {
                     <div>
                       <h4 className="heading-elegant text-large mb-4">Honor</h4>
                       <div className="border-hover p-2 lg:p-4 rounded-sm">
-                        <p className="body-clean text-body text-muted-foreground leading-relaxed">
+                        <p className="body-clean text-lg lg:text-xl text-muted-foreground leading-relaxed">
                           Kristaps Morbergs' Scholarship of Excellence - Annually awarded to 15 selected University of Latvia students for outstanding academic and extracurricular achievements.
                         </p>
                       </div>
@@ -238,8 +238,8 @@ const Credentials = () => {
                   <div className="grid md:grid-cols-2 gap-2 lg:gap-4 pt-2">
                     {languages.map(lang => (
                       <div key={lang.name} className="border-hover p-2 lg:p-4 rounded-sm flex justify-between items-center">
-                        <span className="body-clean font-medium text-body">{lang.name}</span>
-                        <span className="body-clean text-body text-muted-foreground">{lang.level}</span>
+                        <span className="body-clean font-medium text-lg lg:text-xl">{lang.name}</span>
+                        <span className="body-clean text-lg lg:text-xl text-muted-foreground">{lang.level}</span>
                       </div>
                     ))}
                   </div>
@@ -276,7 +276,7 @@ const Credentials = () => {
                             </AccordionTrigger>
                             <AccordionContent>
                               <p className="body-clean text-lg lg:text-xl font-bold text-muted-foreground mb-3">{region.countries}</p>
-                              <p className="body-clean text-base lg:text-lg text-muted-foreground">{region.description}</p>
+                              <p className="body-clean text-lg lg:text-xl text-muted-foreground">{region.description}</p>
                             </AccordionContent>
                           </AccordionItem>
                         ))}
@@ -292,7 +292,7 @@ const Credentials = () => {
                             </AccordionTrigger>
                             <AccordionContent>
                               <p className="body-clean text-lg lg:text-xl font-bold text-muted-foreground mb-3">{region.countries}</p>
-                              <p className="body-clean text-base lg:text-lg text-muted-foreground">{region.description}</p>
+                              <p className="body-clean text-lg lg:text-xl text-muted-foreground">{region.description}</p>
                             </AccordionContent>
                           </AccordionItem>
                         ))}

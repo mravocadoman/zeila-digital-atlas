@@ -39,7 +39,7 @@ const Testimonials = () => {
                   {testimonial.author} - {testimonial.company}
                 </AccordionTrigger>
                 <AccordionContent>
-                  <p className="body-clean text-lg lg:text-2xl leading-relaxed italic text-muted-foreground">
+                  <p className="body-clean text-lg lg:text-xl leading-relaxed italic text-muted-foreground">
                     "{testimonial.quote}"
                   </p>
                 </AccordionContent>
@@ -53,7 +53,7 @@ const Testimonials = () => {
                   {testimonial.author} - {testimonial.company}
                 </AccordionTrigger>
                 <AccordionContent>
-                  <p className="body-clean text-lg lg:text-2xl leading-relaxed italic text-muted-foreground">
+                  <p className="body-clean text-lg lg:text-xl leading-relaxed italic text-muted-foreground">
                     "{testimonial.quote}"
                   </p>
                 </AccordionContent>
