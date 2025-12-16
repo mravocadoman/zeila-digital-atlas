@@ -27,7 +27,7 @@ const Hero = () => {
             <div style={{
             animationDelay: '0.4s',
             animationFillMode: 'both'
-          }} className="body-clean text-body text-muted-foreground leading-relaxed text-xl sm:text-lg md:text-xl lg:text-xl animate-fade-in lg:text-left text-center font-extrabold space-y-4">
+          }} className="body-clean text-body text-foreground leading-tight text-xl sm:text-lg md:text-xl lg:text-xl animate-fade-in lg:text-left text-center font-extrabold space-y-2">
               <p>You don't need more clicks or views — you need a predictable system that turns traffic into revenue.</p>
               <p>I work with SMEs, e-commerce brands, and service-based businesses that want to generate consistent leads and sales through Meta ads, automation, and smart funnel design.</p>
             </div>
