@@ -113,10 +113,10 @@ const Credentials = () => {
           </p>
 
           <div className="max-w-5xl mx-auto">
-            <Accordion type="multiple" className="space-y-4">
+            <Accordion type="multiple" className="space-y-3">
               {/* Core Skills */}
               <AccordionItem value="skills" className="card-luxury">
-                <AccordionTrigger className="heading-elegant text-xl lg:text-heading px-6 py-4">
+                <AccordionTrigger className="heading-elegant text-xl lg:text-heading px-6 py-3">
                   Core Skills
                 </AccordionTrigger>
                 <AccordionContent className="px-6 pb-6">
@@ -138,7 +138,7 @@ const Credentials = () => {
 
               {/* Tools & Platforms */}
               <AccordionItem value="tools" className="card-luxury">
-                <AccordionTrigger className="heading-elegant text-xl lg:text-heading px-6 py-4">
+                <AccordionTrigger className="heading-elegant text-xl lg:text-heading px-6 py-3">
                   Tools & Platforms
                 </AccordionTrigger>
                 <AccordionContent className="px-6 pb-6">
@@ -157,7 +157,7 @@ const Credentials = () => {
 
               {/* Education & Certifications */}
               <AccordionItem value="education" className="card-luxury">
-                <AccordionTrigger className="heading-elegant text-xl lg:text-heading px-6 py-4">
+                <AccordionTrigger className="heading-elegant text-xl lg:text-heading px-6 py-3">
                   Education & Certifications
                 </AccordionTrigger>
                 <AccordionContent className="px-6 pb-6">
@@ -230,7 +230,7 @@ const Credentials = () => {
 
               {/* Languages */}
               <AccordionItem value="languages" className="card-luxury">
-                <AccordionTrigger className="heading-elegant text-xl lg:text-heading px-6 py-4">
+                <AccordionTrigger className="heading-elegant text-xl lg:text-heading px-6 py-3">
                   Languages
                 </AccordionTrigger>
                 <AccordionContent className="px-6 pb-6">
