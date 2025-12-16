@@ -117,7 +117,7 @@ const Credentials = () => {
             <Accordion type="multiple" className="space-y-3">
               {/* Core Skills */}
               <AccordionItem value="skills" className="card-luxury">
-                <AccordionTrigger className="heading-elegant text-xl lg:text-heading px-1 lg:px-6 py-3">
+                <AccordionTrigger className="heading-elegant text-xl lg:text-heading px-1 lg:px-6 py-3 justify-center lg:justify-start [&>svg]:ml-2 lg:[&>svg]:ml-auto">
                   Core Skills
                 </AccordionTrigger>
                 <AccordionContent className="px-1 lg:px-6 pb-6">
@@ -139,7 +139,7 @@ const Credentials = () => {
 
               {/* Tools & Platforms */}
               <AccordionItem value="tools" className="card-luxury">
-                <AccordionTrigger className="heading-elegant text-xl lg:text-heading px-1 lg:px-6 py-3">
+                <AccordionTrigger className="heading-elegant text-xl lg:text-heading px-1 lg:px-6 py-3 justify-center lg:justify-start [&>svg]:ml-2 lg:[&>svg]:ml-auto">
                   Tools & Platforms
                 </AccordionTrigger>
                 <AccordionContent className="px-1 lg:px-6 pb-6">
@@ -158,7 +158,7 @@ const Credentials = () => {
 
               {/* Education & Certifications */}
               <AccordionItem value="education" className="card-luxury">
-                <AccordionTrigger className="heading-elegant text-xl lg:text-heading px-1 lg:px-6 py-3">
+                <AccordionTrigger className="heading-elegant text-xl lg:text-heading px-1 lg:px-6 py-3 justify-center lg:justify-start [&>svg]:ml-2 lg:[&>svg]:ml-auto">
                   Education & Certifications
                 </AccordionTrigger>
                 <AccordionContent className="px-1 lg:px-6 pb-6">
@@ -231,7 +231,7 @@ const Credentials = () => {
 
               {/* Languages */}
               <AccordionItem value="languages" className="card-luxury">
-                <AccordionTrigger className="heading-elegant text-xl lg:text-heading px-1 lg:px-6 py-3">
+                <AccordionTrigger className="heading-elegant text-xl lg:text-heading px-1 lg:px-6 py-3 justify-center lg:justify-start [&>svg]:ml-2 lg:[&>svg]:ml-auto">
                   Languages
                 </AccordionTrigger>
                 <AccordionContent className="px-1 lg:px-6 pb-6">
@@ -248,7 +248,7 @@ const Credentials = () => {
 
               {/* Global Perspective */}
               <AccordionItem value="global" className="card-luxury">
-                <AccordionTrigger className="heading-elegant text-xl lg:text-heading px-1 lg:px-6 py-3">
+                <AccordionTrigger className="heading-elegant text-xl lg:text-heading px-1 lg:px-6 py-3 justify-center lg:justify-start [&>svg]:ml-2 lg:[&>svg]:ml-auto">
                   Global Perspective
                 </AccordionTrigger>
                 <AccordionContent className="px-1 lg:px-6 pb-6">
