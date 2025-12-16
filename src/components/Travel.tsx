@@ -11,7 +11,7 @@ const Travel = () => {
     description: "Deep understanding of European business culture and digital marketing landscapes"
   }, {
     name: "Southeast Asia",
-    countries: "Thailand, Malaysia, Indonesia, Singapore",
+    countries: "Thailand, Malaysia, Indonesia, Singapore, Vietnam",
     description: "Experience with emerging markets and diverse consumer behaviors"
   }, {
     name: "Middle East",
@@ -81,7 +81,7 @@ const Travel = () => {
         {/* Stats box */}
         <div className="mt-12 lg:mt-16 p-6 lg:p-12 border border-border rounded-sm bg-background/50 relative overflow-hidden">
           <div className="relative text-center">
-            <p className="heading-elegant text-xl lg:text-heading text-white">35+ Countries Visited</p>
+            <p className="heading-elegant text-xl lg:text-heading text-white">36+ Countries Visited</p>
             <p className="body-clean text-sm lg:text-body text-muted-foreground mt-1 lg:mt-2">4 Continents • Endless Insights</p>
           </div>
         </div>
