@@ -113,7 +113,7 @@ const Credentials = () => {
             For those who want to dive deeper into my qualifications, tools, and experience.
           </p>
 
-          <div className="max-w-5xl mx-auto">
+          <div className="max-w-6xl mx-auto">
             <Accordion type="multiple" className="space-y-3">
               {/* Core Skills */}
               <AccordionItem value="skills" className="card-luxury">
