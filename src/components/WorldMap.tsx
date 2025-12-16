@@ -66,31 +66,28 @@ const WorldMap = () => {
         <ComposableMap
           projection="geoMercator"
           projectionConfig={{
-            scale: 100,
-            center: [20, 35],
+            scale: 120,
+            center: [20, 30],
           }}
-          height={380}
           style={{ width: "100%", height: "auto" }}
         >
           <ZoomableGroup zoom={1} minZoom={1} maxZoom={1}>
             <Geographies geography={geoUrl}>
               {({ geographies }) =>
-                geographies
-                  .filter((geo) => geo.id !== "010") // Filter out Antarctica
-                  .map((geo) => {
-                    const countryId = geo.id;
-                    const isVisited = visitedIds.includes(countryId);
-                    const isHovered = hoveredCountry === countryId;
+                geographies.map((geo) => {
+                  const countryId = geo.id;
+                  const isVisited = visitedIds.includes(countryId);
+                  const isHovered = hoveredCountry === countryId;
 
-                    return (
-                      <Geography
-                        key={geo.rsmKey}
-                        geography={geo}
-                        onMouseEnter={() => {
-                          if (isVisited) {
-                            setHoveredCountry(countryId);
-                            setTooltipContent(visitedCountryCodes[countryId] || geo.properties.name);
-                          }
+                  return (
+                    <Geography
+                      key={geo.rsmKey}
+                      geography={geo}
+                      onMouseEnter={() => {
+                        if (isVisited) {
+                          setHoveredCountry(countryId);
+                          setTooltipContent(visitedCountryCodes[countryId] || geo.properties.name);
+                        }
                       }}
                       onMouseLeave={() => {
                         setHoveredCountry(null);
