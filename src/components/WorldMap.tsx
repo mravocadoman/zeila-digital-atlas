@@ -36,6 +36,7 @@ const visitedCountryCodes: Record<string, string> = {
   "458": "Malaysia",
   "360": "Indonesia",
   "702": "Singapore",
+  "704": "Vietnam",
   // Middle East
   "400": "Jordan",
   "376": "Israel",
