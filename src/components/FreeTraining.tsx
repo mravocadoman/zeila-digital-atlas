@@ -7,7 +7,7 @@ const FreeTraining = () => {
     <section 
       ref={ref}
       id="free-training" 
-      className="py-12 lg:py-32 px-6 lg:px-16 bg-background/50"
+      className="py-12 lg:py-32 px-2 lg:px-16 bg-background/50"
     >
       <div className="max-w-7xl mx-auto">
         <div className={`transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
@@ -30,7 +30,7 @@ const FreeTraining = () => {
                   allowFullScreen
                 />
               </div>
-              <div className="p-6 lg:p-8">
+              <div className="p-3 lg:p-8">
                 <h3 className="heading-elegant text-xl lg:text-heading mb-3">
                   Mastering Meta Ads
                 </h3>

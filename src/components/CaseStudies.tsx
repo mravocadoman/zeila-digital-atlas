@@ -74,7 +74,7 @@ const CaseStudies = () => {
   };
 
   return (
-    <section id="case-studies" ref={ref} className="py-20 px-6">
+    <section id="case-studies" ref={ref} className="py-20 px-2 lg:px-6">
       <div className="max-w-6xl mx-auto">
         <h2 className="heading-elegant text-3xl lg:text-display mb-3 lg:mb-4 animate-fade-in text-center lg:text-left">
           Case Studies
@@ -116,9 +116,9 @@ const CaseStudies = () => {
               style={{ transform: `translateX(-${currentIndex * 100}%)` }}
             >
               {caseStudies.map((study, index) => (
-                <div key={index} className="w-full flex-shrink-0 px-4">
+                <div key={index} className="w-full flex-shrink-0 px-1 lg:px-4">
                   <Card className="border-primary/20 bg-gradient-to-br from-card/90 to-card/50 backdrop-blur-sm shadow-xl">
-                    <CardContent className="p-8 md:p-12">
+                    <CardContent className="p-4 md:p-12">
                       {/* Company Name */}
                       <div className="text-center mb-8">
                         <h3 className="text-4xl md:text-5xl font-bold text-white mb-2">
