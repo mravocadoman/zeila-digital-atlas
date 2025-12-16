@@ -1,5 +1,6 @@
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import WorldMap from "./WorldMap";
 
 const Credentials = () => {
   const { ref, isVisible } = useScrollAnimation();
@@ -241,6 +242,70 @@ const Credentials = () => {
                         <span className="body-clean text-body text-muted-foreground">{lang.level}</span>
                       </div>
                     ))}
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+
+              {/* Global Perspective */}
+              <AccordionItem value="global" className="card-luxury">
+                <AccordionTrigger className="heading-elegant text-xl lg:text-heading px-6 py-3">
+                  Global Perspective
+                </AccordionTrigger>
+                <AccordionContent className="px-6 pb-6">
+                  <div className="pt-2">
+                    <blockquote className="heading-elegant text-base lg:text-large text-center italic border-l-2 lg:border-l-4 border-foreground pl-4 lg:pl-8 mb-8">
+                      "Every culture teaches something new about connection, communication, and creativity. These experiences directly influence how I solve marketing challenges."
+                    </blockquote>
+
+                    {/* Interactive World Map */}
+                    <div className="mb-8 p-4 lg:p-8 border border-border rounded-lg bg-background/50">
+                      <WorldMap />
+                    </div>
+
+                    {/* Regions */}
+                    <div className="lg:grid lg:grid-cols-2 lg:gap-x-8 mb-8">
+                      <Accordion type="single" collapsible defaultValue="europe" className="lg:col-span-1">
+                        {[
+                          { name: "Europe", countries: "Latvia, Lithuania, Estonia, Poland, Finland, Sweden, Norway, Croatia, Romania, Italy, Germany, Denmark, Spain, Portugal, Austria, Czechia, Hungary, Greece, Turkey, Georgia", description: "Deep understanding of European business culture and digital marketing landscapes" },
+                          { name: "Southeast Asia", countries: "Thailand, Malaysia, Indonesia, Singapore, Vietnam", description: "Experience with emerging markets and diverse consumer behaviors" },
+                          { name: "Middle East", countries: "Jordan, Israel", description: "Cross-cultural marketing experience in complex markets" }
+                        ].map((region) => (
+                          <AccordionItem key={region.name} value={region.name.toLowerCase()}>
+                            <AccordionTrigger className="heading-elegant text-lg lg:text-xl py-2">
+                              {region.name}
+                            </AccordionTrigger>
+                            <AccordionContent>
+                              <p className="body-clean text-lg lg:text-xl font-bold text-muted-foreground mb-3">{region.countries}</p>
+                              <p className="body-clean text-base lg:text-lg text-muted-foreground">{region.description}</p>
+                            </AccordionContent>
+                          </AccordionItem>
+                        ))}
+                      </Accordion>
+                      <Accordion type="single" collapsible className="lg:col-span-1">
+                        {[
+                          { name: "Africa", countries: "Zambia, Botswana", description: "Implemented fin-tech and digital marketing solutions in developing economies" },
+                          { name: "Americas", countries: "United States, Colombia, Mexico", description: "Experience across diverse American markets from North to South" }
+                        ].map((region) => (
+                          <AccordionItem key={region.name} value={region.name.toLowerCase()}>
+                            <AccordionTrigger className="heading-elegant text-lg lg:text-xl py-2">
+                              {region.name}
+                            </AccordionTrigger>
+                            <AccordionContent>
+                              <p className="body-clean text-lg lg:text-xl font-bold text-muted-foreground mb-3">{region.countries}</p>
+                              <p className="body-clean text-base lg:text-lg text-muted-foreground">{region.description}</p>
+                            </AccordionContent>
+                          </AccordionItem>
+                        ))}
+                      </Accordion>
+                    </div>
+
+                    {/* Stats box */}
+                    <div className="p-6 lg:p-12 border border-border rounded-sm bg-background/50 relative overflow-hidden">
+                      <div className="relative text-center">
+                        <p className="heading-elegant text-xl lg:text-heading text-white">36+ Countries Visited</p>
+                        <p className="body-clean text-sm lg:text-body text-muted-foreground mt-1 lg:mt-2">4 Continents • Endless Insights</p>
+                      </div>
+                    </div>
                   </div>
                 </AccordionContent>
               </AccordionItem>
