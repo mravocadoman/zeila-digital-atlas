@@ -14,7 +14,7 @@ const FreeTraining = () => {
           <h2 className="heading-elegant text-3xl lg:text-display mb-4 lg:mb-6 text-center">
             Free Training
           </h2>
-          <p className="body-clean text-body lg:text-large text-muted-foreground mb-8 lg:mb-12 text-center max-w-3xl mx-auto">
+          <p className="body-clean text-lg lg:text-xl text-muted-foreground mb-8 lg:mb-12 text-center max-w-3xl mx-auto">
             Learn Meta advertising strategies through my comprehensive YouTube playlist. 
             Over 10 lessons covering everything from fundamentals to advanced optimization techniques.
           </p>
@@ -34,7 +34,7 @@ const FreeTraining = () => {
                 <h3 className="heading-elegant text-xl lg:text-heading mb-3">
                   Mastering Meta Ads
                 </h3>
-                <p className="body-clean text-body text-muted-foreground mb-4">
+                <p className="body-clean text-lg lg:text-xl text-muted-foreground mb-4">
                   A complete training series designed to help businesses and marketers master Meta advertising. 
                   From campaign setup to scaling strategies, this playlist covers the essential skills needed to 
                   generate results with Facebook and Instagram ads.
