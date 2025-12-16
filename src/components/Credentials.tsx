@@ -102,9 +102,9 @@ const Credentials = () => {
     <section 
       ref={ref}
       id="credentials" 
-      className="py-12 lg:py-32 px-2 lg:px-16 bg-card"
+      className="py-12 lg:py-32 px-1 lg:px-4 bg-card"
     >
-      <div className="max-w-7xl mx-auto">
+      <div className="w-full">
         <div className={`transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <h2 className="heading-elegant text-3xl lg:text-display mb-4 lg:mb-6 text-center">
             Full Credentials & Background
@@ -113,15 +113,15 @@ const Credentials = () => {
             For those who want to dive deeper into my qualifications, tools, and experience.
           </p>
 
-          <div className="max-w-6xl mx-auto">
-            <Accordion type="multiple" className="space-y-3">
+          <div className="w-full">
+            <Accordion type="multiple" className="w-full max-w-none space-y-3">
               {/* Core Skills */}
-              <AccordionItem value="skills" className="card-luxury">
+              <AccordionItem value="skills" className="card-luxury p-3 lg:p-6">
                 <AccordionTrigger className="heading-elegant text-xl lg:text-heading px-3 lg:px-6 py-3 justify-center lg:justify-start [&>svg]:ml-2 lg:[&>svg]:ml-auto">
                   Core Skills
                 </AccordionTrigger>
                 <AccordionContent className="px-3 lg:px-6 pb-6">
-                  <div className="grid md:grid-cols-2 gap-2 lg:gap-4 pt-2">
+                  <div className="grid grid-cols-1 gap-2 lg:gap-4 pt-2">
                     {skills.map(skill => {
                       const [title, description] = skill.split(' – ');
                       return (
@@ -138,12 +138,12 @@ const Credentials = () => {
               </AccordionItem>
 
               {/* Tools & Platforms */}
-              <AccordionItem value="tools" className="card-luxury">
+              <AccordionItem value="tools" className="card-luxury p-3 lg:p-6">
                 <AccordionTrigger className="heading-elegant text-xl lg:text-heading px-3 lg:px-6 py-3 justify-center lg:justify-start [&>svg]:ml-2 lg:[&>svg]:ml-auto">
                   Tools & Platforms
                 </AccordionTrigger>
                 <AccordionContent className="px-3 lg:px-6 pb-6">
-                  <div className="grid md:grid-cols-2 gap-2 lg:gap-4 pt-2">
+                  <div className="grid grid-cols-1 gap-2 lg:gap-4 pt-2">
                     {toolCategories.map(category => (
                       <div key={category.category} className="border-hover p-3 lg:p-4 rounded-sm">
                         <h4 style={{ textShadow: 'none' }} className="body-clean text-foreground mb-2 text-large">
@@ -157,7 +157,7 @@ const Credentials = () => {
               </AccordionItem>
 
               {/* Education & Certifications */}
-              <AccordionItem value="education" className="card-luxury">
+              <AccordionItem value="education" className="card-luxury p-3 lg:p-6">
                 <AccordionTrigger className="heading-elegant text-xl lg:text-heading px-3 lg:px-6 py-3 justify-center lg:justify-start [&>svg]:ml-2 lg:[&>svg]:ml-auto">
                   Education & Certifications
                 </AccordionTrigger>
@@ -230,12 +230,12 @@ const Credentials = () => {
               </AccordionItem>
 
               {/* Languages */}
-              <AccordionItem value="languages" className="card-luxury">
+              <AccordionItem value="languages" className="card-luxury p-3 lg:p-6">
                 <AccordionTrigger className="heading-elegant text-xl lg:text-heading px-3 lg:px-6 py-3 justify-center lg:justify-start [&>svg]:ml-2 lg:[&>svg]:ml-auto">
                   Languages
                 </AccordionTrigger>
                 <AccordionContent className="px-3 lg:px-6 pb-6">
-                  <div className="grid md:grid-cols-2 gap-2 lg:gap-4 pt-2">
+                  <div className="grid grid-cols-1 gap-2 lg:gap-4 pt-2">
                     {languages.map(lang => (
                       <div key={lang.name} className="border-hover p-3 lg:p-4 rounded-sm flex justify-between items-center">
                         <span className="body-clean font-medium text-lg lg:text-xl">{lang.name}</span>
@@ -247,7 +247,7 @@ const Credentials = () => {
               </AccordionItem>
 
               {/* Global Perspective */}
-              <AccordionItem value="global" className="card-luxury">
+              <AccordionItem value="global" className="card-luxury p-3 lg:p-6">
                 <AccordionTrigger className="heading-elegant text-xl lg:text-heading px-3 lg:px-6 py-3 justify-center lg:justify-start [&>svg]:ml-2 lg:[&>svg]:ml-auto">
                   Global Perspective
                 </AccordionTrigger>
