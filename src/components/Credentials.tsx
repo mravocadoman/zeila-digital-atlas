@@ -1,5 +1,3 @@
-import { Mail, Phone, MapPin, Linkedin, Instagram, Facebook } from "lucide-react";
-import { FaTiktok } from "react-icons/fa";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
@@ -243,51 +241,6 @@ const Credentials = () => {
                         <span className="body-clean text-body text-muted-foreground">{lang.level}</span>
                       </div>
                     ))}
-                  </div>
-                </AccordionContent>
-              </AccordionItem>
-
-              {/* Contact & Connect */}
-              <AccordionItem value="contact" className="card-luxury">
-                <AccordionTrigger className="heading-elegant text-xl lg:text-heading px-6 py-4">
-                  Contact & Connect
-                </AccordionTrigger>
-                <AccordionContent className="px-6 pb-6">
-                  <div className="pt-2 space-y-6">
-                    <div className="space-y-4">
-                      <a href="tel:+37126673384" className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors">
-                        <Phone className="w-5 h-5" />
-                        <span className="body-clean text-body">+371 26673384</span>
-                      </a>
-                      
-                      <a href="mailto:rihards.zeila@gmail.com" className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors">
-                        <Mail className="w-5 h-5" />
-                        <span className="body-clean text-body">rihards.zeila@gmail.com</span>
-                      </a>
-                      
-                      <div className="flex items-center gap-3 text-muted-foreground">
-                        <MapPin className="w-5 h-5" />
-                        <span className="body-clean text-body">Riga, Latvia (Remote in winters)</span>
-                      </div>
-                    </div>
-
-                    <div className="pt-4 border-t border-border">
-                      <h4 className="body-clean font-semibold mb-4 text-large">Social Media</h4>
-                      <div className="flex gap-4">
-                        <a href="https://www.linkedin.com/in/rihards-ze/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors" aria-label="LinkedIn profile">
-                          <Linkedin className="w-6 h-6" />
-                        </a>
-                        <a href="https://www.instagram.com/rihards.ze/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors" aria-label="Instagram profile">
-                          <Instagram className="w-6 h-6" />
-                        </a>
-                        <a href="https://www.tiktok.com/@rihards.ze" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors" aria-label="TikTok profile">
-                          <FaTiktok className="w-6 h-6" />
-                        </a>
-                        <a href="https://www.facebook.com/profile.php?id=100000487541249" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors" aria-label="Facebook profile">
-                          <Facebook className="w-6 h-6" />
-                        </a>
-                      </div>
-                    </div>
                   </div>
                 </AccordionContent>
               </AccordionItem>
