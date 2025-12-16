@@ -17,17 +17,17 @@ const Footer = () => {
           {/* Quick Links */}
           <div className="animate-fade-in" style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>
             <h4 className="body-clean font-semibold mb-4 text-large">Quick Links</h4>
-            <nav className="flex flex-col gap-2">
-              <a href="#about" className="body-clean text-body text-muted-foreground hover:text-foreground transition-colors">
+          <nav className="space-y-2">
+              <a href="#about" className="body-clean text-body text-muted-foreground hover:text-foreground transition-colors block">
                 About
               </a>
-              <a href="#timeline" className="body-clean text-body text-muted-foreground hover:text-foreground transition-colors">
+              <a href="#timeline" className="body-clean text-body text-muted-foreground hover:text-foreground transition-colors block">
                 Experience
               </a>
-              <a href="#teaching" className="body-clean text-body text-muted-foreground hover:text-foreground transition-colors">
+              <a href="#teaching" className="body-clean text-body text-muted-foreground hover:text-foreground transition-colors block">
                 Teaching
               </a>
-              <a href="#contact" className="body-clean text-body text-muted-foreground hover:text-foreground transition-colors">
+              <a href="#contact" className="body-clean text-body text-muted-foreground hover:text-foreground transition-colors block">
                 Contact
               </a>
             </nav>

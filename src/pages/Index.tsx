@@ -1,4 +1,3 @@
-import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Testimonials from "@/components/Testimonials";
@@ -13,7 +12,6 @@ import BackgroundMusic from "@/components/BackgroundMusic";
 const Index = () => {
   return (
     <div className="min-h-screen">
-      <Header />
       <main>
         <Hero />
         <About />
