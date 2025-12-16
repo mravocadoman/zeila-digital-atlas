@@ -30,7 +30,7 @@ const FreeTraining = () => {
                   allowFullScreen
                 />
               </div>
-              <div className="p-3 lg:p-8">
+              <div className="p-2 lg:p-8">
                 <h3 className="heading-elegant text-xl lg:text-heading mb-3">
                   Mastering Meta Ads
                 </h3>
