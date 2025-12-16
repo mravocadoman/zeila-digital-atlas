@@ -1,5 +1,6 @@
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import WorldMap from "./WorldMap";
 
 const Travel = () => {
   const mapAnimation = useScrollAnimation(0.3);
@@ -25,7 +26,9 @@ const Travel = () => {
     countries: "United States, Colombia, Mexico",
     description: "Experience across diverse American markets from North to South"
   }];
-  return <section id="travel" className="py-12 lg:py-32 px-6 lg:px-16 bg-card relative overflow-hidden">
+  
+  return (
+    <section id="travel" className="py-12 lg:py-32 px-6 lg:px-16 bg-card relative overflow-hidden">
       <div className="max-w-7xl mx-auto relative z-10">
         <h2 className="heading-elegant text-3xl lg:text-display mb-8 lg:mb-12 animate-fade-in text-center lg:text-left">Global Perspective</h2>
 
@@ -33,6 +36,16 @@ const Travel = () => {
           <blockquote className="heading-elegant text-base lg:text-large text-center italic border-l-2 lg:border-l-4 border-foreground pl-4 lg:pl-8">
             "Every culture teaches something new about connection, communication, and creativity. These experiences directly influence how I solve marketing challenges."
           </blockquote>
+        </div>
+
+        {/* Interactive World Map */}
+        <div 
+          ref={mapAnimation.ref}
+          className={`mb-12 lg:mb-16 p-4 lg:p-8 border border-border rounded-lg bg-background/50 transition-all duration-700 ${
+            mapAnimation.isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+          }`}
+        >
+          <WorldMap />
         </div>
 
         {/* Accordion for both mobile and desktop */}
@@ -65,19 +78,16 @@ const Travel = () => {
           </Accordion>
         </div>
 
-        {/* Simple world map representation */}
-        <div 
-          ref={mapAnimation.ref}
-          className={`mt-12 lg:mt-16 p-6 lg:p-12 border border-border rounded-sm bg-background/50 relative overflow-hidden transition-all duration-700 ${
-            mapAnimation.isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
-          }`}
-        >
+        {/* Stats box */}
+        <div className="mt-12 lg:mt-16 p-6 lg:p-12 border border-border rounded-sm bg-background/50 relative overflow-hidden">
           <div className="relative text-center">
             <p className="heading-elegant text-xl lg:text-heading text-white">35+ Countries Visited</p>
             <p className="body-clean text-sm lg:text-body text-muted-foreground mt-1 lg:mt-2">4 Continents • Endless Insights</p>
           </div>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default Travel;
