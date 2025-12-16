@@ -117,10 +117,10 @@ const Credentials = () => {
             <Accordion type="multiple" className="space-y-3">
               {/* Core Skills */}
               <AccordionItem value="skills" className="card-luxury">
-                <AccordionTrigger className="heading-elegant text-xl lg:text-heading px-6 py-3">
+                <AccordionTrigger className="heading-elegant text-xl lg:text-heading px-3 lg:px-6 py-3">
                   Core Skills
                 </AccordionTrigger>
-                <AccordionContent className="px-6 pb-6">
+                <AccordionContent className="px-3 lg:px-6 pb-6">
                   <div className="grid md:grid-cols-2 gap-4 pt-2">
                     {skills.map(skill => {
                       const [title, description] = skill.split(' – ');
@@ -139,10 +139,10 @@ const Credentials = () => {
 
               {/* Tools & Platforms */}
               <AccordionItem value="tools" className="card-luxury">
-                <AccordionTrigger className="heading-elegant text-xl lg:text-heading px-6 py-3">
+                <AccordionTrigger className="heading-elegant text-xl lg:text-heading px-3 lg:px-6 py-3">
                   Tools & Platforms
                 </AccordionTrigger>
-                <AccordionContent className="px-6 pb-6">
+                <AccordionContent className="px-3 lg:px-6 pb-6">
                   <div className="grid md:grid-cols-2 gap-4 pt-2">
                     {toolCategories.map(category => (
                       <div key={category.category} className="border-hover p-4 rounded-sm">
@@ -158,10 +158,10 @@ const Credentials = () => {
 
               {/* Education & Certifications */}
               <AccordionItem value="education" className="card-luxury">
-                <AccordionTrigger className="heading-elegant text-xl lg:text-heading px-6 py-3">
+                <AccordionTrigger className="heading-elegant text-xl lg:text-heading px-3 lg:px-6 py-3">
                   Education & Certifications
                 </AccordionTrigger>
-                <AccordionContent className="px-6 pb-6">
+                <AccordionContent className="px-3 lg:px-6 pb-6">
                   <div className="space-y-6 pt-2">
                     {/* Certifications */}
                     <div>
@@ -231,10 +231,10 @@ const Credentials = () => {
 
               {/* Languages */}
               <AccordionItem value="languages" className="card-luxury">
-                <AccordionTrigger className="heading-elegant text-xl lg:text-heading px-6 py-3">
+                <AccordionTrigger className="heading-elegant text-xl lg:text-heading px-3 lg:px-6 py-3">
                   Languages
                 </AccordionTrigger>
-                <AccordionContent className="px-6 pb-6">
+                <AccordionContent className="px-3 lg:px-6 pb-6">
                   <div className="grid md:grid-cols-2 gap-4 pt-2">
                     {languages.map(lang => (
                       <div key={lang.name} className="border-hover p-4 rounded-sm flex justify-between items-center">
@@ -248,10 +248,10 @@ const Credentials = () => {
 
               {/* Global Perspective */}
               <AccordionItem value="global" className="card-luxury">
-                <AccordionTrigger className="heading-elegant text-xl lg:text-heading px-6 py-3">
+                <AccordionTrigger className="heading-elegant text-xl lg:text-heading px-3 lg:px-6 py-3">
                   Global Perspective
                 </AccordionTrigger>
-                <AccordionContent className="px-6 pb-6">
+                <AccordionContent className="px-3 lg:px-6 pb-6">
                   <div className="pt-2">
                     <blockquote className="heading-elegant text-base lg:text-large text-center italic border-l-2 lg:border-l-4 border-foreground pl-4 lg:pl-8 mb-8">
                       "Every culture teaches something new about connection, communication, and creativity. These experiences directly influence how I solve marketing challenges."
