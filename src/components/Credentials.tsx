@@ -246,6 +246,43 @@ const Credentials = () => {
                 </AccordionContent>
               </AccordionItem>
 
+              {/* Career Journey */}
+              <AccordionItem value="career" className="card-luxury">
+                <AccordionTrigger className="heading-elegant text-xl lg:text-heading px-6 py-3">
+                  Career Journey
+                </AccordionTrigger>
+                <AccordionContent className="px-6 pb-6">
+                  <div className="pt-2">
+                    <p className="body-clean text-body text-muted-foreground mb-6">
+                      A decade of growth spanning marketing, education, and entrepreneurship across multiple continents.
+                    </p>
+                    <div className="space-y-4">
+                      {[
+                        { period: "Nov 2024 - Present", title: "Lecturer", company: "LIFT", description: "Lead monthly workshops for Latvian SMEs on Meta ads and marketing automation. Built a unified lead generation system used across the full LIFT digital marketing cohort." },
+                        { period: "Sep 2022 - Jun 2024", title: "Key Account Lead", company: "Aleph", description: "Managed $50K–$300K monthly budgets across Meta, TikTok, Reddit, and Pinterest. Identified growth blockers and optimized performance for top-tier clients." },
+                        { period: "Jan 2023 - Feb 2024", title: "BBA Lecturer", company: "RISEBA", description: "Developed and recorded lectures on social media management, content strategy, and Meta advertising for undergraduate students." },
+                        { period: "Sep 2021 - Present", title: "MBA Lecturer", company: "Riga Business School", description: "Created a hands-on digital marketing syllabus covering strategy, analytics, and performance KPIs. Mentored MBA students through live client projects." },
+                        { period: "Jan 2020 - Present", title: "Founder", company: "Mārketinga Skola", description: "Founded and scaled a marketing education and agency platform helping Latvian SMEs build predictable lead generation systems through ads, automation, and strategy." },
+                        { period: "Jan - Mar 2019", title: "Digital Marketing Consultant", company: "International Trade Centre (ITC)", description: "Implemented digital marketing programs in Kenya, Palestine, Gambia, and Jordan. Trained 100+ students and delivered fintech solutions for international SMEs." },
+                        { period: "Feb 2018 - Oct 2020", title: "Social Media Specialist", company: "Addtwo", description: "Streamlined client acquisition, built paid social strategies, and managed high-performing campaigns across Facebook and Instagram." },
+                        { period: "Nov 2015 - Jun 2017", title: "Founder", company: "Steampunk Tribe", description: "Created a Shopify dropshipping store targeting the U.S. market. Designed and tested Facebook ad campaigns, optimized product pages, and successfully generated international sales." }
+                      ].map((milestone) => (
+                        <div key={milestone.title + milestone.company} className="border-hover p-4 rounded-sm">
+                          <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-1 mb-2">
+                            <div>
+                              <h4 className="body-clean text-large font-bold">{milestone.title}</h4>
+                              <p className="body-clean text-body text-foreground">{milestone.company}</p>
+                            </div>
+                            <span className="body-clean text-sm text-muted-foreground whitespace-nowrap">{milestone.period}</span>
+                          </div>
+                          <p className="body-clean text-body text-muted-foreground">{milestone.description}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+
               {/* Global Perspective */}
               <AccordionItem value="global" className="card-luxury">
                 <AccordionTrigger className="heading-elegant text-xl lg:text-heading px-6 py-3">

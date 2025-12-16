@@ -3,7 +3,6 @@ import About from "@/components/About";
 import Testimonials from "@/components/Testimonials";
 import CaseStudies from "@/components/CaseStudies";
 import FreeTraining from "@/components/FreeTraining";
-import Timeline from "@/components/Timeline";
 import Credentials from "@/components/Credentials";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
@@ -17,7 +16,6 @@ const Index = () => {
         <About />
         <CaseStudies />
         <FreeTraining />
-        <Timeline />
         <Testimonials />
         <Credentials />
         <ContactForm />
