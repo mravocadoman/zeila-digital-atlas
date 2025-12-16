@@ -102,7 +102,7 @@ const Credentials = () => {
     <section 
       ref={ref}
       id="credentials" 
-      className="py-12 lg:py-32 px-1 lg:px-4 bg-card"
+      className="py-12 lg:py-32 px-0 lg:px-2 bg-card"
     >
       <div className="w-full">
         <div className={`transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
@@ -116,7 +116,7 @@ const Credentials = () => {
           <div className="w-full">
             <Accordion type="multiple" className="w-full max-w-none space-y-3">
               {/* Core Skills */}
-              <AccordionItem value="skills" className="card-luxury p-3 lg:p-6">
+              <AccordionItem value="skills" className="card-luxury p-2 lg:p-4">
                 <AccordionTrigger className="heading-elegant text-xl lg:text-heading px-3 lg:px-6 py-3 justify-center lg:justify-start [&>svg]:ml-2 lg:[&>svg]:ml-auto">
                   Core Skills
                 </AccordionTrigger>
@@ -138,7 +138,7 @@ const Credentials = () => {
               </AccordionItem>
 
               {/* Tools & Platforms */}
-              <AccordionItem value="tools" className="card-luxury p-3 lg:p-6">
+              <AccordionItem value="tools" className="card-luxury p-2 lg:p-4">
                 <AccordionTrigger className="heading-elegant text-xl lg:text-heading px-3 lg:px-6 py-3 justify-center lg:justify-start [&>svg]:ml-2 lg:[&>svg]:ml-auto">
                   Tools & Platforms
                 </AccordionTrigger>
@@ -157,7 +157,7 @@ const Credentials = () => {
               </AccordionItem>
 
               {/* Education & Certifications */}
-              <AccordionItem value="education" className="card-luxury p-3 lg:p-6">
+              <AccordionItem value="education" className="card-luxury p-2 lg:p-4">
                 <AccordionTrigger className="heading-elegant text-xl lg:text-heading px-3 lg:px-6 py-3 justify-center lg:justify-start [&>svg]:ml-2 lg:[&>svg]:ml-auto">
                   Education & Certifications
                 </AccordionTrigger>
@@ -230,7 +230,7 @@ const Credentials = () => {
               </AccordionItem>
 
               {/* Languages */}
-              <AccordionItem value="languages" className="card-luxury p-3 lg:p-6">
+              <AccordionItem value="languages" className="card-luxury p-2 lg:p-4">
                 <AccordionTrigger className="heading-elegant text-xl lg:text-heading px-3 lg:px-6 py-3 justify-center lg:justify-start [&>svg]:ml-2 lg:[&>svg]:ml-auto">
                   Languages
                 </AccordionTrigger>
@@ -247,7 +247,7 @@ const Credentials = () => {
               </AccordionItem>
 
               {/* Global Perspective */}
-              <AccordionItem value="global" className="card-luxury p-3 lg:p-6">
+              <AccordionItem value="global" className="card-luxury p-2 lg:p-4">
                 <AccordionTrigger className="heading-elegant text-xl lg:text-heading px-3 lg:px-6 py-3 justify-center lg:justify-start [&>svg]:ml-2 lg:[&>svg]:ml-auto">
                   Global Perspective
                 </AccordionTrigger>
