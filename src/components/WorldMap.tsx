@@ -8,25 +8,47 @@ import {
 
 const geoUrl = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json";
 
-// ISO 3166-1 alpha-3 codes for visited countries
-const visitedCountries = [
-  "LVA", "LTU", "EST", "POL", "FIN", "SWE", "NOR", "HRV", "ROU", "ITA", 
-  "DEU", "DNK", "ESP", "PRT", "AUT", "CZE", "HUN", "GRC", "TUR", "GEO", // Europe
-  "THA", "MYS", "IDN", "SGP", // Southeast Asia
-  "JOR", "ISR", // Middle East
-  "ZMB", "BWA", // Africa
-  "USA", "COL", "MEX" // Americas
-];
-
-const countryNames: Record<string, string> = {
-  LVA: "Latvia", LTU: "Lithuania", EST: "Estonia", POL: "Poland", FIN: "Finland",
-  SWE: "Sweden", NOR: "Norway", HRV: "Croatia", ROU: "Romania", ITA: "Italy",
-  DEU: "Germany", DNK: "Denmark", ESP: "Spain", PRT: "Portugal", AUT: "Austria",
-  CZE: "Czechia", HUN: "Hungary", GRC: "Greece", TUR: "Turkey", GEO: "Georgia",
-  THA: "Thailand", MYS: "Malaysia", IDN: "Indonesia", SGP: "Singapore",
-  JOR: "Jordan", ISR: "Israel", ZMB: "Zambia", BWA: "Botswana",
-  USA: "United States", COL: "Colombia", MEX: "Mexico"
+// ISO 3166-1 numeric codes for visited countries
+const visitedCountryCodes: Record<string, string> = {
+  // Europe
+  "428": "Latvia",
+  "440": "Lithuania", 
+  "233": "Estonia",
+  "616": "Poland",
+  "246": "Finland",
+  "752": "Sweden",
+  "578": "Norway",
+  "191": "Croatia",
+  "642": "Romania",
+  "380": "Italy",
+  "276": "Germany",
+  "208": "Denmark",
+  "724": "Spain",
+  "620": "Portugal",
+  "040": "Austria",
+  "203": "Czechia",
+  "348": "Hungary",
+  "300": "Greece",
+  "792": "Turkey",
+  "268": "Georgia",
+  // Southeast Asia
+  "764": "Thailand",
+  "458": "Malaysia",
+  "360": "Indonesia",
+  "702": "Singapore",
+  // Middle East
+  "400": "Jordan",
+  "376": "Israel",
+  // Africa
+  "894": "Zambia",
+  "072": "Botswana",
+  // Americas
+  "840": "United States",
+  "170": "Colombia",
+  "484": "Mexico"
 };
+
+const visitedIds = Object.keys(visitedCountryCodes);
 
 const WorldMap = () => {
   const [hoveredCountry, setHoveredCountry] = useState<string | null>(null);
@@ -53,9 +75,9 @@ const WorldMap = () => {
             <Geographies geography={geoUrl}>
               {({ geographies }) =>
                 geographies.map((geo) => {
-                  const countryCode = geo.properties.ISO_A3 || geo.id;
-                  const isVisited = visitedCountries.includes(countryCode);
-                  const isHovered = hoveredCountry === countryCode;
+                  const countryId = geo.id;
+                  const isVisited = visitedIds.includes(countryId);
+                  const isHovered = hoveredCountry === countryId;
 
                   return (
                     <Geography
@@ -63,8 +85,8 @@ const WorldMap = () => {
                       geography={geo}
                       onMouseEnter={() => {
                         if (isVisited) {
-                          setHoveredCountry(countryCode);
-                          setTooltipContent(countryNames[countryCode] || geo.properties.name);
+                          setHoveredCountry(countryId);
+                          setTooltipContent(visitedCountryCodes[countryId] || geo.properties.name);
                         }
                       }}
                       onMouseLeave={() => {
@@ -74,33 +96,29 @@ const WorldMap = () => {
                       style={{
                         default: {
                           fill: isVisited 
-                            ? "hsl(196 97% 49%)" 
-                            : "hsl(205 100% 15%)",
+                            ? "hsl(196, 97%, 49%)" 
+                            : "hsl(205, 100%, 15%)",
                           stroke: isVisited 
-                            ? "hsl(196 97% 60%)" 
-                            : "hsl(196 97% 49% / 0.2)",
+                            ? "hsl(196, 97%, 60%)" 
+                            : "hsl(196, 97%, 49%, 0.2)",
                           strokeWidth: isVisited ? 0.8 : 0.3,
                           outline: "none",
-                          filter: isVisited ? "drop-shadow(0 0 4px hsl(196 97% 49% / 0.6))" : "none",
-                          transition: "all 0.3s ease",
                         },
                         hover: {
                           fill: isVisited 
-                            ? "hsl(320 100% 65%)" 
-                            : "hsl(205 100% 18%)",
+                            ? "hsl(320, 100%, 65%)" 
+                            : "hsl(205, 100%, 18%)",
                           stroke: isVisited 
-                            ? "hsl(320 100% 70%)" 
-                            : "hsl(196 97% 49% / 0.3)",
+                            ? "hsl(320, 100%, 70%)" 
+                            : "hsl(196, 97%, 49%, 0.3)",
                           strokeWidth: isVisited ? 1.2 : 0.3,
                           outline: "none",
-                          filter: isVisited ? "drop-shadow(0 0 8px hsl(320 100% 65% / 0.8))" : "none",
                           cursor: isVisited ? "pointer" : "default",
-                          transition: "all 0.3s ease",
                         },
                         pressed: {
                           fill: isVisited 
-                            ? "hsl(320 100% 55%)" 
-                            : "hsl(205 100% 15%)",
+                            ? "hsl(320, 100%, 55%)" 
+                            : "hsl(205, 100%, 15%)",
                           outline: "none",
                         },
                       }}
