@@ -116,7 +116,7 @@ const SpeakingTeaching = () => {
                   </p>
 
                   {/* Description */}
-                  <p className="text-sm text-muted-foreground leading-relaxed">
+                  <p className="text-base lg:text-lg text-muted-foreground leading-relaxed">
                     {experience.description}
                   </p>
 
