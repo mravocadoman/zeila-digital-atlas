@@ -108,7 +108,7 @@ const SpeakingTeaching = () => {
                   </div>
 
                   {/* Title & Organization */}
-                  <h3 className="text-lg lg:text-xl font-semibold text-foreground mb-1 group-hover:text-primary transition-colors">
+                  <h3 className="text-lg lg:text-xl font-semibold text-foreground mb-1">
                     {experience.title}
                   </h3>
                   <p className="text-base lg:text-lg text-primary/80 font-medium mb-3">
