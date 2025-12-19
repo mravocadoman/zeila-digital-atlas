@@ -75,7 +75,7 @@ const SpeakingTeaching = () => {
       >
         {/* Header */}
         <div className="text-center mb-10 lg:mb-16">
-          <h2 className="text-3xl lg:text-5xl font-bold mb-4 lg:mb-6 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
+          <h2 className="text-3xl lg:text-5xl font-bold mb-4 lg:mb-6 text-foreground">
             Speaking & Teaching
           </h2>
           <p className="text-base lg:text-xl text-muted-foreground max-w-2xl mx-auto">
