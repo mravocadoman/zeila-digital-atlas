@@ -102,7 +102,7 @@ const SpeakingTeaching = () => {
                       <Icon className="w-3 h-3" />
                       {config.label}
                     </span>
-                    <span className="text-xs text-muted-foreground font-medium">
+                    <span className="text-sm lg:text-base text-muted-foreground font-medium">
                       {experience.period}
                     </span>
                   </div>
