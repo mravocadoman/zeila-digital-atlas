@@ -147,7 +147,7 @@ const categories = [
         organization: "LSUA",
         period: "Aug 2020",
         description: "Free webinar on effective client acquisition with Facebook paid ads, covering Ads Manager, Facebook Pixel, and targeting strategies.",
-        link: null
+        link: "https://www.facebook.com/events/629017494698296/"
       },
       {
         title: "Podcast Guest",
