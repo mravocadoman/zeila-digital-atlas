@@ -1,7 +1,14 @@
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 import { Card, CardContent } from "@/components/ui/card";
-import { GraduationCap, Mic, Radio, Heart, ExternalLink } from "lucide-react";
+import { GraduationCap, Mic, Radio, Heart, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 const categories = [
   {
@@ -66,7 +73,7 @@ const categories = [
         link: "https://www.lakuga.lv/2024/12/05/digitalais-pasauls-i-celuosona-kai-dzeivis-veids-saruna-ar-rihardu-zeilu/"
       },
       {
-        title: "Kā uzņēmējiem iesaistīties izglītībā?",
+        title: "Panel Speaker",
         organization: "Printful, Draugiem Group & Vidzemes Tehnoloģiju un dizaina tehnikums",
         period: "Aug 2023",
         description: "Panel discussion on business-academia collaboration and entrepreneurship education.",
@@ -182,7 +189,7 @@ const SpeakingTeaching = () => {
         </div>
 
         {/* Category Sections */}
-        <div className="space-y-12 lg:space-y-16">
+        <div className="space-y-10 lg:space-y-14">
           {categories.map((category) => {
             const CategoryIcon = category.icon;
             
@@ -198,51 +205,62 @@ const SpeakingTeaching = () => {
                   </h3>
                 </div>
 
-                {/* Category Cards */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
-                  {category.items.map((item, index) => (
-                    <Card
-                      key={index}
-                      className="card-luxury border-hover"
-                    >
-                      <CardContent className="p-4 lg:p-6">
-                        {/* Period */}
-                        <div className="flex items-center justify-between mb-3">
-                          <span className="text-sm lg:text-base text-muted-foreground font-medium">
-                            {item.period}
-                          </span>
-                        </div>
+                {/* Category Carousel */}
+                <Carousel
+                  opts={{
+                    align: "start",
+                    loop: false,
+                  }}
+                  className="w-full"
+                >
+                  <CarouselContent className="-ml-4">
+                    {category.items.map((item, index) => (
+                      <CarouselItem key={index} className="pl-4 basis-[85%] sm:basis-[70%] md:basis-1/2 lg:basis-[45%]">
+                        <Card className="card-luxury border-hover h-full">
+                          <CardContent className="p-4 lg:p-6 h-full flex flex-col">
+                            {/* Period */}
+                            <div className="flex items-center justify-between mb-3">
+                              <span className="text-sm lg:text-base text-muted-foreground font-medium">
+                                {item.period}
+                              </span>
+                            </div>
 
-                        {/* Title & Organization */}
-                        <h4 className="text-lg lg:text-xl font-semibold text-foreground mb-1">
-                          {item.title}
-                        </h4>
-                        <p className="text-base lg:text-lg text-primary/80 font-medium mb-3">
-                          {item.organization}
-                        </p>
+                            {/* Title & Organization */}
+                            <h4 className="text-lg lg:text-xl font-semibold text-foreground mb-1">
+                              {item.title}
+                            </h4>
+                            <p className="text-base lg:text-lg text-primary/80 font-medium mb-3">
+                              {item.organization}
+                            </p>
 
-                        {/* Description */}
-                        <p className="text-base lg:text-lg text-muted-foreground leading-relaxed">
-                          {item.description}
-                        </p>
+                            {/* Description */}
+                            <p className="text-base lg:text-lg text-muted-foreground leading-relaxed flex-grow">
+                              {item.description}
+                            </p>
 
-                        {/* Link Button */}
-                        {item.link && (
-                          <Button
-                            variant="ghost"
-                            size="sm"
-                            className="mt-4 p-0 h-auto text-primary hover:text-accent"
-                            asChild
-                          >
-                            <a href={item.link} target="_blank" rel="noopener noreferrer">
-                              Listen <ExternalLink className="w-3 h-3 ml-1" />
-                            </a>
-                          </Button>
-                        )}
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
+                            {/* Link Button */}
+                            {item.link && (
+                              <Button
+                                variant="ghost"
+                                size="sm"
+                                className="mt-4 p-0 h-auto text-primary hover:text-accent self-start"
+                                asChild
+                              >
+                                <a href={item.link} target="_blank" rel="noopener noreferrer">
+                                  View <ExternalLink className="w-3 h-3 ml-1" />
+                                </a>
+                              </Button>
+                            )}
+                          </CardContent>
+                        </Card>
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                  <div className="flex items-center justify-end gap-2 mt-4">
+                    <CarouselPrevious className="static translate-y-0 h-8 w-8" />
+                    <CarouselNext className="static translate-y-0 h-8 w-8" />
+                  </div>
+                </Carousel>
               </div>
             );
           })}
