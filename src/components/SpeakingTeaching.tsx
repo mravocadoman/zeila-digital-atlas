@@ -318,7 +318,7 @@ const SpeakingTeaching = () => {
           <h2 className="heading-elegant text-3xl lg:text-display mb-3 lg:mb-4 animate-fade-in">
             Speaking & Teaching
           </h2>
-          <p className="text-xl lg:text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-xl lg:text-2xl text-muted-foreground max-w-2xl mx-auto">
             Sharing digital marketing expertise through lectures, workshops, and mentorship across universities, programs, and media platforms.
           </p>
         </div>

@@ -147,7 +147,7 @@ const ContactForm = () => {
             <form onSubmit={handleSubmit} className="space-y-4 lg:space-y-5">
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="name" className="body-clean block mb-2 text-base font-medium">
+                  <label htmlFor="name" className="body-clean block mb-2 text-base lg:text-lg font-medium">
                     Name
                   </label>
                   <Input
@@ -162,7 +162,7 @@ const ContactForm = () => {
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="body-clean block mb-2 text-base font-medium">
+                  <label htmlFor="email" className="body-clean block mb-2 text-base lg:text-lg font-medium">
                     Email
                   </label>
                   <Input
@@ -178,7 +178,7 @@ const ContactForm = () => {
               </div>
 
               <div>
-                <label htmlFor="type" className="body-clean block mb-2 text-base font-medium">
+                <label htmlFor="type" className="body-clean block mb-2 text-base lg:text-lg font-medium">
                   Type of Inquiry
                 </label>
                 <Select value={formData.type} onValueChange={(value) => setFormData({ ...formData, type: value })}>
@@ -196,7 +196,7 @@ const ContactForm = () => {
               </div>
 
               <div>
-                <label htmlFor="message" className="body-clean block mb-2 text-base font-medium">
+                <label htmlFor="message" className="body-clean block mb-2 text-base lg:text-lg font-medium">
                   Message
                 </label>
                 <Textarea
