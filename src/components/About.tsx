@@ -11,7 +11,7 @@ const About = () => {
         </h2>
 
         <div className="max-w-4xl mx-auto space-y-8">
-          <p className="body-clean leading-relaxed text-muted-foreground text-xl lg:text-xl text-center">
+          <p className="body-clean leading-relaxed text-muted-foreground text-2xl lg:text-2xl text-center">
             Experienced <span className="text-foreground font-semibold">Digital Marketing Manager, Consultant, and Lecturer</span> with extensive experience building, maintaining, and running successful digital marketing and advertising campaigns with up to <span className="text-foreground font-semibold">$5M yearly ad spend</span>.
           </p>
 
