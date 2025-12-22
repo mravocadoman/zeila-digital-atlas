@@ -10,22 +10,28 @@ const Footer = () => {
           <div className="animate-fade-in" style={{ animationDelay: '0.1s', animationFillMode: 'both' }}>
             <h3 className="heading-elegant text-large mb-4">Rihards Zeila</h3>
             <p className="body-clean text-body text-muted-foreground leading-relaxed">
-              Full-Stack Digital Marketer, Educator & Entrepreneur based in Riga, Latvia.
+              I build predictable growth systems and teach teams how to run them.
             </p>
           </div>
 
           {/* Quick Links */}
           <div className="animate-fade-in" style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>
             <h4 className="body-clean font-semibold mb-4 text-large">Quick Links</h4>
-          <nav className="space-y-2">
+            <nav className="space-y-2">
               <a href="#about" className="body-clean text-body text-muted-foreground hover:text-foreground transition-colors block">
                 About
               </a>
+              <a href="#case-studies" className="body-clean text-body text-muted-foreground hover:text-foreground transition-colors block">
+                Case Studies
+              </a>
+              <a href="#speaking" className="body-clean text-body text-muted-foreground hover:text-foreground transition-colors block">
+                Speaking & Teaching
+              </a>
+              <a href="#free-training" className="body-clean text-body text-muted-foreground hover:text-foreground transition-colors block">
+                Free Training
+              </a>
               <a href="#timeline" className="body-clean text-body text-muted-foreground hover:text-foreground transition-colors block">
                 Experience
-              </a>
-              <a href="#teaching" className="body-clean text-body text-muted-foreground hover:text-foreground transition-colors block">
-                Teaching
               </a>
               <a href="#contact" className="body-clean text-body text-muted-foreground hover:text-foreground transition-colors block">
                 Contact
