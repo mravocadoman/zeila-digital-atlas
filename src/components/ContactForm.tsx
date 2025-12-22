@@ -155,7 +155,7 @@ const ContactForm = () => {
                     type="text"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="bg-background border-border focus:border-primary"
+                    className="bg-background border-border focus:border-primary text-base lg:text-lg"
                     placeholder="Your name"
                     required
                   />
@@ -170,7 +170,7 @@ const ContactForm = () => {
                     type="email"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="bg-background border-border focus:border-primary"
+                    className="bg-background border-border focus:border-primary text-base lg:text-lg"
                     placeholder="your.email@example.com"
                     required
                   />
@@ -182,10 +182,10 @@ const ContactForm = () => {
                   Type of Inquiry
                 </label>
                 <Select value={formData.type} onValueChange={(value) => setFormData({ ...formData, type: value })}>
-                  <SelectTrigger className="bg-background border-border focus:border-primary" id="type">
+                  <SelectTrigger className="bg-background border-border focus:border-primary text-base lg:text-lg" id="type">
                     <SelectValue placeholder="Select inquiry type" />
                   </SelectTrigger>
-                  <SelectContent className="bg-card border-border">
+                  <SelectContent className="bg-card border-border text-base lg:text-lg">
                     <SelectItem value="project">Client Project</SelectItem>
                     <SelectItem value="cofounder">Co-Founder Opportunity</SelectItem>
                     <SelectItem value="cmo">CMO Role</SelectItem>
@@ -203,7 +203,7 @@ const ContactForm = () => {
                   id="message"
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="bg-background border-border focus:border-primary min-h-[120px]"
+                  className="bg-background border-border focus:border-primary min-h-[120px] text-base lg:text-lg"
                   placeholder="Tell me about your project or opportunity..."
                   required
                 />
