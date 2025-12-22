@@ -13,7 +13,7 @@ import {
 const categories = [
   {
     id: "teaching",
-    title: "Teaching",
+    title: "Academic Teaching & Lecturing",
     icon: GraduationCap,
     items: [
       {
@@ -44,6 +44,13 @@ const categories = [
     title: "Courses & Workshops",
     icon: Mic,
     items: [
+      {
+        title: "Executive Education Course Leader",
+        organization: "Riga Business School",
+        period: "Nov 2024",
+        description: "Digital Marketing Growth Strategies for SMEs course designed specifically for small and medium-sized enterprises. Covering strategy, analytics, and practical implementation for businesses at any experience level.",
+        link: null
+      },
       {
         title: "Course Leader & Workshop Facilitator",
         organization: "LIFT Program (EU-Funded)",
