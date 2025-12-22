@@ -43,7 +43,7 @@ const FreeTraining = () => {
                   href="https://www.youtube.com/playlist?list=PLHpAUrghDOai7S1pZVyoOhOn6crOlUc5i"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors body-clean font-semibold"
+                  className="inline-flex items-center gap-2 text-primary hover:text-white transition-colors body-clean font-semibold"
                 >
                   View Full Playlist on YouTube
                   <svg 
