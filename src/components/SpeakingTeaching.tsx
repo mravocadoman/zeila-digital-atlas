@@ -17,11 +17,11 @@ const categories = [
     icon: GraduationCap,
     items: [
       {
-        title: "MBA Digital Marketing Lecturer",
-        organization: "Riga Business School",
-        period: "2021 – Present",
-        description: "Hands-on syllabus with live client projects; mentoring MBA students on strategy, analytics, and KPIs.",
-        link: null
+        title: "Guest Lecturer",
+        organization: "University of Lusaka",
+        period: "May 2024",
+        description: "International guest role sharing digital marketing expertise with Zambian students.",
+        link: "https://www.facebook.com/permalink.php?story_fbid=pfbid0sbHi7MSF7Du61X8KCUM2qDwNdsBCd2dGGhQFa7fCBkpREh9Cz75VCHzvHZvPVEaUl&id=100000487541249"
       },
       {
         title: "BBA Lecturer",
@@ -31,11 +31,11 @@ const categories = [
         link: null
       },
       {
-        title: "Guest Lecturer",
-        organization: "University of Lusaka",
-        period: "May 2024",
-        description: "International guest role sharing digital marketing expertise with Zambian students.",
-        link: "https://www.facebook.com/permalink.php?story_fbid=pfbid0sbHi7MSF7Du61X8KCUM2qDwNdsBCd2dGGhQFa7fCBkpREh9Cz75VCHzvHZvPVEaUl&id=100000487541249"
+        title: "MBA Digital Marketing Lecturer",
+        organization: "Riga Business School",
+        period: "2021 – Present",
+        description: "Hands-on syllabus with live client projects; mentoring MBA students on strategy, analytics, and KPIs.",
+        link: null
       }
     ]
   },
@@ -45,18 +45,18 @@ const categories = [
     icon: Mic,
     items: [
       {
-        title: "Executive Education Course",
-        organization: "Riga Business School",
-        period: "Nov 2024",
-        description: "Digital Marketing Growth Strategies for SMEs — practical course for small and medium-sized enterprises.",
-        link: "https://www.facebook.com/RigaBusinessSchool/posts/pfbid0XEj9zWkXS18GTgPWW6rKHhkLT1BXdgzwb1TiNLtH4gEeBi1u37HtXTLZnwkBzGuSl"
-      },
-      {
         title: "Course Leader & Workshop Facilitator",
         organization: "LIFT Program (EU-Funded)",
         period: "2024 – Present",
         description: "Lead monthly workshops on Meta ads and automation for Latvian SMEs; developed Meta Advertising Basics one-day intensives.",
         link: null
+      },
+      {
+        title: "Executive Education Course",
+        organization: "Riga Business School",
+        period: "Nov 2024",
+        description: "Digital Marketing Growth Strategies for SMEs — practical course for small and medium-sized enterprises.",
+        link: "https://www.facebook.com/RigaBusinessSchool/posts/pfbid0XEj9zWkXS18GTgPWW6rKHhkLT1BXdgzwb1TiNLtH4gEeBi1u37HtXTLZnwkBzGuSl"
       },
       {
         title: "Digital Campaign Workshop Leader",
@@ -84,7 +84,7 @@ const categories = [
         organization: "International Trade Centre (ITC)",
         period: "Jan – Mar 2019",
         description: "Implemented digital marketing programs in Kenya, Palestine, Gambia, and Jordan. Trained 100+ students and delivered fintech solutions for international SMEs.",
-        link: null
+        link: "https://www.facebook.com/permalink.php?story_fbid=pfbid0xVEbQHkGsJcLBf4PiN32sP6hyzVFxGo5xZou81eQVJmYdjRKbNq45CTivWirz67nl&id=100000487541249"
       }
     ]
   },
@@ -106,6 +106,13 @@ const categories = [
         period: "Oct 2024",
         description: "AI in Digital Marketing — LIFT program webinar on leveraging artificial intelligence for business growth.",
         link: "https://www.facebook.com/events/551552717574429/"
+      },
+      {
+        title: "Podcast Guest",
+        organization: "BSMS Podcast",
+        period: "Oct 2024",
+        description: "Episode on digital nomadism, having traveled to 33+ countries as founder of Mārketinga Skola.",
+        link: "https://www.facebook.com/BSMSLatvia/posts/pfbid0jMPHXF5NihWx2QE8quEzC3FcC7iXmV6xFkxGzU8xFc4f5CZ7NUS69Y9ztUQUAdZPl"
       },
       {
         title: "Podcast Guest",
@@ -136,13 +143,6 @@ const categories = [
         link: "https://www.delfi.lv/pieredzi-erasmus-plus/erasmus-ka-piedzivojums-un-iedvesma-mainit-nodarbosanos-riharda-stasts.d?id=54802938"
       },
       {
-        title: "Panel Speaker",
-        organization: "Marketing Shake 2020 Conference",
-        period: "2020",
-        description: "Panel on Facebook advertising strategies for low-budget or zero-budget scenarios.",
-        link: null
-      },
-      {
         title: "Webinar Host",
         organization: "LSUA",
         period: "Aug 2020",
@@ -150,11 +150,11 @@ const categories = [
         link: "https://www.facebook.com/events/629017494698296/"
       },
       {
-        title: "Podcast Guest",
-        organization: "BSMS Podcast",
-        period: "Oct 2024",
-        description: "Episode on digital nomadism, having traveled to 33+ countries as founder of Mārketinga Skola.",
-        link: "https://www.facebook.com/BSMSLatvia/posts/pfbid0jMPHXF5NihWx2QE8quEzC3FcC7iXmV6xFkxGzU8xFc4f5CZ7NUS69Y9ztUQUAdZPl"
+        title: "Panel Speaker",
+        organization: "Marketing Shake 2020 Conference",
+        period: "2020",
+        description: "Panel on Facebook advertising strategies for low-budget or zero-budget scenarios.",
+        link: null
       },
       {
         title: "Webinar Host",
