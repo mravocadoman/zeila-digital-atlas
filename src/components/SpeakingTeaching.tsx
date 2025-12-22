@@ -77,7 +77,7 @@ const categories = [
         organization: "Latvijas Digitālo ekspertu biedrība",
         period: "2019 – 2020",
         description: "Developed entry-to-mid-level Facebook advertising course framework; conducted Facebook advertising workshops in Riga.",
-        link: null
+        link: "https://www.lde.lv/lektors/rihards/"
       },
       {
         title: "Digital Marketing Consultant",
