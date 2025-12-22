@@ -278,7 +278,7 @@ const CategoryCarousel = ({ category }: { category: typeof categories[0] }) => {
                     <Button
                       variant="ghost"
                       size="sm"
-                      className="mt-4 p-0 h-auto text-primary hover:text-accent self-start"
+                      className="mt-4 p-0 h-auto text-primary hover:bg-transparent hover:text-foreground self-start"
                       asChild
                     >
                       <a href={item.link} target="_blank" rel="noopener noreferrer">
