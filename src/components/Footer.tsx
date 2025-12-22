@@ -96,7 +96,7 @@ const Footer = () => {
 
         <div className="pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="body-clean text-body text-muted-foreground">
-            © 2025 Rihards Zeila. All rights reserved.
+            © 2026 Rihards Zeila. All rights reserved.
           </p>
           <p className="body-clean text-body text-muted-foreground">
             Designed by{" "}
