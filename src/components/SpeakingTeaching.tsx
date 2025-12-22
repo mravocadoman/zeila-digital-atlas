@@ -137,7 +137,7 @@ const categories = [
       },
       {
         title: "Panel Speaker",
-        organization: "Marketing Shake",
+        organization: "Marketing Shake 2020 Conference",
         period: "2020",
         description: "Panel on Facebook advertising strategies for low-budget or zero-budget scenarios.",
         link: null
