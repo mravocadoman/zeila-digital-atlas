@@ -37,25 +37,17 @@ const Navigation = () => {
       className={`fixed top-0 left-0 right-0 z-50 transition-transform duration-300 ${
         isVisible ? "translate-y-0" : "-translate-y-full"
       }`}
-      style={{ backgroundColor: "#00152c" }}
+      style={{ backgroundColor: "#001B2E" }}
     >
       <div className="max-w-7xl mx-auto px-4 lg:px-6">
-        <div className="flex items-center justify-between h-14 lg:h-16">
-          {/* Logo/Name */}
-          <a
-            href="#"
-            className="text-white font-bold text-sm lg:text-base uppercase tracking-wider"
-          >
-            Rihards Zeila
-          </a>
-
+        <div className="flex items-center justify-center h-16 lg:h-20">
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-6 lg:gap-8">
+          <div className="hidden md:flex items-center justify-center gap-8 lg:gap-12 w-full">
             {navItems.map((item) => (
               <a
                 key={item.label}
                 href={item.href}
-                className="text-white text-xs lg:text-sm uppercase tracking-wide font-medium hover:opacity-80 transition-opacity"
+                className="text-white text-sm lg:text-base uppercase tracking-wide font-medium hover:opacity-80 transition-opacity"
               >
                 {item.label}
               </a>
