@@ -70,7 +70,7 @@ const categories = [
         organization: "Medijpratējs / Digitālā Akadēmija",
         period: "2022",
         description: "Delivered lectures on NGO work, digital tools, and digital marketing.",
-        link: null
+        link: "https://www.facebook.com/medijpratejs/posts/pfbid02aYPbLyQqHhkDPfdqtqejx5jAdAF7GVe5QZhwY3caXEpBLvzbFSkKBkKnpdPzQtZTl"
       },
       {
         title: "Workshop Facilitator",
