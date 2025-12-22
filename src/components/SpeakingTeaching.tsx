@@ -255,21 +255,21 @@ const CategoryCarousel = ({ category }: { category: typeof categories[0] }) => {
                 <CardContent className="p-4 lg:p-6 h-full flex flex-col">
                   {/* Period */}
                   <div className="flex items-center justify-between mb-3">
-                    <span className="text-sm lg:text-base text-muted-foreground font-medium">
+                    <span className="text-base lg:text-lg text-muted-foreground font-medium">
                       {item.period}
                     </span>
                   </div>
 
                   {/* Title & Organization */}
-                  <h4 className="text-lg lg:text-xl font-semibold text-foreground mb-1">
+                  <h4 className="text-xl lg:text-2xl font-semibold text-foreground mb-1">
                     {item.title}
                   </h4>
-                  <p className="text-base lg:text-lg text-primary/80 font-medium mb-3">
+                  <p className="text-lg lg:text-xl text-primary/80 font-medium mb-3">
                     {item.organization}
                   </p>
 
                   {/* Description */}
-                  <p className="text-base lg:text-lg text-muted-foreground leading-relaxed flex-grow">
+                  <p className="text-lg lg:text-xl text-muted-foreground leading-relaxed flex-grow">
                     {item.description}
                   </p>
 
