@@ -21,7 +21,7 @@ const ROASChart = () => {
       label: "The Brew Company",
       value: 13
     }, {
-      label: "Četras Zoles",
+      label: "Cetras Zoles",
       value: 36
     }, {
       label: "Aleph Clients",

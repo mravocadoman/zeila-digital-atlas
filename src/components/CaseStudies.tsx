@@ -16,7 +16,7 @@ const caseStudies = [
     ],
   },
   {
-    company: "Četras Zoles",
+    company: "Cetras Zoles",
     description: "Latvian outlet store selling branded fashion at major discounts. Goal: maximum reach, minimal spend.",
     details: "Strong creative testing + Advantage+ campaigns on Meta. First €1K delivered 36.34 ROAS. Great products just need the right structure.",
     metrics: [
