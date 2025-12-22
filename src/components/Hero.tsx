@@ -28,8 +28,8 @@ const Hero = () => {
             animationDelay: '0.4s',
             animationFillMode: 'both'
           }} className="body-clean text-foreground leading-tight text-lg lg:text-xl animate-fade-in lg:text-left text-center font-extrabold space-y-2">
-              <p>You don't need more clicks or views — you need a predictable system that turns traffic into revenue.</p>
-              <p>I work with SMEs, e-commerce brands, and service-based businesses that want to generate consistent leads and sales through Meta ads, automation, and smart funnel design.</p>
+              <p>You don't need more clicks or views. You need a system that turns traffic into revenue.</p>
+              <p>I help SMEs, e-commerce brands, and service businesses scale through Meta ads, automation, smart funnel design, and hands-on teaching.</p>
             </div>
 
             <div className="pt-2 sm:pt-4 animate-fade-in flex justify-center lg:justify-start" style={{
