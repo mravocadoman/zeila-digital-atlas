@@ -59,29 +59,15 @@ const categories = [
     icon: Radio,
     items: [
       {
-        title: "Podcast Guest",
-        organization: "#5BREINUMI (YouTube/Podcast)",
-        period: "2019",
-        description: "Discussed digital marketing, global travel experiences, and professional insights.",
-        link: null
+        title: "Interview Feature",
+        organization: "LAKUGA",
+        period: "Dec 2024",
+        description: "In-depth interview about world travel experiences, career journey, and digital marketing trends.",
+        link: "https://www.lakuga.lv/2024/12/05/digitalais-pasauls-i-celuosona-kai-dzeivis-veids-saruna-ar-rihardu-zeilu/"
       },
       {
-        title: "Podcast Guest",
-        organization: "BSMS Podcast",
-        period: "2020",
-        description: "Episode on digital nomadism, having traveled to 33+ countries as founder of Mārketinga Skola.",
-        link: "https://open.spotify.com/episode/7IwveDKWopyuJAgGd0eQiJ"
-      },
-      {
-        title: "Youth Lecturer",
-        organization: "Medijpratējs / Digitālā Akadēmija",
-        period: "2022",
-        description: "Delivered lectures on NGO work, digital tools, and digital marketing to youth at Ādažu vidusskola.",
-        link: null
-      },
-      {
-        title: "Panel Speaker",
-        organization: "Printful",
+        title: "Kā uzņēmējiem iesaistīties izglītībā?",
+        organization: "Printful, Draugiem Group & Vidzemes Tehnoloģiju un dizaina tehnikums",
         period: "Aug 2023",
         description: "Panel discussion on business-academia collaboration and entrepreneurship education.",
         link: null
@@ -98,6 +84,48 @@ const categories = [
         organization: "Delfi",
         period: "Oct 2022",
         description: "Featured interview on digital nomad lifestyle and working remotely from Thailand.",
+        link: null
+      },
+      {
+        title: "Youth Lecturer",
+        organization: "Medijpratējs / Digitālā Akadēmija",
+        period: "2022",
+        description: "Delivered lectures on NGO work, digital tools, and digital marketing to youth at Ādažu vidusskola.",
+        link: null
+      },
+      {
+        title: "Panel Speaker",
+        organization: "Marketing Shake",
+        period: "2020",
+        description: "Panel on Facebook advertising strategies for low-budget or zero-budget scenarios.",
+        link: null
+      },
+      {
+        title: "Webinar Host",
+        organization: "LSUA",
+        period: "Aug 2020",
+        description: "Free webinar on effective client acquisition with Facebook paid ads, covering Ads Manager, Facebook Pixel, and targeting strategies.",
+        link: null
+      },
+      {
+        title: "Podcast Guest",
+        organization: "BSMS Podcast",
+        period: "2020",
+        description: "Episode on digital nomadism, having traveled to 33+ countries as founder of Mārketinga Skola.",
+        link: "https://open.spotify.com/episode/7IwveDKWopyuJAgGd0eQiJ"
+      },
+      {
+        title: "Webinar Host",
+        organization: "DarbaVieta",
+        period: "Oct 2019",
+        description: "Introduction to Facebook platform capabilities and trends, demonstrating how to find target audiences and create effective campaigns.",
+        link: null
+      },
+      {
+        title: "Podcast Guest",
+        organization: "#5BREINUMI (YouTube/Podcast)",
+        period: "2019",
+        description: "Discussed digital marketing, global travel experiences, and professional insights.",
         link: null
       }
     ]
