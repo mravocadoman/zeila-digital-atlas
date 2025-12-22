@@ -22,7 +22,7 @@ const Hero = () => {
             <h2 className="heading-elegant text-foreground leading-snug font-bold text-[5.5vw] sm:text-2xl md:text-3xl lg:text-4xl max-w-[92vw] mx-auto lg:mx-0 animate-fade-in text-center lg:text-left" style={{
             animationDelay: '0.2s',
             animationFillMode: 'both'
-          }}>Helping Businesses Grow. Building Impactful Projects.</h2>
+          }}>I build predictable growth systems and teach teams how to run them.</h2>
             
             <div style={{
             animationDelay: '0.4s',
