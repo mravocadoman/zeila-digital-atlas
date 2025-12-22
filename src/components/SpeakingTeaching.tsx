@@ -20,7 +20,7 @@ const categories = [
         title: "Guest Lecturer",
         organization: "University of Lusaka",
         period: "May 2024",
-        description: "International guest role sharing digital marketing expertise with Zambian students.",
+        description: "International guest role via Riga Business School Erasmus+ educator programme, sharing digital marketing expertise with Zambian students.",
         link: "https://www.facebook.com/permalink.php?story_fbid=pfbid0sbHi7MSF7Du61X8KCUM2qDwNdsBCd2dGGhQFa7fCBkpREh9Cz75VCHzvHZvPVEaUl&id=100000487541249"
       },
       {
