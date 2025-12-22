@@ -27,7 +27,7 @@ const categories = [
         title: "BBA Lecturer",
         organization: "RISEBA University",
         period: "2023 – 2024",
-        description: "Developed and recorded lectures on social media management, content strategy, and Meta advertising.",
+        description: "Developed, recorded, and graded lectures on social media management, content strategy, landing pages, and Meta advertising for RISEBA Bachelor's students.",
         link: null
       },
       {
