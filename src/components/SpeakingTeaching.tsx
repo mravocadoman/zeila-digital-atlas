@@ -168,7 +168,7 @@ const categories = [
         organization: "#5BREINUMI (YouTube/Podcast)",
         period: "2019",
         description: "Discussed digital marketing, global travel experiences, and professional insights.",
-        link: null
+        link: "https://www.youtube.com/watch?v=B6BE6QBBGYo&t=931s"
       }
     ]
   },
