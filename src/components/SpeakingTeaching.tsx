@@ -152,9 +152,9 @@ const categories = [
       {
         title: "Podcast Guest",
         organization: "BSMS Podcast",
-        period: "2020",
+        period: "Oct 2024",
         description: "Episode on digital nomadism, having traveled to 33+ countries as founder of Mārketinga Skola.",
-        link: "https://open.spotify.com/episode/7IwveDKWopyuJAgGd0eQiJ"
+        link: "https://www.facebook.com/BSMSLatvia/posts/pfbid0jMPHXF5NihWx2QE8quEzC3FcC7iXmV6xFkxGzU8xFc4f5CZ7NUS69Y9ztUQUAdZPl"
       },
       {
         title: "Webinar Host",
