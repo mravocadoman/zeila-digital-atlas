@@ -73,7 +73,7 @@ const categories = [
         link: null
       },
       {
-        title: "Digital Marketing Consultant",
+        title: "Workshop Facilitator",
         organization: "Latvijas Digitālo ekspertu biedrība",
         period: "2019 – 2020",
         description: "Developed entry-to-mid-level Facebook advertising course framework; conducted Facebook advertising workshops in Riga.",
