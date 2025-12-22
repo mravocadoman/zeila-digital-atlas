@@ -17,16 +17,16 @@ const About = () => {
 
           <div ref={statsAnimation.ref} className={`grid grid-cols-3 gap-4 lg:gap-8 pt-6 lg:pt-8 transition-all duration-700 ${statsAnimation.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <div className="text-center">
-              <div className="heading-elegant text-2xl lg:text-heading mb-1 lg:mb-2 text-white">10+</div>
-              <div className="body-clean text-sm lg:text-body text-muted-foreground">Years Experience</div>
+              <div className="heading-elegant text-2xl lg:text-4xl mb-1 lg:mb-2 text-white">10+</div>
+              <div className="body-clean text-sm lg:text-lg text-muted-foreground">Years Experience</div>
             </div>
             <div className="text-center">
-              <div className="heading-elegant text-2xl lg:text-heading mb-1 lg:mb-2 text-white">36x</div>
-              <div className="body-clean text-sm lg:text-body text-muted-foreground">Best ROAS</div>
+              <div className="heading-elegant text-2xl lg:text-4xl mb-1 lg:mb-2 text-white">36x</div>
+              <div className="body-clean text-sm lg:text-lg text-muted-foreground">Best ROAS</div>
             </div>
             <div className="text-center">
-              <div className="heading-elegant text-2xl lg:text-heading mb-1 lg:mb-2 text-white">€10M+</div>
-              <div className="body-clean text-sm lg:text-body text-muted-foreground">Revenue Generated</div>
+              <div className="heading-elegant text-2xl lg:text-4xl mb-1 lg:mb-2 text-white">€10M+</div>
+              <div className="body-clean text-sm lg:text-lg text-muted-foreground">Revenue Generated</div>
             </div>
           </div>
         </div>
