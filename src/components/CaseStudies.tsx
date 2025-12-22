@@ -79,7 +79,7 @@ const CaseStudies = () => {
         <h2 className="heading-elegant text-3xl lg:text-display mb-3 lg:mb-4 animate-fade-in text-center lg:text-left">
           Case Studies
         </h2>
-        <p className="body-clean text-muted-foreground mb-8 lg:mb-12 max-w-3xl text-center lg:text-left text-lg lg:text-xl">
+        <p className="body-clean text-muted-foreground mb-8 lg:mb-12 max-w-3xl text-center lg:text-left text-xl lg:text-xl">
           Real results from real campaigns — from e-commerce to coaching, fashion to fintech.
         </p>
 

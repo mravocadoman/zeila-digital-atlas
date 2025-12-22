@@ -27,7 +27,7 @@ const Hero = () => {
             <div style={{
             animationDelay: '0.4s',
             animationFillMode: 'both'
-          }} className="body-clean text-foreground leading-tight text-lg lg:text-2xl animate-fade-in lg:text-left text-center font-extrabold space-y-2">
+          }} className="body-clean text-foreground leading-tight text-xl lg:text-2xl animate-fade-in lg:text-left text-center font-extrabold space-y-2">
               <p>You don't need more clicks or views. You need a system that turns traffic into revenue.</p>
               <p>I help SMEs, e-commerce brands, and service businesses scale through Meta ads, automation, smart funnel design, and hands-on teaching.</p>
             </div>
