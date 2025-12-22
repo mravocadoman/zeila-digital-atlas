@@ -47,7 +47,7 @@ const Navigation = () => {
               <a
                 key={item.label}
                 href={item.href}
-                className="text-white text-sm lg:text-base uppercase tracking-wide font-medium hover:opacity-80 transition-opacity"
+                className="text-white text-sm lg:text-base uppercase tracking-wide font-bold hover:opacity-80 transition-opacity"
               >
                 {item.label}
               </a>
