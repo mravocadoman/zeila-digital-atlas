@@ -46,6 +46,13 @@ const Navigation = () => {
               <a
                 key={item.label}
                 href={item.href}
+                onClick={(e) => {
+                  e.preventDefault();
+                  const target = document.querySelector(item.href);
+                  if (target) {
+                    target.scrollIntoView({ behavior: "smooth" });
+                  }
+                }}
                 className="text-white text-base lg:text-lg uppercase tracking-wide font-bold hover:opacity-80 transition-opacity"
               >
                 {item.label}
@@ -88,10 +95,15 @@ const Navigation = () => {
                 key={item.label}
                 href={item.href}
                 className="text-white text-sm uppercase tracking-wide font-medium hover:opacity-80 transition-opacity"
-                onClick={() => {
+                onClick={(e) => {
+                  e.preventDefault();
                   const mobileMenu = document.getElementById("mobile-menu");
                   if (mobileMenu) {
                     mobileMenu.classList.add("hidden");
+                  }
+                  const target = document.querySelector(item.href);
+                  if (target) {
+                    target.scrollIntoView({ behavior: "smooth" });
                   }
                 }}
               >
