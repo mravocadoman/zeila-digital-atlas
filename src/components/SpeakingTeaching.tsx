@@ -45,10 +45,10 @@ const categories = [
     icon: Mic,
     items: [
       {
-        title: "Executive Education Course Leader",
+        title: "Executive Education Course",
         organization: "Riga Business School",
         period: "Nov 2024",
-        description: "Digital Marketing Growth Strategies for SMEs course designed specifically for small and medium-sized enterprises. Covering strategy, analytics, and practical implementation for businesses at any experience level.",
+        description: "Digital Marketing Growth Strategies for SMEs — practical course for small and medium-sized enterprises.",
         link: null
       },
       {
@@ -56,6 +56,13 @@ const categories = [
         organization: "LIFT Program (EU-Funded)",
         period: "2024 – Present",
         description: "Lead monthly workshops on Meta ads and automation for Latvian SMEs; developed Meta Advertising Basics one-day intensives.",
+        link: null
+      },
+      {
+        title: "Youth Lecturer",
+        organization: "Medijpratējs / Digitālā Akadēmija",
+        period: "2022",
+        description: "Delivered lectures on NGO work, digital tools, and digital marketing.",
         link: null
       },
       {
@@ -87,6 +94,13 @@ const categories = [
         link: "https://www.lakuga.lv/2024/12/05/digitalais-pasauls-i-celuosona-kai-dzeivis-veids-saruna-ar-rihardu-zeilu/"
       },
       {
+        title: "Podcast Guest",
+        organization: "The Career Sensei (Emmanuel Chisalu)",
+        period: "May 2024",
+        description: "Exploring a Career in Digital Marketing — discussing insights on social media advertising, strategies, and trends reshaping the digital marketing landscape.",
+        link: null
+      },
+      {
         title: "Panel Speaker",
         organization: "Printful & Draugiem Group",
         period: "Aug 2023",
@@ -105,13 +119,6 @@ const categories = [
         organization: "Delfi",
         period: "Oct 2022",
         description: "Featured interview on digital nomad lifestyle and working remotely from Thailand.",
-        link: null
-      },
-      {
-        title: "Youth Lecturer",
-        organization: "Medijpratējs / Digitālā Akadēmija",
-        period: "2022",
-        description: "Delivered lectures on NGO work, digital tools, and digital marketing to youth at Ādažu vidusskola.",
         link: null
       },
       {
