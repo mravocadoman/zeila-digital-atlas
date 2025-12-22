@@ -7,7 +7,7 @@ const About = () => {
     <section id="about" className="py-12 lg:py-32 px-6 lg:px-16 bg-card">
       <div className="max-w-7xl mx-auto">
         <h2 className="heading-elegant text-3xl lg:text-display mb-8 lg:mb-12 animate-fade-in text-center">
-          Helping Businesses Scale with Proven Meta Ad Systems
+          Helping Businesses Scale
         </h2>
 
         <div className="max-w-4xl mx-auto space-y-8">
