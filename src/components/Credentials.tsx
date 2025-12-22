@@ -116,7 +116,7 @@ const Credentials = () => {
           <h2 className="heading-elegant text-3xl lg:text-display mb-4 lg:mb-6 text-center">
             Full Credentials & Background
           </h2>
-          <p className="body-clean text-lg lg:text-xl text-muted-foreground mb-8 lg:mb-12 text-center max-w-3xl mx-auto">
+          <p className="body-clean text-xl lg:text-xl text-muted-foreground mb-8 lg:mb-12 text-center max-w-3xl mx-auto">
             For those who want to dive deeper into my qualifications, tools, and experience.
           </p>
 
