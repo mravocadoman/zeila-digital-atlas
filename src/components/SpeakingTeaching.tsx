@@ -57,6 +57,13 @@ const categories = [
         period: "2019 – 2020",
         description: "Developed entry-to-mid-level Facebook advertising course framework; conducted Facebook advertising workshops in Riga.",
         link: null
+      },
+      {
+        title: "Digital Marketing Consultant",
+        organization: "International Trade Centre (ITC)",
+        period: "Jan – Mar 2019",
+        description: "Implemented digital marketing programs in Kenya, Palestine, Gambia, and Jordan. Trained 100+ students and delivered fintech solutions for international SMEs.",
+        link: null
       }
     ]
   },
