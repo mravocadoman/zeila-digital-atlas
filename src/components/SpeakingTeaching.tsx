@@ -1,6 +1,6 @@
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 import { Card, CardContent } from "@/components/ui/card";
-import { GraduationCap, Mic, Radio, Heart, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
+import { GraduationCap, Mic, Radio, Heart, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Carousel,
@@ -8,7 +8,9 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
+  type CarouselApi,
 } from "@/components/ui/carousel";
+import { useState, useEffect } from "react";
 
 const categories = [
   {
@@ -202,6 +204,104 @@ const categories = [
   }
 ];
 
+const CategoryCarousel = ({ category }: { category: typeof categories[0] }) => {
+  const [api, setApi] = useState<CarouselApi>();
+  const [canScroll, setCanScroll] = useState(false);
+
+  useEffect(() => {
+    if (!api) return;
+
+    const checkScroll = () => {
+      setCanScroll(api.canScrollPrev() || api.canScrollNext());
+    };
+
+    checkScroll();
+    api.on("resize", checkScroll);
+    api.on("reInit", checkScroll);
+
+    return () => {
+      api.off("resize", checkScroll);
+      api.off("reInit", checkScroll);
+    };
+  }, [api]);
+
+  const CategoryIcon = category.icon;
+
+  return (
+    <div>
+      {/* Category Header */}
+      <div className="flex items-center gap-3 mb-6">
+        <div className="p-2 rounded-lg bg-primary/10">
+          <CategoryIcon className="w-5 h-5 text-primary" />
+        </div>
+        <h3 className="text-xl lg:text-2xl font-semibold text-foreground">
+          {category.title}
+        </h3>
+      </div>
+
+      {/* Category Carousel */}
+      <Carousel
+        opts={{
+          align: "start",
+          loop: false,
+        }}
+        setApi={setApi}
+        className="w-full"
+      >
+        <CarouselContent className="-ml-4">
+          {category.items.map((item, index) => (
+            <CarouselItem key={index} className="pl-4 basis-full sm:basis-1/2 lg:basis-1/3">
+              <Card className="card-luxury border-hover h-full">
+                <CardContent className="p-4 lg:p-6 h-full flex flex-col">
+                  {/* Period */}
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-sm lg:text-base text-muted-foreground font-medium">
+                      {item.period}
+                    </span>
+                  </div>
+
+                  {/* Title & Organization */}
+                  <h4 className="text-lg lg:text-xl font-semibold text-foreground mb-1">
+                    {item.title}
+                  </h4>
+                  <p className="text-base lg:text-lg text-primary/80 font-medium mb-3">
+                    {item.organization}
+                  </p>
+
+                  {/* Description */}
+                  <p className="text-base lg:text-lg text-muted-foreground leading-relaxed flex-grow">
+                    {item.description}
+                  </p>
+
+                  {/* Link Button */}
+                  {item.link && (
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="mt-4 p-0 h-auto text-primary hover:text-accent self-start"
+                      asChild
+                    >
+                      <a href={item.link} target="_blank" rel="noopener noreferrer">
+                        View <ExternalLink className="w-3 h-3 ml-1" />
+                      </a>
+                    </Button>
+                  )}
+                </CardContent>
+              </Card>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        {canScroll && (
+          <div className="flex items-center justify-end gap-2 mt-4">
+            <CarouselPrevious className="static translate-y-0 h-8 w-8" />
+            <CarouselNext className="static translate-y-0 h-8 w-8" />
+          </div>
+        )}
+      </Carousel>
+    </div>
+  );
+};
+
 const SpeakingTeaching = () => {
   const { ref, isVisible } = useScrollAnimation(0.1);
 
@@ -225,80 +325,9 @@ const SpeakingTeaching = () => {
 
         {/* Category Sections */}
         <div className="space-y-10 lg:space-y-14">
-          {categories.map((category) => {
-            const CategoryIcon = category.icon;
-            
-            return (
-              <div key={category.id}>
-                {/* Category Header */}
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="p-2 rounded-lg bg-primary/10">
-                    <CategoryIcon className="w-5 h-5 text-primary" />
-                  </div>
-                  <h3 className="text-xl lg:text-2xl font-semibold text-foreground">
-                    {category.title}
-                  </h3>
-                </div>
-
-                {/* Category Carousel */}
-                <Carousel
-                  opts={{
-                    align: "start",
-                    loop: false,
-                  }}
-                  className="w-full"
-                >
-                  <CarouselContent className="-ml-4">
-                    {category.items.map((item, index) => (
-                      <CarouselItem key={index} className="pl-4 basis-full sm:basis-1/2 lg:basis-1/3">
-                        <Card className="card-luxury border-hover h-full">
-                          <CardContent className="p-4 lg:p-6 h-full flex flex-col">
-                            {/* Period */}
-                            <div className="flex items-center justify-between mb-3">
-                              <span className="text-sm lg:text-base text-muted-foreground font-medium">
-                                {item.period}
-                              </span>
-                            </div>
-
-                            {/* Title & Organization */}
-                            <h4 className="text-lg lg:text-xl font-semibold text-foreground mb-1">
-                              {item.title}
-                            </h4>
-                            <p className="text-base lg:text-lg text-primary/80 font-medium mb-3">
-                              {item.organization}
-                            </p>
-
-                            {/* Description */}
-                            <p className="text-base lg:text-lg text-muted-foreground leading-relaxed flex-grow">
-                              {item.description}
-                            </p>
-
-                            {/* Link Button */}
-                            {item.link && (
-                              <Button
-                                variant="ghost"
-                                size="sm"
-                                className="mt-4 p-0 h-auto text-primary hover:text-accent self-start"
-                                asChild
-                              >
-                                <a href={item.link} target="_blank" rel="noopener noreferrer">
-                                  View <ExternalLink className="w-3 h-3 ml-1" />
-                                </a>
-                              </Button>
-                            )}
-                          </CardContent>
-                        </Card>
-                      </CarouselItem>
-                    ))}
-                  </CarouselContent>
-                  <div className="flex items-center justify-end gap-2 mt-4">
-                    <CarouselPrevious className="static translate-y-0 h-8 w-8" />
-                    <CarouselNext className="static translate-y-0 h-8 w-8" />
-                  </div>
-                </Carousel>
-              </div>
-            );
-          })}
+          {categories.map((category) => (
+            <CategoryCarousel key={category.id} category={category} />
+          ))}
         </div>
       </div>
     </section>
