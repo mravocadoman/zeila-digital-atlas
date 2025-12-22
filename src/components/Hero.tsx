@@ -15,9 +15,9 @@ const Hero = () => {
       </div>
 
       <div className="max-w-7xl mx-auto w-full relative z-10">
-        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-20 items-center">
-          {/* Left: Content */}
-          <div className="space-y-4 sm:space-y-6 lg:space-y-8 order-2 lg:order-1">
+        <div className="grid lg:grid-cols-3 gap-8 sm:gap-12 lg:gap-20 items-center">
+          {/* Left: Content (2 columns) */}
+          <div className="space-y-4 sm:space-y-6 lg:space-y-8 order-2 lg:order-1 lg:col-span-2">
             <h1 className="heading-elegant text-[9vw] sm:text-4xl lg:text-7xl leading-snug tracking-normal break-words max-w-[92vw] mx-auto lg:mx-0 animate-fade-in text-center lg:text-left">RIHARDS ZEILA</h1>
             <h2 className="heading-elegant text-foreground leading-snug font-bold text-[5.5vw] sm:text-2xl md:text-3xl lg:text-4xl max-w-[92vw] mx-auto lg:mx-0 animate-fade-in text-center lg:text-left" style={{
             animationDelay: '0.2s',
