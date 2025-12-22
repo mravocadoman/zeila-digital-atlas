@@ -1,43 +1,50 @@
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import WorldMap from "./WorldMap";
+import { Target, TrendingUp, Zap, Lightbulb, BookOpen, Users, BarChart3, Settings, Sparkles, Globe, Search, Mail } from "lucide-react";
 
 const Credentials = () => {
   const { ref, isVisible } = useScrollAnimation();
 
   const skills = [
-    "Meta Advertising – Expert in full-funnel Meta ad systems that drive measurable ROAS and client acquisition.",
-    "Digital Marketing Strategy – Building scalable systems that combine paid, organic, and AI-driven growth.",
-    "Business Automations – Streamlining operations and client workflows with Make, n8n, and GoHighLevel.",
-    "Creative Strategy – Designing data-backed ad concepts, visuals, and copy that convert.",
-    "Digital Course Creation – Developing practical, high-ROI marketing courses for SMEs and professionals.",
-    "Leadership & Mentorship – Guiding teams, interns, and MBA students to think strategically and execute precisely."
+    { title: "Meta Advertising", description: "Expert in full-funnel Meta ad systems that drive measurable ROAS and client acquisition.", icon: Target },
+    { title: "Digital Marketing Strategy", description: "Building scalable systems that combine paid, organic, and AI-driven growth.", icon: TrendingUp },
+    { title: "Business Automations", description: "Streamlining operations and client workflows with Make, n8n, and GoHighLevel.", icon: Zap },
+    { title: "Creative Strategy", description: "Designing data-backed ad concepts, visuals, and copy that convert.", icon: Lightbulb },
+    { title: "Digital Course Creation", description: "Developing practical, high-ROI marketing courses for SMEs and professionals.", icon: BookOpen },
+    { title: "Leadership & Mentorship", description: "Guiding teams, interns, and MBA students to think strategically and execute precisely.", icon: Users }
   ];
 
   const toolCategories = [
     {
       category: "Advertising & Analytics",
-      tools: "Meta, Google Ads, LinkedIn, TikTok, GA4, CAPI, Hotjar, Looker Studio"
+      tools: "Meta, Google Ads, LinkedIn, TikTok, GA4, CAPI, Hotjar, Looker Studio",
+      icon: BarChart3
     },
     {
       category: "Automation & CRM",
-      tools: "Make, Zapier, GoHighLevel, Google Sheets"
+      tools: "Make, Zapier, GoHighLevel, Google Sheets",
+      icon: Settings
     },
     {
       category: "AI & Creative",
-      tools: "ChatGPT, Manus, Midjourney, VEO3, Photoshop, Canva"
+      tools: "ChatGPT, Manus, Midjourney, VEO3, Photoshop, Canva",
+      icon: Sparkles
     },
     {
       category: "Web & Design",
-      tools: "Shopify, WordPress, HTML/CSS/JS, Figma, Lovable"
+      tools: "Shopify, WordPress, HTML/CSS/JS, Figma, Lovable",
+      icon: Globe
     },
     {
       category: "SEO",
-      tools: "Ahrefs, Search Console"
+      tools: "Ahrefs, Search Console",
+      icon: Search
     },
     {
       category: "Email & Outreach",
-      tools: "MailerLite, Apollo, Instantly, Woodpecker, MillionVerifier"
+      tools: "MailerLite, Apollo, Instantly, Woodpecker, MillionVerifier",
+      icon: Mail
     }
   ];
 
@@ -123,13 +130,16 @@ const Credentials = () => {
                 <AccordionContent className="px-2 lg:px-6 pb-6">
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 lg:gap-4 pt-2">
                     {skills.map(skill => {
-                      const [title, description] = skill.split(' – ');
+                      const SkillIcon = skill.icon;
                       return (
-                        <div key={skill} className="border-hover p-3 lg:p-4 rounded-sm">
-                          <p className="body-clean text-large mb-1">
-                            <strong className="font-bold">{title}</strong>
-                          </p>
-                          <p className="body-clean text-lg lg:text-xl text-muted-foreground">{description}</p>
+                        <div key={skill.title} className="border-hover p-3 lg:p-4 rounded-sm">
+                          <div className="flex items-center gap-2 mb-1">
+                            <SkillIcon className="w-5 h-5 text-primary flex-shrink-0" />
+                            <p className="body-clean text-large">
+                              <strong className="font-bold">{skill.title}</strong>
+                            </p>
+                          </div>
+                          <p className="body-clean text-lg lg:text-xl text-muted-foreground pl-7">{skill.description}</p>
                         </div>
                       );
                     })}
@@ -144,14 +154,20 @@ const Credentials = () => {
                 </AccordionTrigger>
                 <AccordionContent className="px-2 lg:px-6 pb-6">
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 lg:gap-4 pt-2">
-                    {toolCategories.map(category => (
-                      <div key={category.category} className="border-hover p-3 lg:p-4 rounded-sm">
-                        <h4 style={{ textShadow: 'none' }} className="body-clean text-foreground mb-2 text-large">
-                          <strong className="font-bold">{category.category}</strong>
-                        </h4>
-                        <p className="body-clean text-lg lg:text-xl text-muted-foreground">{category.tools}</p>
-                      </div>
-                    ))}
+                    {toolCategories.map(category => {
+                      const CategoryIcon = category.icon;
+                      return (
+                        <div key={category.category} className="border-hover p-3 lg:p-4 rounded-sm">
+                          <div className="flex items-center gap-2 mb-2">
+                            <CategoryIcon className="w-5 h-5 text-primary flex-shrink-0" />
+                            <h4 style={{ textShadow: 'none' }} className="body-clean text-foreground text-large">
+                              <strong className="font-bold">{category.category}</strong>
+                            </h4>
+                          </div>
+                          <p className="body-clean text-lg lg:text-xl text-muted-foreground pl-7">{category.tools}</p>
+                        </div>
+                      );
+                    })}
                   </div>
                 </AccordionContent>
               </AccordionItem>
