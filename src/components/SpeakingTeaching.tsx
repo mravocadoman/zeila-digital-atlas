@@ -59,6 +59,13 @@ const categories = [
         link: null
       },
       {
+        title: "Digital Campaign Workshop Leader",
+        organization: "Vidusdaugavas NVO centrs",
+        period: "Apr 2023",
+        description: "Hands-on training for NGOs on creating effective digital campaigns — combining theory with practical group exercises.",
+        link: null
+      },
+      {
         title: "Youth Lecturer",
         organization: "Medijpratējs / Digitālā Akadēmija",
         period: "2022",
