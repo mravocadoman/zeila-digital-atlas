@@ -63,7 +63,7 @@ const categories = [
         organization: "Vidusdaugavas NVO centrs",
         period: "Apr 2023",
         description: "Hands-on training for NGOs on creating effective digital campaigns — combining theory with practical group exercises.",
-        link: null
+        link: "https://www.vidusdaugavasnvo.lv/lv/jaunumi/projekti/turpinas-vidusdaugavas-nvo-centra-realizetais-projekts-vidusdaugavas-nvo-centrs-digitalo-speju-attistisana-/"
       },
       {
         title: "Youth Lecturer",
