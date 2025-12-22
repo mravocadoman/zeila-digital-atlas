@@ -14,7 +14,7 @@ const FreeTraining = () => {
           <h2 className="heading-elegant text-3xl lg:text-display mb-4 lg:mb-6 text-center">
             Free Training
           </h2>
-          <p className="body-clean text-lg lg:text-xl text-muted-foreground mb-8 lg:mb-12 text-center max-w-3xl mx-auto">
+          <p className="body-clean text-xl lg:text-xl text-muted-foreground mb-8 lg:mb-12 text-center max-w-3xl mx-auto">
             Learn Meta advertising strategies through my comprehensive YouTube playlist. 
             Over 10 lessons covering everything from fundamentals to advanced optimization techniques.
           </p>
