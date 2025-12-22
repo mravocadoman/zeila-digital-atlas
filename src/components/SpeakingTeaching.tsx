@@ -81,7 +81,7 @@ const categories = [
       },
       {
         title: "Panel Speaker",
-        organization: "Printful, Draugiem Group & Vidzemes Tehnoloģiju un dizaina tehnikums",
+        organization: "Printful & Draugiem Group",
         period: "Aug 2023",
         description: "Panel discussion on business-academia collaboration and entrepreneurship education.",
         link: null
@@ -222,7 +222,7 @@ const SpeakingTeaching = () => {
                 >
                   <CarouselContent className="-ml-4">
                     {category.items.map((item, index) => (
-                      <CarouselItem key={index} className="pl-4 basis-[85%] sm:basis-[70%] md:basis-1/2 lg:basis-[45%]">
+                      <CarouselItem key={index} className="pl-4 basis-full sm:basis-1/2 lg:basis-1/3">
                         <Card className="card-luxury border-hover h-full">
                           <CardContent className="p-4 lg:p-6 h-full flex flex-col">
                             {/* Period */}
