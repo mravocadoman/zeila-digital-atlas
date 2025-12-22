@@ -35,7 +35,7 @@ const categories = [
         organization: "University of Lusaka",
         period: "May 2024",
         description: "International guest role sharing digital marketing expertise with Zambian students.",
-        link: null
+        link: "https://www.facebook.com/permalink.php?story_fbid=pfbid0sbHi7MSF7Du61X8KCUM2qDwNdsBCd2dGGhQFa7fCBkpREh9Cz75VCHzvHZvPVEaUl&id=100000487541249"
       }
     ]
   },
@@ -49,7 +49,7 @@ const categories = [
         organization: "Riga Business School",
         period: "Nov 2024",
         description: "Digital Marketing Growth Strategies for SMEs — practical course for small and medium-sized enterprises.",
-        link: null
+        link: "https://www.facebook.com/RigaBusinessSchool/posts/pfbid0XEj9zWkXS18GTgPWW6rKHhkLT1BXdgzwb1TiNLtH4gEeBi1u37HtXTLZnwkBzGuSl"
       },
       {
         title: "Course Leader & Workshop Facilitator",
@@ -94,32 +94,39 @@ const categories = [
         link: "https://www.lakuga.lv/2024/12/05/digitalais-pasauls-i-celuosona-kai-dzeivis-veids-saruna-ar-rihardu-zeilu/"
       },
       {
+        title: "Webinar Speaker",
+        organization: "Latvia IT Cluster / European Digital Innovation Centre",
+        period: "Oct 2024",
+        description: "AI in Digital Marketing — LIFT program webinar on leveraging artificial intelligence for business growth.",
+        link: "https://www.facebook.com/events/551552717574429/"
+      },
+      {
         title: "Podcast Guest",
-        organization: "The Career Sensei (Emmanuel Chisalu)",
+        organization: "The Career Sensei",
         period: "May 2024",
         description: "Exploring a Career in Digital Marketing — discussing insights on social media advertising, strategies, and trends reshaping the digital marketing landscape.",
-        link: null
+        link: "https://www.youtube.com/watch?v=JR9IiTZel9k"
       },
       {
         title: "Panel Speaker",
         organization: "Printful & Draugiem Group",
         period: "Aug 2023",
         description: "Panel discussion on business-academia collaboration and entrepreneurship education.",
-        link: null
+        link: "https://www.facebook.com/events/1380105802543065/"
       },
       {
         title: "TV/Radio Guest",
         organization: "Žik! Raidījums",
         period: "Oct 2022",
         description: "Episode about influencers, bloggers, and youth entrepreneurship.",
-        link: null
+        link: "https://www.facebook.com/watch/?v=810501230240311"
       },
       {
         title: "Interview Feature",
         organization: "Delfi",
         period: "Oct 2022",
         description: "Featured interview on digital nomad lifestyle and working remotely from Thailand.",
-        link: null
+        link: "https://www.delfi.lv/pieredzi-erasmus-plus/erasmus-ka-piedzivojums-un-iedvesma-mainit-nodarbosanos-riharda-stasts.d?id=54802938"
       },
       {
         title: "Panel Speaker",
@@ -168,7 +175,7 @@ const categories = [
         organization: "Future Heroes",
         period: "2023 – 2024",
         description: "Mentored aspiring marketers and young professionals.",
-        link: null
+        link: "https://www.facebook.com/FutureHeroesLatvia/posts/pfbid0gTCfSNRYscVtBPpjWNttRCfg33L3fWg5GZvXzsk7pxCE2DKj21fHXT1yvsw8gs1ml"
       },
       {
         title: "Volunteer",
