@@ -31,7 +31,7 @@ const categories = [
         link: null
       },
       {
-        title: "MBA Digital Marketing Lecturer",
+        title: "MBA Lecturer",
         organization: "Riga Business School",
         period: "2021 – Present",
         description: "Created and led a 13-week MBA course in Digital Marketing with a strong emphasis on paid advertising: covered digital marketing strategy and channels, creative considerations, KPIs, and performance evaluation.",
