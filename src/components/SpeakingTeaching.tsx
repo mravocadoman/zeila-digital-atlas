@@ -198,17 +198,24 @@ const categories = [
 
 const CategoryCarousel = ({ category }: { category: typeof categories[0] }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const totalItems = category.items.length;
+  const itemsPerPage = 2;
+  const totalPages = Math.ceil(category.items.length / itemsPerPage);
 
   const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % totalItems);
+    setCurrentIndex((prev) => (prev + 1) % totalPages);
   };
 
   const prevSlide = () => {
-    setCurrentIndex((prev) => (prev - 1 + totalItems) % totalItems);
+    setCurrentIndex((prev) => (prev - 1 + totalPages) % totalPages);
   };
 
   const CategoryIcon = category.icon;
+
+  // Group items into pages of 2
+  const pages = [];
+  for (let i = 0; i < category.items.length; i += itemsPerPage) {
+    pages.push(category.items.slice(i, i + itemsPerPage));
+  }
 
   return (
     <div>
@@ -225,7 +232,7 @@ const CategoryCarousel = ({ category }: { category: typeof categories[0] }) => {
       {/* Category Slider */}
       <div className="relative">
         {/* Navigation Buttons */}
-        {totalItems > 1 && (
+        {totalPages > 1 && (
           <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 flex justify-between items-center z-10 pointer-events-none px-2">
             <Button
               onClick={prevSlide}
@@ -252,54 +259,58 @@ const CategoryCarousel = ({ category }: { category: typeof categories[0] }) => {
             className="flex transition-transform duration-500 ease-out"
             style={{ transform: `translateX(-${currentIndex * 100}%)` }}
           >
-            {category.items.map((item, index) => (
-              <div key={index} className="w-full flex-shrink-0 px-8">
-                <Card className="card-luxury border-hover h-full">
-                  <CardContent className="p-4 lg:p-6 h-full flex flex-col">
-                    {/* Period */}
-                    <div className="flex items-center justify-between mb-3">
-                      <span className="text-base lg:text-lg text-muted-foreground font-medium">
-                        {item.period}
-                      </span>
-                    </div>
+            {pages.map((page, pageIndex) => (
+              <div key={pageIndex} className="w-full flex-shrink-0 px-8">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                  {page.map((item, index) => (
+                    <Card key={index} className="card-luxury border-hover h-full">
+                      <CardContent className="p-4 lg:p-6 h-full flex flex-col">
+                        {/* Period */}
+                        <div className="flex items-center justify-between mb-3">
+                          <span className="text-base lg:text-lg text-muted-foreground font-medium">
+                            {item.period}
+                          </span>
+                        </div>
 
-                    {/* Title & Organization */}
-                    <h4 className="text-xl lg:text-2xl font-semibold text-foreground mb-1">
-                      {item.title}
-                    </h4>
-                    <p className="text-lg lg:text-xl text-primary/80 font-medium mb-3">
-                      {item.organization}
-                    </p>
+                        {/* Title & Organization */}
+                        <h4 className="text-xl lg:text-2xl font-semibold text-foreground mb-1">
+                          {item.title}
+                        </h4>
+                        <p className="text-lg lg:text-xl text-primary/80 font-medium mb-3">
+                          {item.organization}
+                        </p>
 
-                    {/* Description */}
-                    <p className="text-lg lg:text-xl text-muted-foreground leading-relaxed flex-grow">
-                      {item.description}
-                    </p>
+                        {/* Description */}
+                        <p className="text-lg lg:text-xl text-muted-foreground leading-relaxed flex-grow">
+                          {item.description}
+                        </p>
 
-                    {/* Link Button */}
-                    {item.link && (
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        className="mt-4 p-0 h-auto text-primary hover:bg-transparent hover:text-foreground self-start"
-                        asChild
-                      >
-                        <a href={item.link} target="_blank" rel="noopener noreferrer">
-                          View <ExternalLink className="w-3 h-3 ml-1" />
-                        </a>
-                      </Button>
-                    )}
-                  </CardContent>
-                </Card>
+                        {/* Link Button */}
+                        {item.link && (
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            className="mt-4 p-0 h-auto text-primary hover:bg-transparent hover:text-foreground self-start"
+                            asChild
+                          >
+                            <a href={item.link} target="_blank" rel="noopener noreferrer">
+                              View <ExternalLink className="w-3 h-3 ml-1" />
+                            </a>
+                          </Button>
+                        )}
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
               </div>
             ))}
           </div>
         </div>
 
         {/* Dots Indicator */}
-        {totalItems > 1 && (
+        {totalPages > 1 && (
           <div className="flex justify-center gap-2 mt-4">
-            {category.items.map((_, index) => (
+            {pages.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentIndex(index)}
