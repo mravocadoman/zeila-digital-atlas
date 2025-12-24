@@ -11,6 +11,13 @@ const categories = [
     icon: GraduationCap,
     items: [
       {
+        title: "MBA Lecturer",
+        organization: "Riga Business School",
+        period: "2021 – Present",
+        description: "Created and led a 13-week MBA course in Digital Marketing with a strong emphasis on paid advertising: covered digital marketing strategy and channels, creative considerations, KPIs, and performance evaluation.",
+        link: null
+      },
+      {
         title: "Guest Lecturer",
         organization: "University of Lusaka",
         period: "May 2024",
@@ -22,13 +29,6 @@ const categories = [
         organization: "RISEBA University",
         period: "2023 – 2024",
         description: "Developed, recorded, and graded lectures on social media management, content strategy, landing pages, and Meta advertising for RISEBA Bachelor's students.",
-        link: null
-      },
-      {
-        title: "MBA Lecturer",
-        organization: "Riga Business School",
-        period: "2021 – Present",
-        description: "Created and led a 13-week MBA course in Digital Marketing with a strong emphasis on paid advertising: covered digital marketing strategy and channels, creative considerations, KPIs, and performance evaluation.",
         link: null
       }
     ]
