@@ -74,7 +74,7 @@ const categories = [
         link: "https://www.lde.lv/lektors/rihards/"
       },
       {
-        title: "Digital Marketing Consultant",
+        title: "Workshop Facilitator",
         organization: "International Trade Centre (ITC)",
         period: "Jan – Mar 2019",
         description: "Implemented digital marketing programs in Kenya, Palestine, Gambia, and Jordan. Trained 100+ students and delivered fintech solutions for international SMEs.",
