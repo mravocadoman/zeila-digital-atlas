@@ -1,16 +1,8 @@
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 import { Card, CardContent } from "@/components/ui/card";
-import { GraduationCap, Mic, Radio, Heart, ExternalLink } from "lucide-react";
+import { GraduationCap, Mic, Radio, Heart, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-  type CarouselApi,
-} from "@/components/ui/carousel";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const categories = [
   {
@@ -205,25 +197,16 @@ const categories = [
 ];
 
 const CategoryCarousel = ({ category }: { category: typeof categories[0] }) => {
-  const [api, setApi] = useState<CarouselApi>();
-  const [canScroll, setCanScroll] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const totalItems = category.items.length;
 
-  useEffect(() => {
-    if (!api) return;
+  const nextSlide = () => {
+    setCurrentIndex((prev) => (prev + 1) % totalItems);
+  };
 
-    const checkScroll = () => {
-      setCanScroll(api.canScrollPrev() || api.canScrollNext());
-    };
-
-    checkScroll();
-    api.on("resize", checkScroll);
-    api.on("reInit", checkScroll);
-
-    return () => {
-      api.off("resize", checkScroll);
-      api.off("reInit", checkScroll);
-    };
-  }, [api]);
+  const prevSlide = () => {
+    setCurrentIndex((prev) => (prev - 1 + totalItems) % totalItems);
+  };
 
   const CategoryIcon = category.icon;
 
@@ -239,65 +222,98 @@ const CategoryCarousel = ({ category }: { category: typeof categories[0] }) => {
         </h3>
       </div>
 
-      {/* Category Carousel */}
-      <Carousel
-        opts={{
-          align: "start",
-          loop: false,
-        }}
-        setApi={setApi}
-        className="w-full"
-      >
-        <CarouselContent className="-ml-4">
-          {category.items.map((item, index) => (
-            <CarouselItem key={index} className="pl-4 basis-full sm:basis-1/2 lg:basis-1/3">
-              <Card className="card-luxury border-hover h-full">
-                <CardContent className="p-4 lg:p-6 h-full flex flex-col">
-                  {/* Period */}
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="text-base lg:text-lg text-muted-foreground font-medium">
-                      {item.period}
-                    </span>
-                  </div>
-
-                  {/* Title & Organization */}
-                  <h4 className="text-xl lg:text-2xl font-semibold text-foreground mb-1">
-                    {item.title}
-                  </h4>
-                  <p className="text-lg lg:text-xl text-primary/80 font-medium mb-3">
-                    {item.organization}
-                  </p>
-
-                  {/* Description */}
-                  <p className="text-lg lg:text-xl text-muted-foreground leading-relaxed flex-grow">
-                    {item.description}
-                  </p>
-
-                  {/* Link Button */}
-                  {item.link && (
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      className="mt-4 p-0 h-auto text-primary hover:bg-transparent hover:text-foreground self-start"
-                      asChild
-                    >
-                      <a href={item.link} target="_blank" rel="noopener noreferrer">
-                        View <ExternalLink className="w-3 h-3 ml-1" />
-                      </a>
-                    </Button>
-                  )}
-                </CardContent>
-              </Card>
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-        {canScroll && (
-          <div className="flex items-center justify-end gap-2 mt-4">
-            <CarouselPrevious className="static translate-y-0 h-8 w-8" />
-            <CarouselNext className="static translate-y-0 h-8 w-8" />
+      {/* Category Slider */}
+      <div className="relative">
+        {/* Navigation Buttons */}
+        {totalItems > 1 && (
+          <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 flex justify-between items-center z-10 pointer-events-none px-2">
+            <Button
+              onClick={prevSlide}
+              variant="outline"
+              size="icon"
+              className="pointer-events-auto bg-background/80 backdrop-blur-sm border-primary/20 hover:border-primary/40 hover:bg-background h-8 w-8"
+            >
+              <ChevronLeft className="h-5 w-5" />
+            </Button>
+            <Button
+              onClick={nextSlide}
+              variant="outline"
+              size="icon"
+              className="pointer-events-auto bg-background/80 backdrop-blur-sm border-primary/20 hover:border-primary/40 hover:bg-background h-8 w-8"
+            >
+              <ChevronRight className="h-5 w-5" />
+            </Button>
           </div>
         )}
-      </Carousel>
+
+        {/* Slider */}
+        <div className="overflow-hidden">
+          <div
+            className="flex transition-transform duration-500 ease-out"
+            style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+          >
+            {category.items.map((item, index) => (
+              <div key={index} className="w-full flex-shrink-0 px-8">
+                <Card className="card-luxury border-hover h-full">
+                  <CardContent className="p-4 lg:p-6 h-full flex flex-col">
+                    {/* Period */}
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="text-base lg:text-lg text-muted-foreground font-medium">
+                        {item.period}
+                      </span>
+                    </div>
+
+                    {/* Title & Organization */}
+                    <h4 className="text-xl lg:text-2xl font-semibold text-foreground mb-1">
+                      {item.title}
+                    </h4>
+                    <p className="text-lg lg:text-xl text-primary/80 font-medium mb-3">
+                      {item.organization}
+                    </p>
+
+                    {/* Description */}
+                    <p className="text-lg lg:text-xl text-muted-foreground leading-relaxed flex-grow">
+                      {item.description}
+                    </p>
+
+                    {/* Link Button */}
+                    {item.link && (
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className="mt-4 p-0 h-auto text-primary hover:bg-transparent hover:text-foreground self-start"
+                        asChild
+                      >
+                        <a href={item.link} target="_blank" rel="noopener noreferrer">
+                          View <ExternalLink className="w-3 h-3 ml-1" />
+                        </a>
+                      </Button>
+                    )}
+                  </CardContent>
+                </Card>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Dots Indicator */}
+        {totalItems > 1 && (
+          <div className="flex justify-center gap-2 mt-4">
+            {category.items.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentIndex(index)}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  index === currentIndex
+                    ? "w-8 bg-primary"
+                    : "w-2 bg-primary/30 hover:bg-primary/50"
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 };
