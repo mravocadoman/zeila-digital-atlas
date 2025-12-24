@@ -172,10 +172,10 @@ const categories = [
     icon: Heart,
     items: [
       {
-        title: "Volunteer Mentor",
+        title: "Mentor",
         organization: "Future Heroes",
         period: "2023 – 2024",
-        description: "Mentored aspiring marketers and young professionals.",
+        description: "Mentored a team of 5 teenage girls on their entrepreneurial journey over a period of 9 months.",
         link: "https://www.facebook.com/FutureHeroesLatvia/posts/pfbid0gTCfSNRYscVtBPpjWNttRCfg33L3fWg5GZvXzsk7pxCE2DKj21fHXT1yvsw8gs1ml"
       },
       {
