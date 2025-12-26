@@ -39,7 +39,7 @@ const Partners = () => {
           {/* Scrolling container */}
           <div className="flex overflow-hidden">
             <div className="flex animate-marquee">
-              {[...partners, ...partners].map((partner, index) => (
+              {partners.map((partner, index) => (
                 <div
                   key={`${partner.name}-${index}`}
                   className="flex-shrink-0 mx-8 md:mx-12 flex items-center justify-center"
@@ -53,7 +53,7 @@ const Partners = () => {
               ))}
             </div>
             <div className="flex animate-marquee" aria-hidden="true">
-              {[...partners, ...partners].map((partner, index) => (
+              {partners.map((partner, index) => (
                 <div
                   key={`${partner.name}-duplicate-${index}`}
                   className="flex-shrink-0 mx-8 md:mx-12 flex items-center justify-center"
