@@ -275,10 +275,11 @@ const CategoryCarousel = ({ category }: { category: typeof categories[0] }) => {
           >
             {pages.map((page, pageIndex) => (
               <div key={pageIndex} className="w-full flex-shrink-0 px-2 lg:px-8">
-                <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 auto-rows-fr">
+                <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 items-stretch">
                   {page.map((item, index) => (
-                    <Card key={index} className="card-luxury border-hover h-full flex flex-col">
-                      <CardContent className="p-2 lg:p-4 h-full flex flex-col">
+                    <div key={index} className="flex">
+                      <Card className="card-luxury border-hover w-full flex flex-col">
+                        <CardContent className="p-2 lg:p-4 flex-1 flex flex-col">
                         {/* Period */}
                         <div className="flex items-center justify-between mb-3">
                           <span className="text-base lg:text-lg text-muted-foreground font-medium">
@@ -312,8 +313,9 @@ const CategoryCarousel = ({ category }: { category: typeof categories[0] }) => {
                             </a>
                           </Button>
                         )}
-                      </CardContent>
-                    </Card>
+                        </CardContent>
+                      </Card>
+                    </div>
                   ))}
                 </div>
               </div>
