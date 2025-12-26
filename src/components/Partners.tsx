@@ -37,34 +37,44 @@ const Partners = () => {
           <div className="absolute right-0 top-0 bottom-0 w-32 md:w-48 lg:w-64 bg-gradient-to-l from-card to-transparent z-10 pointer-events-none" />
 
           {/* Scrolling container */}
-          <div className="flex overflow-hidden">
-            <div className="flex animate-marquee">
-              {partners.map((partner, index) => (
-                <div
-                  key={`${partner.name}-${index}`}
-                  className="flex-shrink-0 mx-8 md:mx-12 flex items-center justify-center"
-                >
-                  <img
-                    src={partner.logo}
-                    alt={partner.name}
-                    className="h-12 md:h-16 lg:h-20 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
-                  />
-                </div>
-              ))}
-            </div>
-            <div className="flex animate-marquee" aria-hidden="true">
-              {partners.map((partner, index) => (
-                <div
-                  key={`${partner.name}-duplicate-${index}`}
-                  className="flex-shrink-0 mx-8 md:mx-12 flex items-center justify-center"
-                >
-                  <img
-                    src={partner.logo}
-                    alt={partner.name}
-                    className="h-12 md:h-16 lg:h-20 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
-                  />
-                </div>
-              ))}
+          <div className="overflow-hidden">
+            <div className="flex w-max items-center animate-marquee will-change-transform transform-gpu">
+              <div className="flex items-center flex-nowrap gap-16 md:gap-24 pr-16 md:pr-24">
+                {partners.map((partner, index) => (
+                  <div
+                    key={`${partner.name}-${index}`}
+                    className="flex-shrink-0 flex items-center justify-center"
+                  >
+                    <img
+                      src={partner.logo}
+                      alt={partner.name}
+                      loading="lazy"
+                      decoding="async"
+                      className="h-12 md:h-16 lg:h-20 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
+                    />
+                  </div>
+                ))}
+              </div>
+
+              <div
+                className="flex items-center flex-nowrap gap-16 md:gap-24 pr-16 md:pr-24"
+                aria-hidden="true"
+              >
+                {partners.map((partner, index) => (
+                  <div
+                    key={`${partner.name}-duplicate-${index}`}
+                    className="flex-shrink-0 flex items-center justify-center"
+                  >
+                    <img
+                      src={partner.logo}
+                      alt={partner.name}
+                      loading="lazy"
+                      decoding="async"
+                      className="h-12 md:h-16 lg:h-20 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
