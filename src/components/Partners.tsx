@@ -20,21 +20,21 @@ const Partners = () => {
   const { ref, isVisible } = useScrollAnimation(0.1);
 
   return (
-    <section className="py-16 md:py-24 bg-background overflow-hidden">
+    <section className="py-8 md:py-12 bg-card overflow-hidden">
       <div
         ref={ref}
         className={`container mx-auto px-4 transition-all duration-700 ${
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
         }`}
       >
-        <h2 className="text-2xl md:text-3xl lg:text-4xl text-center mb-12 md:mb-16">
+        <h2 className="text-xl md:text-2xl lg:text-3xl text-center mb-8 md:mb-10 text-muted-foreground font-medium">
           Partners
         </h2>
 
         <div className="relative">
           {/* Gradient overlays for seamless edges */}
-          <div className="absolute left-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
+          <div className="absolute left-0 top-0 bottom-0 w-32 md:w-48 lg:w-64 bg-gradient-to-r from-card to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-32 md:w-48 lg:w-64 bg-gradient-to-l from-card to-transparent z-10 pointer-events-none" />
 
           {/* Scrolling container */}
           <div className="flex overflow-hidden">
