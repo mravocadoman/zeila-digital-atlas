@@ -18,7 +18,11 @@ const Footer = () => {
           <div className="animate-fade-in" style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>
             <h4 className="body-clean font-semibold mb-4 text-large">Quick Links</h4>
             <nav className="space-y-2">
-              <a href="#about" className="body-clean text-body text-muted-foreground hover:text-foreground transition-colors block">
+              <a 
+                href="#top" 
+                onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+                className="body-clean text-body text-muted-foreground hover:text-foreground transition-colors block cursor-pointer"
+              >
                 About
               </a>
               <a href="#case-studies" className="body-clean text-body text-muted-foreground hover:text-foreground transition-colors block">

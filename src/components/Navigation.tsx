@@ -24,7 +24,7 @@ const Navigation = () => {
   }, [lastScrollY]);
 
   const navItems = [
-    { label: "About", href: "#about" },
+    { label: "About", href: "#top" },
     { label: "Case Studies", href: "#case-studies" },
     { label: "Speaking & Teaching", href: "#speaking" },
     { label: "Free Training", href: "#free-training" },
@@ -48,9 +48,13 @@ const Navigation = () => {
                 href={item.href}
                 onClick={(e) => {
                   e.preventDefault();
-                  const target = document.querySelector(item.href);
-                  if (target) {
-                    target.scrollIntoView({ behavior: "smooth" });
+                  if (item.href === "#top") {
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  } else {
+                    const target = document.querySelector(item.href);
+                    if (target) {
+                      target.scrollIntoView({ behavior: "smooth" });
+                    }
                   }
                 }}
                 className="text-white text-base lg:text-lg uppercase tracking-wide font-bold hover:opacity-80 transition-opacity"
@@ -101,9 +105,13 @@ const Navigation = () => {
                   if (mobileMenu) {
                     mobileMenu.classList.add("hidden");
                   }
-                  const target = document.querySelector(item.href);
-                  if (target) {
-                    target.scrollIntoView({ behavior: "smooth" });
+                  if (item.href === "#top") {
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  } else {
+                    const target = document.querySelector(item.href);
+                    if (target) {
+                      target.scrollIntoView({ behavior: "smooth" });
+                    }
                   }
                 }}
               >
