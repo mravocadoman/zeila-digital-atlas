@@ -2,7 +2,7 @@ import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 import { Card, CardContent } from "@/components/ui/card";
 import { GraduationCap, Mic, Radio, Heart, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const categories = [
   {
@@ -198,7 +198,21 @@ const categories = [
 
 const CategoryCarousel = ({ category }: { category: typeof categories[0] }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const itemsPerPage = 2;
+  const [isMobile, setIsMobile] = useState(typeof window !== 'undefined' ? window.innerWidth < 1024 : false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const mobile = window.innerWidth < 1024;
+      if (mobile !== isMobile) {
+        setIsMobile(mobile);
+        setCurrentIndex(0);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [isMobile]);
+
+  const itemsPerPage = isMobile ? 1 : 2;
   const totalPages = Math.ceil(category.items.length / itemsPerPage);
 
   const nextSlide = () => {
@@ -211,7 +225,7 @@ const CategoryCarousel = ({ category }: { category: typeof categories[0] }) => {
 
   const CategoryIcon = category.icon;
 
-  // Group items into pages of 2
+  // Group items into pages
   const pages = [];
   for (let i = 0; i < category.items.length; i += itemsPerPage) {
     pages.push(category.items.slice(i, i + itemsPerPage));
