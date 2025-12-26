@@ -20,14 +20,14 @@ const Partners = () => {
   const { ref, isVisible } = useScrollAnimation(0.1);
 
   return (
-    <section className="py-8 md:py-12 bg-card overflow-hidden">
+    <section className="pt-2 pb-8 md:pt-4 md:pb-12 bg-card overflow-hidden">
       <div
         ref={ref}
         className={`container mx-auto px-4 transition-all duration-700 ${
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
         }`}
       >
-        <h2 className="text-xl md:text-2xl lg:text-3xl text-center mb-8 md:mb-10 text-muted-foreground font-medium">
+        <h2 className="heading-elegant text-xl md:text-2xl lg:text-3xl text-center mb-8 md:mb-10">
           Partners
         </h2>
 
