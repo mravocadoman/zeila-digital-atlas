@@ -275,9 +275,9 @@ const CategoryCarousel = ({ category }: { category: typeof categories[0] }) => {
           >
             {pages.map((page, pageIndex) => (
               <div key={pageIndex} className="w-full flex-shrink-0 px-2 lg:px-8">
-                <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+                <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 auto-rows-fr">
                   {page.map((item, index) => (
-                    <Card key={index} className="card-luxury border-hover h-full">
+                    <Card key={index} className="card-luxury border-hover h-full flex flex-col">
                       <CardContent className="p-2 lg:p-4 h-full flex flex-col">
                         {/* Period */}
                         <div className="flex items-center justify-between mb-3">
