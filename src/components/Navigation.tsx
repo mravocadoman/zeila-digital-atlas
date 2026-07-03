@@ -29,6 +29,7 @@ const Navigation = () => {
     { label: "Speaking & Teaching", href: "#speaking" },
     { label: "Free Training", href: "#free-training" },
     { label: "Experience", href: "#timeline" },
+    { label: "Work With Me", href: "/work-with-me" },
     { label: "Contact", href: "#contact" },
   ];
 
