@@ -48,6 +48,7 @@ const Navigation = () => {
                 key={item.label}
                 href={item.href}
                 onClick={(e) => {
+                  if (item.href.startsWith("/")) return; // let router link navigate
                   e.preventDefault();
                   if (item.href === "#top") {
                     window.scrollTo({ top: 0, behavior: "smooth" });
