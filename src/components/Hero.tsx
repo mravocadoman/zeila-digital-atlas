@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import headshotImage from "@/assets/rihards-synthwave.jpg";
 import neonPalms from "@/assets/neon-palms.png";
 const Hero = () => {
