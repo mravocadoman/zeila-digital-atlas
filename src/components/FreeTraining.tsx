@@ -1,4 +1,5 @@
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
+import { Link } from "react-router-dom";
 
 const FreeTraining = () => {
   const { ref, isVisible } = useScrollAnimation();
