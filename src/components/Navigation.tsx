@@ -102,11 +102,12 @@ const Navigation = () => {
                 href={item.href}
                 className="text-white text-sm uppercase tracking-wide font-medium hover:opacity-80 transition-opacity"
                 onClick={(e) => {
-                  e.preventDefault();
                   const mobileMenu = document.getElementById("mobile-menu");
                   if (mobileMenu) {
                     mobileMenu.classList.add("hidden");
                   }
+                  if (item.href.startsWith("/")) return; // let anchor navigate to route
+                  e.preventDefault();
                   if (item.href === "#top") {
                     window.scrollTo({ top: 0, behavior: "smooth" });
                   } else {
