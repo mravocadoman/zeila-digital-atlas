@@ -187,6 +187,8 @@ const ContactForm = () => {
                   </SelectTrigger>
                   <SelectContent className="bg-card border-border text-base lg:text-lg">
                     <SelectItem value="project">Client Project</SelectItem>
+                    <SelectItem value="workshop">Workshop</SelectItem>
+                    <SelectItem value="training">In-house Training</SelectItem>
                     <SelectItem value="cofounder">Co-Founder Opportunity</SelectItem>
                     <SelectItem value="cmo">CMO Role</SelectItem>
                     <SelectItem value="speaking">Speaking Engagement</SelectItem>
