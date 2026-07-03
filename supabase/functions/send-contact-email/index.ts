@@ -10,19 +10,24 @@ const corsHeaders = {
 };
 
 // Allowed contact form types
-const ALLOWED_TYPES = ["project", "cofounder", "cmo", "speaking", "other"];
+const ALLOWED_TYPES = [
+  "project", "cofounder", "cmo", "speaking", "other",
+  "workshop", "mba-module", "corporate-training", "public-program"
+];
 
 // Input length limits
 const MAX_NAME_LENGTH = 100;
 const MAX_EMAIL_LENGTH = 254;
 const MAX_MESSAGE_LENGTH = 5000;
 const MAX_TYPE_LENGTH = 50;
+const MAX_ORG_LENGTH = 150;
 
 interface ContactEmailRequest {
   name: string;
   email: string;
   type: string;
   message: string;
+  organization?: string;
 }
 
 // HTML escape function to prevent XSS
@@ -97,13 +102,25 @@ function validateInput(data: ContactEmailRequest): { valid: boolean; error?: str
     return { valid: false, error: `Message must be less than ${MAX_MESSAGE_LENGTH} characters` };
   }
 
+  let trimmedOrg: string | undefined;
+  if (data.organization !== undefined && data.organization !== null && data.organization !== "") {
+    if (typeof data.organization !== "string") {
+      return { valid: false, error: "Invalid organization" };
+    }
+    trimmedOrg = data.organization.trim();
+    if (trimmedOrg.length > MAX_ORG_LENGTH) {
+      return { valid: false, error: `Organization must be less than ${MAX_ORG_LENGTH} characters` };
+    }
+  }
+
   return {
     valid: true,
     sanitized: {
       name: trimmedName,
       email: trimmedEmail,
       type: trimmedType,
-      message: trimmedMessage
+      message: trimmedMessage,
+      ...(trimmedOrg ? { organization: trimmedOrg } : {})
     }
   };
 }
@@ -130,7 +147,7 @@ const handler = async (req: Request): Promise<Response> => {
       );
     }
 
-    const { name, email, type, message } = validation.sanitized;
+    const { name, email, type, message, organization } = validation.sanitized as ContactEmailRequest;
 
     console.log("Processing validated contact form submission:", { name, email, type, messageLength: message.length });
 
@@ -139,17 +156,19 @@ const handler = async (req: Request): Promise<Response> => {
     const escapedName = escapeHtml(name);
     const escapedEmail = escapeHtml(email);
     const escapedMessage = escapeHtml(message).replace(/\n/g, '<br>');
+    const escapedOrg = organization ? escapeHtml(organization) : "";
 
     // Send email to your inbox
     const emailResponse = await resend.emails.send({
       from: "Contact Form <onboarding@resend.dev>",
       to: ["rihards.zeila@gmail.com"],
-      subject: `New ${escapedType} inquiry from ${escapedName}`,
+      subject: `New ${escapedType} inquiry from ${escapedName}${escapedOrg ? ` (${escapedOrg})` : ""}`,
       html: `
         <h2>New Contact Form Submission</h2>
         <p><strong>Type:</strong> ${escapedType}</p>
         <p><strong>Name:</strong> ${escapedName}</p>
         <p><strong>Email:</strong> ${escapedEmail}</p>
+        ${escapedOrg ? `<p><strong>Organization:</strong> ${escapedOrg}</p>` : ""}
         <p><strong>Message:</strong></p>
         <p>${escapedMessage}</p>
       `,
