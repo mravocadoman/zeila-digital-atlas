@@ -12,7 +12,7 @@ const corsHeaders = {
 // Allowed contact form types
 const ALLOWED_TYPES = [
   "project", "cofounder", "cmo", "speaking", "other",
-  "workshop", "mba-module", "corporate-training", "public-program"
+  "workshop", "training", "mba-module", "corporate-training", "public-program"
 ];
 
 // Input length limits
