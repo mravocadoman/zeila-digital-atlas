@@ -29,6 +29,7 @@ const Navigation = () => {
     { label: "Speaking & Teaching", href: "#speaking" },
     { label: "Free Training", href: "#free-training" },
     { label: "Experience", href: "#timeline" },
+    { label: "Work With Me", href: "/work-with-me" },
     { label: "Contact", href: "#contact" },
   ];
 
@@ -47,6 +48,7 @@ const Navigation = () => {
                 key={item.label}
                 href={item.href}
                 onClick={(e) => {
+                  if (item.href.startsWith("/")) return; // let router link navigate
                   e.preventDefault();
                   if (item.href === "#top") {
                     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -100,11 +102,12 @@ const Navigation = () => {
                 href={item.href}
                 className="text-white text-sm uppercase tracking-wide font-medium hover:opacity-80 transition-opacity"
                 onClick={(e) => {
-                  e.preventDefault();
                   const mobileMenu = document.getElementById("mobile-menu");
                   if (mobileMenu) {
                     mobileMenu.classList.add("hidden");
                   }
+                  if (item.href.startsWith("/")) return; // let anchor navigate to route
+                  e.preventDefault();
                   if (item.href === "#top") {
                     window.scrollTo({ top: 0, behavior: "smooth" });
                   } else {

@@ -145,3 +145,88 @@ All colors MUST be HSL.
     background-clip: text;
   }
 }
+
+/* ============================================
+   /work-with-me sub-page — Modern Enterprise theme
+   Scoped token overrides so neon homepage tokens
+   don't bleed in.
+   ============================================ */
+.wwm-theme {
+  --background: 220 55% 15%;      /* #0f1b3d */
+  --foreground: 215 30% 94%;      /* #e8edf3 */
+  --card: 216 52% 24%;            /* #1e3a5f */
+  --card-foreground: 215 30% 94%;
+  --popover: 216 52% 24%;
+  --popover-foreground: 215 30% 94%;
+  --primary: 210 47% 43%;         /* #3b6fa0 */
+  --primary-foreground: 0 0% 100%;
+  --secondary: 216 40% 20%;
+  --secondary-foreground: 215 30% 94%;
+  --muted: 216 40% 22%;
+  --muted-foreground: 215 20% 75%;
+  --accent: 210 47% 43%;
+  --accent-foreground: 0 0% 100%;
+  --border: 215 30% 60%;
+  --input: 216 52% 24%;
+  --ring: 210 47% 55%;
+
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: 'Rajdhani', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.wwm-theme h1,
+.wwm-theme h2,
+.wwm-theme h3,
+.wwm-theme h4,
+.wwm-theme h5,
+.wwm-theme h6 {
+  text-shadow: none;
+  color: hsl(var(--foreground));
+  letter-spacing: 0.01em;
+}
+
+.wwm-theme .wwm-hero-bg {
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 0%, hsla(210, 60%, 40%, 0.35), transparent 60%),
+    radial-gradient(ellipse 60% 50% at 80% 30%, hsla(200, 70%, 45%, 0.20), transparent 60%),
+    linear-gradient(180deg, #0f1b3d 0%, #0b1530 100%);
+}
+
+.wwm-theme .wwm-card {
+  background: linear-gradient(180deg, hsla(216, 52%, 24%, 0.55), hsla(216, 52%, 20%, 0.35));
+  border: 1px solid hsla(215, 30%, 94%, 0.08);
+  border-radius: 0.75rem;
+  backdrop-filter: blur(8px);
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.wwm-theme .wwm-card:hover {
+  transform: translateY(-3px);
+  border-color: hsla(210, 60%, 65%, 0.35);
+  box-shadow: 0 10px 40px -10px hsla(210, 80%, 40%, 0.35);
+}
+
+.wwm-theme .wwm-cta {
+  background: linear-gradient(135deg, hsl(210, 60%, 50%), hsl(200, 70%, 45%));
+  color: #fff;
+  box-shadow: 0 8px 24px -6px hsla(210, 80%, 50%, 0.55);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.wwm-theme .wwm-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px -6px hsla(210, 80%, 55%, 0.7);
+}
+
+.wwm-theme .wwm-eyebrow {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  color: hsl(210, 60%, 70%);
+}
+
+.wwm-theme .wwm-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, hsla(215, 30%, 94%, 0.15), transparent);
+}
