@@ -229,10 +229,3 @@ All colors MUST be HSL.
 .wwm-theme .wwm-divider {
   height: 1px;
   background: linear-gradient(90deg, transparent, hsla(215, 30%, 94%, 0.15), transparent);
-}
-    background: var(--gradient-sunset);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-}
