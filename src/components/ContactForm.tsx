@@ -81,14 +81,14 @@ const ContactForm = () => {
           style={{ border: 'none' }}
         />
         {/* Dark overlay for readability */}
-        <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" />
+        <div className="absolute inset-0 bg-background/90 backdrop-blur-md" />
       </div>
       
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="text-center mb-8 lg:mb-12 animate-fade-in">
           <h2 className="heading-elegant text-3xl lg:text-display mb-4 lg:mb-6">Let's Connect</h2>
           <p className="body-clean text-base lg:text-large text-muted-foreground">
-            Open to high-impact projects, co-founder opportunities, and CMO roles
+            Open to high-impact projects, workshops &amp; training, co-founder opportunities, and CMO roles
           </p>
         </div>
 
@@ -187,6 +187,8 @@ const ContactForm = () => {
                   </SelectTrigger>
                   <SelectContent className="bg-card border-border text-base lg:text-lg">
                     <SelectItem value="project">Client Project</SelectItem>
+                    <SelectItem value="workshop">Workshop</SelectItem>
+                    <SelectItem value="training">In-house Training</SelectItem>
                     <SelectItem value="cofounder">Co-Founder Opportunity</SelectItem>
                     <SelectItem value="cmo">CMO Role</SelectItem>
                     <SelectItem value="speaking">Speaking Engagement</SelectItem>
