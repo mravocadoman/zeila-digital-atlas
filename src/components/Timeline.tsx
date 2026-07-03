@@ -2,6 +2,12 @@ import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 const Timeline = () => {
   const milestones = [{
+    year: "2025",
+    title: "Digital Marketing Trainer",
+    company: "Independent Consulting & Workshops",
+    period: "2025 – Present",
+    description: "Expanded focus on in-house training and workshop delivery for SMEs, corporates, and MBA programs. Launched a dedicated training track at rihardszeila.com/work-with-me covering Meta ads, funnel design, and marketing automation. [Update with recent 2025/2026 highlights.]"
+  }, {
     year: "2024",
     title: "Lecturer",
     company: "LIFT",
