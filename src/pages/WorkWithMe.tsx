@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { ArrowLeft, ArrowRight, GraduationCap, Building2, Users, Sparkles, Check, Mail, Linkedin } from "lucide-react";
+import { ArrowRight, GraduationCap, Building2, Users, Mail, Linkedin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -84,30 +83,12 @@ const formats = [
 ];
 
 const curriculum = [
-  {
-    q: "Strategy & positioning",
-    a: "Turning fuzzy goals into a channel plan: ICP work, offer design, funnel mapping, and choosing where to actually spend the next euro.",
-  },
-  {
-    q: "Meta advertising (Facebook & Instagram)",
-    a: "Account structure, campaign objectives, audience & creative strategy, iOS/attribution realities, scaling and troubleshooting.",
-  },
-  {
-    q: "Landing pages & funnels",
-    a: "Designing pages that convert, split-testing frameworks, lead magnets, email/SMS follow-up, and CRO fundamentals.",
-  },
-  {
-    q: "Marketing automation",
-    a: "Zapier/Make workflows, CRM hygiene, lead scoring, and automating the boring parts of client & prospect communication.",
-  },
-  {
-    q: "Analytics & measurement",
-    a: "GA4, server-side tracking basics, dashboards teams actually read, and connecting ad spend to revenue.",
-  },
-  {
-    q: "AI in marketing",
-    a: "Practical use of LLMs for research, briefs, creative variants, and analysis — with guardrails for teams.",
-  },
+  { q: "Strategy & positioning", a: "Turning fuzzy goals into a channel plan: ICP work, offer design, funnel mapping, and choosing where to actually spend the next euro." },
+  { q: "Meta advertising (Facebook & Instagram)", a: "Account structure, campaign objectives, audience & creative strategy, iOS/attribution realities, scaling and troubleshooting." },
+  { q: "Landing pages & funnels", a: "Designing pages that convert, split-testing frameworks, lead magnets, email/SMS follow-up, and CRO fundamentals." },
+  { q: "Marketing automation", a: "Zapier/Make workflows, CRM hygiene, lead scoring, and automating the boring parts of client & prospect communication." },
+  { q: "Analytics & measurement", a: "GA4, server-side tracking basics, dashboards teams actually read, and connecting ad spend to revenue." },
+  { q: "AI in marketing", a: "Practical use of LLMs for research, briefs, creative variants, and analysis — with guardrails for teams." },
 ];
 
 const programs = [
@@ -123,21 +104,9 @@ const programs = [
 ];
 
 const testimonials = [
-  {
-    quote: "Rihards is an exceptional marketer with a deep understanding of the digital marketing ecosystem. He promoted data-led decisions from day one and highlighted the importance of measuring performance.",
-    author: "Bence Etele Baráth",
-    company: "AppsFlyer",
-  },
-  {
-    quote: "Rihards is THE expert on Facebook advertising. Excellent communication, deep knowledge, and an outstanding public speaker who gets the message across to any audience.",
-    author: "Regita Zeiļa",
-    company: "Director, Social Entrepreneurship Association",
-  },
-  {
-    quote: "Highly skilled, passionate and dedicated. Whenever I need advice on digital marketing — I go to him. His international experience and know-how excels his peers.",
-    author: "Kristina Berga",
-    company: "CEO, HuskySense",
-  },
+  { quote: "Rihards is an exceptional marketer with a deep understanding of the digital marketing ecosystem. He promoted data-led decisions from day one and highlighted the importance of measuring performance.", author: "Bence Etele Baráth", company: "AppsFlyer" },
+  { quote: "Rihards is THE expert on Facebook advertising. Excellent communication, deep knowledge, and an outstanding public speaker who gets the message across to any audience.", author: "Regita Zeiļa", company: "Director, Social Entrepreneurship Association" },
+  { quote: "Highly skilled, passionate and dedicated. Whenever I need advice on digital marketing — I go to him. His international experience and know-how excels his peers.", author: "Kristina Berga", company: "CEO, HuskySense" },
 ];
 
 const steps = [
@@ -183,9 +152,27 @@ const WorkWithMe = () => {
       m.content = desc;
       document.head.appendChild(m);
     }
+
+    // Inject Fraunces + Inter Tight for this page only
+    const fontId = "wwm-fonts";
+    if (!document.getElementById(fontId)) {
+      const preconnect1 = document.createElement("link");
+      preconnect1.rel = "preconnect";
+      preconnect1.href = "https://fonts.googleapis.com";
+      preconnect1.id = fontId;
+      const preconnect2 = document.createElement("link");
+      preconnect2.rel = "preconnect";
+      preconnect2.href = "https://fonts.gstatic.com";
+      preconnect2.crossOrigin = "anonymous";
+      const link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.href = "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&family=Inter+Tight:wght@400;500;600;700&display=swap";
+      document.head.append(preconnect1, preconnect2, link);
+    }
   }, []);
 
   const scrollToForm = () => document.getElementById("wwm-contact")?.scrollIntoView({ behavior: "smooth" });
+  const scrollToPrograms = () => document.getElementById("wwm-programs")?.scrollIntoView({ behavior: "smooth" });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -215,97 +202,110 @@ const WorkWithMe = () => {
   return (
     <div className="wwm-theme min-h-screen">
       {/* Top bar */}
-      <header className="sticky top-0 z-40 backdrop-blur-md bg-[hsla(220,55%,10%,0.75)] border-b border-white/5">
+      <header className="sticky top-0 z-40 bg-[color:var(--wwm-ivory)]/85 backdrop-blur-md border-b wwm-hairline">
         <div className="max-w-7xl mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-2 text-sm text-white/80 hover:text-white transition">
-            <ArrowLeft className="w-4 h-4" />
-            <span className="hidden sm:inline">Back to main site</span>
-            <span className="sm:hidden">Back</span>
-          </Link>
-          <div className="heading-elegant text-sm md:text-base tracking-wide">RIHARDS ZEILA</div>
-          <button onClick={scrollToForm} className="wwm-cta px-4 py-2 rounded-md text-sm font-semibold">
+          <div className="wwm-display text-lg md:text-xl tracking-tight">
+            Rihards Zeila<span className="wwm-display-italic text-[color:var(--wwm-accent)]">.</span>
+          </div>
+          <div className="hidden md:block text-xs uppercase tracking-[0.22em] wwm-muted">
+            Digital Marketing Training
+          </div>
+          <button onClick={scrollToForm} className="wwm-cta px-4 py-2 text-sm">
             Book a training
           </button>
         </div>
       </header>
 
       {/* Hero */}
-      <section className="wwm-hero-bg relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-28 grid lg:grid-cols-5 gap-12 items-center">
-          <div className="lg:col-span-3 space-y-6">
-            <div className="wwm-eyebrow">Digital Marketing Trainer & Workshop Facilitator</div>
-            <h1 className="heading-elegant text-4xl md:text-5xl lg:text-6xl leading-tight">
-              Train your team to run digital marketing that actually performs.
+      <section className="relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 lg:px-10 pt-20 pb-24 lg:pt-32 lg:pb-36 grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          <div className="lg:col-span-7 space-y-8">
+            <div className="wwm-eyebrow">Digital Marketing Training · Est. 2015</div>
+            <h1 className="wwm-display text-[2.75rem] md:text-6xl lg:text-[5rem] leading-[1.02]">
+              Training that turns marketing teams into <span className="wwm-display-italic text-[color:var(--wwm-accent)]">operators</span>.
             </h1>
-            <p className="text-lg md:text-xl text-white/80 leading-relaxed max-w-2xl">
-              I teach digital marketing at Riga Business School's MBA, run EU-funded workshops for SMEs, and train
-              in-house teams to own their Meta ads, funnels, and automation. Ten years in the trenches, up to
-              $5M/year of ad spend managed — packaged into training your team will actually use on Monday morning.
+            <p className="text-lg md:text-xl wwm-muted leading-relaxed max-w-2xl">
+              MBA lecturer at Riga Business School. Course leader for the EU-funded LIFT program. Workshop
+              facilitator for the International Trade Centre. Ten years in the trenches, up to $5M/year of ad
+              spend managed — packaged into training your team will actually use on Monday morning.
             </p>
-            <div className="flex flex-wrap gap-4 pt-2">
-              <button onClick={scrollToForm} className="wwm-cta px-6 py-3 rounded-md font-semibold flex items-center gap-2">
+            <div className="flex flex-wrap gap-3 pt-2">
+              <button onClick={scrollToForm} className="wwm-cta px-6 py-3 inline-flex items-center gap-2">
                 Request a training <ArrowRight className="w-4 h-4" />
               </button>
-              <a href="#wwm-programs" className="px-6 py-3 rounded-md font-semibold border border-white/20 hover:border-white/50 hover:bg-white/5 transition">
+              <button onClick={scrollToPrograms} className="wwm-ghost px-6 py-3">
                 See past programs
-              </a>
-            </div>
-
-            {/* Trusted-by row */}
-            <div className="pt-8">
-              <div className="text-xs uppercase tracking-widest text-white/50 mb-4">Trusted by</div>
-              <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
-                {trustedLogos.map((l) => (
-                  <img
-                    key={l.name}
-                    src={l.logo}
-                    alt={l.name}
-                    className="h-8 md:h-10 w-auto object-contain opacity-60 hover:opacity-100 transition"
-                    loading="lazy"
-                  />
-                ))}
-              </div>
+              </button>
             </div>
           </div>
 
-          <div className="lg:col-span-2">
-            <div className="relative max-w-sm mx-auto">
-              <div className="absolute -inset-4 rounded-2xl bg-gradient-to-br from-[#3b6fa0]/40 to-transparent blur-2xl" />
+          <div className="lg:col-span-5">
+            <div className="relative max-w-md mx-auto">
+              <div className="absolute -inset-3 border wwm-hairline rounded-sm translate-x-3 translate-y-3" />
               <img
                 src={headshot}
                 alt="Rihards Zeila"
-                className="relative rounded-2xl border border-white/10 shadow-2xl"
+                className="relative rounded-sm border wwm-hairline w-full grayscale contrast-[1.05]"
               />
+              <div className="absolute -bottom-4 -left-4 bg-[color:var(--wwm-ink)] text-[color:var(--wwm-ivory)] px-4 py-2 text-xs uppercase tracking-[0.22em]">
+                Riga, Latvia
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Trusted-by strip */}
+        <div className="border-t wwm-hairline">
+          <div className="max-w-7xl mx-auto px-6 lg:px-10 py-8 flex flex-col md:flex-row md:items-center gap-6">
+            <div className="wwm-eyebrow shrink-0 md:pr-8 md:border-r wwm-hairline">Trained teams at</div>
+            <div className="flex flex-wrap items-center gap-x-10 gap-y-4 flex-1">
+              {trustedLogos.map((l) => (
+                <img
+                  key={l.name}
+                  src={l.logo}
+                  alt={l.name}
+                  className="h-8 md:h-9 w-auto object-contain opacity-70 grayscale hover:opacity-100 hover:grayscale-0 transition"
+                  loading="lazy"
+                />
+              ))}
             </div>
           </div>
         </div>
       </section>
 
       {/* Stats */}
-      <Section className="border-y border-white/5 bg-[hsla(220,55%,12%,0.6)]">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10 py-10 grid grid-cols-2 md:grid-cols-4 gap-8">
-          {stats.map((s) => (
-            <div key={s.label} className="text-center md:text-left">
-              <div className="heading-elegant text-3xl md:text-4xl text-white">{s.value}</div>
-              <div className="text-sm text-white/60 mt-1">{s.label}</div>
+      <Section className="border-y wwm-hairline">
+        <div className="max-w-7xl mx-auto px-6 lg:px-10 py-14 grid grid-cols-2 md:grid-cols-4 divide-x wwm-hairline">
+          {stats.map((s, i) => (
+            <div key={s.label} className={`px-4 md:px-8 ${i === 0 ? "md:pl-0" : ""}`}>
+              <div className="wwm-display wwm-display-italic text-5xl md:text-6xl text-[color:var(--wwm-ink)]">{s.value}</div>
+              <div className="text-sm wwm-muted mt-2 uppercase tracking-wider">{s.label}</div>
             </div>
           ))}
         </div>
       </Section>
 
       {/* Who I train */}
-      <Section className="py-20 lg:py-28">
+      <Section className="py-24 lg:py-32">
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
-          <div className="wwm-eyebrow mb-3">Who I train</div>
-          <h2 className="heading-elegant text-3xl md:text-4xl mb-10 max-w-2xl">
-            Built for teams that need results, not another slide deck.
-          </h2>
+          <div className="grid lg:grid-cols-12 gap-10 mb-16">
+            <div className="lg:col-span-4">
+              <div className="wwm-eyebrow mb-4">Who I train</div>
+              <h2 className="wwm-display text-4xl md:text-5xl">
+                For teams that need <span className="wwm-display-italic">results</span>, not another slide deck.
+              </h2>
+            </div>
+            <p className="lg:col-span-7 lg:col-start-6 text-lg wwm-muted leading-relaxed self-end">
+              I work with three distinct audiences. The through-line is the same: practical frameworks, live
+              ad accounts, and content people will use the week after training ends.
+            </p>
+          </div>
           <div className="grid md:grid-cols-3 gap-6">
             {audiences.map((a) => (
               <div key={a.title} className="wwm-card p-8">
-                <a.icon className="w-8 h-8 text-[hsl(210,60%,70%)] mb-4" />
-                <h3 className="heading-elegant text-xl mb-3">{a.title}</h3>
-                <p className="text-white/70 leading-relaxed">{a.body}</p>
+                <a.icon className="w-6 h-6 text-[color:var(--wwm-accent)] mb-6" strokeWidth={1.5} />
+                <h3 className="wwm-display text-2xl mb-3">{a.title}</h3>
+                <p className="wwm-muted leading-relaxed">{a.body}</p>
               </div>
             ))}
           </div>
@@ -313,25 +313,23 @@ const WorkWithMe = () => {
       </Section>
 
       {/* Formats */}
-      <Section className="py-20 lg:py-28 bg-[hsla(220,55%,12%,0.5)]">
+      <Section className="wwm-dark py-24 lg:py-32">
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
-          <div className="wwm-eyebrow mb-3">Training formats</div>
-          <h2 className="heading-elegant text-3xl md:text-4xl mb-10 max-w-2xl">
-            Four ways to work together.
+          <div className="wwm-eyebrow mb-4">Training formats</div>
+          <h2 className="wwm-display text-4xl md:text-5xl mb-16 max-w-3xl">
+            Four ways to work <span className="wwm-display-italic">together</span>.
           </h2>
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 gap-px bg-[rgba(245,242,236,0.12)] border wwm-hairline">
             {formats.map((f) => (
-              <div key={f.title} className="wwm-card p-8 flex flex-col">
-                <div className="flex items-baseline justify-between mb-3">
-                  <h3 className="heading-elegant text-xl">{f.title}</h3>
-                  <span className="text-xs uppercase tracking-widest text-[hsl(210,60%,70%)]">{f.duration}</span>
-                </div>
-                <div className="text-sm text-white/50 mb-4">For: {f.audience}</div>
-                <p className="text-white/80 mb-5">{f.outcome}</p>
-                <ul className="space-y-2 mt-auto">
+              <div key={f.title} className="bg-[color:var(--wwm-ink)] p-8 lg:p-10 flex flex-col">
+                <div className="text-xs uppercase tracking-[0.22em] text-[#e8a892] mb-4">{f.duration}</div>
+                <h3 className="wwm-display text-3xl mb-3">{f.title}</h3>
+                <div className="text-sm wwm-muted mb-5 italic">For {f.audience}</div>
+                <p className="text-[color:var(--wwm-ivory)]/85 mb-6 leading-relaxed">{f.outcome}</p>
+                <ul className="space-y-2 mt-auto pt-4 border-t wwm-hairline">
                   {f.bullets.map((b) => (
-                    <li key={b} className="flex items-start gap-2 text-sm text-white/70">
-                      <Check className="w-4 h-4 text-[hsl(210,60%,70%)] mt-0.5 shrink-0" />
+                    <li key={b} className="flex items-start gap-3 text-sm text-[color:var(--wwm-ivory)]/75">
+                      <span className="text-[color:var(--wwm-accent)] mt-1">—</span>
                       <span>{b}</span>
                     </li>
                   ))}
@@ -343,19 +341,19 @@ const WorkWithMe = () => {
       </Section>
 
       {/* Curriculum */}
-      <Section className="py-20 lg:py-28">
+      <Section className="py-24 lg:py-32">
         <div className="max-w-4xl mx-auto px-6 lg:px-10">
-          <div className="wwm-eyebrow mb-3">Curriculum snapshot</div>
-          <h2 className="heading-elegant text-3xl md:text-4xl mb-10">
-            What we can cover.
+          <div className="wwm-eyebrow mb-4">Curriculum snapshot</div>
+          <h2 className="wwm-display text-4xl md:text-5xl mb-12">
+            What we can <span className="wwm-display-italic">cover</span>.
           </h2>
-          <Accordion type="single" collapsible defaultValue="c-0" className="space-y-3">
+          <Accordion type="single" collapsible defaultValue="c-0" className="border-t wwm-hairline">
             {curriculum.map((c, i) => (
-              <AccordionItem key={c.q} value={`c-${i}`} className="wwm-card px-6 border-0">
-                <AccordionTrigger className="text-left text-lg md:text-xl font-semibold hover:no-underline">
+              <AccordionItem key={c.q} value={`c-${i}`} className="border-b wwm-hairline">
+                <AccordionTrigger className="text-left wwm-display text-xl md:text-2xl hover:no-underline py-6 font-normal">
                   {c.q}
                 </AccordionTrigger>
-                <AccordionContent className="text-white/70 leading-relaxed text-base">
+                <AccordionContent className="wwm-muted leading-relaxed text-base pb-6">
                   {c.a}
                 </AccordionContent>
               </AccordionItem>
@@ -365,18 +363,18 @@ const WorkWithMe = () => {
       </Section>
 
       {/* Programs */}
-      <Section className="py-20 lg:py-28 bg-[hsla(220,55%,12%,0.5)]" >
+      <Section className="py-24 lg:py-32 bg-[color:var(--wwm-sand)]">
         <div id="wwm-programs" className="max-w-5xl mx-auto px-6 lg:px-10">
-          <div className="wwm-eyebrow mb-3">Selected programs & institutions</div>
-          <h2 className="heading-elegant text-3xl md:text-4xl mb-10">
-            Where I've taught & trained.
+          <div className="wwm-eyebrow mb-4">Selected programs & institutions</div>
+          <h2 className="wwm-display text-4xl md:text-5xl mb-12">
+            Where I've taught & <span className="wwm-display-italic">trained</span>.
           </h2>
-          <div className="divide-y divide-white/10 border-y border-white/10">
+          <div className="border-t wwm-hairline">
             {programs.map((p) => (
-              <div key={p.org + p.role} className="py-5 grid grid-cols-12 gap-4 items-baseline hover:bg-white/[0.02] transition px-2">
-                <div className="col-span-12 md:col-span-4 heading-elegant text-white text-lg">{p.org}</div>
-                <div className="col-span-9 md:col-span-6 text-white/75">{p.role}</div>
-                <div className="col-span-3 md:col-span-2 text-right text-sm text-white/50">{p.period}</div>
+              <div key={p.org + p.role} className="py-6 grid grid-cols-12 gap-4 items-baseline border-b wwm-hairline hover:bg-[color:var(--wwm-ivory)] transition px-2 -mx-2">
+                <div className="col-span-3 md:col-span-2 wwm-display wwm-display-italic text-[color:var(--wwm-accent)] text-lg">{p.period}</div>
+                <div className="col-span-9 md:col-span-5 wwm-display text-xl">{p.org}</div>
+                <div className="col-span-12 md:col-span-5 wwm-muted">{p.role}</div>
               </div>
             ))}
           </div>
@@ -384,20 +382,20 @@ const WorkWithMe = () => {
       </Section>
 
       {/* Testimonials */}
-      <Section className="py-20 lg:py-28">
+      <Section className="wwm-dark py-24 lg:py-32">
         <div className="max-w-6xl mx-auto px-6 lg:px-10">
-          <div className="wwm-eyebrow mb-3">What people say</div>
-          <h2 className="heading-elegant text-3xl md:text-4xl mb-10">
-            From colleagues, clients, and program leads.
+          <div className="wwm-eyebrow mb-4">In their words</div>
+          <h2 className="wwm-display text-4xl md:text-5xl mb-16 max-w-3xl">
+            From colleagues, clients, and program <span className="wwm-display-italic">leads</span>.
           </h2>
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 gap-8">
             {testimonials.map((t) => (
-              <blockquote key={t.author} className="wwm-card p-8">
-                <Sparkles className="w-5 h-5 text-[hsl(210,60%,70%)] mb-4" />
-                <p className="text-white/85 leading-relaxed mb-5 italic">"{t.quote}"</p>
-                <footer className="text-sm">
-                  <div className="text-white font-semibold">{t.author}</div>
-                  <div className="text-white/50">{t.company}</div>
+              <blockquote key={t.author} className="flex flex-col">
+                <div className="wwm-display wwm-display-italic text-6xl text-[color:var(--wwm-accent)] leading-none mb-4">"</div>
+                <p className="wwm-display text-xl leading-snug mb-8 text-[color:var(--wwm-ivory)]">{t.quote}</p>
+                <footer className="mt-auto pt-6 border-t wwm-hairline">
+                  <div className="text-[color:var(--wwm-ivory)] font-medium">{t.author}</div>
+                  <div className="wwm-muted text-sm mt-1">{t.company}</div>
                 </footer>
               </blockquote>
             ))}
@@ -406,18 +404,18 @@ const WorkWithMe = () => {
       </Section>
 
       {/* Process */}
-      <Section className="py-20 lg:py-28 bg-[hsla(220,55%,12%,0.5)]">
-        <div className="max-w-6xl mx-auto px-6 lg:px-10">
-          <div className="wwm-eyebrow mb-3">How an engagement works</div>
-          <h2 className="heading-elegant text-3xl md:text-4xl mb-10 max-w-2xl">
-            Simple, transparent, no bloat.
+      <Section className="py-24 lg:py-32">
+        <div className="max-w-7xl mx-auto px-6 lg:px-10">
+          <div className="wwm-eyebrow mb-4">How an engagement works</div>
+          <h2 className="wwm-display text-4xl md:text-5xl mb-16 max-w-2xl">
+            Simple, transparent, no <span className="wwm-display-italic">bloat</span>.
           </h2>
-          <div className="grid md:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-4 gap-px bg-[color:var(--wwm-rule)] border wwm-hairline">
             {steps.map((s) => (
-              <div key={s.n} className="wwm-card p-6">
-                <div className="heading-elegant text-3xl text-[hsl(210,60%,70%)] mb-3">{s.n}</div>
-                <div className="heading-elegant text-lg mb-2">{s.title}</div>
-                <p className="text-white/70 text-sm leading-relaxed">{s.body}</p>
+              <div key={s.n} className="bg-[color:var(--wwm-ivory)] p-8">
+                <div className="wwm-display wwm-display-italic text-5xl text-[color:var(--wwm-accent)] mb-6">{s.n}</div>
+                <div className="wwm-display text-xl mb-3">{s.title}</div>
+                <p className="wwm-muted text-sm leading-relaxed">{s.body}</p>
               </div>
             ))}
           </div>
@@ -425,15 +423,17 @@ const WorkWithMe = () => {
       </Section>
 
       {/* FAQ */}
-      <Section className="py-20 lg:py-28">
+      <Section className="py-24 lg:py-32 bg-[color:var(--wwm-sand)]">
         <div className="max-w-4xl mx-auto px-6 lg:px-10">
-          <div className="wwm-eyebrow mb-3">FAQ</div>
-          <h2 className="heading-elegant text-3xl md:text-4xl mb-10">Common questions.</h2>
-          <Accordion type="single" collapsible className="space-y-3">
+          <div className="wwm-eyebrow mb-4">FAQ</div>
+          <h2 className="wwm-display text-4xl md:text-5xl mb-12">
+            Common <span className="wwm-display-italic">questions</span>.
+          </h2>
+          <Accordion type="single" collapsible className="border-t wwm-hairline">
             {faqs.map((f, i) => (
-              <AccordionItem key={f.q} value={`f-${i}`} className="wwm-card px-6 border-0">
-                <AccordionTrigger className="text-left text-lg font-semibold hover:no-underline">{f.q}</AccordionTrigger>
-                <AccordionContent className="text-white/70 leading-relaxed">{f.a}</AccordionContent>
+              <AccordionItem key={f.q} value={`f-${i}`} className="border-b wwm-hairline">
+                <AccordionTrigger className="text-left wwm-display text-xl hover:no-underline py-6 font-normal">{f.q}</AccordionTrigger>
+                <AccordionContent className="wwm-muted leading-relaxed pb-6">{f.a}</AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>
@@ -441,44 +441,46 @@ const WorkWithMe = () => {
       </Section>
 
       {/* Contact form */}
-      <section id="wwm-contact" className="py-20 lg:py-28 bg-[hsla(220,55%,10%,0.7)] border-t border-white/5">
-        <div className="max-w-5xl mx-auto px-6 lg:px-10 grid lg:grid-cols-5 gap-10">
-          <div className="lg:col-span-2 space-y-5">
+      <section id="wwm-contact" className="wwm-dark py-24 lg:py-32">
+        <div className="max-w-6xl mx-auto px-6 lg:px-10 grid lg:grid-cols-12 gap-12">
+          <div className="lg:col-span-5 space-y-6">
             <div className="wwm-eyebrow">Book a training</div>
-            <h2 className="heading-elegant text-3xl md:text-4xl">Tell me about your team.</h2>
-            <p className="text-white/70 leading-relaxed">
-              A short note about your organization, goals, and timeline is enough to get started. I reply within
-              two business days.
+            <h2 className="wwm-display text-4xl md:text-5xl leading-tight">
+              Tell me about your <span className="wwm-display-italic">team</span>.
+            </h2>
+            <p className="text-[color:var(--wwm-ivory)]/75 leading-relaxed text-lg">
+              A short note about your organization, goals, and timeline is enough to get started.
+              I reply within two business days.
             </p>
-            <div className="pt-4 space-y-3 text-sm">
-              <a href="mailto:rihards.zeila@gmail.com" className="flex items-center gap-3 text-white/80 hover:text-white transition">
+            <div className="pt-6 space-y-3 text-sm border-t wwm-hairline">
+              <a href="mailto:rihards.zeila@gmail.com" className="flex items-center gap-3 text-[color:var(--wwm-ivory)]/85 hover:text-[color:var(--wwm-ivory)] transition pt-6">
                 <Mail className="w-4 h-4" /> rihards.zeila@gmail.com
               </a>
-              <a href="https://www.linkedin.com/in/rihards-ze/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-white/80 hover:text-white transition">
+              <a href="https://www.linkedin.com/in/rihards-ze/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-[color:var(--wwm-ivory)]/85 hover:text-[color:var(--wwm-ivory)] transition">
                 <Linkedin className="w-4 h-4" /> linkedin.com/in/rihards-ze
               </a>
             </div>
           </div>
 
-          <form onSubmit={handleSubmit} className="lg:col-span-3 wwm-card p-6 md:p-8 space-y-4">
+          <form onSubmit={handleSubmit} className="lg:col-span-7 bg-[color:var(--wwm-ivory)] text-[color:var(--wwm-ink)] p-8 md:p-10 space-y-5">
             <div className="grid md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm mb-2 text-white/80">Name</label>
-                <Input value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} placeholder="Your name" className="bg-white/5 border-white/10 text-white placeholder:text-white/40" required />
+                <label className="block text-xs uppercase tracking-[0.18em] mb-2 wwm-muted">Name</label>
+                <Input value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} placeholder="Your name" className="wwm-field h-11" required />
               </div>
               <div>
-                <label className="block text-sm mb-2 text-white/80">Email</label>
-                <Input type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} placeholder="you@company.com" className="bg-white/5 border-white/10 text-white placeholder:text-white/40" required />
+                <label className="block text-xs uppercase tracking-[0.18em] mb-2 wwm-muted">Email</label>
+                <Input type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} placeholder="you@company.com" className="wwm-field h-11" required />
               </div>
             </div>
             <div>
-              <label className="block text-sm mb-2 text-white/80">Organization</label>
-              <Input value={form.organization} onChange={(e) => setForm({ ...form, organization: e.target.value })} placeholder="Company, university, program…" className="bg-white/5 border-white/10 text-white placeholder:text-white/40" />
+              <label className="block text-xs uppercase tracking-[0.18em] mb-2 wwm-muted">Organization</label>
+              <Input value={form.organization} onChange={(e) => setForm({ ...form, organization: e.target.value })} placeholder="Company, university, program…" className="wwm-field h-11" />
             </div>
             <div>
-              <label className="block text-sm mb-2 text-white/80">Program type</label>
+              <label className="block text-xs uppercase tracking-[0.18em] mb-2 wwm-muted">Program type</label>
               <Select value={form.type} onValueChange={(v) => setForm({ ...form, type: v })}>
-                <SelectTrigger className="bg-white/5 border-white/10 text-white">
+                <SelectTrigger className="wwm-field h-11">
                   <SelectValue placeholder="Select program type" />
                 </SelectTrigger>
                 <SelectContent>
@@ -491,10 +493,10 @@ const WorkWithMe = () => {
               </Select>
             </div>
             <div>
-              <label className="block text-sm mb-2 text-white/80">Message</label>
-              <Textarea value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} placeholder="Team size, goals, timeline, format preferences…" rows={5} className="bg-white/5 border-white/10 text-white placeholder:text-white/40" required />
+              <label className="block text-xs uppercase tracking-[0.18em] mb-2 wwm-muted">Message</label>
+              <Textarea value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} placeholder="Team size, goals, timeline, format preferences…" rows={5} className="wwm-field" required />
             </div>
-            <Button type="submit" disabled={submitting} className="wwm-cta w-full h-12 text-base font-semibold">
+            <Button type="submit" disabled={submitting} className="wwm-cta w-full h-12 text-base">
               {submitting ? "Sending…" : "Send request"}
             </Button>
           </form>
@@ -502,12 +504,12 @@ const WorkWithMe = () => {
       </section>
 
       {/* Footer */}
-      <footer className="py-10 border-t border-white/5 text-center text-sm text-white/50">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10 flex flex-col md:flex-row items-center justify-between gap-3">
+      <footer className="py-10 border-t wwm-hairline">
+        <div className="max-w-7xl mx-auto px-6 lg:px-10 flex flex-col md:flex-row items-center justify-between gap-3 text-sm wwm-muted">
           <div>© {new Date().getFullYear()} Rihards Zeila — Digital marketing training & consulting.</div>
-          <Link to="/" className="hover:text-white transition inline-flex items-center gap-2">
-            <ArrowLeft className="w-4 h-4" /> Back to main site
-          </Link>
+          <a href="mailto:rihards.zeila@gmail.com" className="hover:text-[color:var(--wwm-ink)] transition">
+            rihards.zeila@gmail.com
+          </a>
         </div>
       </footer>
     </div>

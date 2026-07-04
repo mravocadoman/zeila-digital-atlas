@@ -1,105 +1,76 @@
 
 ## Goal
 
-Create a dedicated sub-page at **`/work-with-me`** that promotes Rihards as a **Digital Marketing Trainer & Workshop Facilitator** — targeted at universities, business schools, corporate L&D teams, NGOs, government programs (LIFT/ITC-style), and SME cohorts. Design should feel professional, modern, and confident — clearly distinct from the neon-80s homepage — while still cool.
+Turn `/work-with-me` into a fully standalone landing page for Rihards as a **Digital Marketing Trainer & Workshop Facilitator**. It should not be discoverable from the main site's navigation — it lives as its own destination (for LinkedIn bio, proposals, RFPs, email signatures). Redesign typography and visual system so it speaks to L&D leads, deans, program directors, and corporate training buyers — not the neon-80s homepage audience.
 
-## Design direction: "Modern Enterprise"
+## Changes
 
-- **Palette (new tokens, scoped to this page):**
-  - Deep navy background `#0f1b3d`
-  - Mid navy surfaces `#1e3a5f`
-  - Steel-blue accent `#3b6fa0`
-  - Off-white text `#e8edf3`
-  - Pure white for hero headline emphasis
-- **Typography:** keep project fonts (Orbitron / Rajdhani) so brand stays consistent, but restyle: tighter tracking, no neon text-shadow on this page's headings, more editorial spacing. Body text at 18–20px, generous line-height.
-- **Feel:** crisp SaaS/consultancy — thin dividers, subtle 1px borders in `rgba(255,255,255,0.08)`, soft blue glow only on primary CTA, no scanlines/palms/synthwave. Rounded-md, not neon boxes.
-- **Motion:** quiet fade-and-rise on scroll (reuse `useScrollAnimation`), a slow subtle gradient wash in the hero, hover lift on cards. No marquee, no video background.
+### 1. Remove from main navigation
 
-## Page structure
+- `src/components/Navigation.tsx`: drop the `"Work With Me"` item from `navItems`. Also remove the `item.href.startsWith("/")` branch since it's no longer needed (both desktop and mobile handlers).
+- Route stays registered in `src/App.tsx` — page is reachable by direct URL only.
+
+### 2. New design direction: "Editorial Enterprise"
+
+Move away from the current navy-only "Modern Enterprise" tokens toward something more grown-up, closer to how HBS Executive Education, IMD, INSEAD Executive, Reforge, and Section land visually. Serious, editorial, confident — not corporate-stock.
+
+**Palette (replaces current `.wwm-theme` tokens):**
+- Ivory background `#f5f2ec`
+- Deep ink text `#0e1116`
+- Warm charcoal surfaces `#1a1d24`
+- Muted terracotta accent `#b8543a` (single accent, used sparingly for CTA + eyebrows)
+- Warm gray dividers `#d9d4c9`
+- Sand card surface `#ece7dc`
+
+Dark inversion band(s) for hero + testimonials + CTA (`#0e1116` on ivory text) to create editorial rhythm.
+
+**Typography (new fonts, not Orbitron/Rajdhani):**
+- Headings: **Fraunces** (serif, high-contrast, editorial) — display sizes with tight tracking
+- Body: **Inter Tight** (or system sans fallback) at 18–20px, generous leading
+- Eyebrows/meta: uppercase Inter Tight, 0.7rem, 0.22em tracking
+- Loaded via `<link>` tags injected in the page's `useEffect` so they don't affect the homepage bundle
+
+**Motion & surfaces:**
+- Thin 1px hairline borders in `rgba(14,17,22,0.08)`
+- No glows, no gradients on cards
+- Subtle scroll fade-and-rise via existing `useScrollAnimation`
+- Numbers set in Fraunces italic for stat tiles (editorial signature)
+
+### 3. Page structure adjustments
+
+Reuse the sections built previously but re-skinned:
 
 ```text
 /work-with-me
-├─ Sub-page top bar (back to home + logo/name + Book a training CTA)
-├─ Hero
-│   • Eyebrow: "Digital Marketing Trainer & Workshop Facilitator"
-│   • H1: "Train your team to run digital marketing that actually performs."
-│   • Sub: 2–3 lines positioning (MBA lecturer at Riga Business School,
-│     EU-funded LIFT program lead, ITC workshop facilitator, 10+ yrs,
-│     $5M/yr ad spend managed).
-│   • Primary CTA → scroll to inquiry form. Secondary → "See past programs".
-│   • Right side: portrait + small "trusted by" logo row (reuse Partners logos).
-├─ Credibility strip
-│   • 4 stat tiles: 10+ yrs · 20+ programs delivered · 3 universities · €10M+ revenue driven
-├─ Who I train
-│   • 3 cards: Universities & Business Schools · Corporate & SME teams · NGOs & Public programs
-├─ Training formats
-│   • 4 offerings, each with outcome + duration + ideal audience:
-│       1. Meta Ads Intensive (1-day workshop)
-│       2. Digital Marketing Growth Strategies for SMEs (multi-session)
-│       3. Custom MBA / BBA modules (semester-long)
-│       4. Team enablement & automation coaching (retainer)
-├─ Curriculum snapshot
-│   • Accordion / tabbed list of topics I teach (strategy, Meta ads,
-│     funnels, automation, analytics, creative, AI in marketing).
-├─ Selected programs & institutions
-│   • Editorial list pulled from SpeakingTeaching data:
-│     Riga Business School (MBA), RISEBA (BBA), University of Lusaka,
-│     LIFT Program, International Trade Centre, Latvijas Digitālo
-│     ekspertu biedrība, Vidusdaugavas NVO centrs, Medijpratējs,
-│     RBS Executive Education. Each with year + one-line context.
-├─ Testimonials (2–3, restyled cards on navy)
-├─ How an engagement works
-│   • 4-step timeline: Discovery call → Curriculum design → Delivery →
-│     Post-training support.
+├─ Slim top bar: wordmark left, "Book a training" CTA right (no back-to-home link)
+├─ Hero (ivory)
+│   • Eyebrow: "Digital Marketing Training"
+│   • H1 in Fraunces: "Training that turns marketing teams into operators."
+│   • Sub: MBA lecturer / LIFT / ITC / 10+ yrs / $5M ad spend
+│   • Primary CTA + secondary "See programs"
+│   • Small "Trained teams at" logo row
+├─ Stat strip (4 tiles, Fraunces italic numerals)
+├─ Who I train (3 columns)
+├─ Training formats (4 offerings)
+├─ Curriculum accordion
+├─ Selected programs & institutions (editorial list, year on the left)
+├─ Testimonials (dark band, pull-quote treatment)
+├─ How an engagement works (4-step timeline)
 ├─ FAQ
-│   • Format (in-person/remote/hybrid), languages (EN/LV), group size,
-│     recording rights, pricing model.
-├─ Inquiry form (new, same backend as homepage form)
-│   • Fields: Name, Email, Organization, Program type, Message.
-│   • Program type options: workshop, mba-module, corporate-training,
-│     public-program, other.
-│   • Reuses existing `send-contact-email` edge function with an added
-│     `organization` field and expanded ALLOWED_TYPES.
-└─ Slim footer (reuse existing Footer, or a compact variant)
+├─ Inquiry form (unchanged wiring — same edge function)
+└─ Minimal footer inside the page (name + email + year), not the homepage Footer
 ```
 
-## Content sources
+### 4. Files touched
 
-- Existing site: `About.tsx` stats, `SpeakingTeaching.tsx` programs, `Testimonials.tsx`, `Partners.tsx` logos, `Hero.tsx` headshot.
-- Web research (LinkedIn `rihards-ze`, published site, RBS/RISEBA/LIFT/ITC pages) — used only to enrich program descriptions and titles; no fabricated claims. If a fact can't be verified, it stays out.
+- `src/index.css` — replace `.wwm-theme` block with the new ivory/ink token set + font-family overrides scoped under `.wwm-theme`.
+- `src/pages/WorkWithMe.tsx` — inject Fraunces + Inter Tight `<link>` tags; drop homepage `Footer` usage; add compact in-page footer.
+- `src/components/work-with-me/*` — restyle only (no structural changes to hero/stats/audiences/formats/curriculum/programs/process/faq/contact form). Swap `wwm-cta` gradient for solid terracotta, cards to sand surface with hairline borders, headings to Fraunces via a `.wwm-display` utility.
+- `src/components/Navigation.tsx` — remove Work With Me link + the `/`-href branch.
 
-## Routing & navigation
+### 5. Out of scope
 
-- Add `<Route path="/work-with-me" element={<WorkWithMe />} />` in `App.tsx`.
-- Add a subtle "Work with me" link in the main site's `Navigation` (desktop + mobile) so visitors can discover the page.
-- Sub-page uses its own lightweight top bar (not the neon nav) with a "← Back to main site" link.
+- No changes to homepage sections.
+- No changes to backend / edge function.
+- No new routes, no auth, no CMS.
 
-## Technical notes
-
-- **New files:**
-  - `src/pages/WorkWithMe.tsx` — page composition.
-  - `src/components/work-with-me/` — `WWMNav.tsx`, `WWMHero.tsx`, `WWMStats.tsx`, `WWMAudiences.tsx`, `WWMFormats.tsx`, `WWMCurriculum.tsx`, `WWMPrograms.tsx`, `WWMProcess.tsx`, `WWMFAQ.tsx`, `WWMContactForm.tsx`.
-- **Styling isolation:** wrap the page in a `.wwm-theme` root that overrides the design tokens via CSS custom properties so the neon tokens don't bleed in:
-  ```css
-  .wwm-theme {
-    --background: 220 55% 15%;
-    --foreground: 215 30% 94%;
-    --card: 216 52% 24%;
-    --primary: 210 47% 43%;
-    --border: 215 30% 94% / 0.08;
-    /* etc. */
-  }
-  ```
-  Removes neon text-shadow via `.wwm-theme h1, .wwm-theme h2 { text-shadow: none; }`.
-- **Contact form:**
-  - New `WWMContactForm.tsx` posts to the existing `send-contact-email` function.
-  - Edge function updated to accept optional `organization` (max 150 chars, escaped) and to add new `type` values: `workshop`, `mba-module`, `corporate-training`, `public-program`. Backwards compatible with existing homepage form.
-  - Redeploy `send-contact-email` after the change.
-- **SEO:** update `index.html` fine, but React Helmet isn't installed; instead set a per-route `document.title` and `<meta name="description">` via a small `useEffect` in `WorkWithMe.tsx` (title: "Digital Marketing Trainer & Workshop Facilitator — Rihards Zeila"; description under 160 chars).
-- Reuse `useScrollAnimation` hook, shadcn `Accordion`, `Card`, `Button`, `Input`, `Textarea`, `Select`.
-
-## Out of scope
-
-- No changes to homepage layout beyond adding the nav link.
-- No new backend tables or auth.
-- No paid-ads landing-page copywriting for consulting services (this page is training-focused per your choice).
