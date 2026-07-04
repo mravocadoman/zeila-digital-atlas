@@ -1,5 +1,4 @@
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
-import { Link } from "react-router-dom";
 
 const FreeTraining = () => {
   const { ref, isVisible } = useScrollAnimation();
@@ -40,36 +39,27 @@ const FreeTraining = () => {
                   From campaign setup to scaling strategies, this playlist covers the essential skills needed to 
                   generate results with Facebook and Instagram ads.
                 </p>
-                <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
-                  <a
-                    href="https://www.youtube.com/playlist?list=PLHpAUrghDOai7S1pZVyoOhOn6crOlUc5i"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-primary hover:text-white transition-colors body-clean font-semibold"
+                <a
+                  href="https://www.youtube.com/playlist?list=PLHpAUrghDOai7S1pZVyoOhOn6crOlUc5i"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-primary hover:text-white transition-colors body-clean font-semibold"
+                >
+                  View Full Playlist on YouTube
+                  <svg 
+                    className="w-4 h-4" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
                   >
-                    View Full Playlist on YouTube
-                    <svg 
-                      className="w-4 h-4" 
-                      fill="none" 
-                      stroke="currentColor" 
-                      viewBox="0 0 24 24"
-                    >
-                      <path 
-                        strokeLinecap="round" 
-                        strokeLinejoin="round" 
-                        strokeWidth={2} 
-                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" 
-                      />
-                    </svg>
-                  </a>
-                  <span className="hidden sm:inline text-primary/40">·</span>
-                  <Link
-                    to="/work-with-me"
-                    className="inline-flex items-center gap-2 text-primary hover:text-white transition-colors body-clean font-semibold"
-                  >
-                    Prefer a live workshop? →
-                  </Link>
-                </div>
+                    <path 
+                      strokeLinecap="round" 
+                      strokeLinejoin="round" 
+                      strokeWidth={2} 
+                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" 
+                    />
+                  </svg>
+                </a>
               </div>
             </div>
           </div>

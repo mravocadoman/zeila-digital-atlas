@@ -1,8 +1,7 @@
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 import { Card, CardContent } from "@/components/ui/card";
-import { GraduationCap, Mic, Radio, Heart, ExternalLink, ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
+import { GraduationCap, Mic, Radio, Heart, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 const categories = [
@@ -370,21 +369,6 @@ const SpeakingTeaching = () => {
           {categories.map((category) => (
             <CategoryCarousel key={category.id} category={category} />
           ))}
-        </div>
-
-        {/* Bridge to /work-with-me */}
-        <div className="mt-12 lg:mt-16 card-luxury flex flex-col lg:flex-row items-center justify-between gap-6 text-center lg:text-left">
-          <div>
-            <h3 className="heading-elegant text-xl lg:text-2xl mb-2">Book a workshop or training</h3>
-            <p className="body-clean text-lg lg:text-xl text-muted-foreground max-w-2xl">
-              Bringing digital marketing training in-house, or planning a workshop for your team? See formats, curriculum, and how an engagement works.
-            </p>
-          </div>
-          <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 font-extrabold text-base lg:text-lg hover-scale whitespace-nowrap">
-            <Link to="/work-with-me">
-              Work With Me <ArrowRight className="w-4 h-4 ml-2" />
-            </Link>
-          </Button>
         </div>
       </div>
     </section>

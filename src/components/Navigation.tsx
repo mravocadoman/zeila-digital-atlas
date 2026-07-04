@@ -43,34 +43,27 @@ const Navigation = () => {
         <div className="flex items-center justify-end md:justify-center h-16 lg:h-20">
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center justify-center gap-8 lg:gap-12 w-full">
-            {navItems.map((item) => {
-              const isWorkWithMe = item.href === "/work-with-me";
-              return (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  onClick={(e) => {
-                    if (item.href.startsWith("/")) return; // let router link navigate
-                    e.preventDefault();
-                    if (item.href === "#top") {
-                      window.scrollTo({ top: 0, behavior: "smooth" });
-                    } else {
-                      const target = document.querySelector(item.href);
-                      if (target) {
-                        target.scrollIntoView({ behavior: "smooth" });
-                      }
+            {navItems.map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                onClick={(e) => {
+                  if (item.href.startsWith("/")) return; // let router link navigate
+                  e.preventDefault();
+                  if (item.href === "#top") {
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  } else {
+                    const target = document.querySelector(item.href);
+                    if (target) {
+                      target.scrollIntoView({ behavior: "smooth" });
                     }
-                  }}
-                  className={
-                    isWorkWithMe
-                      ? "text-primary text-base lg:text-lg uppercase tracking-wide font-bold border border-primary rounded-full px-4 py-1.5 hover:bg-primary hover:text-primary-foreground transition-colors"
-                      : "text-white text-base lg:text-lg uppercase tracking-wide font-bold hover:opacity-80 transition-opacity"
                   }
-                >
-                  {item.label}
-                </a>
-              );
-            })}
+                }}
+                className="text-white text-base lg:text-lg uppercase tracking-wide font-bold hover:opacity-80 transition-opacity"
+              >
+                {item.label}
+              </a>
+            ))}
           </div>
 
           {/* Mobile Menu Button */}
