@@ -457,21 +457,22 @@ const WorkWithMe = () => {
             <h2 className="wwm-display text-4xl md:text-5xl leading-tight">
               Tell me about your <span className="wwm-display-italic">team</span>.
             </h2>
-            <p className="text-[color:var(--wwm-ink)]/80 leading-relaxed text-lg">
+            <p className="text-[color:var(--wwm-ivory)]/75 leading-relaxed text-lg">
               A short note about your organization, goals, and timeline is enough to get started.
               I reply within two business days.
             </p>
             <div className="pt-6 space-y-3 text-sm border-t wwm-hairline">
-              <a href="mailto:rihards.zeila@gmail.com" className="flex items-center gap-3 text-[color:var(--wwm-ink)]/85 hover:text-[color:var(--wwm-ink)] transition pt-6">
+              <a href="mailto:rihards.zeila@gmail.com" className="flex items-center gap-3 text-[color:var(--wwm-ivory)]/85 hover:text-[color:var(--wwm-accent)] transition pt-6">
                 <Mail className="w-4 h-4" /> rihards.zeila@gmail.com
               </a>
-              <a href="https://www.linkedin.com/in/rihards-ze/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-[color:var(--wwm-ink)]/85 hover:text-[color:var(--wwm-ink)] transition">
+              <a href="https://www.linkedin.com/in/rihards-ze/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-[color:var(--wwm-ivory)]/85 hover:text-[color:var(--wwm-accent)] transition">
                 <Linkedin className="w-4 h-4" /> linkedin.com/in/rihards-ze
               </a>
             </div>
           </div>
 
-          <form onSubmit={handleSubmit} className="lg:col-span-7 bg-[color:var(--wwm-ivory)] text-[color:var(--wwm-ink)] p-8 md:p-10 space-y-5">
+          <form onSubmit={handleSubmit} className="lg:col-span-7 bg-[color:var(--wwm-sand)] text-[color:var(--wwm-ivory)] p-8 md:p-10 space-y-5 border wwm-hairline">
+
             <div className="grid md:grid-cols-2 gap-4">
               <div>
                 <label className="block text-xs uppercase tracking-[0.18em] mb-2 wwm-muted">Name</label>
