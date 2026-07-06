@@ -202,7 +202,7 @@ const WorkWithMe = () => {
   return (
     <div className="wwm-theme min-h-screen">
       {/* Top bar */}
-      <header className="sticky top-0 z-40 bg-[color:var(--wwm-ivory)]/85 backdrop-blur-md border-b wwm-hairline">
+      <header className="sticky top-0 z-40 bg-[color:var(--wwm-ink)]/85 backdrop-blur-md border-b wwm-hairline">
         <div className="max-w-7xl mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
           <div className="wwm-display text-lg md:text-xl tracking-tight">
             Rihards Zeila<span className="wwm-display-italic text-[color:var(--wwm-accent)]">.</span>
@@ -457,15 +457,15 @@ const WorkWithMe = () => {
             <h2 className="wwm-display text-4xl md:text-5xl leading-tight">
               Tell me about your <span className="wwm-display-italic">team</span>.
             </h2>
-            <p className="text-[color:var(--wwm-ivory)]/75 leading-relaxed text-lg">
+            <p className="text-[color:var(--wwm-ink)]/80 leading-relaxed text-lg">
               A short note about your organization, goals, and timeline is enough to get started.
               I reply within two business days.
             </p>
             <div className="pt-6 space-y-3 text-sm border-t wwm-hairline">
-              <a href="mailto:rihards.zeila@gmail.com" className="flex items-center gap-3 text-[color:var(--wwm-ivory)]/85 hover:text-[color:var(--wwm-ivory)] transition pt-6">
+              <a href="mailto:rihards.zeila@gmail.com" className="flex items-center gap-3 text-[color:var(--wwm-ink)]/85 hover:text-[color:var(--wwm-ink)] transition pt-6">
                 <Mail className="w-4 h-4" /> rihards.zeila@gmail.com
               </a>
-              <a href="https://www.linkedin.com/in/rihards-ze/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-[color:var(--wwm-ivory)]/85 hover:text-[color:var(--wwm-ivory)] transition">
+              <a href="https://www.linkedin.com/in/rihards-ze/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-[color:var(--wwm-ink)]/85 hover:text-[color:var(--wwm-ink)] transition">
                 <Linkedin className="w-4 h-4" /> linkedin.com/in/rihards-ze
               </a>
             </div>

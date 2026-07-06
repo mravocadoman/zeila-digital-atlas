@@ -152,21 +152,22 @@ All colors MUST be HSL.
    Scoped so homepage neon tokens don't bleed in.
    ============================================ */
 .wwm-theme {
-  --wwm-ivory: #f2ede3;
-  --wwm-sand: #ece7dc;
-  --wwm-ink: #0e1116;
-  --wwm-ink-soft: #2a2f38;
-  --wwm-charcoal: #1a1d24;
-  --wwm-rule: rgba(14, 17, 22, 0.10);
-  --wwm-muted: rgba(14, 17, 22, 0.62);
-  --wwm-accent: #e2542c;
-  --wwm-accent-ink: #b83a17;
-  --wwm-electric: #2a3bff;
-  --wwm-acid: #d6ff3d;
-  --wwm-plum: #3a1f2b;
+  /* Cyan / deep-blue neon — aligned with homepage palette */
+  --wwm-ivory: #E6F6FF;         /* LIGHT foreground (near-white icy) */
+  --wwm-sand: #0a2140;           /* lifted dark surface for cards / bands */
+  --wwm-ink: #00152C;            /* DARK base (deep blue) */
+  --wwm-ink-soft: #001a38;
+  --wwm-charcoal: #001022;
+  --wwm-rule: rgba(3, 195, 248, 0.22);
+  --wwm-muted: rgba(230, 246, 255, 0.62);
+  --wwm-accent: #03C3F8;         /* neon cyan */
+  --wwm-accent-ink: #00A5D6;
+  --wwm-electric: #FF4DFF;       /* neon magenta counterpoint */
+  --wwm-acid: #6EF6FF;           /* icy cyan highlight */
+  --wwm-plum: #001B3A;           /* deeper navy alt band */
 
-  background: var(--wwm-ivory);
-  color: var(--wwm-ink);
+  background: var(--wwm-ink);
+  color: var(--wwm-ivory);
   font-family: 'Inter Tight', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   font-weight: 400;
   font-size: 18px;
@@ -186,7 +187,7 @@ All colors MUST be HSL.
   font-optical-sizing: auto;
   font-variation-settings: "SOFT" 30, "WONK" 0;
   text-shadow: none;
-  color: var(--wwm-ink);
+  color: var(--wwm-ivory);
   letter-spacing: -0.02em;
   line-height: 1.05;
 }
@@ -239,42 +240,46 @@ All colors MUST be HSL.
   border-color: rgba(245, 242, 236, 0.22);
 }
 
-/* CTA — solid terracotta */
+/* CTA — solid neon cyan */
 .wwm-theme .wwm-cta {
   background: var(--wwm-accent);
-  color: var(--wwm-ivory);
+  color: var(--wwm-ink);
   border: 1px solid var(--wwm-accent-ink);
   border-radius: 0.25rem;
   font-family: 'Inter Tight', sans-serif;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.01em;
-  transition: background 0.2s ease, transform 0.2s ease;
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 0 12px rgba(3, 195, 248, 0.35);
 }
 .wwm-theme .wwm-cta:hover {
-  background: var(--wwm-accent-ink);
+  background: var(--wwm-acid);
   transform: translateY(-1px);
+  box-shadow: 0 0 20px rgba(110, 246, 255, 0.55);
 }
 
-/* Ghost button */
+/* Ghost button — light outline on dark theme */
 .wwm-theme .wwm-ghost {
   background: transparent;
-  color: var(--wwm-ink);
-  border: 1px solid var(--wwm-ink);
+  color: var(--wwm-ivory);
+  border: 1px solid rgba(230, 246, 255, 0.4);
   border-radius: 0.25rem;
   font-family: 'Inter Tight', sans-serif;
   font-weight: 500;
-  transition: background 0.2s ease;
+  transition: background 0.2s ease, border-color 0.2s ease;
 }
 .wwm-theme .wwm-ghost:hover {
-  background: var(--wwm-ink);
-  color: var(--wwm-ivory);
+  background: var(--wwm-accent);
+  border-color: var(--wwm-accent);
+  color: var(--wwm-ink);
 }
 .wwm-theme .wwm-dark .wwm-ghost {
   color: var(--wwm-ivory);
-  border-color: rgba(245, 242, 236, 0.4);
+  border-color: rgba(230, 246, 255, 0.4);
 }
 .wwm-theme .wwm-dark .wwm-ghost:hover {
-  background: var(--wwm-ivory);
+  background: var(--wwm-accent);
+  border-color: var(--wwm-accent);
   color: var(--wwm-ink);
 }
 
@@ -367,9 +372,9 @@ All colors MUST be HSL.
   letter-spacing: -0.04em;
 }
 .wwm-theme .wwm-stat-tile.t-ivory   { background: var(--wwm-ivory); color: var(--wwm-ink); }
-.wwm-theme .wwm-stat-tile.t-accent  { background: var(--wwm-accent); color: var(--wwm-ivory); }
-.wwm-theme .wwm-stat-tile.t-electric{ background: var(--wwm-electric); color: var(--wwm-ivory); }
-.wwm-theme .wwm-stat-tile.t-plum    { background: var(--wwm-plum); color: var(--wwm-ivory); }
+.wwm-theme .wwm-stat-tile.t-accent  { background: var(--wwm-accent); color: var(--wwm-ink); }
+.wwm-theme .wwm-stat-tile.t-electric{ background: var(--wwm-electric); color: var(--wwm-ink); }
+.wwm-theme .wwm-stat-tile.t-plum    { background: var(--wwm-plum); color: var(--wwm-ivory); border-color: rgba(3,195,248,0.35); }
 
 /* Program row hover — slide + terracotta reveal bar */
 .wwm-theme .wwm-program-row {
@@ -404,28 +409,29 @@ All colors MUST be HSL.
   user-select: none;
 }
 
-/* Duotone-ish headshot treatment */
+/* Duotone cyan headshot treatment */
 .wwm-theme .wwm-portrait {
-  filter: grayscale(1) contrast(1.05) sepia(0.5) hue-rotate(-25deg) saturate(1.4);
+  filter: grayscale(1) contrast(1.1) brightness(0.9) sepia(0.6) hue-rotate(160deg) saturate(2);
 }
 .wwm-theme .wwm-portrait-frame {
-  background: var(--wwm-electric);
+  background: var(--wwm-accent);
   transform: rotate(-2deg);
   transition: transform 0.4s ease;
+  box-shadow: 0 0 30px rgba(3, 195, 248, 0.45);
 }
 .wwm-theme .wwm-portrait-frame:hover {
   transform: rotate(0deg);
 }
 
-/* Contact call-out block */
+/* Contact call-out block — cyan slab */
 .wwm-theme .wwm-callout {
   background: var(--wwm-accent);
 }
-.wwm-theme .wwm-callout .wwm-eyebrow { color: var(--wwm-acid); }
+.wwm-theme .wwm-callout .wwm-eyebrow { color: var(--wwm-ink); }
 .wwm-theme .wwm-callout h2,
-.wwm-theme .wwm-callout .wwm-display { color: var(--wwm-ivory); }
-.wwm-theme .wwm-callout .wwm-muted { color: rgba(245, 242, 236, 0.85); }
-.wwm-theme .wwm-callout .wwm-hairline { border-color: rgba(245, 242, 236, 0.28); }
+.wwm-theme .wwm-callout .wwm-display { color: var(--wwm-ink); }
+.wwm-theme .wwm-callout .wwm-muted { color: rgba(0, 21, 44, 0.75); }
+.wwm-theme .wwm-callout .wwm-hairline { border-color: rgba(0, 21, 44, 0.28); }
 
 /* Broken grid offset for process tiles */
 .wwm-theme .wwm-broken-tile:nth-child(even) {
