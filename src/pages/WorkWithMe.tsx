@@ -220,9 +220,9 @@ const WorkWithMe = () => {
       <section className="relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 lg:px-10 pt-20 pb-24 lg:pt-32 lg:pb-36 grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           <div className="lg:col-span-7 space-y-8">
-            <div className="wwm-eyebrow">Digital Marketing Training · Est. 2015</div>
-            <h1 className="wwm-display text-[2.75rem] md:text-6xl lg:text-[5rem] leading-[1.02]">
-              Training that turns marketing teams into <span className="wwm-display-italic text-[color:var(--wwm-accent)]">operators</span>.
+            <div className="wwm-mono text-[color:var(--wwm-accent)]">Digital Marketing Training · Est. 2015</div>
+            <h1 className="wwm-display text-[2.75rem] md:text-6xl lg:text-[5.25rem] leading-[1.0] tracking-[-0.035em]" style={{ fontWeight: 500 }}>
+              Training that turns marketing teams into <span className="wwm-underline-acid"><span className="wwm-display-italic">operators</span></span>.
             </h1>
             <p className="text-lg md:text-xl wwm-muted leading-relaxed max-w-2xl">
               MBA lecturer at Riga Business School. Course leader for the EU-funded LIFT program. Workshop
@@ -241,14 +241,19 @@ const WorkWithMe = () => {
 
           <div className="lg:col-span-5">
             <div className="relative max-w-md mx-auto">
-              <div className="absolute -inset-3 border wwm-hairline rounded-sm translate-x-3 translate-y-3" />
-              <img
-                src={headshot}
-                alt="Rihards Zeila"
-                className="relative rounded-sm border wwm-hairline w-full grayscale contrast-[1.05]"
-              />
-              <div className="absolute -bottom-4 -left-4 bg-[color:var(--wwm-ink)] text-[color:var(--wwm-ivory)] px-4 py-2 text-xs uppercase tracking-[0.22em]">
-                Riga, Latvia
+              <div className="wwm-portrait-frame absolute inset-0 rounded-sm" />
+              <div className="relative bg-[color:var(--wwm-plum)] overflow-hidden rounded-sm">
+                <img
+                  src={headshot}
+                  alt="Rihards Zeila"
+                  className="wwm-portrait w-full block"
+                />
+              </div>
+              <div className="absolute -bottom-4 -left-4 bg-[color:var(--wwm-ink)] text-[color:var(--wwm-acid)] px-4 py-2 wwm-mono">
+                Riga · Latvia
+              </div>
+              <div className="absolute -top-3 -right-3 bg-[color:var(--wwm-electric)] text-[color:var(--wwm-ivory)] px-3 py-1 wwm-mono text-[0.65rem]">
+                Booking 2026
               </div>
             </div>
           </div>
