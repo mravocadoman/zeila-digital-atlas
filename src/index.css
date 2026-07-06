@@ -240,42 +240,46 @@ All colors MUST be HSL.
   border-color: rgba(245, 242, 236, 0.22);
 }
 
-/* CTA — solid terracotta */
+/* CTA — solid neon cyan */
 .wwm-theme .wwm-cta {
   background: var(--wwm-accent);
-  color: var(--wwm-ivory);
+  color: var(--wwm-ink);
   border: 1px solid var(--wwm-accent-ink);
   border-radius: 0.25rem;
   font-family: 'Inter Tight', sans-serif;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.01em;
-  transition: background 0.2s ease, transform 0.2s ease;
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 0 12px rgba(3, 195, 248, 0.35);
 }
 .wwm-theme .wwm-cta:hover {
-  background: var(--wwm-accent-ink);
+  background: var(--wwm-acid);
   transform: translateY(-1px);
+  box-shadow: 0 0 20px rgba(110, 246, 255, 0.55);
 }
 
-/* Ghost button */
+/* Ghost button — light outline on dark theme */
 .wwm-theme .wwm-ghost {
   background: transparent;
-  color: var(--wwm-ink);
-  border: 1px solid var(--wwm-ink);
+  color: var(--wwm-ivory);
+  border: 1px solid rgba(230, 246, 255, 0.4);
   border-radius: 0.25rem;
   font-family: 'Inter Tight', sans-serif;
   font-weight: 500;
-  transition: background 0.2s ease;
+  transition: background 0.2s ease, border-color 0.2s ease;
 }
 .wwm-theme .wwm-ghost:hover {
-  background: var(--wwm-ink);
-  color: var(--wwm-ivory);
+  background: var(--wwm-accent);
+  border-color: var(--wwm-accent);
+  color: var(--wwm-ink);
 }
 .wwm-theme .wwm-dark .wwm-ghost {
   color: var(--wwm-ivory);
-  border-color: rgba(245, 242, 236, 0.4);
+  border-color: rgba(230, 246, 255, 0.4);
 }
 .wwm-theme .wwm-dark .wwm-ghost:hover {
-  background: var(--wwm-ivory);
+  background: var(--wwm-accent);
+  border-color: var(--wwm-accent);
   color: var(--wwm-ink);
 }
 
