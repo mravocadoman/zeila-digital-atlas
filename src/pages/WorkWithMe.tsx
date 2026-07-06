@@ -379,8 +379,8 @@ const WorkWithMe = () => {
           </h2>
           <div className="border-t wwm-hairline">
             {programs.map((p) => (
-              <div key={p.org + p.role} className="py-6 grid grid-cols-12 gap-4 items-baseline border-b wwm-hairline hover:bg-[color:var(--wwm-ivory)] transition px-2 -mx-2">
-                <div className="col-span-3 md:col-span-2 wwm-display wwm-display-italic text-[color:var(--wwm-accent)] text-lg">{p.period}</div>
+              <div key={p.org + p.role} className="wwm-program-row py-6 grid grid-cols-12 gap-4 items-baseline border-b wwm-hairline px-4 -mx-4">
+                <div className="col-span-3 md:col-span-2 wwm-mono text-[color:var(--wwm-accent)]">{p.period}</div>
                 <div className="col-span-9 md:col-span-5 wwm-display text-xl">{p.org}</div>
                 <div className="col-span-12 md:col-span-5 wwm-muted">{p.role}</div>
               </div>
