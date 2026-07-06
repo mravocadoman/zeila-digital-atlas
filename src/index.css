@@ -152,22 +152,22 @@ All colors MUST be HSL.
    Scoped so homepage neon tokens don't bleed in.
    ============================================ */
 .wwm-theme {
-  /* Semantic names kept — repainted to homepage neon cyan / deep blue */
-  --wwm-ivory: #00152C;        /* deep blue background (was ivory) */
-  --wwm-sand: #0a2140;          /* slightly lifted surface for cards */
-  --wwm-ink: #E6F6FF;           /* near-white text on dark */
-  --wwm-ink-soft: #B8D8EA;
+  /* Cyan / deep-blue neon — aligned with homepage palette */
+  --wwm-ivory: #E6F6FF;         /* LIGHT foreground (near-white icy) */
+  --wwm-sand: #0a2140;           /* lifted dark surface for cards / bands */
+  --wwm-ink: #00152C;            /* DARK base (deep blue) */
+  --wwm-ink-soft: #001a38;
   --wwm-charcoal: #001022;
   --wwm-rule: rgba(3, 195, 248, 0.22);
-  --wwm-muted: rgba(230, 246, 255, 0.68);
-  --wwm-accent: #03C3F8;        /* neon cyan */
+  --wwm-muted: rgba(230, 246, 255, 0.62);
+  --wwm-accent: #03C3F8;         /* neon cyan */
   --wwm-accent-ink: #00A5D6;
-  --wwm-electric: #FF4DFF;      /* neon magenta counterpoint */
+  --wwm-electric: #FF4DFF;       /* neon magenta counterpoint */
   --wwm-acid: #6EF6FF;           /* icy cyan highlight */
-  --wwm-plum: #001B3A;          /* deeper navy band */
+  --wwm-plum: #001B3A;           /* deeper navy alt band */
 
-  background: var(--wwm-ivory);
-  color: var(--wwm-ink);
+  background: var(--wwm-ink);
+  color: var(--wwm-ivory);
   font-family: 'Inter Tight', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   font-weight: 400;
   font-size: 18px;
