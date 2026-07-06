@@ -249,10 +249,10 @@ const WorkWithMe = () => {
                   className="wwm-portrait w-full block"
                 />
               </div>
-              <div className="absolute -bottom-4 -left-4 bg-[color:var(--wwm-ink)] text-[color:var(--wwm-acid)] px-4 py-2 wwm-mono">
+              <div className="absolute -bottom-4 -left-4 bg-[color:var(--wwm-ink)] text-[color:var(--wwm-accent)] px-4 py-2 wwm-mono border wwm-hairline">
                 Riga · Latvia
               </div>
-              <div className="absolute -top-3 -right-3 bg-[color:var(--wwm-electric)] text-[color:var(--wwm-ivory)] px-3 py-1 wwm-mono text-[0.65rem]">
+              <div className="absolute -top-3 -right-3 bg-[color:var(--wwm-sand)] text-[color:var(--wwm-accent)] px-3 py-1 wwm-mono text-[0.65rem] border wwm-hairline">
                 Booking 2026
               </div>
             </div>
