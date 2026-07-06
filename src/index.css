@@ -152,15 +152,18 @@ All colors MUST be HSL.
    Scoped so homepage neon tokens don't bleed in.
    ============================================ */
 .wwm-theme {
-  --wwm-ivory: #f5f2ec;
+  --wwm-ivory: #f2ede3;
   --wwm-sand: #ece7dc;
   --wwm-ink: #0e1116;
   --wwm-ink-soft: #2a2f38;
   --wwm-charcoal: #1a1d24;
   --wwm-rule: rgba(14, 17, 22, 0.10);
   --wwm-muted: rgba(14, 17, 22, 0.62);
-  --wwm-accent: #b8543a;
-  --wwm-accent-ink: #8b3d29;
+  --wwm-accent: #e2542c;
+  --wwm-accent-ink: #b83a17;
+  --wwm-electric: #2a3bff;
+  --wwm-acid: #d6ff3d;
+  --wwm-plum: #3a1f2b;
 
   background: var(--wwm-ivory);
   color: var(--wwm-ink);
