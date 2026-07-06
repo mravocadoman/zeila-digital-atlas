@@ -406,11 +406,10 @@ All colors MUST be HSL.
 
 /* Duotone-ish headshot treatment */
 .wwm-theme .wwm-portrait {
-  filter: grayscale(1) contrast(1.1);
-  mix-blend-mode: multiply;
+  filter: grayscale(1) contrast(1.05) sepia(0.5) hue-rotate(-25deg) saturate(1.4);
 }
 .wwm-theme .wwm-portrait-frame {
-  background: var(--wwm-accent);
+  background: var(--wwm-electric);
   transform: rotate(-2deg);
   transition: transform 0.4s ease;
 }
