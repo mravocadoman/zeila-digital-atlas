@@ -202,7 +202,7 @@ const WorkWithMe = () => {
   return (
     <div className="wwm-theme min-h-screen">
       {/* Top bar */}
-      <header className="sticky top-0 z-40 bg-[color:var(--wwm-ivory)]/85 backdrop-blur-md border-b wwm-hairline">
+      <header className="sticky top-0 z-40 bg-[color:var(--wwm-ink)]/85 backdrop-blur-md border-b wwm-hairline">
         <div className="max-w-7xl mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
           <div className="wwm-display text-lg md:text-xl tracking-tight">
             Rihards Zeila<span className="wwm-display-italic text-[color:var(--wwm-accent)]">.</span>
