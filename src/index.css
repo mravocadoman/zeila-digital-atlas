@@ -293,20 +293,20 @@ All colors MUST be HSL.
 .wwm-theme .wwm-muted { color: var(--wwm-muted); }
 .wwm-theme .wwm-dark .wwm-muted { color: rgba(245, 242, 236, 0.65); }
 
-/* Form fields on ivory */
+/* Form fields — dark surface, cyan focus */
 .wwm-theme .wwm-field {
-  background: #fff;
-  border: 1px solid var(--wwm-rule);
-  color: var(--wwm-ink);
+  background: var(--wwm-charcoal);
+  border: 1px solid rgba(3, 195, 248, 0.22);
+  color: var(--wwm-ivory);
   border-radius: 0.25rem;
 }
 .wwm-theme .wwm-field:focus,
 .wwm-theme .wwm-field:focus-visible {
   outline: none;
-  border-color: var(--wwm-ink);
-  box-shadow: 0 0 0 3px rgba(14, 17, 22, 0.08);
+  border-color: var(--wwm-accent);
+  box-shadow: 0 0 0 3px rgba(3, 195, 248, 0.18);
 }
-.wwm-theme .wwm-field::placeholder { color: rgba(14, 17, 22, 0.4); }
+.wwm-theme .wwm-field::placeholder { color: rgba(230, 246, 255, 0.35); }
 
 /* ---- Editorial funk additions ---- */
 
