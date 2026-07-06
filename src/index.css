@@ -409,28 +409,29 @@ All colors MUST be HSL.
   user-select: none;
 }
 
-/* Duotone-ish headshot treatment */
+/* Duotone cyan headshot treatment */
 .wwm-theme .wwm-portrait {
-  filter: grayscale(1) contrast(1.05) sepia(0.5) hue-rotate(-25deg) saturate(1.4);
+  filter: grayscale(1) contrast(1.1) brightness(0.9) sepia(0.6) hue-rotate(160deg) saturate(2);
 }
 .wwm-theme .wwm-portrait-frame {
-  background: var(--wwm-electric);
+  background: var(--wwm-accent);
   transform: rotate(-2deg);
   transition: transform 0.4s ease;
+  box-shadow: 0 0 30px rgba(3, 195, 248, 0.45);
 }
 .wwm-theme .wwm-portrait-frame:hover {
   transform: rotate(0deg);
 }
 
-/* Contact call-out block */
+/* Contact call-out block — cyan slab */
 .wwm-theme .wwm-callout {
   background: var(--wwm-accent);
 }
-.wwm-theme .wwm-callout .wwm-eyebrow { color: var(--wwm-acid); }
+.wwm-theme .wwm-callout .wwm-eyebrow { color: var(--wwm-ink); }
 .wwm-theme .wwm-callout h2,
-.wwm-theme .wwm-callout .wwm-display { color: var(--wwm-ivory); }
-.wwm-theme .wwm-callout .wwm-muted { color: rgba(245, 242, 236, 0.85); }
-.wwm-theme .wwm-callout .wwm-hairline { border-color: rgba(245, 242, 236, 0.28); }
+.wwm-theme .wwm-callout .wwm-display { color: var(--wwm-ink); }
+.wwm-theme .wwm-callout .wwm-muted { color: rgba(0, 21, 44, 0.75); }
+.wwm-theme .wwm-callout .wwm-hairline { border-color: rgba(0, 21, 44, 0.28); }
 
 /* Broken grid offset for process tiles */
 .wwm-theme .wwm-broken-tile:nth-child(even) {
