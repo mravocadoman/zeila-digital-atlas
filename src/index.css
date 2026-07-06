@@ -426,6 +426,7 @@ All colors MUST be HSL.
 .wwm-theme .wwm-callout h2,
 .wwm-theme .wwm-callout .wwm-display { color: var(--wwm-ivory); }
 .wwm-theme .wwm-callout .wwm-muted { color: rgba(245, 242, 236, 0.85); }
+.wwm-theme .wwm-callout .wwm-hairline { border-color: rgba(245, 242, 236, 0.28); }
 
 /* Broken grid offset for process tiles */
 .wwm-theme .wwm-broken-tile:nth-child(even) {
