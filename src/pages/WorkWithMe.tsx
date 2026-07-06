@@ -450,7 +450,7 @@ const WorkWithMe = () => {
       </Section>
 
       {/* Contact form */}
-      <section id="wwm-contact" className="wwm-dark py-24 lg:py-32">
+      <section id="wwm-contact" className="wwm-callout py-24 lg:py-32">
         <div className="max-w-6xl mx-auto px-6 lg:px-10 grid lg:grid-cols-12 gap-12">
           <div className="lg:col-span-5 space-y-6">
             <div className="wwm-eyebrow">Book a training</div>
