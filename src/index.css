@@ -152,18 +152,19 @@ All colors MUST be HSL.
    Scoped so homepage neon tokens don't bleed in.
    ============================================ */
 .wwm-theme {
-  --wwm-ivory: #f2ede3;
-  --wwm-sand: #ece7dc;
-  --wwm-ink: #0e1116;
-  --wwm-ink-soft: #2a2f38;
-  --wwm-charcoal: #1a1d24;
-  --wwm-rule: rgba(14, 17, 22, 0.10);
-  --wwm-muted: rgba(14, 17, 22, 0.62);
-  --wwm-accent: #e2542c;
-  --wwm-accent-ink: #b83a17;
-  --wwm-electric: #2a3bff;
-  --wwm-acid: #d6ff3d;
-  --wwm-plum: #3a1f2b;
+  /* Semantic names kept — repainted to homepage neon cyan / deep blue */
+  --wwm-ivory: #00152C;        /* deep blue background (was ivory) */
+  --wwm-sand: #0a2140;          /* slightly lifted surface for cards */
+  --wwm-ink: #E6F6FF;           /* near-white text on dark */
+  --wwm-ink-soft: #B8D8EA;
+  --wwm-charcoal: #001022;
+  --wwm-rule: rgba(3, 195, 248, 0.22);
+  --wwm-muted: rgba(230, 246, 255, 0.68);
+  --wwm-accent: #03C3F8;        /* neon cyan */
+  --wwm-accent-ink: #00A5D6;
+  --wwm-electric: #FF4DFF;      /* neon magenta counterpoint */
+  --wwm-acid: #6EF6FF;           /* icy cyan highlight */
+  --wwm-plum: #001B3A;          /* deeper navy band */
 
   background: var(--wwm-ivory);
   color: var(--wwm-ink);
