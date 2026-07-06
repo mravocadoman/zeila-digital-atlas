@@ -242,7 +242,7 @@ const WorkWithMe = () => {
           <div className="lg:col-span-5">
             <div className="relative max-w-md mx-auto">
               <div className="wwm-portrait-frame absolute inset-0 rounded-sm" />
-              <div className="relative bg-[color:var(--wwm-plum)] overflow-hidden rounded-sm">
+              <div className="relative overflow-hidden rounded-sm">
                 <img
                   src={headshot}
                   alt="Rihards Zeila"
