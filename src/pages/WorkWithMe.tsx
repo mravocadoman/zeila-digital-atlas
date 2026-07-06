@@ -330,7 +330,7 @@ const WorkWithMe = () => {
           <div className="grid md:grid-cols-2 gap-px bg-[rgba(245,242,236,0.12)] border wwm-hairline">
             {formats.map((f) => (
               <div key={f.title} className="bg-[color:var(--wwm-ink)] p-8 lg:p-10 flex flex-col">
-                <div className="text-xs uppercase tracking-[0.22em] text-[#e8a892] mb-4">{f.duration}</div>
+                <div className="text-xs uppercase tracking-[0.22em] text-[color:var(--wwm-accent)] mb-4">{f.duration}</div>
                 <h3 className="wwm-display text-3xl mb-3">{f.title}</h3>
                 <div className="text-sm wwm-muted mb-5 italic">For {f.audience}</div>
                 <p className="text-[color:var(--wwm-ivory)]/85 mb-6 leading-relaxed">{f.outcome}</p>
