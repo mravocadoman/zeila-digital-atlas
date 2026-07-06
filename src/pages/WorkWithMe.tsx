@@ -166,7 +166,7 @@ const WorkWithMe = () => {
       preconnect2.crossOrigin = "anonymous";
       const link = document.createElement("link");
       link.rel = "stylesheet";
-      link.href = "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&family=Inter+Tight:wght@400;500;600;700&display=swap";
+      link.href = "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..900,0..100,0..1;1,9..144,300..900,0..100,0..1&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap";
       document.head.append(preconnect1, preconnect2, link);
     }
   }, []);
@@ -220,9 +220,9 @@ const WorkWithMe = () => {
       <section className="relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 lg:px-10 pt-20 pb-24 lg:pt-32 lg:pb-36 grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           <div className="lg:col-span-7 space-y-8">
-            <div className="wwm-eyebrow">Digital Marketing Training · Est. 2015</div>
-            <h1 className="wwm-display text-[2.75rem] md:text-6xl lg:text-[5rem] leading-[1.02]">
-              Training that turns marketing teams into <span className="wwm-display-italic text-[color:var(--wwm-accent)]">operators</span>.
+            <div className="wwm-mono text-[color:var(--wwm-accent)]">Digital Marketing Training · Est. 2015</div>
+            <h1 className="wwm-display text-[2.75rem] md:text-6xl lg:text-[5.25rem] leading-[1.0] tracking-[-0.035em]" style={{ fontWeight: 500 }}>
+              Training that turns marketing teams into <span className="wwm-underline-acid"><span className="wwm-display-italic">operators</span></span>.
             </h1>
             <p className="text-lg md:text-xl wwm-muted leading-relaxed max-w-2xl">
               MBA lecturer at Riga Business School. Course leader for the EU-funded LIFT program. Workshop
@@ -241,14 +241,19 @@ const WorkWithMe = () => {
 
           <div className="lg:col-span-5">
             <div className="relative max-w-md mx-auto">
-              <div className="absolute -inset-3 border wwm-hairline rounded-sm translate-x-3 translate-y-3" />
-              <img
-                src={headshot}
-                alt="Rihards Zeila"
-                className="relative rounded-sm border wwm-hairline w-full grayscale contrast-[1.05]"
-              />
-              <div className="absolute -bottom-4 -left-4 bg-[color:var(--wwm-ink)] text-[color:var(--wwm-ivory)] px-4 py-2 text-xs uppercase tracking-[0.22em]">
-                Riga, Latvia
+              <div className="wwm-portrait-frame absolute inset-0 rounded-sm" />
+              <div className="relative overflow-hidden rounded-sm">
+                <img
+                  src={headshot}
+                  alt="Rihards Zeila"
+                  className="wwm-portrait w-full block"
+                />
+              </div>
+              <div className="absolute -bottom-4 -left-4 bg-[color:var(--wwm-ink)] text-[color:var(--wwm-acid)] px-4 py-2 wwm-mono">
+                Riga · Latvia
+              </div>
+              <div className="absolute -top-3 -right-3 bg-[color:var(--wwm-electric)] text-[color:var(--wwm-ivory)] px-3 py-1 wwm-mono text-[0.65rem]">
+                Booking 2026
               </div>
             </div>
           </div>
@@ -275,13 +280,16 @@ const WorkWithMe = () => {
 
       {/* Stats */}
       <Section className="border-y wwm-hairline">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10 py-14 grid grid-cols-2 md:grid-cols-4 divide-x wwm-hairline">
-          {stats.map((s, i) => (
-            <div key={s.label} className={`px-4 md:px-8 ${i === 0 ? "md:pl-0" : ""}`}>
-              <div className="wwm-display wwm-display-italic text-5xl md:text-6xl text-[color:var(--wwm-ink)]">{s.value}</div>
-              <div className="text-sm wwm-muted mt-2 uppercase tracking-wider">{s.label}</div>
-            </div>
-          ))}
+        <div className="max-w-7xl mx-auto px-6 lg:px-10 py-14 grid grid-cols-2 md:grid-cols-4 gap-3">
+          {stats.map((s, i) => {
+            const themes = ["t-ivory", "t-accent", "t-electric", "t-plum"];
+            return (
+              <div key={s.label} className={`wwm-stat-tile ${themes[i % themes.length]}`}>
+                <div className="num">{s.value}</div>
+                <div className="wwm-mono mt-4 opacity-80">{s.label}</div>
+              </div>
+            );
+          })}
         </div>
       </Section>
 
@@ -371,8 +379,8 @@ const WorkWithMe = () => {
           </h2>
           <div className="border-t wwm-hairline">
             {programs.map((p) => (
-              <div key={p.org + p.role} className="py-6 grid grid-cols-12 gap-4 items-baseline border-b wwm-hairline hover:bg-[color:var(--wwm-ivory)] transition px-2 -mx-2">
-                <div className="col-span-3 md:col-span-2 wwm-display wwm-display-italic text-[color:var(--wwm-accent)] text-lg">{p.period}</div>
+              <div key={p.org + p.role} className="wwm-program-row py-6 grid grid-cols-12 gap-4 items-baseline border-b wwm-hairline px-4 -mx-4">
+                <div className="col-span-3 md:col-span-2 wwm-mono text-[color:var(--wwm-accent)]">{p.period}</div>
                 <div className="col-span-9 md:col-span-5 wwm-display text-xl">{p.org}</div>
                 <div className="col-span-12 md:col-span-5 wwm-muted">{p.role}</div>
               </div>
@@ -382,16 +390,17 @@ const WorkWithMe = () => {
       </Section>
 
       {/* Testimonials */}
-      <Section className="wwm-dark py-24 lg:py-32">
-        <div className="max-w-6xl mx-auto px-6 lg:px-10">
-          <div className="wwm-eyebrow mb-4">In their words</div>
+      <Section className="wwm-dark py-24 lg:py-32 relative overflow-hidden">
+        <div className="wwm-quote-glyph absolute -top-6 -left-4 md:left-8" aria-hidden>"</div>
+        <div className="max-w-6xl mx-auto px-6 lg:px-10 relative">
+          <div className="wwm-mono text-[color:var(--wwm-acid)] mb-4">In their words</div>
           <h2 className="wwm-display text-4xl md:text-5xl mb-16 max-w-3xl">
             From colleagues, clients, and program <span className="wwm-display-italic">leads</span>.
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
             {testimonials.map((t) => (
               <blockquote key={t.author} className="flex flex-col">
-                <div className="wwm-display wwm-display-italic text-6xl text-[color:var(--wwm-accent)] leading-none mb-4">"</div>
+                <div className="wwm-display wwm-display-italic text-6xl text-[color:var(--wwm-acid)] leading-none mb-4">"</div>
                 <p className="wwm-display text-xl leading-snug mb-8 text-[color:var(--wwm-ivory)]">{t.quote}</p>
                 <footer className="mt-auto pt-6 border-t wwm-hairline">
                   <div className="text-[color:var(--wwm-ivory)] font-medium">{t.author}</div>
@@ -404,17 +413,17 @@ const WorkWithMe = () => {
       </Section>
 
       {/* Process */}
-      <Section className="py-24 lg:py-32">
+      <Section className="wwm-plum py-24 lg:py-32">
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
-          <div className="wwm-eyebrow mb-4">How an engagement works</div>
-          <h2 className="wwm-display text-4xl md:text-5xl mb-16 max-w-2xl">
+          <div className="wwm-mono text-[color:var(--wwm-acid)] mb-4">How an engagement works</div>
+          <h2 className="wwm-display text-4xl md:text-5xl mb-20 max-w-2xl">
             Simple, transparent, no <span className="wwm-display-italic">bloat</span>.
           </h2>
-          <div className="grid md:grid-cols-4 gap-px bg-[color:var(--wwm-rule)] border wwm-hairline">
+          <div className="grid md:grid-cols-4 gap-6">
             {steps.map((s) => (
-              <div key={s.n} className="bg-[color:var(--wwm-ivory)] p-8">
-                <div className="wwm-display wwm-display-italic text-5xl text-[color:var(--wwm-accent)] mb-6">{s.n}</div>
-                <div className="wwm-display text-xl mb-3">{s.title}</div>
+              <div key={s.n} className="wwm-broken-tile p-8 border wwm-hairline bg-[rgba(245,242,236,0.03)]">
+                <div className="wwm-display wwm-display-italic text-6xl text-[color:var(--wwm-acid)] mb-6 leading-none">{s.n}</div>
+                <div className="wwm-display text-xl mb-3 text-[color:var(--wwm-ivory)]">{s.title}</div>
                 <p className="wwm-muted text-sm leading-relaxed">{s.body}</p>
               </div>
             ))}
@@ -441,7 +450,7 @@ const WorkWithMe = () => {
       </Section>
 
       {/* Contact form */}
-      <section id="wwm-contact" className="wwm-dark py-24 lg:py-32">
+      <section id="wwm-contact" className="wwm-callout py-24 lg:py-32">
         <div className="max-w-6xl mx-auto px-6 lg:px-10 grid lg:grid-cols-12 gap-12">
           <div className="lg:col-span-5 space-y-6">
             <div className="wwm-eyebrow">Book a training</div>

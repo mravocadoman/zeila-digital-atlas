@@ -152,15 +152,18 @@ All colors MUST be HSL.
    Scoped so homepage neon tokens don't bleed in.
    ============================================ */
 .wwm-theme {
-  --wwm-ivory: #f5f2ec;
+  --wwm-ivory: #f2ede3;
   --wwm-sand: #ece7dc;
   --wwm-ink: #0e1116;
   --wwm-ink-soft: #2a2f38;
   --wwm-charcoal: #1a1d24;
   --wwm-rule: rgba(14, 17, 22, 0.10);
   --wwm-muted: rgba(14, 17, 22, 0.62);
-  --wwm-accent: #b8543a;
-  --wwm-accent-ink: #8b3d29;
+  --wwm-accent: #e2542c;
+  --wwm-accent-ink: #b83a17;
+  --wwm-electric: #2a3bff;
+  --wwm-acid: #d6ff3d;
+  --wwm-plum: #3a1f2b;
 
   background: var(--wwm-ivory);
   color: var(--wwm-ink);
@@ -299,3 +302,135 @@ All colors MUST be HSL.
   box-shadow: 0 0 0 3px rgba(14, 17, 22, 0.08);
 }
 .wwm-theme .wwm-field::placeholder { color: rgba(14, 17, 22, 0.4); }
+
+/* ---- Editorial funk additions ---- */
+
+.wwm-theme .wwm-mono {
+  font-family: 'JetBrains Mono', 'IBM Plex Mono', ui-monospace, monospace;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+}
+
+/* Plum band */
+.wwm-theme .wwm-plum {
+  background: var(--wwm-plum);
+  color: var(--wwm-ivory);
+}
+.wwm-theme .wwm-plum h1,
+.wwm-theme .wwm-plum h2,
+.wwm-theme .wwm-plum h3,
+.wwm-theme .wwm-plum .wwm-display { color: var(--wwm-ivory); }
+.wwm-theme .wwm-plum .wwm-eyebrow { color: var(--wwm-acid); }
+.wwm-theme .wwm-plum .wwm-muted { color: rgba(245, 242, 236, 0.7); }
+.wwm-theme .wwm-plum .wwm-hairline { border-color: rgba(245, 242, 236, 0.14); }
+
+/* Acid underline on hero highlight word */
+.wwm-theme .wwm-underline-acid {
+  position: relative;
+  display: inline-block;
+  isolation: isolate;
+}
+.wwm-theme .wwm-underline-acid::after {
+  content: "";
+  position: absolute;
+  left: -2%;
+  right: -2%;
+  bottom: 0.05em;
+  height: 0.32em;
+  background: var(--wwm-acid);
+  z-index: -1;
+  transform: skewY(-1.5deg) scaleX(0);
+  transform-origin: left;
+  animation: wwm-underline-draw 900ms cubic-bezier(.6,.05,.25,1) 200ms forwards;
+}
+@keyframes wwm-underline-draw {
+  to { transform: skewY(-1.5deg) scaleX(1); }
+}
+
+/* Stat tiles — rotating color blocks */
+.wwm-theme .wwm-stat-tile {
+  padding: 2.5rem 1.75rem;
+  border: 1px solid var(--wwm-rule);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 220px;
+}
+.wwm-theme .wwm-stat-tile .num {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-variation-settings: "SOFT" 100, "WONK" 1;
+  font-size: clamp(2.75rem, 6vw, 5rem);
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+}
+.wwm-theme .wwm-stat-tile.t-ivory   { background: var(--wwm-ivory); color: var(--wwm-ink); }
+.wwm-theme .wwm-stat-tile.t-accent  { background: var(--wwm-accent); color: var(--wwm-ivory); }
+.wwm-theme .wwm-stat-tile.t-electric{ background: var(--wwm-electric); color: var(--wwm-ivory); }
+.wwm-theme .wwm-stat-tile.t-plum    { background: var(--wwm-plum); color: var(--wwm-ivory); }
+
+/* Program row hover — slide + terracotta reveal bar */
+.wwm-theme .wwm-program-row {
+  position: relative;
+  transition: transform 0.25s ease, padding 0.25s ease;
+}
+.wwm-theme .wwm-program-row::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 0;
+  background: var(--wwm-accent);
+  transition: width 0.25s ease;
+}
+.wwm-theme .wwm-program-row:hover {
+  transform: translateX(8px);
+}
+.wwm-theme .wwm-program-row:hover::before {
+  width: 4px;
+}
+
+/* Giant decorative quote glyph */
+.wwm-theme .wwm-quote-glyph {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-variation-settings: "SOFT" 100, "WONK" 1;
+  font-size: 14rem;
+  line-height: 0.7;
+  color: var(--wwm-electric);
+  opacity: 0.9;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Duotone-ish headshot treatment */
+.wwm-theme .wwm-portrait {
+  filter: grayscale(1) contrast(1.05) sepia(0.5) hue-rotate(-25deg) saturate(1.4);
+}
+.wwm-theme .wwm-portrait-frame {
+  background: var(--wwm-electric);
+  transform: rotate(-2deg);
+  transition: transform 0.4s ease;
+}
+.wwm-theme .wwm-portrait-frame:hover {
+  transform: rotate(0deg);
+}
+
+/* Contact call-out block */
+.wwm-theme .wwm-callout {
+  background: var(--wwm-accent);
+}
+.wwm-theme .wwm-callout .wwm-eyebrow { color: var(--wwm-acid); }
+.wwm-theme .wwm-callout h2,
+.wwm-theme .wwm-callout .wwm-display { color: var(--wwm-ivory); }
+.wwm-theme .wwm-callout .wwm-muted { color: rgba(245, 242, 236, 0.85); }
+.wwm-theme .wwm-callout .wwm-hairline { border-color: rgba(245, 242, 236, 0.28); }
+
+/* Broken grid offset for process tiles */
+.wwm-theme .wwm-broken-tile:nth-child(even) {
+  transform: translateY(2rem);
+}
+@media (max-width: 767px) {
+  .wwm-theme .wwm-broken-tile:nth-child(even) { transform: none; }
+}
