@@ -218,7 +218,7 @@ All colors MUST be HSL.
   color: var(--wwm-ivory);
 }
 .wwm-theme .wwm-dark .wwm-eyebrow {
-  color: #e8a892;
+  color: var(--wwm-accent);
 }
 
 /* Cards — sand surface on ivory, subtle inset on dark */
@@ -293,20 +293,20 @@ All colors MUST be HSL.
 .wwm-theme .wwm-muted { color: var(--wwm-muted); }
 .wwm-theme .wwm-dark .wwm-muted { color: rgba(245, 242, 236, 0.65); }
 
-/* Form fields on ivory */
+/* Form fields — dark surface, cyan focus */
 .wwm-theme .wwm-field {
-  background: #fff;
-  border: 1px solid var(--wwm-rule);
-  color: var(--wwm-ink);
+  background: var(--wwm-charcoal);
+  border: 1px solid rgba(3, 195, 248, 0.22);
+  color: var(--wwm-ivory);
   border-radius: 0.25rem;
 }
 .wwm-theme .wwm-field:focus,
 .wwm-theme .wwm-field:focus-visible {
   outline: none;
-  border-color: var(--wwm-ink);
-  box-shadow: 0 0 0 3px rgba(14, 17, 22, 0.08);
+  border-color: var(--wwm-accent);
+  box-shadow: 0 0 0 3px rgba(3, 195, 248, 0.18);
 }
-.wwm-theme .wwm-field::placeholder { color: rgba(14, 17, 22, 0.4); }
+.wwm-theme .wwm-field::placeholder { color: rgba(230, 246, 255, 0.35); }
 
 /* ---- Editorial funk additions ---- */
 
@@ -371,12 +371,16 @@ All colors MUST be HSL.
   line-height: 0.9;
   letter-spacing: -0.04em;
 }
-.wwm-theme .wwm-stat-tile.t-ivory   { background: var(--wwm-ivory); color: var(--wwm-ink); }
+.wwm-theme .wwm-stat-tile.t-ivory   { background: var(--wwm-sand); color: var(--wwm-ivory); }
 .wwm-theme .wwm-stat-tile.t-accent  { background: var(--wwm-accent); color: var(--wwm-ink); }
-.wwm-theme .wwm-stat-tile.t-electric{ background: var(--wwm-electric); color: var(--wwm-ink); }
+.wwm-theme .wwm-stat-tile.t-electric{ background: var(--wwm-sand); color: var(--wwm-ivory); }
 .wwm-theme .wwm-stat-tile.t-plum    { background: var(--wwm-plum); color: var(--wwm-ivory); border-color: rgba(3,195,248,0.35); }
+.wwm-theme .wwm-stat-tile.t-accent .num { color: var(--wwm-ink); }
+.wwm-theme .wwm-stat-tile.t-ivory .num,
+.wwm-theme .wwm-stat-tile.t-electric .num,
+.wwm-theme .wwm-stat-tile.t-plum .num { color: var(--wwm-accent); }
 
-/* Program row hover — slide + terracotta reveal bar */
+/* Program row hover — slide + cyan reveal bar */
 .wwm-theme .wwm-program-row {
   position: relative;
   transition: transform 0.25s ease, padding 0.25s ease;
@@ -403,8 +407,8 @@ All colors MUST be HSL.
   font-variation-settings: "SOFT" 100, "WONK" 1;
   font-size: 14rem;
   line-height: 0.7;
-  color: var(--wwm-electric);
-  opacity: 0.9;
+  color: var(--wwm-accent);
+  opacity: 0.18;
   pointer-events: none;
   user-select: none;
 }
@@ -417,21 +421,23 @@ All colors MUST be HSL.
   background: var(--wwm-accent);
   transform: rotate(-2deg);
   transition: transform 0.4s ease;
-  box-shadow: 0 0 30px rgba(3, 195, 248, 0.45);
+  box-shadow: 0 0 30px rgba(3, 195, 248, 0.35);
 }
 .wwm-theme .wwm-portrait-frame:hover {
   transform: rotate(0deg);
 }
 
-/* Contact call-out block — cyan slab */
+/* Contact call-out block — deep navy, not a bright slab */
 .wwm-theme .wwm-callout {
-  background: var(--wwm-accent);
+  background: var(--wwm-plum);
+  border-top: 1px solid var(--wwm-rule);
+  border-bottom: 1px solid var(--wwm-rule);
 }
-.wwm-theme .wwm-callout .wwm-eyebrow { color: var(--wwm-ink); }
+.wwm-theme .wwm-callout .wwm-eyebrow { color: var(--wwm-accent); }
 .wwm-theme .wwm-callout h2,
-.wwm-theme .wwm-callout .wwm-display { color: var(--wwm-ink); }
-.wwm-theme .wwm-callout .wwm-muted { color: rgba(0, 21, 44, 0.75); }
-.wwm-theme .wwm-callout .wwm-hairline { border-color: rgba(0, 21, 44, 0.28); }
+.wwm-theme .wwm-callout .wwm-display { color: var(--wwm-ivory); }
+.wwm-theme .wwm-callout .wwm-muted { color: rgba(230, 246, 255, 0.65); }
+.wwm-theme .wwm-callout .wwm-hairline { border-color: rgba(3, 195, 248, 0.22); }
 
 /* Broken grid offset for process tiles */
 .wwm-theme .wwm-broken-tile:nth-child(even) {
