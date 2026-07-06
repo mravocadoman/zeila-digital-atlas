@@ -187,7 +187,7 @@ All colors MUST be HSL.
   font-optical-sizing: auto;
   font-variation-settings: "SOFT" 30, "WONK" 0;
   text-shadow: none;
-  color: var(--wwm-ink);
+  color: var(--wwm-ivory);
   letter-spacing: -0.02em;
   line-height: 1.05;
 }
