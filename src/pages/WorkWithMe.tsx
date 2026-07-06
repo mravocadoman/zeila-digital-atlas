@@ -280,13 +280,16 @@ const WorkWithMe = () => {
 
       {/* Stats */}
       <Section className="border-y wwm-hairline">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10 py-14 grid grid-cols-2 md:grid-cols-4 divide-x wwm-hairline">
-          {stats.map((s, i) => (
-            <div key={s.label} className={`px-4 md:px-8 ${i === 0 ? "md:pl-0" : ""}`}>
-              <div className="wwm-display wwm-display-italic text-5xl md:text-6xl text-[color:var(--wwm-ink)]">{s.value}</div>
-              <div className="text-sm wwm-muted mt-2 uppercase tracking-wider">{s.label}</div>
-            </div>
-          ))}
+        <div className="max-w-7xl mx-auto px-6 lg:px-10 py-14 grid grid-cols-2 md:grid-cols-4 gap-3">
+          {stats.map((s, i) => {
+            const themes = ["t-ivory", "t-accent", "t-electric", "t-plum"];
+            return (
+              <div key={s.label} className={`wwm-stat-tile ${themes[i % themes.length]}`}>
+                <div className="num">{s.value}</div>
+                <div className="wwm-mono mt-4 opacity-80">{s.label}</div>
+              </div>
+            );
+          })}
         </div>
       </Section>
 
