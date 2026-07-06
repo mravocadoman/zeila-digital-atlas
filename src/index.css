@@ -372,9 +372,9 @@ All colors MUST be HSL.
   letter-spacing: -0.04em;
 }
 .wwm-theme .wwm-stat-tile.t-ivory   { background: var(--wwm-ivory); color: var(--wwm-ink); }
-.wwm-theme .wwm-stat-tile.t-accent  { background: var(--wwm-accent); color: var(--wwm-ivory); }
-.wwm-theme .wwm-stat-tile.t-electric{ background: var(--wwm-electric); color: var(--wwm-ivory); }
-.wwm-theme .wwm-stat-tile.t-plum    { background: var(--wwm-plum); color: var(--wwm-ivory); }
+.wwm-theme .wwm-stat-tile.t-accent  { background: var(--wwm-accent); color: var(--wwm-ink); }
+.wwm-theme .wwm-stat-tile.t-electric{ background: var(--wwm-electric); color: var(--wwm-ink); }
+.wwm-theme .wwm-stat-tile.t-plum    { background: var(--wwm-plum); color: var(--wwm-ivory); border-color: rgba(3,195,248,0.35); }
 
 /* Program row hover — slide + terracotta reveal bar */
 .wwm-theme .wwm-program-row {
