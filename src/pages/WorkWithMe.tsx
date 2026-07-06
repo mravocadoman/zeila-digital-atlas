@@ -166,7 +166,7 @@ const WorkWithMe = () => {
       preconnect2.crossOrigin = "anonymous";
       const link = document.createElement("link");
       link.rel = "stylesheet";
-      link.href = "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&family=Inter+Tight:wght@400;500;600;700&display=swap";
+      link.href = "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..900,0..100,0..1;1,9..144,300..900,0..100,0..1&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap";
       document.head.append(preconnect1, preconnect2, link);
     }
   }, []);
