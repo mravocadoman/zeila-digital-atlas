@@ -1,76 +1,60 @@
 
 ## Goal
 
-Turn `/work-with-me` into a fully standalone landing page for Rihards as a **Digital Marketing Trainer & Workshop Facilitator**. It should not be discoverable from the main site's navigation — it lives as its own destination (for LinkedIn bio, proposals, RFPs, email signatures). Redesign typography and visual system so it speaks to L&D leads, deans, program directors, and corporate training buyers — not the neon-80s homepage audience.
+Keep the editorial, standalone character of `/work-with-me` — but stop it from reading as a beige business-school brochure. Bring back real color, personality, and a few "wtf that's cool" moments, without dragging the neon homepage aesthetic over.
 
-## Changes
+## Design shift: "Editorial, but loud"
 
-### 1. Remove from main navigation
+Think *The Face* magazine, Reforge landing pages, Pentagram case studies, Bloomberg Businessweek covers — serif headlines colliding with saturated color blocks, oversized numerals, tight grids broken on purpose.
 
-- `src/components/Navigation.tsx`: drop the `"Work With Me"` item from `navItems`. Also remove the `item.href.startsWith("/")` branch since it's no longer needed (both desktop and mobile handlers).
-- Route stays registered in `src/App.tsx` — page is reachable by direct URL only.
+### Palette (revised `.wwm-theme` tokens)
 
-### 2. New design direction: "Editorial Enterprise"
+Keep the ivory + ink base, keep terracotta — but promote color from "one small accent" to "structural":
 
-Move away from the current navy-only "Modern Enterprise" tokens toward something more grown-up, closer to how HBS Executive Education, IMD, INSEAD Executive, Reforge, and Section land visually. Serious, editorial, confident — not corporate-stock.
+- `--wwm-ivory: #f2ede3` (slightly warmer)
+- `--wwm-ink: #0e1116`
+- `--wwm-accent: #e2542c` (brighter, more confident terracotta/vermilion)
+- `--wwm-electric: #2a3bff` (deep electric blue — for links, underlines, quote marks)
+- `--wwm-acid: #d6ff3d` (acid lime — used ONCE, on the hero highlight + one CTA state)
+- `--wwm-plum: #3a1f2b` (deep aubergine — alt dark band, warmer than pure ink)
 
-**Palette (replaces current `.wwm-theme` tokens):**
-- Ivory background `#f5f2ec`
-- Deep ink text `#0e1116`
-- Warm charcoal surfaces `#1a1d24`
-- Muted terracotta accent `#b8543a` (single accent, used sparingly for CTA + eyebrows)
-- Warm gray dividers `#d9d4c9`
-- Sand card surface `#ece7dc`
+Two dark bands instead of one: `--wwm-ink` for testimonials, `--wwm-plum` for the process/CTA band, so the page has real chromatic rhythm.
 
-Dark inversion band(s) for hero + testimonials + CTA (`#0e1116` on ivory text) to create editorial rhythm.
+### Typography — keep Fraunces, make it misbehave
 
-**Typography (new fonts, not Orbitron/Rajdhani):**
-- Headings: **Fraunces** (serif, high-contrast, editorial) — display sizes with tight tracking
-- Body: **Inter Tight** (or system sans fallback) at 18–20px, generous leading
-- Eyebrows/meta: uppercase Inter Tight, 0.7rem, 0.22em tracking
-- Loaded via `<link>` tags injected in the page's `useEffect` so they don't affect the homepage bundle
+- Fraunces stays for headlines but pushed to display weights (900) with heavy optical size and `-0.04em` tracking on the hero.
+- Add **Fraunces italic** as an in-line highlight inside sans headlines (mixed serif italic + sans = editorial signature move).
+- Body swaps to **Inter Tight** at 18px, but eyebrows become **JetBrains Mono** uppercase — mono meta labels give it a technical/operator edge rather than corporate polish.
+- H1 gets a hand-drawn acid-lime underline SVG on one word.
 
-**Motion & surfaces:**
-- Thin 1px hairline borders in `rgba(14,17,22,0.08)`
-- No glows, no gradients on cards
-- Subtle scroll fade-and-rise via existing `useScrollAnimation`
-- Numbers set in Fraunces italic for stat tiles (editorial signature)
+### Structural funk
 
-### 3. Page structure adjustments
+- **Hero**: massive Fraunces H1, one word wrapped in `<em>` styled with acid underline. Right column: not a grayscale portrait — a duotone treatment (ink + terracotta) of the headshot with a hard color block behind it, slightly rotated (-2deg).
+- **Stat strip**: numerals in Fraunces italic at 8rem, each tile a different accent color background (ivory / terracotta / electric blue / plum), rotating through the palette.
+- **Curriculum accordion**: numbered `01 — 07` in mono on the left, serif title, plus-icon that rotates on open.
+- **Testimonials dark band**: giant electric-blue `"` glyph as decorative pull-quote mark, sized ~12rem behind the text.
+- **Programs list**: editorial two-column with year on the left in mono, program in serif, hairline dividers — but hovered row slides right 8px and reveals a terracotta bar on the left edge.
+- **Process (plum band)**: 4 steps, each step numbered in acid lime, arranged in a broken grid (offset every other tile) rather than a straight row.
+- **Contact form**: keep functional wiring, but wrap it in a terracotta color block with the form itself on ivory inside — makes it feel like a "call-out" spread in a magazine.
 
-Reuse the sections built previously but re-skinned:
+### Motion
 
-```text
-/work-with-me
-├─ Slim top bar: wordmark left, "Book a training" CTA right (no back-to-home link)
-├─ Hero (ivory)
-│   • Eyebrow: "Digital Marketing Training"
-│   • H1 in Fraunces: "Training that turns marketing teams into operators."
-│   • Sub: MBA lecturer / LIFT / ITC / 10+ yrs / $5M ad spend
-│   • Primary CTA + secondary "See programs"
-│   • Small "Trained teams at" logo row
-├─ Stat strip (4 tiles, Fraunces italic numerals)
-├─ Who I train (3 columns)
-├─ Training formats (4 offerings)
-├─ Curriculum accordion
-├─ Selected programs & institutions (editorial list, year on the left)
-├─ Testimonials (dark band, pull-quote treatment)
-├─ How an engagement works (4-step timeline)
-├─ FAQ
-├─ Inquiry form (unchanged wiring — same edge function)
-└─ Minimal footer inside the page (name + email + year), not the homepage Footer
-```
+- Hero headline: word-by-word rise on mount (150ms stagger).
+- Stat numerals: count up on scroll into view.
+- Accent underline SVG: draws in on hero mount.
+- Row hover on programs: 200ms ease-out slide + color reveal.
+- Nothing bounces, nothing pulses. Editorial motion = precise, not playful.
 
-### 4. Files touched
+## Files touched
 
-- `src/index.css` — replace `.wwm-theme` block with the new ivory/ink token set + font-family overrides scoped under `.wwm-theme`.
-- `src/pages/WorkWithMe.tsx` — inject Fraunces + Inter Tight `<link>` tags; drop homepage `Footer` usage; add compact in-page footer.
-- `src/components/work-with-me/*` — restyle only (no structural changes to hero/stats/audiences/formats/curriculum/programs/process/faq/contact form). Swap `wwm-cta` gradient for solid terracotta, cards to sand surface with hairline borders, headings to Fraunces via a `.wwm-display` utility.
-- `src/components/Navigation.tsx` — remove Work With Me link + the `/`-href branch.
+- `src/index.css` — extend `.wwm-theme` block with new tokens (electric, acid, plum), add JetBrains Mono via `<link>` in page, add `.wwm-accent-underline`, `.wwm-mono`, `.wwm-plum-band`, hover states for program rows.
+- `src/pages/WorkWithMe.tsx` — inject JetBrains Mono link tag alongside Fraunces + Inter Tight; restructure hero (duotone image block + rotated frame + acid underline); repaint stat strip with rotating tile colors; add plum band around process section; wrap contact section in terracotta block.
+- `src/components/work-with-me/*` — restyle only. No component API changes, no new routes, no backend edits.
+- Navigation stays unchanged (still hidden from nav).
 
-### 5. Out of scope
+## Out of scope
 
-- No changes to homepage sections.
-- No changes to backend / edge function.
-- No new routes, no auth, no CMS.
-
+- Homepage.
+- Backend / edge function.
+- New routes, auth, CMS.
+- Framer Motion install — motion done with CSS + existing `useScrollAnimation`.
