@@ -413,17 +413,17 @@ const WorkWithMe = () => {
       </Section>
 
       {/* Process */}
-      <Section className="py-24 lg:py-32">
+      <Section className="wwm-plum py-24 lg:py-32">
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
-          <div className="wwm-eyebrow mb-4">How an engagement works</div>
-          <h2 className="wwm-display text-4xl md:text-5xl mb-16 max-w-2xl">
+          <div className="wwm-mono text-[color:var(--wwm-acid)] mb-4">How an engagement works</div>
+          <h2 className="wwm-display text-4xl md:text-5xl mb-20 max-w-2xl">
             Simple, transparent, no <span className="wwm-display-italic">bloat</span>.
           </h2>
-          <div className="grid md:grid-cols-4 gap-px bg-[color:var(--wwm-rule)] border wwm-hairline">
+          <div className="grid md:grid-cols-4 gap-6">
             {steps.map((s) => (
-              <div key={s.n} className="bg-[color:var(--wwm-ivory)] p-8">
-                <div className="wwm-display wwm-display-italic text-5xl text-[color:var(--wwm-accent)] mb-6">{s.n}</div>
-                <div className="wwm-display text-xl mb-3">{s.title}</div>
+              <div key={s.n} className="wwm-broken-tile p-8 border wwm-hairline bg-[rgba(245,242,236,0.03)]">
+                <div className="wwm-display wwm-display-italic text-6xl text-[color:var(--wwm-acid)] mb-6 leading-none">{s.n}</div>
+                <div className="wwm-display text-xl mb-3 text-[color:var(--wwm-ivory)]">{s.title}</div>
                 <p className="wwm-muted text-sm leading-relaxed">{s.body}</p>
               </div>
             ))}
