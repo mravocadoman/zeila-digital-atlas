@@ -218,7 +218,7 @@ All colors MUST be HSL.
   color: var(--wwm-ivory);
 }
 .wwm-theme .wwm-dark .wwm-eyebrow {
-  color: #e8a892;
+  color: var(--wwm-accent);
 }
 
 /* Cards — sand surface on ivory, subtle inset on dark */
