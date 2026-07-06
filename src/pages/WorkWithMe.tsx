@@ -390,16 +390,17 @@ const WorkWithMe = () => {
       </Section>
 
       {/* Testimonials */}
-      <Section className="wwm-dark py-24 lg:py-32">
-        <div className="max-w-6xl mx-auto px-6 lg:px-10">
-          <div className="wwm-eyebrow mb-4">In their words</div>
+      <Section className="wwm-dark py-24 lg:py-32 relative overflow-hidden">
+        <div className="wwm-quote-glyph absolute -top-6 -left-4 md:left-8" aria-hidden>"</div>
+        <div className="max-w-6xl mx-auto px-6 lg:px-10 relative">
+          <div className="wwm-mono text-[color:var(--wwm-acid)] mb-4">In their words</div>
           <h2 className="wwm-display text-4xl md:text-5xl mb-16 max-w-3xl">
             From colleagues, clients, and program <span className="wwm-display-italic">leads</span>.
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
             {testimonials.map((t) => (
               <blockquote key={t.author} className="flex flex-col">
-                <div className="wwm-display wwm-display-italic text-6xl text-[color:var(--wwm-accent)] leading-none mb-4">"</div>
+                <div className="wwm-display wwm-display-italic text-6xl text-[color:var(--wwm-acid)] leading-none mb-4">"</div>
                 <p className="wwm-display text-xl leading-snug mb-8 text-[color:var(--wwm-ivory)]">{t.quote}</p>
                 <footer className="mt-auto pt-6 border-t wwm-hairline">
                   <div className="text-[color:var(--wwm-ivory)] font-medium">{t.author}</div>
