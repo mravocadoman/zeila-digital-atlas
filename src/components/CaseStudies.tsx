@@ -75,46 +75,47 @@ const caseStudies = [
 type Study = (typeof caseStudies)[number];
 
 /**
- * All five visible.
+ * Rows, matching the engagements above.
  *
- * This was a carousel showing one at a time behind arrows, so four of the five
- * strongest proof points on the site were effectively invisible — most visitors
- * never click a carousel arrow. Each card also names which engagement it was,
- * which is what ties this section to the one above it.
+ * This was a carousel showing one of five, then a 2-up grid at 1,724px. As rows
+ * all five stay visible and the section costs a fraction of the height: client
+ * and engagement on the left, the numbers in the middle where they can be
+ * scanned down the column, the story on the right.
  */
-const StudyCard = ({ study }: { study: Study }) => {
-  const card = useReveal<HTMLElement>("card");
+const StudyRow = ({ study }: { study: Study }) => {
+  const row = useReveal<HTMLElement>("card");
 
   return (
     <article
-      ref={card.ref}
-      className={`border border-border rounded-lg p-5 lg:p-7 flex flex-col lift ${card.className}`}
-      style={{ flexBasis: "min(100%, 34rem)", flexGrow: 0 }}
+      ref={row.ref}
+      className={`grid gap-x-8 gap-y-3 lg:gap-y-0 py-5 lg:py-7 border-t border-border lg:grid-cols-[minmax(0,14rem)_minmax(0,18rem)_minmax(0,1fr)] ${row.className}`}
     >
-      <span className="eyebrow block mb-3">{study.engagement}</span>
-      <h3 className="heading-elegant text-2xl lg:text-3xl mb-4">
-        {study.company}
-      </h3>
+      <div className="min-w-0">
+        <span className="eyebrow block mb-1.5">{study.engagement}</span>
+        <h3 className="heading-elegant text-xl lg:text-2xl">{study.company}</h3>
+      </div>
 
-      <div className="flex flex-wrap gap-x-6 gap-y-3 mb-5 pb-5 border-b border-border">
+      <div className="flex flex-wrap gap-x-5 gap-y-3 content-start">
         {study.metrics.map((m) => (
           <div key={m.label}>
-            <div className="numeral text-primary text-xl lg:text-2xl leading-none">
+            <div className="numeral text-primary text-lg lg:text-xl leading-none">
               {m.value}
             </div>
-            <div className="body-clean text-xs text-muted-foreground uppercase tracking-wider mt-1">
+            <div className="body-clean text-[0.68rem] text-muted-foreground uppercase tracking-wider mt-1">
               {m.label}
             </div>
           </div>
         ))}
       </div>
 
-      <p className="body-clean text-foreground/90 text-base lg:text-lg leading-relaxed mb-3">
-        {study.description}
-      </p>
-      <p className="body-clean text-muted-foreground text-base leading-relaxed mt-auto">
-        {study.details}
-      </p>
+      <div className="min-w-0">
+        <p className="body-clean text-foreground/90 text-base leading-relaxed mb-2">
+          {study.description}
+        </p>
+        <p className="body-clean text-muted-foreground text-sm leading-relaxed">
+          {study.details}
+        </p>
+      </div>
     </article>
   );
 };
@@ -133,14 +134,14 @@ const CaseStudies = () => {
         <h2 className="heading-elegant text-3xl lg:text-5xl mb-4 max-w-3xl">
           Case studies.
         </h2>
-        <p className="body-clean text-muted-foreground text-lg lg:text-xl max-w-2xl mb-8 lg:mb-12">
+        <p className="body-clean text-muted-foreground text-lg lg:text-xl max-w-2xl mb-8 lg:mb-10">
           Real results from real campaigns — from e-commerce to coaching,
           fashion to fintech.
         </p>
 
-        <div className="flex flex-wrap justify-center gap-4 lg:gap-6">
+        <div className="border-b border-border">
           {caseStudies.map((s) => (
-            <StudyCard key={s.company} study={s} />
+            <StudyRow key={s.company} study={s} />
           ))}
         </div>
       </div>
