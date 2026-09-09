@@ -40,10 +40,10 @@ const caseStudies = [
   {
     company: "Excel Know How",
     description: "Turned Excel and Power BI training into a predictable lead-gen engine with free webinar funnels.",
-    details: "€1,175 ad spend generated 2,000+ leads at €0.38 each. 2% converted to €250 courses = €10K revenue, 8.5 ROAS.",
+    details: "€1,175 ad spend generated 2,000+ leads at €0.59 each. 2% converted to €250 courses = €10K revenue, 8.5 ROAS.",
     metrics: [
       { label: "Leads Generated", value: "2,000+" },
-      { label: "Cost Per Lead", value: "€0.38" },
+      { label: "Cost Per Lead", value: "€0.59" },
       { label: "ROAS", value: "8.5" },
       { label: "Revenue", value: "€10K" },
     ],

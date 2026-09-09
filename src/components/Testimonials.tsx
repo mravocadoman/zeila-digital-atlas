@@ -1,68 +1,71 @@
-import { useScrollAnimation } from "@/hooks/use-scroll-animation";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { useReveal } from "@/hooks/use-reveal";
+/**
+ * All quotes visible — no accordion. Social proof behind a click is social
+ * proof nobody reads.
+ *
+ * The fourth reference (Evita Jaunozola, StartSchooler) reads as an employment
+ * reference — "for any employer looking for a colleague" — so it now lives on
+ * /about rather than here, where it would undercut the consulting positioning.
+ */
+const testimonials = [
+  {
+    quote:
+      "An exceptional marketer with a deep understanding of the digital marketing ecosystem. From day one he promoted data-led decisions and the importance of measuring campaign performance.",
+    author: "Bence Etele Baráth",
+    company: "AppsFlyer",
+  },
+  {
+    quote:
+      "Rihards is THE expert on Facebook advertising — the one I go to for any question related to it. An excellent public speaker who gets the message across to any audience.",
+    author: "Regita Zeiļa",
+    company: "Director, Social Entrepreneurship Association",
+  },
+  {
+    quote:
+      "Highly skilled, passionate and dedicated. Whenever I need advice on digital marketing — I go to him. His international experience and valuable know-how excels his peers.",
+    author: "Kristina Berga",
+    company: "CEO, HuskySense",
+  },
+];
 
 const Testimonials = () => {
-  const testimonials = [
-    {
-      quote: "Rihards is an exceptional marketer with a deep understanding of the digital marketing ecosystem. From day 1, he promoted data-led decisions and highlighted the importance of measuring campaign performance. On top of being outstanding in digital marketing, Rihards is also a great colleague - open to challenges, performs very well in a fast-paced environment, great in communication and problem solving.",
-      author: "Bence Etele Baráth",
-      company: "AppsFlyer"
-    },
-    {
-      quote: "Rihards is THE expert on Facebook advertising and the one I would go to for any question related to that. He has excellent communication skills and knowledge of design, marketing, project management, and web design. He is an excellent public speaker, easily getting the message to any audience. His international experience and focus on individual solutions make him an excellent choice for any organization.",
-      author: "Regita Zeiļa",
-      company: "Director of Social Entrepreneurship Association"
-    },
-    {
-      quote: "Highly skilled, passionate and dedicated young man. Whenever I need an advice on digital marketing - I go to him. His international experience and valuable know-how excels his peers. Twice.",
-      author: "Kristina Berga",
-      company: "CEO of HuskySense"
-    },
-    {
-      quote: "Goal-oriented, brave and active professional who always strives for growth and development, while maintaining the belief that work should bring joy and be interesting. Rihards has excellent sales and persuasion skills. He creates a pleasant, open and friendly first impression. For any employer looking for a colleague with passion, Rihards will definitely be a suitable candidate.",
-      author: "Evita Jaunozola",
-      company: "StartSchooler"
-    }
-  ];
-
+  const reveal = useReveal<HTMLElement>();
   return (
-    <section id="testimonials" className="py-12 lg:py-32 px-6 lg:px-16">
-      <div className="max-w-7xl mx-auto">
-        <h2 className="heading-elegant text-4xl lg:text-7xl mb-8 lg:mb-12 animate-fade-in text-center lg:text-left">What People Say</h2>
+  <section
+    id="testimonials"
+    ref={reveal.ref}
+    className={`py-12 lg:py-24 px-6 lg:px-16 ${reveal.className}`}
+  >
+    <div className="max-w-6xl mx-auto">
+      <span className="eyebrow block mb-4">In their words</span>
+      <h2 className="heading-elegant text-3xl lg:text-5xl mb-8 lg:mb-12">
+        From colleagues and clients.
+      </h2>
 
-        {/* Accordion for both mobile and desktop */}
-        <div className="lg:grid lg:grid-cols-2 lg:gap-x-8">
-          <Accordion type="single" collapsible defaultValue="testimonial-0" className="lg:col-span-1">
-            {testimonials.slice(0, 2).map((testimonial, index) => (
-              <AccordionItem key={index} value={`testimonial-${index}`}>
-                <AccordionTrigger className="body-clean font-semibold text-left text-xl lg:text-2xl">
-                  {testimonial.author} - {testimonial.company}
-                </AccordionTrigger>
-                <AccordionContent>
-                  <p className="body-clean text-lg lg:text-xl leading-relaxed italic text-muted-foreground">
-                    "{testimonial.quote}"
-                  </p>
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-          <Accordion type="single" collapsible className="lg:col-span-1">
-            {testimonials.slice(2).map((testimonial, index) => (
-              <AccordionItem key={index + 2} value={`testimonial-${index + 2}`}>
-                <AccordionTrigger className="body-clean font-semibold text-left text-xl lg:text-2xl">
-                  {testimonial.author} - {testimonial.company}
-                </AccordionTrigger>
-                <AccordionContent>
-                  <p className="body-clean text-lg lg:text-xl leading-relaxed italic text-muted-foreground">
-                    "{testimonial.quote}"
-                  </p>
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </div>
+      <div className="stagger grid md:grid-cols-3 gap-4 lg:gap-6">
+        {testimonials.map((t) => (
+          <figure
+            key={t.author}
+            className="border border-border rounded-lg p-5 lg:p-7 flex flex-col lift"
+          >
+            <span
+              className="numeral text-muted-foreground/40 text-3xl leading-none mb-3"
+              aria-hidden="true"
+            >
+              &ldquo;
+            </span>
+            <blockquote className="body-clean text-muted-foreground text-base lg:text-lg leading-relaxed mb-6 flex-1">
+              {t.quote}
+            </blockquote>
+            <figcaption className="pt-4 border-t border-border">
+              <p className="body-clean font-semibold text-foreground">{t.author}</p>
+              <p className="body-clean text-sm text-muted-foreground">{t.company}</p>
+            </figcaption>
+          </figure>
+        ))}
       </div>
-    </section>
+    </div>
+  </section>
   );
 };
 

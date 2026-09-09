@@ -8,14 +8,14 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
-import headshot from "@/assets/rihards-synthwave.jpg";
+import headshot from "@/assets/rihards-about.webp";
 
-import rbsLogo from "@/assets/partners/rbs-logo.png";
-import unalLogo from "@/assets/partners/unal-logo.png";
-import risebaLogo from "@/assets/partners/riseba-logo.png";
-import itcLogo from "@/assets/partners/itc-logo.png";
-import lsuaLogo from "@/assets/partners/lsua-logo.png";
-import unilusLogo from "@/assets/partners/unilus-logo.png";
+import rbsLogo from "@/assets/partners/rbs-logo.webp";
+import unalLogo from "@/assets/partners/unal-logo.webp";
+import risebaLogo from "@/assets/partners/riseba-logo.webp";
+import itcLogo from "@/assets/partners/itc-logo.webp";
+import lsuaLogo from "@/assets/partners/lsua-logo.webp";
+import unilusLogo from "@/assets/partners/unilus-logo.webp";
 
 const trustedLogos = [
   { name: "Riga Business School", logo: rbsLogo },
@@ -506,7 +506,7 @@ const WorkWithMe = () => {
               <label className="block text-xs uppercase tracking-[0.18em] mb-2 wwm-muted">Message</label>
               <Textarea value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} placeholder="Team size, goals, timeline, format preferences…" rows={5} className="wwm-field" required />
             </div>
-            <Button type="submit" disabled={submitting} className="wwm-cta w-full h-12 text-base">
+            <Button type="submit" disabled={submitting} className="wwm-cta w-full h-12 text-base uppercase tracking-wider">
               {submitting ? "Sending…" : "Send request"}
             </Button>
           </form>

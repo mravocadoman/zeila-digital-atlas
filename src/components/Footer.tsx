@@ -1,4 +1,5 @@
 import { Linkedin, Instagram, Mail, Phone, Facebook } from "lucide-react";
+import { Link } from "react-router-dom";
 import { FaTiktok } from "react-icons/fa";
 
 const Footer = () => {
@@ -10,7 +11,7 @@ const Footer = () => {
           <div className="animate-fade-in" style={{ animationDelay: '0.1s', animationFillMode: 'both' }}>
             <h3 className="heading-elegant text-large mb-4">Rihards Zeila</h3>
             <p className="body-clean text-body text-muted-foreground leading-relaxed">
-              I build predictable growth systems and teach teams how to run them.
+              I build the paid-growth system — then train your team to run it.
             </p>
           </div>
 
@@ -18,28 +19,24 @@ const Footer = () => {
           <div className="animate-fade-in" style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>
             <h4 className="body-clean font-semibold mb-4 text-large">Quick Links</h4>
             <nav className="space-y-2">
-              <a 
-                href="#top" 
-                onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}
-                className="body-clean text-body text-muted-foreground hover:text-foreground transition-colors block cursor-pointer"
-              >
-                About
-              </a>
-              <a href="#case-studies" className="body-clean text-body text-muted-foreground hover:text-foreground transition-colors block">
-                Case Studies
-              </a>
-              <a href="#speaking" className="body-clean text-body text-muted-foreground hover:text-foreground transition-colors block">
-                Speaking & Teaching
-              </a>
-              <a href="#free-training" className="body-clean text-body text-muted-foreground hover:text-foreground transition-colors block">
-                Free Training
-              </a>
-              <a href="#timeline" className="body-clean text-body text-muted-foreground hover:text-foreground transition-colors block">
-                Experience
-              </a>
-              <a href="#contact" className="body-clean text-body text-muted-foreground hover:text-foreground transition-colors block">
+              <Link to="/#engagements" className="body-clean text-body text-muted-foreground hover:text-foreground transition-colors block">
+                What you get
+              </Link>
+              <Link to="/#case-studies" className="body-clean text-body text-muted-foreground hover:text-foreground transition-colors block">
+                Case studies
+              </Link>
+              <Link to="/#faq" className="body-clean text-body text-muted-foreground hover:text-foreground transition-colors block">
+                FAQ
+              </Link>
+              <Link to="/work-with-me" className="body-clean text-body text-muted-foreground hover:text-foreground transition-colors block">
+                Training &amp; workshops
+              </Link>
+              <Link to="/about" className="body-clean text-body text-muted-foreground hover:text-foreground transition-colors block">
+                About &amp; full CV
+              </Link>
+              <Link to="/#contact" className="body-clean text-body text-muted-foreground hover:text-foreground transition-colors block">
                 Contact
-              </a>
+              </Link>
             </nav>
           </div>
 

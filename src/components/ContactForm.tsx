@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import VideoBackdrop from "@/components/VideoBackdrop";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { Mail, Phone, MapPin, Linkedin, Instagram, Facebook } from "lucide-react";
@@ -71,24 +72,13 @@ const ContactForm = () => {
 
   return (
     <section id="contact" className="py-12 lg:py-32 px-6 lg:px-16 relative overflow-hidden">
-      {/* YouTube Video Background */}
-      <div className="absolute inset-0 w-full h-full pointer-events-none">
-        <iframe
-          className="absolute top-1/2 left-1/2 w-[200vw] h-[200vh] -translate-x-1/2 -translate-y-1/2 scale-150"
-          src="https://www.youtube.com/embed/uJ5XHdTOfzk?autoplay=1&mute=1&loop=1&playlist=uJ5XHdTOfzk&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1"
-          title="Background video"
-          allow="autoplay; encrypted-media"
-          style={{ border: 'none' }}
-        />
-        {/* Dark overlay for readability */}
-        <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" />
-      </div>
-      
+      <VideoBackdrop />
+
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="text-center mb-8 lg:mb-12 animate-fade-in">
-          <h2 className="heading-elegant text-3xl lg:text-display mb-4 lg:mb-6">Let's Connect</h2>
+          <h2 className="heading-elegant text-3xl lg:text-display mb-4 lg:mb-6">Book a consultation</h2>
           <p className="body-clean text-base lg:text-large text-muted-foreground">
-            Open to high-impact projects, co-founder opportunities, and CMO roles
+            Tell me about the account and where it’s stuck. I reply within two business days.
           </p>
         </div>
 
@@ -183,14 +173,13 @@ const ContactForm = () => {
                 </label>
                 <Select value={formData.type} onValueChange={(value) => setFormData({ ...formData, type: value })}>
                   <SelectTrigger className="bg-background border-border focus:border-primary text-base lg:text-lg" id="type">
-                    <SelectValue placeholder="Select inquiry type" />
+                    <SelectValue placeholder="What are you after?" />
                   </SelectTrigger>
                   <SelectContent className="bg-card border-border text-base lg:text-lg">
-                    <SelectItem value="project">Client Project</SelectItem>
-                    <SelectItem value="cofounder">Co-Founder Opportunity</SelectItem>
-                    <SelectItem value="cmo">CMO Role</SelectItem>
-                    <SelectItem value="speaking">Speaking Engagement</SelectItem>
-                    <SelectItem value="other">Other</SelectItem>
+                    <SelectItem value="project">Consulting project</SelectItem>
+                    <SelectItem value="corporate-training">Team training / workshop</SelectItem>
+                    <SelectItem value="speaking">Speaking engagement</SelectItem>
+                    <SelectItem value="other">Something else</SelectItem>
                   </SelectContent>
                 </Select>
               </div>

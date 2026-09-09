@@ -23,6 +23,7 @@ const FreeTraining = () => {
             <div className="card-luxury overflow-hidden">
               <div className="aspect-video w-full">
                 <iframe
+            loading="lazy"
                   className="w-full h-full"
                   src="https://www.youtube.com/embed/videoseries?list=PLHpAUrghDOai7S1pZVyoOhOn6crOlUc5i"
                   title="Mastering Meta Ads - Complete Training Series"
@@ -43,7 +44,7 @@ const FreeTraining = () => {
                   href="https://www.youtube.com/playlist?list=PLHpAUrghDOai7S1pZVyoOhOn6crOlUc5i"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-primary hover:text-white transition-colors body-clean font-semibold"
+                  className="inline-flex items-center gap-2 text-primary hover:text-white transition-colors body-clean font-bold text-sm uppercase tracking-wider"
                 >
                   View Full Playlist on YouTube
                   <svg 

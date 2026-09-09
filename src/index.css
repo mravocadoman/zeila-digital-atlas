@@ -79,12 +79,29 @@ All colors MUST be HSL.
 }
 
 @layer utilities {
+  /* Headings: Archivo, sentence case. Orbitron is demoted to labels
+     and numerals only — see .eyebrow / .numeral below. */
   .heading-elegant {
-    @apply font-['Orbitron'] font-bold tracking-wide uppercase;
+    @apply font-['Archivo'] font-bold tracking-tight;
+    text-wrap: balance;
   }
 
   .body-clean {
-    @apply font-['Rajdhani'] font-medium;
+    @apply font-['Archivo'] font-normal;
+  }
+
+  /* The synthwave signature, kept where it earns its place */
+  /* Section eyebrows are where the neon survives — main section markers only.
+     Everything smaller (card borders, hovers, glyphs) is deliberately quiet. */
+  .eyebrow {
+    @apply font-['Orbitron'] font-bold uppercase text-primary;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+  }
+
+  .numeral {
+    @apply font-['Orbitron'] font-black text-white;
+    font-variant-numeric: tabular-nums;
   }
   
   /* Typography Scale */
@@ -109,11 +126,11 @@ All colors MUST be HSL.
   }
 
   .border-hover {
-    @apply border border-border transition-all duration-300 hover:border-primary hover:shadow-[0_0_15px_rgba(3,195,248,0.5)];
+    @apply border border-border transition-colors duration-200 hover:border-primary/50;
   }
 
   .card-luxury {
-    @apply bg-card border-2 border-primary/30 rounded-lg p-8 transition-all duration-300 hover:border-primary hover:shadow-[0_0_20px_rgba(3,195,248,0.4)];
+    @apply bg-card border border-border rounded-lg p-8 transition-colors duration-200 hover:border-primary/40;
   }
 
   .neon-box {
@@ -415,7 +432,9 @@ All colors MUST be HSL.
 
 /* Duotone cyan headshot treatment */
 .wwm-theme .wwm-portrait {
-  filter: grayscale(1) contrast(1.1) brightness(0.9) sepia(0.6) hue-rotate(160deg) saturate(2);
+  /* The brand photo arrives already B&W on cyan; a duotone on top of it tints
+     the disc as well and turns the whole thing to mush. Left untreated. */
+  filter: none;
 }
 .wwm-theme .wwm-portrait-frame {
   background: var(--wwm-accent);
@@ -445,4 +464,160 @@ All colors MUST be HSL.
 }
 @media (max-width: 767px) {
   .wwm-theme .wwm-broken-tile:nth-child(even) { transform: none; }
+}
+
+/* ============================================
+   SYNTHWAVE LAYER
+   Deliberately contained: one horizon in the hero, hover lifts, scroll reveals.
+   Brief was "SOME synthwave mood" — if this spreads further, it has drifted.
+   ============================================ */
+
+/* The hero stage. The glowing horizon line sits at the base of the portrait so
+   he stands ON it, runs off toward the right edge, and the grid recedes below.
+   The line is aligned with the middle of the CTA buttons by the grid's
+   `items-end` + the left column's bottom padding (half a 48px button). */
+.hero-stage {
+  position: relative;
+}
+
+.hero-stage > img {
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: 100%;
+}
+
+/* the line he stands on */
+.hero-line {
+  position: absolute;
+  bottom: 0;
+  left: -6%;
+  right: -60vw;
+  height: 2px;
+  z-index: 1;
+  background: linear-gradient(
+    to right,
+    transparent,
+    hsl(196 97% 49% / 0.7) 12%,
+    hsl(196 97% 49%) 38%,
+    hsl(320 100% 65% / 0.9) 78%,
+    hsl(320 100% 65% / 0)
+  );
+  box-shadow: 0 0 22px 1px hsl(196 97% 49% / 0.45);
+}
+
+/* light pooling where he meets the line */
+.hero-line::before {
+  content: "";
+  position: absolute;
+  left: 4%;
+  width: 34%;
+  bottom: -16px;
+  height: 32px;
+  background: radial-gradient(ellipse at 50% 0%, hsl(196 97% 49% / 0.28), transparent 72%);
+}
+
+/* the plane receding away below the line */
+.hero-grid {
+  position: absolute;
+  top: 100%;
+  left: -60vw;
+  right: -60vw;
+  height: 240px;
+  overflow: hidden;
+  perspective: 300px;
+  perspective-origin: 50% 0%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-grid::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 -60% 0;
+  transform: rotateX(76deg);
+  transform-origin: 50% 0%;
+  background-image:
+    repeating-linear-gradient(to right, hsl(196 97% 49% / 0.32) 0 1px, transparent 1px 74px),
+    repeating-linear-gradient(to bottom, hsl(320 100% 65% / 0.20) 0 1px, transparent 1px 74px);
+  animation: horizon-drift 5s linear infinite;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, transparent 78%);
+  mask-image: linear-gradient(to bottom, #000 0%, transparent 78%);
+}
+
+@keyframes horizon-drift {
+  from { background-position: 0 0, 0 0; }
+  to   { background-position: 0 0, 0 74px; }
+}
+
+/* Entrance: content is visible by default; the animation only moves it. */
+@keyframes rise-in {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.rise {
+  animation: rise-in 0.62s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Cards lift rather than glow — keeps the neon budget on section markers. */
+.lift {
+  transition: transform 0.22s ease, border-color 0.22s ease;
+}
+.lift:hover {
+  transform: translateY(-3px);
+  border-color: hsl(196 97% 49% / 0.55);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-grid::before { animation: none; }
+  .rise { animation: none; }
+  .lift { transition: none; }
+  .lift:hover { transform: none; }
+}
+
+/* Scroll-entrance for sections below the hero. See src/hooks/use-reveal.tsx.
+   `reveal-armed` is only applied after a real animation frame has painted, so
+   content is never hidden in an environment that cannot animate it back. */
+.reveal-armed {
+  opacity: 0;
+  transform: translateY(22px);
+}
+
+.reveal-in {
+  animation: rise-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Children arrive in sequence, so a section lands as a cascade not a slab. */
+.reveal-in .stagger > * {
+  animation: rise-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.reveal-in .stagger > *:nth-child(1) { animation-delay: 0.06s; }
+.reveal-in .stagger > *:nth-child(2) { animation-delay: 0.14s; }
+.reveal-in .stagger > *:nth-child(3) { animation-delay: 0.22s; }
+.reveal-in .stagger > *:nth-child(4) { animation-delay: 0.30s; }
+.reveal-in .stagger > *:nth-child(5) { animation-delay: 0.38s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-armed { opacity: 1; transform: none; }
+  .reveal-in,
+  .reveal-in .stagger > * { animation: none; }
+}
+
+/* Per-card reveal. The section-level `.stagger` fires every card at once when
+   the section's top crosses the fold, which on tall grids means cards animate
+   while still far below the viewport. `.card-reveal` is driven per element by
+   useReveal instead, so each card animates as it personally arrives. */
+.card-armed {
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+.card-in {
+  animation: rise-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card-armed { opacity: 1; transform: none; }
+  .card-in { animation: none; }
 }

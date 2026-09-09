@@ -1,132 +1,125 @@
 import { useState, useEffect } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+
+const navItems = [
+  { label: "Who it's for", id: "who-for" },
+  { label: "What you get", id: "engagements" },
+  { label: "Case studies", id: "case-studies" },
+  { label: "Process", id: "process" },
+  { label: "FAQ", id: "faq" },
+];
 
 const Navigation = () => {
   const [isVisible, setIsVisible] = useState(true);
+  const [menuOpen, setMenuOpen] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const onHome = location.pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      
-      if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        // Scrolling down & past 100px
-        setIsVisible(false);
-      } else {
-        // Scrolling up
-        setIsVisible(true);
-      }
-      
-      setLastScrollY(currentScrollY);
+      const y = window.scrollY;
+      setIsVisible(!(y > lastScrollY && y > 100));
+      setLastScrollY(y);
     };
-
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
-  const navItems = [
-    { label: "About", href: "#top" },
-    { label: "Case Studies", href: "#case-studies" },
-    { label: "Speaking & Teaching", href: "#speaking" },
-    { label: "Free Training", href: "#free-training" },
-    { label: "Experience", href: "#timeline" },
-    { label: "Contact", href: "#contact" },
-  ];
+  // Anchors only exist on the homepage — from /about, route there first.
+  const go = (id: string) => {
+    setMenuOpen(false);
+    if (onHome) {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    } else {
+      navigate(`/#${id}`);
+    }
+  };
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-transform duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-transform duration-300 bg-background/95 backdrop-blur-sm border-b border-border ${
         isVisible ? "translate-y-0" : "-translate-y-full"
-      } md:bg-[#001B2E] bg-transparent`}
+      }`}
     >
-      <div className="max-w-7xl mx-auto px-4 lg:px-6">
-        <div className="flex items-center justify-end md:justify-center h-16 lg:h-20">
-          {/* Desktop Nav */}
-          <div className="hidden md:flex items-center justify-center gap-8 lg:gap-12 w-full">
+      <div className="max-w-6xl mx-auto px-4 lg:px-6">
+        <div className="flex items-center justify-between h-16 lg:h-18">
+          <Link
+            to="/"
+            className="heading-elegant text-foreground text-base lg:text-lg hover:text-primary transition-colors"
+          >
+            Rihards Zeila
+          </Link>
+
+          <div className="hidden md:flex items-center gap-6 lg:gap-8">
             {navItems.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                onClick={(e) => {
-                  e.preventDefault();
-                  if (item.href === "#top") {
-                    window.scrollTo({ top: 0, behavior: "smooth" });
-                  } else {
-                    const target = document.querySelector(item.href);
-                    if (target) {
-                      target.scrollIntoView({ behavior: "smooth" });
-                    }
-                  }
-                }}
-                className="text-white text-base lg:text-lg uppercase tracking-wide font-bold hover:opacity-80 transition-opacity"
+              <button
+                key={item.id}
+                onClick={() => go(item.id)}
+                className="body-clean text-muted-foreground hover:text-foreground text-sm transition-colors"
               >
                 {item.label}
-              </a>
+              </button>
             ))}
+            <Link
+              to="/about"
+              className="body-clean text-muted-foreground hover:text-foreground text-sm transition-colors"
+            >
+              About
+            </Link>
+            <button
+              onClick={() => go("contact")}
+              className="body-clean bg-primary text-background px-4 py-2 rounded-md text-xs font-bold uppercase tracking-wider hover:bg-primary/90 transition-colors"
+            >
+              Book a consultation
+            </button>
           </div>
 
-          {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-white p-2"
+            className="md:hidden text-foreground p-2"
             aria-label="Menu"
-            onClick={() => {
-              const mobileMenu = document.getElementById("mobile-menu");
-              if (mobileMenu) {
-                mobileMenu.classList.toggle("hidden");
-              }
-            }}
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen((v) => !v)}
           >
-            <svg
-              className="w-8 h-8"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
+            <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                strokeWidth={2.5}
-                d="M4 6h16M4 12h16M4 18h16"
+                strokeWidth={2}
+                d={menuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}
               />
             </svg>
           </button>
         </div>
 
-        {/* Mobile Menu */}
-        <div id="mobile-menu" className="hidden md:hidden pb-4 bg-[#001B2E] rounded-lg mt-2 p-4">
-          <div className="flex flex-col gap-3">
+        {menuOpen && (
+          <div className="md:hidden pb-4 flex flex-col gap-1">
             {navItems.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                className="text-white text-sm uppercase tracking-wide font-medium hover:opacity-80 transition-opacity"
-                onClick={(e) => {
-                  const mobileMenu = document.getElementById("mobile-menu");
-                  if (mobileMenu) {
-                    mobileMenu.classList.add("hidden");
-                  }
-                  e.preventDefault();
-                  if (item.href === "#top") {
-                    window.scrollTo({ top: 0, behavior: "smooth" });
-                  } else {
-                    const target = document.querySelector(item.href);
-                    if (target) {
-                      target.scrollIntoView({ behavior: "smooth" });
-                    }
-                  }
-                }}
+              <button
+                key={item.id}
+                onClick={() => go(item.id)}
+                className="body-clean text-muted-foreground hover:text-foreground text-left py-2.5 transition-colors"
               >
                 {item.label}
-              </a>
+              </button>
             ))}
+            <Link
+              to="/about"
+              onClick={() => setMenuOpen(false)}
+              className="body-clean text-muted-foreground hover:text-foreground py-2.5 transition-colors"
+            >
+              About
+            </Link>
+            <button
+              onClick={() => go("contact")}
+              className="body-clean bg-primary text-background px-4 py-2.5 rounded-md font-bold uppercase tracking-wider text-sm mt-2"
+            >
+              Book a consultation
+            </button>
           </div>
-        </div>
+        )}
       </div>
-      
-      {/* Accent line - desktop only */}
-      <div
-        className="h-[2px] w-full hidden md:block"
-        style={{ backgroundColor: "#03c3f8" }}
-      />
     </nav>
   );
 };
