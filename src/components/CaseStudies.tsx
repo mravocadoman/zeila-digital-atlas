@@ -5,9 +5,8 @@ const caseStudies = [
     company: "The Brew Company",
     engagement: "Fractional growth lead",
     description:
-      "Helped a specialty coffee brand transition from retail to digital with a cross-channel strategy across Meta, TikTok, Google, and YouTube. Started as a Q4 pilot, turned into a long-term partnership.",
-    details:
-      "Managed €75K+ monthly budgets with 13.36 peak ROAS, generating €1M+ in revenue. Post-iOS14, maintained 4–7 ROAS consistently above industry average.",
+      "Specialty coffee brand moving from retail to digital across Meta, TikTok, Google and YouTube — a Q4 pilot that became a long-term partnership.",
+    approach: "Held 4–7 ROAS through the iOS 14 measurement shift.",
     metrics: [
       { label: "Monthly Budget", value: "€75K+" },
       { label: "Peak ROAS", value: "13.36" },
@@ -18,9 +17,8 @@ const caseStudies = [
     company: "Cetras Zoles",
     engagement: "Build & handover",
     description:
-      "Latvian outlet store selling branded fashion at major discounts. Goal: maximum reach, minimal spend.",
-    details:
-      "Strong creative testing + Advantage+ campaigns on Meta. First €1K delivered 36.34 ROAS. Great products just need the right structure.",
+      "Latvian outlet store selling branded fashion at a discount. Maximum reach, minimal spend.",
+    approach: "Creative testing plus Advantage+ campaigns on Meta.",
     metrics: [
       { label: "ROAS", value: "36.34" },
       { label: "Initial Spend", value: "€1K" },
@@ -31,18 +29,16 @@ const caseStudies = [
     company: "Instant Change",
     engagement: "Build & handover",
     description:
-      "Built a three-layer Meta Ads funnel for a German transformation coach covering DACH region.",
-    details:
-      "Video awareness → webinar remarketing → lookalike conversions. Seamless client acquisition with 12.55 ROAS.",
+      "Three-layer Meta Ads funnel for a German transformation coach, covering the DACH region.",
+    approach: "Video awareness → webinar remarketing → lookalike conversions.",
     metrics: [{ label: "ROAS", value: "12.55" }],
   },
   {
     company: "Excel Know How",
     engagement: "Build & handover",
     description:
-      "Turned Excel and Power BI training into a predictable lead-gen engine with free webinar funnels.",
-    details:
-      "€1,175 ad spend generated 2,000+ leads at €0.59 each. 2% converted to €250 courses = €10K revenue, 8.5 ROAS.",
+      "Excel and Power BI training turned into a predictable lead-gen engine with free webinar funnels.",
+    approach: "€1,175 of spend; 2% of leads converted to €250 courses.",
     metrics: [
       { label: "Leads Generated", value: "2,000+" },
       { label: "Cost Per Lead", value: "€0.59" },
@@ -55,8 +51,7 @@ const caseStudies = [
     engagement: "Team training & workshops",
     description:
       'As part of the EU-funded LIFT initiative, I developed five digital marketing courses, built dedicated landing pages, and helped marketingaskola.lv rank #3 on Google for "digitālā mārketinga kursi."',
-    details:
-      "Using Meta ads, email outreach, and automations, I generated 300+ high-quality leads, resulting in 75–105 new course participants and B2B email reply rates of 5% (well above industry average).",
+    approach: "Meta ads, email outreach and automation drove the pipeline.",
     metrics: [
       { label: "Google Ranking", value: "#3" },
       { label: "Leads Generated", value: "300+" },
@@ -113,7 +108,7 @@ const StudyRow = ({ study }: { study: Study }) => {
           {study.description}
         </p>
         <p className="body-clean text-foreground/80 text-base leading-relaxed max-w-[62ch]">
-          {study.details}
+          {study.approach}
         </p>
       </div>
     </article>

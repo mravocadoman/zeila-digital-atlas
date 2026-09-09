@@ -12,6 +12,7 @@ All colors MUST be HSL.
     --background: 205 100% 11%;  /* hero + main ground — lifted off near-black */
     --foreground: 0 0% 92%;  /* near-white body text */
 
+    --sunken: 205 100% 7%;   /* recessed section ground, darker than the page */
     --card: 205 100% 14%;  /* alternate ground — separation comes from .section-rule, not fill */
     --card-foreground: 0 0% 92%;
 

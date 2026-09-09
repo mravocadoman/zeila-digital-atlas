@@ -173,7 +173,7 @@ const Engagements = () => {
     <section
       id="engagements"
       ref={reveal.ref}
-      className={`py-12 lg:py-24 px-6 lg:px-16 bg-card section-rule ${reveal.className}`}
+      className={`py-12 lg:py-24 px-6 lg:px-16 bg-sunken section-rule ${reveal.className}`}
     >
       <div className="max-w-6xl mx-auto">
         <span className="eyebrow block mb-4">What you get</span>
