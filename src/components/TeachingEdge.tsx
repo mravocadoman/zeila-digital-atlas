@@ -40,7 +40,7 @@ const TeachingEdge = () => {
   <section
     id="teaching"
     ref={reveal.ref}
-    className={`py-12 lg:py-24 px-6 lg:px-16 bg-card ${reveal.className}`}
+    className={`py-12 lg:py-24 px-6 lg:px-16 bg-card border-y border-primary/15 ${reveal.className}`}
   >
     <div className="max-w-6xl mx-auto grid lg:grid-cols-[1fr_1.15fr] gap-10 lg:gap-16 items-start">
       <div>

@@ -9,13 +9,13 @@ All colors MUST be HSL.
 @layer base {
   :root {
     /* 80s Neon Theme - 4 Core Colors */
-    --background: 205 100% 9%;  /* #00152C - Deep blue */
+    --background: 205 100% 6%;  /* section ground A — pushed darker so section breaks read */
     --foreground: 0 0% 82%;  /* #D1D1D1 - Light gray body text */
 
-    --card: 205 100% 12%;  /* Slightly lighter than background */
+    --card: 205 100% 16%;  /* section ground B — 1.39:1 against A, was 1.10:1 */
     --card-foreground: 0 0% 82%;
 
-    --popover: 205 100% 12%;
+    --popover: 205 100% 16%;
     --popover-foreground: 0 0% 82%;
 
     --primary: 196 97% 49%;  /* #03C3F8 - Neon cyan */
@@ -24,11 +24,11 @@ All colors MUST be HSL.
     --pink-neon: 320 100% 65%;  /* #FF4DFF - Neon pink */
     --purple-neon: 280 90% 60%;  /* #A855F7 - Neon purple */
 
-    --secondary: 205 100% 15%;
+    --secondary: 205 100% 19%;
     --secondary-foreground: 0 0% 82%;
 
-    --muted: 205 100% 15%;
-    --muted-foreground: 0 0% 70%;
+    --muted: 205 100% 19%;
+    --muted-foreground: 0 0% 74%;
 
     --accent: 196 97% 49%;  /* Neon cyan */
     --accent-foreground: 0 0% 100%;
@@ -37,7 +37,7 @@ All colors MUST be HSL.
     --destructive-foreground: 0 0% 100%;
 
     --border: 196 97% 49%;  /* Neon cyan borders */
-    --input: 205 100% 12%;
+    --input: 205 100% 16%;
     --ring: 196 97% 49%;
 
     --radius: 0.5rem;
@@ -490,7 +490,7 @@ All colors MUST be HSL.
 /* the line he stands on */
 .hero-line {
   position: absolute;
-  bottom: 0;
+  bottom: -1px;              /* straddle the portrait's base, not sit above it */
   left: -6%;
   right: -60vw;
   height: 2px;
@@ -498,12 +498,12 @@ All colors MUST be HSL.
   background: linear-gradient(
     to right,
     transparent,
-    hsl(196 97% 49% / 0.7) 12%,
-    hsl(196 97% 49%) 38%,
-    hsl(320 100% 65% / 0.9) 78%,
+    hsl(320 100% 65% / 0.7) 12%,
+    hsl(320 100% 65%) 40%,
+    hsl(320 100% 65% / 0.85) 72%,
     hsl(320 100% 65% / 0)
   );
-  box-shadow: 0 0 22px 1px hsl(196 97% 49% / 0.45);
+  box-shadow: 0 0 22px 1px hsl(320 100% 65% / 0.42);
 }
 
 /* light pooling where he meets the line */
@@ -514,7 +514,7 @@ All colors MUST be HSL.
   width: 34%;
   bottom: -16px;
   height: 32px;
-  background: radial-gradient(ellipse at 50% 0%, hsl(196 97% 49% / 0.28), transparent 72%);
+  background: radial-gradient(ellipse at 50% 0%, hsl(320 100% 65% / 0.26), transparent 72%);
 }
 
 /* the plane receding away below the line */
@@ -535,19 +535,33 @@ All colors MUST be HSL.
   content: "";
   position: absolute;
   inset: 0 0 -60% 0;
-  transform: rotateX(76deg);
+  transform: rotateX(72deg);
   transform-origin: 50% 0%;
   background-image:
-    repeating-linear-gradient(to right, hsl(196 97% 49% / 0.32) 0 1px, transparent 1px 74px),
-    repeating-linear-gradient(to bottom, hsl(320 100% 65% / 0.20) 0 1px, transparent 1px 74px);
+    repeating-linear-gradient(to right, hsl(196 97% 49% / 0.30) 0 1.5px, transparent 1.5px 92px),
+    repeating-linear-gradient(to bottom, hsl(320 100% 65% / 0.18) 0 1.5px, transparent 1.5px 92px);
   animation: horizon-drift 5s linear infinite;
-  -webkit-mask-image: linear-gradient(to bottom, #000 0%, transparent 78%);
-  mask-image: linear-gradient(to bottom, #000 0%, transparent 78%);
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgb(0 0 0 / 0.35) 22%,
+    #000 48%,
+    #000 82%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgb(0 0 0 / 0.35) 22%,
+    #000 48%,
+    #000 82%,
+    transparent 100%
+  );
 }
 
 @keyframes horizon-drift {
   from { background-position: 0 0, 0 0; }
-  to   { background-position: 0 0, 0 74px; }
+  to   { background-position: 0 0, 0 92px; }
 }
 
 /* Entrance: content is visible by default; the animation only moves it. */

@@ -117,7 +117,7 @@ const EngagementCard = ({ e }: { e: Engagement }) => {
         <div className="flex items-baseline justify-between gap-4 mb-3">
           <span className="eyebrow">{e.kind}</span>
           {e.featured && (
-            <span className="body-clean text-xs font-semibold text-primary uppercase tracking-wider">
+            <span className="body-clean text-xs font-semibold text-[hsl(320_100%_65%)] uppercase tracking-wider">
               Most common
             </span>
           )}
@@ -160,7 +160,7 @@ const Engagements = () => {
     <section
       id="engagements"
       ref={reveal.ref}
-      className={`py-12 lg:py-24 px-6 lg:px-16 bg-card ${reveal.className}`}
+      className={`py-12 lg:py-24 px-6 lg:px-16 bg-card border-y border-primary/15 ${reveal.className}`}
     >
       <div className="max-w-6xl mx-auto">
         <span className="eyebrow block mb-4">What you get</span>

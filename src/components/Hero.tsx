@@ -28,16 +28,18 @@ const Hero = () => {
               className="body-clean text-muted-foreground text-lg lg:text-xl leading-relaxed max-w-xl mb-4 rise"
               style={{ animationDelay: "0.28s" }}
             >
-              You don't need more clicks or views. You need a system that turns traffic
-              into revenue, and a team that can keep it running after I'm gone.
+              You don't need more clicks or views. You need a system that turns
+              traffic into revenue, and a team that can keep it running after
+              I'm gone.
             </p>
             <p
               className="body-clean text-muted-foreground text-lg lg:text-xl leading-relaxed max-w-xl mb-8 rise"
               style={{ animationDelay: "0.36s" }}
             >
-              Ten years and $5M+ a year in ad spend, on the agency side and in the
-              classroom. I work with e-commerce brands, SMEs, and in-house teams who are
-              past experimenting and want the thing to be predictable.
+              Ten years and $5M+ a year in ad spend, on the agency side and in
+              the classroom. I work with e-commerce brands, SMEs, and in-house
+              teams who are past experimenting and want the thing to be
+              predictable.
             </p>
 
             <div
@@ -55,14 +57,17 @@ const Hero = () => {
                 size="lg"
                 variant="outline"
                 onClick={() => scrollTo("engagements")}
-                className="border-border text-foreground hover:border-primary hover:bg-transparent transition-all px-8 py-6 rounded-md font-bold text-sm lg:text-base uppercase tracking-wider"
+                className="bg-background border border-border text-foreground hover:border-primary hover:bg-background transition-all px-8 py-6 rounded-md font-bold text-sm lg:text-base uppercase tracking-wider"
               >
                 See how we'd work
               </Button>
             </div>
           </div>
 
-          <div className="order-1 lg:order-2 lg:pb-6 rise" style={{ animationDelay: "0.2s" }}>
+          <div
+            className="order-1 lg:order-2 lg:pb-6 rise"
+            style={{ animationDelay: "0.2s" }}
+          >
             {/* He stands on the horizon line, which runs off to the right with the
                 grid receding below it. See .hero-stage in index.css. */}
             <div className="hero-stage w-56 sm:w-72 lg:w-full lg:max-w-md mx-auto">
