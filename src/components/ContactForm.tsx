@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -12,6 +12,10 @@ import { FaTiktok } from "react-icons/fa";
 const ContactForm = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  // Spam traps. Bots fill every field they find and submit instantly; people
+  // leave a field they cannot see empty and take longer than a few seconds.
+  const [botField, setBotField] = useState("");
+  const mountedAt = useRef(Date.now());
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -22,6 +26,21 @@ const ContactForm = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
+    // Silently accept and discard: a bot given an error just learns to retry.
+    // Reset the trap too — otherwise one trip leaves the form permanently dead
+    // for that visitor while still reporting success, which loses real leads.
+    const tooFast = Date.now() - mountedAt.current < 3000;
+    if (botField || tooFast) {
+      toast({
+        title: "Message Sent!",
+        description: "Thank you for reaching out. I'll get back to you soon."
+      });
+      setFormData({ name: "", email: "", type: "", message: "" });
+      setBotField("");
+      mountedAt.current = Date.now();
+      return;
+    }
+
     // Basic validation
     if (!formData.name || !formData.email || !formData.type || !formData.message) {
       toast({
@@ -135,6 +154,32 @@ const ContactForm = () => {
           <div className="card-luxury animate-fade-in" style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>
             <h3 className="heading-elegant text-xl lg:text-2xl mb-6">Send a Message</h3>
             <form onSubmit={handleSubmit} className="space-y-4 lg:space-y-5">
+              {/* Honeypot. Positioned off-screen rather than display:none, which
+                  bots check for, and kept out of the tab order and the a11y tree. */}
+              <div
+                aria-hidden="true"
+                style={{
+                  position: "absolute",
+                  left: "-9999px",
+                  width: "1px",
+                  height: "1px",
+                  overflow: "hidden"
+                }}
+              >
+                <label htmlFor="rz-hp-field">Leave this field empty</label>
+                <input
+                  id="rz-hp-field"
+                  name="rz-hp-field"
+                  type="text"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  data-lpignore="true"
+                  data-1p-ignore=""
+                  data-form-type="other"
+                  value={botField}
+                  onChange={(e) => setBotField(e.target.value)}
+                />
+              </div>
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
                   <label htmlFor="name" className="body-clean block mb-2 text-base lg:text-lg font-medium">
