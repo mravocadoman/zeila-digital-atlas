@@ -76,8 +76,8 @@ const WhoFor = () => {
           Three situations I'm actually useful in.
         </h2>
         <p className="body-clean text-muted-foreground text-lg lg:text-xl max-w-2xl mb-8 lg:mb-12">
-          If none of these sound like you, say so in the form anyway — I'll tell you
-          straight if it isn't a fit.
+          If none of these sound like you, say so in the form anyway — I'll tell
+          you straight if it isn't a fit.
         </p>
 
         <div className="grid md:grid-cols-3 gap-4 lg:gap-6">

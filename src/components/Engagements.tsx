@@ -1,6 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { useReveal } from "@/hooks/use-reveal";
 
+import advisoryGfx from "@/assets/gfx/advisory.webp";
+import auditGfx from "@/assets/gfx/audit.webp";
+import buildGfx from "@/assets/gfx/build.webp";
+import retainerGfx from "@/assets/gfx/retainer.webp";
+import trainingGfx from "@/assets/gfx/training.webp";
+
 /**
  * The five ways to work together. Deliverables are written as things that land
  * in the client's hands — not as activities I perform.
@@ -12,6 +18,7 @@ import { useReveal } from "@/hooks/use-reveal";
 const engagements = [
   {
     kind: "Advisory",
+    gfx: advisoryGfx,
     title: "Strategy consulting",
     forWho: "Founders and marketing leads with a decision to make",
     body: "You don't need someone in the account — you need someone who has already made this mistake. Channel strategy, budget allocation, agency decisions, whether to build in-house.",
@@ -25,6 +32,7 @@ const engagements = [
   },
   {
     kind: "Fixed scope",
+    gfx: auditGfx,
     title: "Account audit",
     forWho: "Brands already spending, unsure where it leaks",
     body: "I go through the ad account, tracking setup, and funnel, then tell you what's actually costing you money — in priority order.",
@@ -38,6 +46,7 @@ const engagements = [
   },
   {
     kind: "Project",
+    gfx: buildGfx,
     title: "Build & handover",
     forWho: "Teams that need the system built once, properly",
     body: "The core engagement. I build the campaign structure, funnel, and tracking, run it until the numbers are stable, then hand it over documented so your team owns it.",
@@ -51,6 +60,7 @@ const engagements = [
   },
   {
     kind: "Ongoing",
+    gfx: retainerGfx,
     title: "Fractional growth lead",
     forWho: "In-house teams who want a sparring partner",
     body: "Monthly. I stay close to the account without taking it over — reviews, creative direction, and someone senior to argue with before you spend.",
@@ -64,6 +74,7 @@ const engagements = [
   },
   {
     kind: "Training",
+    gfx: trainingGfx,
     title: "Team training & workshops",
     forWho: "Companies, universities, and EU-funded programs",
     body: "The same material I teach on the Riga Business School MBA, adapted to your channels and tools. One-day intensives through semester-long modules.",
@@ -86,41 +97,58 @@ const EngagementCard = ({ e }: { e: Engagement }) => {
   return (
     <div
       ref={card.ref}
-      className={`rounded-lg p-5 lg:p-8 flex flex-col border ${
+      className={`rounded-lg overflow-hidden flex flex-col border ${
         e.featured ? "border-primary/70 bg-background" : "border-border lift"
       } ${e.kind === "Training" ? "md:col-span-2" : ""} ${card.className}`}
     >
-      <div className="flex items-baseline justify-between gap-4 mb-3">
-        <span className="eyebrow">{e.kind}</span>
-        {e.featured && (
-          <span className="body-clean text-xs font-semibold text-primary uppercase tracking-wider">
-            Most common
-          </span>
-        )}
+      {/* Decorative — the title carries the meaning. */}
+      <img
+        src={e.gfx}
+        alt=""
+        aria-hidden="true"
+        loading="lazy"
+        decoding="async"
+        width="720"
+        height="480"
+        className="w-full h-28 lg:h-32 object-cover border-b border-border"
+      />
+
+      <div className="p-5 lg:p-8 flex flex-col flex-1">
+        <div className="flex items-baseline justify-between gap-4 mb-3">
+          <span className="eyebrow">{e.kind}</span>
+          {e.featured && (
+            <span className="body-clean text-xs font-semibold text-primary uppercase tracking-wider">
+              Most common
+            </span>
+          )}
+        </div>
+
+        <h3 className="heading-elegant text-2xl lg:text-3xl mb-2">{e.title}</h3>
+        <p className="body-clean text-sm text-primary/90 mb-4">{e.forWho}</p>
+        <p className="body-clean text-muted-foreground text-base lg:text-lg leading-relaxed mb-6">
+          {e.body}
+        </p>
+
+        <ul className="space-y-2.5 mb-6">
+          {e.deliverables.map((d) => (
+            <li key={d} className="flex gap-3 items-start">
+              <span
+                className="text-primary mt-1.5 flex-shrink-0"
+                aria-hidden="true"
+              >
+                —
+              </span>
+              <span className="body-clean text-base text-muted-foreground leading-relaxed">
+                {d}
+              </span>
+            </li>
+          ))}
+        </ul>
+
+        <p className="body-clean text-sm text-muted-foreground mt-auto pt-4 border-t border-border">
+          {e.price}
+        </p>
       </div>
-
-      <h3 className="heading-elegant text-2xl lg:text-3xl mb-2">{e.title}</h3>
-      <p className="body-clean text-sm text-primary/90 mb-4">{e.forWho}</p>
-      <p className="body-clean text-muted-foreground text-base lg:text-lg leading-relaxed mb-6">
-        {e.body}
-      </p>
-
-      <ul className="space-y-2.5 mb-6">
-        {e.deliverables.map((d) => (
-          <li key={d} className="flex gap-3 items-start">
-            <span className="text-primary mt-1.5 flex-shrink-0" aria-hidden="true">
-              —
-            </span>
-            <span className="body-clean text-base text-muted-foreground leading-relaxed">
-              {d}
-            </span>
-          </li>
-        ))}
-      </ul>
-
-      <p className="body-clean text-sm text-muted-foreground mt-auto pt-4 border-t border-border">
-        {e.price}
-      </p>
     </div>
   );
 };
@@ -140,8 +168,8 @@ const Engagements = () => {
           Five ways to work together.
         </h2>
         <p className="body-clean text-muted-foreground text-lg lg:text-xl max-w-2xl mb-8 lg:mb-12">
-          Every one of them ends with your team able to run the thing themselves. That's
-          the point, not an upsell I'm withholding.
+          Every one of them ends with your team able to run the thing
+          themselves. That's the point, not an upsell I'm withholding.
         </p>
 
         <div className="grid md:grid-cols-2 gap-4 lg:gap-6">
@@ -154,7 +182,9 @@ const Engagements = () => {
           <Button
             size="lg"
             onClick={() =>
-              document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })
+              document
+                .getElementById("contact")
+                ?.scrollIntoView({ behavior: "smooth" })
             }
             className="bg-primary text-background hover:bg-primary/90 px-8 py-6 rounded-md font-bold text-sm lg:text-base uppercase tracking-wider"
           >
