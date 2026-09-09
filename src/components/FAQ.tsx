@@ -45,7 +45,7 @@ const FAQ = () => {
   <section
     id="faq"
     ref={reveal.ref}
-    className={`py-12 lg:py-24 px-6 lg:px-16 ${reveal.className}`}
+    className={`py-12 lg:py-24 px-6 lg:px-16 section-rule ${reveal.className}`}
   >
     <div className="max-w-3xl mx-auto">
       <span className="eyebrow block mb-4">Questions</span>

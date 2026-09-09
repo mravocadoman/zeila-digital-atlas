@@ -98,7 +98,9 @@ const EngagementCard = ({ e }: { e: Engagement }) => {
     <div
       ref={card.ref}
       className={`rounded-lg overflow-hidden flex flex-col border ${
-        e.featured ? "border-primary/70 bg-background" : "border-border lift"
+        e.featured
+          ? "border-[hsl(320_100%_65%/0.65)] bg-background"
+          : "border-border lift"
       } ${card.className}`}
       style={{ flexBasis: "min(100%, 34rem)", flexGrow: 0 }}
     >
@@ -160,7 +162,7 @@ const Engagements = () => {
     <section
       id="engagements"
       ref={reveal.ref}
-      className={`py-12 lg:py-24 px-6 lg:px-16 bg-card border-y border-primary/15 ${reveal.className}`}
+      className={`py-12 lg:py-24 px-6 lg:px-16 bg-card section-rule ${reveal.className}`}
     >
       <div className="max-w-6xl mx-auto">
         <span className="eyebrow block mb-4">What you get</span>

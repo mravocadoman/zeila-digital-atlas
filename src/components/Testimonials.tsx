@@ -34,7 +34,7 @@ const Testimonials = () => {
   <section
     id="testimonials"
     ref={reveal.ref}
-    className={`py-12 lg:py-24 px-6 lg:px-16 ${reveal.className}`}
+    className={`py-12 lg:py-24 px-6 lg:px-16 section-rule ${reveal.className}`}
   >
     <div className="max-w-6xl mx-auto">
       <span className="eyebrow block mb-4">In their words</span>

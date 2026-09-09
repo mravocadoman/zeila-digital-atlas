@@ -9,13 +9,13 @@ All colors MUST be HSL.
 @layer base {
   :root {
     /* 80s Neon Theme - 4 Core Colors */
-    --background: 205 100% 6%;  /* section ground A — pushed darker so section breaks read */
+    --background: 205 100% 6%;  /* hero + main ground */
     --foreground: 0 0% 82%;  /* #D1D1D1 - Light gray body text */
 
-    --card: 205 100% 16%;  /* section ground B — 1.39:1 against A, was 1.10:1 */
+    --card: 205 100% 9%;   /* alternate ground — barely there on purpose; separation comes from .section-rule, not fill */
     --card-foreground: 0 0% 82%;
 
-    --popover: 205 100% 16%;
+    --popover: 205 100% 11%;
     --popover-foreground: 0 0% 82%;
 
     --primary: 196 97% 49%;  /* #03C3F8 - Neon cyan */
@@ -24,10 +24,10 @@ All colors MUST be HSL.
     --pink-neon: 320 100% 65%;  /* #FF4DFF - Neon pink */
     --purple-neon: 280 90% 60%;  /* #A855F7 - Neon purple */
 
-    --secondary: 205 100% 19%;
+    --secondary: 205 100% 13%;
     --secondary-foreground: 0 0% 82%;
 
-    --muted: 205 100% 19%;
+    --muted: 205 100% 13%;
     --muted-foreground: 0 0% 74%;
 
     --accent: 196 97% 49%;  /* Neon cyan */
@@ -37,7 +37,7 @@ All colors MUST be HSL.
     --destructive-foreground: 0 0% 100%;
 
     --border: 196 97% 49%;  /* Neon cyan borders */
-    --input: 205 100% 16%;
+    --input: 205 100% 11%;
     --ring: 196 97% 49%;
 
     --radius: 0.5rem;
@@ -71,10 +71,12 @@ All colors MUST be HSL.
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Orbitron', 'Courier New', monospace;
+    font-family: 'Archivo', -apple-system, BlinkMacSystemFont, sans-serif;
     font-weight: 700;
-    color: hsl(0 0% 100%);  /* White headings */
-    text-shadow: var(--neon-text-glow);
+    color: hsl(0 0% 100%);
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+    /* No glow. Orbitron and neon are opt-in via .eyebrow / .numeral only. */
   }
 }
 
@@ -464,6 +466,27 @@ All colors MUST be HSL.
 }
 @media (max-width: 767px) {
   .wwm-theme .wwm-broken-tile:nth-child(even) { transform: none; }
+}
+
+/* Section boundary. Visible, inset to the content column, and slightly brighter
+   at the left where the eye starts — a rule, not a band of different colour. */
+.section-rule {
+  position: relative;
+}
+
+.section-rule::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: max(1.5rem, calc((100% - 72rem) / 2));
+  right: max(1.5rem, calc((100% - 72rem) / 2));
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    hsl(196 97% 49% / 0.55),
+    hsl(196 97% 49% / 0.18) 45%,
+    hsl(196 97% 49% / 0.06)
+  );
 }
 
 /* ============================================

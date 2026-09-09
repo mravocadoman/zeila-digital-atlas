@@ -15,25 +15,10 @@ const stats = [
   { value: "20+", label: "Programs taught" },
 ];
 
-const Stat = ({
-  value,
-  label,
-  i,
-}: {
-  value: string;
-  label: string;
-  i: number;
-}) => {
+const Stat = ({ value, label }: { value: string; label: string }) => {
   const { ref, text } = useCountUp(value);
   return (
-    <div
-      ref={ref}
-      className="border-l-2 pl-4"
-      style={{
-        borderLeftColor:
-          i % 2 ? "hsl(320 100% 65% / 0.5)" : "hsl(196 97% 49% / 0.5)",
-      }}
-    >
+    <div ref={ref} className="border-l-2 border-primary/40 pl-4">
       <div className="numeral text-3xl lg:text-4xl mb-1 tabular-nums">
         {text}
       </div>
@@ -52,8 +37,8 @@ const ResultsBand = () => {
       className={`max-w-6xl mx-auto px-6 lg:px-16 pt-16 lg:pt-24 ${reveal.className}`}
     >
       <div className="stagger grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-10">
-        {stats.map((s, i) => (
-          <Stat key={s.label} value={s.value} label={s.label} i={i} />
+        {stats.map((s) => (
+          <Stat key={s.label} value={s.value} label={s.label} />
         ))}
       </div>
     </div>
