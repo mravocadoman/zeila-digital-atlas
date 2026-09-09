@@ -53,7 +53,7 @@ const AudienceCard = ({
           className="h-16 lg:h-20 w-auto object-contain object-left mb-4"
         />
         <h3 className="heading-elegant text-xl lg:text-2xl mb-3">{title}</h3>
-        <p className="body-clean text-muted-foreground text-base lg:text-lg leading-relaxed">
+        <p className="body-clean text-foreground/85 text-base lg:text-lg leading-relaxed">
           {body}
         </p>
       </div>

@@ -109,10 +109,10 @@ const StudyRow = ({ study }: { study: Study }) => {
       </dl>
 
       <div className="min-w-0">
-        <p className="body-clean text-foreground/90 text-base leading-relaxed mb-2 max-w-[62ch]">
+        <p className="body-clean text-foreground text-base leading-relaxed mb-2 max-w-[62ch]">
           {study.description}
         </p>
-        <p className="body-clean text-muted-foreground text-base leading-relaxed max-w-[62ch]">
+        <p className="body-clean text-foreground/80 text-base leading-relaxed max-w-[62ch]">
           {study.details}
         </p>
       </div>
