@@ -99,21 +99,21 @@ const EngagementCard = ({ e }: { e: Engagement }) => {
       ref={card.ref}
       className={`rounded-lg overflow-hidden flex flex-col border ${
         e.featured ? "border-primary/70 bg-background" : "border-border lift"
-      } ${e.kind === "Training" ? "md:col-span-2" : ""} ${card.className}`}
+      } ${card.className}`}
+      style={{ flexBasis: "min(100%, 34rem)", flexGrow: 0 }}
     >
-      {/* Decorative — the title carries the meaning. */}
-      <img
-        src={e.gfx}
-        alt=""
-        aria-hidden="true"
-        loading="lazy"
-        decoding="async"
-        width="720"
-        height="480"
-        className="w-full h-28 lg:h-32 object-cover border-b border-border"
-      />
-
-      <div className="p-5 lg:p-8 flex flex-col flex-1">
+      <div className="p-5 lg:p-8 flex flex-1 flex-col">
+        {/* Decorative — the title carries the meaning. */}
+        <img
+          src={e.gfx}
+          alt=""
+          aria-hidden="true"
+          loading="lazy"
+          decoding="async"
+          width="460"
+          height="240"
+          className="h-16 lg:h-20 w-auto object-contain object-left mb-4"
+        />
         <div className="flex items-baseline justify-between gap-4 mb-3">
           <span className="eyebrow">{e.kind}</span>
           {e.featured && (
@@ -172,7 +172,7 @@ const Engagements = () => {
           themselves. That's the point, not an upsell I'm withholding.
         </p>
 
-        <div className="grid md:grid-cols-2 gap-4 lg:gap-6">
+        <div className="flex flex-wrap justify-center gap-4 lg:gap-6">
           {engagements.map((e) => (
             <EngagementCard key={e.title} e={e} />
           ))}

@@ -41,17 +41,17 @@ const AudienceCard = ({
     >
       {/* Decorative — the heading carries the meaning, so it's hidden from
           assistive tech rather than given invented alt text. */}
-      <img
-        src={gfx}
-        alt=""
-        aria-hidden="true"
-        loading="lazy"
-        decoding="async"
-        width="720"
-        height="480"
-        className="w-full h-32 lg:h-36 object-cover border-b border-border"
-      />
       <div className="p-5 lg:p-7">
+        <img
+          src={gfx}
+          alt=""
+          aria-hidden="true"
+          loading="lazy"
+          decoding="async"
+          width="460"
+          height="240"
+          className="h-16 lg:h-20 w-auto object-contain object-left mb-4"
+        />
         <h3 className="heading-elegant text-xl lg:text-2xl mb-3">{title}</h3>
         <p className="body-clean text-muted-foreground text-base lg:text-lg leading-relaxed">
           {body}
