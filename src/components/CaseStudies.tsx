@@ -64,53 +64,53 @@ const caseStudies = [
 type Study = (typeof caseStudies)[number];
 
 /**
- * Rows, matching the engagements above.
+ * Compact cards, three up.
  *
- * This was a carousel showing one of five, then a 2-up grid at 1,724px. As rows
- * all five stay visible and the section costs a fraction of the height: client
- * and engagement on the left, the numbers in the middle where they can be
- * scanned down the column, the story on the right.
+ * As full-width rows this ran long enough to read as a wall even after the
+ * duplicated prose came out. Each card now carries one headline number, the
+ * client, a single line of context, and the supporting figures small — so the
+ * section is scanned rather than read, and all five stay visible. No carousel:
+ * the earlier one hid four of the five.
  */
-const StudyRow = ({ study }: { study: Study }) => {
-  const row = useReveal<HTMLElement>("card");
+const StudyCard = ({ study }: { study: Study }) => {
+  const card = useReveal<HTMLElement>("card");
+  const [lead, ...rest] = study.metrics;
 
   return (
     <article
-      ref={row.ref}
-      className={`grid gap-x-8 gap-y-3 lg:gap-y-0 py-5 lg:py-7 border-t border-border lg:grid-cols-[minmax(0,14rem)_minmax(0,18rem)_minmax(0,1fr)] ${row.className}`}
+      ref={card.ref}
+      className={`border border-border rounded-lg p-6 flex flex-col lift ${card.className}`}
     >
-      <div className="min-w-0">
-        <span className="eyebrow block mb-1.5">{study.engagement}</span>
-        <h3 className="heading-elegant text-xl lg:text-2xl">{study.company}</h3>
+      <span className="eyebrow block mb-2">{study.engagement}</span>
+      <h3 className="heading-elegant text-xl mb-5">{study.company}</h3>
+
+      <div className="mb-5">
+        <div className="numeral text-primary text-4xl leading-none">
+          {lead.value}
+        </div>
+        <div className="body-clean text-xs text-muted-foreground uppercase tracking-wider mt-2">
+          {lead.label}
+        </div>
       </div>
 
-      <dl className="grid grid-cols-2 gap-x-5 gap-y-3 content-start">
-        {study.metrics.map((m, i) => (
-          <div key={m.label}>
-            <dd
-              className={
-                i === 0
-                  ? "numeral text-primary text-2xl leading-none"
-                  : "body-clean text-foreground text-lg font-semibold tabular-nums leading-none"
-              }
-            >
-              {m.value}
-            </dd>
-            <dt className="body-clean text-xs text-muted-foreground uppercase tracking-wider mt-1.5">
-              {m.label}
-            </dt>
-          </div>
-        ))}
-      </dl>
+      <p className="body-clean text-foreground/85 text-base leading-relaxed mb-4">
+        {study.description}
+      </p>
 
-      <div className="min-w-0">
-        <p className="body-clean text-foreground text-base leading-relaxed mb-2 max-w-[62ch]">
-          {study.description}
-        </p>
-        <p className="body-clean text-foreground/80 text-base leading-relaxed max-w-[62ch]">
-          {study.approach}
-        </p>
-      </div>
+      {rest.length > 0 && (
+        <dl className="flex flex-wrap gap-x-5 gap-y-2 mt-auto pt-4 border-t border-border">
+          {rest.map((m) => (
+            <div key={m.label}>
+              <dd className="body-clean text-foreground text-base font-semibold tabular-nums leading-none">
+                {m.value}
+              </dd>
+              <dt className="body-clean text-[0.7rem] text-muted-foreground uppercase tracking-wider mt-1">
+                {m.label}
+              </dt>
+            </div>
+          ))}
+        </dl>
+      )}
     </article>
   );
 };
@@ -129,14 +129,14 @@ const CaseStudies = () => {
         <h2 className="heading-elegant text-3xl lg:text-5xl mb-4 max-w-3xl">
           Case studies.
         </h2>
-        <p className="body-clean text-muted-foreground text-lg lg:text-xl max-w-2xl mb-8 lg:mb-10">
+        <p className="body-clean text-muted-foreground text-lg lg:text-xl max-w-2xl mb-8 lg:mb-12">
           Real results from real campaigns — from e-commerce to coaching,
           fashion to fintech.
         </p>
 
-        <div className="border-b border-border">
+        <div className="grid gap-4 lg:gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {caseStudies.map((s) => (
-            <StudyRow key={s.company} study={s} />
+            <StudyCard key={s.company} study={s} />
           ))}
         </div>
       </div>
