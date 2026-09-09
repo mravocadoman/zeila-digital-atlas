@@ -101,7 +101,7 @@ const StudyRow = ({ study }: { study: Study }) => {
             <div className="numeral text-primary text-lg lg:text-xl leading-none">
               {m.value}
             </div>
-            <div className="body-clean text-[0.68rem] text-muted-foreground uppercase tracking-wider mt-1">
+            <div className="body-clean text-xs text-muted-foreground uppercase tracking-wider mt-1">
               {m.label}
             </div>
           </div>
@@ -109,10 +109,10 @@ const StudyRow = ({ study }: { study: Study }) => {
       </div>
 
       <div className="min-w-0">
-        <p className="body-clean text-foreground/90 text-base leading-relaxed mb-2">
+        <p className="body-clean text-foreground/90 text-base leading-relaxed mb-2 max-w-[62ch]">
           {study.description}
         </p>
-        <p className="body-clean text-muted-foreground text-sm leading-relaxed">
+        <p className="body-clean text-muted-foreground text-base leading-relaxed max-w-[62ch]">
           {study.details}
         </p>
       </div>

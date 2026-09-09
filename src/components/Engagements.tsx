@@ -127,8 +127,10 @@ const EngagementRow = ({ e }: { e: Engagement }) => {
           )}
         </div>
         <h3 className="heading-elegant text-xl lg:text-2xl mb-1">{e.title}</h3>
-        <p className="body-clean text-sm text-primary/90 mb-2">{e.forWho}</p>
-        <p className="body-clean text-muted-foreground text-base leading-relaxed">
+        <p className="body-clean text-base text-primary/90 mb-2 max-w-[60ch]">
+          {e.forWho}
+        </p>
+        <p className="body-clean text-muted-foreground text-base leading-relaxed max-w-[62ch]">
           {e.body}
         </p>
       </div>
@@ -140,13 +142,13 @@ const EngagementRow = ({ e }: { e: Engagement }) => {
               <span className="text-primary flex-shrink-0" aria-hidden="true">
                 &mdash;
               </span>
-              <span className="body-clean text-sm text-muted-foreground leading-relaxed">
+              <span className="body-clean text-base text-muted-foreground leading-relaxed">
                 {d}
               </span>
             </li>
           ))}
         </ul>
-        <p className="body-clean text-sm text-foreground/70">{e.price}</p>
+        <p className="body-clean text-base text-muted-foreground">{e.price}</p>
       </div>
     </article>
   );

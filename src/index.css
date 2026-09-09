@@ -9,10 +9,10 @@ All colors MUST be HSL.
 @layer base {
   :root {
     /* 80s Neon Theme - 4 Core Colors */
-    --background: 205 100% 6%;  /* hero + main ground */
+    --background: 205 100% 9%;   /* hero + main ground */
     --foreground: 0 0% 82%;  /* #D1D1D1 - Light gray body text */
 
-    --card: 205 100% 9%;   /* alternate ground — barely there on purpose; separation comes from .section-rule, not fill */
+    --card: 205 100% 12%;  /* alternate ground — separation comes from .section-rule, not fill */
     --card-foreground: 0 0% 82%;
 
     --popover: 205 100% 11%;
