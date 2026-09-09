@@ -25,7 +25,6 @@ const caseStudies = [
       { label: "ROAS", value: "36.34" },
       { label: "Initial Spend", value: "€1K" },
       { label: "Revenue", value: "€36K+" },
-      { label: "Platform", value: "Meta" },
     ],
   },
   {
@@ -35,12 +34,7 @@ const caseStudies = [
       "Built a three-layer Meta Ads funnel for a German transformation coach covering DACH region.",
     details:
       "Video awareness → webinar remarketing → lookalike conversions. Seamless client acquisition with 12.55 ROAS.",
-    metrics: [
-      { label: "ROAS", value: "12.55" },
-      { label: "Funnel Layers", value: "3" },
-      { label: "Regions", value: "DACH" },
-      { label: "Platform", value: "Meta" },
-    ],
+    metrics: [{ label: "ROAS", value: "12.55" }],
   },
   {
     company: "Excel Know How",
@@ -95,18 +89,24 @@ const StudyRow = ({ study }: { study: Study }) => {
         <h3 className="heading-elegant text-xl lg:text-2xl">{study.company}</h3>
       </div>
 
-      <div className="flex flex-wrap gap-x-5 gap-y-3 content-start">
-        {study.metrics.map((m) => (
+      <dl className="grid grid-cols-2 gap-x-5 gap-y-3 content-start">
+        {study.metrics.map((m, i) => (
           <div key={m.label}>
-            <div className="numeral text-primary text-lg lg:text-xl leading-none">
+            <dd
+              className={
+                i === 0
+                  ? "numeral text-primary text-2xl leading-none"
+                  : "body-clean text-foreground text-lg font-semibold tabular-nums leading-none"
+              }
+            >
               {m.value}
-            </div>
-            <div className="body-clean text-xs text-muted-foreground uppercase tracking-wider mt-1">
+            </dd>
+            <dt className="body-clean text-xs text-muted-foreground uppercase tracking-wider mt-1.5">
               {m.label}
-            </div>
+            </dt>
           </div>
         ))}
-      </div>
+      </dl>
 
       <div className="min-w-0">
         <p className="body-clean text-foreground/90 text-base leading-relaxed mb-2 max-w-[62ch]">

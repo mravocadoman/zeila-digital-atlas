@@ -96,7 +96,7 @@ type Engagement = (typeof engagements)[number];
  * what you get, what it costs. It also reads like the service menu it actually
  * is, and five rows always align — no orphan to centre.
  */
-const EngagementRow = ({ e }: { e: Engagement }) => {
+const EngagementRow = ({ e, index }: { e: Engagement; index: number }) => {
   const row = useReveal<HTMLElement>("card");
 
   return (
@@ -106,16 +106,21 @@ const EngagementRow = ({ e }: { e: Engagement }) => {
         e.featured ? "border-t-[hsl(320_100%_65%/0.5)]" : "border-t-border"
       } ${row.className}`}
     >
-      <img
-        src={e.gfx}
-        alt=""
-        aria-hidden="true"
-        loading="lazy"
-        decoding="async"
-        width="460"
-        height="240"
-        className="h-10 lg:h-14 w-auto object-contain object-left lg:mt-1"
-      />
+      <div className="flex items-start gap-4 lg:flex-col lg:items-center lg:gap-2">
+        <span className="numeral text-primary/45 text-sm lg:text-base leading-none lg:mt-1">
+          {String(index + 1).padStart(2, "0")}
+        </span>
+        <img
+          src={e.gfx}
+          alt=""
+          aria-hidden="true"
+          loading="lazy"
+          decoding="async"
+          width="460"
+          height="240"
+          className="h-10 lg:h-14 w-auto object-contain object-left"
+        />
+      </div>
 
       <div className="min-w-0">
         <div className="flex items-baseline gap-3 flex-wrap mb-1">
@@ -126,7 +131,9 @@ const EngagementRow = ({ e }: { e: Engagement }) => {
             </span>
           )}
         </div>
-        <h3 className="heading-elegant text-xl lg:text-2xl mb-1">{e.title}</h3>
+        <h3 className="heading-elegant text-2xl lg:text-3xl mb-1.5">
+          {e.title}
+        </h3>
         <p className="body-clean text-base text-primary/90 mb-2 max-w-[60ch]">
           {e.forWho}
         </p>
@@ -136,7 +143,10 @@ const EngagementRow = ({ e }: { e: Engagement }) => {
       </div>
 
       <div className="min-w-0">
-        <ul className="space-y-1.5 mb-2">
+        <span className="eyebrow block mb-2.5 text-muted-foreground">
+          What you get
+        </span>
+        <ul className="space-y-1.5 mb-3">
           {e.deliverables.map((d) => (
             <li key={d} className="flex gap-2.5 items-start">
               <span className="text-primary flex-shrink-0" aria-hidden="true">
@@ -148,7 +158,9 @@ const EngagementRow = ({ e }: { e: Engagement }) => {
             </li>
           ))}
         </ul>
-        <p className="body-clean text-base text-muted-foreground">{e.price}</p>
+        <p className="body-clean text-base text-foreground/90 pt-3 border-t border-border">
+          {e.price}
+        </p>
       </div>
     </article>
   );
@@ -174,8 +186,8 @@ const Engagements = () => {
         </p>
 
         <div className="border-b border-border">
-          {engagements.map((e) => (
-            <EngagementRow key={e.title} e={e} />
+          {engagements.map((e, i) => (
+            <EngagementRow key={e.title} e={e} index={i} />
           ))}
         </div>
 
