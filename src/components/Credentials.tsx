@@ -109,7 +109,7 @@ const Credentials = () => {
     <section 
       ref={ref}
       id="credentials" 
-      className="py-12 lg:py-32 px-0 bg-card"
+      className="py-12 lg:py-32 px-0 bg-sunken"
     >
       <div className="w-full lg:max-w-6xl lg:mx-auto lg:px-6">
         <div className={`transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>

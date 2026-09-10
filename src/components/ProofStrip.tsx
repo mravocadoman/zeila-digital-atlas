@@ -20,7 +20,7 @@ const partners = [
  * head of the case studies, where the evidence for them sits right underneath.
  */
 const ProofStrip = () => (
-  <section className="bg-card section-rule py-8 lg:py-10 overflow-hidden">
+  <section className="bg-sunken section-rule py-8 lg:py-10 overflow-hidden">
     <div className="max-w-6xl mx-auto px-6">
       <span className="eyebrow block text-center lg:text-left mb-5">
         Taught &amp; trained at

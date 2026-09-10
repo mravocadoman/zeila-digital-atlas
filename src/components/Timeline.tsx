@@ -50,7 +50,7 @@ const Timeline = () => {
     period: "Nov 2015 - Jun 2017",
     description: "Created a Shopify dropshipping store targeting the U.S. market. Designed and tested Facebook ad campaigns, optimized product pages, and successfully generated international sales."
   }];
-  return <section id="timeline" className="py-12 lg:py-32 px-6 lg:px-16 bg-card">
+  return <section id="timeline" className="py-12 lg:py-32 px-6 lg:px-16 bg-sunken">
       <div className="max-w-7xl mx-auto">
         <h2 className="heading-elegant text-3xl lg:text-display mb-3 lg:mb-4 animate-fade-in text-center lg:text-left">Career Journey</h2>
         <p className="body-clean text-muted-foreground mb-8 lg:mb-12 max-w-3xl text-center lg:text-left text-lg lg:text-2xl">

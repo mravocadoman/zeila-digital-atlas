@@ -54,7 +54,7 @@ const About = () => {
         <Timeline />
         <Credentials />
 
-        <section className="px-6 lg:px-16 py-16 lg:py-24 bg-card">
+        <section className="px-6 lg:px-16 py-16 lg:py-24 bg-sunken">
           <div className="max-w-3xl mx-auto">
             <span className="eyebrow block mb-4">One more reference</span>
             <figure>
