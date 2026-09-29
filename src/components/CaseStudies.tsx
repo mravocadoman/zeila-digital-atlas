@@ -1,69 +1,89 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useReveal } from "@/hooks/use-reveal";
+import { T, useLang } from "@/i18n/lang";
 
-const caseStudies = [
+const getCaseStudies = (t: T) => [
   {
     company: "The Brew Company",
-    engagement: "Fractional growth lead",
-    description:
+    engagement: t("Fractional growth lead", "Ārpakalpojuma izaugsmes vadītājs"),
+    description: t(
       "Specialty coffee brand moving from retail to digital across Meta, TikTok, Google and YouTube — a Q4 pilot that became a long-term partnership.",
-    approach: "Held 4–7 ROAS through the iOS 14 measurement shift.",
+      "Specializētās kafijas zīmols, kas no mazumtirdzniecības pārgāja uz digitālo vidi — Meta, TikTok, Google un YouTube. Q4 pilotprojekts, kas kļuva par ilgtermiņa sadarbību.",
+    ),
+    approach: t("Held 4–7 ROAS through the iOS 14 measurement shift.", "Noturēja 4–7 ROAS iOS 14 mērījumu izmaiņu laikā."),
     metrics: [
-      { label: "Monthly Budget", value: "€75K+" },
-      { label: "Peak ROAS", value: "13.36" },
-      { label: "Revenue Generated", value: "€1M+" },
+      { label: t("Monthly Budget", "Mēneša budžets"), value: "€75K+" },
+      { label: t("Peak ROAS", "Maksimālais ROAS"), value: "13.36" },
+      { label: t("Revenue Generated", "Radītie ieņēmumi"), value: "€1M+" },
     ],
   },
   {
     company: "Cetras Zoles",
-    engagement: "Build & handover",
-    description:
+    engagement: t("Build & handover", "Izstrāde un nodošana"),
+    description: t(
       "Latvian outlet store selling branded fashion at a discount. Maximum reach, minimal spend.",
-    approach: "Creative testing plus Advantage+ campaigns on Meta.",
+      "Latvijas outlet veikals, kas pārdod zīmolu apģērbus ar atlaidi. Maksimāla sasniedzamība, minimāli izdevumi.",
+    ),
+    approach: t("Creative testing plus Advantage+ campaigns on Meta.", "Kreatīvu testēšana un Advantage+ kampaņas Meta platformā."),
     metrics: [
       { label: "ROAS", value: "36.34" },
-      { label: "Initial Spend", value: "€1K" },
-      { label: "Revenue", value: "€36K+" },
+      { label: t("Initial Spend", "Sākotnējie izdevumi"), value: "€1K" },
+      { label: t("Revenue", "Ieņēmumi"), value: "€36K+" },
     ],
   },
   {
     company: "Instant Change",
-    engagement: "Build & handover",
-    description:
+    engagement: t("Build & handover", "Izstrāde un nodošana"),
+    description: t(
       "Three-layer Meta Ads funnel for a German transformation coach, covering the DACH region.",
-    approach: "Video awareness → webinar remarketing → lookalike conversions.",
+      "Trīs līmeņu Meta Ads piltuve vācu transformācijas koučam DACH reģionā.",
+    ),
+    approach: t(
+      "Video awareness → webinar remarketing → lookalike conversions.",
+      "Video atpazīstamība → vebināra atkārtotais mārketings → līdzīgo auditoriju konversijas.",
+    ),
     metrics: [{ label: "ROAS", value: "12.55" }],
   },
   {
     company: "Excel Know How",
-    engagement: "Build & handover",
-    description:
+    engagement: t("Build & handover", "Izstrāde un nodošana"),
+    description: t(
       "Excel and Power BI training turned into a predictable lead-gen engine with free webinar funnels.",
-    approach: "€1,175 of spend; 2% of leads converted to €250 courses.",
+      "Excel un Power BI apmācības, pārvērstas paredzamā potenciālo klientu piesaistes dzinējā ar bezmaksas vebināru piltuvēm.",
+    ),
+    approach: t(
+      "€1,175 of spend; 2% of leads converted to €250 courses.",
+      "€1 175 izdevumi; 2% potenciālo klientu nopirka €250 kursus.",
+    ),
     metrics: [
-      { label: "Leads Generated", value: "2,000+" },
-      { label: "Cost Per Lead", value: "€0.59" },
+      { label: t("Leads Generated", "Piesaistīti kontakti"), value: "2,000+" },
+      { label: t("Cost Per Lead", "Cena par kontaktu"), value: "€0.59" },
       { label: "ROAS", value: "8.5" },
-      { label: "Revenue", value: "€10K" },
+      { label: t("Revenue", "Ieņēmumi"), value: "€10K" },
     ],
   },
   {
-    company: "LIFT Digitalisation Program",
-    engagement: "Team training & workshops",
-    description:
+    company: t("LIFT Digitalisation Program", "LIFT digitalizācijas programma"),
+    engagement: t("Team training & workshops", "Komandu apmācības un darbnīcas"),
+    description: t(
       'As part of the EU-funded LIFT initiative, I developed five digital marketing courses, built dedicated landing pages, and helped marketingaskola.lv rank #3 on Google for "digitālā mārketinga kursi."',
-    approach: "Meta ads, email outreach and automation drove the pipeline.",
+      "ES finansētās LIFT iniciatīvas ietvaros izstrādāju piecus digitālā mārketinga kursus, izveidoju tiem galvenās lapas un palīdzēju marketingaskola.lv ieņemt 3. vietu Google meklētājā pēc frāzes “digitālā mārketinga kursi”.",
+    ),
+    approach: t(
+      "Meta ads, email outreach and automation drove the pipeline.",
+      "Klientus piesaistīja Meta reklāmas, e-pasta uzrunāšana un automatizācija.",
+    ),
     metrics: [
-      { label: "Google Ranking", value: "#3" },
-      { label: "Leads Generated", value: "300+" },
-      { label: "Participants", value: "75-105" },
-      { label: "B2B Reply Rate", value: "5%" },
+      { label: t("Google Ranking", "Vieta Google"), value: "#3" },
+      { label: t("Leads Generated", "Piesaistīti kontakti"), value: "300+" },
+      { label: t("Participants", "Dalībnieki"), value: "75-105" },
+      { label: t("B2B Reply Rate", "B2B atbilžu īpatsvars"), value: "5%" },
     ],
   },
 ];
 
-type Study = (typeof caseStudies)[number];
+type Study = ReturnType<typeof getCaseStudies>[number];
 
 const StudyCard = ({ study }: { study: Study }) => {
   const [lead, ...rest] = study.metrics;
@@ -120,6 +140,8 @@ const scrollBehavior = (): ScrollBehavior =>
 
 const CaseStudies = () => {
   const reveal = useReveal<HTMLElement>();
+  const { t } = useLang();
+  const caseStudies = getCaseStudies(t);
   const track = useRef<HTMLDivElement>(null);
   const [first, setFirst] = useState(0);
   const [perView, setPerView] = useState(1);
@@ -135,7 +157,7 @@ const CaseStudies = () => {
     setFirst(
       Math.min(caseStudies.length - 1, Math.round(el.scrollLeft / step)),
     );
-  }, []);
+  }, [caseStudies.length]);
 
   useEffect(() => {
     measure();
@@ -181,13 +203,15 @@ const CaseStudies = () => {
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-wrap items-end justify-between gap-6 mb-8 lg:mb-10">
           <div>
-            <span className="eyebrow block mb-4">Proof</span>
+            <span className="eyebrow block mb-4">{t("Proof", "Pierādījumi")}</span>
             <h2 className="heading-elegant text-3xl lg:text-5xl mb-4 max-w-3xl">
-              Case studies.
+              {t("Case studies.", "Rezultāti.")}
             </h2>
             <p className="body-clean text-muted-foreground text-lg lg:text-xl max-w-2xl">
-              Real results from real campaigns — from e-commerce to coaching,
-              fashion to fintech.
+              {t(
+                "Real results from real campaigns — from e-commerce to coaching, fashion to fintech.",
+                "Reāli rezultāti no reālām kampaņām — no e-komercijas līdz koučingam, no modes līdz finanšu tehnoloģijām.",
+              )}
             </p>
           </div>
 
@@ -197,13 +221,13 @@ const CaseStudies = () => {
               aria-live="polite"
             >
               {first + 1}
-              {last - first > 1 ? `–${last}` : ""} of {caseStudies.length}
+              {last - first > 1 ? `–${last}` : ""} {t("of", "no")} {caseStudies.length}
             </span>
             <button
               type="button"
               onClick={() => scrollByCards(-1)}
               disabled={atStart}
-              aria-label="Previous case study"
+              aria-label={t("Previous case study", "Iepriekšējais piemērs")}
               className="h-11 w-11 grid place-items-center rounded-md border border-border text-foreground hover:border-primary disabled:opacity-30 disabled:hover:border-border transition-colors"
             >
               <ChevronLeft className="h-5 w-5" />
@@ -212,7 +236,7 @@ const CaseStudies = () => {
               type="button"
               onClick={() => scrollByCards(1)}
               disabled={atEnd}
-              aria-label="Next case study"
+              aria-label={t("Next case study", "Nākamais piemērs")}
               className="h-11 w-11 grid place-items-center rounded-md border border-border text-foreground hover:border-primary disabled:opacity-30 disabled:hover:border-border transition-colors"
             >
               <ChevronRight className="h-5 w-5" />
@@ -224,7 +248,7 @@ const CaseStudies = () => {
           ref={track}
           tabIndex={0}
           role="region"
-          aria-label="Case studies, scroll horizontally"
+          aria-label={t("Case studies, scroll horizontally", "Rezultāti, ritiniet horizontāli")}
           className="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-2 -mx-1 px-1 focus-visible:outline-none [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >
           {caseStudies.map((s) => (
@@ -243,7 +267,7 @@ const CaseStudies = () => {
               key={i}
               type="button"
               onClick={() => goTo(i)}
-              aria-label={`Show case study ${i + 1}`}
+              aria-label={t(`Show case study ${i + 1}`, `Rādīt ${i + 1}. piemēru`)}
               className={`h-2 rounded-full transition-all duration-300 ${
                 i === first
                   ? "w-8 bg-primary"

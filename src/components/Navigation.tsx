@@ -1,13 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-
-const navItems = [
-  { label: "Who it's for", id: "who-for" },
-  { label: "What you get", id: "engagements" },
-  { label: "Case studies", id: "case-studies" },
-  { label: "Process", id: "process" },
-  { label: "FAQ", id: "faq" },
-];
+import LanguageSwitch from "@/components/LanguageSwitch";
+import { basePath, useLang } from "@/i18n/lang";
 
 const Navigation = () => {
   const [isVisible, setIsVisible] = useState(true);
@@ -15,7 +9,16 @@ const Navigation = () => {
   const [lastScrollY, setLastScrollY] = useState(0);
   const location = useLocation();
   const navigate = useNavigate();
-  const onHome = location.pathname === "/";
+  const { t, to } = useLang();
+  const onHome = basePath(location.pathname) === "/";
+
+  const navItems = [
+    { label: t("Who it's for", "Kam tas domāts"), id: "who-for" },
+    { label: t("What you get", "Ko jūs iegūstat"), id: "engagements" },
+    { label: t("Case studies", "Rezultāti"), id: "case-studies" },
+    { label: t("Process", "Process"), id: "process" },
+    { label: t("FAQ", "BUJ"), id: "faq" },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,7 +36,7 @@ const Navigation = () => {
     if (onHome) {
       document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
     } else {
-      navigate(`/#${id}`);
+      navigate(to(`/#${id}`));
     }
   };
 
@@ -46,13 +49,13 @@ const Navigation = () => {
       <div className="max-w-6xl mx-auto px-4 lg:px-6">
         <div className="flex items-center justify-between h-16 lg:h-18">
           <Link
-            to="/"
+            to={to("/")}
             className="heading-elegant text-foreground text-base lg:text-lg hover:text-primary transition-colors"
           >
             Rihards Zeila
           </Link>
 
-          <div className="hidden md:flex items-center gap-6 lg:gap-8">
+          <div className="hidden lg:flex items-center gap-6 xl:gap-8">
             {navItems.map((item) => (
               <button
                 key={item.id}
@@ -63,22 +66,25 @@ const Navigation = () => {
               </button>
             ))}
             <Link
-              to="/about"
+              to={to("/about")}
               className="body-clean text-muted-foreground hover:text-foreground text-sm transition-colors"
             >
-              About
+              {t("About", "Par mani")}
             </Link>
             <button
               onClick={() => go("contact")}
               className="body-clean bg-primary text-background px-4 py-2 rounded-md text-xs font-bold uppercase tracking-wider hover:bg-primary/90 transition-colors"
             >
-              Book a consultation
+              {t("Book a consultation", "Pieteikt konsultāciju")}
             </button>
+            <LanguageSwitch />
           </div>
 
+          <div className="lg:hidden flex items-center gap-2">
+          <LanguageSwitch />
           <button
-            className="md:hidden text-foreground p-2"
-            aria-label="Menu"
+            className="text-foreground p-2"
+            aria-label={t("Menu", "Izvēlne")}
             aria-expanded={menuOpen}
             onClick={() => setMenuOpen((v) => !v)}
           >
@@ -91,10 +97,11 @@ const Navigation = () => {
               />
             </svg>
           </button>
+          </div>
         </div>
 
         {menuOpen && (
-          <div className="md:hidden pb-4 flex flex-col gap-1">
+          <div className="lg:hidden pb-4 flex flex-col gap-1">
             {navItems.map((item) => (
               <button
                 key={item.id}
@@ -105,17 +112,17 @@ const Navigation = () => {
               </button>
             ))}
             <Link
-              to="/about"
+              to={to("/about")}
               onClick={() => setMenuOpen(false)}
               className="body-clean text-muted-foreground hover:text-foreground py-2.5 transition-colors"
             >
-              About
+              {t("About", "Par mani")}
             </Link>
             <button
               onClick={() => go("contact")}
               className="body-clean bg-primary text-background px-4 py-2.5 rounded-md font-bold uppercase tracking-wider text-sm mt-2"
             >
-              Book a consultation
+              {t("Book a consultation", "Pieteikt konsultāciju")}
             </button>
           </div>
         )}

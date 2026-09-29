@@ -13,7 +13,7 @@ npm run lint
 
 ## Layout
 
-Three routes in `src/App.tsx`, plus a NotFound catch-all:
+Three routes in `src/App.tsx` (each mirrored under `/lv`, see Languages), plus a NotFound catch-all:
 
 - `/` — the consultation-led homepage (`pages/Index.tsx`). Section order matters: it
   runs offer → proof → process → credibility → close.
@@ -24,6 +24,26 @@ Three routes in `src/App.tsx`, plus a NotFound catch-all:
   fonts (Fraunces / Inter Tight / JetBrains Mono) in a `useEffect`. **Deliberately not
   restyled** to match the homepage — it targets a different buyer.
 - `src/components/ui/` is stock shadcn — don't hand-edit, regenerate.
+
+## Languages (EN / LV)
+
+Added 2026-09-29. English lives at `/`, Latvian mirrors every route under `/lv`
+(`/lv`, `/lv/about`, `/lv/work-with-me`) — same components, the URL prefix picks the copy.
+
+- `src/i18n/lang.tsx` — `useLang()` returns `{ lang, t, to }`. Copy is written inline as
+  `t("English", "Latviski")` right next to the original, so editing one language makes the
+  other visibly stale. `to("/about")` localises internal links; always use it for `<Link>`s.
+- Data arrays that hold copy are functions of `t` (`const faqs = (t: T) => [...]`).
+- `usePageMeta(title, description)` sets `<html lang>`, the title, the description and the
+  **canonical** — index.html hard-codes the English canonical, and without the override
+  every `/lv` page would be declared a duplicate of `/`. hreflang links are in index.html,
+  `/lv` URLs are in `public/sitemap.xml`.
+- `LanguageSwitch` — both flags, current one lit, top-right of the nav (and of the
+  `/work-with-me` header). Flags are inline SVG because Windows shows flag emoji as letters.
+- Latvian copy addresses the reader as "jūs". Numerals stay in English format (`36.34`)
+  because `useCountUp` parses `,` as a thousands separator.
+- The desktop nav now collapses to the hamburger below `lg` (was `md`) — Latvian labels plus
+  the switch didn't fit at tablet width.
 
 ## Type system
 

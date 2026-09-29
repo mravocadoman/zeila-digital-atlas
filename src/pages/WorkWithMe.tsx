@@ -9,6 +9,8 @@ import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 import headshot from "@/assets/rihards-about.webp";
+import LanguageSwitch from "@/components/LanguageSwitch";
+import { T, useLang, usePageMeta } from "@/i18n/lang";
 
 import rbsLogo from "@/assets/partners/rbs-logo.webp";
 import unalLogo from "@/assets/partners/unal-logo.webp";
@@ -26,102 +28,196 @@ const trustedLogos = [
   { name: "LSUA", logo: lsuaLogo },
 ];
 
-const stats = [
-  { value: "10+", label: "Years in the field" },
-  { value: "20+", label: "Programs delivered" },
-  { value: "3", label: "Universities taught at" },
-  { value: "€10M+", label: "Revenue driven for clients" },
+const stats = (t: T) => [
+  { value: "10+", label: t("Years in the field", "Gadi nozarē") },
+  { value: "20+", label: t("Programs delivered", "Vadītas programmas") },
+  { value: "3", label: t("Universities taught at", "Augstskolas, kurās pasniedzu") },
+  { value: "€10M+", label: t("Revenue driven for clients", "Klientiem radītie ieņēmumi") },
 ];
 
-const audiences = [
+const audiences = (t: T) => [
   {
     icon: GraduationCap,
-    title: "Universities & Business Schools",
-    body: "Semester-long modules and guest lectures for MBA and BBA programs — from digital strategy fundamentals to advanced paid media and analytics.",
+    title: t("Universities & Business Schools", "Augstskolas un biznesa skolas"),
+    body: t(
+      "Semester-long modules and guest lectures for MBA and BBA programs — from digital strategy fundamentals to advanced paid media and analytics.",
+      "Semestra moduļi un vieslekcijas MBA un BBA programmām — no digitālās stratēģijas pamatiem līdz padziļinātai maksātajai reklāmai un analītikai.",
+    ),
   },
   {
     icon: Building2,
-    title: "Corporate & SME teams",
-    body: "In-house upskilling for marketing teams, founders, and cross-functional squads. Built around your channels, tools, and revenue goals.",
+    title: t("Corporate & SME teams", "Uzņēmumu un MVU komandas"),
+    body: t(
+      "In-house upskilling for marketing teams, founders, and cross-functional squads. Built around your channels, tools, and revenue goals.",
+      "Iekšējās apmācības mārketinga komandām, dibinātājiem un starpfunkcionālām komandām. Veidotas ap jūsu kanāliem, rīkiem un ieņēmumu mērķiem.",
+    ),
   },
   {
     icon: Users,
-    title: "NGOs & Public programs",
-    body: "Practical training for EU-funded initiatives, associations, and social enterprises. Delivered for LIFT, ITC, and Latvian government-backed programs.",
+    title: t("NGOs & Public programs", "NVO un publiskās programmas"),
+    body: t(
+      "Practical training for EU-funded initiatives, associations, and social enterprises. Delivered for LIFT, ITC, and Latvian government-backed programs.",
+      "Praktiskas apmācības ES finansētām iniciatīvām, biedrībām un sociālajiem uzņēmumiem. Vadītas LIFT, ITC un valsts atbalstītām programmām Latvijā.",
+    ),
   },
 ];
 
-const formats = [
+const formats = (t: T) => [
   {
-    title: "Meta Ads Intensive",
-    duration: "1-day workshop",
-    audience: "Marketers, founders, agency teams",
-    outcome: "Leave with a live campaign structure, creative brief, and measurement plan.",
-    bullets: ["Account & pixel setup", "Audience & creative strategy", "Reading the numbers that matter"],
-  },
-  {
-    title: "Digital Growth for SMEs",
-    duration: "Multi-session course",
-    audience: "Small & mid-sized business owners",
-    outcome: "A working growth system: funnel, channels, weekly rhythm, and reporting.",
-    bullets: ["Positioning & offer", "Channel prioritization", "Funnel & automation basics"],
-  },
-  {
-    title: "Custom MBA / BBA module",
-    duration: "Semester-long",
-    audience: "Universities & business schools",
-    outcome: "A syllabus co-designed with your program, with assessments and industry cases.",
-    bullets: ["Lectures & case studies", "Group projects with live briefs", "Guest practitioners"],
+    title: t("Meta Ads Intensive", "Meta Ads intensīvais kurss"),
+    duration: t("1-day workshop", "1 dienas darbnīca"),
+    audience: t("Marketers, founders, agency teams", "mārketinga speciālistiem, dibinātājiem, aģentūru komandām"),
+    outcome: t(
+      "Leave with a live campaign structure, creative brief, and measurement plan.",
+      "Dodieties prom ar gatavu kampaņas struktūru, kreatīvo briefu un mērījumu plānu.",
+    ),
+    bullets: [
+      t("Account & pixel setup", "Konta un pikseļa iestatīšana"),
+      t("Audience & creative strategy", "Auditoriju un kreatīvu stratēģija"),
+      t("Reading the numbers that matter", "Svarīgāko skaitļu lasīšana"),
+    ],
   },
   {
-    title: "Team enablement & coaching",
-    duration: "Ongoing retainer",
-    audience: "In-house marketing teams",
-    outcome: "Your team runs paid media and automation confidently — with me as a sparring partner.",
-    bullets: ["Weekly working sessions", "Playbooks & SOPs", "Ad account audits"],
+    title: t("Digital Growth for SMEs", "Digitālā izaugsme MVU"),
+    duration: t("Multi-session course", "Vairāku nodarbību kurss"),
+    audience: t("Small & mid-sized business owners", "mazo un vidējo uzņēmumu īpašniekiem"),
+    outcome: t(
+      "A working growth system: funnel, channels, weekly rhythm, and reporting.",
+      "Strādājoša izaugsmes sistēma: piltuve, kanāli, iknedēļas ritms un atskaites.",
+    ),
+    bullets: [
+      t("Positioning & offer", "Pozicionēšana un piedāvājums"),
+      t("Channel prioritization", "Kanālu prioritizēšana"),
+      t("Funnel & automation basics", "Piltuves un automatizācijas pamati"),
+    ],
+  },
+  {
+    title: t("Custom MBA / BBA module", "Pielāgots MBA / BBA modulis"),
+    duration: t("Semester-long", "Semestra garumā"),
+    audience: t("Universities & business schools", "augstskolām un biznesa skolām"),
+    outcome: t(
+      "A syllabus co-designed with your program, with assessments and industry cases.",
+      "Kopā ar jūsu programmu veidots kursa apraksts ar vērtēšanu un nozares gadījumiem.",
+    ),
+    bullets: [
+      t("Lectures & case studies", "Lekcijas un gadījumu analīze"),
+      t("Group projects with live briefs", "Grupu projekti ar reāliem uzdevumiem"),
+      t("Guest practitioners", "Vieslektori no prakses"),
+    ],
+  },
+  {
+    title: t("Team enablement & coaching", "Komandas attīstība un koučings"),
+    duration: t("Ongoing retainer", "Ilgtermiņa sadarbība"),
+    audience: t("In-house marketing teams", "iekšējām mārketinga komandām"),
+    outcome: t(
+      "Your team runs paid media and automation confidently — with me as a sparring partner.",
+      "Jūsu komanda pārliecinoši vada maksāto reklāmu un automatizāciju — ar mani kā sparinga partneri.",
+    ),
+    bullets: [
+      t("Weekly working sessions", "Iknedēļas darba sesijas"),
+      t("Playbooks & SOPs", "Rokasgrāmatas un darba instrukcijas"),
+      t("Ad account audits", "Reklāmas kontu auditi"),
+    ],
   },
 ];
 
-const curriculum = [
-  { q: "Strategy & positioning", a: "Turning fuzzy goals into a channel plan: ICP work, offer design, funnel mapping, and choosing where to actually spend the next euro." },
-  { q: "Meta advertising (Facebook & Instagram)", a: "Account structure, campaign objectives, audience & creative strategy, iOS/attribution realities, scaling and troubleshooting." },
-  { q: "Landing pages & funnels", a: "Designing pages that convert, split-testing frameworks, lead magnets, email/SMS follow-up, and CRO fundamentals." },
-  { q: "Marketing automation", a: "Zapier/Make workflows, CRM hygiene, lead scoring, and automating the boring parts of client & prospect communication." },
-  { q: "Analytics & measurement", a: "GA4, server-side tracking basics, dashboards teams actually read, and connecting ad spend to revenue." },
-  { q: "AI in marketing", a: "Practical use of LLMs for research, briefs, creative variants, and analysis — with guardrails for teams." },
+const curriculum = (t: T) => [
+  {
+    q: t("Strategy & positioning", "Stratēģija un pozicionēšana"),
+    a: t(
+      "Turning fuzzy goals into a channel plan: ICP work, offer design, funnel mapping, and choosing where to actually spend the next euro.",
+      "Kā neskaidrus mērķus pārvērst kanālu plānā: ideālā klienta profils, piedāvājuma veidošana, piltuves kartēšana un izvēle, kur tiešām ieguldīt nākamo eiro.",
+    ),
+  },
+  {
+    q: t("Meta advertising (Facebook & Instagram)", "Meta reklāma (Facebook un Instagram)"),
+    a: t(
+      "Account structure, campaign objectives, audience & creative strategy, iOS/attribution realities, scaling and troubleshooting.",
+      "Konta struktūra, kampaņu mērķi, auditoriju un kreatīvu stratēģija, iOS un atribūcijas realitāte, mērogošana un problēmu risināšana.",
+    ),
+  },
+  {
+    q: t("Landing pages & funnels", "Galvenās lapas un piltuves"),
+    a: t(
+      "Designing pages that convert, split-testing frameworks, lead magnets, email/SMS follow-up, and CRO fundamentals.",
+      "Lapas, kas konvertē, A/B testēšanas metodes, kontaktu piesaistes magnēti, e-pasta/SMS sekošana un konversiju optimizācijas pamati.",
+    ),
+  },
+  {
+    q: t("Marketing automation", "Mārketinga automatizācija"),
+    a: t(
+      "Zapier/Make workflows, CRM hygiene, lead scoring, and automating the boring parts of client & prospect communication.",
+      "Zapier/Make darbplūsmas, kārtība CRM, potenciālo klientu vērtēšana un garlaicīgo saziņas daļu automatizēšana.",
+    ),
+  },
+  {
+    q: t("Analytics & measurement", "Analītika un mērījumi"),
+    a: t(
+      "GA4, server-side tracking basics, dashboards teams actually read, and connecting ad spend to revenue.",
+      "GA4, servera puses izsekošanas pamati, pārskatu paneļi, ko komandas tiešām lasa, un reklāmas izdevumu sasaiste ar ieņēmumiem.",
+    ),
+  },
+  {
+    q: t("AI in marketing", "MI mārketingā"),
+    a: t(
+      "Practical use of LLMs for research, briefs, creative variants, and analysis — with guardrails for teams.",
+      "Praktiska valodas modeļu izmantošana izpētei, briefiem, kreatīvu variantiem un analīzei — ar skaidriem noteikumiem komandām.",
+    ),
+  },
 ];
 
-const programs = [
-  { org: "Riga Business School", role: "MBA Lecturer, Digital Marketing", period: "2021 – Present" },
-  { org: "Riga Business School — Executive Education", role: "Digital Growth Strategies for SMEs", period: "Nov 2024" },
-  { org: "RISEBA University", role: "BBA Lecturer, Social Media & Meta Ads", period: "2023 – 2024" },
-  { org: "University of Lusaka", role: "Guest Lecturer (Erasmus+)", period: "May 2024" },
-  { org: "LIFT Program (EU-funded)", role: "Course leader — Meta Ads & Automation for SMEs", period: "2024 – Present" },
-  { org: "International Trade Centre", role: "Workshop facilitator — Digital marketing for exporters", period: "2023" },
-  { org: "Latvijas Digitālo ekspertu biedrība", role: "Trainer — Digital marketing programs", period: "2023" },
-  { org: "Vidusdaugavas NVO centrs", role: "Digital campaign workshop leader", period: "2023" },
-  { org: "Medijpratējs", role: "Trainer — Media & digital literacy", period: "2022 – 2023" },
+const programs = (t: T) => [
+  { org: t("Riga Business School", "Rīgas Biznesa skola"), role: t("MBA Lecturer, Digital Marketing", "MBA lektors, digitālais mārketings"), period: t("2021 – Present", "2021 – šobrīd") },
+  { org: t("Riga Business School — Executive Education", "Rīgas Biznesa skola — vadītāju izglītība"), role: t("Digital Growth Strategies for SMEs", "Digitālās izaugsmes stratēģijas MVU"), period: t("Nov 2024", "2024. nov.") },
+  { org: t("RISEBA University", "Augstskola RISEBA"), role: t("BBA Lecturer, Social Media & Meta Ads", "BBA lektors, sociālie mediji un Meta Ads"), period: "2023 – 2024" },
+  { org: t("University of Lusaka", "Lusakas Universitāte"), role: t("Guest Lecturer (Erasmus+)", "Vieslektors (Erasmus+)"), period: t("May 2024", "2024. maijs") },
+  { org: t("LIFT Program (EU-funded)", "LIFT programma (ES finansēta)"), role: t("Course leader — Meta Ads & Automation for SMEs", "Kursu vadītājs — Meta Ads un automatizācija MVU"), period: t("2024 – Present", "2024 – šobrīd") },
+  { org: t("International Trade Centre", "Starptautiskais tirdzniecības centrs"), role: t("Workshop facilitator — Digital marketing for exporters", "Darbnīcu vadītājs — digitālais mārketings eksportētājiem"), period: "2023" },
+  { org: "Latvijas Digitālo ekspertu biedrība", role: t("Trainer — Digital marketing programs", "Pasniedzējs — digitālā mārketinga programmas"), period: "2023" },
+  { org: "Vidusdaugavas NVO centrs", role: t("Digital campaign workshop leader", "Digitālo kampaņu darbnīcas vadītājs"), period: "2023" },
+  { org: "Medijpratējs", role: t("Trainer — Media & digital literacy", "Pasniedzējs — medijpratība un digitālā pratība"), period: "2022 – 2023" },
 ];
 
-const testimonials = [
-  { quote: "Rihards is an exceptional marketer with a deep understanding of the digital marketing ecosystem. He promoted data-led decisions from day one and highlighted the importance of measuring performance.", author: "Bence Etele Baráth", company: "AppsFlyer" },
-  { quote: "Rihards is THE expert on Facebook advertising. Excellent communication, deep knowledge, and an outstanding public speaker who gets the message across to any audience.", author: "Regita Zeiļa", company: "Director, Social Entrepreneurship Association" },
-  { quote: "Highly skilled, passionate and dedicated. Whenever I need advice on digital marketing — I go to him. His international experience and know-how excels his peers.", author: "Kristina Berga", company: "CEO, HuskySense" },
+const testimonials = (t: T) => [
+  {
+    quote: t(
+      "Rihards is an exceptional marketer with a deep understanding of the digital marketing ecosystem. He promoted data-led decisions from day one and highlighted the importance of measuring performance.",
+      "Rihards ir izcils mārketinga speciālists ar dziļu izpratni par digitālā mārketinga ekosistēmu. Jau no pirmās dienas viņš iestājās par datos balstītiem lēmumiem un uzsvēra rezultātu mērīšanas nozīmi.",
+    ),
+    author: "Bence Etele Baráth",
+    company: "AppsFlyer",
+  },
+  {
+    quote: t(
+      "Rihards is THE expert on Facebook advertising. Excellent communication, deep knowledge, and an outstanding public speaker who gets the message across to any audience.",
+      "Rihards ir TAS eksperts Facebook reklāmā. Lieliska komunikācija, dziļas zināšanas un izcils runātājs, kurš savu vēstījumu nodod jebkurai auditorijai.",
+    ),
+    author: "Regita Zeiļa",
+    company: t("Director, Social Entrepreneurship Association", "Direktore, Sociālās uzņēmējdarbības asociācija"),
+  },
+  {
+    quote: t(
+      "Highly skilled, passionate and dedicated. Whenever I need advice on digital marketing — I go to him. His international experience and know-how excels his peers.",
+      "Ļoti prasmīgs, aizrautīgs un apņēmīgs. Kad vien man vajag padomu digitālajā mārketingā — eju pie viņa. Ar savu starptautisko pieredzi un zināšanām viņš pārspēj kolēģus.",
+    ),
+    author: "Kristina Berga",
+    company: t("CEO, HuskySense", "Vadītāja, HuskySense"),
+  },
 ];
 
-const steps = [
-  { n: "01", title: "Discovery call", body: "30 minutes to understand your team, goals, current stack, and timeline." },
-  { n: "02", title: "Curriculum design", body: "A tailored outline with learning outcomes, formats, and success metrics." },
-  { n: "03", title: "Delivery", body: "Workshops, lectures, or ongoing coaching — in-person in Riga or remote worldwide." },
-  { n: "04", title: "Post-training support", body: "Recordings, playbooks, and follow-up sessions so the learning actually sticks." },
+const steps = (t: T) => [
+  { n: "01", title: t("Discovery call", "Iepazīšanās saruna"), body: t("30 minutes to understand your team, goals, current stack, and timeline.", "30 minūtes, lai saprastu jūsu komandu, mērķus, rīkus un termiņus.") },
+  { n: "02", title: t("Curriculum design", "Programmas izstrāde"), body: t("A tailored outline with learning outcomes, formats, and success metrics.", "Pielāgots plāns ar mācību rezultātiem, formātiem un veiksmes rādītājiem.") },
+  { n: "03", title: t("Delivery", "Norise"), body: t("Workshops, lectures, or ongoing coaching — in-person in Riga or remote worldwide.", "Darbnīcas, lekcijas vai ilgtermiņa koučings — klātienē Rīgā vai attālināti jebkur pasaulē.") },
+  { n: "04", title: t("Post-training support", "Atbalsts pēc apmācībām"), body: t("Recordings, playbooks, and follow-up sessions so the learning actually sticks.", "Ieraksti, rokasgrāmatas un papildu sesijas, lai zināšanas tiešām paliktu.") },
 ];
 
-const faqs = [
-  { q: "In-person, remote or hybrid?", a: "All three. I'm based in Riga and travel across Europe. Remote sessions run on Zoom or Google Meet with interactive workbooks." },
-  { q: "What languages do you teach in?", a: "English and Latvian. Materials are typically in English." },
-  { q: "Ideal group size?", a: "Workshops work best with 8–25 participants. University modules follow the program's cohort size." },
-  { q: "Can we record sessions?", a: "Yes — recording rights are agreed up front and included in most engagements." },
-  { q: "How is pricing structured?", a: "Day-rate for workshops, project fee for multi-session courses, and monthly retainer for ongoing coaching. Custom quote after the discovery call." },
+const faqs = (t: T) => [
+  { q: t("In-person, remote or hybrid?", "Klātienē, attālināti vai hibrīdi?"), a: t("All three. I'm based in Riga and travel across Europe. Remote sessions run on Zoom or Google Meet with interactive workbooks.", "Visi trīs. Esmu Rīgā un braucu pa visu Eiropu. Attālinātās nodarbības notiek Zoom vai Google Meet ar interaktīvām darba lapām.") },
+  { q: t("What languages do you teach in?", "Kādās valodās jūs pasniedzat?"), a: t("English and Latvian. Materials are typically in English.", "Latviešu un angļu valodā. Materiāli parasti ir angļu valodā.") },
+  { q: t("Ideal group size?", "Ideālais grupas lielums?"), a: t("Workshops work best with 8–25 participants. University modules follow the program's cohort size.", "Darbnīcām vislabāk der 8–25 dalībnieki. Augstskolu moduļos — atbilstoši programmas kursa lielumam.") },
+  { q: t("Can we record sessions?", "Vai nodarbības var ierakstīt?"), a: t("Yes — recording rights are agreed up front and included in most engagements.", "Jā — ierakstīšanas tiesības tiek saskaņotas iepriekš un ir iekļautas lielākajā daļā sadarbību.") },
+  { q: t("How is pricing structured?", "Kā veidojas cena?"), a: t("Day-rate for workshops, project fee for multi-session courses, and monthly retainer for ongoing coaching. Custom quote after the discovery call.", "Darbnīcām — dienas likme, vairāku nodarbību kursiem — projekta maksa, ilgtermiņa koučingam — ikmēneša maksa. Individuāls piedāvājums pēc iepazīšanās sarunas.") },
 ];
 
 const Section = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => {
@@ -140,19 +236,20 @@ const WorkWithMe = () => {
   const { toast } = useToast();
   const [submitting, setSubmitting] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", organization: "", type: "", message: "" });
+  const { t } = useLang();
+
+  usePageMeta(
+    t(
+      "Digital Marketing Trainer & Workshop Facilitator — Rihards Zeila",
+      "Digitālā mārketinga pasniedzējs un darbnīcu vadītājs — Rihards Zeila",
+    ),
+    t(
+      "Book Rihards Zeila for digital marketing training, Meta ads workshops, MBA/BBA modules, and team enablement. MBA lecturer at Riga Business School.",
+      "Piesakiet Rihardu Zeilu digitālā mārketinga apmācībām, Meta reklāmas darbnīcām, MBA/BBA moduļiem un komandu attīstībai. MBA lektors Rīgas Biznesa skolā.",
+    ),
+  );
 
   useEffect(() => {
-    document.title = "Digital Marketing Trainer & Workshop Facilitator — Rihards Zeila";
-    const meta = document.querySelector('meta[name="description"]');
-    const desc = "Book Rihards Zeila for digital marketing training, Meta ads workshops, MBA/BBA modules, and team enablement. MBA lecturer at Riga Business School.";
-    if (meta) meta.setAttribute("content", desc);
-    else {
-      const m = document.createElement("meta");
-      m.name = "description";
-      m.content = desc;
-      document.head.appendChild(m);
-    }
-
     // Inject Fraunces + Inter Tight for this page only
     const fontId = "wwm-fonts";
     if (!document.getElementById(fontId)) {
@@ -177,23 +274,41 @@ const WorkWithMe = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.name || !form.email || !form.type || !form.message) {
-      toast({ title: "Missing information", description: "Please fill in name, email, program type, and message.", variant: "destructive" });
+      toast({
+        title: t("Missing information", "Trūkst informācijas"),
+        description: t("Please fill in name, email, program type, and message.", "Lūdzu, aizpildiet vārdu, e-pastu, programmas veidu un ziņu."),
+        variant: "destructive",
+      });
       return;
     }
     const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRe.test(form.email)) {
-      toast({ title: "Invalid email", description: "Please enter a valid email address.", variant: "destructive" });
+      toast({
+        title: t("Invalid email", "Nederīgs e-pasts"),
+        description: t("Please enter a valid email address.", "Lūdzu, ievadiet derīgu e-pasta adresi."),
+        variant: "destructive",
+      });
       return;
     }
     setSubmitting(true);
     try {
       const { error } = await supabase.functions.invoke("send-contact-email", { body: form });
       if (error) throw error;
-      toast({ title: "Request sent", description: "Thanks — I'll get back to you within 2 business days." });
+      toast({
+        title: t("Request sent", "Pieprasījums nosūtīts"),
+        description: t("Thanks — I'll get back to you within 2 business days.", "Paldies — atbildēšu divu darba dienu laikā."),
+      });
       setForm({ name: "", email: "", organization: "", type: "", message: "" });
     } catch (err) {
       console.error(err);
-      toast({ title: "Something went wrong", description: "Please try again or email rihards.zeila@gmail.com directly.", variant: "destructive" });
+      toast({
+        title: t("Something went wrong", "Kaut kas nogāja greizi"),
+        description: t(
+          "Please try again or email rihards.zeila@gmail.com directly.",
+          "Lūdzu, mēģiniet vēlreiz vai rakstiet tieši uz rihards.zeila@gmail.com.",
+        ),
+        variant: "destructive",
+      });
     } finally {
       setSubmitting(false);
     }
@@ -208,11 +323,14 @@ const WorkWithMe = () => {
             Rihards Zeila<span className="wwm-display-italic text-[color:var(--wwm-accent)]">.</span>
           </div>
           <div className="hidden md:block text-xs uppercase tracking-[0.22em] wwm-muted">
-            Digital Marketing Training
+            {t("Digital Marketing Training", "Digitālā mārketinga apmācības")}
           </div>
-          <button onClick={scrollToForm} className="wwm-cta px-4 py-2 text-sm">
-            Book a training
-          </button>
+          <div className="flex items-center gap-3">
+            <LanguageSwitch />
+            <button onClick={scrollToForm} className="wwm-cta px-4 py-2 text-sm hidden sm:block">
+              {t("Book a training", "Pieteikt apmācības")}
+            </button>
+          </div>
         </div>
       </header>
 
@@ -220,21 +338,25 @@ const WorkWithMe = () => {
       <section className="relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 lg:px-10 pt-20 pb-24 lg:pt-32 lg:pb-36 grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           <div className="lg:col-span-7 space-y-8">
-            <div className="wwm-mono text-[color:var(--wwm-accent)]">Digital Marketing Training · Est. 2015</div>
+            <div className="wwm-mono text-[color:var(--wwm-accent)]">{t("Digital Marketing Training · Est. 2015", "Digitālā mārketinga apmācības · kopš 2015")}</div>
             <h1 className="wwm-display text-[2.75rem] md:text-6xl lg:text-[5.25rem] leading-[1.0] tracking-[-0.035em]" style={{ fontWeight: 500 }}>
-              Training that turns marketing teams into <span className="wwm-underline-acid"><span className="wwm-display-italic">operators</span></span>.
+              {t(
+                <>Training that turns marketing teams into <span className="wwm-underline-acid"><span className="wwm-display-italic">operators</span></span>.</>,
+                <>Apmācības, kas mārketinga komandas pārvērš par <span className="wwm-underline-acid"><span className="wwm-display-italic">darītājiem</span></span>.</>,
+              )}
             </h1>
             <p className="text-lg md:text-xl wwm-muted leading-relaxed max-w-2xl">
-              MBA lecturer at Riga Business School. Course leader for the EU-funded LIFT program. Workshop
-              facilitator for the International Trade Centre. Ten years in the trenches, up to $5M/year of ad
-              spend managed — packaged into training your team will actually use on Monday morning.
+              {t(
+                "MBA lecturer at Riga Business School. Course leader for the EU-funded LIFT program. Workshop facilitator for the International Trade Centre. Ten years in the trenches, up to $5M/year of ad spend managed — packaged into training your team will actually use on Monday morning.",
+                "MBA lektors Rīgas Biznesa skolā. Kursu vadītājs ES finansētajā LIFT programmā. Darbnīcu vadītājs Starptautiskajam tirdzniecības centram. Desmit gadi praksē un līdz $5M gadā pārvaldīta reklāmas budžeta — iepakots apmācībās, ko jūsu komanda tiešām izmantos jau pirmdienas rītā.",
+              )}
             </p>
             <div className="flex flex-wrap gap-3 pt-2">
               <button onClick={scrollToForm} className="wwm-cta px-6 py-3 inline-flex items-center gap-2">
-                Request a training <ArrowRight className="w-4 h-4" />
+                {t("Request a training", "Pieteikt apmācības")} <ArrowRight className="w-4 h-4" />
               </button>
               <button onClick={scrollToPrograms} className="wwm-ghost px-6 py-3">
-                See past programs
+                {t("See past programs", "Iepriekšējās programmas")}
               </button>
             </div>
           </div>
@@ -250,10 +372,10 @@ const WorkWithMe = () => {
                 />
               </div>
               <div className="absolute -bottom-4 -left-4 bg-[color:var(--wwm-ink)] text-[color:var(--wwm-accent)] px-4 py-2 wwm-mono border wwm-hairline">
-                Riga · Latvia
+                {t("Riga · Latvia", "Rīga · Latvija")}
               </div>
               <div className="absolute -top-3 -right-3 bg-[color:var(--wwm-sand)] text-[color:var(--wwm-accent)] px-3 py-1 wwm-mono text-[0.65rem] border wwm-hairline">
-                Booking 2026
+                {t("Booking 2026", "Pieraksts 2026")}
               </div>
             </div>
           </div>
@@ -262,7 +384,7 @@ const WorkWithMe = () => {
         {/* Trusted-by strip */}
         <div className="border-t wwm-hairline">
           <div className="max-w-7xl mx-auto px-6 lg:px-10 py-8 flex flex-col md:flex-row md:items-center gap-6">
-            <div className="wwm-eyebrow shrink-0 md:pr-8 md:border-r wwm-hairline">Trained teams at</div>
+            <div className="wwm-eyebrow shrink-0 md:pr-8 md:border-r wwm-hairline">{t("Trained teams at", "Apmācījis komandas")}</div>
             <div className="flex flex-wrap items-center gap-x-10 gap-y-4 flex-1">
               {trustedLogos.map((l) => (
                 <img
@@ -281,7 +403,7 @@ const WorkWithMe = () => {
       {/* Stats */}
       <Section className="border-y wwm-hairline">
         <div className="max-w-7xl mx-auto px-6 lg:px-10 py-14 grid grid-cols-2 md:grid-cols-4 gap-3">
-          {stats.map((s, i) => {
+          {stats(t).map((s, i) => {
             const themes = ["t-ivory", "t-accent", "t-electric", "t-plum"];
             return (
               <div key={s.label} className={`wwm-stat-tile ${themes[i % themes.length]}`}>
@@ -298,18 +420,23 @@ const WorkWithMe = () => {
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
           <div className="grid lg:grid-cols-12 gap-10 mb-16">
             <div className="lg:col-span-4">
-              <div className="wwm-eyebrow mb-4">Who I train</div>
+              <div className="wwm-eyebrow mb-4">{t("Who I train", "Ko es apmācu")}</div>
               <h2 className="wwm-display text-4xl md:text-5xl">
-                For teams that need <span className="wwm-display-italic">results</span>, not another slide deck.
+                {t(
+                  <>For teams that need <span className="wwm-display-italic">results</span>, not another slide deck.</>,
+                  <>Komandām, kurām vajag <span className="wwm-display-italic">rezultātus</span>, nevis vēl vienu prezentāciju.</>,
+                )}
               </h2>
             </div>
             <p className="lg:col-span-7 lg:col-start-6 text-lg wwm-muted leading-relaxed self-end">
-              I work with three distinct audiences. The through-line is the same: practical frameworks, live
-              ad accounts, and content people will use the week after training ends.
+              {t(
+                "I work with three distinct audiences. The through-line is the same: practical frameworks, live ad accounts, and content people will use the week after training ends.",
+                "Strādāju ar trīs atšķirīgām auditorijām. Kopīgais ir viens: praktiski ietvari, reāli reklāmas konti un saturs, ko cilvēki izmantos jau nedēļu pēc apmācību beigām.",
+              )}
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
-            {audiences.map((a) => (
+            {audiences(t).map((a) => (
               <div key={a.title} className="wwm-card p-8">
                 <a.icon className="w-6 h-6 text-[color:var(--wwm-accent)] mb-6" strokeWidth={1.5} />
                 <h3 className="wwm-display text-2xl mb-3">{a.title}</h3>
@@ -323,16 +450,19 @@ const WorkWithMe = () => {
       {/* Formats */}
       <Section className="wwm-dark py-24 lg:py-32">
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
-          <div className="wwm-eyebrow mb-4">Training formats</div>
+          <div className="wwm-eyebrow mb-4">{t("Training formats", "Apmācību formāti")}</div>
           <h2 className="wwm-display text-4xl md:text-5xl mb-16 max-w-3xl">
-            Four ways to work <span className="wwm-display-italic">together</span>.
+            {t(
+              <>Four ways to work <span className="wwm-display-italic">together</span>.</>,
+              <>Četri veidi, kā strādāt <span className="wwm-display-italic">kopā</span>.</>,
+            )}
           </h2>
           <div className="grid md:grid-cols-2 gap-px bg-[rgba(245,242,236,0.12)] border wwm-hairline">
-            {formats.map((f) => (
+            {formats(t).map((f) => (
               <div key={f.title} className="bg-[color:var(--wwm-ink)] p-8 lg:p-10 flex flex-col">
                 <div className="text-xs uppercase tracking-[0.22em] text-[color:var(--wwm-accent)] mb-4">{f.duration}</div>
                 <h3 className="wwm-display text-3xl mb-3">{f.title}</h3>
-                <div className="text-sm wwm-muted mb-5 italic">For {f.audience}</div>
+                <div className="text-sm wwm-muted mb-5 italic">{t("For", "Kam:")} {f.audience}</div>
                 <p className="text-[color:var(--wwm-ivory)]/85 mb-6 leading-relaxed">{f.outcome}</p>
                 <ul className="space-y-2 mt-auto pt-4 border-t wwm-hairline">
                   {f.bullets.map((b) => (
@@ -351,13 +481,16 @@ const WorkWithMe = () => {
       {/* Curriculum */}
       <Section className="py-24 lg:py-32">
         <div className="max-w-4xl mx-auto px-6 lg:px-10">
-          <div className="wwm-eyebrow mb-4">Curriculum snapshot</div>
+          <div className="wwm-eyebrow mb-4">{t("Curriculum snapshot", "Programmas ieskats")}</div>
           <h2 className="wwm-display text-4xl md:text-5xl mb-12">
-            What we can <span className="wwm-display-italic">cover</span>.
+            {t(
+              <>What we can <span className="wwm-display-italic">cover</span>.</>,
+              <>Ko varam <span className="wwm-display-italic">apgūt</span>.</>,
+            )}
           </h2>
           <Accordion type="single" collapsible defaultValue="c-0" className="border-t wwm-hairline">
-            {curriculum.map((c, i) => (
-              <AccordionItem key={c.q} value={`c-${i}`} className="border-b wwm-hairline">
+            {curriculum(t).map((c, i) => (
+              <AccordionItem key={i} value={`c-${i}`} className="border-b wwm-hairline">
                 <AccordionTrigger className="text-left wwm-display text-xl md:text-2xl hover:no-underline py-6 font-normal">
                   {c.q}
                 </AccordionTrigger>
@@ -373,12 +506,15 @@ const WorkWithMe = () => {
       {/* Programs */}
       <Section className="py-24 lg:py-32 bg-[color:var(--wwm-sand)]">
         <div id="wwm-programs" className="max-w-5xl mx-auto px-6 lg:px-10">
-          <div className="wwm-eyebrow mb-4">Selected programs & institutions</div>
+          <div className="wwm-eyebrow mb-4">{t("Selected programs & institutions", "Izvēlētas programmas un iestādes")}</div>
           <h2 className="wwm-display text-4xl md:text-5xl mb-12">
-            Where I've taught & <span className="wwm-display-italic">trained</span>.
+            {t(
+              <>Where I've taught & <span className="wwm-display-italic">trained</span>.</>,
+              <>Kur esmu pasniedzis un <span className="wwm-display-italic">apmācījis</span>.</>,
+            )}
           </h2>
           <div className="border-t wwm-hairline">
-            {programs.map((p) => (
+            {programs(t).map((p) => (
               <div key={p.org + p.role} className="wwm-program-row py-6 grid grid-cols-12 gap-4 items-baseline border-b wwm-hairline px-4 -mx-4">
                 <div className="col-span-3 md:col-span-2 wwm-mono text-[color:var(--wwm-accent)]">{p.period}</div>
                 <div className="col-span-9 md:col-span-5 wwm-display text-xl">{p.org}</div>
@@ -393,18 +529,21 @@ const WorkWithMe = () => {
       <Section className="wwm-dark py-24 lg:py-32 relative overflow-hidden">
         <div className="wwm-quote-glyph absolute -top-6 -left-4 md:left-8" aria-hidden>"</div>
         <div className="max-w-6xl mx-auto px-6 lg:px-10 relative">
-          <div className="wwm-mono text-[color:var(--wwm-acid)] mb-4">In their words</div>
+          <div className="wwm-mono text-[color:var(--wwm-acid)] mb-4">{t("In their words", "Viņu vārdiem")}</div>
           <h2 className="wwm-display text-4xl md:text-5xl mb-16 max-w-3xl">
-            From colleagues, clients, and program <span className="wwm-display-italic">leads</span>.
+            {t(
+              <>From colleagues, clients, and program <span className="wwm-display-italic">leads</span>.</>,
+              <>Kolēģi, klienti un programmu <span className="wwm-display-italic">vadītāji</span>.</>,
+            )}
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
-            {testimonials.map((t) => (
-              <blockquote key={t.author} className="flex flex-col">
+            {testimonials(t).map((q) => (
+              <blockquote key={q.author} className="flex flex-col">
                 <div className="wwm-display wwm-display-italic text-6xl text-[color:var(--wwm-acid)] leading-none mb-4">"</div>
-                <p className="wwm-display text-xl leading-snug mb-8 text-[color:var(--wwm-ivory)]">{t.quote}</p>
+                <p className="wwm-display text-xl leading-snug mb-8 text-[color:var(--wwm-ivory)]">{q.quote}</p>
                 <footer className="mt-auto pt-6 border-t wwm-hairline">
-                  <div className="text-[color:var(--wwm-ivory)] font-medium">{t.author}</div>
-                  <div className="wwm-muted text-sm mt-1">{t.company}</div>
+                  <div className="text-[color:var(--wwm-ivory)] font-medium">{q.author}</div>
+                  <div className="wwm-muted text-sm mt-1">{q.company}</div>
                 </footer>
               </blockquote>
             ))}
@@ -415,12 +554,15 @@ const WorkWithMe = () => {
       {/* Process */}
       <Section className="wwm-plum py-24 lg:py-32">
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
-          <div className="wwm-mono text-[color:var(--wwm-acid)] mb-4">How an engagement works</div>
+          <div className="wwm-mono text-[color:var(--wwm-acid)] mb-4">{t("How an engagement works", "Kā notiek sadarbība")}</div>
           <h2 className="wwm-display text-4xl md:text-5xl mb-20 max-w-2xl">
-            Simple, transparent, no <span className="wwm-display-italic">bloat</span>.
+            {t(
+              <>Simple, transparent, no <span className="wwm-display-italic">bloat</span>.</>,
+              <>Vienkārši, caurspīdīgi, nekā <span className="wwm-display-italic">lieka</span>.</>,
+            )}
           </h2>
           <div className="grid md:grid-cols-4 gap-6">
-            {steps.map((s) => (
+            {steps(t).map((s) => (
               <div key={s.n} className="wwm-broken-tile p-8 border wwm-hairline bg-[rgba(245,242,236,0.03)]">
                 <div className="wwm-display wwm-display-italic text-6xl text-[color:var(--wwm-acid)] mb-6 leading-none">{s.n}</div>
                 <div className="wwm-display text-xl mb-3 text-[color:var(--wwm-ivory)]">{s.title}</div>
@@ -434,13 +576,16 @@ const WorkWithMe = () => {
       {/* FAQ */}
       <Section className="py-24 lg:py-32 bg-[color:var(--wwm-sand)]">
         <div className="max-w-4xl mx-auto px-6 lg:px-10">
-          <div className="wwm-eyebrow mb-4">FAQ</div>
+          <div className="wwm-eyebrow mb-4">{t("FAQ", "BUJ")}</div>
           <h2 className="wwm-display text-4xl md:text-5xl mb-12">
-            Common <span className="wwm-display-italic">questions</span>.
+            {t(
+              <>Common <span className="wwm-display-italic">questions</span>.</>,
+              <>Biežāk uzdotie <span className="wwm-display-italic">jautājumi</span>.</>,
+            )}
           </h2>
           <Accordion type="single" collapsible className="border-t wwm-hairline">
-            {faqs.map((f, i) => (
-              <AccordionItem key={f.q} value={`f-${i}`} className="border-b wwm-hairline">
+            {faqs(t).map((f, i) => (
+              <AccordionItem key={i} value={`f-${i}`} className="border-b wwm-hairline">
                 <AccordionTrigger className="text-left wwm-display text-xl hover:no-underline py-6 font-normal">{f.q}</AccordionTrigger>
                 <AccordionContent className="wwm-muted leading-relaxed pb-6">{f.a}</AccordionContent>
               </AccordionItem>
@@ -453,13 +598,18 @@ const WorkWithMe = () => {
       <section id="wwm-contact" className="wwm-callout py-24 lg:py-32">
         <div className="max-w-6xl mx-auto px-6 lg:px-10 grid lg:grid-cols-12 gap-12">
           <div className="lg:col-span-5 space-y-6">
-            <div className="wwm-eyebrow">Book a training</div>
+            <div className="wwm-eyebrow">{t("Book a training", "Pieteikt apmācības")}</div>
             <h2 className="wwm-display text-4xl md:text-5xl leading-tight">
-              Tell me about your <span className="wwm-display-italic">team</span>.
+              {t(
+                <>Tell me about your <span className="wwm-display-italic">team</span>.</>,
+                <>Pastāstiet par savu <span className="wwm-display-italic">komandu</span>.</>,
+              )}
             </h2>
             <p className="text-[color:var(--wwm-ivory)]/75 leading-relaxed text-lg">
-              A short note about your organization, goals, and timeline is enough to get started.
-              I reply within two business days.
+              {t(
+                "A short note about your organization, goals, and timeline is enough to get started. I reply within two business days.",
+                "Lai sāktu, pietiek ar īsu ziņu par jūsu organizāciju, mērķiem un termiņiem. Atbildu divu darba dienu laikā.",
+              )}
             </p>
             <div className="pt-6 space-y-3 text-sm border-t wwm-hairline">
               <a href="mailto:rihards.zeila@gmail.com" className="flex items-center gap-3 text-[color:var(--wwm-ivory)]/85 hover:text-[color:var(--wwm-accent)] transition pt-6">
@@ -475,39 +625,39 @@ const WorkWithMe = () => {
 
             <div className="grid md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs uppercase tracking-[0.18em] mb-2 wwm-muted">Name</label>
-                <Input value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} placeholder="Your name" className="wwm-field h-11" required />
+                <label className="block text-xs uppercase tracking-[0.18em] mb-2 wwm-muted">{t("Name", "Vārds")}</label>
+                <Input value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} placeholder={t("Your name", "Jūsu vārds")} className="wwm-field h-11" required />
               </div>
               <div>
-                <label className="block text-xs uppercase tracking-[0.18em] mb-2 wwm-muted">Email</label>
-                <Input type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} placeholder="you@company.com" className="wwm-field h-11" required />
+                <label className="block text-xs uppercase tracking-[0.18em] mb-2 wwm-muted">{t("Email", "E-pasts")}</label>
+                <Input type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} placeholder={t("you@company.com", "jus@uznemums.lv")} className="wwm-field h-11" required />
               </div>
             </div>
             <div>
-              <label className="block text-xs uppercase tracking-[0.18em] mb-2 wwm-muted">Organization</label>
-              <Input value={form.organization} onChange={(e) => setForm({ ...form, organization: e.target.value })} placeholder="Company, university, program…" className="wwm-field h-11" />
+              <label className="block text-xs uppercase tracking-[0.18em] mb-2 wwm-muted">{t("Organization", "Organizācija")}</label>
+              <Input value={form.organization} onChange={(e) => setForm({ ...form, organization: e.target.value })} placeholder={t("Company, university, program…", "Uzņēmums, augstskola, programma…")} className="wwm-field h-11" />
             </div>
             <div>
-              <label className="block text-xs uppercase tracking-[0.18em] mb-2 wwm-muted">Program type</label>
+              <label className="block text-xs uppercase tracking-[0.18em] mb-2 wwm-muted">{t("Program type", "Programmas veids")}</label>
               <Select value={form.type} onValueChange={(v) => setForm({ ...form, type: v })}>
                 <SelectTrigger className="wwm-field h-11">
-                  <SelectValue placeholder="Select program type" />
+                  <SelectValue placeholder={t("Select program type", "Izvēlieties programmas veidu")} />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="workshop">Workshop / 1-day intensive</SelectItem>
-                  <SelectItem value="mba-module">University module (MBA / BBA)</SelectItem>
-                  <SelectItem value="corporate-training">Corporate / in-house training</SelectItem>
-                  <SelectItem value="public-program">Public / EU-funded program</SelectItem>
-                  <SelectItem value="other">Other</SelectItem>
+                  <SelectItem value="workshop">{t("Workshop / 1-day intensive", "Darbnīca / 1 dienas intensīvais kurss")}</SelectItem>
+                  <SelectItem value="mba-module">{t("University module (MBA / BBA)", "Augstskolas modulis (MBA / BBA)")}</SelectItem>
+                  <SelectItem value="corporate-training">{t("Corporate / in-house training", "Uzņēmuma iekšējās apmācības")}</SelectItem>
+                  <SelectItem value="public-program">{t("Public / EU-funded program", "Publiska / ES finansēta programma")}</SelectItem>
+                  <SelectItem value="other">{t("Other", "Cits")}</SelectItem>
                 </SelectContent>
               </Select>
             </div>
             <div>
-              <label className="block text-xs uppercase tracking-[0.18em] mb-2 wwm-muted">Message</label>
-              <Textarea value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} placeholder="Team size, goals, timeline, format preferences…" rows={5} className="wwm-field" required />
+              <label className="block text-xs uppercase tracking-[0.18em] mb-2 wwm-muted">{t("Message", "Ziņa")}</label>
+              <Textarea value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} placeholder={t("Team size, goals, timeline, format preferences…", "Komandas lielums, mērķi, termiņi, vēlamais formāts…")} rows={5} className="wwm-field" required />
             </div>
             <Button type="submit" disabled={submitting} className="wwm-cta w-full h-12 text-base uppercase tracking-wider">
-              {submitting ? "Sending…" : "Send request"}
+              {submitting ? t("Sending…", "Sūta…") : t("Send request", "Nosūtīt pieprasījumu")}
             </Button>
           </form>
         </div>
@@ -516,7 +666,10 @@ const WorkWithMe = () => {
       {/* Footer */}
       <footer className="py-10 border-t wwm-hairline">
         <div className="max-w-7xl mx-auto px-6 lg:px-10 flex flex-col md:flex-row items-center justify-between gap-3 text-sm wwm-muted">
-          <div>© {new Date().getFullYear()} Rihards Zeila — Digital marketing training & consulting.</div>
+          <div>
+            © {new Date().getFullYear()} Rihards Zeila —{" "}
+            {t("Digital marketing training & consulting.", "Digitālā mārketinga apmācības un konsultācijas.")}
+          </div>
           <a href="mailto:rihards.zeila@gmail.com" className="hover:text-[color:var(--wwm-ink)] transition">
             rihards.zeila@gmail.com
           </a>

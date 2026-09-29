@@ -1,8 +1,10 @@
 import { Linkedin, Instagram, Mail, Phone, Facebook } from "lucide-react";
 import { Link } from "react-router-dom";
 import { FaTiktok } from "react-icons/fa";
+import { useLang } from "@/i18n/lang";
 
 const Footer = () => {
+  const { t, to } = useLang();
   return (
     <footer className="py-8 lg:py-12 px-6 border-t border-border">
       <div className="max-w-7xl mx-auto">
@@ -11,38 +13,41 @@ const Footer = () => {
           <div className="animate-fade-in" style={{ animationDelay: '0.1s', animationFillMode: 'both' }}>
             <h3 className="heading-elegant text-large mb-4">Rihards Zeila</h3>
             <p className="body-clean text-body text-muted-foreground leading-relaxed">
-              I build the paid-growth system — then train your team to run it.
+              {t(
+                "I build the paid-growth system — then train your team to run it.",
+                "Es uzbūvēju maksātās reklāmas sistēmu — un iemācu jūsu komandai to vadīt.",
+              )}
             </p>
           </div>
 
           {/* Quick Links */}
           <div className="animate-fade-in" style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>
-            <h4 className="body-clean font-semibold mb-4 text-large">Quick Links</h4>
+            <h4 className="body-clean font-semibold mb-4 text-large">{t("Quick Links", "Saites")}</h4>
             <nav className="space-y-2">
-              <Link to="/#engagements" className="body-clean text-body text-muted-foreground hover:text-foreground transition-colors block">
-                What you get
+              <Link to={to("/#engagements")} className="body-clean text-body text-muted-foreground hover:text-foreground transition-colors block">
+                {t("What you get", "Ko jūs iegūstat")}
               </Link>
-              <Link to="/#case-studies" className="body-clean text-body text-muted-foreground hover:text-foreground transition-colors block">
-                Case studies
+              <Link to={to("/#case-studies")} className="body-clean text-body text-muted-foreground hover:text-foreground transition-colors block">
+                {t("Case studies", "Rezultāti")}
               </Link>
-              <Link to="/#faq" className="body-clean text-body text-muted-foreground hover:text-foreground transition-colors block">
-                FAQ
+              <Link to={to("/#faq")} className="body-clean text-body text-muted-foreground hover:text-foreground transition-colors block">
+                {t("FAQ", "BUJ")}
               </Link>
-              <Link to="/work-with-me" className="body-clean text-body text-muted-foreground hover:text-foreground transition-colors block">
-                Training &amp; workshops
+              <Link to={to("/work-with-me")} className="body-clean text-body text-muted-foreground hover:text-foreground transition-colors block">
+                {t("Training & workshops", "Apmācības un darbnīcas")}
               </Link>
-              <Link to="/about" className="body-clean text-body text-muted-foreground hover:text-foreground transition-colors block">
-                About &amp; full CV
+              <Link to={to("/about")} className="body-clean text-body text-muted-foreground hover:text-foreground transition-colors block">
+                {t("About & full CV", "Par mani un pilns CV")}
               </Link>
-              <Link to="/#contact" className="body-clean text-body text-muted-foreground hover:text-foreground transition-colors block">
-                Contact
+              <Link to={to("/#contact")} className="body-clean text-body text-muted-foreground hover:text-foreground transition-colors block">
+                {t("Contact", "Kontakti")}
               </Link>
             </nav>
           </div>
 
           {/* Contact & Social */}
           <div className="animate-fade-in" style={{ animationDelay: '0.3s', animationFillMode: 'both' }}>
-            <h4 className="body-clean font-semibold mb-4 text-large">Connect</h4>
+            <h4 className="body-clean font-semibold mb-4 text-large">{t("Connect", "Sazināties")}</h4>
             <div className="space-y-3 mb-6">
               <a href="mailto:rihards.zeila@gmail.com" className="flex items-center gap-2 text-body text-muted-foreground hover:text-foreground transition-colors">
                 <Mail className="w-5 h-5" />
@@ -97,10 +102,10 @@ const Footer = () => {
 
         <div className="pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="body-clean text-body text-muted-foreground">
-            © 2026 Rihards Zeila. All rights reserved.
+            © 2026 Rihards Zeila. {t("All rights reserved.", "Visas tiesības aizsargātas.")}
           </p>
           <p className="body-clean text-body text-muted-foreground">
-            Designed by{" "}
+            {t("Designed by", "Dizains:")}{" "}
             <a 
               href="https://marketingaskola.lv" 
               target="_blank" 

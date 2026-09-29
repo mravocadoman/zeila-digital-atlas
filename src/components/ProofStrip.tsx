@@ -4,6 +4,7 @@ import risebaLogo from "@/assets/partners/riseba-logo.webp";
 import itcLogo from "@/assets/partners/itc-logo.webp";
 import lsuaLogo from "@/assets/partners/lsua-logo.webp";
 import unilusLogo from "@/assets/partners/unilus-logo.webp";
+import { useLang } from "@/i18n/lang";
 
 const partners = [
   { name: "Riga Business School", logo: rbsLogo },
@@ -19,11 +20,13 @@ const partners = [
  * as one undifferentiated slab — the numbers now live in <ResultsBand /> at the
  * head of the case studies, where the evidence for them sits right underneath.
  */
-const ProofStrip = () => (
+const ProofStrip = () => {
+  const { t } = useLang();
+  return (
   <section className="bg-sunken section-rule py-8 lg:py-10 overflow-hidden">
     <div className="max-w-6xl mx-auto px-6">
       <span className="eyebrow block text-center lg:text-left mb-5">
-        Taught &amp; trained at
+        {t("Taught & trained at", "Mācījis un apmācījis")}
       </span>
     </div>
 
@@ -55,6 +58,7 @@ const ProofStrip = () => (
       </div>
     </div>
   </section>
-);
+  );
+};
 
 export default ProofStrip;

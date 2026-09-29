@@ -21,6 +21,10 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />
           <Route path="/work-with-me" element={<WorkWithMe />} />
+          {/* Latvian mirrors — same components, copy chosen by the /lv prefix */}
+          <Route path="/lv" element={<Index />} />
+          <Route path="/lv/about" element={<About />} />
+          <Route path="/lv/work-with-me" element={<WorkWithMe />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

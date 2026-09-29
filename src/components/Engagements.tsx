@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { useReveal } from "@/hooks/use-reveal";
+import { T, useLang } from "@/i18n/lang";
 
 import advisoryGfx from "@/assets/gfx/advisory.webp";
 import auditGfx from "@/assets/gfx/audit.webp";
@@ -12,80 +13,95 @@ import trainingGfx from "@/assets/gfx/training.webp";
  * a floor published ("audits from EUR X"), edit the `price` lines below and the
  * pricing answer in FAQ.tsx.
  */
-const engagements = [
+const getEngagements = (t: T) => [
   {
-    kind: "Advisory",
+    kind: t("Advisory", "Konsultācijas"),
     gfx: advisoryGfx,
-    title: "Strategy consulting",
-    forWho: "Founders and marketing leads with a decision to make",
-    body: "You don't need someone in the account — you need someone who has already made this mistake. Channel strategy, budget allocation, agency decisions, whether to build in-house.",
-    price: "Per session or day rate",
+    title: t("Strategy consulting", "Stratēģiskās konsultācijas"),
+    forWho: t("Founders and marketing leads with a decision to make", "Dibinātājiem un mārketinga vadītājiem, kam jāpieņem lēmums"),
+    body: t(
+      "You don't need someone in the account — you need someone who has already made this mistake. Channel strategy, budget allocation, agency decisions, whether to build in-house.",
+      "Jums nevajag kādu, kas strādā kontā — jums vajag kādu, kurš šo kļūdu jau ir pieļāvis. Kanālu stratēģija, budžeta sadale, lēmumi par aģentūrām, vai veidot iekšējo komandu.",
+    ),
+    price: t("Per session or day rate", "Par sesiju vai dienas likme"),
     deliverables: [
-      "Working sessions on the decision in front of you",
-      "A written recommendation you can take to the board",
-      "Follow-up as it plays out, not a one-shot opinion",
+      t("Working sessions on the decision in front of you", "Darba sesijas par konkrēto lēmumu, kas jāpieņem"),
+      t("A written recommendation you can take to the board", "Rakstisks ieteikums, ko varat nest valdei"),
+      t("Follow-up as it plays out, not a one-shot opinion", "Atbalsts arī tālāk, nevis vienreizējs viedoklis"),
     ],
     featured: false,
   },
   {
-    kind: "Fixed scope",
+    kind: t("Fixed scope", "Fiksēts apjoms"),
     gfx: auditGfx,
-    title: "Account audit",
-    forWho: "Brands already spending, unsure where it leaks",
-    body: "I go through the ad account, tracking setup, and funnel, then tell you what's actually costing you money — in priority order.",
-    price: "Fixed fee · 1–2 weeks",
+    title: t("Account audit", "Reklāmas konta audits"),
+    forWho: t("Brands already spending, unsure where it leaks", "Zīmoliem, kas jau tērē, bet nezina, kur nauda aizplūst"),
+    body: t(
+      "I go through the ad account, tracking setup, and funnel, then tell you what's actually costing you money — in priority order.",
+      "Es izeju cauri reklāmas kontam, izsekošanas iestatījumiem un piltuvei, un pasaku, kas jums patiesībā maksā naudu — prioritātes secībā.",
+    ),
+    price: t("Fixed fee · 1–2 weeks", "Fiksēta maksa · 1–2 nedēļas"),
     deliverables: [
-      "Written findings on account structure, creative, and measurement",
-      "A prioritised fix list, most expensive problem first",
-      "A 90-minute call to walk your team through it",
+      t("Written findings on account structure, creative, and measurement", "Rakstiski secinājumi par konta struktūru, kreatīviem un mērījumiem"),
+      t("A prioritised fix list, most expensive problem first", "Prioritizēts labojumu saraksts — dārgākā problēma pirmā"),
+      t("A 90-minute call to walk your team through it", "90 minūšu saruna, kurā to izejam kopā ar jūsu komandu"),
     ],
     featured: false,
   },
   {
-    kind: "Project",
+    kind: t("Project", "Projekts"),
     gfx: buildGfx,
-    title: "Build & handover",
-    forWho: "Teams that need the system built once, properly",
-    body: "The core engagement. I build the campaign structure, funnel, and tracking, run it until the numbers are stable, then hand it over documented so your team owns it.",
-    price: "Project fee · 6–12 weeks",
+    title: t("Build & handover", "Izstrāde un nodošana"),
+    forWho: t("Teams that need the system built once, properly", "Komandām, kurām sistēma jāuzbūvē vienreiz un kārtīgi"),
+    body: t(
+      "The core engagement. I build the campaign structure, funnel, and tracking, run it until the numbers are stable, then hand it over documented so your team owns it.",
+      "Galvenais sadarbības veids. Es uzbūvēju kampaņu struktūru, piltuvi un izsekošanu, vadu to, līdz skaitļi ir stabili, un tad nododu to dokumentētu, lai tā pieder jūsu komandai.",
+    ),
+    price: t("Project fee · 6–12 weeks", "Projekta maksa · 6–12 nedēļas"),
     deliverables: [
-      "Campaign and funnel architecture, built and live",
-      "Tracking and reporting your team can actually read",
-      "SOPs and a handover session — you keep running it",
+      t("Campaign and funnel architecture, built and live", "Kampaņu un piltuves arhitektūra — uzbūvēta un darbojas"),
+      t("Tracking and reporting your team can actually read", "Izsekošana un atskaites, ko jūsu komanda tiešām saprot"),
+      t("SOPs and a handover session — you keep running it", "Darba instrukcijas un nodošanas sesija — tālāk vadāt jūs"),
     ],
     featured: true,
   },
   {
-    kind: "Ongoing",
+    kind: t("Ongoing", "Ilgtermiņa"),
     gfx: retainerGfx,
-    title: "Fractional growth lead",
-    forWho: "In-house teams who want a sparring partner",
-    body: "Monthly. I stay close to the account without taking it over — reviews, creative direction, and someone senior to argue with before you spend.",
-    price: "Monthly retainer",
+    title: t("Fractional growth lead", "Ārpakalpojuma izaugsmes vadītājs"),
+    forWho: t("In-house teams who want a sparring partner", "Iekšējām komandām, kurām vajag sparinga partneri"),
+    body: t(
+      "Monthly. I stay close to the account without taking it over — reviews, creative direction, and someone senior to argue with before you spend.",
+      "Katru mēnesi. Esmu tuvu kontam, to nepārņemot — pārskati, kreatīvais virziens un pieredzējis cilvēks, ar ko pastrīdēties, pirms tērējat naudu.",
+    ),
+    price: t("Monthly retainer", "Ikmēneša maksa"),
     deliverables: [
-      "Weekly working sessions with your marketers",
-      "Ad account reviews and scaling decisions",
-      "On call for the decisions that cost money",
+      t("Weekly working sessions with your marketers", "Iknedēļas darba sesijas ar jūsu mārketinga speciālistiem"),
+      t("Ad account reviews and scaling decisions", "Reklāmas kontu pārskati un mērogošanas lēmumi"),
+      t("On call for the decisions that cost money", "Pieejams lēmumiem, kas maksā naudu"),
     ],
     featured: false,
   },
   {
-    kind: "Training",
+    kind: t("Training", "Apmācības"),
     gfx: trainingGfx,
-    title: "Team training & workshops",
-    forWho: "Companies, universities, and EU-funded programs",
-    body: "The same material I teach on the Riga Business School MBA, adapted to your channels and tools. One-day intensives through semester-long modules.",
-    price: "Per program",
+    title: t("Team training & workshops", "Komandu apmācības un darbnīcas"),
+    forWho: t("Companies, universities, and EU-funded programs", "Uzņēmumiem, augstskolām un ES finansētām programmām"),
+    body: t(
+      "The same material I teach on the Riga Business School MBA, adapted to your channels and tools. One-day intensives through semester-long modules.",
+      "Tas pats saturs, ko pasniedzu Rīgas Biznesa skolas MBA programmā, pielāgots jūsu kanāliem un rīkiem. No vienas dienas intensīvajiem kursiem līdz semestra garumā moduļiem.",
+    ),
+    price: t("Per program", "Par programmu"),
     deliverables: [
-      "Meta Ads intensives and multi-session courses",
-      "Custom MBA / BBA modules with assessments",
-      "Recordings and playbooks so it sticks",
+      t("Meta Ads intensives and multi-session courses", "Meta Ads intensīvie kursi un vairāku nodarbību kursi"),
+      t("Custom MBA / BBA modules with assessments", "Pielāgoti MBA / BBA moduļi ar vērtēšanu"),
+      t("Recordings and playbooks so it sticks", "Ieraksti un rokasgrāmatas, lai zināšanas paliktu"),
     ],
     featured: false,
   },
 ];
 
-type Engagement = (typeof engagements)[number];
+type Engagement = ReturnType<typeof getEngagements>[number];
 
 /**
  * Rows, not cards.
@@ -98,6 +114,7 @@ type Engagement = (typeof engagements)[number];
  */
 const EngagementRow = ({ e, index }: { e: Engagement; index: number }) => {
   const row = useReveal<HTMLElement>("card");
+  const { t } = useLang();
 
   return (
     <article
@@ -127,7 +144,7 @@ const EngagementRow = ({ e, index }: { e: Engagement; index: number }) => {
           <span className="eyebrow">{e.kind}</span>
           {e.featured && (
             <span className="body-clean text-[0.68rem] font-semibold text-[hsl(320_100%_65%)] uppercase tracking-wider">
-              Most common
+              {t("Most common", "Populārākais")}
             </span>
           )}
         </div>
@@ -144,7 +161,7 @@ const EngagementRow = ({ e, index }: { e: Engagement; index: number }) => {
 
       <div className="min-w-0">
         <span className="eyebrow block mb-2.5 text-muted-foreground">
-          What you get
+          {t("What you get", "Ko jūs saņemat")}
         </span>
         <ul className="space-y-1.5 mb-3">
           {e.deliverables.map((d) => (
@@ -168,6 +185,8 @@ const EngagementRow = ({ e, index }: { e: Engagement; index: number }) => {
 
 const Engagements = () => {
   const reveal = useReveal<HTMLElement>();
+  const { t } = useLang();
+  const engagements = getEngagements(t);
 
   return (
     <section
@@ -176,18 +195,20 @@ const Engagements = () => {
       className={`py-12 lg:py-24 px-6 lg:px-16 bg-sunken section-rule ${reveal.className}`}
     >
       <div className="max-w-6xl mx-auto">
-        <span className="eyebrow block mb-4">What you get</span>
+        <span className="eyebrow block mb-4">{t("What you get", "Ko jūs iegūstat")}</span>
         <h2 className="heading-elegant text-3xl lg:text-5xl mb-4 max-w-3xl">
-          Five ways to work together.
+          {t("Five ways to work together.", "Pieci sadarbības veidi.")}
         </h2>
         <p className="body-clean text-muted-foreground text-lg lg:text-xl max-w-2xl mb-8 lg:mb-10">
-          Every one of them ends with your team able to run the thing
-          themselves. That's the point, not an upsell I'm withholding.
+          {t(
+            "Every one of them ends with your team able to run the thing themselves. That's the point, not an upsell I'm withholding.",
+            "Katrs no tiem beidzas ar to, ka jūsu komanda visu spēj vadīt pati. Tas ir viss mērķis, nevis papildpakalpojums, ko es aizturu.",
+          )}
         </p>
 
         <div className="border-b border-border">
           {engagements.map((e, i) => (
-            <EngagementRow key={e.title} e={e} index={i} />
+            <EngagementRow key={i} e={e} index={i} />
           ))}
         </div>
 
@@ -201,7 +222,7 @@ const Engagements = () => {
             }
             className="bg-primary text-background hover:bg-primary/90 px-8 py-6 rounded-md font-bold text-sm lg:text-base uppercase tracking-wider"
           >
-            Book a consultation
+            {t("Book a consultation", "Pieteikt konsultāciju")}
           </Button>
         </div>
       </div>
