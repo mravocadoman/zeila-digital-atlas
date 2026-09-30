@@ -8,28 +8,28 @@ import { T, useLang } from "@/i18n/lang";
 const getCategories = (t: T) => [
   {
     id: "teaching",
-    title: t("Academic Teaching & Lecturing", "Akadēmiskā pasniegšana"),
+    title: t("Academic Teaching & Lecturing", "Lekcijas augstskolās"),
     icon: GraduationCap,
     items: [
       {
         title: t("MBA Lecturer", "MBA lektors"),
         organization: t("Riga Business School", "Rīgas Biznesa skola"),
         period: t("2021 – Present", "2021 – šobrīd"),
-        description: t("Created and led a 13-week MBA course in Digital Marketing with a strong emphasis on paid advertising: covered digital marketing strategy and channels, creative considerations, KPIs, and performance evaluation.", "Izveidoju un vadīju 13 nedēļu MBA kursu digitālajā mārketingā ar uzsvaru uz maksāto reklāmu: digitālā mārketinga stratēģija un kanāli, kreatīvie apsvērumi, KPI un rezultātu novērtēšana."),
+        description: t("Created and led a 13-week MBA course in Digital Marketing with a strong emphasis on paid advertising: covered digital marketing strategy and channels, creative considerations, KPIs, and performance evaluation.", "Izveidoju un vadu 13 nedēļu MBA kursu digitālajā mārketingā ar uzsvaru uz maksāto reklāmu: stratēģija un kanāli, reklāmu radošā puse, KPI un rezultātu vērtēšana."),
         link: null
       },
       {
         title: t("Guest Lecturer", "Vieslektors"),
         organization: t("University of Lusaka", "Lusakas Universitāte"),
         period: t("May 2024", "2024. maijs"),
-        description: t("International guest role via Riga Business School Erasmus+ educator programme, sharing digital marketing expertise with Zambian students.", "Starptautiska vieslektora loma ar Rīgas Biznesa skolas Erasmus+ pasniedzēju programmu, daloties digitālā mārketinga pieredzē ar Zambijas studentiem."),
+        description: t("International guest role via Riga Business School Erasmus+ educator programme, sharing digital marketing expertise with Zambian students.", "Erasmus+ vieslektors ar Rīgas Biznesa skolas starpniecību — digitālā mārketinga lekcijas Zambijas studentiem."),
         link: "https://www.facebook.com/permalink.php?story_fbid=pfbid0sbHi7MSF7Du61X8KCUM2qDwNdsBCd2dGGhQFa7fCBkpREh9Cz75VCHzvHZvPVEaUl&id=100000487541249"
       },
       {
         title: t("BBA Lecturer", "BBA lektors"),
         organization: t("RISEBA University", "Augstskola RISEBA"),
         period: "2023 – 2024",
-        description: t("Developed, recorded, and graded lectures on social media management, content strategy, landing pages, and Meta advertising for RISEBA Bachelor's students.", "Izstrādāju, ierakstīju un vērtēju lekcijas RISEBA bakalaura studentiem par sociālo mediju vadību, satura stratēģiju, galvenajām lapām un Meta reklāmu."),
+        description: t("Developed, recorded, and graded lectures on social media management, content strategy, landing pages, and Meta advertising for RISEBA Bachelor's students.", "Izveidoju, ierakstīju un vērtēju lekcijas RISEBA bakalaura studentiem: sociālo tīklu vadība, satura stratēģija, landing lapas un Meta reklāma."),
         link: null
       }
     ]
@@ -40,45 +40,45 @@ const getCategories = (t: T) => [
     icon: Mic,
     items: [
       {
-        title: t("Course Leader & Workshop Facilitator", "Kursu vadītājs un darbnīcu vadītājs"),
+        title: t("Course Leader & Workshop Facilitator", "Kursu un darbnīcu vadītājs"),
         organization: t("LIFT Program (EU-Funded)", "LIFT programma (ES finansēta)"),
         period: t("2024 – Present", "2024 – šobrīd"),
-        description: t("Lead monthly workshops on Meta ads and automation for Latvian SMEs; developed Meta Advertising Basics one-day intensives.", "Vadu ikmēneša darbnīcas Latvijas MVU par Meta reklāmām un automatizāciju; izstrādāju vienas dienas intensīvo kursu “Meta reklāmas pamati”."),
+        description: t("Lead monthly workshops on Meta ads and automation for Latvian SMEs; developed Meta Advertising Basics one-day intensives.", "Katru mēnesi vadu darbnīcas Latvijas uzņēmējiem par Meta reklāmām un automatizāciju; izveidoju vienas dienas intensīvo kursu “Meta reklāmas pamati”."),
         link: null
       },
       {
-        title: t("Executive Education Course", "Vadītāju izglītības kurss"),
+        title: t("Executive Education Course", "Kurss vadītājiem (Executive Education)"),
         organization: t("Riga Business School", "Rīgas Biznesa skola"),
         period: t("Nov 2024", "2024. nov."),
-        description: t("Digital Marketing Growth Strategies for SMEs — practical course for small and medium-sized enterprises.", "Digitālā mārketinga izaugsmes stratēģijas MVU — praktisks kurss maziem un vidējiem uzņēmumiem."),
+        description: t("Digital Marketing Growth Strategies for SMEs — practical course for small and medium-sized enterprises.", "“Digitālā mārketinga izaugsmes stratēģijas” — praktisks kurss maziem un vidējiem uzņēmumiem."),
         link: "https://www.facebook.com/RigaBusinessSchool/posts/pfbid0XEj9zWkXS18GTgPWW6rKHhkLT1BXdgzwb1TiNLtH4gEeBi1u37HtXTLZnwkBzGuSl"
       },
       {
         title: t("Digital Campaign Workshop Leader", "Digitālo kampaņu darbnīcas vadītājs"),
         organization: "Vidusdaugavas NVO centrs",
         period: t("Apr 2023", "2023. apr."),
-        description: t("Hands-on training for NGOs on creating effective digital campaigns — combining theory with practical group exercises.", "Praktiskas apmācības NVO par efektīvu digitālo kampaņu veidošanu — teorija apvienojumā ar praktiskiem grupu darbiem."),
+        description: t("Hands-on training for NGOs on creating effective digital campaigns — combining theory with practical group exercises.", "Praktiskas apmācības NVO par to, kā veidot efektīvas digitālās kampaņas — teorija un darbs grupās."),
         link: "https://www.vidusdaugavasnvo.lv/lv/jaunumi/projekti/turpinas-vidusdaugavas-nvo-centra-realizetais-projekts-vidusdaugavas-nvo-centrs-digitalo-speju-attistisana-/"
       },
       {
         title: t("Youth Lecturer", "Lektors jauniešiem"),
         organization: "Medijpratējs / Digitālā Akadēmija",
         period: "2022",
-        description: t("Delivered lectures on NGO work, digital tools, and digital marketing.", "Lasīju lekcijas par NVO darbu, digitālajiem rīkiem un digitālo mārketingu."),
+        description: t("Delivered lectures on NGO work, digital tools, and digital marketing.", "Lekcijas par NVO darbu, digitālajiem rīkiem un digitālo mārketingu."),
         link: "https://www.facebook.com/medijpratejs/posts/pfbid02aYPbLyQqHhkDPfdqtqejx5jAdAF7GVe5QZhwY3caXEpBLvzbFSkKBkKnpdPzQtZTl"
       },
       {
         title: t("Workshop Facilitator", "Darbnīcu vadītājs"),
         organization: "Latvijas Digitālo ekspertu biedrība",
         period: "2019 – 2020",
-        description: t("Developed entry-to-mid-level Facebook advertising course framework; conducted Facebook advertising workshops in Riga.", "Izstrādāju Facebook reklāmas kursa struktūru iesācējiem un vidējā līmeņa speciālistiem; vadīju Facebook reklāmas darbnīcas Rīgā."),
+        description: t("Developed entry-to-mid-level Facebook advertising course framework; conducted Facebook advertising workshops in Riga.", "Izveidoju Facebook reklāmas kursu iesācējiem un vidēji pieredzējušiem; vadīju Facebook reklāmas darbnīcas Rīgā."),
         link: "https://www.lde.lv/lektors/rihards/"
       },
       {
         title: t("Workshop Facilitator", "Darbnīcu vadītājs"),
         organization: t("International Trade Centre (ITC)", "Starptautiskais tirdzniecības centrs (ITC)"),
         period: t("Jan – Mar 2019", "2019. janv. – marts"),
-        description: t("Implemented digital marketing programs in Kenya, Palestine, Gambia, and Jordan. Trained 100+ students and delivered fintech solutions for international SMEs.", "Īstenoju digitālā mārketinga programmas Kenijā, Palestīnā, Gambijā un Jordānijā. Apmācīju vairāk nekā 100 studentu un ieviesu finanšu tehnoloģiju risinājumus starptautiskiem MVU."),
+        description: t("Implemented digital marketing programs in Kenya, Palestine, Gambia, and Jordan. Trained 100+ students and delivered fintech solutions for international SMEs.", "Vadīju digitālā mārketinga programmas Kenijā, Palestīnā, Gambijā un Jordānijā. Apmācīju vairāk nekā 100 cilvēku un ieviesu finanšu tehnoloģiju risinājumus vietējiem uzņēmumiem."),
         link: "https://www.facebook.com/permalink.php?story_fbid=pfbid0xVEbQHkGsJcLBf4PiN32sP6hyzVFxGo5xZou81eQVJmYdjRKbNq45CTivWirz67nl&id=100000487541249"
       }
     ]
@@ -92,77 +92,77 @@ const getCategories = (t: T) => [
         title: t("Interview Feature", "Intervija"),
         organization: "LAKUGA",
         period: t("Dec 2024", "2024. dec."),
-        description: t("In-depth interview about world travel experiences, career journey, and digital marketing trends.", "Padziļināta intervija par ceļojumiem pa pasauli, karjeras ceļu un digitālā mārketinga tendencēm."),
+        description: t("In-depth interview about world travel experiences, career journey, and digital marketing trends.", "Plaša intervija par ceļojumiem, karjeru un digitālā mārketinga tendencēm."),
         link: "https://www.lakuga.lv/2024/12/05/digitalais-pasauls-i-celuosona-kai-dzeivis-veids-saruna-ar-rihardu-zeilu/"
       },
       {
-        title: t("Webinar Speaker", "Vebināra runātājs"),
+        title: t("Webinar Speaker", "Vebināra lektors"),
         organization: t("Latvia IT Cluster / European Digital Innovation Centre", "Latvijas IT klasteris / Eiropas Digitālās inovācijas centrs"),
         period: t("Oct 2024", "2024. okt."),
-        description: t("AI in Digital Marketing — LIFT program webinar on leveraging artificial intelligence for business growth.", "MI digitālajā mārketingā — LIFT programmas vebinārs par mākslīgā intelekta izmantošanu uzņēmuma izaugsmei."),
+        description: t("AI in Digital Marketing — LIFT program webinar on leveraging artificial intelligence for business growth.", "“MI digitālajā mārketingā” — LIFT programmas vebinārs par to, kā izmantot mākslīgo intelektu uzņēmuma izaugsmei."),
         link: "https://www.facebook.com/events/551552717574429/"
       },
       {
         title: t("Podcast Guest", "Podkāsta viesis"),
         organization: "BSMS Podcast",
         period: t("Oct 2024", "2024. okt."),
-        description: t("Episode on digital nomadism, having traveled to 33+ countries as founder of Mārketinga Skola.", "Epizode par digitālo nomadismu — kā Mārketinga Skolas dibinātājs esmu apceļojis vairāk nekā 33 valstis."),
+        description: t("Episode on digital nomadism, having traveled to 33+ countries as founder of Mārketinga Skola.", "Saruna par digitālā nomada dzīvi: vairāk nekā 33 valstis, vienlaikus vadot Mārketinga Skolu."),
         link: "https://www.facebook.com/BSMSLatvia/posts/pfbid0jMPHXF5NihWx2QE8quEzC3FcC7iXmV6xFkxGzU8xFc4f5CZ7NUS69Y9ztUQUAdZPl"
       },
       {
         title: t("Podcast Guest", "Podkāsta viesis"),
         organization: "The Career Sensei",
         period: t("May 2024", "2024. maijs"),
-        description: t("Exploring a Career in Digital Marketing — discussing insights on social media advertising, strategies, and trends reshaping the digital marketing landscape.", "Karjera digitālajā mārketingā — saruna par sociālo mediju reklāmu, stratēģijām un tendencēm, kas maina digitālā mārketinga vidi."),
+        description: t("Exploring a Career in Digital Marketing — discussing insights on social media advertising, strategies, and trends reshaping the digital marketing landscape.", "“Karjera digitālajā mārketingā” — saruna par reklāmu sociālajos tīklos, stratēģijām un tendencēm, kas maina nozari."),
         link: "https://www.youtube.com/watch?v=JR9IiTZel9k"
       },
       {
-        title: t("Panel Speaker", "Diskusijas dalībnieks"),
+        title: t("Panel Speaker", "Paneļdiskusijas dalībnieks"),
         organization: "Printful & Draugiem Group",
         period: t("Aug 2023", "2023. aug."),
-        description: t("Panel discussion on business-academia collaboration and entrepreneurship education.", "Paneļdiskusija par uzņēmumu un akadēmiskās vides sadarbību un uzņēmējdarbības izglītību."),
+        description: t("Panel discussion on business-academia collaboration and entrepreneurship education.", "Paneļdiskusija par uzņēmumu un augstskolu sadarbību un uzņēmējdarbības izglītību."),
         link: "https://www.facebook.com/events/1380105802543065/"
       },
       {
         title: t("TV/Radio Guest", "TV/radio viesis"),
         organization: "Žik! Raidījums",
         period: t("Oct 2022", "2022. okt."),
-        description: t("Episode about influencers, bloggers, and youth entrepreneurship.", "Epizode par influenceriem, blogeriem un jauniešu uzņēmējdarbību."),
+        description: t("Episode about influencers, bloggers, and youth entrepreneurship.", "Raidījums par influenceriem, blogeriem un jauniešu uzņēmējdarbību."),
         link: "https://www.facebook.com/watch/?v=810501230240311"
       },
       {
         title: t("Interview Feature", "Intervija"),
         organization: "Delfi",
         period: t("Oct 2022", "2022. okt."),
-        description: t("Featured interview on digital nomad lifestyle and working remotely from Thailand.", "Intervija par digitālā nomada dzīvesveidu un attālinātu darbu no Taizemes."),
+        description: t("Featured interview on digital nomad lifestyle and working remotely from Thailand.", "Intervija par digitālā nomada dzīvesveidu un darbu attālināti no Taizemes."),
         link: "https://www.delfi.lv/pieredzi-erasmus-plus/erasmus-ka-piedzivojums-un-iedvesma-mainit-nodarbosanos-riharda-stasts.d?id=54802938"
       },
       {
         title: t("Webinar Host", "Vebināra vadītājs"),
         organization: "LSUA",
         period: t("Aug 2020", "2020. aug."),
-        description: t("Free webinar on effective client acquisition with Facebook paid ads, covering Ads Manager, Facebook Pixel, and targeting strategies.", "Bezmaksas vebinārs par efektīvu klientu piesaisti ar Facebook maksātajām reklāmām: Ads Manager, Facebook Pixel un mērķauditoriju stratēģijas."),
+        description: t("Free webinar on effective client acquisition with Facebook paid ads, covering Ads Manager, Facebook Pixel, and targeting strategies.", "Bezmaksas vebinārs par klientu piesaisti ar Facebook reklāmām: Ads Manager, Facebook Pixel un mērķauditorijas."),
         link: "https://www.facebook.com/events/629017494698296/"
       },
       {
-        title: t("Panel Speaker", "Diskusijas dalībnieks"),
+        title: t("Panel Speaker", "Paneļdiskusijas dalībnieks"),
         organization: t("Marketing Shake 2020 Conference", "Konference Marketing Shake 2020"),
         period: "2020",
-        description: t("Panel on Facebook advertising strategies for low-budget or zero-budget scenarios.", "Diskusija par Facebook reklāmas stratēģijām ar mazu budžetu vai bez tā."),
+        description: t("Panel on Facebook advertising strategies for low-budget or zero-budget scenarios.", "Diskusija par Facebook reklāmu ar mazu budžetu vai vispār bez tā."),
         link: null
       },
       {
         title: t("Webinar Host", "Vebināra vadītājs"),
         organization: "DarbaVieta",
         period: t("Oct 2019", "2019. okt."),
-        description: t("Introduction to Facebook platform capabilities and trends, demonstrating how to find target audiences and create effective campaigns.", "Ievads Facebook platformas iespējās un tendencēs — kā atrast mērķauditoriju un veidot efektīvas kampaņas."),
+        description: t("Introduction to Facebook platform capabilities and trends, demonstrating how to find target audiences and create effective campaigns.", "Ievads Facebook iespējās un tendencēs: kā atrast savu mērķauditoriju un veidot efektīvas kampaņas."),
         link: null
       },
       {
         title: t("Podcast Guest", "Podkāsta viesis"),
         organization: "#5BREINUMI (YouTube/Podcast)",
         period: "2019",
-        description: t("Discussed digital marketing, global travel experiences, and professional insights.", "Saruna par digitālo mārketingu, ceļojumiem pa pasauli un profesionālo pieredzi."),
+        description: t("Discussed digital marketing, global travel experiences, and professional insights.", "Saruna par digitālo mārketingu, ceļojumiem un profesionālo pieredzi."),
         link: "https://www.youtube.com/watch?v=B6BE6QBBGYo&t=931s"
       }
     ]
@@ -176,21 +176,21 @@ const getCategories = (t: T) => [
         title: t("Mentor", "Mentors"),
         organization: "Future Heroes",
         period: "2023 – 2024",
-        description: t("Mentored a team of 5 teenage girls on their entrepreneurial journey over a period of 9 months.", "9 mēnešus mentorēju piecu pusaudžu meiteņu komandu viņu uzņēmējdarbības ceļā."),
+        description: t("Mentored a team of 5 teenage girls on their entrepreneurial journey over a period of 9 months.", "9 mēnešus mentorēju piecu pusaudžu meiteņu komandu, kas veidoja savu uzņēmumu."),
         link: "https://www.facebook.com/FutureHeroesLatvia/posts/pfbid0gTCfSNRYscVtBPpjWNttRCfg33L3fWg5GZvXzsk7pxCE2DKj21fHXT1yvsw8gs1ml"
       },
       {
         title: t("Volunteer", "Brīvprātīgais"),
         organization: "Universidad Nacional de Colombia",
         period: t("Mar – Jun 2020", "2020. marts – jūn."),
-        description: t("Supported educational initiatives and community outreach.", "Atbalstīju izglītības iniciatīvas un darbu ar kopienu."),
+        description: t("Supported educational initiatives and community outreach.", "Palīdzēju izglītības projektos un darbā ar vietējo kopienu."),
         link: null
       },
       {
         title: t("TEDx Volunteer", "TEDx brīvprātīgais"),
         organization: "TEDx Chiang Mai",
         period: t("Feb 2016", "2016. febr."),
-        description: t("Contributed to event organization and attendee experience.", "Palīdzēju pasākuma organizēšanā un apmeklētāju pieredzes nodrošināšanā."),
+        description: t("Contributed to event organization and attendee experience.", "Palīdzēju organizēt pasākumu un rūpējos par apmeklētājiem."),
         link: null
       }
     ]
@@ -365,7 +365,7 @@ const SpeakingTeaching = () => {
           <p className="text-xl lg:text-2xl text-muted-foreground max-w-2xl mx-auto">
             {t(
               "Sharing digital marketing expertise through lectures, workshops, and mentorship across universities, programs, and media platforms.",
-              "Dalos ar digitālā mārketinga pieredzi lekcijās, darbnīcās un mentorēšanā augstskolās, programmās un medijos.",
+              "Lekcijas, darbnīcas, mentorēšana un intervijas — augstskolās, mācību programmās un medijos.",
             )}
           </p>
         </div>

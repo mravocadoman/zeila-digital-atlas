@@ -10,12 +10,12 @@ import { T, useLang } from "@/i18n/lang";
 const highlights = (t: T) => [
   {
     org: t("Riga Business School", "Rīgas Biznesa skola"),
-    role: t("MBA Lecturer, Digital Marketing", "MBA lektors, digitālais mārketings"),
+    role: t("MBA Lecturer, Digital Marketing", "MBA lektors digitālajā mārketingā"),
     period: t("2021 — present", "2021 — šobrīd"),
   },
   {
     org: t("LIFT Program (EU-funded)", "LIFT programma (ES finansēta)"),
-    role: t("Course leader — Meta Ads & automation for SMEs", "Kursu vadītājs — Meta Ads un automatizācija MVU"),
+    role: t("Course leader — Meta Ads & automation for SMEs", "Kursu vadītājs — Meta reklāma un automatizācija uzņēmējiem"),
     period: t("2024 — present", "2024 — šobrīd"),
   },
   {
@@ -25,7 +25,7 @@ const highlights = (t: T) => [
   },
   {
     org: t("RISEBA University", "Augstskola RISEBA"),
-    role: t("BBA Lecturer, Social Media & Meta Ads", "BBA lektors, sociālie mediji un Meta Ads"),
+    role: t("BBA Lecturer, Social Media & Meta Ads", "BBA lektors — sociālie mediji un Meta reklāma"),
     period: "2023 — 2024",
   },
   {
@@ -46,20 +46,20 @@ const TeachingEdge = () => {
   >
     <div className="max-w-6xl mx-auto grid lg:grid-cols-[1fr_1.15fr] gap-10 lg:gap-16 items-start">
       <div>
-        <span className="eyebrow block mb-4">{t("Why me", "Kāpēc es")}</span>
+        <span className="eyebrow block mb-4">{t("Why me", "Kāpēc tieši es")}</span>
         <h2 className="heading-elegant text-3xl lg:text-5xl mb-6">
-          {t("I teach this at MBA level. That's the difference.", "Es to pasniedzu MBA līmenī. Tajā ir atšķirība.")}
+          {t("I teach this at MBA level. That's the difference.", "Es to mācu MBA studentiem. Tur ir atšķirība.")}
         </h2>
         <p className="body-clean text-muted-foreground text-lg lg:text-xl leading-relaxed mb-4">
           {t(
             "Most consultants can run your ads. Far fewer can explain the reasoning clearly enough that your team can take over — which is the only version of this that leaves you better off in a year.",
-            "Lielākā daļa konsultantu prot vadīt jūsu reklāmas. Daudz mazāk ir to, kas spēj izskaidrot loģiku tik skaidri, lai jūsu komanda varētu darbu pārņemt — un tikai tā pēc gada jūs būsiet labākā situācijā.",
+            "Reklāmas jums var sataisīt daudzi. Daudz retāk kāds spēj visu izskaidrot tik skaidri, lai jūsu komanda varētu darbu pārņemt. Un tikai tad pēc gada jūs būsiet labākā situācijā nekā tagad.",
           )}
         </p>
         <p className="body-clean text-muted-foreground text-lg lg:text-xl leading-relaxed">
           {t(
             "I've been building the curriculum for that handover since 2021, in front of MBA students who ask hard questions and EU program participants who have to use it on Monday.",
-            "Kopš 2021. gada veidoju mācību programmu tieši šādai nodošanai — MBA studentu priekšā, kas uzdod grūtus jautājumus, un ES programmu dalībnieku priekšā, kuriem to jāizmanto jau pirmdien.",
+            "Kopš 2021. gada to mācu MBA studentiem, kas uzdod neērtus jautājumus, un ES programmu dalībniekiem, kuriem viss jāpielieto jau nākamajā pirmdienā.",
           )}
         </p>
       </div>
@@ -88,7 +88,7 @@ const TeachingEdge = () => {
           to={to("/about")}
           className="body-clean inline-block mt-6 text-primary hover:text-foreground transition-colors font-semibold"
         >
-          {t("Full teaching history, career, and credentials →", "Pilna pasniegšanas pieredze, karjera un kvalifikācija →")}
+          {t("Full teaching history, career, and credentials →", "Visa pasniegšanas pieredze, karjera un izglītība →")}
         </Link>
       </div>
     </div>

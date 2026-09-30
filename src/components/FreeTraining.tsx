@@ -19,7 +19,7 @@ const FreeTraining = () => {
           <p className="body-clean text-lg lg:text-2xl text-muted-foreground mb-8 lg:mb-12 text-center max-w-3xl mx-auto">
             {t(
               "Learn Meta advertising strategies through my comprehensive YouTube playlist. Over 10 lessons covering everything from fundamentals to advanced optimization techniques.",
-              "Apgūstiet Meta reklāmas stratēģijas manā YouTube atskaņošanas sarakstā. Vairāk nekā 10 nodarbības — no pamatiem līdz padziļinātām optimizācijas metodēm.",
+              "Mans bezmaksas YouTube kurss par Meta reklāmām — vairāk nekā 10 nodarbības no pašiem pamatiem līdz sarežģītākai optimizācijai.",
             )}
           </p>
 
@@ -37,12 +37,12 @@ const FreeTraining = () => {
               </div>
               <div className="p-2 lg:p-8">
                 <h3 className="heading-elegant text-xl lg:text-heading mb-3">
-                  {t("Mastering Meta Ads", "Meta Ads meistarklase")}
+                  {t("Mastering Meta Ads", "Meta reklāmas no A līdz Z")}
                 </h3>
                 <p className="body-clean text-lg lg:text-xl text-muted-foreground mb-4">
                   {t(
                     "A complete training series designed to help businesses and marketers master Meta advertising. From campaign setup to scaling strategies, this playlist covers the essential skills needed to generate results with Facebook and Instagram ads.",
-                    "Pilna apmācību sērija, kas palīdz uzņēmumiem un mārketinga speciālistiem apgūt Meta reklāmu. No kampaņas iestatīšanas līdz mērogošanas stratēģijām — šajā sarakstā ir galvenās prasmes, lai gūtu rezultātus ar Facebook un Instagram reklāmām.",
+                    "Pilns video kurss uzņēmējiem un mārketinga speciālistiem: no pirmās kampaņas izveides līdz budžeta palielināšanai. Viss, kas vajadzīgs, lai Facebook un Instagram reklāmas nestu rezultātu.",
                   )}
                 </p>
                 <a
@@ -51,7 +51,7 @@ const FreeTraining = () => {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-primary hover:text-white transition-colors body-clean font-bold text-sm uppercase tracking-wider"
                 >
-                  {t("View Full Playlist on YouTube", "Skatīt visu sarakstu YouTube")}
+                  {t("View Full Playlist on YouTube", "Skatīties visu kursu YouTube")}
                   <svg 
                     className="w-4 h-4" 
                     fill="none" 

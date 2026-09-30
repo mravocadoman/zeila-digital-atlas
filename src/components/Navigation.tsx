@@ -13,11 +13,11 @@ const Navigation = () => {
   const onHome = basePath(location.pathname) === "/";
 
   const navItems = [
-    { label: t("Who it's for", "Kam tas domāts"), id: "who-for" },
-    { label: t("What you get", "Ko jūs iegūstat"), id: "engagements" },
+    { label: t("Who it's for", "Kam es palīdzu"), id: "who-for" },
+    { label: t("What you get", "Pakalpojumi"), id: "engagements" },
     { label: t("Case studies", "Rezultāti"), id: "case-studies" },
     { label: t("Process", "Process"), id: "process" },
-    { label: t("FAQ", "BUJ"), id: "faq" },
+    { label: t("FAQ", "Jautājumi"), id: "faq" },
   ];
 
   useEffect(() => {
@@ -75,7 +75,7 @@ const Navigation = () => {
               onClick={() => go("contact")}
               className="body-clean bg-primary text-background px-4 py-2 rounded-md text-xs font-bold uppercase tracking-wider hover:bg-primary/90 transition-colors"
             >
-              {t("Book a consultation", "Pieteikt konsultāciju")}
+              {t("Book a consultation", "Pieteikties konsultācijai")}
             </button>
             <LanguageSwitch />
           </div>
@@ -122,7 +122,7 @@ const Navigation = () => {
               onClick={() => go("contact")}
               className="body-clean bg-primary text-background px-4 py-2.5 rounded-md font-bold uppercase tracking-wider text-sm mt-2"
             >
-              {t("Book a consultation", "Pieteikt konsultāciju")}
+              {t("Book a consultation", "Pieteikties konsultācijai")}
             </button>
           </div>
         )}

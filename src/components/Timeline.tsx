@@ -10,7 +10,7 @@ const Timeline = () => {
     period: t("Nov 2024 - Present", "2024. nov. — šobrīd"),
     description: t(
       "Lead monthly workshops for Latvian SMEs on Meta ads and marketing automation. Built a unified lead generation system used across the full LIFT digital marketing cohort.",
-      "Vadu ikmēneša darbnīcas Latvijas MVU par Meta reklāmām un mārketinga automatizāciju. Izveidoju vienotu potenciālo klientu piesaistes sistēmu, ko izmanto visa LIFT digitālā mārketinga plūsma.",
+      "Katru mēnesi vadu darbnīcas Latvijas uzņēmējiem par Meta reklāmām un mārketinga automatizāciju. Izveidoju vienotu dalībnieku piesaistes sistēmu, ko izmanto visā LIFT digitālā mārketinga programmā.",
     )
   }, {
     year: "2024",
@@ -19,7 +19,7 @@ const Timeline = () => {
     period: t("Sep 2022 - Jun 2024", "2022. sept. — 2024. jūn."),
     description: t(
       "Managed $50K–$300K monthly budgets across Meta, TikTok, Reddit, and Pinterest. Identified growth blockers and optimized performance for top-tier clients.",
-      "Pārvaldīju $50K–$300K mēneša budžetus Meta, TikTok, Reddit un Pinterest platformās. Identificēju izaugsmes šķēršļus un optimizēju rezultātus lielākajiem klientiem.",
+      "Vadīju $50K–$300K mēneša budžetus Meta, TikTok, Reddit un Pinterest. Atradu, kas bremzē izaugsmi, un uzlaboju rezultātus lielākajiem klientiem.",
     )
   }, {
     year: "2023",
@@ -28,7 +28,7 @@ const Timeline = () => {
     period: t("Jan 2023 - Feb 2024", "2023. janv. — 2024. febr."),
     description: t(
       "Developed and recorded lectures on social media management, content strategy, and Meta advertising for undergraduate students.",
-      "Izstrādāju un ierakstīju lekcijas bakalaura studentiem par sociālo mediju vadību, satura stratēģiju un Meta reklāmu.",
+      "Izveidoju un ierakstīju lekcijas bakalaura studentiem par sociālo tīklu vadību, satura stratēģiju un Meta reklāmām.",
     )
   }, {
     year: "2021",
@@ -37,7 +37,7 @@ const Timeline = () => {
     period: t("Sep 2021 - Present", "2021. sept. — šobrīd"),
     description: t(
       "Created a hands-on digital marketing syllabus covering strategy, analytics, and performance KPIs. Mentored MBA students through live client projects.",
-      "Izveidoju praktisku digitālā mārketinga programmu par stratēģiju, analītiku un snieguma KPI. Mentorēju MBA studentus reālos klientu projektos.",
+      "Izveidoju praktisku digitālā mārketinga kursu par stratēģiju, analītiku un KPI. Vadu MBA studentus reālos klientu projektos.",
     )
   }, {
     year: "2020",
@@ -46,7 +46,7 @@ const Timeline = () => {
     period: t("Jan 2020 - Present", "2020. janv. — šobrīd"),
     description: t(
       "Founded and scaled a marketing education and agency platform helping Latvian SMEs build predictable lead generation systems through ads, automation, and strategy.",
-      "Dibināju un attīstīju mārketinga izglītības un aģentūras platformu, kas palīdz Latvijas MVU veidot paredzamas klientu piesaistes sistēmas ar reklāmām, automatizāciju un stratēģiju.",
+      "Izveidoju mārketinga skolu un aģentūru. Palīdzam Latvijas uzņēmumiem nodrošināt stabilu klientu plūsmu ar reklāmām, automatizāciju un skaidru stratēģiju.",
     )
   }, {
     year: "2019",
@@ -55,7 +55,7 @@ const Timeline = () => {
     period: t("Jan - Mar 2019", "2019. janv. — marts"),
     description: t(
       "Implemented digital marketing programs in Kenya, Palestine, Gambia, and Jordan. Trained 100+ students and delivered fintech solutions for international SMEs.",
-      "Īstenoju digitālā mārketinga programmas Kenijā, Palestīnā, Gambijā un Jordānijā. Apmācīju vairāk nekā 100 studentu un ieviesu finanšu tehnoloģiju risinājumus starptautiskiem MVU.",
+      "Vadīju digitālā mārketinga programmas Kenijā, Palestīnā, Gambijā un Jordānijā. Apmācīju vairāk nekā 100 cilvēku un ieviesu finanšu tehnoloģiju risinājumus vietējiem uzņēmumiem.",
     )
   }, {
     year: "2018",
@@ -64,7 +64,7 @@ const Timeline = () => {
     period: t("Feb 2018 - Oct 2020", "2018. febr. — 2020. okt."),
     description: t(
       "Streamlined client acquisition, built paid social strategies, and managed high-performing campaigns across Facebook and Instagram.",
-      "Pilnveidoju klientu piesaisti, veidoju maksātās sociālo mediju reklāmas stratēģijas un vadīju augstas efektivitātes kampaņas Facebook un Instagram.",
+      "Sakārtoju klientu piesaisti, veidoju reklāmas stratēģijas sociālajos tīklos un vadīju Facebook un Instagram kampaņas ar ļoti labiem rezultātiem.",
     )
   }, {
     year: "2015",
@@ -73,7 +73,7 @@ const Timeline = () => {
     period: t("Nov 2015 - Jun 2017", "2015. nov. — 2017. jūn."),
     description: t(
       "Created a Shopify dropshipping store targeting the U.S. market. Designed and tested Facebook ad campaigns, optimized product pages, and successfully generated international sales.",
-      "Izveidoju Shopify dropshipping veikalu ASV tirgum. Veidoju un testēju Facebook reklāmas kampaņas, optimizēju produktu lapas un veiksmīgi guvu starptautiskus pārdošanas apjomus.",
+      "Izveidoju Shopify dropshipping veikalu ASV tirgum. Pats veidoju un testēju Facebook reklāmas, uzlaboju produktu lapas un veiksmīgi pārdevu preces ārvalstu pircējiem.",
     )
   }];
   return <section id="timeline" className="py-12 lg:py-32 px-6 lg:px-16 bg-sunken">
@@ -82,7 +82,7 @@ const Timeline = () => {
         <p className="body-clean text-muted-foreground mb-8 lg:mb-12 max-w-3xl text-center lg:text-left text-lg lg:text-2xl">
           {t(
             "A decade of growth spanning marketing, education, and entrepreneurship across multiple continents.",
-            "Desmit izaugsmes gadi mārketingā, izglītībā un uzņēmējdarbībā vairākos kontinentos.",
+            "Desmit gadi mārketingā, izglītībā un uzņēmējdarbībā — vairākos kontinentos.",
           )}
         </p>
 

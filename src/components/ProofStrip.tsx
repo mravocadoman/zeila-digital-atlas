@@ -26,7 +26,7 @@ const ProofStrip = () => {
   <section className="bg-sunken section-rule py-8 lg:py-10 overflow-hidden">
     <div className="max-w-6xl mx-auto px-6">
       <span className="eyebrow block text-center lg:text-left mb-5">
-        {t("Taught & trained at", "Mācījis un apmācījis")}
+        {t("Taught & trained at", "Esmu pasniedzis")}
       </span>
     </div>
 

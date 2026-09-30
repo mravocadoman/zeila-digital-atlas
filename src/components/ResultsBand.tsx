@@ -10,10 +10,10 @@ import { T, useLang } from "@/i18n/lang";
  * reason to claim them. Stacked above the logos they were just decoration.
  */
 const stats = (t: T) => [
-  { value: "10+", label: t("Years in paid media", "Gadi maksātajā reklāmā") },
-  { value: "$5M+", label: t("Annual ad spend managed", "Pārvaldītais reklāmas budžets gadā") },
-  { value: "36.34", label: t("Best recorded ROAS", "Labākais sasniegtais ROAS") },
-  { value: "20+", label: t("Programs taught", "Vadītas programmas") },
+  { value: "10+", label: t("Years in paid media", "Gadi reklāmā") },
+  { value: "$5M+", label: t("Annual ad spend managed", "Pārvaldīts budžets gadā") },
+  { value: "36.34", label: t("Best recorded ROAS", "Labākais ROAS") },
+  { value: "20+", label: t("Programs taught", "Vadītas mācību programmas") },
 ];
 
 const Stat = ({ value, label }: { value: string; label: string }) => {

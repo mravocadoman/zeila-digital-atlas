@@ -16,7 +16,7 @@ const Hero = () => {
               className="eyebrow block mb-5 rise"
               style={{ animationDelay: "0.05s" }}
             >
-              {t("Paid growth consulting · Riga", "Maksātās reklāmas konsultācijas · Rīga")}
+              {t("Paid growth consulting · Riga", "Reklāma un izaugsme · Rīga")}
             </span>
 
             <h1
@@ -25,7 +25,7 @@ const Hero = () => {
             >
               {t(
                 "I build the paid-growth system — then train your team to run it.",
-                "Es uzbūvēju maksātās reklāmas sistēmu — un iemācu jūsu komandai to vadīt.",
+                "Sakārtoju jūsu reklāmas sistēmu un iemācu komandai to vadīt pašai.",
               )}
             </h1>
 
@@ -35,7 +35,7 @@ const Hero = () => {
             >
               {t(
                 "You don't need more clicks or views. You need a system that turns traffic into revenue, and a team that can keep it running after I'm gone.",
-                "Jums nevajag vairāk klikšķu vai skatījumu. Jums vajag sistēmu, kas pārvērš datplūsmu ieņēmumos, un komandu, kas to spēj uzturēt arī tad, kad manis vairs nav blakus.",
+                "Klikšķi un skatījumi paši par sevi neko nedod. Vajag sistēmu, kas apmeklētājus pārvērš pircējos, un komandu, kas to spēj uzturēt arī bez manis.",
               )}
             </p>
             <p
@@ -44,7 +44,7 @@ const Hero = () => {
             >
               {t(
                 "Ten years and $5M+ a year in ad spend, on the agency side and in the classroom. I work with e-commerce brands, SMEs, and in-house teams who are past experimenting and want the thing to be predictable.",
-                "Desmit gadi un vairāk nekā $5M reklāmas budžeta gadā — aģentūrā un auditorijā. Strādāju ar e-komercijas zīmoliem, MVU un iekšējām mārketinga komandām, kas eksperimentu posmu ir pārauguši un grib paredzamus rezultātus.",
+                "Desmit gadi reklāmā un vairāk nekā $5M pārvaldīta budžeta gadā — gan aģentūrā, gan lekciju zālē. Strādāju ar e-veikaliem, maziem un vidējiem uzņēmumiem un mārketinga komandām, kas eksperimentēt jau ir beigušas un grib paredzamu rezultātu.",
               )}
             </p>
 
@@ -57,7 +57,7 @@ const Hero = () => {
                 onClick={() => scrollTo("contact")}
                 className="bg-primary text-background hover:bg-primary/90 transition-all px-8 py-6 rounded-md font-bold text-sm lg:text-base uppercase tracking-wider"
               >
-                {t("Book a consultation", "Pieteikt konsultāciju")}
+                {t("Book a consultation", "Pieteikties konsultācijai")}
               </Button>
               <Button
                 size="lg"
@@ -65,7 +65,7 @@ const Hero = () => {
                 onClick={() => scrollTo("engagements")}
                 className="bg-background border border-border text-foreground hover:border-primary hover:bg-background transition-all px-8 py-6 rounded-md font-bold text-sm lg:text-base uppercase tracking-wider"
               >
-                {t("See how we'd work", "Kā mēs strādātu")}
+                {t("See how we'd work", "Kā varam sadarboties")}
               </Button>
             </div>
           </div>
@@ -81,7 +81,7 @@ const Hero = () => {
                 src={headshotImage}
                 alt={t(
                   "Rihards Zeila, paid growth consultant and MBA lecturer based in Riga, Latvia",
-                  "Rihards Zeila, maksātās reklāmas konsultants un MBA lektors Rīgā",
+                  "Rihards Zeila, reklāmas konsultants un MBA lektors Rīgā",
                 )}
                 loading="eager"
                 width="900"

@@ -12,7 +12,7 @@ const testimonials = (t: T) => [
   {
     quote: t(
       "An exceptional marketer with a deep understanding of the digital marketing ecosystem. From day one he promoted data-led decisions and the importance of measuring campaign performance.",
-      "Izcils mārketinga speciālists ar dziļu izpratni par digitālā mārketinga ekosistēmu. Jau no pirmās dienas viņš iestājās par datos balstītiem lēmumiem un kampaņu rezultātu mērīšanas nozīmi.",
+      "Izcils mārketinga speciālists, kurš digitālo mārketingu pārzina no A līdz Z. Jau no pirmās dienas viņš uzstāja, ka lēmumi jāpieņem, balstoties datos, un ka kampaņu rezultāti ir jāmēra.",
     ),
     author: "Bence Etele Baráth",
     company: "AppsFlyer",
@@ -20,7 +20,7 @@ const testimonials = (t: T) => [
   {
     quote: t(
       "Rihards is THE expert on Facebook advertising — the one I go to for any question related to it. An excellent public speaker who gets the message across to any audience.",
-      "Rihards ir TAS eksperts Facebook reklāmā — tas, pie kura vēršos ar jebkuru jautājumu par to. Lielisks runātājs, kurš savu vēstījumu nodod jebkurai auditorijai.",
+      "Rihards ir mans galvenais Facebook reklāmas eksperts — pie viņa eju ar jebkuru jautājumu. Lielisks runātājs, kurš spēj uzrunāt jebkuru auditoriju.",
     ),
     author: "Regita Zeiļa",
     company: t("Director, Social Entrepreneurship Association", "Direktore, Sociālās uzņēmējdarbības asociācija"),
@@ -28,7 +28,7 @@ const testimonials = (t: T) => [
   {
     quote: t(
       "Highly skilled, passionate and dedicated. Whenever I need advice on digital marketing — I go to him. His international experience and valuable know-how excels his peers.",
-      "Ļoti prasmīgs, aizrautīgs un apņēmīgs. Kad vien man vajag padomu digitālajā mārketingā — eju pie viņa. Ar savu starptautisko pieredzi un vērtīgajām zināšanām viņš pārspēj kolēģus.",
+      "Ļoti zinošs, aizrautīgs un uzticams. Kad man vajag padomu digitālajā mārketingā, eju pie viņa. Ar savu starptautisko pieredzi viņš ir soli priekšā citiem.",
     ),
     author: "Kristina Berga",
     company: t("CEO, HuskySense", "Vadītāja, HuskySense"),
@@ -47,7 +47,7 @@ const Testimonials = () => {
     <div className="max-w-6xl mx-auto">
       <span className="eyebrow block mb-4">{t("In their words", "Viņu vārdiem")}</span>
       <h2 className="heading-elegant text-3xl lg:text-5xl mb-8 lg:mb-12">
-        {t("From colleagues and clients.", "Kolēģi un klienti par mani.")}
+        {t("From colleagues and clients.", "Ko par mani saka kolēģi un klienti.")}
       </h2>
 
       <div className="stagger grid md:grid-cols-3 gap-4 lg:gap-6">

@@ -15,29 +15,29 @@ const Footer = () => {
             <p className="body-clean text-body text-muted-foreground leading-relaxed">
               {t(
                 "I build the paid-growth system — then train your team to run it.",
-                "Es uzbūvēju maksātās reklāmas sistēmu — un iemācu jūsu komandai to vadīt.",
+                "Sakārtoju jūsu reklāmas sistēmu un iemācu komandai to vadīt pašai.",
               )}
             </p>
           </div>
 
           {/* Quick Links */}
           <div className="animate-fade-in" style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>
-            <h4 className="body-clean font-semibold mb-4 text-large">{t("Quick Links", "Saites")}</h4>
+            <h4 className="body-clean font-semibold mb-4 text-large">{t("Quick Links", "Navigācija")}</h4>
             <nav className="space-y-2">
               <Link to={to("/#engagements")} className="body-clean text-body text-muted-foreground hover:text-foreground transition-colors block">
-                {t("What you get", "Ko jūs iegūstat")}
+                {t("What you get", "Pakalpojumi")}
               </Link>
               <Link to={to("/#case-studies")} className="body-clean text-body text-muted-foreground hover:text-foreground transition-colors block">
                 {t("Case studies", "Rezultāti")}
               </Link>
               <Link to={to("/#faq")} className="body-clean text-body text-muted-foreground hover:text-foreground transition-colors block">
-                {t("FAQ", "BUJ")}
+                {t("FAQ", "Jautājumi")}
               </Link>
               <Link to={to("/work-with-me")} className="body-clean text-body text-muted-foreground hover:text-foreground transition-colors block">
                 {t("Training & workshops", "Apmācības un darbnīcas")}
               </Link>
               <Link to={to("/about")} className="body-clean text-body text-muted-foreground hover:text-foreground transition-colors block">
-                {t("About & full CV", "Par mani un pilns CV")}
+                {t("About & full CV", "Par mani un CV")}
               </Link>
               <Link to={to("/#contact")} className="body-clean text-body text-muted-foreground hover:text-foreground transition-colors block">
                 {t("Contact", "Kontakti")}
@@ -105,7 +105,7 @@ const Footer = () => {
             © 2026 Rihards Zeila. {t("All rights reserved.", "Visas tiesības aizsargātas.")}
           </p>
           <p className="body-clean text-body text-muted-foreground">
-            {t("Designed by", "Dizains:")}{" "}
+            {t("Designed by", "Izstrādāja")}{" "}
             <a 
               href="https://marketingaskola.lv" 
               target="_blank" 

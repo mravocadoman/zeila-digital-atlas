@@ -35,7 +35,7 @@ const ContactForm = () => {
     if (botField || tooFast) {
       toast({
         title: t("Message Sent!", "Ziņa nosūtīta!"),
-        description: t("Thank you for reaching out. I'll get back to you soon.", "Paldies, ka sazinājāties. Drīzumā atbildēšu.")
+        description: t("Thank you for reaching out. I'll get back to you soon.", "Paldies! Atbildēšu tuvāko divu darba dienu laikā.")
       });
       setFormData({ name: "", email: "", type: "", message: "" });
       setBotField("");
@@ -75,7 +75,7 @@ const ContactForm = () => {
 
       toast({
         title: t("Message Sent!", "Ziņa nosūtīta!"),
-        description: t("Thank you for reaching out. I'll get back to you soon.", "Paldies, ka sazinājāties. Drīzumā atbildēšu.")
+        description: t("Thank you for reaching out. I'll get back to you soon.", "Paldies! Atbildēšu tuvāko divu darba dienu laikā.")
       });
 
       setFormData({ name: "", email: "", type: "", message: "" });
@@ -85,7 +85,7 @@ const ContactForm = () => {
         title: t("Error", "Kļūda"),
         description: t(
           "Failed to send message. Please try again or email directly.",
-          "Neizdevās nosūtīt ziņu. Lūdzu, mēģiniet vēlreiz vai rakstiet tieši uz e-pastu.",
+          "Ziņu neizdevās nosūtīt. Mēģiniet vēlreiz vai rakstiet man uz e-pastu.",
         ),
         variant: "destructive"
       });
@@ -100,11 +100,11 @@ const ContactForm = () => {
 
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="text-center mb-8 lg:mb-12 animate-fade-in">
-          <h2 className="heading-elegant text-3xl lg:text-display mb-4 lg:mb-6">{t("Book a consultation", "Pieteikt konsultāciju")}</h2>
+          <h2 className="heading-elegant text-3xl lg:text-display mb-4 lg:mb-6">{t("Book a consultation", "Pieteikties konsultācijai")}</h2>
           <p className="body-clean text-base lg:text-large text-muted-foreground">
             {t(
               "Tell me about the account and where it’s stuck. I reply within two business days.",
-              "Pastāstiet par savu reklāmas kontu un to, kur tas ir iestrēdzis. Atbildu divu darba dienu laikā.",
+              "Pastāstiet, kā šobrīd strādā jūsu reklāmas un kur esat iestrēguši. Atbildēšu divu darba dienu laikā.",
             )}
           </p>
         </div>
@@ -113,7 +113,7 @@ const ContactForm = () => {
           {/* Contact Info */}
           <div className="animate-fade-in" style={{ animationDelay: '0.1s', animationFillMode: 'both' }}>
             <div className="card-luxury h-full">
-              <h3 className="heading-elegant text-xl lg:text-2xl mb-6">{t("Get in Touch", "Sazināties")}</h3>
+              <h3 className="heading-elegant text-xl lg:text-2xl mb-6">{t("Get in Touch", "Kontakti")}</h3>
               
               <div className="space-y-5 mb-8">
                 <a href="tel:+37126673384" className="flex items-center gap-4 text-muted-foreground hover:text-foreground transition-colors group">
@@ -139,7 +139,7 @@ const ContactForm = () => {
               </div>
 
               <div className="pt-6 border-t border-border">
-                <h4 className="body-clean font-semibold mb-4 text-large">{t("Follow Me", "Sekojiet man")}</h4>
+                <h4 className="body-clean font-semibold mb-4 text-large">{t("Follow Me", "Sociālie tīkli")}</h4>
                 <div className="flex gap-4">
                   <a href="https://www.linkedin.com/in/rihards-ze/" target="_blank" rel="noopener noreferrer" className="p-3 rounded-sm bg-muted/50 text-muted-foreground hover:text-foreground hover:bg-muted transition-colors" aria-label="LinkedIn profile">
                     <Linkedin className="w-5 h-5" />
@@ -160,7 +160,7 @@ const ContactForm = () => {
 
           {/* Contact Form */}
           <div className="card-luxury animate-fade-in" style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>
-            <h3 className="heading-elegant text-xl lg:text-2xl mb-6">{t("Send a Message", "Nosūtīt ziņu")}</h3>
+            <h3 className="heading-elegant text-xl lg:text-2xl mb-6">{t("Send a Message", "Uzrakstiet man")}</h3>
             <form onSubmit={handleSubmit} className="space-y-4 lg:space-y-5">
               {/* Honeypot. Positioned off-screen rather than display:none, which
                   bots check for, and kept out of the tab order and the a11y tree. */}
@@ -226,13 +226,13 @@ const ContactForm = () => {
                 </label>
                 <Select value={formData.type} onValueChange={(value) => setFormData({ ...formData, type: value })}>
                   <SelectTrigger className="bg-background border-border focus:border-primary text-base lg:text-lg" id="type">
-                    <SelectValue placeholder={t("What are you after?", "Kas jūs interesē?")} />
+                    <SelectValue placeholder={t("What are you after?", "Izvēlieties")} />
                   </SelectTrigger>
                   <SelectContent className="bg-card border-border text-base lg:text-lg">
-                    <SelectItem value="project">{t("Consulting project", "Konsultāciju projekts")}</SelectItem>
+                    <SelectItem value="project">{t("Consulting project", "Konsultācijas vai projekts")}</SelectItem>
                     <SelectItem value="corporate-training">{t("Team training / workshop", "Komandas apmācības / darbnīca")}</SelectItem>
-                    <SelectItem value="speaking">{t("Speaking engagement", "Uzstāšanās pasākumā")}</SelectItem>
-                    <SelectItem value="other">{t("Something else", "Kas cits")}</SelectItem>
+                    <SelectItem value="speaking">{t("Speaking engagement", "Uzstāšanās konferencē vai pasākumā")}</SelectItem>
+                    <SelectItem value="other">{t("Something else", "Cits")}</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -246,7 +246,7 @@ const ContactForm = () => {
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   className="bg-background border-border focus:border-primary min-h-[120px] text-base lg:text-lg"
-                  placeholder={t("Tell me about your project or opportunity...", "Pastāstiet par savu projektu vai iespēju...")}
+                  placeholder={t("Tell me about your project or opportunity...", "Īsi par jūsu uzņēmumu un to, ar ko varu palīdzēt...")}
                   required
                 />
               </div>

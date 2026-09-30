@@ -24,11 +24,11 @@ const Index = () => {
   usePageMeta(
     t(
       "Rihards Zeila — Paid Growth Consultant & MBA Lecturer, Riga",
-      "Rihards Zeila — maksātās reklāmas konsultants un MBA lektors, Rīga",
+      "Rihards Zeila — reklāmas konsultants un MBA lektors, Rīga",
     ),
     t(
       "I build paid-growth systems for e-commerce and SME teams — then train your team to run them. MBA lecturer at Riga Business School. $5M+ annual ad spend managed.",
-      "Būvēju maksātās reklāmas sistēmas e-komercijas un MVU komandām — un apmācu komandu tās vadīt. MBA lektors Rīgas Biznesa skolā. Pārvaldīts reklāmas budžets: $5M+ gadā.",
+      "Palīdzu e-veikaliem un uzņēmumiem sakārtot maksāto reklāmu un apmācu komandu to vadīt pašai. MBA lektors Rīgas Biznesa skolā. Pārvaldu vairāk nekā $5M reklāmas budžeta gadā.",
     ),
   );
 

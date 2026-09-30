@@ -6,79 +6,79 @@ import { T, useLang } from "@/i18n/lang";
 const getCaseStudies = (t: T) => [
   {
     company: "The Brew Company",
-    engagement: t("Fractional growth lead", "Ārpakalpojuma izaugsmes vadītājs"),
+    engagement: t("Fractional growth lead", "Izaugsmes vadītājs uz nepilnu slodzi"),
     description: t(
       "Specialty coffee brand moving from retail to digital across Meta, TikTok, Google and YouTube — a Q4 pilot that became a long-term partnership.",
-      "Specializētās kafijas zīmols, kas no mazumtirdzniecības pārgāja uz digitālo vidi — Meta, TikTok, Google un YouTube. Q4 pilotprojekts, kas kļuva par ilgtermiņa sadarbību.",
+      "Specializētās kafijas zīmols, kas no veikalu plauktiem pārgāja uz pārdošanu internetā — Meta, TikTok, Google un YouTube. Sākām ar Q4 pilotprojektu, kas pārauga ilgtermiņa sadarbībā.",
     ),
-    approach: t("Held 4–7 ROAS through the iOS 14 measurement shift.", "Noturēja 4–7 ROAS iOS 14 mērījumu izmaiņu laikā."),
+    approach: t("Held 4–7 ROAS through the iOS 14 measurement shift.", "iOS 14 izmaiņu laikā noturējām ROAS 4–7."),
     metrics: [
       { label: t("Monthly Budget", "Mēneša budžets"), value: "€75K+" },
-      { label: t("Peak ROAS", "Maksimālais ROAS"), value: "13.36" },
-      { label: t("Revenue Generated", "Radītie ieņēmumi"), value: "€1M+" },
+      { label: t("Peak ROAS", "Augstākais ROAS"), value: "13.36" },
+      { label: t("Revenue Generated", "Ieņēmumi"), value: "€1M+" },
     ],
   },
   {
     company: "Cetras Zoles",
-    engagement: t("Build & handover", "Izstrāde un nodošana"),
+    engagement: t("Build & handover", "Sistēmas izveide un nodošana"),
     description: t(
       "Latvian outlet store selling branded fashion at a discount. Maximum reach, minimal spend.",
-      "Latvijas outlet veikals, kas pārdod zīmolu apģērbus ar atlaidi. Maksimāla sasniedzamība, minimāli izdevumi.",
+      "Latvijas outlet veikals ar zīmolu apģērbiem par zemākām cenām. Pēc iespējas vairāk pircēju ar pēc iespējas mazāku budžetu.",
     ),
-    approach: t("Creative testing plus Advantage+ campaigns on Meta.", "Kreatīvu testēšana un Advantage+ kampaņas Meta platformā."),
+    approach: t("Creative testing plus Advantage+ campaigns on Meta.", "Reklāmu testēšana un Advantage+ kampaņas Meta."),
     metrics: [
       { label: "ROAS", value: "36.34" },
-      { label: t("Initial Spend", "Sākotnējie izdevumi"), value: "€1K" },
+      { label: t("Initial Spend", "Sākuma budžets"), value: "€1K" },
       { label: t("Revenue", "Ieņēmumi"), value: "€36K+" },
     ],
   },
   {
     company: "Instant Change",
-    engagement: t("Build & handover", "Izstrāde un nodošana"),
+    engagement: t("Build & handover", "Sistēmas izveide un nodošana"),
     description: t(
       "Three-layer Meta Ads funnel for a German transformation coach, covering the DACH region.",
-      "Trīs līmeņu Meta Ads piltuve vācu transformācijas koučam DACH reģionā.",
+      "Trīs posmu Meta reklāmu piltuve vācu koučam, kas strādā Vācijā, Austrijā un Šveicē.",
     ),
     approach: t(
       "Video awareness → webinar remarketing → lookalike conversions.",
-      "Video atpazīstamība → vebināra atkārtotais mārketings → līdzīgo auditoriju konversijas.",
+      "Video atpazīstamībai → atkārtota uzrunāšana vebināra skatītājiem → līdzīgās auditorijas pirkumiem.",
     ),
     metrics: [{ label: "ROAS", value: "12.55" }],
   },
   {
     company: "Excel Know How",
-    engagement: t("Build & handover", "Izstrāde un nodošana"),
+    engagement: t("Build & handover", "Sistēmas izveide un nodošana"),
     description: t(
       "Excel and Power BI training turned into a predictable lead-gen engine with free webinar funnels.",
-      "Excel un Power BI apmācības, pārvērstas paredzamā potenciālo klientu piesaistes dzinējā ar bezmaksas vebināru piltuvēm.",
+      "Excel un Power BI apmācības, kas ar bezmaksas vebināriem kļuva par stabilu klientu piesaistes avotu.",
     ),
     approach: t(
       "€1,175 of spend; 2% of leads converted to €250 courses.",
-      "€1 175 izdevumi; 2% potenciālo klientu nopirka €250 kursus.",
+      "Iztērēti €1 175; 2% pieteikušos nopirka kursu par €250.",
     ),
     metrics: [
-      { label: t("Leads Generated", "Piesaistīti kontakti"), value: "2,000+" },
-      { label: t("Cost Per Lead", "Cena par kontaktu"), value: "€0.59" },
+      { label: t("Leads Generated", "Pieteikumi"), value: "2,000+" },
+      { label: t("Cost Per Lead", "Cena par pieteikumu"), value: "€0.59" },
       { label: "ROAS", value: "8.5" },
       { label: t("Revenue", "Ieņēmumi"), value: "€10K" },
     ],
   },
   {
     company: t("LIFT Digitalisation Program", "LIFT digitalizācijas programma"),
-    engagement: t("Team training & workshops", "Komandu apmācības un darbnīcas"),
+    engagement: t("Team training & workshops", "Apmācības un darbnīcas komandām"),
     description: t(
       'As part of the EU-funded LIFT initiative, I developed five digital marketing courses, built dedicated landing pages, and helped marketingaskola.lv rank #3 on Google for "digitālā mārketinga kursi."',
-      "ES finansētās LIFT iniciatīvas ietvaros izstrādāju piecus digitālā mārketinga kursus, izveidoju tiem galvenās lapas un palīdzēju marketingaskola.lv ieņemt 3. vietu Google meklētājā pēc frāzes “digitālā mārketinga kursi”.",
+      "ES finansētajā LIFT programmā izveidoju piecus digitālā mārketinga kursus un to lapas, kā arī palīdzēju marketingaskola.lv nokļūt 3. vietā Google meklējumā “digitālā mārketinga kursi”.",
     ),
     approach: t(
       "Meta ads, email outreach and automation drove the pipeline.",
-      "Klientus piesaistīja Meta reklāmas, e-pasta uzrunāšana un automatizācija.",
+      "Dalībniekus piesaistīja Meta reklāmas, e-pasta kampaņas un automatizācija.",
     ),
     metrics: [
       { label: t("Google Ranking", "Vieta Google"), value: "#3" },
-      { label: t("Leads Generated", "Piesaistīti kontakti"), value: "300+" },
+      { label: t("Leads Generated", "Pieteikumi"), value: "300+" },
       { label: t("Participants", "Dalībnieki"), value: "75-105" },
-      { label: t("B2B Reply Rate", "B2B atbilžu īpatsvars"), value: "5%" },
+      { label: t("B2B Reply Rate", "B2B e-pastu atbildes"), value: "5%" },
     ],
   },
 ];
@@ -203,14 +203,14 @@ const CaseStudies = () => {
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-wrap items-end justify-between gap-6 mb-8 lg:mb-10">
           <div>
-            <span className="eyebrow block mb-4">{t("Proof", "Pierādījumi")}</span>
+            <span className="eyebrow block mb-4">{t("Proof", "Klientu piemēri")}</span>
             <h2 className="heading-elegant text-3xl lg:text-5xl mb-4 max-w-3xl">
-              {t("Case studies.", "Rezultāti.")}
+              {t("Case studies.", "Rezultāti, nevis solījumi.")}
             </h2>
             <p className="body-clean text-muted-foreground text-lg lg:text-xl max-w-2xl">
               {t(
                 "Real results from real campaigns — from e-commerce to coaching, fashion to fintech.",
-                "Reāli rezultāti no reālām kampaņām — no e-komercijas līdz koučingam, no modes līdz finanšu tehnoloģijām.",
+                "Reālas kampaņas un reāli cipari — no e-komercijas līdz koučingam, no modes līdz fintech.",
               )}
             </p>
           </div>
@@ -248,7 +248,7 @@ const CaseStudies = () => {
           ref={track}
           tabIndex={0}
           role="region"
-          aria-label={t("Case studies, scroll horizontally", "Rezultāti, ritiniet horizontāli")}
+          aria-label={t("Case studies, scroll horizontally", "Rezultāti, ritiniet uz sāniem")}
           className="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-2 -mx-1 px-1 focus-visible:outline-none [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >
           {caseStudies.map((s) => (

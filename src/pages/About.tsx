@@ -20,7 +20,7 @@ const About = () => {
   usePageMeta(
     t(
       "About Rihards Zeila — career, teaching, and credentials",
-      "Par Rihardu Zeilu — karjera, pasniegšana un kvalifikācija",
+      "Par Rihardu Zeilu — karjera, lekcijas un izglītība",
     ),
   );
 
@@ -39,16 +39,16 @@ const About = () => {
               <h1 className="heading-elegant text-4xl lg:text-6xl mb-6">
                 {t(
                   "Ten years of paid media, teaching, and a lot of airports.",
-                  "Desmit gadi maksātās reklāmas, pasniegšanas un daudz lidostu.",
+                  "Desmit gadi reklāmā, lekciju zālēs un lidostās.",
                 )}
               </h1>
               <p className="body-clean text-muted-foreground text-lg lg:text-xl max-w-2xl leading-relaxed">
                 {t(
                   "The full record — every lecture, workshop, panel and podcast, the career timeline, and the credentials behind it. If you're here to hire rather than to read,",
-                  "Pilns saraksts — katra lekcija, darbnīca, diskusija un podkāsts, karjeras gaita un kvalifikācija. Ja esat šeit, lai sadarbotos, nevis lasītu,",
+                  "Šeit ir viss: katra lekcija, darbnīca, diskusija un podkāsts, karjeras gaita un izglītība. Ja meklējat nevis CV, bet palīdzību savam uzņēmumam,",
                 )}{" "}
                 <Link to={to("/#engagements")} className="text-primary hover:underline">
-                  {t("the work I do is over here", "mans piedāvājums ir šeit")}
+                  {t("the work I do is over here", "sadarbības iespējas atradīsiet šeit")}
                 </Link>
                 .
               </p>
@@ -73,7 +73,7 @@ const About = () => {
               <blockquote className="body-clean text-muted-foreground text-lg lg:text-xl leading-relaxed mb-5">
                 &ldquo;{t(
                   "Goal-oriented, brave and active professional who always strives for growth and development, while maintaining the belief that work should bring joy and be interesting. Rihards has excellent sales and persuasion skills. He creates a pleasant, open and friendly first impression.",
-                  "Mērķtiecīgs, drosmīgs un aktīvs profesionālis, kurš vienmēr tiecas pēc izaugsmes un attīstības, vienlaikus saglabājot pārliecību, ka darbam jāsagādā prieks un jābūt interesantam. Rihardam ir izcilas pārdošanas un pārliecināšanas prasmes. Viņš rada patīkamu, atvērtu un draudzīgu pirmo iespaidu.",
+                  "Mērķtiecīgs, drosmīgs un aktīvs profesionālis, kurš vienmēr grib augt un uzskata, ka darbam jābūt interesantam un jāsagādā prieks. Rihardam ir izcilas pārdošanas un pārliecināšanas prasmes, un jau pirmajā tikšanās reizē viņš atstāj patīkamu, atvērtu un draudzīgu iespaidu.",
                 )}&rdquo;
               </blockquote>
               <figcaption className="body-clean">
@@ -93,7 +93,7 @@ const About = () => {
               to={to("/#contact")}
               className="body-clean inline-block bg-primary text-background px-8 py-4 rounded-md font-bold text-sm lg:text-base uppercase tracking-wider hover:bg-primary/90 transition-colors"
             >
-              {t("Book a consultation", "Pieteikt konsultāciju")}
+              {t("Book a consultation", "Pieteikties konsultācijai")}
             </Link>
           </div>
         </section>

@@ -30,9 +30,9 @@ const trustedLogos = [
 
 const stats = (t: T) => [
   { value: "10+", label: t("Years in the field", "Gadi nozarē") },
-  { value: "20+", label: t("Programs delivered", "Vadītas programmas") },
+  { value: "20+", label: t("Programs delivered", "Vadītas mācību programmas") },
   { value: "3", label: t("Universities taught at", "Augstskolas, kurās pasniedzu") },
-  { value: "€10M+", label: t("Revenue driven for clients", "Klientiem radītie ieņēmumi") },
+  { value: "€10M+", label: t("Revenue driven for clients", "Ieņēmumi klientiem") },
 ];
 
 const audiences = (t: T) => [
@@ -41,81 +41,81 @@ const audiences = (t: T) => [
     title: t("Universities & Business Schools", "Augstskolas un biznesa skolas"),
     body: t(
       "Semester-long modules and guest lectures for MBA and BBA programs — from digital strategy fundamentals to advanced paid media and analytics.",
-      "Semestra moduļi un vieslekcijas MBA un BBA programmām — no digitālās stratēģijas pamatiem līdz padziļinātai maksātajai reklāmai un analītikai.",
+      "Semestra kursi un vieslekcijas MBA un BBA programmās — no digitālās stratēģijas pamatiem līdz maksātajai reklāmai un analītikai padziļinātā līmenī.",
     ),
   },
   {
     icon: Building2,
-    title: t("Corporate & SME teams", "Uzņēmumu un MVU komandas"),
+    title: t("Corporate & SME teams", "Uzņēmumu komandas"),
     body: t(
       "In-house upskilling for marketing teams, founders, and cross-functional squads. Built around your channels, tools, and revenue goals.",
-      "Iekšējās apmācības mārketinga komandām, dibinātājiem un starpfunkcionālām komandām. Veidotas ap jūsu kanāliem, rīkiem un ieņēmumu mērķiem.",
+      "Apmācības mārketinga komandām, uzņēmumu vadītājiem un jauktām komandām. Pielāgotas jūsu kanāliem, rīkiem un pārdošanas mērķiem.",
     ),
   },
   {
     icon: Users,
-    title: t("NGOs & Public programs", "NVO un publiskās programmas"),
+    title: t("NGOs & Public programs", "NVO un valsts programmas"),
     body: t(
       "Practical training for EU-funded initiatives, associations, and social enterprises. Delivered for LIFT, ITC, and Latvian government-backed programs.",
-      "Praktiskas apmācības ES finansētām iniciatīvām, biedrībām un sociālajiem uzņēmumiem. Vadītas LIFT, ITC un valsts atbalstītām programmām Latvijā.",
+      "Praktiskas apmācības ES finansētām iniciatīvām, biedrībām un sociālajiem uzņēmumiem. Esmu strādājis ar LIFT, ITC un valsts atbalstītām programmām Latvijā.",
     ),
   },
 ];
 
 const formats = (t: T) => [
   {
-    title: t("Meta Ads Intensive", "Meta Ads intensīvais kurss"),
+    title: t("Meta Ads Intensive", "Meta reklāmu intensīvais kurss"),
     duration: t("1-day workshop", "1 dienas darbnīca"),
     audience: t("Marketers, founders, agency teams", "mārketinga speciālistiem, dibinātājiem, aģentūru komandām"),
     outcome: t(
       "Leave with a live campaign structure, creative brief, and measurement plan.",
-      "Dodieties prom ar gatavu kampaņas struktūru, kreatīvo briefu un mērījumu plānu.",
+      "Beigās jums ir gatava kampaņas struktūra, reklāmu uzdevums un mērīšanas plāns.",
     ),
     bullets: [
       t("Account & pixel setup", "Konta un pikseļa iestatīšana"),
-      t("Audience & creative strategy", "Auditoriju un kreatīvu stratēģija"),
-      t("Reading the numbers that matter", "Svarīgāko skaitļu lasīšana"),
+      t("Audience & creative strategy", "Auditorijas un reklāmu idejas"),
+      t("Reading the numbers that matter", "Kurus skaitļus skatīties"),
     ],
   },
   {
-    title: t("Digital Growth for SMEs", "Digitālā izaugsme MVU"),
+    title: t("Digital Growth for SMEs", "Digitālā izaugsme uzņēmējiem"),
     duration: t("Multi-session course", "Vairāku nodarbību kurss"),
     audience: t("Small & mid-sized business owners", "mazo un vidējo uzņēmumu īpašniekiem"),
     outcome: t(
       "A working growth system: funnel, channels, weekly rhythm, and reporting.",
-      "Strādājoša izaugsmes sistēma: piltuve, kanāli, iknedēļas ritms un atskaites.",
+      "Strādājoša izaugsmes sistēma: pārdošanas piltuve, kanāli, iknedēļas ritms un atskaites.",
     ),
     bullets: [
       t("Positioning & offer", "Pozicionēšana un piedāvājums"),
-      t("Channel prioritization", "Kanālu prioritizēšana"),
+      t("Channel prioritization", "Kuri kanāli ir svarīgākie"),
       t("Funnel & automation basics", "Piltuves un automatizācijas pamati"),
     ],
   },
   {
-    title: t("Custom MBA / BBA module", "Pielāgots MBA / BBA modulis"),
+    title: t("Custom MBA / BBA module", "Pielāgots MBA / BBA kurss"),
     duration: t("Semester-long", "Semestra garumā"),
     audience: t("Universities & business schools", "augstskolām un biznesa skolām"),
     outcome: t(
       "A syllabus co-designed with your program, with assessments and industry cases.",
-      "Kopā ar jūsu programmu veidots kursa apraksts ar vērtēšanu un nozares gadījumiem.",
+      "Kursa programma, ko veidojam kopā ar jūsu augstskolu, ar pārbaudījumiem un reāliem uzņēmumu piemēriem.",
     ),
     bullets: [
       t("Lectures & case studies", "Lekcijas un gadījumu analīze"),
-      t("Group projects with live briefs", "Grupu projekti ar reāliem uzdevumiem"),
-      t("Guest practitioners", "Vieslektori no prakses"),
+      t("Group projects with live briefs", "Grupu projekti ar reālu uzņēmumu uzdevumiem"),
+      t("Guest practitioners", "Vieslektori no nozares"),
     ],
   },
   {
-    title: t("Team enablement & coaching", "Komandas attīstība un koučings"),
+    title: t("Team enablement & coaching", "Komandas apmācība un konsultācijas"),
     duration: t("Ongoing retainer", "Ilgtermiņa sadarbība"),
     audience: t("In-house marketing teams", "iekšējām mārketinga komandām"),
     outcome: t(
       "Your team runs paid media and automation confidently — with me as a sparring partner.",
-      "Jūsu komanda pārliecinoši vada maksāto reklāmu un automatizāciju — ar mani kā sparinga partneri.",
+      "Jūsu komanda droši vada maksāto reklāmu un automatizāciju, un man var jautāt, kad vien vajag.",
     ),
     bullets: [
       t("Weekly working sessions", "Iknedēļas darba sesijas"),
-      t("Playbooks & SOPs", "Rokasgrāmatas un darba instrukcijas"),
+      t("Playbooks & SOPs", "Rokasgrāmatas un instrukcijas"),
       t("Ad account audits", "Reklāmas kontu auditi"),
     ],
   },
@@ -126,52 +126,52 @@ const curriculum = (t: T) => [
     q: t("Strategy & positioning", "Stratēģija un pozicionēšana"),
     a: t(
       "Turning fuzzy goals into a channel plan: ICP work, offer design, funnel mapping, and choosing where to actually spend the next euro.",
-      "Kā neskaidrus mērķus pārvērst kanālu plānā: ideālā klienta profils, piedāvājuma veidošana, piltuves kartēšana un izvēle, kur tiešām ieguldīt nākamo eiro.",
+      "Kā no neskaidriem mērķiem nonākt pie konkrēta plāna: ideālais klients, piedāvājums, pārdošanas piltuve un lēmums, kur ieguldīt nākamo eiro.",
     ),
   },
   {
     q: t("Meta advertising (Facebook & Instagram)", "Meta reklāma (Facebook un Instagram)"),
     a: t(
       "Account structure, campaign objectives, audience & creative strategy, iOS/attribution realities, scaling and troubleshooting.",
-      "Konta struktūra, kampaņu mērķi, auditoriju un kreatīvu stratēģija, iOS un atribūcijas realitāte, mērogošana un problēmu risināšana.",
+      "Konta struktūra, kampaņu mērķi, auditorijas un reklāmas, iOS un atribūcijas realitāte, budžeta palielināšana un problēmu risināšana.",
     ),
   },
   {
-    q: t("Landing pages & funnels", "Galvenās lapas un piltuves"),
+    q: t("Landing pages & funnels", "Landing lapas un pārdošanas piltuves"),
     a: t(
       "Designing pages that convert, split-testing frameworks, lead magnets, email/SMS follow-up, and CRO fundamentals.",
-      "Lapas, kas konvertē, A/B testēšanas metodes, kontaktu piesaistes magnēti, e-pasta/SMS sekošana un konversiju optimizācijas pamati.",
+      "Lapas, kas pārdod, A/B testi, bezmaksas materiāli kontaktu piesaistei, e-pasta un SMS sekvences un konversiju optimizācijas pamati.",
     ),
   },
   {
     q: t("Marketing automation", "Mārketinga automatizācija"),
     a: t(
       "Zapier/Make workflows, CRM hygiene, lead scoring, and automating the boring parts of client & prospect communication.",
-      "Zapier/Make darbplūsmas, kārtība CRM, potenciālo klientu vērtēšana un garlaicīgo saziņas daļu automatizēšana.",
+      "Zapier/Make procesi, kārtība CRM, potenciālo klientu vērtēšana un garlaicīgās saziņas daļas automatizācija.",
     ),
   },
   {
     q: t("Analytics & measurement", "Analītika un mērījumi"),
     a: t(
       "GA4, server-side tracking basics, dashboards teams actually read, and connecting ad spend to revenue.",
-      "GA4, servera puses izsekošanas pamati, pārskatu paneļi, ko komandas tiešām lasa, un reklāmas izdevumu sasaiste ar ieņēmumiem.",
+      "GA4, servera puses izsekošanas pamati, atskaites, ko komanda tiešām lasa, un reklāmas izdevumu sasaiste ar ieņēmumiem.",
     ),
   },
   {
     q: t("AI in marketing", "MI mārketingā"),
     a: t(
       "Practical use of LLMs for research, briefs, creative variants, and analysis — with guardrails for teams.",
-      "Praktiska valodas modeļu izmantošana izpētei, briefiem, kreatīvu variantiem un analīzei — ar skaidriem noteikumiem komandām.",
+      "Kā praktiski izmantot ChatGPT un līdzīgus rīkus izpētei, uzdevumu aprakstiem, reklāmu variantiem un analīzei — ar skaidriem noteikumiem komandai.",
     ),
   },
 ];
 
 const programs = (t: T) => [
-  { org: t("Riga Business School", "Rīgas Biznesa skola"), role: t("MBA Lecturer, Digital Marketing", "MBA lektors, digitālais mārketings"), period: t("2021 – Present", "2021 – šobrīd") },
+  { org: t("Riga Business School", "Rīgas Biznesa skola"), role: t("MBA Lecturer, Digital Marketing", "MBA lektors digitālajā mārketingā"), period: t("2021 – Present", "2021 – šobrīd") },
   { org: t("Riga Business School — Executive Education", "Rīgas Biznesa skola — vadītāju izglītība"), role: t("Digital Growth Strategies for SMEs", "Digitālās izaugsmes stratēģijas MVU"), period: t("Nov 2024", "2024. nov.") },
-  { org: t("RISEBA University", "Augstskola RISEBA"), role: t("BBA Lecturer, Social Media & Meta Ads", "BBA lektors, sociālie mediji un Meta Ads"), period: "2023 – 2024" },
+  { org: t("RISEBA University", "Augstskola RISEBA"), role: t("BBA Lecturer, Social Media & Meta Ads", "BBA lektors — sociālie mediji un Meta reklāma"), period: "2023 – 2024" },
   { org: t("University of Lusaka", "Lusakas Universitāte"), role: t("Guest Lecturer (Erasmus+)", "Vieslektors (Erasmus+)"), period: t("May 2024", "2024. maijs") },
-  { org: t("LIFT Program (EU-funded)", "LIFT programma (ES finansēta)"), role: t("Course leader — Meta Ads & Automation for SMEs", "Kursu vadītājs — Meta Ads un automatizācija MVU"), period: t("2024 – Present", "2024 – šobrīd") },
+  { org: t("LIFT Program (EU-funded)", "LIFT programma (ES finansēta)"), role: t("Course leader — Meta Ads & Automation for SMEs", "Kursu vadītājs — Meta reklāma un automatizācija uzņēmējiem"), period: t("2024 – Present", "2024 – šobrīd") },
   { org: t("International Trade Centre", "Starptautiskais tirdzniecības centrs"), role: t("Workshop facilitator — Digital marketing for exporters", "Darbnīcu vadītājs — digitālais mārketings eksportētājiem"), period: "2023" },
   { org: "Latvijas Digitālo ekspertu biedrība", role: t("Trainer — Digital marketing programs", "Pasniedzējs — digitālā mārketinga programmas"), period: "2023" },
   { org: "Vidusdaugavas NVO centrs", role: t("Digital campaign workshop leader", "Digitālo kampaņu darbnīcas vadītājs"), period: "2023" },
@@ -182,7 +182,7 @@ const testimonials = (t: T) => [
   {
     quote: t(
       "Rihards is an exceptional marketer with a deep understanding of the digital marketing ecosystem. He promoted data-led decisions from day one and highlighted the importance of measuring performance.",
-      "Rihards ir izcils mārketinga speciālists ar dziļu izpratni par digitālā mārketinga ekosistēmu. Jau no pirmās dienas viņš iestājās par datos balstītiem lēmumiem un uzsvēra rezultātu mērīšanas nozīmi.",
+      "Rihards ir izcils mārketinga speciālists, kurš digitālo mārketingu pārzina no A līdz Z. Jau no pirmās dienas viņš uzstāja, ka lēmumi jāpieņem, balstoties datos, un ka rezultāti ir jāmēra.",
     ),
     author: "Bence Etele Baráth",
     company: "AppsFlyer",
@@ -190,7 +190,7 @@ const testimonials = (t: T) => [
   {
     quote: t(
       "Rihards is THE expert on Facebook advertising. Excellent communication, deep knowledge, and an outstanding public speaker who gets the message across to any audience.",
-      "Rihards ir TAS eksperts Facebook reklāmā. Lieliska komunikācija, dziļas zināšanas un izcils runātājs, kurš savu vēstījumu nodod jebkurai auditorijai.",
+      "Rihards ir mans galvenais Facebook reklāmas eksperts. Skaidri komunicē, lieliski pārzina savu jomu un spēj uzrunāt jebkuru auditoriju.",
     ),
     author: "Regita Zeiļa",
     company: t("Director, Social Entrepreneurship Association", "Direktore, Sociālās uzņēmējdarbības asociācija"),
@@ -198,7 +198,7 @@ const testimonials = (t: T) => [
   {
     quote: t(
       "Highly skilled, passionate and dedicated. Whenever I need advice on digital marketing — I go to him. His international experience and know-how excels his peers.",
-      "Ļoti prasmīgs, aizrautīgs un apņēmīgs. Kad vien man vajag padomu digitālajā mārketingā — eju pie viņa. Ar savu starptautisko pieredzi un zināšanām viņš pārspēj kolēģus.",
+      "Ļoti zinošs, aizrautīgs un uzticams. Kad man vajag padomu digitālajā mārketingā, eju pie viņa. Ar savu starptautisko pieredzi viņš ir soli priekšā citiem.",
     ),
     author: "Kristina Berga",
     company: t("CEO, HuskySense", "Vadītāja, HuskySense"),
@@ -206,18 +206,18 @@ const testimonials = (t: T) => [
 ];
 
 const steps = (t: T) => [
-  { n: "01", title: t("Discovery call", "Iepazīšanās saruna"), body: t("30 minutes to understand your team, goals, current stack, and timeline.", "30 minūtes, lai saprastu jūsu komandu, mērķus, rīkus un termiņus.") },
-  { n: "02", title: t("Curriculum design", "Programmas izstrāde"), body: t("A tailored outline with learning outcomes, formats, and success metrics.", "Pielāgots plāns ar mācību rezultātiem, formātiem un veiksmes rādītājiem.") },
-  { n: "03", title: t("Delivery", "Norise"), body: t("Workshops, lectures, or ongoing coaching — in-person in Riga or remote worldwide.", "Darbnīcas, lekcijas vai ilgtermiņa koučings — klātienē Rīgā vai attālināti jebkur pasaulē.") },
-  { n: "04", title: t("Post-training support", "Atbalsts pēc apmācībām"), body: t("Recordings, playbooks, and follow-up sessions so the learning actually sticks.", "Ieraksti, rokasgrāmatas un papildu sesijas, lai zināšanas tiešām paliktu.") },
+  { n: "01", title: t("Discovery call", "Iepazīšanās saruna"), body: t("30 minutes to understand your team, goals, current stack, and timeline.", "Pusstunda, lai saprastu jūsu komandu, mērķus, rīkus un termiņus.") },
+  { n: "02", title: t("Curriculum design", "Programmas izstrāde"), body: t("A tailored outline with learning outcomes, formats, and success metrics.", "Pielāgots plāns ar mācību mērķiem, formātu un to, kā mērīsim rezultātu.") },
+  { n: "03", title: t("Delivery", "Apmācības"), body: t("Workshops, lectures, or ongoing coaching — in-person in Riga or remote worldwide.", "Darbnīcas, lekcijas vai ilgtermiņa apmācība — klātienē Rīgā vai attālināti no jebkuras vietas.") },
+  { n: "04", title: t("Post-training support", "Atbalsts pēc apmācībām"), body: t("Recordings, playbooks, and follow-up sessions so the learning actually sticks.", "Ieraksti, rokasgrāmatas un papildu tikšanās, lai zināšanas nepazūd.") },
 ];
 
 const faqs = (t: T) => [
-  { q: t("In-person, remote or hybrid?", "Klātienē, attālināti vai hibrīdi?"), a: t("All three. I'm based in Riga and travel across Europe. Remote sessions run on Zoom or Google Meet with interactive workbooks.", "Visi trīs. Esmu Rīgā un braucu pa visu Eiropu. Attālinātās nodarbības notiek Zoom vai Google Meet ar interaktīvām darba lapām.") },
-  { q: t("What languages do you teach in?", "Kādās valodās jūs pasniedzat?"), a: t("English and Latvian. Materials are typically in English.", "Latviešu un angļu valodā. Materiāli parasti ir angļu valodā.") },
-  { q: t("Ideal group size?", "Ideālais grupas lielums?"), a: t("Workshops work best with 8–25 participants. University modules follow the program's cohort size.", "Darbnīcām vislabāk der 8–25 dalībnieki. Augstskolu moduļos — atbilstoši programmas kursa lielumam.") },
-  { q: t("Can we record sessions?", "Vai nodarbības var ierakstīt?"), a: t("Yes — recording rights are agreed up front and included in most engagements.", "Jā — ierakstīšanas tiesības tiek saskaņotas iepriekš un ir iekļautas lielākajā daļā sadarbību.") },
-  { q: t("How is pricing structured?", "Kā veidojas cena?"), a: t("Day-rate for workshops, project fee for multi-session courses, and monthly retainer for ongoing coaching. Custom quote after the discovery call.", "Darbnīcām — dienas likme, vairāku nodarbību kursiem — projekta maksa, ilgtermiņa koučingam — ikmēneša maksa. Individuāls piedāvājums pēc iepazīšanās sarunas.") },
+  { q: t("In-person, remote or hybrid?", "Klātienē, attālināti vai hibrīdi?"), a: t("All three. I'm based in Riga and travel across Europe. Remote sessions run on Zoom or Google Meet with interactive workbooks.", "Jebkurā no tiem. Dzīvoju Rīgā un braucu pa visu Eiropu. Attālinātās nodarbības notiek Zoom vai Google Meet ar interaktīvām darba lapām.") },
+  { q: t("What languages do you teach in?", "Kādā valodā notiek apmācības?"), a: t("English and Latvian. Materials are typically in English.", "Latviešu un angļu valodā. Materiāli parasti ir angļu valodā.") },
+  { q: t("Ideal group size?", "Cik lielai jābūt grupai?"), a: t("Workshops work best with 8–25 participants. University modules follow the program's cohort size.", "Darbnīcām vislabāk der 8–25 dalībnieki. Augstskolās — tik, cik studentu ir kursā.") },
+  { q: t("Can we record sessions?", "Vai nodarbības var ierakstīt?"), a: t("Yes — recording rights are agreed up front and included in most engagements.", "Jā — par ierakstiem vienojamies iepriekš, un vairumā gadījumu tie ir iekļauti cenā.") },
+  { q: t("How is pricing structured?", "Cik tas maksā?"), a: t("Day-rate for workshops, project fee for multi-session courses, and monthly retainer for ongoing coaching. Custom quote after the discovery call.", "Darbnīcām — dienas likme, kursiem ar vairākām nodarbībām — projekta cena, ilgtermiņa apmācībai — ikmēneša maksa. Precīzu piedāvājumu sagatavoju pēc iepazīšanās sarunas.") },
 ];
 
 const Section = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => {
@@ -241,11 +241,11 @@ const WorkWithMe = () => {
   usePageMeta(
     t(
       "Digital Marketing Trainer & Workshop Facilitator — Rihards Zeila",
-      "Digitālā mārketinga pasniedzējs un darbnīcu vadītājs — Rihards Zeila",
+      "Digitālā mārketinga apmācības un darbnīcas — Rihards Zeila",
     ),
     t(
       "Book Rihards Zeila for digital marketing training, Meta ads workshops, MBA/BBA modules, and team enablement. MBA lecturer at Riga Business School.",
-      "Piesakiet Rihardu Zeilu digitālā mārketinga apmācībām, Meta reklāmas darbnīcām, MBA/BBA moduļiem un komandu attīstībai. MBA lektors Rīgas Biznesa skolā.",
+      "Digitālā mārketinga apmācības, Meta reklāmu darbnīcas, MBA/BBA kursi un komandu apmācība. Rihards Zeila — MBA lektors Rīgas Biznesa skolā.",
     ),
   );
 
@@ -342,13 +342,13 @@ const WorkWithMe = () => {
             <h1 className="wwm-display text-[2.75rem] md:text-6xl lg:text-[5.25rem] leading-[1.0] tracking-[-0.035em]" style={{ fontWeight: 500 }}>
               {t(
                 <>Training that turns marketing teams into <span className="wwm-underline-acid"><span className="wwm-display-italic">operators</span></span>.</>,
-                <>Apmācības, kas mārketinga komandas pārvērš par <span className="wwm-underline-acid"><span className="wwm-display-italic">darītājiem</span></span>.</>,
+                <>Apmācības, pēc kurām komanda sāk <span className="wwm-underline-acid"><span className="wwm-display-italic">darīt</span></span>, nevis tikai zināt.</>,
               )}
             </h1>
             <p className="text-lg md:text-xl wwm-muted leading-relaxed max-w-2xl">
               {t(
                 "MBA lecturer at Riga Business School. Course leader for the EU-funded LIFT program. Workshop facilitator for the International Trade Centre. Ten years in the trenches, up to $5M/year of ad spend managed — packaged into training your team will actually use on Monday morning.",
-                "MBA lektors Rīgas Biznesa skolā. Kursu vadītājs ES finansētajā LIFT programmā. Darbnīcu vadītājs Starptautiskajam tirdzniecības centram. Desmit gadi praksē un līdz $5M gadā pārvaldīta reklāmas budžeta — iepakots apmācībās, ko jūsu komanda tiešām izmantos jau pirmdienas rītā.",
+                "MBA lektors Rīgas Biznesa skolā, kursu vadītājs ES finansētajā LIFT programmā un Starptautiskā tirdzniecības centra darbnīcu vadītājs. Desmit gadu prakse un līdz $5M reklāmas budžeta gadā — apmācībās, kuras jūsu komanda izmantos jau pirmdienas rītā.",
               )}
             </p>
             <div className="flex flex-wrap gap-3 pt-2">
@@ -356,7 +356,7 @@ const WorkWithMe = () => {
                 {t("Request a training", "Pieteikt apmācības")} <ArrowRight className="w-4 h-4" />
               </button>
               <button onClick={scrollToPrograms} className="wwm-ghost px-6 py-3">
-                {t("See past programs", "Iepriekšējās programmas")}
+                {t("See past programs", "Kur esmu mācījis")}
               </button>
             </div>
           </div>
@@ -375,7 +375,7 @@ const WorkWithMe = () => {
                 {t("Riga · Latvia", "Rīga · Latvija")}
               </div>
               <div className="absolute -top-3 -right-3 bg-[color:var(--wwm-sand)] text-[color:var(--wwm-accent)] px-3 py-1 wwm-mono text-[0.65rem] border wwm-hairline">
-                {t("Booking 2026", "Pieraksts 2026")}
+                {t("Booking 2026", "Pieteikšanās 2026")}
               </div>
             </div>
           </div>
@@ -384,7 +384,7 @@ const WorkWithMe = () => {
         {/* Trusted-by strip */}
         <div className="border-t wwm-hairline">
           <div className="max-w-7xl mx-auto px-6 lg:px-10 py-8 flex flex-col md:flex-row md:items-center gap-6">
-            <div className="wwm-eyebrow shrink-0 md:pr-8 md:border-r wwm-hairline">{t("Trained teams at", "Apmācījis komandas")}</div>
+            <div className="wwm-eyebrow shrink-0 md:pr-8 md:border-r wwm-hairline">{t("Trained teams at", "Esmu apmācījis")}</div>
             <div className="flex flex-wrap items-center gap-x-10 gap-y-4 flex-1">
               {trustedLogos.map((l) => (
                 <img
@@ -420,7 +420,7 @@ const WorkWithMe = () => {
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
           <div className="grid lg:grid-cols-12 gap-10 mb-16">
             <div className="lg:col-span-4">
-              <div className="wwm-eyebrow mb-4">{t("Who I train", "Ko es apmācu")}</div>
+              <div className="wwm-eyebrow mb-4">{t("Who I train", "Kam apmācības")}</div>
               <h2 className="wwm-display text-4xl md:text-5xl">
                 {t(
                   <>For teams that need <span className="wwm-display-italic">results</span>, not another slide deck.</>,
@@ -431,7 +431,7 @@ const WorkWithMe = () => {
             <p className="lg:col-span-7 lg:col-start-6 text-lg wwm-muted leading-relaxed self-end">
               {t(
                 "I work with three distinct audiences. The through-line is the same: practical frameworks, live ad accounts, and content people will use the week after training ends.",
-                "Strādāju ar trīs atšķirīgām auditorijām. Kopīgais ir viens: praktiski ietvari, reāli reklāmas konti un saturs, ko cilvēki izmantos jau nedēļu pēc apmācību beigām.",
+                "Strādāju ar trīs dažādām auditorijām, bet pieeja ir viena: praktiskas metodes, īsti reklāmas konti un saturs, ko cilvēki izmanto jau nākamajā nedēļā.",
               )}
             </p>
           </div>
@@ -481,11 +481,11 @@ const WorkWithMe = () => {
       {/* Curriculum */}
       <Section className="py-24 lg:py-32">
         <div className="max-w-4xl mx-auto px-6 lg:px-10">
-          <div className="wwm-eyebrow mb-4">{t("Curriculum snapshot", "Programmas ieskats")}</div>
+          <div className="wwm-eyebrow mb-4">{t("Curriculum snapshot", "Ko mācu")}</div>
           <h2 className="wwm-display text-4xl md:text-5xl mb-12">
             {t(
               <>What we can <span className="wwm-display-italic">cover</span>.</>,
-              <>Ko varam <span className="wwm-display-italic">apgūt</span>.</>,
+              <>Tēmas, ko varam <span className="wwm-display-italic">apgūt</span>.</>,
             )}
           </h2>
           <Accordion type="single" collapsible defaultValue="c-0" className="border-t wwm-hairline">
@@ -506,7 +506,7 @@ const WorkWithMe = () => {
       {/* Programs */}
       <Section className="py-24 lg:py-32 bg-[color:var(--wwm-sand)]">
         <div id="wwm-programs" className="max-w-5xl mx-auto px-6 lg:px-10">
-          <div className="wwm-eyebrow mb-4">{t("Selected programs & institutions", "Izvēlētas programmas un iestādes")}</div>
+          <div className="wwm-eyebrow mb-4">{t("Selected programs & institutions", "Programmas un iestādes")}</div>
           <h2 className="wwm-display text-4xl md:text-5xl mb-12">
             {t(
               <>Where I've taught & <span className="wwm-display-italic">trained</span>.</>,
@@ -558,7 +558,7 @@ const WorkWithMe = () => {
           <h2 className="wwm-display text-4xl md:text-5xl mb-20 max-w-2xl">
             {t(
               <>Simple, transparent, no <span className="wwm-display-italic">bloat</span>.</>,
-              <>Vienkārši, caurspīdīgi, nekā <span className="wwm-display-italic">lieka</span>.</>,
+              <>Vienkārši, skaidri, bez <span className="wwm-display-italic">liekā</span>.</>,
             )}
           </h2>
           <div className="grid md:grid-cols-4 gap-6">
@@ -576,7 +576,7 @@ const WorkWithMe = () => {
       {/* FAQ */}
       <Section className="py-24 lg:py-32 bg-[color:var(--wwm-sand)]">
         <div className="max-w-4xl mx-auto px-6 lg:px-10">
-          <div className="wwm-eyebrow mb-4">{t("FAQ", "BUJ")}</div>
+          <div className="wwm-eyebrow mb-4">{t("FAQ", "Jautājumi")}</div>
           <h2 className="wwm-display text-4xl md:text-5xl mb-12">
             {t(
               <>Common <span className="wwm-display-italic">questions</span>.</>,
@@ -608,7 +608,7 @@ const WorkWithMe = () => {
             <p className="text-[color:var(--wwm-ivory)]/75 leading-relaxed text-lg">
               {t(
                 "A short note about your organization, goals, and timeline is enough to get started. I reply within two business days.",
-                "Lai sāktu, pietiek ar īsu ziņu par jūsu organizāciju, mērķiem un termiņiem. Atbildu divu darba dienu laikā.",
+                "Pietiek ar īsu ziņu par jūsu organizāciju, mērķiem un laiku. Atbildēšu divu darba dienu laikā.",
               )}
             </p>
             <div className="pt-6 space-y-3 text-sm border-t wwm-hairline">

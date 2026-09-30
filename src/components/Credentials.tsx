@@ -9,12 +9,12 @@ const Credentials = () => {
   const { t } = useLang();
 
   const skills = [
-    { title: t("Meta Advertising", "Meta reklāma"), description: t("Expert in full-funnel Meta ad systems that drive measurable ROAS and client acquisition.", "Pilnas piltuves Meta reklāmas sistēmas, kas nodrošina izmērāmu ROAS un klientu piesaisti."), icon: Target },
-    { title: t("Digital Marketing Strategy", "Digitālā mārketinga stratēģija"), description: t("Building scalable systems that combine paid, organic, and AI-driven growth.", "Mērogojamas sistēmas, kas apvieno maksāto, organisko un MI virzīto izaugsmi."), icon: TrendingUp },
-    { title: t("Business Automations", "Biznesa automatizācija"), description: t("Streamlining operations and client workflows with Make, n8n, and GoHighLevel.", "Darbības un klientu procesu optimizēšana ar Make, n8n un GoHighLevel."), icon: Zap },
-    { title: t("Creative Strategy", "Kreatīvā stratēģija"), description: t("Designing data-backed ad concepts, visuals, and copy that convert.", "Datos balstīti reklāmu koncepti, vizuāļi un teksti, kas konvertē."), icon: Lightbulb },
-    { title: t("Digital Course Creation", "Digitālo kursu veidošana"), description: t("Developing practical, high-ROI marketing courses for SMEs and professionals.", "Praktiski mārketinga kursi ar augstu atdevi MVU un profesionāļiem."), icon: BookOpen },
-    { title: t("Leadership & Mentorship", "Vadība un mentorēšana"), description: t("Guiding teams, interns, and MBA students to think strategically and execute precisely.", "Palīdzu komandām, praktikantiem un MBA studentiem domāt stratēģiski un rīkoties precīzi."), icon: Users }
+    { title: t("Meta Advertising", "Meta reklāmas"), description: t("Expert in full-funnel Meta ad systems that drive measurable ROAS and client acquisition.", "Pilnas pārdošanas piltuves Meta reklāmās, kas nes izmērāmu ROAS un jaunus klientus."), icon: Target },
+    { title: t("Digital Marketing Strategy", "Digitālā mārketinga stratēģija"), description: t("Building scalable systems that combine paid, organic, and AI-driven growth.", "Sistēmas, kas aug līdzi uzņēmumam un apvieno maksāto reklāmu, organisko saturu un MI."), icon: TrendingUp },
+    { title: t("Business Automations", "Biznesa automatizācija"), description: t("Streamlining operations and client workflows with Make, n8n, and GoHighLevel.", "Procesu un klientu saziņas automatizācija ar Make, n8n un GoHighLevel."), icon: Zap },
+    { title: t("Creative Strategy", "Kreatīvā stratēģija"), description: t("Designing data-backed ad concepts, visuals, and copy that convert.", "Datos balstītas reklāmu idejas, vizuāļi un teksti, kas pārdod."), icon: Lightbulb },
+    { title: t("Digital Course Creation", "Digitālo kursu veidošana"), description: t("Developing practical, high-ROI marketing courses for SMEs and professionals.", "Praktiski mārketinga kursi uzņēmējiem un speciālistiem, kas ātri atmaksājas."), icon: BookOpen },
+    { title: t("Leadership & Mentorship", "Vadība un mentorēšana"), description: t("Guiding teams, interns, and MBA students to think strategically and execute precisely.", "Palīdzu komandām, praktikantiem un MBA studentiem domāt stratēģiski un precīzi īstenot iecerēto."), icon: Users }
   ];
 
   const toolCategories = [
@@ -29,7 +29,7 @@ const Credentials = () => {
       icon: Settings
     },
     {
-      category: t("AI & Creative", "MI un kreatīvi"),
+      category: t("AI & Creative", "MI un radošie rīki"),
       tools: "ChatGPT, Manus, Midjourney, VEO3, Photoshop, Canva",
       icon: Sparkles
     },
@@ -44,7 +44,7 @@ const Credentials = () => {
       icon: Search
     },
     {
-      category: t("Email & Outreach", "E-pasts un uzrunāšana"),
+      category: t("Email & Outreach", "E-pasts un tiešā uzrunāšana"),
       tools: "MailerLite, Apollo, Instantly, Woodpecker, MillionVerifier",
       icon: Mail
     }
@@ -53,9 +53,9 @@ const Credentials = () => {
   const languages = [
     { name: t("Latvian", "Latviešu"), level: t("Native", "Dzimtā") },
     { name: t("Latgalian", "Latgaliešu"), level: t("Native", "Dzimtā") },
-    { name: t("English", "Angļu"), level: t("Bilingual", "Brīvi (bilingvāli)") },
-    { name: t("Russian", "Krievu"), level: t("Professional working", "Profesionāls darba līmenis") },
-    { name: t("Polish", "Poļu"), level: t("Professional working", "Profesionāls darba līmenis") },
+    { name: t("English", "Angļu"), level: t("Bilingual", "Brīvi") },
+    { name: t("Russian", "Krievu"), level: t("Professional working", "Darba līmenī") },
+    { name: t("Polish", "Poļu"), level: t("Professional working", "Darba līmenī") },
     { name: t("Spanish", "Spāņu"), level: t("Elementary", "Pamatlīmenis") }
   ];
 
@@ -82,7 +82,7 @@ const Credentials = () => {
       location: t("Copenhagen", "Kopenhāgena"),
       period: t("September 2017 - June 2019", "2017. sept. – 2019. jūn."),
       details: [
-        t("Interaction development: front-end development (HTML, CSS & JavaScript)", "Interakciju izstrāde: front-end izstrāde (HTML, CSS un JavaScript)"),
+        t("Interaction development: front-end development (HTML, CSS & JavaScript)", "Interakciju izstrāde: front-end (HTML, CSS un JavaScript)"),
         t("Design and visualization: User Interface Design (UI), digital design principles, prototyping, and design processes", "Dizains un vizualizācija: lietotāja saskarnes dizains (UI), digitālā dizaina principi, prototipēšana un dizaina procesi"),
         t("Communication: User Experience Design (UX) and user testing", "Komunikācija: lietotāja pieredzes dizains (UX) un lietotāju testēšana")
       ]
@@ -94,8 +94,8 @@ const Credentials = () => {
       period: t("September 2012 - June 2016", "2012. sept. – 2016. jūn."),
       grade: t("Grade: 8.2 / 10", "Vidējā atzīme: 8,2 / 10"),
       details: [
-        t("Developed leadership skills by organizing activities for new members of the Student Council", "Attīstīju līderības prasmes, organizējot aktivitātes jaunajiem Studentu padomes biedriem"),
-        t("Gained the ability to orient in the global economic and business environment during three study exchange semesters abroad", "Trīs apmaiņas semestros ārzemēs iemācījos orientēties globālajā ekonomikas un biznesa vidē"),
+        t("Developed leadership skills by organizing activities for new members of the Student Council", "Attīstīju līderības prasmes, organizējot pasākumus jaunajiem Studentu padomes biedriem"),
+        t("Gained the ability to orient in the global economic and business environment during three study exchange semesters abroad", "Trīs apmaiņas semestros ārzemēs iemācījos orientēties globālajā ekonomikā un biznesa vidē"),
         t("Activities: Activist of the student council; Member of Student Fraternity 'Selonija'", "Aktivitātes: Studentu padomes aktīvists; studentu korporācijas “Selonija” biedrs")
       ]
     },
@@ -116,12 +116,12 @@ const Credentials = () => {
       <div className="w-full lg:max-w-6xl lg:mx-auto lg:px-6">
         <div className={`transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <h2 className="heading-elegant text-3xl lg:text-display mb-4 lg:mb-6 text-center">
-            {t("Full Credentials & Background", "Pilna kvalifikācija un pieredze")}
+            {t("Full Credentials & Background", "Izglītība, prasmes un pieredze")}
           </h2>
           <p className="body-clean text-lg lg:text-2xl text-muted-foreground mb-8 lg:mb-12 text-center max-w-3xl mx-auto">
             {t(
               "For those who want to dive deeper into my qualifications, tools, and experience.",
-              "Tiem, kas vēlas iedziļināties manā kvalifikācijā, rīkos un pieredzē.",
+              "Visiem, kas grib uzzināt vairāk par manu kvalifikāciju, rīkiem un pieredzi.",
             )}
           </p>
 
@@ -198,7 +198,7 @@ const Credentials = () => {
 
                     {/* Advanced Courses */}
                     <div>
-                      <h4 className="heading-elegant text-large mb-4">{t("Advanced Courses", "Padziļināti kursi")}</h4>
+                      <h4 className="heading-elegant text-large mb-4">{t("Advanced Courses", "Papildu kursi")}</h4>
                       <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 lg:gap-3">
                         {courses.map((course) => (
                           <div key={course} className="border-hover p-3 lg:p-3 rounded-sm">
@@ -280,7 +280,7 @@ const Credentials = () => {
                     <blockquote className="heading-elegant text-base lg:text-large text-center italic border-l-2 lg:border-l-4 border-foreground pl-4 lg:pl-8 mb-8">
                       {t(
                         "\"Every culture teaches something new about connection, communication, and creativity. These experiences directly influence how I solve marketing challenges.\"",
-                        "“Katra kultūra iemāca ko jaunu par saikni, komunikāciju un radošumu. Šī pieredze tieši ietekmē to, kā risinu mārketinga izaicinājumus.”",
+                        "“Katra kultūra man iemāca ko jaunu par to, kā cilvēki sazinās un rada. Tas tieši ietekmē to, kā risinu mārketinga uzdevumus.”",
                       )}
                     </blockquote>
 
@@ -293,9 +293,9 @@ const Credentials = () => {
                     <div className="lg:grid lg:grid-cols-2 lg:gap-x-8 mb-8">
                       <Accordion type="single" collapsible defaultValue="europe" className="lg:col-span-1">
                         {[
-                          { id: "europe", name: t("Europe", "Eiropa"), countries: t("Latvia, Lithuania, Estonia, Poland, Finland, Sweden, Norway, Croatia, Romania, Italy, Germany, Denmark, Spain, Portugal, Austria, Czechia, Hungary, Greece, Turkey, Georgia", "Latvija, Lietuva, Igaunija, Polija, Somija, Zviedrija, Norvēģija, Horvātija, Rumānija, Itālija, Vācija, Dānija, Spānija, Portugāle, Austrija, Čehija, Ungārija, Grieķija, Turcija, Gruzija"), description: t("Deep understanding of European business culture and digital marketing landscapes", "Dziļa izpratne par Eiropas biznesa kultūru un digitālā mārketinga vidi") },
-                          { id: "southeast asia", name: t("Southeast Asia", "Dienvidaustrumāzija"), countries: t("Thailand, Malaysia, Indonesia, Singapore, Vietnam", "Taizeme, Malaizija, Indonēzija, Singapūra, Vjetnama"), description: t("Experience with emerging markets and diverse consumer behaviors", "Pieredze attīstības tirgos un ar dažādu patērētāju uzvedību") },
-                          { id: "middle east", name: t("Middle East", "Tuvie Austrumi"), countries: t("Jordan, Israel", "Jordānija, Izraēla"), description: t("Cross-cultural marketing experience in complex markets", "Starpkultūru mārketinga pieredze sarežģītos tirgos") }
+                          { id: "europe", name: t("Europe", "Eiropa"), countries: t("Latvia, Lithuania, Estonia, Poland, Finland, Sweden, Norway, Croatia, Romania, Italy, Germany, Denmark, Spain, Portugal, Austria, Czechia, Hungary, Greece, Turkey, Georgia", "Latvija, Lietuva, Igaunija, Polija, Somija, Zviedrija, Norvēģija, Horvātija, Rumānija, Itālija, Vācija, Dānija, Spānija, Portugāle, Austrija, Čehija, Ungārija, Grieķija, Turcija, Gruzija"), description: t("Deep understanding of European business culture and digital marketing landscapes", "Labi pārzinu Eiropas biznesa kultūru un digitālā mārketinga vidi") },
+                          { id: "southeast asia", name: t("Southeast Asia", "Dienvidaustrumāzija"), countries: t("Thailand, Malaysia, Indonesia, Singapore, Vietnam", "Taizeme, Malaizija, Indonēzija, Singapūra, Vjetnama"), description: t("Experience with emerging markets and diverse consumer behaviors", "Pieredze jaunajos tirgos ar ļoti atšķirīgiem pircēju paradumiem") },
+                          { id: "middle east", name: t("Middle East", "Tuvie Austrumi"), countries: t("Jordan, Israel", "Jordānija, Izraēla"), description: t("Cross-cultural marketing experience in complex markets", "Mārketings dažādās kultūrās un sarežģītos tirgos") }
                         ].map((region) => (
                           <AccordionItem key={region.id} value={region.id}>
                             <AccordionTrigger className="heading-elegant text-lg lg:text-xl py-2">
@@ -310,7 +310,7 @@ const Credentials = () => {
                       </Accordion>
                       <Accordion type="single" collapsible className="lg:col-span-1">
                         {[
-                          { id: "africa", name: t("Africa", "Āfrika"), countries: t("Zambia, Botswana", "Zambija, Botsvāna"), description: t("Implemented fin-tech and digital marketing solutions in developing economies", "Ieviesti finanšu tehnoloģiju un digitālā mārketinga risinājumi jaunattīstības ekonomikās") },
+                          { id: "africa", name: t("Africa", "Āfrika"), countries: t("Zambia, Botswana", "Zambija, Botsvāna"), description: t("Implemented fin-tech and digital marketing solutions in developing economies", "Finanšu tehnoloģiju un digitālā mārketinga risinājumi jaunattīstības valstīs") },
                           { id: "americas", name: t("Americas", "Amerika"), countries: t("United States, Colombia, Mexico", "ASV, Kolumbija, Meksika"), description: t("Experience across diverse American markets from North to South", "Pieredze dažādos Amerikas tirgos — no ziemeļiem līdz dienvidiem") }
                         ].map((region) => (
                           <AccordionItem key={region.id} value={region.id}>
@@ -329,8 +329,8 @@ const Credentials = () => {
                     {/* Stats box */}
                     <div className="p-6 lg:p-12 border border-border rounded-sm bg-background/50 relative overflow-hidden">
                       <div className="relative text-center">
-                        <p className="heading-elegant text-xl lg:text-heading text-white">{t("36+ Countries Visited", "36+ apmeklētas valstis")}</p>
-                        <p className="body-clean text-sm lg:text-body text-muted-foreground mt-1 lg:mt-2">{t("4 Continents • Endless Insights", "4 kontinenti • bezgalīgas atziņas")}</p>
+                        <p className="heading-elegant text-xl lg:text-heading text-white">{t("36+ Countries Visited", "Apceļotas 36+ valstis")}</p>
+                        <p className="body-clean text-sm lg:text-body text-muted-foreground mt-1 lg:mt-2">{t("4 Continents • Endless Insights", "4 kontinenti • neskaitāmas atziņas")}</p>
                       </div>
                     </div>
                   </div>

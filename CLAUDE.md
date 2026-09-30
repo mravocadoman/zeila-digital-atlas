@@ -40,7 +40,9 @@ Added 2026-09-29. English lives at `/`, Latvian mirrors every route under `/lv`
   `/lv` URLs are in `public/sitemap.xml`.
 - `LanguageSwitch` — both flags, current one lit, top-right of the nav (and of the
   `/work-with-me` header). Flags are inline SVG because Windows shows flag emoji as letters.
-- Latvian copy addresses the reader as "jūs". Numerals stay in English format (`36.34`)
+- Latvian copy is written as Latvian, not translated line-by-line — short sentences, everyday
+  words, no calques ("datplūsma", "nekā lieka", "melnā kaste"). It addresses the reader as
+  "jūs". Numerals stay in English format (`36.34`)
   because `useCountUp` parses `,` as a thousands separator.
 - The desktop nav now collapses to the hamburger below `lg` (was `md`) — Latvian labels plus
   the switch didn't fit at tablet width.
