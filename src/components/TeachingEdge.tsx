@@ -53,7 +53,7 @@ const TeachingEdge = () => {
         <p className="body-clean text-muted-foreground text-lg lg:text-xl leading-relaxed mb-4">
           {t(
             "Most consultants can run your ads. Far fewer can explain the reasoning clearly enough that your team can take over — which is the only version of this that leaves you better off in a year.",
-            "Reklāmas jums var sataisīt daudzi. Daudz retāk kāds spēj visu izskaidrot tik skaidri, lai jūsu komanda varētu darbu pārņemt. Un tikai tad pēc gada jūs būsiet labākā situācijā nekā tagad.",
+            "Reklāmas tev var sataisīt daudzi. Daudz retāk kāds spēj visu izskaidrot tik skaidri, lai tava komanda varētu darbu pārņemt. Un tikai tad pēc gada tu būsi labākā situācijā nekā tagad.",
           )}
         </p>
         <p className="body-clean text-muted-foreground text-lg lg:text-xl leading-relaxed">

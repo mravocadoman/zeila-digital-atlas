@@ -25,7 +25,7 @@ const Hero = () => {
             >
               {t(
                 "I build the paid-growth system — then train your team to run it.",
-                "Sakārtoju jūsu reklāmas sistēmu un iemācu komandai to vadīt pašai.",
+                "Sakārtoju tavu reklāmas sistēmu un iemācu komandai to vadīt pašai.",
               )}
             </h1>
 

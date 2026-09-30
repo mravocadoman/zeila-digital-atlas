@@ -248,7 +248,7 @@ const CaseStudies = () => {
           ref={track}
           tabIndex={0}
           role="region"
-          aria-label={t("Case studies, scroll horizontally", "Rezultāti, ritiniet uz sāniem")}
+          aria-label={t("Case studies, scroll horizontally", "Rezultāti, ritini uz sāniem")}
           className="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-2 -mx-1 px-1 focus-visible:outline-none [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >
           {caseStudies.map((s) => (

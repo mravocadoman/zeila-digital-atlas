@@ -49,7 +49,7 @@ const audiences = (t: T) => [
     title: t("Corporate & SME teams", "Uzņēmumu komandas"),
     body: t(
       "In-house upskilling for marketing teams, founders, and cross-functional squads. Built around your channels, tools, and revenue goals.",
-      "Apmācības mārketinga komandām, uzņēmumu vadītājiem un jauktām komandām. Pielāgotas jūsu kanāliem, rīkiem un pārdošanas mērķiem.",
+      "Apmācības mārketinga komandām, uzņēmumu vadītājiem un jauktām komandām. Pielāgotas taviem kanāliem, rīkiem un pārdošanas mērķiem.",
     ),
   },
   {
@@ -69,7 +69,7 @@ const formats = (t: T) => [
     audience: t("Marketers, founders, agency teams", "mārketinga speciālistiem, dibinātājiem, aģentūru komandām"),
     outcome: t(
       "Leave with a live campaign structure, creative brief, and measurement plan.",
-      "Beigās jums ir gatava kampaņas struktūra, reklāmu uzdevums un mērīšanas plāns.",
+      "Beigās tev ir gatava kampaņas struktūra, reklāmu uzdevums un mērīšanas plāns.",
     ),
     bullets: [
       t("Account & pixel setup", "Konta un pikseļa iestatīšana"),
@@ -97,7 +97,7 @@ const formats = (t: T) => [
     audience: t("Universities & business schools", "augstskolām un biznesa skolām"),
     outcome: t(
       "A syllabus co-designed with your program, with assessments and industry cases.",
-      "Kursa programma, ko veidojam kopā ar jūsu augstskolu, ar pārbaudījumiem un reāliem uzņēmumu piemēriem.",
+      "Kursa programma, ko veidojam kopā ar tavu augstskolu, ar pārbaudījumiem un reāliem uzņēmumu piemēriem.",
     ),
     bullets: [
       t("Lectures & case studies", "Lekcijas un gadījumu analīze"),
@@ -111,7 +111,7 @@ const formats = (t: T) => [
     audience: t("In-house marketing teams", "iekšējām mārketinga komandām"),
     outcome: t(
       "Your team runs paid media and automation confidently — with me as a sparring partner.",
-      "Jūsu komanda droši vada maksāto reklāmu un automatizāciju, un man var jautāt, kad vien vajag.",
+      "Tava komanda droši vada maksāto reklāmu un automatizāciju, un man var jautāt, kad vien vajag.",
     ),
     bullets: [
       t("Weekly working sessions", "Iknedēļas darba sesijas"),
@@ -206,7 +206,7 @@ const testimonials = (t: T) => [
 ];
 
 const steps = (t: T) => [
-  { n: "01", title: t("Discovery call", "Iepazīšanās saruna"), body: t("30 minutes to understand your team, goals, current stack, and timeline.", "Pusstunda, lai saprastu jūsu komandu, mērķus, rīkus un termiņus.") },
+  { n: "01", title: t("Discovery call", "Iepazīšanās saruna"), body: t("30 minutes to understand your team, goals, current stack, and timeline.", "Pusstunda, lai saprastu tavu komandu, mērķus, rīkus un termiņus.") },
   { n: "02", title: t("Curriculum design", "Programmas izstrāde"), body: t("A tailored outline with learning outcomes, formats, and success metrics.", "Pielāgots plāns ar mācību mērķiem, formātu un to, kā mērīsim rezultātu.") },
   { n: "03", title: t("Delivery", "Apmācības"), body: t("Workshops, lectures, or ongoing coaching — in-person in Riga or remote worldwide.", "Darbnīcas, lekcijas vai ilgtermiņa apmācība — klātienē Rīgā vai attālināti no jebkuras vietas.") },
   { n: "04", title: t("Post-training support", "Atbalsts pēc apmācībām"), body: t("Recordings, playbooks, and follow-up sessions so the learning actually sticks.", "Ieraksti, rokasgrāmatas un papildu tikšanās, lai zināšanas nepazūd.") },
@@ -276,7 +276,7 @@ const WorkWithMe = () => {
     if (!form.name || !form.email || !form.type || !form.message) {
       toast({
         title: t("Missing information", "Trūkst informācijas"),
-        description: t("Please fill in name, email, program type, and message.", "Lūdzu, aizpildiet vārdu, e-pastu, programmas veidu un ziņu."),
+        description: t("Please fill in name, email, program type, and message.", "Lūdzu, aizpildi vārdu, e-pastu, programmas veidu un ziņu."),
         variant: "destructive",
       });
       return;
@@ -285,7 +285,7 @@ const WorkWithMe = () => {
     if (!emailRe.test(form.email)) {
       toast({
         title: t("Invalid email", "Nederīgs e-pasts"),
-        description: t("Please enter a valid email address.", "Lūdzu, ievadiet derīgu e-pasta adresi."),
+        description: t("Please enter a valid email address.", "Lūdzu, ievadi derīgu e-pasta adresi."),
         variant: "destructive",
       });
       return;
@@ -305,7 +305,7 @@ const WorkWithMe = () => {
         title: t("Something went wrong", "Kaut kas nogāja greizi"),
         description: t(
           "Please try again or email rihards.zeila@gmail.com directly.",
-          "Lūdzu, mēģiniet vēlreiz vai rakstiet tieši uz rihards.zeila@gmail.com.",
+          "Lūdzu, mēģini vēlreiz vai raksti tieši uz rihards.zeila@gmail.com.",
         ),
         variant: "destructive",
       });
@@ -348,7 +348,7 @@ const WorkWithMe = () => {
             <p className="text-lg md:text-xl wwm-muted leading-relaxed max-w-2xl">
               {t(
                 "MBA lecturer at Riga Business School. Course leader for the EU-funded LIFT program. Workshop facilitator for the International Trade Centre. Ten years in the trenches, up to $5M/year of ad spend managed — packaged into training your team will actually use on Monday morning.",
-                "MBA lektors Rīgas Biznesa skolā, kursu vadītājs ES finansētajā LIFT programmā un Starptautiskā tirdzniecības centra darbnīcu vadītājs. Desmit gadu prakse un līdz $5M reklāmas budžeta gadā — apmācībās, kuras jūsu komanda izmantos jau pirmdienas rītā.",
+                "MBA lektors Rīgas Biznesa skolā, kursu vadītājs ES finansētajā LIFT programmā un Starptautiskā tirdzniecības centra darbnīcu vadītājs. Desmit gadu prakse un līdz $5M reklāmas budžeta gadā — apmācībās, kuras tava komanda izmantos jau pirmdienas rītā.",
               )}
             </p>
             <div className="flex flex-wrap gap-3 pt-2">
@@ -602,13 +602,13 @@ const WorkWithMe = () => {
             <h2 className="wwm-display text-4xl md:text-5xl leading-tight">
               {t(
                 <>Tell me about your <span className="wwm-display-italic">team</span>.</>,
-                <>Pastāstiet par savu <span className="wwm-display-italic">komandu</span>.</>,
+                <>Pastāsti par savu <span className="wwm-display-italic">komandu</span>.</>,
               )}
             </h2>
             <p className="text-[color:var(--wwm-ivory)]/75 leading-relaxed text-lg">
               {t(
                 "A short note about your organization, goals, and timeline is enough to get started. I reply within two business days.",
-                "Pietiek ar īsu ziņu par jūsu organizāciju, mērķiem un laiku. Atbildēšu divu darba dienu laikā.",
+                "Pietiek ar īsu ziņu par savu organizāciju, mērķiem un laiku. Atbildēšu divu darba dienu laikā.",
               )}
             </p>
             <div className="pt-6 space-y-3 text-sm border-t wwm-hairline">
@@ -626,11 +626,11 @@ const WorkWithMe = () => {
             <div className="grid md:grid-cols-2 gap-4">
               <div>
                 <label className="block text-xs uppercase tracking-[0.18em] mb-2 wwm-muted">{t("Name", "Vārds")}</label>
-                <Input value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} placeholder={t("Your name", "Jūsu vārds")} className="wwm-field h-11" required />
+                <Input value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} placeholder={t("Your name", "Tavs vārds")} className="wwm-field h-11" required />
               </div>
               <div>
                 <label className="block text-xs uppercase tracking-[0.18em] mb-2 wwm-muted">{t("Email", "E-pasts")}</label>
-                <Input type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} placeholder={t("you@company.com", "jus@uznemums.lv")} className="wwm-field h-11" required />
+                <Input type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} placeholder={t("you@company.com", "tu@uznemums.lv")} className="wwm-field h-11" required />
               </div>
             </div>
             <div>
@@ -641,7 +641,7 @@ const WorkWithMe = () => {
               <label className="block text-xs uppercase tracking-[0.18em] mb-2 wwm-muted">{t("Program type", "Programmas veids")}</label>
               <Select value={form.type} onValueChange={(v) => setForm({ ...form, type: v })}>
                 <SelectTrigger className="wwm-field h-11">
-                  <SelectValue placeholder={t("Select program type", "Izvēlieties programmas veidu")} />
+                  <SelectValue placeholder={t("Select program type", "Izvēlies programmas veidu")} />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="workshop">{t("Workshop / 1-day intensive", "Darbnīca / 1 dienas intensīvais kurss")}</SelectItem>

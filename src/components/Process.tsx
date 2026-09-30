@@ -6,7 +6,7 @@ const steps = (t: T) => [
     title: t("Discovery call", "Iepazīšanās saruna"),
     body: t(
       "Thirty minutes on your goals, current spend, stack, and what's already been tried. If I'm not the right person, I say so on this call.",
-      "Pusstunda par jūsu mērķiem, budžetu, rīkiem un to, kas jau izmēģināts. Ja neesmu īstais cilvēks, pateikšu to uzreiz.",
+      "Pusstunda par taviem mērķiem, budžetu, rīkiem un to, kas jau izmēģināts. Ja neesmu īstais cilvēks, pateikšu to uzreiz.",
     ),
   },
   {
@@ -22,7 +22,7 @@ const steps = (t: T) => [
     title: t("Build", "Darbs"),
     body: t(
       "I do the work in your accounts, with your team watching rather than waiting. No black box — you see the reasoning as it happens.",
-      "Strādāju jūsu reklāmas kontos, un komanda redz visu procesu, nevis tikai gaida rezultātu. Nekā slēpta — katru lēmumu var redzēt un saprast.",
+      "Strādāju tavos reklāmas kontos, un komanda redz visu procesu, nevis tikai gaida rezultātu. Nekā slēpta — katru lēmumu var redzēt un saprast.",
     ),
   },
   {
@@ -30,7 +30,7 @@ const steps = (t: T) => [
     title: t("Handover", "Nodošana"),
     body: t(
       "SOPs, dashboards, and a working session so your team can run it. Follow-up check-ins are included; a retainer is optional, never assumed.",
-      "Instrukcijas, atskaites un kopīga darba sesija, lai komanda varētu turpināt pati. Pēcpārbaudes ir iekļautas cenā; ilgtermiņa sadarbība — tikai tad, ja to vēlaties.",
+      "Instrukcijas, atskaites un kopīga darba sesija, lai komanda varētu turpināt pati. Pēcpārbaudes ir iekļautas cenā; ilgtermiņa sadarbība — tikai tad, ja to vēlies.",
     ),
   },
 ];

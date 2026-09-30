@@ -45,10 +45,10 @@ const About = () => {
               <p className="body-clean text-muted-foreground text-lg lg:text-xl max-w-2xl leading-relaxed">
                 {t(
                   "The full record — every lecture, workshop, panel and podcast, the career timeline, and the credentials behind it. If you're here to hire rather than to read,",
-                  "Šeit ir viss: katra lekcija, darbnīca, diskusija un podkāsts, karjeras gaita un izglītība. Ja meklējat nevis CV, bet palīdzību savam uzņēmumam,",
+                  "Šeit ir viss: katra lekcija, darbnīca, diskusija un podkāsts, karjeras gaita un izglītība. Ja tu meklē nevis CV, bet palīdzību savam uzņēmumam,",
                 )}{" "}
                 <Link to={to("/#engagements")} className="text-primary hover:underline">
-                  {t("the work I do is over here", "sadarbības iespējas atradīsiet šeit")}
+                  {t("the work I do is over here", "sadarbības iespējas atradīsi šeit")}
                 </Link>
                 .
               </p>
@@ -87,7 +87,7 @@ const About = () => {
         <section className="px-6 lg:px-16 py-16 lg:py-24">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="heading-elegant text-2xl lg:text-4xl mb-6">
-              {t("Got what you came for?", "Atradāt, ko meklējāt?")}
+              {t("Got what you came for?", "Atradi, ko meklēji?")}
             </h2>
             <Link
               to={to("/#contact")}
