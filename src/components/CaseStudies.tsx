@@ -11,7 +11,7 @@ const getCaseStudies = (t: T) => [
       "Specialty coffee brand moving from retail to digital across Meta, TikTok, Google and YouTube — a Q4 pilot that became a long-term partnership.",
       "Specializētās kafijas zīmols, kas no veikalu plauktiem pārgāja uz pārdošanu internetā — Meta, TikTok, Google un YouTube. Sākām ar Q4 pilotprojektu, kas pārauga ilgtermiņa sadarbībā.",
     ),
-    approach: t("Held 4–7 ROAS through the iOS 14 measurement shift.", "iOS 14 izmaiņu laikā noturējām ROAS 4–7."),
+    approach: t("Held 4–7 ROAS through the iOS 14 measurement shift.", "iOS 14 izmaiņu laikā noturēju ROAS 4–7."),
     metrics: [
       { label: t("Monthly Budget", "Mēneša budžets"), value: "€75K+" },
       { label: t("Peak ROAS", "Augstākais ROAS"), value: "13.36" },
@@ -25,7 +25,7 @@ const getCaseStudies = (t: T) => [
       "Latvian outlet store selling branded fashion at a discount. Maximum reach, minimal spend.",
       "Latvijas outlet veikals ar zīmolu apģērbiem par zemākām cenām. Pēc iespējas vairāk pircēju ar pēc iespējas mazāku budžetu.",
     ),
-    approach: t("Creative testing plus Advantage+ campaigns on Meta.", "Reklāmu testēšana un Advantage+ kampaņas Meta."),
+    approach: t("Creative testing plus Advantage+ campaigns on Meta.", "Reklāmu testēšana un Advantage+ kampaņas Meta platformā."),
     metrics: [
       { label: "ROAS", value: "36.34" },
       { label: t("Initial Spend", "Sākuma budžets"), value: "€1K" },
@@ -78,7 +78,7 @@ const getCaseStudies = (t: T) => [
       { label: t("Google Ranking", "Vieta Google"), value: "#3" },
       { label: t("Leads Generated", "Pieteikumi"), value: "300+" },
       { label: t("Participants", "Dalībnieki"), value: "75-105" },
-      { label: t("B2B Reply Rate", "B2B e-pastu atbildes"), value: "5%" },
+      { label: t("B2B Reply Rate", "B2B atbilžu īpatsvars"), value: "5%" },
     ],
   },
 ];

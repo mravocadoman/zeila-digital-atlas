@@ -213,7 +213,7 @@ const steps = (t: T) => [
 ];
 
 const faqs = (t: T) => [
-  { q: t("In-person, remote or hybrid?", "Klātienē, attālināti vai hibrīdi?"), a: t("All three. I'm based in Riga and travel across Europe. Remote sessions run on Zoom or Google Meet with interactive workbooks.", "Jebkurā no tiem. Dzīvoju Rīgā un braucu pa visu Eiropu. Attālinātās nodarbības notiek Zoom vai Google Meet ar interaktīvām darba lapām.") },
+  { q: t("In-person, remote or hybrid?", "Klātienē, attālināti vai hibrīdi?"), a: t("All three. I'm based in Riga and travel across Europe. Remote sessions run on Zoom or Google Meet with interactive workbooks.", "Visi trīs varianti der. Dzīvoju Rīgā un braucu pa visu Eiropu. Attālinātās nodarbības notiek Zoom vai Google Meet ar interaktīvām darba lapām.") },
   { q: t("What languages do you teach in?", "Kādā valodā notiek apmācības?"), a: t("English and Latvian. Materials are typically in English.", "Latviešu un angļu valodā. Materiāli parasti ir angļu valodā.") },
   { q: t("Ideal group size?", "Cik lielai jābūt grupai?"), a: t("Workshops work best with 8–25 participants. University modules follow the program's cohort size.", "Darbnīcām vislabāk der 8–25 dalībnieki. Augstskolās — tik, cik studentu ir kursā.") },
   { q: t("Can we record sessions?", "Vai nodarbības var ierakstīt?"), a: t("Yes — recording rights are agreed up front and included in most engagements.", "Jā — par ierakstiem vienojamies iepriekš, un vairumā gadījumu tie ir iekļauti cenā.") },

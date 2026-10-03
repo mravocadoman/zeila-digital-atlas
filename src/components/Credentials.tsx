@@ -9,7 +9,7 @@ const Credentials = () => {
   const { t } = useLang();
 
   const skills = [
-    { title: t("Meta Advertising", "Meta reklāmas"), description: t("Expert in full-funnel Meta ad systems that drive measurable ROAS and client acquisition.", "Pilnas pārdošanas piltuves Meta reklāmās, kas nes izmērāmu ROAS un jaunus klientus."), icon: Target },
+    { title: t("Meta Advertising", "Meta reklāmas"), description: t("Expert in full-funnel Meta ad systems that drive measurable ROAS and client acquisition.", "Meta reklāmu sistēmas visai pārdošanas piltuvei — ar izmērāmu ROAS un jauniem klientiem."), icon: Target },
     { title: t("Digital Marketing Strategy", "Digitālā mārketinga stratēģija"), description: t("Building scalable systems that combine paid, organic, and AI-driven growth.", "Sistēmas, kas aug līdzi uzņēmumam un apvieno maksāto reklāmu, organisko saturu un MI."), icon: TrendingUp },
     { title: t("Business Automations", "Biznesa automatizācija"), description: t("Streamlining operations and client workflows with Make, n8n, and GoHighLevel.", "Procesu un klientu saziņas automatizācija ar Make, n8n un GoHighLevel."), icon: Zap },
     { title: t("Creative Strategy", "Kreatīvā stratēģija"), description: t("Designing data-backed ad concepts, visuals, and copy that convert.", "Datos balstītas reklāmu idejas, vizuāļi un teksti, kas pārdod."), icon: Lightbulb },

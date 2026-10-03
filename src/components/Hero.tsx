@@ -44,7 +44,7 @@ const Hero = () => {
             >
               {t(
                 "Ten years and $5M+ a year in ad spend, on the agency side and in the classroom. I work with e-commerce brands, SMEs, and in-house teams who are past experimenting and want the thing to be predictable.",
-                "Desmit gadi reklāmā un vairāk nekā $5M pārvaldīta budžeta gadā — gan aģentūrā, gan lekciju zālē. Strādāju ar e-veikaliem, maziem un vidējiem uzņēmumiem un mārketinga komandām, kas eksperimentēt jau ir beigušas un grib paredzamu rezultātu.",
+                "Desmit gadi reklāmā un vairāk nekā $5M pārvaldīta budžeta gadā — gan aģentūrā, gan lekciju zālē. Strādāju ar e-veikaliem, maziem un vidējiem uzņēmumiem un mārketinga komandām, kas jau ir beigušas eksperimentēt un grib paredzamu rezultātu.",
               )}
             </p>
 

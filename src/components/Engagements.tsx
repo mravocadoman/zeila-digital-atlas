@@ -27,7 +27,7 @@ const getEngagements = (t: T) => [
     deliverables: [
       t("Working sessions on the decision in front of you", "Darba sesijas tieši par tavu jautājumu"),
       t("A written recommendation you can take to the board", "Rakstisks ieteikums, ko var likt priekšā valdei"),
-      t("Follow-up as it plays out, not a one-shot opinion", "Esmu blakus arī tad, kad tu lēmumu īsteno — ne tikai viens padoms"),
+      t("Follow-up as it plays out, not a one-shot opinion", "Esmu blakus arī tad, kad lēmumu īsteno — nevis tikai viens padoms"),
     ],
     featured: false,
   },

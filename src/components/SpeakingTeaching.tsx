@@ -29,7 +29,7 @@ const getCategories = (t: T) => [
         title: t("BBA Lecturer", "BBA lektors"),
         organization: t("RISEBA University", "Augstskola RISEBA"),
         period: "2023 – 2024",
-        description: t("Developed, recorded, and graded lectures on social media management, content strategy, landing pages, and Meta advertising for RISEBA Bachelor's students.", "Izveidoju, ierakstīju un vērtēju lekcijas RISEBA bakalaura studentiem: sociālo tīklu vadība, satura stratēģija, landing lapas un Meta reklāma."),
+        description: t("Developed, recorded, and graded lectures on social media management, content strategy, landing pages, and Meta advertising for RISEBA Bachelor's students.", "Izveidoju, ierakstīju un vērtēju lekcijas RISEBA bakalaura studentiem: sociālo tīklu vadība, satura stratēģija, mērķlapas un Meta reklāma."),
         link: null
       }
     ]
