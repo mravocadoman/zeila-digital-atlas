@@ -1,5 +1,6 @@
 import { useCountUp } from "@/hooks/use-count-up";
 import { useReveal } from "@/hooks/use-reveal";
+import { T, useLang } from "@/i18n/lang";
 
 /**
  * The four headline numbers, moved out of the logo strip.
@@ -8,11 +9,11 @@ import { useReveal } from "@/hooks/use-reveal";
  * a visitor can check against a card immediately below it, which is the whole
  * reason to claim them. Stacked above the logos they were just decoration.
  */
-const stats = [
-  { value: "10+", label: "Years in paid media" },
-  { value: "$5M+", label: "Annual ad spend managed" },
-  { value: "36.34", label: "Best recorded ROAS" },
-  { value: "20+", label: "Programs taught" },
+const stats = (t: T) => [
+  { value: "10+", label: t("Years in paid media", "Gadi reklāmā") },
+  { value: "$5M+", label: t("Annual ad spend managed", "Pārvaldīts budžets gadā") },
+  { value: "36.34", label: t("Best recorded ROAS", "Labākais ROAS") },
+  { value: "20+", label: t("Programs taught", "Vadītas mācību programmas") },
 ];
 
 const Stat = ({ value, label }: { value: string; label: string }) => {
@@ -31,14 +32,15 @@ const Stat = ({ value, label }: { value: string; label: string }) => {
 
 const ResultsBand = () => {
   const reveal = useReveal<HTMLDivElement>();
+  const { t } = useLang();
   return (
     <div
       ref={reveal.ref}
       className={`max-w-6xl mx-auto px-6 lg:px-16 pt-16 lg:pt-24 ${reveal.className}`}
     >
       <div className="stagger grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-10">
-        {stats.map((s) => (
-          <Stat key={s.label} value={s.value} label={s.label} />
+        {stats(t).map((s) => (
+          <Stat key={s.value} value={s.value} label={s.label} />
         ))}
       </div>
     </div>

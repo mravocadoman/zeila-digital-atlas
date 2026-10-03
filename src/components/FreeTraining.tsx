@@ -1,7 +1,9 @@
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
+import { useLang } from "@/i18n/lang";
 
 const FreeTraining = () => {
   const { ref, isVisible } = useScrollAnimation();
+  const { t } = useLang();
 
   return (
     <section 
@@ -12,11 +14,13 @@ const FreeTraining = () => {
       <div className="max-w-7xl mx-auto">
         <div className={`transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <h2 className="heading-elegant text-3xl lg:text-display mb-4 lg:mb-6 text-center">
-            Free Training
+            {t("Free Training", "Bezmaksas apmācības")}
           </h2>
           <p className="body-clean text-lg lg:text-2xl text-muted-foreground mb-8 lg:mb-12 text-center max-w-3xl mx-auto">
-            Learn Meta advertising strategies through my comprehensive YouTube playlist. 
-            Over 10 lessons covering everything from fundamentals to advanced optimization techniques.
+            {t(
+              "Learn Meta advertising strategies through my comprehensive YouTube playlist. Over 10 lessons covering everything from fundamentals to advanced optimization techniques.",
+              "Mans bezmaksas YouTube kurss par Meta reklāmām — vairāk nekā 10 nodarbības no pašiem pamatiem līdz sarežģītākai optimizācijai.",
+            )}
           </p>
 
           <div className="max-w-5xl mx-auto">
@@ -33,12 +37,13 @@ const FreeTraining = () => {
               </div>
               <div className="p-2 lg:p-8">
                 <h3 className="heading-elegant text-xl lg:text-heading mb-3">
-                  Mastering Meta Ads
+                  {t("Mastering Meta Ads", "Meta reklāmas no A līdz Z")}
                 </h3>
                 <p className="body-clean text-lg lg:text-xl text-muted-foreground mb-4">
-                  A complete training series designed to help businesses and marketers master Meta advertising. 
-                  From campaign setup to scaling strategies, this playlist covers the essential skills needed to 
-                  generate results with Facebook and Instagram ads.
+                  {t(
+                    "A complete training series designed to help businesses and marketers master Meta advertising. From campaign setup to scaling strategies, this playlist covers the essential skills needed to generate results with Facebook and Instagram ads.",
+                    "Pilns video kurss uzņēmējiem un mārketinga speciālistiem: no pirmās kampaņas izveides līdz budžeta palielināšanai. Viss, kas vajadzīgs, lai Facebook un Instagram reklāmas nestu rezultātu.",
+                  )}
                 </p>
                 <a
                   href="https://www.youtube.com/playlist?list=PLHpAUrghDOai7S1pZVyoOhOn6crOlUc5i"
@@ -46,7 +51,7 @@ const FreeTraining = () => {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-primary hover:text-white transition-colors body-clean font-bold text-sm uppercase tracking-wider"
                 >
-                  View Full Playlist on YouTube
+                  {t("View Full Playlist on YouTube", "Skatīties visu kursu YouTube")}
                   <svg 
                     className="w-4 h-4" 
                     fill="none" 

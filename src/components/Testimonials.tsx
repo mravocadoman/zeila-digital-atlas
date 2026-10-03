@@ -1,4 +1,5 @@
 import { useReveal } from "@/hooks/use-reveal";
+import { T, useLang } from "@/i18n/lang";
 /**
  * All quotes visible — no accordion. Social proof behind a click is social
  * proof nobody reads.
@@ -7,29 +8,36 @@ import { useReveal } from "@/hooks/use-reveal";
  * reference — "for any employer looking for a colleague" — so it now lives on
  * /about rather than here, where it would undercut the consulting positioning.
  */
-const testimonials = [
+const testimonials = (t: T) => [
   {
-    quote:
+    quote: t(
       "An exceptional marketer with a deep understanding of the digital marketing ecosystem. From day one he promoted data-led decisions and the importance of measuring campaign performance.",
+      "Izcils mārketinga speciālists, kurš digitālo mārketingu pārzina no A līdz Z. Jau no pirmās dienas viņš uzstāja, ka lēmumi jāpieņem, balstoties datos, un ka kampaņu rezultāti ir jāmēra.",
+    ),
     author: "Bence Etele Baráth",
     company: "AppsFlyer",
   },
   {
-    quote:
+    quote: t(
       "Rihards is THE expert on Facebook advertising — the one I go to for any question related to it. An excellent public speaker who gets the message across to any audience.",
+      "Rihards ir mans galvenais Facebook reklāmas eksperts — pie viņa eju ar jebkuru jautājumu. Lielisks runātājs, kurš spēj uzrunāt jebkuru auditoriju.",
+    ),
     author: "Regita Zeiļa",
-    company: "Director, Social Entrepreneurship Association",
+    company: t("Director, Social Entrepreneurship Association", "Direktore, Sociālās uzņēmējdarbības asociācija"),
   },
   {
-    quote:
+    quote: t(
       "Highly skilled, passionate and dedicated. Whenever I need advice on digital marketing — I go to him. His international experience and valuable know-how excels his peers.",
+      "Ļoti zinošs, aizrautīgs un uzticams. Kad man vajag padomu digitālajā mārketingā, eju pie viņa. Ar savu starptautisko pieredzi viņš ir soli priekšā citiem.",
+    ),
     author: "Kristina Berga",
-    company: "CEO, HuskySense",
+    company: t("CEO, HuskySense", "Vadītāja, HuskySense"),
   },
 ];
 
 const Testimonials = () => {
   const reveal = useReveal<HTMLElement>();
+  const { t } = useLang();
   return (
   <section
     id="testimonials"
@@ -37,15 +45,15 @@ const Testimonials = () => {
     className={`py-12 lg:py-24 px-6 lg:px-16 section-rule ${reveal.className}`}
   >
     <div className="max-w-6xl mx-auto">
-      <span className="eyebrow block mb-4">In their words</span>
+      <span className="eyebrow block mb-4">{t("In their words", "Viņu vārdiem")}</span>
       <h2 className="heading-elegant text-3xl lg:text-5xl mb-8 lg:mb-12">
-        From colleagues and clients.
+        {t("From colleagues and clients.", "Ko par mani saka kolēģi un klienti.")}
       </h2>
 
       <div className="stagger grid md:grid-cols-3 gap-4 lg:gap-6">
-        {testimonials.map((t) => (
+        {testimonials(t).map((q) => (
           <figure
-            key={t.author}
+            key={q.author}
             className="border border-border rounded-lg p-5 lg:p-7 flex flex-col lift"
           >
             <span
@@ -55,11 +63,11 @@ const Testimonials = () => {
               &ldquo;
             </span>
             <blockquote className="body-clean text-muted-foreground text-base lg:text-lg leading-relaxed mb-6 flex-1">
-              {t.quote}
+              {q.quote}
             </blockquote>
             <figcaption className="pt-4 border-t border-border">
-              <p className="body-clean font-semibold text-foreground">{t.author}</p>
-              <p className="body-clean text-sm text-muted-foreground">{t.company}</p>
+              <p className="body-clean font-semibold text-foreground">{q.author}</p>
+              <p className="body-clean text-sm text-muted-foreground">{q.company}</p>
             </figcaption>
           </figure>
         ))}

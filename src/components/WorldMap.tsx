@@ -5,6 +5,7 @@ import {
   Geography,
   ZoomableGroup,
 } from "react-simple-maps";
+import { useLang } from "@/i18n/lang";
 
 const geoUrl = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json";
 
@@ -54,6 +55,7 @@ const visitedIds = Object.keys(visitedCountryCodes);
 const WorldMap = () => {
   const [hoveredCountry, setHoveredCountry] = useState<string | null>(null);
   const [tooltipContent, setTooltipContent] = useState("");
+  const { t } = useLang();
 
   return (
     <div className="relative w-full">
@@ -145,11 +147,11 @@ const WorldMap = () => {
       <div className="flex justify-center gap-8 mt-6">
         <div className="flex items-center gap-2">
           <div className="w-4 h-4 bg-primary rounded-sm shadow-[0_0_10px_rgba(3,195,248,0.5)]" />
-          <span className="body-clean text-sm text-muted-foreground">Visited</span>
+          <span className="body-clean text-sm text-muted-foreground">{t("Visited", "Apmeklēta")}</span>
         </div>
         <div className="flex items-center gap-2">
           <div className="w-4 h-4 bg-secondary rounded-sm opacity-60" />
-          <span className="body-clean text-sm text-muted-foreground">Not yet</span>
+          <span className="body-clean text-sm text-muted-foreground">{t("Not yet", "Vēl ne")}</span>
         </div>
       </div>
     </div>

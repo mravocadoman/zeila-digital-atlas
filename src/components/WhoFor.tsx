@@ -1,24 +1,34 @@
 import { useReveal } from "@/hooks/use-reveal";
+import { T, useLang } from "@/i18n/lang";
 
 import scalingGfx from "@/assets/gfx/scaling.webp";
 import plateauGfx from "@/assets/gfx/plateau.webp";
 import systemGfx from "@/assets/gfx/system.webp";
 
-const audiences = [
+const audiences = (t: T) => [
   {
     gfx: scalingGfx,
-    title: "E-commerce brands scaling up",
-    body: "You're spending real money — €20k a month and climbing — and the returns are getting less predictable as the budget grows. Usually a structure and measurement problem, not a creative one.",
+    title: t("E-commerce brands scaling up", "E-veikali, kas aug"),
+    body: t(
+      "You're spending real money — €20k a month and climbing — and the returns are getting less predictable as the budget grows. Usually a structure and measurement problem, not a creative one.",
+      "Reklāmā tu jau iegulda nopietnu naudu (€20k mēnesī un vairāk), bet, budžetam augot, rezultātu kļūst arvien grūtāk paredzēt. Parasti vaina nav pašās reklāmās, bet kampaņu struktūrā un mērīšanā.",
+    ),
   },
   {
     gfx: plateauGfx,
-    title: "SMEs stuck at a plateau",
-    body: "Ads work sometimes and you can't say why. There's no funnel behind the traffic and no reliable way to tell which euro did the work.",
+    title: t("SMEs stuck at a plateau", "Uzņēmumi, kas iestrēguši uz vietas"),
+    body: t(
+      "Ads work sometimes and you can't say why. There's no funnel behind the traffic and no reliable way to tell which euro did the work.",
+      "Reklāmas reizēm nostrādā, bet nav skaidrs, kāpēc. Aiz tām nav pārdošanas piltuves, un nav iespējams pateikt, kurš iztērētais eiro atnesa klientu.",
+    ),
   },
   {
     gfx: systemGfx,
-    title: "In-house teams without a system",
-    body: "You have marketers, not a machine. You want the process documented and the team able to run it — not another agency you can never leave.",
+    title: t("In-house teams without a system", "Mārketinga komandas bez sistēmas"),
+    body: t(
+      "You have marketers, not a machine. You want the process documented and the team able to run it — not another agency you can never leave.",
+      "Cilvēki tev ir, sistēmas nav. Gribi, lai process ir aprakstīts un komanda to vada pati — nevis vēl vienu aģentūru, no kuras vairs nevar tikt vaļā.",
+    ),
   },
 ];
 
@@ -63,6 +73,7 @@ const AudienceCard = ({
 
 const WhoFor = () => {
   const reveal = useReveal<HTMLElement>();
+  const { t } = useLang();
 
   return (
     <section
@@ -71,17 +82,19 @@ const WhoFor = () => {
       className={`py-12 lg:py-24 px-6 lg:px-16 section-rule ${reveal.className}`}
     >
       <div className="max-w-6xl mx-auto">
-        <span className="eyebrow block mb-4">Who this is for</span>
+        <span className="eyebrow block mb-4">{t("Who this is for", "Kam es palīdzu")}</span>
         <h2 className="heading-elegant text-3xl lg:text-5xl mb-4 max-w-3xl">
-          Three situations I'm actually useful in.
+          {t("Three situations I'm actually useful in.", "Trīs situācijas, kurās varu reāli palīdzēt.")}
         </h2>
         <p className="body-clean text-muted-foreground text-lg lg:text-xl max-w-2xl mb-8 lg:mb-12">
-          If none of these sound like you, say so in the form anyway — I'll tell
-          you straight if it isn't a fit.
+          {t(
+            "If none of these sound like you, say so in the form anyway — I'll tell you straight if it isn't a fit.",
+            "Ja neatpazīsti sevi nevienā no tām, tāpat uzraksti — godīgi pateikšu, vai varu palīdzēt.",
+          )}
         </p>
 
         <div className="grid md:grid-cols-3 gap-4 lg:gap-6">
-          {audiences.map((a) => (
+          {audiences(t).map((a) => (
             <AudienceCard key={a.title} {...a} />
           ))}
         </div>
