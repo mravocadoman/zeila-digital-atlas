@@ -24,8 +24,8 @@ const Hero = () => {
               style={{ animationDelay: "0.15s" }}
             >
               {t(
-                "I build the paid-growth system, then train your team to run it.",
-                "Sakārtoju tavu reklāmas sistēmu un iemācu komandai to vadīt pašai.",
+                "I help you make money from ads and teach your team to run it themselves.",
+                "Palīdzu tev nopelnīt ar reklāmu un iemācu komandai to darīt pašai.",
               )}
             </h1>
 
@@ -34,8 +34,8 @@ const Hero = () => {
               style={{ animationDelay: "0.28s" }}
             >
               {t(
-                "Anyone can run your ads. The hard part is leaving behind a system that still works without me.",
-                "Reklāmu palaist var jebkurš. Grūtākais ir atstāt sistēmu, kas strādā arī bez manis.",
+                "I sort out the ad account, the funnel and the tracking. After that your team runs it.",
+                "Sakārtoju reklāmas kontu, pārdošanas piltuvi un mērīšanu. Pēc tam komanda to vada pati.",
               )}
             </p>
             <p
@@ -43,8 +43,8 @@ const Hero = () => {
               style={{ animationDelay: "0.36s" }}
             >
               {t(
-                "Ten years in paid media and up to $5M a year in ad spend, on the agency side and in the Riga Business School MBA room. I work with e-commerce brands, SMEs and in-house teams that are done experimenting and want numbers they can rely on.",
-                "Desmit gadi reklāmā un līdz $5M budžeta gadā, gan aģentūrā, gan Rīgas Biznesa skolas MBA auditorijā. Strādāju ar e-veikaliem, maziem un vidējiem uzņēmumiem un mārketinga komandām, kas ar eksperimentiem jau ir cauri un grib skaitļus, uz kuriem var paļauties.",
+                "Ten years in the industry and up to $5M a year in ad spend. I teach digital marketing on the Riga Business School MBA. I work with e-commerce brands, SMEs and in-house marketing teams.",
+                "Desmit gadi nozarē un līdz $5M reklāmas budžeta gadā. Mācu digitālo mārketingu Rīgas Biznesa skolas MBA programmā. Strādāju ar e-veikaliem, maziem un vidējiem uzņēmumiem un mārketinga komandām.",
               )}
             </p>
 
