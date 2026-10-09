@@ -14,7 +14,7 @@ const Footer = () => {
             <h3 className="heading-elegant text-large mb-4">Rihards Zeila</h3>
             <p className="body-clean text-body text-muted-foreground leading-relaxed">
               {t(
-                "I build the paid-growth system — then train your team to run it.",
+                "I build the paid-growth system, then train your team to run it.",
                 "Sakārtoju tavu reklāmas sistēmu un iemācu komandai to vadīt pašai.",
               )}
             </p>

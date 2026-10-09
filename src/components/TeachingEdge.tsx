@@ -11,12 +11,12 @@ const highlights = (t: T) => [
   {
     org: t("Riga Business School", "Rīgas Biznesa skola"),
     role: t("MBA Lecturer, Digital Marketing", "MBA lektors digitālajā mārketingā"),
-    period: t("2021 — present", "2021 — šobrīd"),
+    period: t("2021–present", "2021–šobrīd"),
   },
   {
     org: t("LIFT Program (EU-funded)", "LIFT programma (ES finansēta)"),
     role: t("Course leader — Meta Ads & automation for SMEs", "Kursu vadītājs — Meta reklāma un automatizācija uzņēmējiem"),
-    period: t("2024 — present", "2024 — šobrīd"),
+    period: t("2024–present", "2024–šobrīd"),
   },
   {
     org: t("International Trade Centre", "Starptautiskais tirdzniecības centrs (ITC)"),
@@ -26,7 +26,7 @@ const highlights = (t: T) => [
   {
     org: t("RISEBA University", "Augstskola RISEBA"),
     role: t("BBA Lecturer, Social Media & Meta Ads", "BBA lektors — sociālie mediji un Meta reklāma"),
-    period: "2023 — 2024",
+    period: "2023–2024",
   },
   {
     org: t("University of Lusaka", "Lusakas Universitāte (Zambija)"),
@@ -52,8 +52,8 @@ const TeachingEdge = () => {
         </h2>
         <p className="body-clean text-muted-foreground text-lg lg:text-xl leading-relaxed mb-4">
           {t(
-            "Most consultants can run your ads. Far fewer can explain the reasoning clearly enough that your team can take over — which is the only version of this that leaves you better off in a year.",
-            "Reklāmas tev var sataisīt daudzi. Daudz retāk kāds spēj visu izskaidrot tik skaidri, lai tava komanda varētu darbu pārņemt. Un tikai tad pēc gada tu būsi labākā situācijā nekā tagad.",
+            "Most consultants can run your ads. Far fewer can explain the reasoning clearly enough that your team can take over. That's the only version of this that leaves you better off in a year.",
+            "Reklāmas tev var palaist daudzi. Daudz retāk kāds spēj visu izskaidrot tik skaidri, lai tava komanda varētu darbu pārņemt. Un tikai tā pēc gada tu būsi labākā situācijā nekā šodien.",
           )}
         </p>
         <p className="body-clean text-muted-foreground text-lg lg:text-xl leading-relaxed">

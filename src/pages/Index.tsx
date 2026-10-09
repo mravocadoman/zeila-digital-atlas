@@ -27,7 +27,7 @@ const Index = () => {
       "Rihards Zeila — reklāmas konsultants un MBA lektors, Rīga",
     ),
     t(
-      "I build paid-growth systems for e-commerce and SME teams — then train your team to run them. MBA lecturer at Riga Business School. $5M+ annual ad spend managed.",
+      "I build paid-growth systems for e-commerce and SME teams, then train the team to run them. MBA lecturer at Riga Business School. $5M+ annual ad spend managed.",
       "Palīdzu e-veikaliem un uzņēmumiem sakārtot maksāto reklāmu un apmācu komandu to vadīt pašai. MBA lektors Rīgas Biznesa skolā. Pārvaldu vairāk nekā $5M reklāmas budžeta gadā.",
     ),
   );

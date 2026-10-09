@@ -10,8 +10,8 @@ const audiences = (t: T) => [
     gfx: scalingGfx,
     title: t("E-commerce brands scaling up", "E-veikali, kas aug"),
     body: t(
-      "You're spending real money — €20k a month and climbing — and the returns are getting less predictable as the budget grows. Usually a structure and measurement problem, not a creative one.",
-      "Reklāmā tu jau iegulda nopietnu naudu (€20k mēnesī un vairāk), bet, budžetam augot, rezultātu kļūst arvien grūtāk paredzēt. Parasti vaina nav pašās reklāmās, bet kampaņu struktūrā un mērīšanā.",
+      "You're spending real money, €20k a month and climbing, and the returns are getting less predictable as the budget grows. Nine times in ten the fix is in the account structure and the tracking, before anyone touches the creative.",
+      "Reklāmā tu jau iegulda nopietnu naudu, €20k mēnesī un vairāk, bet, budžetam augot, rezultātu kļūst arvien grūtāk paredzēt. Deviņos gadījumos no desmit problēma ir kampaņu struktūrā un mērīšanā, nevis pašās reklāmās.",
     ),
   },
   {
@@ -26,8 +26,8 @@ const audiences = (t: T) => [
     gfx: systemGfx,
     title: t("In-house teams without a system", "Mārketinga komandas bez sistēmas"),
     body: t(
-      "You have marketers, not a machine. You want the process documented and the team able to run it — not another agency you can never leave.",
-      "Cilvēki tev ir, sistēmas nav. Gribi, lai process ir aprakstīts un komanda to vada pati — nevis vēl vienu aģentūru, no kuras vairs nevar tikt vaļā.",
+      "You have marketers, not a machine. You want the process written down and the team able to run it, so you are never locked into an agency again.",
+      "Cilvēki tev ir, sistēmas nav. Gribi, lai process ir pierakstīts un komanda to vada pati, lai vairs nebūtu jāpaļaujas uz kārtējo aģentūru.",
     ),
   },
 ];
@@ -84,12 +84,12 @@ const WhoFor = () => {
       <div className="max-w-6xl mx-auto">
         <span className="eyebrow block mb-4">{t("Who this is for", "Kam es palīdzu")}</span>
         <h2 className="heading-elegant text-3xl lg:text-5xl mb-4 max-w-3xl">
-          {t("Three situations I'm actually useful in.", "Trīs situācijas, kurās varu reāli palīdzēt.")}
+          {t("Three situations where I earn my fee.", "Trīs situācijas, kurās esmu savas naudas vērts.")}
         </h2>
         <p className="body-clean text-muted-foreground text-lg lg:text-xl max-w-2xl mb-8 lg:mb-12">
           {t(
-            "If none of these sound like you, say so in the form anyway — I'll tell you straight if it isn't a fit.",
-            "Ja neatpazīsti sevi nevienā no tām, tāpat uzraksti — godīgi pateikšu, vai varu palīdzēt.",
+            "If none of these sound like you, say so in the form anyway. I'll tell you straight if it isn't a fit.",
+            "Ja neatpazīsti sevi nevienā no tām, tāpat uzraksti, un godīgi pateikšu, vai varu palīdzēt.",
           )}
         </p>
 

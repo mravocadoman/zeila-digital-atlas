@@ -40,7 +40,7 @@ const audiences = (t: T) => [
     icon: GraduationCap,
     title: t("Universities & Business Schools", "Augstskolas un biznesa skolas"),
     body: t(
-      "Semester-long modules and guest lectures for MBA and BBA programs — from digital strategy fundamentals to advanced paid media and analytics.",
+      "Semester-long modules and guest lectures for MBA and BBA programmes, from digital strategy fundamentals to advanced paid media and analytics.",
       "Semestra kursi un vieslekcijas MBA un BBA programmās — no digitālās stratēģijas pamatiem līdz maksātajai reklāmai un analītikai padziļinātā līmenī.",
     ),
   },
@@ -110,7 +110,7 @@ const formats = (t: T) => [
     duration: t("Ongoing retainer", "Ilgtermiņa sadarbība"),
     audience: t("In-house marketing teams", "iekšējām mārketinga komandām"),
     outcome: t(
-      "Your team runs paid media and automation confidently — with me as a sparring partner.",
+      "Your team runs paid media and automation confidently, with me as a sparring partner.",
       "Tava komanda droši vada maksāto reklāmu un automatizāciju, un man var jautāt, kad vien vajag.",
     ),
     bullets: [
@@ -160,8 +160,8 @@ const curriculum = (t: T) => [
   {
     q: t("AI in marketing", "MI mārketingā"),
     a: t(
-      "Practical use of LLMs for research, briefs, creative variants, and analysis — with guardrails for teams.",
-      "Kā praktiski izmantot ChatGPT un līdzīgus rīkus izpētei, uzdevumu aprakstiem, reklāmu variantiem un analīzei — ar skaidriem noteikumiem komandai.",
+      "Practical use of LLMs for research, briefs, creative variants and analysis, with guardrails for teams.",
+      "Kā praktiski izmantot ChatGPT un līdzīgus rīkus izpētei, uzdevumu aprakstiem, reklāmu variantiem un analīzei, ar skaidriem noteikumiem komandai.",
     ),
   },
 ];
@@ -208,16 +208,16 @@ const testimonials = (t: T) => [
 const steps = (t: T) => [
   { n: "01", title: t("Discovery call", "Iepazīšanās saruna"), body: t("30 minutes to understand your team, goals, current stack, and timeline.", "Pusstunda, lai saprastu tavu komandu, mērķus, rīkus un termiņus.") },
   { n: "02", title: t("Curriculum design", "Programmas izstrāde"), body: t("A tailored outline with learning outcomes, formats, and success metrics.", "Pielāgots plāns ar mācību mērķiem, formātu un to, kā mērīsim rezultātu.") },
-  { n: "03", title: t("Delivery", "Apmācības"), body: t("Workshops, lectures, or ongoing coaching — in-person in Riga or remote worldwide.", "Darbnīcas, lekcijas vai ilgtermiņa apmācība — klātienē Rīgā vai attālināti no jebkuras vietas.") },
-  { n: "04", title: t("Post-training support", "Atbalsts pēc apmācībām"), body: t("Recordings, playbooks, and follow-up sessions so the learning actually sticks.", "Ieraksti, rokasgrāmatas un papildu tikšanās, lai zināšanas nepazūd.") },
+  { n: "03", title: t("Delivery", "Apmācības"), body: t("Workshops, lectures, or ongoing coaching, in person in Riga or remote worldwide.", "Darbnīcas, lekcijas vai ilgtermiņa apmācība, klātienē Rīgā vai attālināti no jebkuras vietas.") },
+  { n: "04", title: t("Post-training support", "Atbalsts pēc apmācībām"), body: t("Recordings, playbooks, and follow-up sessions so the learning sticks.", "Ieraksti, rokasgrāmatas un papildu tikšanās, lai zināšanas nepazūd.") },
 ];
 
 const faqs = (t: T) => [
   { q: t("In-person, remote or hybrid?", "Klātienē, attālināti vai hibrīdi?"), a: t("All three. I'm based in Riga and travel across Europe. Remote sessions run on Zoom or Google Meet with interactive workbooks.", "Visi trīs varianti der. Dzīvoju Rīgā un braucu pa visu Eiropu. Attālinātās nodarbības notiek Zoom vai Google Meet ar interaktīvām darba lapām.") },
   { q: t("What languages do you teach in?", "Kādā valodā notiek apmācības?"), a: t("English and Latvian. Materials are typically in English.", "Latviešu un angļu valodā. Materiāli parasti ir angļu valodā.") },
   { q: t("Ideal group size?", "Cik lielai jābūt grupai?"), a: t("Workshops work best with 8–25 participants. University modules follow the program's cohort size.", "Darbnīcām vislabāk der 8–25 dalībnieki. Augstskolās — tik, cik studentu ir kursā.") },
-  { q: t("Can we record sessions?", "Vai nodarbības var ierakstīt?"), a: t("Yes — recording rights are agreed up front and included in most engagements.", "Jā — par ierakstiem vienojamies iepriekš, un vairumā gadījumu tie ir iekļauti cenā.") },
-  { q: t("How is pricing structured?", "Cik tas maksā?"), a: t("Day-rate for workshops, project fee for multi-session courses, and monthly retainer for ongoing coaching. Custom quote after the discovery call.", "Darbnīcām — dienas likme, kursiem ar vairākām nodarbībām — projekta cena, ilgtermiņa apmācībai — ikmēneša maksa. Precīzu piedāvājumu sagatavoju pēc iepazīšanās sarunas.") },
+  { q: t("Can we record sessions?", "Vai nodarbības var ierakstīt?"), a: t("Yes. Recording rights are agreed up front and included in most engagements.", "Jā, par ierakstiem vienojamies iepriekš, un vairumā gadījumu tie ir iekļauti cenā.") },
+  { q: t("How is pricing structured?", "Cik tas maksā?"), a: t("Day-rate for workshops, project fee for multi-session courses, and monthly retainer for ongoing coaching. Custom quote after the discovery call.", "Darbnīcām ir dienas likme, kursiem ar vairākām nodarbībām — projekta cena, ilgtermiņa apmācībai — ikmēneša maksa. Precīzu piedāvājumu sagatavoju pēc iepazīšanās sarunas.") },
 ];
 
 const Section = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => {
@@ -296,7 +296,7 @@ const WorkWithMe = () => {
       if (error) throw error;
       toast({
         title: t("Request sent", "Pieprasījums nosūtīts"),
-        description: t("Thanks — I'll get back to you within 2 business days.", "Paldies — atbildēšu divu darba dienu laikā."),
+        description: t("Thanks. I'll get back to you within 2 business days.", "Paldies! Atbildēšu divu darba dienu laikā."),
       });
       setForm({ name: "", email: "", organization: "", type: "", message: "" });
     } catch (err) {
@@ -347,7 +347,7 @@ const WorkWithMe = () => {
             </h1>
             <p className="text-lg md:text-xl wwm-muted leading-relaxed max-w-2xl">
               {t(
-                "MBA lecturer at Riga Business School. Course leader for the EU-funded LIFT program. Workshop facilitator for the International Trade Centre. Ten years in the trenches, up to $5M/year of ad spend managed — packaged into training your team will actually use on Monday morning.",
+                "MBA lecturer at Riga Business School. Course leader for the EU-funded LIFT program. Workshop facilitator for the International Trade Centre. Ten years in the trenches, up to $5M/year of ad spend managed, packaged into training your team will use on Monday morning.",
                 "MBA lektors Rīgas Biznesa skolā, kursu vadītājs ES finansētajā LIFT programmā un Starptautiskā tirdzniecības centra darbnīcu vadītājs. Desmit gadu prakse un līdz $5M reklāmas budžeta gadā — apmācībās, kuras tava komanda izmantos jau pirmdienas rītā.",
               )}
             </p>

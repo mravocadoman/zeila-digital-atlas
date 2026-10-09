@@ -44,7 +44,7 @@ const About = () => {
               </h1>
               <p className="body-clean text-muted-foreground text-lg lg:text-xl max-w-2xl leading-relaxed">
                 {t(
-                  "The full record — every lecture, workshop, panel and podcast, the career timeline, and the credentials behind it. If you're here to hire rather than to read,",
+                  "The full record: every lecture, workshop, panel and podcast, the career timeline, and the credentials behind it. If you're here to hire rather than to read,",
                   "Šeit ir viss: katra lekcija, darbnīca, diskusija un podkāsts, karjeras gaita un izglītība. Ja tu meklē nevis CV, bet palīdzību savam uzņēmumam,",
                 )}{" "}
                 <Link to={to("/#engagements")} className="text-primary hover:underline">

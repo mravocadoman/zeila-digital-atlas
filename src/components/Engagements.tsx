@@ -20,14 +20,14 @@ const getEngagements = (t: T) => [
     title: t("Strategy consulting", "Stratēģiskās konsultācijas"),
     forWho: t("Founders and marketing leads with a decision to make", "Uzņēmumu un mārketinga vadītājiem, kuriem jāpieņem svarīgs lēmums"),
     body: t(
-      "You don't need someone in the account — you need someone who has already made this mistake. Channel strategy, budget allocation, agency decisions, whether to build in-house.",
+      "You don't need another pair of hands in the account. You need someone who has already made this mistake. Channel strategy, budget allocation, agency decisions, whether to build in-house.",
       "Tev nevajag cilvēku, kas klikšķina reklāmas kontā. Vajag kādu, kurš šo kļūdu jau ir pieļāvis. Kanālu izvēle, budžeta sadale, darbs ar aģentūru, savas komandas veidošana.",
     ),
     price: t("Per session or day rate", "Maksa par sesiju vai dienu"),
     deliverables: [
       t("Working sessions on the decision in front of you", "Darba sesijas tieši par tavu jautājumu"),
       t("A written recommendation you can take to the board", "Rakstisks ieteikums, ko var likt priekšā valdei"),
-      t("Follow-up as it plays out, not a one-shot opinion", "Esmu blakus arī tad, kad lēmumu īsteno — nevis tikai viens padoms"),
+      t("Follow-up while you act on it, not just the one call", "Esmu blakus arī tad, kad tu lēmumu ievies, ne tikai sarunas laikā"),
     ],
     featured: false,
   },
@@ -37,8 +37,8 @@ const getEngagements = (t: T) => [
     title: t("Account audit", "Reklāmas konta audits"),
     forWho: t("Brands already spending, unsure where it leaks", "Uzņēmumiem, kas jau reklamējas, bet nezina, kur aizplūst nauda"),
     body: t(
-      "I go through the ad account, tracking setup, and funnel, then tell you what's actually costing you money — in priority order.",
-      "Izskatu reklāmas kontu, mērīšanas iestatījumus un pārdošanas piltuvi un pasaku, kas tev patiesībā izmaksā naudu — sākot ar svarīgāko.",
+      "I go through the ad account, tracking setup, and funnel, then tell you what's costing you money, in priority order.",
+      "Izskatu reklāmas kontu, mērīšanas iestatījumus un pārdošanas piltuvi un pasaku, kas tev patiesībā izmaksā naudu, sākot ar svarīgāko.",
     ),
     price: t("Fixed fee · 1–2 weeks", "Fiksēta cena · 1–2 nedēļas"),
     deliverables: [
@@ -60,8 +60,8 @@ const getEngagements = (t: T) => [
     price: t("Project fee · 6–12 weeks", "Projekta cena · 6–12 nedēļas"),
     deliverables: [
       t("Campaign and funnel architecture, built and live", "Kampaņu un piltuves struktūra — izveidota un strādā"),
-      t("Tracking and reporting your team can actually read", "Mērīšana un atskaites, kuras komanda tiešām saprot"),
-      t("SOPs and a handover session — you keep running it", "Instrukcijas un apmācība — tālāk to vadi pats"),
+      t("Tracking and reporting your team can read", "Mērīšana un atskaites, ko komanda saprot"),
+      t("SOPs and a handover session, so you keep running it", "Instrukcijas un apmācība — tālāk to vadi pats"),
     ],
     featured: true,
   },
@@ -71,7 +71,7 @@ const getEngagements = (t: T) => [
     title: t("Fractional growth lead", "Izaugsmes vadītājs uz nepilnu slodzi"),
     forWho: t("In-house teams who want a sparring partner", "Komandām, kurām blakus vajag pieredzējušu padomdevēju"),
     body: t(
-      "Monthly. I stay close to the account without taking it over — reviews, creative direction, and someone senior to argue with before you spend.",
+      "Monthly. I stay close to the account without taking it over. Reviews, creative direction, and someone senior to argue with before you spend.",
       "Ikmēneša sadarbība. Sekoju līdzi kontam, to nepārņemot: pārskati, ieteikumi reklāmām un pieredzējis cilvēks, ar ko izrunāt lēmumus, pirms tu tērē naudu.",
     ),
     price: t("Monthly retainer", "Ikmēneša maksa"),
@@ -201,8 +201,8 @@ const Engagements = () => {
         </h2>
         <p className="body-clean text-muted-foreground text-lg lg:text-xl max-w-2xl mb-8 lg:mb-10">
           {t(
-            "Every one of them ends with your team able to run the thing themselves. That's the point, not an upsell I'm withholding.",
-            "Katra no tām beidzas ar to, ka tava komanda visu spēj vadīt pati. Tieši tāds ir mērķis — nevis turēt tevi pie sevis.",
+            "Every one of them ends with your team able to run the thing themselves. That's the point of the work, and it is included.",
+            "Katra no tām beidzas ar to, ka tava komanda visu spēj vadīt pati. Tāds ir mērķis, un tas ir iekļauts cenā.",
           )}
         </p>
 

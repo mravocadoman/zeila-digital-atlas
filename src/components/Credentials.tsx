@@ -9,7 +9,7 @@ const Credentials = () => {
   const { t } = useLang();
 
   const skills = [
-    { title: t("Meta Advertising", "Meta reklāmas"), description: t("Expert in full-funnel Meta ad systems that drive measurable ROAS and client acquisition.", "Meta reklāmu sistēmas visai pārdošanas piltuvei — ar izmērāmu ROAS un jauniem klientiem."), icon: Target },
+    { title: t("Meta Advertising", "Meta reklāmas"), description: t("Expert in full-funnel Meta ad systems that drive measurable ROAS and client acquisition.", "Meta reklāmu sistēmas visai pārdošanas piltuvei, ar izmērāmu ROAS un jauniem klientiem."), icon: Target },
     { title: t("Digital Marketing Strategy", "Digitālā mārketinga stratēģija"), description: t("Building scalable systems that combine paid, organic, and AI-driven growth.", "Sistēmas, kas aug līdzi uzņēmumam un apvieno maksāto reklāmu, organisko saturu un MI."), icon: TrendingUp },
     { title: t("Business Automations", "Biznesa automatizācija"), description: t("Streamlining operations and client workflows with Make, n8n, and GoHighLevel.", "Procesu un klientu saziņas automatizācija ar Make, n8n un GoHighLevel."), icon: Zap },
     { title: t("Creative Strategy", "Kreatīvā stratēģija"), description: t("Designing data-backed ad concepts, visuals, and copy that convert.", "Datos balstītas reklāmu idejas, vizuāļi un teksti, kas pārdod."), icon: Lightbulb },
@@ -311,7 +311,7 @@ const Credentials = () => {
                       <Accordion type="single" collapsible className="lg:col-span-1">
                         {[
                           { id: "africa", name: t("Africa", "Āfrika"), countries: t("Zambia, Botswana", "Zambija, Botsvāna"), description: t("Implemented fin-tech and digital marketing solutions in developing economies", "Finanšu tehnoloģiju un digitālā mārketinga risinājumi jaunattīstības valstīs") },
-                          { id: "americas", name: t("Americas", "Amerika"), countries: t("United States, Colombia, Mexico", "ASV, Kolumbija, Meksika"), description: t("Experience across diverse American markets from North to South", "Pieredze dažādos Amerikas tirgos — no ziemeļiem līdz dienvidiem") }
+                          { id: "americas", name: t("Americas", "Amerika"), countries: t("United States, Colombia, Mexico", "ASV, Kolumbija, Meksika"), description: t("Experience across diverse American markets from North to South", "Pieredze dažādos Amerikas tirgos, no ziemeļiem līdz dienvidiem") }
                         ].map((region) => (
                           <AccordionItem key={region.id} value={region.id}>
                             <AccordionTrigger className="heading-elegant text-lg lg:text-xl py-2">

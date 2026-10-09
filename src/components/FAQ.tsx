@@ -17,7 +17,7 @@ const faqs = (t: T) => [
   {
     q: t("How does pricing work?", "Cik tas maksā?"),
     a: t(
-      "Audits are a fixed fee. Projects are quoted as a fixed project price once the scope is written, so the number doesn't move mid-engagement. Retainers and training are monthly or per-program. You get the price in writing after the discovery call, before any work starts — I don't do hourly.",
+      "Audits are a fixed fee. Projects are quoted as a fixed project price once the scope is written, so the number doesn't move mid-engagement. Retainers and training are monthly or per-program. You get the price in writing after the discovery call, before any work starts. I don't do hourly.",
       "Auditam ir fiksēta cena. Projektiem cenu nosakām, kad darba apjoms ir aprakstīts, un pēc tam tā vairs nemainās. Ilgtermiņa sadarbībai un apmācībām maksa ir reizi mēnesī vai par programmu. Cenu tu saņem rakstiski pēc iepazīšanās sarunas, pirms sākam darbu. Pēc stundām nestrādāju.",
     ),
   },
@@ -52,7 +52,7 @@ const faqs = (t: T) => [
   {
     q: t("How fast can you start?", "Cik ātri vari sākt?"),
     a: t(
-      "Audits usually within two weeks. Build projects depend on the current book — the discovery call will tell you honestly. I reply to enquiries within two business days.",
+      "Audits usually within two weeks. Build projects depend on the current book. I'll tell you honestly on the discovery call. I reply to enquiries within two business days.",
       "Auditu parasti varu sākt divu nedēļu laikā. Lielākiem projektiem tas atkarīgs no noslodzes — iepazīšanās sarunā pateikšu godīgi. Uz pieteikumiem atbildu divu darba dienu laikā.",
     ),
   },

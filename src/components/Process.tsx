@@ -21,8 +21,8 @@ const steps = (t: T) => [
     n: "03",
     title: t("Build", "Darbs"),
     body: t(
-      "I do the work in your accounts, with your team watching rather than waiting. No black box — you see the reasoning as it happens.",
-      "Strādāju tavos reklāmas kontos, un komanda redz visu procesu, nevis tikai gaida rezultātu. Nekā slēpta — katru lēmumu var redzēt un saprast.",
+      "I do the work in your accounts, with your team watching rather than waiting. No black box. You see the reasoning as it happens.",
+      "Strādāju tavos reklāmas kontos, un komanda redz visu procesu, nevis tikai gaida rezultātu. Neko neslēpju. Katru lēmumu var redzēt un saprast.",
     ),
   },
   {
@@ -30,7 +30,7 @@ const steps = (t: T) => [
     title: t("Handover", "Nodošana"),
     body: t(
       "SOPs, dashboards, and a working session so your team can run it. Follow-up check-ins are included; a retainer is optional, never assumed.",
-      "Instrukcijas, atskaites un kopīga darba sesija, lai komanda varētu turpināt pati. Pēcpārbaudes ir iekļautas cenā; ilgtermiņa sadarbība — tikai tad, ja to vēlies.",
+      "Instrukcijas, atskaites un kopīga darba sesija, lai komanda varētu turpināt pati. Turpmākās tikšanās ir iekļautas cenā; ilgtermiņa sadarbība — tikai tad, ja to vēlies.",
     ),
   },
 ];

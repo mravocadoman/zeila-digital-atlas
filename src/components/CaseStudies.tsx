@@ -8,8 +8,8 @@ const getCaseStudies = (t: T) => [
     company: "The Brew Company",
     engagement: t("Fractional growth lead", "Izaugsmes vadītājs uz nepilnu slodzi"),
     description: t(
-      "Specialty coffee brand moving from retail to digital across Meta, TikTok, Google and YouTube — a Q4 pilot that became a long-term partnership.",
-      "Specializētās kafijas zīmols, kas no veikalu plauktiem pārgāja uz pārdošanu internetā — Meta, TikTok, Google un YouTube. Sākām ar Q4 pilotprojektu, kas pārauga ilgtermiņa sadarbībā.",
+      "Specialty coffee brand moving from retail to digital across Meta, TikTok, Google and YouTube. A Q4 pilot that became a long-term partnership.",
+      "Specializētās kafijas zīmols, kas no veikalu plauktiem pārgāja uz pārdošanu internetā: Meta, TikTok, Google un YouTube. Sākām ar Q4 pilotprojektu, kas pārauga ilgtermiņa sadarbībā.",
     ),
     approach: t("Held 4–7 ROAS through the iOS 14 measurement shift.", "iOS 14 izmaiņu laikā noturēju ROAS 4–7."),
     metrics: [
@@ -209,8 +209,8 @@ const CaseStudies = () => {
             </h2>
             <p className="body-clean text-muted-foreground text-lg lg:text-xl max-w-2xl">
               {t(
-                "Real results from real campaigns — from e-commerce to coaching, fashion to fintech.",
-                "Reālas kampaņas un reāli cipari — no e-komercijas līdz koučingam, no modes līdz fintech.",
+                "From e-commerce to coaching, fashion to fintech.",
+                "No e-komercijas līdz koučingam, no modes līdz fintech.",
               )}
             </p>
           </div>

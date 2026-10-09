@@ -24,7 +24,7 @@ const Hero = () => {
               style={{ animationDelay: "0.15s" }}
             >
               {t(
-                "I build the paid-growth system — then train your team to run it.",
+                "I build the paid-growth system, then train your team to run it.",
                 "Sakārtoju tavu reklāmas sistēmu un iemācu komandai to vadīt pašai.",
               )}
             </h1>
@@ -34,8 +34,8 @@ const Hero = () => {
               style={{ animationDelay: "0.28s" }}
             >
               {t(
-                "You don't need more clicks or views. You need a system that turns traffic into revenue, and a team that can keep it running after I'm gone.",
-                "Klikšķi un skatījumi paši par sevi neko nedod. Vajag sistēmu, kas apmeklētājus pārvērš pircējos, un komandu, kas to spēj uzturēt arī bez manis.",
+                "I've taught this on the Riga Business School MBA since 2021. The handover is the part most consultants skip.",
+                "Kopš 2021. gada to pašu mācu Rīgas Biznesa skolas MBA studentiem. Nodošanu komandai lielākā daļa konsultantu izlaiž.",
               )}
             </p>
             <p
@@ -43,8 +43,8 @@ const Hero = () => {
               style={{ animationDelay: "0.36s" }}
             >
               {t(
-                "Ten years and $5M+ a year in ad spend, on the agency side and in the classroom. I work with e-commerce brands, SMEs, and in-house teams who are past experimenting and want the thing to be predictable.",
-                "Desmit gadi reklāmā un vairāk nekā $5M pārvaldīta budžeta gadā — gan aģentūrā, gan lekciju zālē. Strādāju ar e-veikaliem, maziem un vidējiem uzņēmumiem un mārketinga komandām, kas jau ir beigušas eksperimentēt un grib paredzamu rezultātu.",
+                "Ten years and $5M+ a year in ad spend, on the agency side and in the classroom. I work with e-commerce brands, SMEs and in-house teams that are done experimenting and want the numbers to be predictable.",
+                "Desmit gadi reklāmā un vairāk nekā $5M pārvaldīta budžeta gadā, gan aģentūrā, gan lekciju zālē. Strādāju ar e-veikaliem, maziem un vidējiem uzņēmumiem un mārketinga komandām, kas eksperimentus jau ir beigušas un grib paredzamus skaitļus.",
               )}
             </p>
 

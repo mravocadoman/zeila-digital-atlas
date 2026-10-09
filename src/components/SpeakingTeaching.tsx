@@ -50,14 +50,14 @@ const getCategories = (t: T) => [
         title: t("Executive Education Course", "Kurss vadītājiem (Executive Education)"),
         organization: t("Riga Business School", "Rīgas Biznesa skola"),
         period: t("Nov 2024", "2024. nov."),
-        description: t("Digital Marketing Growth Strategies for SMEs — practical course for small and medium-sized enterprises.", "“Digitālā mārketinga izaugsmes stratēģijas” — praktisks kurss maziem un vidējiem uzņēmumiem."),
+        description: t("Digital Marketing Growth Strategies for SMEs: a practical course for small and medium-sized enterprises.", "“Digitālā mārketinga izaugsmes stratēģijas” — praktisks kurss maziem un vidējiem uzņēmumiem."),
         link: "https://www.facebook.com/RigaBusinessSchool/posts/pfbid0XEj9zWkXS18GTgPWW6rKHhkLT1BXdgzwb1TiNLtH4gEeBi1u37HtXTLZnwkBzGuSl"
       },
       {
         title: t("Digital Campaign Workshop Leader", "Digitālo kampaņu darbnīcas vadītājs"),
         organization: "Vidusdaugavas NVO centrs",
         period: t("Apr 2023", "2023. apr."),
-        description: t("Hands-on training for NGOs on creating effective digital campaigns — combining theory with practical group exercises.", "Praktiskas apmācības NVO par to, kā veidot efektīvas digitālās kampaņas — teorija un darbs grupās."),
+        description: t("Hands-on training for NGOs on creating effective digital campaigns, combining theory with practical group exercises.", "Praktiskas apmācības NVO par to, kā veidot efektīvas digitālās kampaņas: teorija un darbs grupās."),
         link: "https://www.vidusdaugavasnvo.lv/lv/jaunumi/projekti/turpinas-vidusdaugavas-nvo-centra-realizetais-projekts-vidusdaugavas-nvo-centrs-digitalo-speju-attistisana-/"
       },
       {
@@ -99,7 +99,7 @@ const getCategories = (t: T) => [
         title: t("Webinar Speaker", "Vebināra lektors"),
         organization: t("Latvia IT Cluster / European Digital Innovation Centre", "Latvijas IT klasteris / Eiropas Digitālās inovācijas centrs"),
         period: t("Oct 2024", "2024. okt."),
-        description: t("AI in Digital Marketing — LIFT program webinar on leveraging artificial intelligence for business growth.", "“MI digitālajā mārketingā” — LIFT programmas vebinārs par to, kā izmantot mākslīgo intelektu uzņēmuma izaugsmei."),
+        description: t("AI in Digital Marketing: a LIFT programme webinar on using artificial intelligence for business growth.", "“MI digitālajā mārketingā” — LIFT programmas vebinārs par to, kā izmantot mākslīgo intelektu uzņēmuma izaugsmei."),
         link: "https://www.facebook.com/events/551552717574429/"
       },
       {
@@ -113,7 +113,7 @@ const getCategories = (t: T) => [
         title: t("Podcast Guest", "Podkāsta viesis"),
         organization: "The Career Sensei",
         period: t("May 2024", "2024. maijs"),
-        description: t("Exploring a Career in Digital Marketing — discussing insights on social media advertising, strategies, and trends reshaping the digital marketing landscape.", "“Karjera digitālajā mārketingā” — saruna par reklāmu sociālajos tīklos, stratēģijām un tendencēm, kas maina nozari."),
+        description: t("Exploring a Career in Digital Marketing: social media advertising, strategy, and the trends reshaping the industry.", "“Karjera digitālajā mārketingā” — saruna par reklāmu sociālajos tīklos, stratēģijām un tendencēm, kas maina nozari."),
         link: "https://www.youtube.com/watch?v=JR9IiTZel9k"
       },
       {
@@ -365,7 +365,7 @@ const SpeakingTeaching = () => {
           <p className="text-xl lg:text-2xl text-muted-foreground max-w-2xl mx-auto">
             {t(
               "Sharing digital marketing expertise through lectures, workshops, and mentorship across universities, programs, and media platforms.",
-              "Lekcijas, darbnīcas, mentorēšana un intervijas — augstskolās, mācību programmās un medijos.",
+              "Lekcijas, darbnīcas, mentorēšana un intervijas augstskolās, mācību programmās un medijos.",
             )}
           </p>
         </div>
