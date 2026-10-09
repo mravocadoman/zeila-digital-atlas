@@ -34,8 +34,8 @@ const Hero = () => {
               style={{ animationDelay: "0.28s" }}
             >
               {t(
-                "I've taught this on the Riga Business School MBA since 2021. The handover is the part most consultants skip.",
-                "Kopš 2021. gada to pašu mācu Rīgas Biznesa skolas MBA studentiem. Nodošanu komandai lielākā daļa konsultantu izlaiž.",
+                "Anyone can run your ads. The hard part is leaving behind a system that still works without me.",
+                "Reklāmu palaist var jebkurš. Grūtākais ir atstāt sistēmu, kas strādā arī bez manis.",
               )}
             </p>
             <p
@@ -43,8 +43,8 @@ const Hero = () => {
               style={{ animationDelay: "0.36s" }}
             >
               {t(
-                "Ten years and $5M+ a year in ad spend, on the agency side and in the classroom. I work with e-commerce brands, SMEs and in-house teams that are done experimenting and want the numbers to be predictable.",
-                "Desmit gadi reklāmā un vairāk nekā $5M pārvaldīta budžeta gadā, gan aģentūrā, gan lekciju zālē. Strādāju ar e-veikaliem, maziem un vidējiem uzņēmumiem un mārketinga komandām, kas eksperimentus jau ir beigušas un grib paredzamus skaitļus.",
+                "Ten years in paid media and up to $5M a year in ad spend, on the agency side and in the Riga Business School MBA room. I work with e-commerce brands, SMEs and in-house teams that are done experimenting and want numbers they can rely on.",
+                "Desmit gadi reklāmā un līdz $5M budžeta gadā, gan aģentūrā, gan Rīgas Biznesa skolas MBA auditorijā. Strādāju ar e-veikaliem, maziem un vidējiem uzņēmumiem un mārketinga komandām, kas ar eksperimentiem jau ir cauri un grib skaitļus, uz kuriem var paļauties.",
               )}
             </p>
 
