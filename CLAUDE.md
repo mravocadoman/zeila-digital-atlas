@@ -163,16 +163,29 @@ that lifted the strip from 2.40:1 to 12.85:1 contrast. Don't drop the invert.
   the custom domain on the published Lovable app (`zeila-digital-atlas.lovable.app`,
   185.158.133.1, Cloudflare in front, DNS at Namecheap). Lovable mirrors GitHub `main`, so
   the release step is `git push origin main` — nothing is deployed until you push.
-  After pushing, confirm the live site actually rebuilt:
+  **Lovable republishes on push.** Confirmed 2026-10-10: `f10e436` was live before
+  anyone touched Publish. Earlier notes in this file claimed deploys lagged; that was
+  the broken check below, not a real lag.
+
+  **Do not verify by comparing bundle hashes.** Lovable builds on its own machine with
+  its own dependency resolution, so `assets/index-*.js` never matches a local `npm run
+  build` even when the source is identical — the live bundle runs ~45 kB larger and the
+  diff is entirely minifier identifiers (`p4` vs `z$`, `Wc` vs `Mc`). The hash check
+  reports "not deployed" 100% of the time and is how two false deploy reports happened.
+
+  Verify with a string that only exists in the commit you just pushed:
 
   ```sh
-  npm run build && grep -o 'assets/index-[A-Za-z0-9_-]*\.css' dist/index.html
-  curl -s https://rihardszeila.com | grep -o 'assets/index-[A-Za-z0-9_-]*\.css'
+  B=$(curl -s https://rihardszeila.com | grep -o 'assets/index-[A-Za-z0-9_-]*\.js' | head -1)
+  curl -s "https://rihardszeila.com/$B" | grep -c "some copy unique to this commit"
   ```
 
-  Same hash = live matches your build. If it lags, hit Publish in the Lovable editor
-  (project `8429d805-0601-4a02-b9ce-60c38237c9d0`) — whether Lovable republishes on
-  every push automatically is unconfirmed.
+  Check the *old* string is gone too — a non-zero count on the new string alone can't
+  tell a fresh deploy from a bundle that happens to contain both.
+
+  When the Lovable MCP connector is attached, `get_project` reports `latest_commit_sha`
+  (whether the GitHub mirror caught up) and `deploy_project` publishes without opening
+  the editor. Project `8429d805-0601-4a02-b9ce-60c38237c9d0`.
 - **`useScrollAnimation` must never be the only thing making content visible.** Consumers
   gate sections behind `opacity-0`, so an IntersectionObserver that doesn't fire means
   content is invisible *forever*, not just un-animated. The hook now starts visible when
