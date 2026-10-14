@@ -10,6 +10,15 @@ export default defineConfig(({ mode }) => ({
     port: 8080,
   },
   plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
+  build: {
+    rollupOptions: {
+      // retreats/index.html only carries /retreats' own link-preview tags; see the note in it.
+      input: {
+        index: path.resolve(__dirname, "index.html"),
+        retreats: path.resolve(__dirname, "retreats/index.html"),
+      },
+    },
+  },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),

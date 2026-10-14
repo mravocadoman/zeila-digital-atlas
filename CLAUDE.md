@@ -23,24 +23,34 @@ Four routes in `src/App.tsx` (all but `/retreats` mirrored under `/lv`, see Lang
   universities and EU programmes. Has its own `.wwm-*` token scope and injects its own
   fonts (Fraunces / Inter Tight / JetBrains Mono) in a `useEffect`. **Deliberately not
   restyled** to match the homepage — it targets a different buyer.
-- `/retreats` — added 2026-10-14, redesigned twice the same day. The outreach page sent to
+- `/retreats` — added 2026-10-14, rebuilt four times that day. The outreach page sent to
   yoga and retreat centres: "The Season Residency", a marketer on site for a season, paid in
-  a room and the practice. **Unlisted on purpose**: noindex (it swaps the content of
-  index.html's robots tag and restores it on leave), not in the nav or sitemap, English only
-  with no `/lv` mirror, and its own header and footer instead of `Navigation`/`Footer`. A
-  room-and-board offer on the public consulting site would undercut the consulting rates.
-  It speaks the reader's language: the offer is laid out like a retreat package and the
-  hours as a daily schedule. Look and motion are `.rt-theme` in index.css (linen, ink,
-  terracotta, an olive `.rt-dark` band, Instrument Serif + Inter Tight, film grain); the
-  shadcn tokens are redefined inside the scope so Tailwind colour classes just follow.
-  Photos drift via scroll-driven `animation-timeline: view()`, translate only, so nothing
-  is hidden where it's unsupported. `.rt-sun` hue-rotates the about portrait's cyan disc
-  into a sun; the greyscale subject is untouched by hue-rotate. Photos in
-  `src/assets/retreat/` are gpt-image-2 mood shots ("warm analogue film, golden light,
-  linen/terracotta/sage, no people, no text"). Keep them peopleless and placeless: on a page
-  sent to real centres, a figurative shot would read as a fake client or a fake venue.
-  Browser-pane screenshots of this page often come back with photos missing after a
-  scroll; check `img.complete` and `elementFromPoint` before believing them.
+  a room and the practice. **Unlisted on purpose**: noindex, not in the nav or sitemap,
+  English only with no `/lv` mirror, own header and footer. A room-and-board offer on the
+  public consulting site would undercut the consulting rates.
+  - **Link previews** come from `retreats/index.html`, a second Vite entry (see
+    `vite.config.ts`) that the host serves for `/retreats`. Chat apps read meta tags without
+    running JS, so `usePageMeta` can't reach them; without this file every shared link showed
+    the consulting card. `public/og-retreats.jpg` is a headless-Chrome screenshot of a
+    1200x630 HTML card over the shala photo.
+  - It speaks the reader's language: the offer is a treatment menu ("Included" down the
+    right, "The exchange" where the price goes), the hours are a day's schedule (a sticky
+    stage crossfades five photos while a sun travels a sunrise-to-sunset arc), the note is
+    a postcard with a CSS-masked perforated stamp.
+  - Look and motion: `.rt-theme` in index.css redefines the shadcn tokens (linen, ink,
+    terracotta; `.rt-dark` olive band), Instrument Serif + Inter Tight, film grain. Anything
+    that starts hidden is gated behind `.rt-live`, set from inside a real rAF; scroll-driven
+    effects (`animation-timeline: view()`) only translate or fade words from 18%, never to 0.
+  - Photos in `src/assets/retreat/` are gpt-image-2 mood shots ("warm analogue film, golden
+    light, linen/terracotta/sage, no people, no text"). Keep them peopleless and placeless:
+    on a page sent to real centres a figurative shot reads as a fake client or venue. Sora
+    video (`/v1/videos`) 404s on this key and Higgsfield had 0 credits, so the hero moves
+    with CSS (slow push + drifting light leak) rather than video.
+  - **Verify with `node scripts/shoot.mjs URL OUTDIR WIDTH HEIGHT [#id|#id+px|px ...]`**,
+    not the Claude Code browser pane: the pane stops repainting this page after a scroll
+    (headline, photos and day strip all came back blank while the DOM was fine). The script
+    drives headless Chrome over CDP, preloads lazy images and scrolls in steps so observers
+    and scroll timelines fire.
 - `src/components/ui/` is stock shadcn — don't hand-edit, regenerate.
 
 ## Languages (EN / LV)
@@ -194,13 +204,14 @@ that lifted the strip from 2.40:1 to 12.85:1 contrast. Don't drop the invert.
   **Do not verify by comparing bundle hashes.** Lovable builds on its own machine with
   its own dependency resolution, so `assets/index-*.js` never matches a local `npm run
   build` even when the source is identical — the live bundle runs ~45 kB larger and the
-  diff is entirely minifier identifiers (`p4` vs `z$`, `Wc` vs `Mc`). The hash check
+  diff is entirely minifier identifiers (`p4` vs `z$`, `Wc` vs `Mc`). (Since 2026-10-14 the
+  bundle is `main-*.js`, not `index-*.js`: two HTML entries share `main.tsx`, see `/retreats`.) The hash check
   reports "not deployed" 100% of the time and is how two false deploy reports happened.
 
   Verify with a string that only exists in the commit you just pushed:
 
   ```sh
-  B=$(curl -s https://rihardszeila.com | grep -o 'assets/index-[A-Za-z0-9_-]*\.js' | head -1)
+  B=$(curl -s https://rihardszeila.com | grep -oE 'assets/[a-z]+-[A-Za-z0-9_-]*\.js' | head -1)
   curl -s "https://rihardszeila.com/$B" | grep -c "some copy unique to this commit"
   ```
 
@@ -217,7 +228,7 @@ that lifted the strip from 2.40:1 to 12.85:1 contrast. Don't drop the invert.
   content is invisible *forever*, not just un-animated. The hook now starts visible when
   IO is unavailable and has a 1.5s failsafe timer. (IO does not fire at all inside the
   Claude Code browser pane, which is how this surfaced.)
-- `dist/assets/index-*.js` is ~721 kB — single chunk, no code splitting. Fine for now.
+- `dist/assets/main-*.js` is ~721 kB — single chunk, no code splitting. Fine for now.
 - **Analytics are env-gated.** `src/lib/analytics.ts` injects GA4 only when
   `VITE_GA4_ID` is set in `.env`. It's empty, so nothing is measured yet.
 - **Pricing is deliberately unpriced.** `Engagements.tsx` and `FAQ.tsx` describe how

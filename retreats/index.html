@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--
+      Second Vite entry, built to dist/retreats/index.html so the host serves it
+      for /retreats. It exists for one reason: link previews. WhatsApp, Facebook
+      and mail clients read these tags without running JavaScript, so the SPA's
+      usePageMeta can't reach them, and every shared /retreats link would show
+      the consulting card from the root index.html. Same app, same main.tsx.
+    -->
+    <title>The Season Residency: a marketer for your retreat centre | Rihards Zeila</title>
+    <meta name="description" content="A senior marketer living at your centre for a season, working on bookings, ads, website and automations in exchange for a room and the practice." />
+    <meta name="author" content="Rihards Zeila" />
+    <meta name="robots" content="noindex, follow" />
+    <link rel="canonical" href="https://rihardszeila.com/retreats" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://rihardszeila.com/retreats" />
+    <meta property="og:title" content="The Season Residency: a marketer in residence, for one season" />
+    <meta property="og:description" content="For yoga, meditation and retreat centres. Two to four months on site from November: bookings, ads, website and automations, in exchange for a room and the practice." />
+    <meta property="og:image" content="https://rihardszeila.com/og-retreats.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="Rihards Zeila" />
+    <meta property="og:locale" content="en_US" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="The Season Residency: a marketer in residence, for one season" />
+    <meta name="twitter:description" content="For yoga, meditation and retreat centres. A room and the practice, in exchange for filling your retreats." />
+    <meta name="twitter:image" content="https://rihardszeila.com/og-retreats.jpg" />
+
+    <link rel="icon" href="/favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600&family=Archivo:wght@400;500;600;700;800&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
