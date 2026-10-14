@@ -175,7 +175,10 @@ that lifted the strip from 2.40:1 to 12.85:1 contrast. Don't drop the invert.
   the release step is `git push origin main` — nothing is deployed until you push.
   **Lovable republishes on push.** Confirmed 2026-10-10: `f10e436` was live before
   anyone touched Publish. Earlier notes in this file claimed deploys lagged; that was
-  the broken check below, not a real lag.
+  the broken check below, not a real lag. **But not always:** on 2026-10-14 `2c31e6a`
+  reached Lovable (`get_project` showed it as `latest_commit_sha`) and was still not live
+  10 minutes later; `deploy_project` published it in ~30s. So after a push, run the
+  check below, and if it fails, publish rather than wait.
 
   **Do not verify by comparing bundle hashes.** Lovable builds on its own machine with
   its own dependency resolution, so `assets/index-*.js` never matches a local `npm run
