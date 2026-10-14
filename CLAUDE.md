@@ -13,7 +13,7 @@ npm run lint
 
 ## Layout
 
-Three routes in `src/App.tsx` (each mirrored under `/lv`, see Languages), plus a NotFound catch-all:
+Four routes in `src/App.tsx` (all but `/retreats` mirrored under `/lv`, see Languages), plus a NotFound catch-all:
 
 - `/` — the consultation-led homepage (`pages/Index.tsx`). Section order matters: it
   runs offer → proof → process → credibility → close.
@@ -23,6 +23,16 @@ Three routes in `src/App.tsx` (each mirrored under `/lv`, see Languages), plus a
   universities and EU programmes. Has its own `.wwm-*` token scope and injects its own
   fonts (Fraunces / Inter Tight / JetBrains Mono) in a `useEffect`. **Deliberately not
   restyled** to match the homepage — it targets a different buyer.
+- `/retreats` — added 2026-10-14. The outreach page sent to yoga and retreat centres
+  ("marketer in residence" for a season, paid in a room and the practice). **Unlisted on
+  purpose**: noindex (it swaps the content of index.html's robots tag and restores it on
+  leave), not in the nav or sitemap, English only with no `/lv` mirror, so it has its own
+  minimal header instead of `Navigation` (whose language switch would point at a missing
+  `/lv/retreats`). A room-and-board offer on the public consulting site would undercut the
+  consulting rates. Its look is `.rt-theme` in index.css: the shadcn tokens are redefined
+  inside the scope (linen, ink, terracotta, Fraunces), so the reused `StudyCard`,
+  `ResultsBand` and `Footer` restyle without props. `.rt-sun` hue-rotates the about
+  portrait's cyan disc into a sun; the greyscale subject is untouched by hue-rotate.
 - `src/components/ui/` is stock shadcn — don't hand-edit, regenerate.
 
 ## Languages (EN / LV)

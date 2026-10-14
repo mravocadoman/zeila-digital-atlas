@@ -664,3 +664,64 @@ All colors MUST be HSL.
   .card-armed { opacity: 1; transform: none; }
   .card-in { animation: none; }
 }
+
+/* ============================================
+   RETREAT THEME — /retreats only
+   The outreach page for yoga and retreat centres wants a retreat's calm, not
+   the consulting site's neon. Rather than restyle components, the shadcn tokens
+   are redefined inside the scope, so StudyCard, ResultsBand and Footer pick up
+   sand, ink and terracotta on their own. Fonts are injected by the page.
+   ============================================ */
+.rt-theme {
+  --background: 37 41% 93%;        /* linen */
+  --foreground: 30 12% 16%;        /* warm ink */
+  --sunken: 36 33% 88%;
+  --card: 38 50% 96%;
+  --card-foreground: 30 12% 16%;
+  --primary: 19 58% 36%;           /* terracotta, 5.5:1 on linen */
+  --primary-foreground: 37 41% 96%;
+  --muted: 37 30% 89%;
+  --muted-foreground: 30 9% 36%;
+  --accent: 19 58% 36%;
+  --border: 34 26% 78%;
+  --input: 37 41% 93%;
+  --ring: 19 58% 36%;
+
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+}
+
+/* Base h1–h6 hard-code white, which vanishes on linen. */
+.rt-theme :is(h1, h2, h3, h4, h5, h6) { color: hsl(var(--foreground)); }
+
+.rt-theme .heading-elegant,
+.rt-theme .numeral {
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 400;
+  font-variation-settings: "SOFT" 100, "WONK" 0;
+  letter-spacing: -0.015em;
+}
+
+.rt-theme .numeral { color: hsl(var(--foreground)); }
+.rt-theme .numeral.text-primary { color: hsl(var(--primary)); }
+
+.rt-theme .body-clean,
+.rt-theme .eyebrow {
+  font-family: 'Inter Tight', 'Archivo', sans-serif;
+}
+
+.rt-theme .eyebrow {
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+}
+
+.rt-theme .section-rule::before {
+  background: linear-gradient(to right, hsl(var(--primary) / 0.45), hsl(var(--border)) 45%, transparent);
+}
+
+.rt-theme .lift:hover { border-color: hsl(var(--primary) / 0.5); }
+
+/* The about portrait is a greyscale cut-out on a cyan disc. hue-rotate leaves
+   greys untouched, so only the disc turns: cyan becomes a low sun behind him. */
+.rt-sun { filter: hue-rotate(180deg) saturate(0.7); }

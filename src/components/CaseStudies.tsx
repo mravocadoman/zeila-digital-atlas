@@ -3,7 +3,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useReveal } from "@/hooks/use-reveal";
 import { T, useLang } from "@/i18n/lang";
 
-const getCaseStudies = (t: T) => [
+export const getCaseStudies = (t: T) => [
   {
     company: "The Brew Company",
     engagement: t("Fractional growth lead", "Izaugsmes vadītājs uz nepilnu slodzi"),
@@ -85,7 +85,7 @@ const getCaseStudies = (t: T) => [
 
 type Study = ReturnType<typeof getCaseStudies>[number];
 
-const StudyCard = ({ study }: { study: Study }) => {
+export const StudyCard = ({ study }: { study: Study }) => {
   const [lead, ...rest] = study.metrics;
 
   return (
