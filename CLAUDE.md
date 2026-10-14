@@ -23,20 +23,24 @@ Four routes in `src/App.tsx` (all but `/retreats` mirrored under `/lv`, see Lang
   universities and EU programmes. Has its own `.wwm-*` token scope and injects its own
   fonts (Fraunces / Inter Tight / JetBrains Mono) in a `useEffect`. **Deliberately not
   restyled** to match the homepage — it targets a different buyer.
-- `/retreats` — added 2026-10-14. The outreach page sent to yoga and retreat centres
-  ("marketer in residence" for a season, paid in a room and the practice). **Unlisted on
-  purpose**: noindex (it swaps the content of index.html's robots tag and restores it on
-  leave), not in the nav or sitemap, English only with no `/lv` mirror, so it has its own
-  minimal header instead of `Navigation` (whose language switch would point at a missing
-  `/lv/retreats`). A room-and-board offer on the public consulting site would undercut the
-  consulting rates. Its look is `.rt-theme` in index.css: the shadcn tokens are redefined
-  inside the scope (linen, ink, terracotta, Fraunces), so the reused `StudyCard`,
-  `ResultsBand` and `Footer` restyle without props; `.rt-dark` does the same one level down
-  for the photo bands. `.rt-sun` hue-rotates the about portrait's cyan disc into a sun; the
-  greyscale subject is untouched by hue-rotate. Photos in `src/assets/retreat/` are
-  gpt-image-2 mood shots (2026-10-14; "warm analogue film, golden light, linen/terracotta/
-  sage, no people, no text"). Keep them peopleless and placeless: on a page sent to real
-  centres, a figurative shot would read as a fake client or a fake venue.
+- `/retreats` — added 2026-10-14, redesigned twice the same day. The outreach page sent to
+  yoga and retreat centres: "The Season Residency", a marketer on site for a season, paid in
+  a room and the practice. **Unlisted on purpose**: noindex (it swaps the content of
+  index.html's robots tag and restores it on leave), not in the nav or sitemap, English only
+  with no `/lv` mirror, and its own header and footer instead of `Navigation`/`Footer`. A
+  room-and-board offer on the public consulting site would undercut the consulting rates.
+  It speaks the reader's language: the offer is laid out like a retreat package and the
+  hours as a daily schedule. Look and motion are `.rt-theme` in index.css (linen, ink,
+  terracotta, an olive `.rt-dark` band, Instrument Serif + Inter Tight, film grain); the
+  shadcn tokens are redefined inside the scope so Tailwind colour classes just follow.
+  Photos drift via scroll-driven `animation-timeline: view()`, translate only, so nothing
+  is hidden where it's unsupported. `.rt-sun` hue-rotates the about portrait's cyan disc
+  into a sun; the greyscale subject is untouched by hue-rotate. Photos in
+  `src/assets/retreat/` are gpt-image-2 mood shots ("warm analogue film, golden light,
+  linen/terracotta/sage, no people, no text"). Keep them peopleless and placeless: on a page
+  sent to real centres, a figurative shot would read as a fake client or a fake venue.
+  Browser-pane screenshots of this page often come back with photos missing after a
+  scroll; check `img.complete` and `elementFromPoint` before believing them.
 - `src/components/ui/` is stock shadcn — don't hand-edit, regenerate.
 
 ## Languages (EN / LV)

@@ -668,103 +668,117 @@ All colors MUST be HSL.
 /* ============================================
    RETREAT THEME — /retreats only
    The outreach page for yoga and retreat centres wants a retreat's calm, not
-   the consulting site's neon. Rather than restyle components, the shadcn tokens
-   are redefined inside the scope, so StudyCard, ResultsBand and Footer pick up
-   sand, ink and terracotta on their own. Fonts are injected by the page.
+   the consulting site's neon. The shadcn tokens are redefined inside the scope
+   (and again in .rt-dark for the olive band), so Tailwind's bg-background,
+   text-primary, border-border etc. all follow without per-element colours.
+   Fonts (Instrument Serif, Inter Tight) are injected by the page.
    ============================================ */
 .rt-theme {
   --background: 37 41% 93%;        /* linen */
-  --foreground: 30 12% 16%;        /* warm ink */
+  --foreground: 30 12% 13%;        /* warm ink */
   --sunken: 36 33% 88%;
   --card: 38 50% 96%;
-  --card-foreground: 30 12% 16%;
+  --card-foreground: 30 12% 13%;
   --primary: 19 58% 36%;           /* terracotta, 5.5:1 on linen */
   --primary-foreground: 37 41% 96%;
   --muted: 37 30% 89%;
-  --muted-foreground: 30 9% 36%;
+  --muted-foreground: 30 9% 34%;
   --accent: 19 58% 36%;
   --border: 34 26% 78%;
   --input: 37 41% 93%;
   --ring: 19 58% 36%;
+  --rt-ease: cubic-bezier(0.23, 1, 0.32, 1);
+
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: 'Inter Tight', 'Archivo', sans-serif;
+}
+
+.rt-dark {
+  --background: 140 12% 13%;       /* deep olive */
+  --foreground: 40 38% 92%;
+  --muted-foreground: 40 16% 72%;
+  --border: 140 8% 26%;
+  --primary: 22 70% 68%;           /* terracotta lifted to peach for the dark ground */
+  --primary-foreground: 140 12% 13%;
 
   background: hsl(var(--background));
   color: hsl(var(--foreground));
 }
 
-/* Base h1–h6 hard-code white, which vanishes on linen. */
-.rt-theme :is(h1, h2, h3, h4, h5, h6) { color: hsl(var(--foreground)); }
-
-.rt-theme .heading-elegant,
-.rt-theme .numeral {
-  font-family: 'Fraunces', Georgia, serif;
+/* Base h1–h6 hard-code Archivo, bold and white; none of that survives on linen. */
+.rt-theme :is(h1, h2, h3, h4, h5, h6),
+.rt-serif {
+  font-family: 'Instrument Serif', Georgia, serif;
   font-weight: 400;
-  font-variation-settings: "SOFT" 100, "WONK" 0;
-  letter-spacing: -0.015em;
+  letter-spacing: -0.01em;
+  color: inherit;
+  text-wrap: balance;
 }
 
-.rt-theme .numeral { color: hsl(var(--foreground)); }
-.rt-theme .numeral.text-primary { color: hsl(var(--primary)); }
-
-.rt-theme .body-clean,
-.rt-theme .eyebrow {
-  font-family: 'Inter Tight', 'Archivo', sans-serif;
+.rt-label {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: hsl(var(--muted-foreground));
 }
 
-.rt-theme .eyebrow {
-  font-weight: 600;
-  font-size: 0.75rem;
-  letter-spacing: 0.2em;
+.rt-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 0.95rem 1.75rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: transform 160ms var(--rt-ease), background-color 200ms ease, border-color 200ms ease;
+}
+.rt-btn:active { transform: scale(0.97); }
+.rt-btn-solid { background: hsl(var(--primary)); color: hsl(var(--primary-foreground)); }
+.rt-btn-solid:hover { background: hsl(var(--primary) / 0.88); }
+.rt-btn-line { border: 1px solid hsl(var(--foreground) / 0.3); }
+.rt-btn-line:hover { border-color: hsl(var(--foreground)); }
+
+/* Photos sit in a clipping frame; where scroll-driven animation exists they
+   drift a few percent as they pass. Only translate moves and the frame always
+   shows the photo, so a browser that can't run this just shows it still. */
+.rt-frame { overflow: hidden; }
+.rt-frame img { scale: 1.1; }
+@supports (animation-timeline: view()) {
+  .rt-parallax {
+    animation: rt-parallax linear both;
+    animation-timeline: view();
+  }
+  @keyframes rt-parallax {
+    from { translate: 0 -4%; }
+    to { translate: 0 4%; }
+  }
 }
 
-.rt-theme .section-rule::before {
-  background: linear-gradient(to right, hsl(var(--primary) / 0.45), hsl(var(--border)) 45%, transparent);
+@media (hover: hover) and (pointer: fine) {
+  .rt-zoom img { transition: transform 700ms var(--rt-ease); }
+  .rt-zoom:hover img { transform: scale(1.04); }
 }
 
-.rt-theme .lift:hover { border-color: hsl(var(--primary) / 0.5); }
+/* Places they could have me. Two identical runs, slid by half: a seamless loop. */
+.rt-marquee {
+  display: flex;
+  width: max-content;
+  animation: rt-marquee 70s linear infinite;
+}
+@keyframes rt-marquee {
+  to { transform: translateX(-50%); }
+}
+
+.rt-qa summary { list-style: none; cursor: pointer; }
+.rt-qa summary::-webkit-details-marker { display: none; }
+.rt-plus { transition: transform 200ms var(--rt-ease); }
+.rt-qa[open] .rt-plus { transform: rotate(45deg); }
 
 /* The about portrait is a greyscale cut-out on a cyan disc. hue-rotate leaves
    greys untouched, so only the disc turns: cyan becomes a low sun behind him. */
 .rt-sun { filter: hue-rotate(180deg) saturate(0.7); }
-
-/* Dark sub-scope for the photo bands (hero, stats, quote, close). Same trick one
-   level down: redefine the tokens, and the type, eyebrows and buttons follow. */
-.rt-dark {
-  --background: 30 14% 9%;
-  --foreground: 37 41% 94%;
-  --card: 30 14% 12%;
-  --muted-foreground: 35 22% 78%;
-  --border: 30 12% 30%;
-  --primary: 20 72% 68%;           /* peach: terracotta lifted for dark ground */
-  --primary-foreground: 30 14% 9%;
-
-  background: hsl(var(--background));
-  color: hsl(var(--foreground));
-}
-
-/* Copy sits on the left of the hero photo; on narrow screens it covers the whole
-   frame, so the shade turns vertical and heavier. */
-.rt-hero-shade {
-  background:
-    linear-gradient(90deg, hsl(30 14% 9% / 0.85) 0%, hsl(30 14% 9% / 0.55) 42%, hsl(30 14% 9% / 0.08) 78%),
-    linear-gradient(0deg, hsl(30 14% 9% / 0.6) 0%, transparent 40%);
-}
-@media (max-width: 1023px) {
-  .rt-hero-shade {
-    background: linear-gradient(0deg, hsl(30 14% 9% / 0.92) 0%, hsl(30 14% 9% / 0.6) 55%, hsl(30 14% 9% / 0.35) 100%);
-  }
-}
-.rt-shade { background: hsl(30 14% 9% / 0.55); }
-
-/* A slow settle on the hero photo. It only scales, so if animations never run
-   the photo is simply shown at 1.08: nothing is ever hidden. */
-.rt-drift {
-  animation: rt-drift 24s cubic-bezier(0.22, 1, 0.36, 1) both;
-  transform-origin: 65% 50%;
-}
-@keyframes rt-drift {
-  from { transform: scale(1.08); }
-  to { transform: scale(1); }
-}
 
 /* Film grain over the whole page. Fixed, so it doesn't scroll with the photos. */
 .rt-grain::after {
@@ -773,10 +787,11 @@ All colors MUST be HSL.
   inset: 0;
   z-index: 70;
   pointer-events: none;
-  opacity: 0.09;
+  opacity: 0.08;
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.2 0 0 0 0 0.15 0 0 0 0 0.1 0 0 0 0.9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .rt-drift { animation: none; }
+  .rt-parallax, .rt-marquee { animation: none; }
+  .rt-btn:active, .rt-zoom:hover img { transform: none; }
 }
