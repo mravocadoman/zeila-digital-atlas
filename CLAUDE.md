@@ -198,7 +198,9 @@ that lifted the strip from 2.40:1 to 12.85:1 contrast. Don't drop the invert.
   ```
 
   Check the *old* string is gone too — a non-zero count on the new string alone can't
-  tell a fresh deploy from a bundle that happens to contain both.
+  tell a fresh deploy from a bundle that happens to contain both. Pick a string no JSX tag
+  splits ("built to <em>outlast</em>" is two literals in the bundle and never matches),
+  and grep the file, not `echo "$bundle"`: zsh's echo chokes on the bundle's escapes.
 
   When the Lovable MCP connector is attached, `get_project` reports `latest_commit_sha`
   (whether the GitHub mirror caught up) and `deploy_project` publishes without opening
