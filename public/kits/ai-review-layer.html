@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The AI That Marks Another AI's Homework</title>
+<style>
+  :root{
+    --navy:#00152c; --navy2:#04203f; --panel:#07284a;
+    --cyan:#03c3f8; --amber:#ffb020; --red:#ff2b2b;
+    --ink:#eaf3fb; --dim:#8fb0cb; --line:#0e3a5c;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--navy);color:var(--ink);
+    font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  .wrap{max-width:900px;margin:0 auto;padding:0 22px 90px}
+  header{padding:64px 0 40px;border-bottom:1px solid rgba(3,195,248,.18)}
+  .chip{display:inline-block;background:var(--amber);color:#2a1500;font-weight:800;
+    font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding:7px 13px;border-radius:3px}
+  h1{font-size:clamp(30px,6.4vw,54px);line-height:1.04;margin:22px 0 0;letter-spacing:-.02em;font-weight:800}
+  h1 em{font-style:normal;color:var(--cyan)}
+  .sub{font-size:clamp(17px,2.6vw,21px);color:var(--dim);margin:20px 0 0;max-width:44em}
+  .by{margin-top:26px;font-size:14px;color:var(--dim)}
+  .by b{color:var(--ink)}
+  h2{font-size:clamp(21px,3.6vw,29px);margin:64px 0 6px;letter-spacing:-.01em;font-weight:800}
+  h2 span{color:var(--cyan);font-weight:800;margin-right:10px}
+  h3{font-size:18px;margin:34px 0 8px;color:var(--cyan);font-weight:700}
+  p{margin:14px 0}
+  .lead{font-size:18px}
+  a{color:var(--cyan)}
+  .callout{background:var(--panel);border-left:3px solid var(--amber);padding:20px 22px;margin:26px 0;border-radius:0 6px 6px 0}
+  .callout.cy{border-left-color:var(--cyan)}
+  .callout p:first-child{margin-top:0} .callout p:last-child{margin-bottom:0}
+  pre{background:#00101f;border:1px solid rgba(3,195,248,.22);border-radius:8px;
+    padding:18px;overflow-x:auto;font:13px/1.6 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    color:#cfe6f7;margin:18px 0}
+  pre b{color:var(--amber);font-weight:700}
+  code{font:.92em ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:rgba(3,195,248,.1);
+    padding:2px 6px;border-radius:4px;color:#bfe8fb}
+  pre code{background:none;padding:0;color:inherit}
+  table{width:100%;border-collapse:collapse;margin:22px 0;font-size:14.5px;display:block;overflow-x:auto}
+  th,td{text-align:left;padding:11px 13px;border-bottom:1px solid rgba(143,176,203,.18);vertical-align:top}
+  th{color:var(--cyan);font-size:12px;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
+  td:first-child{white-space:nowrap;font-weight:600}
+  ul,ol{padding-left:22px;margin:14px 0}
+  li{margin:8px 0}
+  .flow{background:#00101f;border:1px solid rgba(3,195,248,.22);border-radius:8px;padding:22px 18px;
+    margin:24px 0;overflow-x:auto;font:13px/2 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:#cfe6f7;white-space:pre}
+  .flow b{color:var(--amber)}
+  .flow i{color:var(--cyan);font-style:normal}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin:24px 0}
+  .card{background:var(--panel);border-radius:8px;padding:18px 20px}
+  .card h4{margin:0 0 6px;font-size:15px;color:var(--amber)}
+  .card p{margin:0;font-size:14.5px;color:var(--dim)}
+  .big{font-size:clamp(34px,7vw,58px);font-weight:800;letter-spacing:-.03em;color:var(--cyan);line-height:1;margin:6px 0}
+  hr{border:0;border-top:1px solid rgba(143,176,203,.18);margin:56px 0}
+  footer{margin-top:70px;padding-top:26px;border-top:1px solid rgba(3,195,248,.18);color:var(--dim);font-size:14px}
+  footer b{color:var(--ink)}
+  .warn{border-left-color:var(--red)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <span class="chip">Comment "REVIEW" — free build kit</span>
+  <h1>I built an AI that marks another AI's <em>homework</em>, and refunds the customer when it fails</h1>
+  <p class="sub">A print-on-demand side project where the customer pays before a single pixel is generated. That only works if something checks the output before they see it — and pays them back when it cannot.</p>
+  <p class="by">Built and run by <b>Rihards Zeila</b> · rihardszeila.com · August 2026</p>
+</header>
+
+<h2><span>00</span>Read this first</h2>
+<p class="lead">Selling non-deterministic output is a trust problem, not a tech problem.</p>
+<p>The thing I run is a print-on-demand ecommerce project. The customer uploads photos, writes a specification of what they want, pays, and a physical printed product arrives. Between the payment and the parcel there is a generative model, and a generative model does not do the same thing twice.</p>
+<p>Every piece of ordinary ecommerce infrastructure assumes it does. A SKU is a promise: you saw the picture, you get the picture. Here there is no picture until after the money moves. The customer is buying a probability distribution and hoping it lands on the good side of the curve.</p>
+<div class="callout warn">
+  <p><b>That is the actual product problem.</b> Not prompt quality. Not model choice. The question is: what do you put between the model's output and the customer's eyes so that the customer's trust does not depend on the model having a good day?</p>
+</div>
+<p>My answer was to build a second AI whose only job is to mark the first one's homework — compare what came out against what the customer asked for, score it, and refuse to ship anything that fails. And behind that, a refund that fires on its own when the scoring keeps failing, before the customer has written a single email.</p>
+<p>This document is that architecture. Nothing here is specific to what I sell. If you sell anything that can fail in front of a customer — generated images, generated copy, transcripts, translations, agents doing tasks on someone's behalf — the shape transfers directly.</p>
+
+<h2><span>01</span>Purchase-first, and the unit economics maths</h2>
+<p>Almost every AI product does the same thing: give the generation away, hook the user on the magic, monetise later. Free tier, watermark, upgrade prompt. It is a reasonable strategy when inference is close to free and the marginal user costs you a rounding error.</p>
+<p>Mine costs real money per unit. A single order runs:</p>
+<ul>
+  <li><b>Vision analysis</b> of every uploaded customer photo</li>
+  <li><b>Image generation</b>, and not once — several candidates per order</li>
+  <li><b>A second model pass</b> scoring each candidate against the photos and the written spec</li>
+  <li><b>4x upscaling</b> of the winner, because print resolution is unforgiving in a way screens are not</li>
+</ul>
+<p>Stack those and free generation stops being a growth tactic and becomes a subsidy paid to people who will never buy. So I inverted it. <b>The customer pays through Shopify before anything runs.</b></p>
+
+<div class="callout cy">
+  <p><b>The arithmetic that decides it.</b> Free-first: you pay full generation cost for 100% of visitors who click the button, and you recover it from the fraction who convert. Purchase-first: you pay generation cost for 100% of paying customers, and 0% of everyone else. The break-even is not close. Unit economics are positive from order number one, without a funding round to bridge the gap.</p>
+</div>
+
+<table>
+  <tr><th>Dimension</th><th>Free-first (the default)</th><th>Purchase-first (this build)</th></tr>
+  <tr><td>Who pays for compute</td><td>You, for everyone</td><td>The customer, for themselves</td></tr>
+  <tr><td>Cost of a tyre-kicker</td><td>Full generation run</td><td>Zero</td></tr>
+  <tr><td>Funnel friction</td><td>Low — try before you buy</td><td>High — buy before you see</td></tr>
+  <tr><td>Where the work goes</td><td>Into acquisition volume</td><td>Into the wizard and the guarantee</td></tr>
+  <tr><td>What has to be excellent</td><td>The hook</td><td>The trust mechanics</td></tr>
+  <tr><td>Failure mode</td><td>Burn rate</td><td>Refunds and reputation</td></tr>
+</table>
+
+<p>The trade-off is honest and it is severe. A higher-friction funnel means the customisation wizard has to do real work — it is not decoration on the way to the checkout button, it is the entire pre-purchase experience. It has to set expectations accurately enough that the person paying knows roughly what they will get, and it has to gather enough input that the generation has a chance of matching that expectation.</p>
+<p>And it means the post-purchase machinery has to be built to a standard that free-first products never need. If you take money first, you owe the customer a guarantee. That guarantee is sections 02 through 07.</p>
+
+<h2><span>02</span>The review-layer architecture</h2>
+<p>Here is the whole path from card charged to print file, in order.</p>
+
+<div class="flow">
+  <b>SHOPIFY CHECKOUT</b>   money moves first
+       │            order webhook · customer photos · written spec
+       ▼
+  <b>PHOTO QUALITY GATE</b>   <i>(runs pre-purchase, see 05)</i>
+       │            angle · face visibility · glasses question
+       ▼
+  <b>GENERATE × N</b>   several candidate renders per order
+       │            prompt assembled from: spec + photo analysis
+       │            + <i>prompt learning history for this product line</i>
+       ▼
+  <b>REVIEW LAYER</b>   a second model marks each candidate
+       │            ├─ compare render ⟷ uploaded photos   → likeness score
+       │            ├─ compare render ⟷ written spec      → adherence score
+       │            └─ write a critique in plain language
+       │
+       ├─ score <b>&lt; 85%</b> ──▶ <i>REGENERATE</i>, feeding the model its own
+       │                        critique back in as correction
+       │                        ↑                            │
+       │                        └────── up to 3 attempts ─────┘
+       │                                      │
+       │                                      ▼
+       │                            <b>AUTO-REFUND</b>  no email required
+       │
+       └─ score <b>≥ 85%</b> ──▶ best render <i>auto-flagged as winner</i>
+       │
+       ▼
+  <b>HUMAN CURATION</b>   a person looks at it before anything moves
+       │            the model has no taste; this step supplies it
+       ▼
+  <b>CUSTOMER APPROVAL</b>   HMAC-signed expiring link
+       │            approval writes an <i>immutable snapshot</i>
+       ▼
+  <b>4× UPSCALE → PRINT PROVIDER</b>
+                  atomic lock: one order can never be pushed twice
+</div>
+
+<p>Read that top to bottom and you can see the design principle: <b>every step that can produce a wrong answer has a step after it that can catch the wrong answer.</b> Generation is checked by review. Review is checked by a human. The human is checked by the customer. The customer's approval is checked by an immutable record of exactly what they approved.</p>
+<p>The interesting part is not that a model generates images. Everybody has that. The interesting part is that nothing in the chain is trusted to be right on its own.</p>
+
+<h2><span>03</span>The scoring rubric, and why 85%</h2>
+<p>"An AI scores the output" is the kind of sentence that sounds like a solved problem and is not. Scoring against what? Compared how? The rubric is the thing that does the work, and mine has two independent axes because the two ways this can fail are unrelated.</p>
+
+<div class="grid">
+  <div class="card">
+    <h4>Likeness</h4>
+    <p>Does the rendered subject match the person in the uploaded photos? This is a comparison against evidence the customer supplied. It has a ground truth.</p>
+  </div>
+  <div class="card">
+    <h4>Instruction adherence</h4>
+    <p>Does the render do what the written specification asked for? This is a comparison against language the customer wrote. It has an intent, not a pixel.</p>
+  </div>
+</div>
+
+<p>Keeping them separate matters because a render can be a beautiful, faithful likeness that ignores half of what the customer typed — and it can follow every written instruction perfectly while looking like somebody else entirely. Those are different bugs with different fixes. A single blended "quality score" would average them into uselessness and tell you nothing about what to correct on the next attempt.</p>
+
+<table>
+  <tr><th>Axis</th><th>Compared against</th><th>Failure it catches</th><th>Correction it implies</th></tr>
+  <tr><td>Likeness</td><td>Customer's uploaded photos</td><td>Wrong face, drifted features, lost identity</td><td>Strengthen photo conditioning, re-weight reference</td></tr>
+  <tr><td>Adherence</td><td>Customer's written spec</td><td>Missing or ignored requested elements</td><td>Restate the spec explicitly in the next prompt</td></tr>
+</table>
+
+<h3>Why the threshold sits at 85</h3>
+<p>85% is not a number I derived from a formula, and I will not pretend otherwise. It is a threshold chosen deliberately for what it does to the two error types, and it moves if reality argues with it.</p>
+<ul>
+  <li><b>Set it too low</b> — say 60 — and the gate stops being a gate. Mediocre renders auto-pass, the human curator becomes the only real filter, and you have built an expensive logging system.</li>
+  <li><b>Set it too high</b> — say 97 — and almost nothing passes. You burn three attempts on orders that were fine, refund customers who would have been happy, and the compute cost of the retry loop eats the margin that purchase-first was supposed to protect.</li>
+  <li><b>85 sits where auto-pass is defensible.</b> High enough that a passing render is one I am comfortable putting in front of a person without hedging; low enough that the retry loop is an exception rather than the default path.</li>
+</ul>
+<div class="callout">
+  <p><b>The threshold is a business decision wearing a technical costume.</b> It encodes exactly how much risk you are willing to push onto the customer versus how much compute you are willing to spend to avoid it. Anyone who tells you their threshold came out of the data is describing the calibration, not the choice.</p>
+</div>
+<p>One thing the score is <em>not</em>: a promise. Passing 85 means the render cleared an automated bar. It does not mean it is good. That is what section 09 is about.</p>
+
+<h2><span>04</span>What happens below threshold</h2>
+<p>A failing score is more useful than a passing one, because it comes with a reason.</p>
+<p>The review model does not only emit a number. It writes a critique — what specifically is wrong, on which axis. That critique is then fed back into the next generation attempt as correction. The model is, quite literally, given its own marked homework and asked to try again with the corrections in hand.</p>
+
+<div class="flow">
+  attempt 1  ──▶  score: <b>below threshold</b>
+                  critique: <i>"missing element X from the spec;
+                             likeness drifts on the upper face"</i>
+                       │
+                       ▼
+  attempt 2  ◀── prompt = original spec
+                       + photo analysis
+                       + <b>critique of attempt 1</b>
+                       + <i>prompt learning history</i>
+                       │
+                       ▼
+                  score: <b>below threshold</b> ──▶ attempt 3
+                       │
+                       ▼
+                  still failing ──▶ <b>AUTOMATIC REFUND</b>
+</div>
+
+<h3>The learning history is the part that compounds</h3>
+<p>Per-order self-correction is nice. It fixes this order. What actually changes the economics is that <b>previous attempts — good and bad — are stored and fed into future prompts.</b></p>
+<p>That converts a failed generation from a pure loss into a training signal. Under a naive setup, a bad render costs you compute and teaches you nothing; the next customer with a similar request walks into the identical failure. With a learning history, the system carries forward what worked and what did not, and the failure rate on that class of request bends downward over time.</p>
+<div class="callout cy">
+  <p><b>Frame it as an asset.</b> Every order leaves behind a record of which prompt shapes produced high scores and which produced low ones. That record is the only thing in this stack that gets more valuable the longer it runs — the models will be replaced, the print provider might be replaced, the accumulated knowledge of what actually scores well does not get replaced.</p>
+</div>
+<p>It also inverts the emotional experience of a bad generation. A failure is no longer money on fire. It is the system finding an edge it did not know about, and writing it down.</p>
+
+<h2><span>05</span>Gates before the money</h2>
+<p>The cheapest failure is the one that never enters the pipeline. If the input is bad, no amount of scoring downstream will rescue the output — you will just spend three attempts and a refund proving that a blurry photo taken from behind cannot become a good print.</p>
+<p>So the quality gate runs <b>before the customer proceeds</b>, not after they pay.</p>
+
+<div class="grid">
+  <div class="card">
+    <h4>Angle</h4>
+    <p>Is the subject shot from an angle the generation can actually work from? Rejected early, with a reason, not silently accepted.</p>
+  </div>
+  <div class="card">
+    <h4>Face visibility</h4>
+    <p>Is the face actually visible and usable as a likeness reference? Likeness scoring in section 03 is impossible without it.</p>
+  </div>
+  <div class="card">
+    <h4>Glasses</h4>
+    <p>Detected, then <em>asked about</em>: do you want them kept? Not guessed. This is one of the highest-regret details and the customer owns the answer.</p>
+  </div>
+</div>
+
+<p>The glasses question is my favourite thing in the entire build, because it is not a technical feature. It is the recognition that some choices are not the system's to make. Keeping or removing glasses changes whether the person in the render reads as themselves, and there is no correct default — some people are their glasses, some people are wearing readers they borrowed. Guessing gets it wrong roughly half the time. Asking gets it right every time and costs one tap.</p>
+<div class="callout">
+  <p><b>The general rule:</b> when a detail materially changes whether the customer recognises themselves, and the system cannot infer the answer better than the customer can state it, <em>ask</em>. Every ambiguity you resolve at input time is one you do not have to detect, score, critique and regenerate later.</p>
+</div>
+<p>Gates before the money also do something for the funnel that is easy to miss: they make the higher-friction purchase-first flow feel like diligence rather than obstruction. Being told "this photo will not work, here is why" before paying reads as competence. Being told it after paying reads as a bait and switch.</p>
+
+<h2><span>06</span>The refund escape hatch</h2>
+<p>This is the section that makes the rest of it defensible.</p>
+<p class="big">3 failed generations → automatic refund</p>
+<p>Not a support ticket. Not a policy page. Not "contact us within 14 days." After three attempts that fail to clear the threshold, the money goes back on its own, <b>before the customer has to email anyone.</b></p>
+
+<div class="callout warn">
+  <p><b>Charging before you deliver is only defensible if you build the way out.</b> If you take money up front for output you cannot guarantee, and the only route to a refund runs through a human who has an incentive to say no, you have not built a business model — you have built a complaint queue. The automatic refund is the price of admission for purchase-first.</p>
+</div>
+
+<h3>Why automatic beats generous</h3>
+<p>Plenty of companies have a generous refund policy. Very few have one that fires without being asked. The difference is where the burden sits.</p>
+<table>
+  <tr><th>Model</th><th>Who acts</th><th>What the customer experiences</th></tr>
+  <tr><td>Standard policy</td><td>Customer must notice, write in, and argue</td><td>Friction exactly when they are already unhappy</td></tr>
+  <tr><td>Generous policy</td><td>Customer must still ask; you say yes quickly</td><td>Better, but the burden is still theirs</td></tr>
+  <tr><td>Automatic</td><td>The system, on its own, at attempt three</td><td>Refunded before they thought to ask</td></tr>
+</table>
+
+<p>There is a second-order effect that matters more than the goodwill. An automatic refund puts a hard, self-enforcing ceiling on how much a broken order can cost you in compute — three attempts and it stops — and a hard floor under how badly it can damage the customer relationship. It converts an unbounded downside into a known, bounded one.</p>
+<p>It also keeps you honest. A refund that fires on its own is a metric you cannot ignore or explain away. If it fires often, the generation is bad, and no amount of reassuring copy on the product page will fix that.</p>
+
+<h2><span>07</span>Snapshots, signed links, and deleted photos</h2>
+<p>Three mechanics that sound like plumbing and are actually the trust layer.</p>
+
+<h3>Immutable approval snapshots</h3>
+<p>When a customer approves a render, the system writes a record of exactly what they approved and that record does not change afterwards. Not the current state of the order — the state at the moment of approval, frozen.</p>
+<p>This resolves the single nastiest dispute class in custom manufacturing: <em>"that is not what I signed off on."</em> With a mutable order record, that argument is unwinnable by either side, because the record now reflects everything that happened since. With a snapshot, there is one artifact both parties agreed on and it still exists in the form it had when they agreed.</p>
+
+<h3>HMAC-signed expiring links</h3>
+<p>The approval step happens over a link. That link shows someone's photos and their render, so it cannot be a guessable URL sitting on the open internet for ever.</p>
+<ul>
+  <li><b>Signed</b> — the link carries an HMAC, so a tampered or invented URL fails verification instead of loading someone else's order.</li>
+  <li><b>Expiring</b> — access is bounded in time. A link that leaks a year from now is already dead.</li>
+</ul>
+<p>No accounts, no passwords, no login flow standing between a customer and approving their own order — and still not a public URL. That combination is why signed expiring links are worth the small amount of work they take.</p>
+
+<h3>Photos are auto-deleted</h3>
+<p>Customer photos are inputs, not inventory. Once the pipeline no longer needs them, they are deleted automatically. Nobody has to remember to run a cleanup, and the retention window is not a promise in a privacy policy that depends on somebody's diligence — it is behaviour of the system.</p>
+<div class="callout cy">
+  <p><b>And the empty review section.</b> The reviews area on the site stays empty until there are real reviews. No seeded testimonials, no placeholder five-stars, no "trusted by thousands" over a stock photo. An empty review section is a small, unglamorous credibility signal — and the moment you fake it, every other guarantee on the page becomes something a visitor has to take on faith.</p>
+</div>
+
+<h3>And the boring one that saves you</h3>
+<p>A duplicate-push guard: an atomic lock ensuring the same order can never be pushed to the print provider twice. Retries, webhook replays and impatient clicks all try to do this eventually. Without the lock, the failure mode is two physical objects manufactured and shipped for one payment — an error that costs real money and cannot be undone with a database rollback.</p>
+
+<h2><span>08</span>The trust checklist</h2>
+<p class="lead">Copy this. It applies to anything you sell that can fail in front of a customer — generated media, generated copy, transcription, translation, agents acting on someone's behalf.</p>
+
+<ol>
+  <li><b>Decide who pays for failure before you launch.</b> Free-first puts the cost of every bad output on you. Purchase-first puts it on the customer unless you build a way out. Both are valid. Choosing by accident is not.</li>
+  <li><b>Gate the inputs before you take the money.</b> Check the things that make good output impossible — resolution, angle, visibility, missing information — while the customer can still fix them for free.</li>
+  <li><b>Ask about ambiguities instead of guessing.</b> Any detail where you would be right about half the time, and the customer would be right every time, is a question, not a default.</li>
+  <li><b>Generate more than one candidate.</b> A single sample from a non-deterministic process is a coin flip you are asking the customer to accept.</li>
+  <li><b>Score every candidate against the customer's own inputs.</b> Not against a vibe. Against the evidence they uploaded and the words they wrote.</li>
+  <li><b>Split the score into independent axes.</b> Fidelity to evidence and adherence to instructions fail separately and are fixed separately. A blended number tells you nothing actionable.</li>
+  <li><b>Pick an auto-pass threshold on purpose, and write down why.</b> It is a risk decision, not a measurement. Revisit it when reality argues.</li>
+  <li><b>Make failures produce a critique, not just a rejection.</b> A score without a reason cannot drive a correction.</li>
+  <li><b>Feed the critique back into the retry.</b> The cheapest improvement available is the model reading its own marked homework.</li>
+  <li><b>Store good and bad attempts and use them on future work.</b> This is what turns a cost centre into a compounding asset.</li>
+  <li><b>Cap the retry loop with a number, not with judgement.</b> Unbounded retries are an unbounded compute bill and an unbounded wait for the customer.</li>
+  <li><b>Automate the refund at the cap.</b> Before the customer asks. The burden of a failure belongs on the system that failed.</li>
+  <li><b>Keep a human before fulfilment.</b> Scoring catches wrongness. It does not catch tastelessness.</li>
+  <li><b>Get explicit customer approval before anything irreversible.</b> Printing, sending, publishing, purchasing — anything you cannot take back.</li>
+  <li><b>Snapshot the approval immutably.</b> Store what they agreed to, exactly as it was, so no dispute turns on memory.</li>
+  <li><b>Sign and expire every link that shows private content.</b> Unguessable is not the same as unauthorised.</li>
+  <li><b>Delete customer inputs automatically once you are done with them.</b> Retention should be a system behaviour, not a good intention.</li>
+  <li><b>Put an atomic lock on every irreversible external action.</b> Retries and replays will eventually fire it twice. Assume they will.</li>
+  <li><b>Do not fake social proof.</b> Empty is more credible than invented, and it costs you nothing but patience.</li>
+  <li><b>Promise the timeline you can actually hit.</b> Mine launched at 24 hours and was revised to 48 once reality voted. Changing the promise to match the truth is cheaper than missing it repeatedly.</li>
+</ol>
+
+<div class="callout">
+  <p><b>If you implement three of these, implement 5, 9 and 12.</b> Score the output against the customer's own inputs, feed the critique back into the retry, and refund automatically at the cap. That is the minimum viable version of everything above.</p>
+</div>
+
+<h2><span>09</span>The honest section</h2>
+<p class="lead">What this does not do.</p>
+
+<h3>It does not have taste</h3>
+<p>The review layer can tell you a render resembles the person in the photos and includes the elements the spec asked for. It cannot tell you the result is <em>good</em>. Composition, tone, whether something is subtly awful in a way that is obvious to a human in half a second — none of that is in the rubric, and I do not believe I could put it there.</p>
+
+<h3>A human still curates</h3>
+<p>Which is exactly why there is a person in the loop before fulfilment. Not as a legacy step waiting to be automated away — as the component that supplies the judgement the scoring cannot. And the customer approves before anything is printed, which makes them the final reviewer of a chain that already has two.</p>
+
+<h3>Scoring correlates with quality. It does not equal it.</h3>
+<p>An 85 is a proxy. It is a useful proxy, chosen and tuned to be useful, and it is still a proxy. There will be renders that score 90 and are lifeless, and renders that score 80 and are the best thing the system has made that week. Anyone selling you a scoring layer as a guarantee of quality is selling you a correlation and calling it a contract.</p>
+
+<h3>And none of it helps if the underlying generation is bad</h3>
+<p>This is the one people skip. A review layer is a filter, and a filter cannot add quality that was never generated. If the base generation is weak, all this architecture buys you is an expensive, well-instrumented way to discover that three times per order and issue a refund.</p>
+<div class="callout warn">
+  <p><b>Build the generation first.</b> Get the output good enough that a reasonable person would be happy with a random sample of it. <em>Then</em> add the review layer to catch the tail. In that order. Reversed, you have built quality control for a factory that does not work.</p>
+</div>
+
+<hr>
+
+<h3>What I would tell you to build in a weekend</h3>
+<ol>
+  <li><b>Generate two candidates instead of one.</b> Nothing else. Just stop shipping a single sample of a random process.</li>
+  <li><b>Add a scoring pass.</b> One model, one prompt, comparing output to the customer's inputs. Log the score next to the order; do not act on it yet.</li>
+  <li><b>Watch the scores for a week</b> against outputs you have judged yourself. That is where your threshold comes from — not from a blog post, mine included.</li>
+  <li><b>Turn on the retry with the critique fed back.</b> Cap it at three.</li>
+  <li><b>Automate the refund at the cap</b> before you tell anyone the guarantee exists.</li>
+  <li><b>Then add the input gates</b>, and watch how many of the failures you were catching downstream simply stop happening.</li>
+</ol>
+
+<div class="callout">
+  <p><b>One more thing.</b> The delivery promise on this project launched at 24 hours and is now 48. Not because the pipeline got slower — because the honest number was 48 and the ambitious one was 24, and reality voted. Every mechanic in this document exists for the same reason: it is cheaper to build the system that tells you the truth than to keep managing the consequences of a promise you cannot keep.</p>
+</div>
+
+<footer>
+  <p><b>Rihards Zeila</b> — rihardszeila.com<br>
+  Performance marketing, automation, and whatever I am currently building in public.<br>
+  Take any of this. Ship it. Tell me what broke.</p>
+</footer>
+
+</div>
+</body>
+</html>
