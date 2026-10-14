@@ -31,8 +31,12 @@ Four routes in `src/App.tsx` (all but `/retreats` mirrored under `/lv`, see Lang
   `/lv/retreats`). A room-and-board offer on the public consulting site would undercut the
   consulting rates. Its look is `.rt-theme` in index.css: the shadcn tokens are redefined
   inside the scope (linen, ink, terracotta, Fraunces), so the reused `StudyCard`,
-  `ResultsBand` and `Footer` restyle without props. `.rt-sun` hue-rotates the about
-  portrait's cyan disc into a sun; the greyscale subject is untouched by hue-rotate.
+  `ResultsBand` and `Footer` restyle without props; `.rt-dark` does the same one level down
+  for the photo bands. `.rt-sun` hue-rotates the about portrait's cyan disc into a sun; the
+  greyscale subject is untouched by hue-rotate. Photos in `src/assets/retreat/` are
+  gpt-image-2 mood shots (2026-10-14; "warm analogue film, golden light, linen/terracotta/
+  sage, no people, no text"). Keep them peopleless and placeless: on a page sent to real
+  centres, a figurative shot would read as a fake client or a fake venue.
 - `src/components/ui/` is stock shadcn — don't hand-edit, regenerate.
 
 ## Languages (EN / LV)

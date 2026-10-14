@@ -725,3 +725,58 @@ All colors MUST be HSL.
 /* The about portrait is a greyscale cut-out on a cyan disc. hue-rotate leaves
    greys untouched, so only the disc turns: cyan becomes a low sun behind him. */
 .rt-sun { filter: hue-rotate(180deg) saturate(0.7); }
+
+/* Dark sub-scope for the photo bands (hero, stats, quote, close). Same trick one
+   level down: redefine the tokens, and the type, eyebrows and buttons follow. */
+.rt-dark {
+  --background: 30 14% 9%;
+  --foreground: 37 41% 94%;
+  --card: 30 14% 12%;
+  --muted-foreground: 35 22% 78%;
+  --border: 30 12% 30%;
+  --primary: 20 72% 68%;           /* peach: terracotta lifted for dark ground */
+  --primary-foreground: 30 14% 9%;
+
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+}
+
+/* Copy sits on the left of the hero photo; on narrow screens it covers the whole
+   frame, so the shade turns vertical and heavier. */
+.rt-hero-shade {
+  background:
+    linear-gradient(90deg, hsl(30 14% 9% / 0.85) 0%, hsl(30 14% 9% / 0.55) 42%, hsl(30 14% 9% / 0.08) 78%),
+    linear-gradient(0deg, hsl(30 14% 9% / 0.6) 0%, transparent 40%);
+}
+@media (max-width: 1023px) {
+  .rt-hero-shade {
+    background: linear-gradient(0deg, hsl(30 14% 9% / 0.92) 0%, hsl(30 14% 9% / 0.6) 55%, hsl(30 14% 9% / 0.35) 100%);
+  }
+}
+.rt-shade { background: hsl(30 14% 9% / 0.55); }
+
+/* A slow settle on the hero photo. It only scales, so if animations never run
+   the photo is simply shown at 1.08: nothing is ever hidden. */
+.rt-drift {
+  animation: rt-drift 24s cubic-bezier(0.22, 1, 0.36, 1) both;
+  transform-origin: 65% 50%;
+}
+@keyframes rt-drift {
+  from { transform: scale(1.08); }
+  to { transform: scale(1); }
+}
+
+/* Film grain over the whole page. Fixed, so it doesn't scroll with the photos. */
+.rt-grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  pointer-events: none;
+  opacity: 0.09;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.2 0 0 0 0 0.15 0 0 0 0 0.1 0 0 0 0.9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rt-drift { animation: none; }
+}

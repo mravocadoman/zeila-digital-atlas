@@ -4,6 +4,11 @@ import { useLang, usePageMeta } from "@/i18n/lang";
 import { useReveal } from "@/hooks/use-reveal";
 
 import aboutPortrait from "@/assets/rihards-about.webp";
+import shalaImg from "@/assets/retreat/shala.webp";
+import palmsImg from "@/assets/retreat/palms.webp";
+import deskImg from "@/assets/retreat/desk.webp";
+import oceanImg from "@/assets/retreat/ocean.webp";
+import pathImg from "@/assets/retreat/path.webp";
 
 import ResultsBand from "@/components/ResultsBand";
 import { getCaseStudies, StudyCard } from "@/components/CaseStudies";
@@ -16,11 +21,13 @@ import Footer from "@/components/Footer";
  * Deliberately unlisted and English-only. It's noindex, absent from the nav and
  * sitemap, and has no /lv mirror, because a room-and-board offer sitting on the
  * public consulting site would undercut the consulting rates. Hence its own
- * minimal header: the shared Navigation carries the language switch, which
- * would point at a /lv/retreats that doesn't exist.
+ * header: the shared Navigation carries the language switch, which would point
+ * at a /lv/retreats that doesn't exist.
  *
- * It also has its own look (.rt-theme in index.css): linen, ink and terracotta
- * with a Fraunces serif, because it is read by retreat owners, not ad buyers.
+ * It also has its own look (.rt-theme in index.css): linen, ink and terracotta,
+ * a Fraunces serif, film grain and generated mood photography, because it is
+ * read by retreat owners, not ad buyers. The photos (src/assets/retreat) show
+ * no people and no real place, so none of them can read as a client claim.
  */
 
 const WHATSAPP = `https://wa.me/37126673384?text=${encodeURIComponent(
@@ -29,9 +36,9 @@ const WHATSAPP = `https://wa.me/37126673384?text=${encodeURIComponent(
 const EMAIL = "mailto:rihards.zeila@gmail.com?subject=Marketing%20residency";
 
 const primaryBtn =
-  "body-clean inline-block text-center bg-primary text-background px-8 py-4 rounded-md font-bold text-sm lg:text-base uppercase tracking-wider hover:bg-primary/90 transition-colors";
-const outlineBtn =
-  "body-clean inline-block text-center border border-border text-foreground px-8 py-4 rounded-md font-bold text-sm lg:text-base uppercase tracking-wider hover:border-primary transition-colors";
+  "body-clean inline-block text-center bg-primary text-primary-foreground px-8 py-4 rounded-full font-semibold text-sm lg:text-base tracking-wide hover:bg-primary/90 transition-colors";
+const ghostBtn =
+  "body-clean inline-block text-center border border-foreground/40 text-foreground px-8 py-4 rounded-full font-semibold text-sm lg:text-base tracking-wide hover:border-foreground transition-colors";
 
 const offers = [
   {
@@ -100,70 +107,43 @@ const transfers: Record<string, string> = {
 
 const steps = [
   {
-    n: "01",
-    title: "Week 1: audit and quick wins",
+    title: "Week one: listen and fix",
     body: "I go through your site, booking flow, ads and reviews, and fix what's broken first. You get a written plan by the end of the week.",
   },
   {
-    n: "02",
     title: "Then: build",
     body: "Campaigns, pages and automations, built in your own accounts with your team alongside. Nothing in a black box.",
   },
   {
-    n: "03",
-    title: "Last weeks: handover",
+    title: "Last weeks: hand over",
     body: "Short guides, a simple dashboard and a workshop, so your team keeps it running after I leave.",
   },
   {
-    n: "04",
     title: "The exchange",
     body: "2 to 4 hours a day, more for a big project. You provide a room and a place in your practice, and meals if you can. No fees either way.",
   },
 ];
 
-const Section = ({
-  id,
-  eyebrow,
-  title,
-  intro,
-  children,
-}: {
-  id?: string;
-  eyebrow: string;
-  title: string;
-  intro?: string;
-  children: ReactNode;
-}) => {
+const terms = ["Starts Nov or Dec", "2 to 4 months", "2 to 4 hours a day"];
+
+/** A section that rises in once it reaches the fold. See use-reveal for why it's safe. */
+const Section = ({ id, className = "", children }: { id?: string; className?: string; children: ReactNode }) => {
   const reveal = useReveal<HTMLElement>();
   return (
-    <section
-      id={id}
-      ref={reveal.ref}
-      className={`py-12 lg:py-24 px-6 lg:px-16 section-rule ${reveal.className}`}
-    >
-      <div className="max-w-6xl mx-auto">
-        <span className="eyebrow block mb-4">{eyebrow}</span>
-        <h2 className="heading-elegant text-3xl lg:text-5xl mb-4 max-w-3xl">{title}</h2>
-        {intro && (
-          <p className="body-clean text-muted-foreground text-lg lg:text-xl max-w-2xl">
-            {intro}
-          </p>
-        )}
-        <div className="mt-8 lg:mt-12">{children}</div>
-      </div>
+    <section id={id} ref={reveal.ref} className={`px-6 lg:px-16 py-20 lg:py-32 ${className} ${reveal.className}`}>
+      <div className="max-w-6xl mx-auto">{children}</div>
     </section>
   );
 };
 
-const OfferCard = ({ title, body }: { title: string; body: string }) => {
-  const card = useReveal<HTMLDivElement>("card");
-  return (
-    <div ref={card.ref} className={`border border-border rounded-lg p-5 lg:p-7 lift ${card.className}`}>
-      <h3 className="heading-elegant text-xl lg:text-2xl mb-3">{title}</h3>
-      <p className="body-clean text-foreground/85 text-base lg:text-lg leading-relaxed">{body}</p>
-    </div>
-  );
-};
+const Eyebrow = ({ children }: { children: ReactNode }) => (
+  <span className="eyebrow block mb-5">{children}</span>
+);
+
+/** Decorative mood photo. The copy carries the meaning, so it's hidden from assistive tech. */
+const Photo = ({ src, className }: { src: string; className: string }) => (
+  <img src={src} alt="" aria-hidden="true" loading="lazy" decoding="async" className={`object-cover ${className}`} />
+);
 
 const Retreats = () => {
   const { t } = useLang();
@@ -179,7 +159,7 @@ const Retreats = () => {
       fonts.id = "rt-fonts";
       fonts.rel = "stylesheet";
       fonts.href =
-        "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..600,0..100&family=Inter+Tight:wght@400;600&display=swap";
+        "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..600,0..100;1,9..144,300..600,0..100&family=Inter+Tight:wght@400;600&display=swap";
       document.head.appendChild(fonts);
     }
     // index.html ships "index, follow"; a second tag would contradict it, so swap
@@ -193,108 +173,144 @@ const Retreats = () => {
   const studies = getCaseStudies(t).filter((s) => s.company in transfers);
 
   return (
-    <div className="min-h-screen rt-theme">
-      <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
-        <div className="max-w-6xl mx-auto px-4 lg:px-6 h-16 flex items-center justify-between">
-          <Link to="/" className="heading-elegant text-foreground text-base lg:text-lg hover:text-primary transition-colors">
+    <div className="min-h-screen rt-theme rt-grain">
+      {/* Hero: full-bleed sunrise shala, copy on the shaded left */}
+      <header className="rt-dark relative min-h-[100svh] flex flex-col overflow-hidden">
+        <img
+          src={shalaImg}
+          alt=""
+          aria-hidden="true"
+          loading="eager"
+          className="rt-drift absolute inset-0 h-full w-full object-cover"
+        />
+        <div className="rt-hero-shade absolute inset-0" aria-hidden="true" />
+
+        <div className="relative z-10 max-w-6xl w-full mx-auto px-6 lg:px-16 pt-6 flex items-center justify-between">
+          <Link to="/" className="heading-elegant text-lg lg:text-xl hover:text-primary transition-colors">
             Rihards Zeila
           </Link>
-          <a href="#contact" className="body-clean text-sm font-semibold uppercase tracking-wider text-foreground hover:text-primary transition-colors">
+          <a href="#contact" className="body-clean text-sm font-semibold tracking-wide hover:text-primary transition-colors">
             Get in touch
           </a>
+        </div>
+
+        <div className="relative z-10 flex-1 flex items-end">
+          <div className="max-w-6xl w-full mx-auto px-6 lg:px-16 pb-16 lg:pb-24 pt-32">
+            <Eyebrow>For yoga, meditation &amp; retreat centres</Eyebrow>
+            <h1 className="heading-elegant text-5xl sm:text-6xl lg:text-8xl leading-[1.02] max-w-4xl mb-8">
+              A marketer <em className="italic text-primary">in residence</em> for your season.
+            </h1>
+            <p className="body-clean text-foreground/85 text-lg lg:text-xl leading-relaxed max-w-xl mb-8">
+              I'd like to live at your centre for a season and spend a few hours a day on whatever
+              fills your retreats, trainings and rooms. In return: a room, a place in your daily
+              practice, and meals if you can.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-10">
+              <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className={primaryBtn}>
+                Message me on WhatsApp
+              </a>
+              <a href={EMAIL} className={ghostBtn}>
+                Email me
+              </a>
+            </div>
+            <ul className="flex flex-wrap gap-2">
+              {terms.map((term) => (
+                <li key={term} className="body-clean text-xs lg:text-sm tracking-wide border border-foreground/30 rounded-full px-4 py-1.5 text-foreground/85">
+                  {term}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </header>
 
       <main>
-        <section className="px-6 lg:px-16 pt-28 pb-6 lg:pt-36 lg:pb-8">
-          <div className="max-w-6xl mx-auto grid lg:grid-cols-[1.5fr_1fr] gap-10 lg:gap-16 items-center">
-            <div className="order-2 lg:order-1">
-              <span className="eyebrow block mb-5 rise" style={{ animationDelay: "0.05s" }}>
-                For yoga, meditation &amp; retreat centres
-              </span>
-              <h1
-                className="heading-elegant text-4xl sm:text-5xl lg:text-6xl leading-[1.08] mb-6 rise"
-                style={{ animationDelay: "0.15s" }}
-              >
-                A senior marketer in residence for your season.
-              </h1>
-              <p
-                className="body-clean text-muted-foreground text-lg lg:text-xl leading-relaxed max-w-xl mb-4 rise"
-                style={{ animationDelay: "0.28s" }}
-              >
-                I'd like to spend 2 to 4 months living at your centre, starting November or
-                December, working 2 to 4 hours a day on whatever fills your retreats, trainings
-                and rooms.
+        <div className="rt-dark pb-16 lg:pb-24">
+          <ResultsBand />
+        </div>
+
+        {/* What I bring: sticky heading and still life left, the six offers right */}
+        <Section>
+          <div className="grid lg:grid-cols-[5fr_7fr] gap-12 lg:gap-20">
+            <div className="lg:sticky lg:top-10 self-start">
+              <Eyebrow>What I bring</Eyebrow>
+              <h2 className="heading-elegant text-4xl lg:text-6xl leading-[1.05] mb-6">
+                The marketing a small centre rarely has <em className="italic">time</em> for.
+              </h2>
+              <p className="body-clean text-muted-foreground text-lg leading-relaxed mb-8">
+                Ten years running paid growth for e-commerce and service businesses, and I teach
+                digital marketing on the Riga Business School MBA.
               </p>
-              <p
-                className="body-clean text-muted-foreground text-lg lg:text-xl leading-relaxed max-w-xl mb-8 rise"
-                style={{ animationDelay: "0.36s" }}
-              >
-                In return: a room, a place in your daily practice, and meals if you can.
-                Everything I build stays yours, and your team learns to run it.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 rise" style={{ animationDelay: "0.46s" }}>
-                <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className={primaryBtn}>
-                  Message me on WhatsApp
-                </a>
-                <a href={EMAIL} className={outlineBtn}>
-                  Email me
-                </a>
-              </div>
+              <Photo src={deskImg} className="w-full aspect-[4/3] rounded-2xl" />
             </div>
-            <img
-              src={aboutPortrait}
-              alt="Rihards Zeila"
-              className="order-1 lg:order-2 w-52 sm:w-64 lg:w-full lg:max-w-sm mx-auto rt-sun rise"
-              style={{ animationDelay: "0.2s" }}
-              loading="eager"
-            />
-          </div>
-        </section>
-
-        <ResultsBand />
-
-        <Section
-          eyebrow="What I bring"
-          title="The marketing a small centre rarely has time for."
-          intro="Ten years running paid growth for e-commerce and service businesses, and I teach digital marketing on the Riga Business School MBA. At your centre that turns into six things."
-        >
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
-            {offers.map((o) => (
-              <OfferCard key={o.title} {...o} />
-            ))}
+            <ol className="grid sm:grid-cols-2 gap-x-10">
+              {offers.map((o, i) => (
+                <li key={o.title} className="border-t border-border py-8">
+                  <span className="heading-elegant italic text-primary text-3xl block mb-4">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="heading-elegant text-2xl mb-3">{o.title}</h3>
+                  <p className="body-clean text-muted-foreground text-base lg:text-lg leading-relaxed">{o.body}</p>
+                </li>
+              ))}
+            </ol>
           </div>
         </Section>
 
-        <Section
-          eyebrow="At a centre"
-          title="What this looks like in practice."
-          intro="Five situations I see at most retreat centres, and what I'd build for each. These are plans, not past results."
-        >
-          <ol className="border-b border-border">
-            {situations.map((s) => (
-              <li key={s.problem} className="grid lg:grid-cols-[1fr_2fr] gap-3 lg:gap-12 py-6 lg:py-8 border-t border-border">
-                <h3 className="heading-elegant text-xl lg:text-2xl">{s.problem}</h3>
-                <div className="body-clean text-base lg:text-lg leading-relaxed space-y-2">
-                  <p className="text-foreground/85">
-                    <span className="font-semibold text-foreground">What I'd build: </span>
+        {/* At a centre: an arch of palm shadow stays put while the situations scroll */}
+        <Section className="bg-sunken">
+          <div className="grid lg:grid-cols-[5fr_7fr] gap-12 lg:gap-20">
+            <div className="lg:sticky lg:top-10 self-start">
+              <Eyebrow>At a centre</Eyebrow>
+              <h2 className="heading-elegant text-4xl lg:text-6xl leading-[1.05] mb-6">
+                What this looks like <em className="italic">in practice.</em>
+              </h2>
+              <p className="body-clean text-muted-foreground text-lg leading-relaxed mb-8">
+                Five situations I see at most retreat centres, and what I'd build for each. These
+                are plans, not past results.
+              </p>
+              <Photo src={palmsImg} className="hidden lg:block w-full max-w-sm aspect-[2/3] rounded-t-full" />
+            </div>
+            <ol>
+              {situations.map((s) => (
+                <li key={s.problem} className="border-t border-border py-8 lg:py-10">
+                  <h3 className="heading-elegant text-2xl lg:text-3xl mb-4">{s.problem}</h3>
+                  <p className="body-clean text-foreground/85 text-base lg:text-lg leading-relaxed mb-3">
+                    <span className="eyebrow inline mr-2">Build</span>
                     {s.build}
                   </p>
-                  <p className="text-muted-foreground">
-                    <span className="font-semibold text-foreground">What you keep: </span>
+                  <p className="body-clean text-muted-foreground text-base lg:text-lg leading-relaxed">
+                    <span className="eyebrow inline mr-2">Keep</span>
                     {s.keep}
                   </p>
-                </div>
-              </li>
-            ))}
-          </ol>
+                </li>
+              ))}
+            </ol>
+          </div>
         </Section>
 
-        <Section
-          eyebrow="Proof"
-          title="Results from businesses that sell the way you do."
-          intro="No retreat centres on this list yet. These are the closest matches: a considered purchase, where trust comes before the booking."
-        >
+        {/* Breather */}
+        <figure className="rt-dark relative min-h-[70svh] flex items-center overflow-hidden">
+          <Photo src={oceanImg} className="absolute inset-0 h-full w-full" />
+          <div className="rt-shade absolute inset-0" aria-hidden="true" />
+          <blockquote className="relative z-10 max-w-4xl mx-auto px-6 lg:px-16 py-24 text-center">
+            <p className="heading-elegant italic text-3xl sm:text-4xl lg:text-6xl leading-[1.15]">
+              &ldquo;I'd rather give a centre the skills I'm best at than a pair of spare hands.&rdquo;
+            </p>
+          </blockquote>
+        </figure>
+
+        <Section>
+          <div className="max-w-3xl mb-12 lg:mb-16">
+            <Eyebrow>Proof</Eyebrow>
+            <h2 className="heading-elegant text-4xl lg:text-6xl leading-[1.05] mb-6">
+              Results from businesses that sell <em className="italic">the way you do.</em>
+            </h2>
+            <p className="body-clean text-muted-foreground text-lg leading-relaxed">
+              No retreat centres on this list yet. These are the closest matches: a considered
+              purchase, where trust comes before the booking.
+            </p>
+          </div>
           <div className="grid md:grid-cols-3 gap-6">
             {studies.map((s) => (
               <div key={s.company} className="flex flex-col gap-4">
@@ -308,46 +324,70 @@ const Retreats = () => {
           </div>
         </Section>
 
-        <Section eyebrow="How it works" title="One season, built to outlast my stay.">
-          <ol className="stagger grid md:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-8">
-            {steps.map((s) => (
-              <li key={s.n} className="border-t-2 border-primary/40 pt-5">
-                <span className="numeral text-primary text-lg block mb-3">{s.n}</span>
-                <h3 className="heading-elegant text-xl lg:text-2xl mb-3">{s.title}</h3>
+        <Section className="bg-sunken">
+          <Eyebrow>How it works</Eyebrow>
+          <h2 className="heading-elegant text-4xl lg:text-6xl leading-[1.05] mb-12 lg:mb-16 max-w-3xl">
+            One season, built to <em className="italic">outlast my stay.</em>
+          </h2>
+          <ol className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {steps.map((s, i) => (
+              <li key={s.title} className="border-t border-primary/50 pt-6">
+                <span className="heading-elegant italic text-primary text-3xl block mb-4">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h3 className="heading-elegant text-2xl mb-3">{s.title}</h3>
                 <p className="body-clean text-muted-foreground text-base lg:text-lg leading-relaxed">{s.body}</p>
               </li>
             ))}
           </ol>
         </Section>
 
-        <Section eyebrow="Why I'm doing this" title="I want a season of real practice.">
-          <p className="body-clean text-foreground/85 text-lg lg:text-xl leading-relaxed max-w-3xl">
-            Ten years of laptops and lecture halls. This winter I want to meditate properly, get
-            stronger and work on an old back problem, in a community that takes its practice
-            seriously. I'd rather give a centre the skills I'm best at than a pair of spare hands.
-          </p>
+        <Section>
+          <div className="grid md:grid-cols-[2fr_3fr] gap-10 lg:gap-20 items-center">
+            <img
+              src={aboutPortrait}
+              alt="Rihards Zeila"
+              loading="lazy"
+              className="rt-sun w-56 sm:w-72 md:w-full max-w-sm mx-auto"
+            />
+            <div>
+              <Eyebrow>Why I'm doing this</Eyebrow>
+              <h2 className="heading-elegant text-4xl lg:text-6xl leading-[1.05] mb-6">
+                I want a season of <em className="italic">real practice.</em>
+              </h2>
+              <p className="body-clean text-foreground/85 text-lg lg:text-xl leading-relaxed mb-6">
+                Ten years of laptops and lecture halls. This winter I want to meditate properly,
+                get stronger and work on an old back problem, in a community that takes its
+                practice seriously.
+              </p>
+              <p className="heading-elegant italic text-xl text-muted-foreground">Rihards Zeila, Riga</p>
+            </div>
+          </div>
         </Section>
 
-        <section id="contact" className="px-6 lg:px-16 py-16 lg:py-28 bg-sunken">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="heading-elegant text-3xl lg:text-5xl mb-5">
-              Have a spare room and a long marketing to-do list?
+        {/* Close: lantern path at dusk */}
+        <section id="contact" className="rt-dark relative overflow-hidden">
+          <Photo src={pathImg} className="absolute inset-0 h-full w-full" />
+          <div className="rt-shade absolute inset-0" aria-hidden="true" />
+          <div className="relative z-10 max-w-3xl mx-auto px-6 lg:px-16 py-28 lg:py-40 text-center">
+            <h2 className="heading-elegant text-4xl lg:text-6xl leading-[1.08] mb-6">
+              Have a spare room and a long <em className="italic text-primary">marketing to-do list?</em>
             </h2>
-            <p className="body-clean text-muted-foreground text-lg lg:text-xl mb-8">
+            <p className="body-clean text-foreground/85 text-lg lg:text-xl mb-10">
               Tell me about your centre and your season. I reply within a day.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
               <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className={primaryBtn}>
                 Message me on WhatsApp
               </a>
-              <a href={EMAIL} className={outlineBtn}>
+              <a href={EMAIL} className={ghostBtn}>
                 rihards.zeila@gmail.com
               </a>
             </div>
-            <p className="body-clean text-sm text-muted-foreground mt-8">
-              More on me: <Link to="/about" className="text-primary hover:underline">career and teaching</Link>
+            <p className="body-clean text-sm text-foreground/75 mt-10">
+              More on me: <Link to="/about" className="underline underline-offset-4 hover:text-primary">career and teaching</Link>
               {" · "}
-              <Link to="/" className="text-primary hover:underline">consulting work</Link>
+              <Link to="/" className="underline underline-offset-4 hover:text-primary">consulting work</Link>
             </p>
           </div>
         </section>
