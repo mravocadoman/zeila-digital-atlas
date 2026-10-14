@@ -186,7 +186,10 @@ that lifted the strip from 2.40:1 to 12.85:1 contrast. Don't drop the invert.
   the broken check below, not a real lag. **But not always:** on 2026-10-14 `2c31e6a`
   reached Lovable (`get_project` showed it as `latest_commit_sha`) and was still not live
   10 minutes later; `deploy_project` published it in ~30s. So after a push, run the
-  check below, and if it fails, publish rather than wait.
+  check below, and if it fails, publish rather than wait. **Publish only once
+  `get_project` shows your commit as `latest_commit_sha`**: `deploy_project` ships whatever
+  Lovable has mirrored, and calling it a minute after the push re-published the previous
+  commit (`0d63a4f`, same day).
 
   **Do not verify by comparing bundle hashes.** Lovable builds on its own machine with
   its own dependency resolution, so `assets/index-*.js` never matches a local `npm run
