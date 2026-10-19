@@ -62,11 +62,11 @@ const menu = [
 ];
 
 const day = [
-  { time: "06:30", minutes: 390, title: "Practice", body: "Morning class, or sitting with the community.", img: morningImg, pos: "center" },
-  { time: "08:00", minutes: 480, title: "Breakfast with the team", body: "Where most of the good marketing ideas start.", img: breakfastImg, pos: "center" },
-  { time: "09:00", minutes: 540, title: "Three hours of focused work", body: "Campaigns, pages and automations, built in your own accounts with your team alongside.", img: deskImg, pos: "45% center" },
-  { time: "16:30", minutes: 990, title: "Bodywork or evening class", body: "The back gets its share of the day too.", img: bodyworkImg, pos: "center" },
-  { time: "18:15", minutes: 1095, title: "Sunset, laptop closed", body: "Quiet. Then dinner.", img: oceanImg, pos: "78% center" },
+  { title: "Practice", body: "Morning class, or sitting with the community.", img: morningImg, pos: "center" },
+  { title: "Breakfast with the team", body: "Where most of the good marketing ideas start.", img: breakfastImg, pos: "center" },
+  { title: "Three hours of focused work", body: "Campaigns, pages and automations, built in your own accounts with your team alongside.", img: deskImg, pos: "45% center" },
+  { title: "Bodywork or evening class", body: "The back gets its share of the day too.", img: bodyworkImg, pos: "center" },
+  { title: "Sunset, laptop closed", body: "Quiet. Then dinner.", img: oceanImg, pos: "78% center" },
 ];
 
 const situations = [
@@ -181,15 +181,16 @@ const Figure = ({ value }: { value: string }) => {
 
 /* ---------- the sun over the day ---------- */
 
-// Position on a sunrise-to-sunset arc: 06:00 sits on the left horizon, 18:30 on the right.
-const sunAt = (minutes: number) => {
-  const t = Math.min(1, Math.max(0, (minutes - 360) / (1110 - 360)));
+// Position on a sunrise-to-sunset arc, by the moment's order in the day rather than
+// a clock time: no timestamps on the routine (Rihards' call, 2026-10-19).
+const sunAt = (step: number) => {
+  const t = 0.05 + (0.9 * step) / (day.length - 1);
   const a = Math.PI * (1 - t);
   return { x: 100 + 88 * Math.cos(a), y: 98 - 88 * Math.sin(a) };
 };
 
-const SunArc = ({ minutes }: { minutes: number }) => {
-  const { x, y } = sunAt(minutes);
+const SunArc = ({ step }: { step: number }) => {
+  const { x, y } = sunAt(step);
   return (
     <svg viewBox="0 0 200 116" className="w-56 overflow-visible drop-shadow-[0_1px_6px_rgba(0,0,0,0.35)]" aria-hidden="true">
       <path d="M12 98 A88 88 0 0 1 188 98" fill="none" stroke="currentColor" strokeOpacity="0.75" strokeWidth="1.2" strokeDasharray="1.5 5" strokeLinecap="round" />
@@ -492,7 +493,7 @@ const Retreats = () => {
                   <div className="relative w-full h-[74vh] rounded-[2rem] overflow-hidden">
                     {day.map((d, i) => (
                       <img
-                        key={d.time}
+                        key={d.title}
                         src={d.img}
                         alt=""
                         aria-hidden="true"
@@ -504,16 +505,7 @@ const Retreats = () => {
                     ))}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-black/25" aria-hidden="true" />
                     <div className="absolute top-7 right-7 text-[#f3ede3]">
-                      <SunArc minutes={day[step].minutes} />
-                    </div>
-                    <div className="absolute left-8 bottom-6 text-[#f3ede3]" aria-hidden="true">
-                      <div className="relative h-[7rem] w-80">
-                        {day.map((d, i) => (
-                          <span key={d.time} className={`rt-clock rt-serif ${i === step ? "rt-clock-on" : ""}`}>
-                            {d.time}
-                          </span>
-                        ))}
-                      </div>
+                      <SunArc step={step} />
                     </div>
                   </div>
                 </div>
@@ -522,7 +514,7 @@ const Retreats = () => {
               <ol ref={stepsRef} className="lg:col-span-5 lg:pt-[18vh] lg:pb-[30vh]">
                 {day.map((d, i) => (
                   <li
-                    key={d.time}
+                    key={d.title}
                     className={`rt-step py-8 lg:py-0 lg:min-h-[62vh] lg:flex lg:flex-col lg:justify-center ${i === step ? "rt-step-on" : ""}`}
                   >
                     <div className="lg:hidden overflow-hidden rounded-2xl aspect-[4/5] mb-6">
@@ -536,8 +528,7 @@ const Retreats = () => {
                         style={{ objectPosition: d.pos }}
                       />
                     </div>
-                    <span className="text-sm tabular-nums tracking-[0.22em] text-primary">{d.time}</span>
-                    <h3 className="text-4xl lg:text-5xl leading-[1.02] mt-3 mb-4">{d.title}</h3>
+                    <h3 className="text-4xl lg:text-5xl leading-[1.02] mb-4">{d.title}</h3>
                     <p className="text-lg text-muted-foreground leading-relaxed max-w-sm">{d.body}</p>
                   </li>
                 ))}

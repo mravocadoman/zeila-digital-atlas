@@ -34,8 +34,10 @@ Four routes in `src/App.tsx` (all but `/retreats` mirrored under `/lv`, see Lang
     the consulting card. `public/og-retreats.jpg` is a headless-Chrome screenshot of a
     1200x630 HTML card over the shala photo.
   - It speaks the reader's language: the offer is a treatment menu ("Included" down the
-    right, "The exchange" where the price goes), the hours are a day's schedule (a sticky
-    stage crossfades five photos while a sun travels a sunrise-to-sunset arc), the note is
+    right, "The exchange" where the price goes), the hours are a day's rhythm (a sticky
+    stage crossfades five photos while a sun travels a sunrise-to-sunset arc). **No
+    timestamps on the routine** (Rihards, 2026-10-19): the moments have no times and the
+    sun moves by their order, not a clock, the note is
     a postcard with a CSS-masked perforated stamp.
   - Look and motion: `.rt-theme` in index.css redefines the shadcn tokens (linen, ink,
     terracotta; `.rt-dark` olive band), Instrument Serif + Inter Tight, film grain. Anything
