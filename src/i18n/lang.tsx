@@ -13,6 +13,9 @@ export type Lang = "en" | "lv";
 
 export const LV_PREFIX = "/lv";
 
+/** The blog has no /lv mirror: Latvian articles live on marketingaskola.lv. */
+export const LV_BLOG = "https://marketingaskola.lv/blogs/";
+
 export const langFromPath = (pathname: string): Lang =>
   pathname === LV_PREFIX || pathname.startsWith(`${LV_PREFIX}/`) ? "lv" : "en";
 

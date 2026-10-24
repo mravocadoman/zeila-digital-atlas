@@ -985,3 +985,49 @@ All colors MUST be HSL.
   .rt-stage, .rt-sun-dot, .rt-dock, .rt-step { transition: none; }
   .rt-btn:active { transform: none; }
 }
+
+/* ---------- Blog article body (warm white page) ----------
+   Prose handles the type; these set the colours for a light page and style the
+   blocks the converted kits carry. Bright cyan is never small text on white:
+   links and stats use #0277a8, which passes AA on #fbfaf7. */
+.article-body {
+  --tw-prose-body: #1d2a36;
+  --tw-prose-headings: #002138;
+  --tw-prose-lead: #1d2a36;
+  --tw-prose-links: #0277a8;
+  --tw-prose-bold: #002138;
+  --tw-prose-counters: #5b6b78;
+  --tw-prose-bullets: #5b6b78;
+  --tw-prose-hr: #dfe5ea;
+  --tw-prose-quotes: #1d2a36;
+  --tw-prose-code: #002138;
+  --tw-prose-pre-code: #dfe8ef;
+  --tw-prose-pre-bg: #002138;
+  --tw-prose-th-borders: #c9d3dc;
+  --tw-prose-td-borders: #e2e8ee;
+  font-family: 'Archivo', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+.article-body h2, .article-body h3, .article-body h4 { font-family: 'Archivo', sans-serif; font-weight: 700; letter-spacing: -0.01em; }
+.article-body code::before, .article-body code::after { content: none; }
+.article-body :not(pre) > code { background: #eef2f5; padding: 0.1em 0.35em; border-radius: 4px; font-weight: 500; }
+/* Wide tables and code scroll inside their own box; the page never scrolls sideways. */
+.article-body pre, .article-body table { display: block; max-width: 100%; overflow-x: auto; }
+.article-body .callout { border-left: 3px solid #f5a524; background: #fff6e5; padding: 1rem 1.25rem; border-radius: 0 6px 6px 0; margin: 1.75em 0; }
+.article-body .callout--cyan { border-left-color: #03c3f8; background: #eaf7fd; }
+.article-body .callout > :first-child { margin-top: 0; }
+.article-body .callout > :last-child { margin-bottom: 0; }
+.article-body .flow { background: #002138; color: #dfe8ef; font-size: 0.78em; line-height: 1.55; padding: 1.1rem 1.25rem; border-radius: 8px; white-space: pre; }
+.article-body .flow b { color: #f5a524; }
+.article-body .flow i { color: #03c3f8; font-style: normal; }
+.article-body .cards { display: grid; grid-template-columns: 1fr; gap: 0.9rem; margin: 1.75em 0; }
+@media (min-width: 768px) { .article-body .cards { grid-template-columns: 1fr 1fr; } }
+.article-body .card { display: block; background: #fff; border: 1px solid #e3e8ec; border-top: 3px solid #f5a524; border-radius: 8px; padding: 1rem 1.1rem; }
+.article-body .card h4 { margin: 0 0 0.35em; font-size: 1rem; color: #002138; }
+.article-body .card p { margin: 0; font-size: 0.92em; color: #4a5a67; }
+.article-body a.card { text-decoration: none; color: #1d2a36; }
+.article-body a.card:hover { border-color: #0277a8; }
+.article-body a.card b { display: block; }
+.article-body a.card span { display: block; margin-top: 0.35em; font-size: 0.8em; color: #5b6b78; }
+.article-body .stat { font-weight: 800; font-size: clamp(2.2rem, 6vw, 3.4rem); line-height: 1; letter-spacing: -0.03em; color: #0277a8; margin: 0.4em 0; }
+.article-body span.hl { color: #8a5a00; font-weight: 800; }
+.article-body tr.hl td { background: rgba(245, 165, 36, 0.12); }

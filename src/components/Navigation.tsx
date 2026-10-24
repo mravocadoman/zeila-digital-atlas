@@ -1,7 +1,19 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import LanguageSwitch from "@/components/LanguageSwitch";
-import { basePath, useLang } from "@/i18n/lang";
+import { basePath, LV_BLOG, useLang } from "@/i18n/lang";
+
+/** The blog is English only; the Latvian menu points at marketingaskola.lv's blog. */
+const BlogLink = ({ lang, className, onClick }: { lang: string; className: string; onClick?: () => void }) =>
+  lang === "lv" ? (
+    <a href={LV_BLOG} className={className} onClick={onClick}>
+      Blogs
+    </a>
+  ) : (
+    <Link to="/blog" className={className} onClick={onClick}>
+      Blog
+    </Link>
+  );
 
 const Navigation = () => {
   const [isVisible, setIsVisible] = useState(true);
@@ -9,7 +21,7 @@ const Navigation = () => {
   const [lastScrollY, setLastScrollY] = useState(0);
   const location = useLocation();
   const navigate = useNavigate();
-  const { t, to } = useLang();
+  const { lang, t, to } = useLang();
   const onHome = basePath(location.pathname) === "/";
 
   const navItems = [
@@ -55,7 +67,7 @@ const Navigation = () => {
             Rihards Zeila
           </Link>
 
-          <div className="hidden lg:flex items-center gap-6 xl:gap-8">
+          <div className="hidden xl:flex items-center gap-6">
             {navItems.map((item) => (
               <button
                 key={item.id}
@@ -65,6 +77,7 @@ const Navigation = () => {
                 {item.label}
               </button>
             ))}
+            <BlogLink lang={lang} className="body-clean text-muted-foreground hover:text-foreground text-sm transition-colors" />
             <Link
               to={to("/about")}
               className="body-clean text-muted-foreground hover:text-foreground text-sm transition-colors"
@@ -80,7 +93,7 @@ const Navigation = () => {
             <LanguageSwitch />
           </div>
 
-          <div className="lg:hidden flex items-center gap-2">
+          <div className="xl:hidden flex items-center gap-2">
           <LanguageSwitch />
           <button
             className="text-foreground p-2"
@@ -101,7 +114,7 @@ const Navigation = () => {
         </div>
 
         {menuOpen && (
-          <div className="lg:hidden pb-4 flex flex-col gap-1">
+          <div className="xl:hidden pb-4 flex flex-col gap-1">
             {navItems.map((item) => (
               <button
                 key={item.id}
@@ -111,6 +124,11 @@ const Navigation = () => {
                 {item.label}
               </button>
             ))}
+            <BlogLink
+              lang={lang}
+              onClick={() => setMenuOpen(false)}
+              className="body-clean text-muted-foreground hover:text-foreground py-2.5 transition-colors"
+            />
             <Link
               to={to("/about")}
               onClick={() => setMenuOpen(false)}

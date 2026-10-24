@@ -4,7 +4,7 @@ import { FaTiktok } from "react-icons/fa";
 import { useLang } from "@/i18n/lang";
 
 const Footer = () => {
-  const { t, to } = useLang();
+  const { lang, t, to } = useLang();
   return (
     <footer className="py-8 lg:py-12 px-6 border-t border-border">
       <div className="max-w-7xl mx-auto">
@@ -36,6 +36,11 @@ const Footer = () => {
               <Link to={to("/work-with-me")} className="body-clean text-body text-muted-foreground hover:text-foreground transition-colors block">
                 {t("Training & workshops", "Apmācības un darbnīcas")}
               </Link>
+              {lang === "en" && (
+                <Link to="/blog" className="body-clean text-body text-muted-foreground hover:text-foreground transition-colors block">
+                  Blog
+                </Link>
+              )}
               <Link to={to("/about")} className="body-clean text-body text-muted-foreground hover:text-foreground transition-colors block">
                 {t("About & full CV", "Par mani un CV")}
               </Link>

@@ -1,6 +1,6 @@
-import { useId } from "react";
+import { useId, type ComponentProps } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { basePath, Lang, langFromPath, localizePath } from "@/i18n/lang";
+import { basePath, Lang, langFromPath, localizePath, LV_BLOG } from "@/i18n/lang";
 
 /*
  * Flags are inline SVG, not emoji: Windows renders flag emoji as bare letter
@@ -34,6 +34,10 @@ const options: { lang: Lang; code: string; label: string; Flag: () => JSX.Elemen
   { lang: "en", code: "EN", label: "English", Flag: FlagGB },
 ];
 
+type ItemProps = ComponentProps<typeof Link> & { external?: string };
+const Item = ({ external, to, ...rest }: ItemProps) =>
+  external ? <a href={external} {...rest} /> : <Link to={to} {...rest} />;
+
 /**
  * Both flags, current one lit. A single "switch to" flag is ambiguous — half of
  * visitors read it as "you are here" — so the pair shows state and action at once.
@@ -43,6 +47,8 @@ const LanguageSwitch = ({ className = "" }: { className?: string }) => {
   const { pathname, hash } = useLocation();
   const current = langFromPath(pathname);
   const base = basePath(pathname);
+  // The blog has no /lv mirror; its Latvian counterpart is marketingaskola.lv's blog.
+  const onBlog = base === "/blog" || base.startsWith("/blog/");
 
   return (
     <div
@@ -53,8 +59,9 @@ const LanguageSwitch = ({ className = "" }: { className?: string }) => {
       {options.map(({ lang, code, label, Flag }) => {
         const active = lang === current;
         return (
-          <Link
+          <Item
             key={lang}
+            external={onBlog && lang === "lv" ? LV_BLOG : undefined}
             to={`${localizePath(base, lang)}${hash}`}
             hrefLang={lang}
             lang={lang}
@@ -71,7 +78,7 @@ const LanguageSwitch = ({ className = "" }: { className?: string }) => {
             <span className="body-clean text-[0.7rem] font-semibold tracking-wider text-foreground">
               {code}
             </span>
-          </Link>
+          </Item>
         );
       })}
     </div>
