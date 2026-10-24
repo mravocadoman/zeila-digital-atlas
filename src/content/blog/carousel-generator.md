@@ -1,7 +1,7 @@
 ---
 title: 200 LinkedIn carousels for €0. No Canva. No designer.
 description: One Python file turns a finished post into a branded PDF carousel. Offline, free per deck, with the spec format, the prompt and the full code.
-date: 2026-10-26
+date: 2026-10-24
 topic: Tools
 drawing: slides
 order: 3

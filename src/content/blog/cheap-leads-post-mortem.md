@@ -1,7 +1,7 @@
 ---
 title: €0.38 a lead. 2% bought. Here is the entire postmortem.
 description: €0.38 a lead and 2% bought. Why cheap leads flatter you, how to count cost per qualified conversation, and a diagnostic for your own campaigns.
-date: 2026-10-26
+date: 2026-10-24
 topic: Ads
 drawing: funnel
 order: 5

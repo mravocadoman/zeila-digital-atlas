@@ -1,7 +1,7 @@
 ---
 title: 25 iterations on an AI product. Only four were about the AI.
 description: 25 changes to an AI print-on-demand product, logged and categorised in order. The generation worked early. Only four were about the AI.
-date: 2026-10-26
+date: 2026-10-24
 topic: Build log
 drawing: sessions
 order: 4

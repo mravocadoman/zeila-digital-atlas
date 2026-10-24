@@ -1,7 +1,7 @@
 ---
 title: I handed my Meta ads to Claude. Here are the seven rules it runs by.
 description: A scheduled Claude session runs a live Meta ads campaign: seven rules, real thresholds, the full daily prompt and the truth report that runs before it.
-date: 2026-10-26
+date: 2026-10-24
 topic: Ads
 drawing: rules
 order: 2

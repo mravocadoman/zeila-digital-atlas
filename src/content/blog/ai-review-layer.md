@@ -1,7 +1,7 @@
 ---
 title: I built an AI that marks another AI's homework, and refunds the customer when it fails
 description: An AI checks every render against the photos and the brief, retries below 85%, and refunds the customer automatically when it keeps failing.
-date: 2026-10-26
+date: 2026-10-24
 topic: AI
 drawing: review
 order: 6

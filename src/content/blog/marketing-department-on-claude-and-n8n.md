@@ -1,7 +1,7 @@
 ---
 title: Run your entire marketing department on Claude Opus 5 and n8n
 description: Nine n8n workflows, two languages, one human. The whole system behind my LinkedIn posts, including the four lines of code that stop the model rewriting them.
-date: 2026-10-26
+date: 2026-10-24
 topic: Automation
 drawing: pipeline
 order: 1
