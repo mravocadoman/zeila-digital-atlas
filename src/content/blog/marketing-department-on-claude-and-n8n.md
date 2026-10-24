@@ -7,7 +7,7 @@ drawing: pipeline
 order: 1
 ---
 
-Nine workflows. Two languages. One human, ninety seconds a day. This document is the whole system — including the part of it that wrote the post you clicked from.
+Nine workflows. Two languages. One human, ninety seconds a day. This article is the whole system — including the part of it that wrote the post you clicked from.
 
 ## Read this first
 
@@ -20,7 +20,7 @@ The title is a big claim, so here is the honest version before you spend twenty 
 What follows genuinely runs a two-language publishing operation on autopilot: it picks the day's topic, assembles the source material, art-directs an image, builds a carousel, writes a first comment, schedules to LinkedIn and Facebook at the right local hour, produces a native Latvian version, files everything in Postgres, and pings me on Telegram when a post goes live so I can go and answer comments.
 
 <div class="callout">
-  <p><b>It does not write the posts.</b> A human still does that. Every attempt to hand the writing to a model produced content that was technically fine and completely forgettable, and the system now enforces the opposite: if a human wrote the post, the model is <em>forbidden</em> from touching it. That override is four lines of JavaScript and it is the single most important thing in this document.</p>
+  <p><b>It does not write the posts.</b> A human still does that. Every attempt to hand the writing to a model produced content that was technically fine and completely forgettable, and the system now enforces the opposite: if a human wrote the post, the model is <em>forbidden</em> from touching it. That override is four lines of JavaScript and it is the single most important thing in this article.</p>
 </div>
 
 So: not a department that thinks. A department that *ships*. That turns out to be most of the job.
