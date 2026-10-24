@@ -9,7 +9,7 @@ order: 3
 
 One Python file turns a finished post into a branded PDF carousel. Runs offline, costs nothing per deck, and produces the one format LinkedIn still gives away reach to.
 
-## Why bother
+## 00 · Why bother
 
 LinkedIn treats a PDF as a *document post* — the swipeable card format — and document posts consistently out-engage plain text and single images. They also hold people on the post for longer, which is the signal that actually moves distribution.
 
@@ -23,7 +23,7 @@ So: no design step. A JSON file describes the deck, the generator lays it out, t
   instead of 400 KB. Run it two hundred times; the bill is the same.</p>
 </div>
 
-## Eight decks made with it
+## 01 · Eight decks made with it
 
 Open a few before you read the code. Every one of these went out as a LinkedIn document post.
 
@@ -38,7 +38,7 @@ Open a few before you read the code. Every one of these went out as a LinkedIn d
     <a class="card" href="https://yxdtomxgsqaguqjhutgq.supabase.co/storage/v1/object/public/post_files/latvian-ads.pdf"><b>Meta ads in a two-million-person market</b><span>5 slides · PDF</span></a>
 </div>
 
-## How it works
+## 02 · How it works
 
 Five slide types. That is the whole vocabulary, and the constraint is the point — a deck that needs a sixth type is usually a deck that needs cutting.
 
@@ -78,7 +78,7 @@ Then:
 python3 carousel.py cheap-leads.json cheap-leads.pdf
 ```
 
-## The prompt that writes the spec
+## 03 · The prompt that writes the spec
 
 You do not hand-write JSON. You hand the model the finished post and this prompt, and it returns the spec. Constraints do the work — especially the two rules that stop a model inventing numbers and stop it padding to eight slides.
 
@@ -112,7 +112,7 @@ JSON only, no fence, matching this shape:
   where it came from.</p>
 </div>
 
-## The generator
+## 04 · The generator
 
 About two hundred lines. Only dependency is `reportlab` (`pip install reportlab`). Save it as `carousel.py`:
 
@@ -296,14 +296,14 @@ if __name__ == "__main__":
 
 ```
 
-## Make it yours in two minutes
+## 05 · Make it yours in two minutes
 
 1. **Four colours.** The `rgb()` lines near the top. Swap the hexes for your brand and every deck follows.
 2. **The wordmark.** One constant, `BRAND`, near the top. Change it and every slide follows.
 3. **The sign-off.** Defaults live in `s_outro`: name, tagline, call to action.
 4. **Latvian, Polish, Czech, Turkish?** Set `EMBED_FONTS = True` and point the three `TTFont` lines at a Unicode face. Files grow to roughly 60 KB — the base-14 fonts cover Western European accents and the euro sign, but not the full diacritic set.
 
-## When not to make a carousel
+## 06 · When not to make a carousel
 
 Roughly half the posts should not have one, and the discipline is worth more than the generator.
 
@@ -312,7 +312,7 @@ Roughly half the posts should not have one, and the discipline is worth more tha
 - **Six to eight slides.** Past that, engagement falls off and you have written an article with extra steps.
 - **Every number traces to the post.** A carousel is a screenshot waiting to happen; whatever is on it will outlive the caption explaining it.
 
-## Version 2, September 2026: the data-chart generator
+## 07 · Version 2, September 2026: the data-chart generator
 
 Everything above still works. But the decks on my profile since October 2026 come from a second generator, `deck2.py`, and if you are starting today, start there.
 

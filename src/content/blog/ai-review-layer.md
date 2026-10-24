@@ -9,7 +9,7 @@ order: 6
 
 A print-on-demand side project where the customer pays before a single pixel is generated. That only works if something checks the output before they see it — and pays them back when it cannot.
 
-## Read this first
+## 00 · Read this first
 
 Selling non-deterministic output is a trust problem, not a tech problem.
 
@@ -25,7 +25,7 @@ My answer was to build a second AI whose only job is to mark the first one's hom
 
 This article is that architecture. Nothing here is specific to what I sell. If you sell anything that can fail in front of a customer — generated images, generated copy, transcripts, translations, agents doing tasks on someone's behalf — the shape transfers directly.
 
-## Purchase-first, and the unit economics maths
+## 01 · Purchase-first, and the unit economics maths
 
 Almost every AI product does the same thing: give the generation away, hook the user on the magic, monetise later. Free tier, watermark, upgrade prompt. It is a reasonable strategy when inference is close to free and the marginal user costs you a rounding error.
 
@@ -56,7 +56,7 @@ The trade-off is honest and it is severe. A higher-friction funnel means the cus
 
 And it means the post-purchase machinery has to be built to a standard that free-first products never need. If you take money first, you owe the customer a guarantee. That guarantee is sections 02 through 07.
 
-## The review-layer architecture
+## 02 · The review-layer architecture
 
 Here is the whole path from card charged to print file, in order.
 
@@ -100,7 +100,7 @@ Read that top to bottom and you can see the design principle: **every step that 
 
 The interesting part is not that a model generates images. Everybody has that. The interesting part is that nothing in the chain is trusted to be right on its own.
 
-## The scoring rubric, and why 85%
+## 03 · The scoring rubric, and why 85%
 
 "An AI scores the output" is the kind of sentence that sounds like a solved problem and is not. Scoring against what? Compared how? The rubric is the thing that does the work, and mine has two independent axes because the two ways this can fail are unrelated.
 
@@ -137,7 +137,7 @@ Keeping them separate matters because a render can be a beautiful, faithful like
 
 One thing the score is *not*: a promise. Passing 85 means the render cleared an automated bar. It does not mean it is good. That is what section 09 is about.
 
-## What happens below threshold
+## 04 · What happens below threshold
 
 A failing score is more useful than a passing one, because it comes with a reason.
 
@@ -172,7 +172,7 @@ That converts a failed generation from a pure loss into a training signal. Under
 
 It also inverts the emotional experience of a bad generation. A failure is no longer money on fire. It is the system finding an edge it did not know about, and writing it down.
 
-## Gates before the money
+## 05 · Gates before the money
 
 The cheapest failure is the one that never enters the pipeline. If the input is bad, no amount of scoring downstream will rescue the output — you will just spend three attempts and a refund proving that a blurry photo taken from behind cannot become a good print.
 
@@ -201,7 +201,7 @@ The one-tap question is my favourite thing in the entire build, because it is no
 
 Gates before the money also do something for the funnel that is easy to miss: they make the higher-friction purchase-first flow feel like diligence rather than obstruction. Being told "this photo will not work, here is why" before paying reads as competence. Being told it after paying reads as a bait and switch.
 
-## The refund escape hatch
+## 06 · The refund escape hatch
 
 This is the section that makes the rest of it defensible.
 
@@ -228,7 +228,7 @@ There is a second-order effect that matters more than the goodwill. An automatic
 
 It also keeps you honest. A refund that fires on its own is a metric you cannot ignore or explain away. If it fires often, the generation is bad, and no amount of reassuring copy on the product page will fix that.
 
-## Snapshots, signed links, and deleted photos
+## 07 · Snapshots, signed links, and deleted photos
 
 Three mechanics that sound like plumbing and are actually the trust layer.
 
@@ -259,7 +259,7 @@ Customer photos are inputs, not inventory. Once the pipeline no longer needs the
 
 A duplicate-push guard: an atomic lock ensuring the same order can never be pushed to the print provider twice. Retries, webhook replays and impatient clicks all try to do this eventually. Without the lock, the failure mode is two physical objects manufactured and shipped for one payment — an error that costs real money and cannot be undone with a database rollback.
 
-## The trust checklist
+## 08 · The trust checklist
 
 Copy this. It applies to anything you sell that can fail in front of a customer — generated media, generated copy, transcription, translation, agents acting on someone's behalf.
 
@@ -288,7 +288,7 @@ Copy this. It applies to anything you sell that can fail in front of a customer 
   <p><b>If you implement three of these, implement 5, 9 and 12.</b> Score the output against the customer's own inputs, feed the critique back into the retry, and refund automatically at the cap. That is the minimum viable version of everything above.</p>
 </div>
 
-## The honest section
+## 09 · The honest section
 
 What this does not do.
 

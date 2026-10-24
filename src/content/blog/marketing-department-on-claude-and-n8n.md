@@ -9,7 +9,7 @@ order: 1
 
 Nine workflows. Two languages. One human, ninety seconds a day. This article is the whole system — including the part of it that wrote the post you clicked from.
 
-## Read this first
+## 00 · Read this first
 
 <div class="callout">
   <p><b>What changed since this was written (update, October 2026).</b> Four things, all in the direction of less machine, more code. (1) The fallback writer is gone: an approved entry with no human-written post is no longer drafted by the model, it is flagged back to me. (2) Images are no longer generated: every value post ships a carousel <em>drawn in code from the post's own numbers</em>, and the image art-director in section 3 is kept for the rare single-image post. (3) The publisher now also turns each post into an X and Threads thread (Claude Haiku, three hours after LinkedIn) and schedules everything itself at the local peak slot. (4) Posts are written two weeks at a time in one scheduled Claude session on Sundays, read once by me, and approved as a batch; the daily approval email is retired. The monthly planner and the Latvian adapter are paused, so today it is seven live workflows plus two on the bench. Everything else below still runs as described.</p>
@@ -25,7 +25,7 @@ What follows genuinely runs a two-language publishing operation on autopilot: it
 
 So: not a department that thinks. A department that *ships*. That turns out to be most of the job.
 
-## The shape of it
+## 01 · The shape of it
 
 <pre class="flow">  <b>NOTION</b>  content calendar        one row per post, per weekday
      │           topic · bucket · approved · the written post itself
@@ -54,7 +54,7 @@ So: not a department that thinks. A department that *ships*. That turns out to b
                  Telegram: "you are live, go and reply for 15 minutes"
 </pre>
 
-## The nine workflows
+## 02 · The nine workflows
 
 <table>
   <thead><tr><th>Workflow</th><th>Trigger</th><th>What it owns</th></tr></thead>
@@ -73,7 +73,7 @@ So: not a department that thinks. A department that *ships*. That turns out to b
 
 Seven touch content. Two exist purely so the other seven fail loudly instead of quietly. Build those two *first* — a silent pipeline that stopped three weeks ago is worse than no pipeline.
 
-## The four pieces that actually matter
+## 03 · The four pieces that actually matter
 
 Everything else is plumbing you can rebuild from the diagram. These four are the decisions.
 
@@ -156,7 +156,7 @@ Asking a model to "design something on brand" gives you a different brand every 
 
 Two standing rules inside all three: **charts are banned** — image models invent proportions, so numbers get rendered as typography instead — and personal stories get no generated image at all. A real photograph outperforms anything a model makes, every time.
 
-## The database
+## 04 · The database
 
 Three tables. That is the entire persistence layer.
 
@@ -200,7 +200,7 @@ create index on content_log (status, scheduled_for);
 create index on content_log (golden_hour_pinged) where golden_hour_pinged = false;
 ```
 
-## What it replaced
+## 05 · What it replaced
 
 <div class="cards">
   <div class="card"><h4>The scheduler</h4><p>Picks the topic, holds the queue, posts at the local peak hour, in two languages, without a spreadsheet.</p></div>
@@ -213,7 +213,7 @@ create index on content_log (golden_hour_pinged) where golden_hour_pinged = fals
 
 Running cost is n8n, a Postgres you are probably already paying for, a scheduling API, and tokens. Claude Opus 5 lists at $5 per million input tokens and $25 per million output — a day's run of this pipeline is a rounding error against one freelance invoice. Do the arithmetic for your own volume; the honest answer is that infrastructure is not what this costs you. Time is.
 
-## Where it breaks
+## 06 · Where it breaks
 
 - **Editing a workflow does not change what runs.** n8n keeps a draft and a published version. I lost a day to a post that scheduled itself to "now" in the wrong timezone because the publisher was still on its pre-change version. Publish after every single change.
 - **Free-tier Postgres pauses.** A pipeline that touches the database once each weekday morning is precisely the usage profile that gets suspended. Hence the keepalive.
@@ -221,7 +221,7 @@ Running cost is n8n, a Postgres you are probably already paying for, a schedulin
 - **The model will drift if you let it.** Any guarantee you care about belongs in code downstream of the model, not in the prompt.
 - **Automation does not buy reach.** Publishing on time is table stakes. The fifteen minutes you spend replying to comments in the first hour still does more for distribution than the entire system above.
 
-## Build it in a weekend
+## 07 · Build it in a weekend
 
 1. **One table and one cron.** Read a row, post it, write the URN back. Get that working end to end before anything else exists.
 2. **Add the error workflow.** Point every workflow at it. Two nodes, and it is what makes the rest safe to build.

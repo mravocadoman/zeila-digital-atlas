@@ -9,7 +9,7 @@ order: 4
 
 The full log from a print-on-demand ecommerce project I run — every change, categorised, in the order it happened. The generation worked early. Everything after that was operations.
 
-## Read this first
+## 00 · Read this first
 
 Twenty-five iterations shipped on an AI product. Here is how many of them were about the AI:
 
@@ -29,7 +29,7 @@ What this article is: the actual log, in order, with categories. What it is not:
 
 <hr>
 
-## The full log
+## 01 · The full log
 
 Twenty-five iterations, in the order they shipped. <span class="hl">Amber rows are the four AI ones.</span> "Why it happened" is the trigger — the thing that made the change necessary, which is usually more interesting than the change.
 
@@ -51,7 +51,7 @@ Twenty-five iterations, in the order they shipped. <span class="hl">Amber rows a
 <tr class="hl"><td>11</td><td><span class="hl">AI</span></td><td>AI review layer</td><td>A generated image that is technically successful can still be obviously wrong. Added a model-based review pass before a human ever sees it.</td></tr>
 <tr class="hl"><td>12</td><td><span class="hl">AI</span></td><td>Photo quality gate</td><td>Bad input photos produce bad output, and the customer blames the output. Gate the upload instead of apologising for the result.</td></tr>
 <tr><td>13</td><td>Order state</td><td>Immutable approval snapshots</td><td>Once a customer approves, that exact version must be the thing that prints — not "whatever the latest file is". Approval now freezes a snapshot.</td></tr>
-<tr class="hl"><td>14</td><td><span class="hl">AI</span></td><td>4x upscale before print</td><td>Screen-resolution output is fine on a phone and unacceptable on a wall. Added an upscale step between approval and print.</td></tr>
+<tr class="hl"><td>14</td><td><span class="hl">AI</span></td><td>4x upscale before print</td><td>Screen-resolution output is fine on a phone and unacceptable in print. Added an upscale step between approval and print.</td></tr>
 <tr><td>15</td><td>Edge case</td><td>Duplicate push guard with an atomic lock</td><td>The same order could be pushed to the printer twice — a retry, a double click, two tabs. Every duplicate is a real physical object with a real cost. Fixed with a proper lock, not a check.</td></tr>
 <tr class="hl"><td>16</td><td><span class="hl">AI</span></td><td>Known-defect detection</td><td>A specific, repeatable failure mode in the generation that needed detecting up front rather than discovering at revision time.</td></tr>
 <tr><td>17</td><td>Integration</td><td>One-click Shopify status sync</td><td>Two systems disagreeing about whether an order is fulfilled is how you get a support ticket. Pushed status back with one action instead of two logins.</td></tr>
@@ -62,13 +62,13 @@ Twenty-five iterations, in the order they shipped. <span class="hl">Amber rows a
 <tr><td>22</td><td>Fulfilment</td><td>Personalised insert card</td><td>A physical product benefits from something that makes it feel made for the buyer rather than generated. Cheap to add, disproportionate effect on how it lands.</td></tr>
 <tr><td>23</td><td>UX</td><td>Email improvements</td><td>Transactional email is the product for most of the customer's waiting time. Better clarity about what happens next, and when.</td></tr>
 <tr><td>24</td><td>Fulfilment</td><td>Cheaper print provider switch</td><td>Same output, better unit economics. Switching a provider is never just a switch — it is new sizes, new colour behaviour, new lead times.</td></tr>
-<tr><td>25</td><td>Print quality</td><td>Edge mirror settings</td><td>The edge of the print is a real design surface. Getting the mirror settings right is the difference between a finished object and a cropped one.</td></tr>
+<tr><td>25</td><td>Print quality</td><td>Print edge settings</td><td>The edge of the print is a real design surface. Getting the edge settings right is the difference between a finished object and a cropped one.</td></tr>
 </tbody>
 </table>
 
 <hr>
 
-## The category breakdown
+## 02 · The category breakdown
 
 Count them and the shape appears immediately.
 
@@ -111,7 +111,7 @@ And the UX count is not soft work. Iterations 04, 10 and 18 are structural: a wi
 
 <hr>
 
-## The four AI ones
+## 03 · The four AI ones
 
 I picked these four because each one changes what the model does or what reaches it — a generation-path change, not a business-logic change wrapped around a model call. Iteration 18 (group orders) is arguably a fifth: it does affect the generation. I filed it under UX because the work was overwhelmingly flow, pricing and review, not the model. Iteration 24 involves image output but is a supplier decision. If you disagree with those two calls, you would have five and three respectively — the argument survives either way.
 
@@ -133,7 +133,7 @@ Note what kind of change this really is: it is an AI change whose entire purpose
 
 ### 14 · 4x upscale before print
 
-An image that looks perfect in a browser preview is not an image you can print at wall size. This is the single most common gap between "AI demo" and "AI product", and it is not solved by a better prompt.
+An image that looks perfect in a browser preview is not an image you can print at full size. This is the single most common gap between "AI demo" and "AI product", and it is not solved by a better prompt.
 
 The upscale sits between approval and print, which is a deliberate position: the customer approves what they saw, and the system then produces the print-ready version of exactly that. Putting it earlier means upscaling work that gets revised away. Putting it later means it is not part of the frozen snapshot.
 
@@ -149,7 +149,7 @@ The lesson is not about that one defect. It is that mature AI work stops being "
 
 <hr>
 
-## The ones that cost the most and looked like the least
+## 04 · The ones that cost the most and looked like the least
 
 Nobody makes content about these. They are the four I would warn a past version of myself about.
 
@@ -189,7 +189,7 @@ Every instinct in marketing pushes the other way: tighten the promise, look fast
 
 <hr>
 
-## What the "build an AI business in 30 days" plans leave out
+## 05 · What the "build an AI business in 30 days" plans leave out
 
 Those plans are not lying. They are describing iterations 01 through 06 accurately and then stopping, because that is where the interesting-looking part ends.
 
@@ -198,7 +198,7 @@ Those plans are not lying. They are describing iterations 01 through 06 accurate
   <div class="card"><h4>Revision loops</h4><p>Customers want changes. Without defined states and limits, "one more tweak" has no end and neither does the order.</p></div>
   <div class="card"><h4>Idempotency</h4><p>The same action firing twice. In a physical product this manufactures a real object. Locks, not checks.</p></div>
   <div class="card"><h4>Legal and IP wording</h4><p>One iteration, and it determines whether the business is permitted to exist at all. Not a growth lever — a licence to operate.</p></div>
-  <div class="card"><h4>Print and physical reality</h4><p>Resolution, wrapped edges, mirror settings, provider colour behaviour. The screen is not the product.</p></div>
+  <div class="card"><h4>Print and physical reality</h4><p>Resolution, edges, provider colour behaviour. The screen is not the product.</p></div>
   <div class="card"><h4>Promises you can keep</h4><p>Delivery windows are operational commitments. Setting them by ambition rather than by capacity is a debt with interest.</p></div>
   <div class="card"><h4>Exception paths</h4><p>Refunds, undeliverable addresses, unusable uploads. The happy path is a small fraction of the work.</p></div>
   <div class="card"><h4>Your own admin view</h4><p>You are the bottleneck. A queue organised around lifecycle phases is a productivity feature for the person running it.</p></div>
@@ -212,7 +212,7 @@ There is a structural reason for the omission. A 30-day plan is written from the
 
 <hr>
 
-## The template
+## 06 · The template
 
 This is the part worth stealing. The log above is not a retrospective I reconstructed — it exists because I recorded each iteration as I shipped it. That is the entire trick.
 
@@ -286,7 +286,7 @@ The review step is not optional decoration. A log you never count is a diary. Th
 
 <hr>
 
-## The honest section
+## 07 · The honest section
 
 Everything above is one product, one person, one year. Please weight it accordingly.
 

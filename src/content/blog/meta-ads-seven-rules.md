@@ -9,19 +9,19 @@ order: 2
 
 A scheduled Claude session that reads yesterday's ads and yesterday's real orders, changes budgets, pauses ads, launches tests, writes down why, and tells me. Plus the one-line truth report that runs before it. Every prompt in here is the one that runs, with the account details taken out.
 
-## Read this first
+## 00 · Read this first
 
 Twelve years of buying ads went into seven lines. The lines are the product. The model is just the thing that applies them at 10:22 every morning without getting bored, tired or optimistic.
 
 What this is: two scheduled Claude sessions with data access. One posts a single line of truth to the team chat at 09:00 (spend, real orders, real ROAS against the seven-day average). One manages a live Meta campaign at 10:22 inside hard rules, logs every run with its reasoning, and reports to me. Both run against a print-on-demand ecommerce project I own, on a deliberately small campaign: $70 a day. Small enough to survive a bad decision, real enough that bad decisions cost money.
 
 <div class="callout">
-  <p><b>The honest part.</b> The campaign was handed over on 29 September 2026. When this kit went out it had run for two weeks. The rules are the interesting part; the results are not in yet, and I will publish them either way. Nothing here is a claim that a model buys ads better than a person. It is a claim that a model applies a person's rules more consistently than the person does at 7am.</p>
+  <p><b>The honest part.</b> The campaign was handed over on 29 September 2026. When this was first written it had run for two weeks. The rules are the interesting part; the results are not in yet, and I will publish them either way. Nothing here is a claim that a model buys ads better than a person. It is a claim that a model applies a person's rules more consistently than the person does at 7am.</p>
 </div>
 
 What it is not: attribution modelling, an MMM, or a creative studio. The machine judges, spends and stops. It does not decide what break-even is, and it does not invent your first good ad. Those are still yours.
 
-## The shape
+## 01 · The shape
 
 ```
 09:00  TRUTH REPORT (Claude, scheduled)
@@ -42,7 +42,7 @@ What it is not: attribution modelling, an MMM, or a creative studio. The machine
 
 Two things matter in that diagram more than the model. First, **real orders sit next to platform numbers on every run**; the machine is never allowed to judge on Meta's purchase count alone. Second, **the log is read before anything is decided**, so today's session knows what yesterday's session did and why, and cannot flip-flop.
 
-## The seven rules
+## 02 · The seven rules
 
 <table>
   <tr><th>#</th><th>Rule</th><th>The numbers on my account</th></tr>
@@ -59,7 +59,7 @@ Two things matter in that diagram more than the model. First, **real orders sit 
   <p><b>Why the thresholds are boring.</b> $40 with zero purchases is roughly two break-evens of spend with nothing to show. $60 with CPA over $30 is a purchase that cost more than the margin. 20% per step is the largest budget move that does not reset learning on most accounts. None of these are clever. They are the things I already knew and did not do consistently.</p>
 </div>
 
-## The daily manager prompt
+## 03 · The daily manager prompt
 
 This is the prompt that runs, with identifiers replaced by placeholders. It is a scheduled task in Claude with two connections: a Meta data connector that can read and write (Windsor.ai here), and the shop's database. Change the placeholders and the numbers in the RULES block. Leave the structure alone; the structure is the part that took twelve years.
 
@@ -91,7 +91,7 @@ e. Send me a short report: yesterday's spend, Meta vs real purchases, real CPA a
 
 Three lines in there do most of the work. **"Read all rows first for history"** stops the model re-deciding yesterday's decision. **"If the funnel breaks, flag it before blaming the ads"** stops it cutting a good campaign because the checkout page broke. **"Verify every write by reading it back"** is the difference between a report that says "I paused the ad" and an ad that is paused.
 
-## The truth report prompt
+## 04 · The truth report prompt
 
 Runs first, at 09:00, so the number in the team chat is the real one before anyone opens an ads dashboard. On my store the first week I ran it, the platform claimed 68 purchases against 54 real orders: 26% more orders than existed, 30% more revenue. Nobody was lying. Attribution windows and modelled conversions push the number up, in the platform's favour, every time.
 
@@ -110,7 +110,7 @@ Keep total output under 6 lines. Do not modify any data anywhere — this task i
   <p><b>The bug you will hit first.</b> Timezones. Version one of my report compared Monday's spend with Tuesday's sales because the platform reported in one timezone and the shop in another. Every automation I have ever built failed on a timezone before it failed on anything clever. Line 2 of the prompt exists because of that morning.</p>
 </div>
 
-## Before you spend: the two-hour check
+## 05 · Before you spend: the two-hour check
 
 The cheapest campaign is the one you never run. I killed a lead-gen idea this year in about two hours, before spending a euro, with this sequence. It applies to services and lead gen, where demand either exists or does not. It does not apply to genuinely new categories, which fail this test by definition.
 
@@ -122,7 +122,7 @@ The cheapest campaign is the one you never run. I killed a lead-gen idea this ye
 
 The step I skipped and should not have: I never called anyone. Two hours in the Ad Library tells you what advertisers do, not what a business's phone log looks like. Three calls would have settled it properly.
 
-## The optimisation mistake that cost more than any threshold
+## 06 · The optimisation mistake that cost more than any threshold
 
 A campaign of mine once produced leads at €0.38 each. €1,175 of spend, 2,000+ email signups, a webinar funnel for a course. About 2% bought. The campaign returned roughly 8x, and because it worked I nearly learned nothing from it. The algorithm had been told to find lead-form completions. It did, brilliantly. It was never told a purchase exists.
 
@@ -137,9 +137,9 @@ The rule that came out of it: **optimise on the earliest event in your funnel th
   <tr><td>Purchase</td><td>Money</td><td>Yes, if volume allows the platform to learn</td></tr>
 </table>
 
-Cost per lead is not a performance metric. It is a price. You can push it down almost arbitrarily by finding people for whom saying yes costs nothing, which is the same people for whom saying yes means nothing. The metric I run that kind of campaign on today is cost per qualified conversation: uglier, slower, impossible to screenshot. The full post-mortem is its own kit, LEADS.
+Cost per lead is not a performance metric. It is a price. You can push it down almost arbitrarily by finding people for whom saying yes costs nothing, which is the same people for whom saying yes means nothing. The metric I run that kind of campaign on today is cost per qualified conversation: uglier, slower, impossible to screenshot. The full post-mortem is [its own article](/blog/cheap-leads-post-mortem).
 
-## Where it breaks
+## 07 · Where it breaks
 
 - **Small budgets, small samples.** At $70 a day, one day of purchases is a handful of orders. That is why every rule reads three-day and seven-day windows, and why nothing is judged on a single day.
 - **The learning phase is real.** Touch the budget in the first days and the platform resets. Rule 2 exists because I broke this one myself, repeatedly, by hand.
@@ -148,7 +148,7 @@ Cost per lead is not a performance metric. It is a price. You can push it down a
 - **It cannot make a good ad.** It can only recombine proven images with new angles. The first proven image is still a human job.
 - **You still own break-even.** The machine applies the number. If your $18 is really $24, every rule above is quietly wrong. Recompute it monthly from real margin, real returns and real shipping.
 
-## Run it yourself
+## 08 · Run it yourself
 
 1. Start with the truth report alone. One line a day, real orders next to platform numbers. Live with it for two weeks before anything is allowed to act.
 2. Compute break-even properly: margin after product, shipping, payment fees and returns. Write it down with the date.

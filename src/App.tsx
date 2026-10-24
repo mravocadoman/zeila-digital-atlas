@@ -1,4 +1,4 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -8,8 +8,9 @@ import Index from "./pages/Index";
 import WorkWithMe from "./pages/WorkWithMe";
 import About from "./pages/About";
 import Retreats from "./pages/Retreats";
-import Blog from "./pages/Blog";
-import BlogArticle from "./pages/BlogArticle";
+// The blog (marked + every article) loads only when someone opens it, not on every page.
+const Blog = lazy(() => import("./pages/Blog"));
+const BlogArticle = lazy(() => import("./pages/BlogArticle"));
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -20,6 +21,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <Suspense fallback={null}>
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />
@@ -36,6 +38,7 @@ const App = () => (
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
+        </Suspense>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

@@ -9,7 +9,7 @@ order: 5
 
 A cheap lead is not a cheap customer. This is the campaign that taught me the difference, the mechanism that makes it happen to almost everyone, and a one-page diagnostic for finding which of your own metrics is currently lying to you.
 
-## Read this first
+## 00 · Read this first
 
 Two numbers came out of the same campaign. Almost everyone who has ever seen this campaign has only been shown the first one.
 
@@ -34,7 +34,7 @@ Here is the thing I want to say before anything else, because this article exist
   <p><b>The claim in one line.</b> Cost per lead is a <i>price</i>, not a performance metric. You can drive a price arbitrarily low by finding people for whom saying yes costs nothing — which is the same set of people for whom saying yes means nothing.</p>
 </div>
 
-## The campaign structure that produced €0.38 leads
+## 01 · The campaign structure that produced €0.38 leads
 
 The offer was an Excel course, priced at €250. The funnel was the standard webinar shape, and I want to describe it plainly because there is nothing clever in it — the cheapness came from the structure being frictionless, not from any skill on my part.
 
@@ -67,7 +67,7 @@ Now the arithmetic, done out loud, using only the two sourced figures. Two perce
 
 Which brings up the honest complication I will come back to in section 08: **on those inputs, the campaign was fine.** It was not a disaster. That is precisely why it nearly taught me nothing.
 
-## Where those people came from and why they never bought
+## 02 · Where those people came from and why they never bought
 
 The useful question is never "why was the conversion rate low." It is "who exactly did the €0.38 buy me, and what were they doing when they saw the ad."
 
@@ -96,7 +96,7 @@ Notice that none of these three are fixed by better copy, better email sequencin
   <p><b>The reframe that makes this concrete:</b> a lead is not a person, it is an <i>observed action</i>. The value of a lead is the value of the action you observed. If the observed action was "tapped a prefilled form for something free," you have bought exactly that, at €0.38, two thousand times over.</p>
 </div>
 
-## The optimisation trap
+## 03 · The optimisation trap
 
 Here is the part that turns a one-off result into a permanent condition. It is a loop, it runs on every ad platform, and it is not a bug — the machine is doing precisely what it was told.
 
@@ -134,7 +134,7 @@ The loop is self-reinforcing in a way that specifically defeats normal optimisat
   <p><b>The diagnostic tell.</b> If your cost per lead has been improving month over month and your revenue has not moved, you are not getting better at marketing. You are getting better at finding people who will say yes to nothing. Those are different skills and only one of them is worth money.</p>
 </div>
 
-## The fix, and what it costs you
+## 04 · The fix, and what it costs you
 
 The fix is short to say and genuinely unpleasant to execute: **send the purchase event back to the platform, optimise on that event instead, and then hold your nerve while the number you have been reporting to everyone gets worse.**
 
@@ -165,7 +165,7 @@ A booked call is the workhorse here. Booking a call means surrendering a named b
 
 The rule underneath the table: **optimise on the earliest event in your funnel that a disinterested person would not bother to complete.** That single sentence is most of what this article is for.
 
-## The reframe: cost per qualified conversation
+## 05 · The reframe: cost per qualified conversation
 
 Cost per lead answers "what did it cost to make someone appear in my CRM." Almost nobody actually wants to know that. The question worth paying for is: **what does it cost me to get one real conversation with someone who could plausibly buy?**
 
@@ -202,7 +202,7 @@ Attribution will not be perfect. It does not need to be. This number is for comp
 
 Two things happen when you start reporting it. Cheap channels stop looking cheap. And the argument in your team shifts from "how do we get more leads" to "which of these people is worth a conversation," which is a much better argument to be having.
 
-## Small-market maths
+## 06 · Small-market maths
 
 I want to put the most impressive number I have on the table and then take it apart, because it is the clearest example I own of a result that flatters the marketer rather than describing them.
 
@@ -222,7 +222,7 @@ The property that makes €1,000 go far is the same property that ends the run: 
   <p><b>The rule this gives you.</b> When a result is spectacular, ask what about the <i>conditions</i> produced it before you ask what about your <i>execution</i> produced it. Market size, competitive density, product-market fit, and timing routinely swamp skill. Attributing a 36x to your own judgement is how you end up confidently repeating a process that never worked in the first place — and it is the same error as attributing €0.38 to your targeting. Both numbers are facts about a situation, not about a marketer.</p>
 </div>
 
-## Which of your metrics is lying to you
+## 07 · Which of your metrics is lying to you
 
 A one-page diagnostic. Answer each question about a real campaign you are running now. Every "yes" means the number in question is flattering you, and the line under it says exactly how.
 
@@ -292,7 +292,7 @@ The open rate is the weakest number in that list and I would not defend it — q
 
 Same operator, same year. The difference between this and the €0.38 campaign is not effort or cleverness. It is that one of them counted an action that cost the other person something, and one of them counted an action that did not.
 
-## What this article does not do
+## 08 · What this article does not do
 
 The honest section, because a lead magnet that only tells you what it delivers is doing the same thing to you that a cost-per-lead report does.
 

@@ -17,7 +17,11 @@ const KITS = {
 };
 // Numbers that lived only in a kit's chrome or in a reworded shop hint.
 const IGNORE = {};
-const HINTS = /portrait|canvas|glasses|commission(ing)? certificate|theme collection|franchise/i;
+// Words and phrasings that give the product away. Wrapped, mirrored edges only exist on gallery canvas;
+// wall-size printing points at wall art.
+const HINTS = /portrait|canvas|glasses|commission(ing)? certificate|theme collection|franchise|wrapped edge|mirror setting|edge mirror|wall size|on a wall/i;
+// Leftovers from the kits: "this kit", "its own kit, LEADS".
+const KIT_WORDING = /\b(this|its own) kit\b|\bkit, [A-Z]{3,}/;
 
 const decode = (s) =>
   s.replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&amp;/g, "&");
@@ -56,6 +60,16 @@ for (const [kit, slug] of Object.entries(KITS)) {
   // reportlab's `canvas` module in the carousel code is a library name, not a hint
   const hint = md.replace(/reportlab\.pdfgen import canvas|canvas\.Canvas\(/g, "").match(HINTS);
   if (hint) problems.push(`${slug}: shop hint "${hint[0]}"`);
+
+  const kitWord = md.match(KIT_WORDING);
+  if (kitWord) problems.push(`${slug}: kit wording "${kitWord[0]}"`);
+
+  // "section 06", "sections 02 through 07", "see 05" must point at a numbered heading ("## 06 · …")
+  const heads = new Set([...md.matchAll(/^## (\d{2}) · /gm)].map((m) => Number(m[1])));
+  const refs = [...md.matchAll(/\bsections? (\d{1,2})(?: through (\d{1,2}))?|\bsee (\d{2})\b/gi)]
+    .flatMap((m) => [m[1], m[2], m[3]].filter(Boolean).map(Number));
+  const dangling = [...new Set(refs.filter((n) => !heads.has(n)))];
+  if (dangling.length) problems.push(`${slug}: section refs with no numbered heading: ${dangling.join(" ")}`);
 }
 
 if (problems.length) {

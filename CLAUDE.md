@@ -250,7 +250,7 @@ that lifted the strip from 2.40:1 to 12.85:1 contrast. Don't drop the invert.
   content is invisible *forever*, not just un-animated. The hook now starts visible when
   IO is unavailable and has a 1.5s failsafe timer. (IO does not fire at all inside the
   Claude Code browser pane, which is how this surfaced.)
-- `dist/assets/main-*.js` is ~721 kB — single chunk, no code splitting. Fine for now.
+- `dist/assets/main-*.js` is ~806 kB, one chunk. The blog (marked + articles) is lazy-loaded into its own chunk so other pages never download it; keep it that way when adding articles.
 - **Analytics are env-gated.** `src/lib/analytics.ts` injects GA4 only when
   `VITE_GA4_ID` is set in `.env`. It's empty, so nothing is measured yet.
 - **Pricing is deliberately unpriced.** `Engagements.tsx` and `FAQ.tsx` describe how
