@@ -13,7 +13,7 @@ npm run lint
 
 ## Layout
 
-Four routes in `src/App.tsx` (all but `/retreats` mirrored under `/lv`, see Languages), plus a NotFound catch-all:
+Five routes in `src/App.tsx` (all but `/retreats` and `/blog` mirrored under `/lv`, see Languages), plus a NotFound catch-all:
 
 - `/` — the consultation-led homepage (`pages/Index.tsx`). Section order matters: it
   runs offer → proof → process → credibility → close.
@@ -53,6 +53,26 @@ Four routes in `src/App.tsx` (all but `/retreats` mirrored under `/lv`, see Lang
     (headline, photos and day strip all came back blank while the DOM was fine). The script
     drives headless Chrome over CDP, preloads lazy images and scrolls in steps so observers
     and scroll timelines fire.
+- `/blog`, `/blog/:slug` — added 2026-10-24, the destination for the LinkedIn lead-magnet posts.
+  It replaced the standalone kit pages. Design: `docs/superpowers/specs/2026-10-24-blog-design.md`.
+  **English only.** Latvian articles live on marketingaskola.lv/blogs: the `/lv` menu's "Blogs" and the
+  LV flag on blog pages (`LV_BLOG` in `i18n/lang.tsx`) go there, never to a `/lv/blog`.
+  - **Articles** are `src/content/blog/<slug>.md` with flat front matter (`title`, `description` ≤160,
+    `date`, `topic`, `drawing`, `order`), parsed by `src/lib/blog-core.ts` and rendered with `marked`.
+    `drawing` keys a line drawing in `components/blog/drawings.tsx`. A new article is one file plus,
+    if needed, one drawing.
+  - **Styled blocks** are plain HTML in the Markdown, styled under `.article-body` in index.css:
+    `.callout` (amber) / `.callout callout--cyan`, `.stat`, `.cards` > `.card`, `pre.flow`, `tr.hl` /
+    `span.hl`. The article body is warm white; links and stats use `#0277a8`, never bright cyan.
+  - **Link previews:** the `blogPreviews` plugin in `vite.config.ts` writes `dist/blog/<slug>/index.html`
+    with each article's own tags, the same trick as `/retreats`. Images are `public/og/blog-<slug>.jpg`
+    (1200×630, rendered from an HTML card with `scripts/shoot.mjs`).
+  - **Never hint at what the print-on-demand shop sells** (Rihards, 24 Oct): no portraits, canvas,
+    glasses, theme collections or franchise wording, and never its name, anywhere in this repo.
+  - `public/kits/*.html` are now forwarding stubs to the articles, so old DM and Featured links still land.
+  - Checks: `node src/lib/blog-core.test.ts` (parser and preview tags) and
+    `node scripts/check-articles.mjs` (every table, code block and number from the old kits survived, and
+    no shop hints).
 - `src/components/ui/` is stock shadcn — don't hand-edit, regenerate.
 
 ## Languages (EN / LV)
@@ -74,8 +94,8 @@ Added 2026-09-29. English lives at `/`, Latvian mirrors every route under `/lv`
   words, no calques ("datplūsma", "nekā lieka", "melnā kaste"). It addresses the reader
   informally as "tu" (Rihards' call, 2026-09-30) — keep new copy in that register. Numerals stay in English format (`36.34`)
   because `useCountUp` parses `,` as a thousands separator.
-- The desktop nav now collapses to the hamburger below `lg` (was `md`) — Latvian labels plus
-  the switch didn't fit at tablet width.
+- The desktop nav collapses to the hamburger below `xl` (was `lg`, before that `md`). The Blog item
+  (2026-10-24) made the menu wrap at 1024 px in both languages and at 1280 px in Latvian.
 
 ## Type system
 
