@@ -1,0 +1,114 @@
+name: Deploy
+
+# main -> SiteGround (rihardszeila.com), once the SG_* secrets exist. Until then this does
+# nothing and Lovable keeps serving the site. Same shape as marketingaskola.lv's deploy.
+# See "Hosting" in CLAUDE.md.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy
+  cancel-in-progress: true
+
+jobs:
+  siteground:
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://rihardszeila.com
+    env:
+      HAS_SG: ${{ secrets.SG_HOST != '' && secrets.SG_USER != '' && secrets.SG_SSH_KEY != '' && secrets.SG_PATH != '' }}
+      SG_HOST: ${{ secrets.SG_HOST }}
+      SG_PORT: ${{ secrets.SG_PORT || '18765' }}
+      SG_USER: ${{ secrets.SG_USER }}
+      SG_PATH: ${{ secrets.SG_PATH }}
+    steps:
+      - name: Skip until SiteGround is set up
+        if: env.HAS_SG != 'true'
+        run: echo "::notice::No SG_* secrets yet, so nothing is deployed. Lovable still serves the site."
+
+      - uses: actions/checkout@v4
+        if: env.HAS_SG == 'true'
+        with:
+          fetch-depth: 0   # check-articles reads the old kits from git history
+      - uses: actions/setup-node@v4
+        if: env.HAS_SG == 'true'
+        with:
+          node-version: 24   # runs the .ts self-check natively
+          cache: npm
+      - name: Build and check
+        if: env.HAS_SG == 'true'
+        run: |
+          npm ci
+          node src/lib/blog-core.test.ts
+          node scripts/check-articles.mjs
+          npm run build
+          test -f dist/.htaccess && test -f dist/blog/meta-ads-seven-rules/index.html
+
+      - name: SSH key
+        if: env.HAS_SG == 'true'
+        env:
+          SG_SSH_KEY: ${{ secrets.SG_SSH_KEY }}
+        run: |
+          mkdir -p ~/.ssh
+          printf '%s\n' "$SG_SSH_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          # SiteGround throttles unknown IPs now and then: retry the keyscan, then fall back to
+          # accept-new on the first real connection instead of failing here.
+          for i in 1 2 3; do ssh-keyscan -T 20 -p "$SG_PORT" "$SG_HOST" >> ~/.ssh/known_hosts 2>/dev/null && break; sleep 15; done
+          printf 'Host *\n  StrictHostKeyChecking accept-new\n  ConnectTimeout 30\n  ServerAliveInterval 15\n' > ~/.ssh/config
+          for i in 1 2 3 4 5; do
+            if ssh -i ~/.ssh/deploy_key -p "$SG_PORT" "$SG_USER@$SG_HOST" 'echo ssh ok'; then break; fi
+            echo "ssh attempt $i failed; retrying in 20s"; sleep 20
+            [ "$i" = 5 ] && { echo "::error::could not reach $SG_HOST:$SG_PORT"; exit 1; }
+          done
+
+      - name: rsync dist to the web root
+        if: env.HAS_SG == 'true'
+        run: |
+          # --delete makes the web root mirror dist/ exactly. .well-known stays (Let's Encrypt).
+          rsync -az --delete --exclude '.well-known' \
+            -e "ssh -i ~/.ssh/deploy_key -p $SG_PORT" \
+            dist/ "$SG_USER@$SG_HOST:$SG_PATH/"
+
+      - name: Verify the upload over SSH
+        if: env.HAS_SG == 'true'
+        run: |
+          local_n=$(find dist -type f | wc -l | tr -d ' ')
+          remote=$(ssh -i ~/.ssh/deploy_key -p "$SG_PORT" "$SG_USER@$SG_HOST" \
+            "cd '$SG_PATH' && echo \"files=\$(find . -type f -not -path './.well-known/*' | wc -l | tr -d ' ') index=\$(test -f index.html && echo ok) htaccess=\$(test -f .htaccess && echo ok)\"")
+          echo "local files=$local_n; remote $remote"
+          case "$remote" in *"files=$local_n "*"index=ok"*"htaccess=ok"*) echo "upload verified";; *) echo "::error::web root does not match the build"; exit 1;; esac
+
+      - name: Flush SiteGround's cache
+        if: env.HAS_SG == 'true'
+        continue-on-error: true
+        run: |
+          # SuperCacher keeps serving the previous HTML until flushed.
+          ssh -i ~/.ssh/deploy_key -p "$SG_PORT" "$SG_USER@$SG_HOST" \
+            "site-tools-client domain-all update id=1 flush_cache=1"
+
+      - name: Smoke test on the SiteGround server
+        if: env.HAS_SG == 'true'
+        run: |
+          # Ask the SiteGround server directly (works before and after the DNS switch).
+          ip=$(getent hosts "$SG_HOST" | awk '{print $1}' | head -1)
+          get() { curl -sk --max-time 20 --resolve "rihardszeila.com:443:$ip" -o /tmp/page -w '%{http_code}' "https://rihardszeila.com$1"; }
+          fail=0
+          # The HTML is the app shell, so check the <title>s: each preview page carries its own.
+          for check in "/|Paid Growth Consultant" "/lv/about|Paid Growth Consultant" "/blog|Blog | Rihards Zeila" \
+                       "/blog/meta-ads-seven-rules|seven rules it runs by" "/retreats|The Season Residency"; do
+            path=${check%%|*}; want=${check#*|}; code=$(get "$path")
+            if [ "$code" = "202" ]; then echo "::warning::SiteGround's bot challenge answered $path; check it from a normal network."; continue; fi
+            if [ "$code" = "200" ] && grep -qF "$want" /tmp/page; then echo "ok $path"; else echo "::error::$path returned $code without \"$want\""; fail=1; fi
+          done
+          # Old kit links must 301 to their article.
+          loc=$(curl -sk --max-time 20 --resolve "rihardszeila.com:443:$ip" -o /dev/null -w '%{http_code} %{redirect_url}' https://rihardszeila.com/kits/ads.html)
+          case "$loc" in "301 https://rihardszeila.com/blog/meta-ads-seven-rules") echo "ok /kits/ads.html";; 202*) echo "::warning::bot challenge on /kits/ads.html";; *) echo "::error::/kits/ads.html gave $loc"; fail=1;; esac
+          exit $fail

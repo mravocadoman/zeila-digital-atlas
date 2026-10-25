@@ -1,0 +1,70 @@
+# rihardszeila.com: the Vite build served by Apache on SiteGround.
+# Vite copies this file from public/ into dist/, and the deploy workflow rsyncs dist/ to the
+# web root. Lovable and `vite preview` ignore it. See "Hosting" in CLAUDE.md.
+
+Options -Indexes
+DirectoryIndex index.html
+AddDefaultCharset utf-8
+# /blog/<slug> and /retreats are folders with their own index.html (their link previews).
+# Without this, Apache 301s them to a trailing slash before the rules below can serve them.
+DirectorySlash Off
+
+<IfModule mod_mime.c>
+  AddType image/webp .webp
+  AddType font/woff2 .woff2
+</IfModule>
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # One host, always https.
+  RewriteCond %{HTTPS} off [OR]
+  RewriteCond %{HTTP_HOST} ^www\. [NC]
+  RewriteRule ^ https://rihardszeila.com%{REQUEST_URI} [R=301,L]
+
+  # The lead-magnet kits moved into the blog (24 Oct 2026). Old DM and Featured links keep working.
+  RewriteRule ^kits/marketing-department\.html$ /blog/marketing-department-on-claude-and-n8n [R=301,L]
+  RewriteRule ^kits/ads\.html$ /blog/meta-ads-seven-rules [R=301,L]
+  RewriteRule ^kits/carousel-generator\.html$ /blog/carousel-generator [R=301,L]
+  RewriteRule ^kits/25-iterations\.html$ /blog/ecommerce-business-built-with-claude [R=301,L]
+  RewriteRule ^kits/cheap-leads-postmortem\.html$ /blog/cheap-leads-post-mortem [R=301,L]
+  RewriteRule ^kits/ai-review-layer\.html$ /blog/ai-review-layer [R=301,L]
+
+  # No trailing slashes: the canonical URLs have none.
+  RewriteRule ^(.+)/$ /$1 [R=301,L]
+
+  # A folder with its own index.html is served as that page, without a slash, so chat apps and
+  # LinkedIn read that page's preview tags rather than the homepage's.
+  RewriteCond %{DOCUMENT_ROOT}/$1/index.html -f
+  RewriteRule ^(.+)$ /$1/index.html [L]
+
+  # Everything else that is not a real file is the single-page app.
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteRule ^ /index.html [L]
+</IfModule>
+
+# Caching. Everything under /assets is fingerprinted by Vite, so it can be kept for a year.
+# HTML must always be fresh, or a deploy shows old pages pointing at deleted bundles.
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 hour"
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType application/xml "access plus 1 hour"
+  ExpiresByType image/webp "access plus 30 days"
+  ExpiresByType image/png "access plus 30 days"
+  ExpiresByType image/jpeg "access plus 30 days"
+  ExpiresByType image/svg+xml "access plus 30 days"
+  ExpiresByType image/x-icon "access plus 30 days"
+</IfModule>
+
+<IfModule mod_headers.c>
+  <If "%{REQUEST_URI} =~ m#^/assets/#">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </If>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"
+  # Turn on once https has been confirmed working for a few days:
+  # Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+</IfModule>
