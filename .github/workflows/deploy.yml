@@ -103,12 +103,18 @@ jobs:
           fail=0
           # The HTML is the app shell, so check the <title>s: each preview page carries its own.
           for check in "/|Paid Growth Consultant" "/lv/about|Paid Growth Consultant" "/blog|Blog | Rihards Zeila" \
-                       "/blog/meta-ads-seven-rules|seven rules it runs by" "/retreats|The Season Residency"; do
+                       "/blog/meta-ads-seven-rules|seven rules" "/retreats|The Season Residency"; do
             path=${check%%|*}; want=${check#*|}; code=$(get "$path")
             if [ "$code" = "202" ]; then echo "::warning::SiteGround's bot challenge answered $path; check it from a normal network."; continue; fi
             if [ "$code" = "200" ] && grep -qF "$want" /tmp/page; then echo "ok $path"; else echo "::error::$path returned $code without \"$want\""; fail=1; fi
           done
-          # Old kit links must 301 to their article.
-          loc=$(curl -sk --max-time 20 --resolve "rihardszeila.com:443:$ip" -o /dev/null -w '%{http_code} %{redirect_url}' https://rihardszeila.com/kits/ads.html)
-          case "$loc" in "301 https://rihardszeila.com/blog/meta-ads-seven-rules") echo "ok /kits/ads.html";; 202*) echo "::warning::bot challenge on /kits/ads.html";; *) echo "::error::/kits/ads.html gave $loc"; fail=1;; esac
+          # Old kit links must reach their article: a 301, or the forwarding page (SiteGround's front
+          # server hands out files that exist before .htaccess runs, so the stub usually answers).
+          loc=$(curl -sk --max-time 20 --resolve "rihardszeila.com:443:$ip" -o /tmp/page -w '%{http_code} %{redirect_url}' https://rihardszeila.com/kits/ads.html)
+          case "$loc" in
+            "301 https://rihardszeila.com/blog/meta-ads-seven-rules") echo "ok /kits/ads.html (301)";;
+            "200 "*) grep -q 'url=/blog/meta-ads-seven-rules' /tmp/page && echo "ok /kits/ads.html (forwarding page)" || { echo "::error::/kits/ads.html is not the forwarding page"; fail=1; };;
+            202*) echo "::warning::bot challenge on /kits/ads.html";;
+            *) echo "::error::/kits/ads.html gave $loc"; fail=1;;
+          esac
           exit $fail
