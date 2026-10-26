@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { usePageMeta } from "@/i18n/lang";
 import { formatDate, getArticle, getArticles, renderBody } from "@/lib/blog";
@@ -16,6 +16,27 @@ const BlogArticle = () => {
   const navigate = useNavigate();
   const article = getArticle(slug);
   const html = useMemo(() => (article ? renderBody(article.body) : ""), [article]);
+  const body = useRef<HTMLElement>(null);
+
+  // A Copy button on every prompt and code box: the readers are on phones, and long-press
+  // selection inside a scrolling box is where a copy-paste step falls apart. Added after render,
+  // so the boxes read fine without it.
+  useEffect(() => {
+    const boxes = body.current?.querySelectorAll<HTMLPreElement>("pre:not(.flow)") ?? [];
+    boxes.forEach((pre) => {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "copy-btn";
+      btn.textContent = "Copy";
+      btn.onclick = () =>
+        navigator.clipboard?.writeText(pre.querySelector("code")?.innerText ?? pre.innerText).then(() => {
+          btn.textContent = "Copied";
+          setTimeout(() => (btn.textContent = "Copy"), 1500);
+        });
+      pre.appendChild(btn);
+    });
+    return () => boxes.forEach((pre) => pre.querySelector(".copy-btn")?.remove());
+  }, [html]);
 
   usePageMeta(
     article ? `${article.title} | Rihards Zeila` : "Page not found | Rihards Zeila",
@@ -50,6 +71,7 @@ const BlogArticle = () => {
 
         <div className="bg-[#fbfaf7] px-6 lg:px-16 py-12 lg:py-16">
           <article
+            ref={body}
             className="article-body prose prose-lg mx-auto max-w-[680px]"
             dangerouslySetInnerHTML={{ __html: html }}
           />

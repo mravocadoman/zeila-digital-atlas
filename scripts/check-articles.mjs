@@ -1,75 +1,54 @@
-// Checks the blog articles converted from the kits: node scripts/check-articles.mjs
-// 1. Nothing was lost: every table, code block and number in a kit is in its article.
-// 2. No hint at what the print-on-demand shop sells (Rihards, 24 Oct 2026).
-//    Never add the shop's real names here: they must not appear anywhere in this repo.
-import { execFileSync } from "node:child_process";
-import { existsSync, readFileSync } from "node:fs";
+// Checks every blog article against docs/blog-style.md: node scripts/check-articles.mjs
+// The parts a script can see: the article's shape, no jargon or em dashes in the main text, no dangling
+// "section 06" references, no kit leftovers, and no hint at what the print-on-demand shop sells.
+// Never add the shop's real names here: they must not appear anywhere in this repo.
+import { readdirSync, readFileSync } from "node:fs";
 
-// The kits as they were before they became forwarding stubs.
-const KIT_REV = "306e378";
-const KITS = {
-  "marketing-department.html": "marketing-department-on-claude-and-n8n",
-  "ads.html": "meta-ads-seven-rules",
-  "carousel-generator.html": "carousel-generator",
-  "25-iterations.html": "ecommerce-business-built-with-claude",
-  "cheap-leads-postmortem.html": "cheap-leads-post-mortem",
-  "ai-review-layer.html": "ai-review-layer",
-};
-// Numbers that lived only in a kit's chrome or in a reworded shop hint.
-const IGNORE = {};
+const DIR = "src/content/blog";
 // Words and phrasings that give the product away. Wrapped, mirrored edges only exist on gallery canvas;
 // wall-size printing points at wall art.
 const HINTS = /portrait|canvas|glasses|commission(ing)? certificate|theme collection|franchise|wrapped edge|mirror setting|edge mirror|wall size|on a wall/i;
-// Leftovers from the kits: "this kit", "its own kit, LEADS".
-const KIT_WORDING = /\b(this|its own) kit\b|\bkit, [A-Z]{3,}/;
+// Leftovers from the kits: "this kit", "its own kit, LEADS", "comment TEAM".
+const KIT_WORDING = /\b(this|its own) kit\b|\bkit, [A-Z]{3,}|\bcomment (\*\*|<b>)?[A-Z]{3,}\b/;
+// Developer words. They belong in the folded "For your developer" section or in a prompt box, not in the text.
+const JARGON = /\b(API|JSON|webhooks?|endpoints?|schema|SQL|Postgres|regex|cron|payloads?|nodes?|deploy(ed|s)?|repo|md5|URNs?|upsert|CBO)\b/;
+const REQUIRED = ["## What you need", "## Start here today"];
 
-const decode = (s) =>
-  s.replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&amp;/g, "&");
-// Real tags only: code in the articles holds bare "<=" and ">" that a looser pattern would eat.
-const text = (html) => decode(html.replace(/<\/?[a-z][a-z0-9]*\b[^>]*>/gi, " ")).replace(/\s+/g, " ");
-const numbers = (s) => [...new Set((s.match(/\d[\d.,]*%?/g) || []).map((n) => n.replace(/[.,]+$/, "")))];
+// The main text: no front matter, no developer section, no code or prompt boxes, no HTML tags.
+const mainText = (md) =>
+  md
+    .replace(/^---[\s\S]*?\n---\n/, "")
+    .replace(/<details>[\s\S]*?<\/details>/g, "")
+    .replace(/^```[\s\S]*?^```/gm, "")
+    .replace(/<pre[\s\S]*?<\/pre>/g, "")
+    .replace(/<\/?[a-z][a-z0-9]*\b[^>]*>/gi, " ")
+    .replace(/`[^`]*`/g, "");
 
 const problems = [];
-for (const [kit, slug] of Object.entries(KITS)) {
-  const html = execFileSync("git", ["show", `${KIT_REV}:public/kits/${kit}`], { encoding: "utf8" });
-  const path = `src/content/blog/${slug}.md`;
-  if (!existsSync(path)) {
-    problems.push(`${slug}: missing ${path}`);
-    continue;
-  }
-  const md = readFileSync(path, "utf8");
+for (const file of readdirSync(DIR).filter((f) => f.endsWith(".md"))) {
+  const slug = file.slice(0, -3);
+  const md = readFileSync(`${DIR}/${file}`, "utf8");
+  const text = mainText(md);
 
-  const kitTables = (html.match(/<table/g) || []).length;
-  const mdTables = (md.match(/<table/g) || []).length + (md.match(/^\|[ :-]*-{3}/gm) || []).length;
-  if (mdTables < kitTables) problems.push(`${slug}: ${mdTables} tables, kit has ${kitTables}`);
+  for (const h of REQUIRED) if (!md.includes(h)) problems.push(`${slug}: no "${h}" section`);
 
-  const kitPre = (html.match(/<pre/g) || []).length;
-  const mdPre = (md.match(/<pre/g) || []).length + (md.match(/^```/gm) || []).length / 2;
-  if (mdPre < kitPre) problems.push(`${slug}: ${mdPre} code blocks, kit has ${kitPre}`);
+  const words = text.split(/\s+/).filter(Boolean).length;
+  if (words < 900 || words > 2400) problems.push(`${slug}: main text is ${words} words (aim for 1,300 to 2,000)`);
 
-  // the kit's visible content: title and dek, then the body without header, footer and section numbers
-  const body = html
-    .slice(html.indexOf("</header>"), html.indexOf("<footer"))
-    .replace(/<h2><span>[^<]*<\/span>/g, "<h2>");
-  const head = (html.match(/<h1>[\s\S]*?<\/h1>|<p class="sub">[\s\S]*?<\/p>/g) || []).join(" ");
-  const have = text(md);
-  const ignore = new Set(IGNORE[slug] || []);
-  const lost = numbers(text(head + body)).filter((n) => !ignore.has(n) && !have.includes(n));
-  if (lost.length) problems.push(`${slug}: numbers missing: ${lost.join(" ")}`);
+  const jargon = text.match(JARGON);
+  if (jargon) problems.push(`${slug}: developer word "${jargon[0]}" in the main text`);
 
-  // reportlab's `canvas` module in the carousel code is a library name, not a hint
+  if (text.includes("—")) problems.push(`${slug}: em dash in the main text`);
+
+  // reportlab's `canvas` module in a code listing is a library name, not a hint
   const hint = md.replace(/reportlab\.pdfgen import canvas|canvas\.Canvas\(/g, "").match(HINTS);
   if (hint) problems.push(`${slug}: shop hint "${hint[0]}"`);
 
   const kitWord = md.match(KIT_WORDING);
   if (kitWord) problems.push(`${slug}: kit wording "${kitWord[0]}"`);
 
-  // "section 06", "sections 02 through 07", "see 05" must point at a numbered heading ("## 06 · …")
-  const heads = new Set([...md.matchAll(/^## (\d{2}) · /gm)].map((m) => Number(m[1])));
-  const refs = [...md.matchAll(/\bsections? (\d{1,2})(?: through (\d{1,2}))?|\bsee (\d{2})\b/gi)]
-    .flatMap((m) => [m[1], m[2], m[3]].filter(Boolean).map(Number));
-  const dangling = [...new Set(refs.filter((n) => !heads.has(n)))];
-  if (dangling.length) problems.push(`${slug}: section refs with no numbered heading: ${dangling.join(" ")}`);
+  const ref = text.match(/\bsections? \d{1,2}\b|\bsee \d{2}\b/i);
+  if (ref) problems.push(`${slug}: numbered reference "${ref[0]}"; name the section instead`);
 }
 
 if (problems.length) {

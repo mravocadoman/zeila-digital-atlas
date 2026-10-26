@@ -1,31 +1,136 @@
 ---
-title: Run your entire marketing department on Claude Opus 5 and n8n
-description: Nine n8n workflows, two languages, one human. The whole system behind my LinkedIn posts, including the four lines of code that stop the model rewriting them.
+title: My marketing department is nine automations and me. Here's how to build yours
+description: Write the post, tick one box, and it publishes itself on LinkedIn and Facebook at the right hour. The simple version takes a weekend and no coding.
 date: 2026-10-24
 topic: Automation
 drawing: pipeline
 order: 1
 ---
 
-Nine workflows. Two languages. One human, ninety seconds a day. This article is the whole system — including the part of it that wrote the post you clicked from.
+The post that sent you here was published by a machine I built. I didn't open LinkedIn to post it. I didn't open Facebook either, and I didn't set a reminder to reply to comments. All of that happened on its own.
 
-## 00 · Read this first
+My part took about ninety seconds: I read the post, I ticked one box in Notion, and I went back to work.
 
-<div class="callout">
-  <p><b>What changed since this was written (update, October 2026).</b> Four things, all in the direction of less machine, more code. (1) The fallback writer is gone: an approved entry with no human-written post is no longer drafted by the model, it is flagged back to me. (2) Images are no longer generated: every value post ships a carousel <em>drawn in code from the post's own numbers</em>, and the image art-director in section 3 is kept for the rare single-image post. (3) The publisher now also turns each post into an X and Threads thread (Claude Haiku, three hours after LinkedIn) and schedules everything itself at the local peak slot. (4) Posts are written two weeks at a time in one scheduled Claude session on Sundays, read once by me, and approved as a batch; the daily approval email is retired. The monthly planner and the Latvian adapter are paused, so today it is seven live workflows plus two on the bench. Everything else below still runs as described.</p>
-</div>
+That's the whole system. Nine small automations and one human. Seven of them run every day, two are switched off for now. And there's one thing it is **not allowed** to do, which I'll get to, because it's the most important part.
 
-The title is a big claim, so here is the honest version before you spend twenty minutes on this.
+**What you'll have at the end:** you write your posts once a week, tick a box next to each one, and they go out on LinkedIn and Facebook by themselves, at a good hour, with a ping to your phone when it's time to answer comments.
 
-What follows genuinely runs a two-language publishing operation on autopilot: it picks the day's topic, assembles the source material, art-directs an image, builds a carousel, writes a first comment, schedules to LinkedIn and Facebook at the right local hour, produces a native Latvian version, files everything in Postgres, and pings me on Telegram when a post goes live so I can go and answer comments.
+## What you need
 
-<div class="callout">
-  <p><b>It does not write the posts.</b> A human still does that. Every attempt to hand the writing to a model produced content that was technically fine and completely forgettable, and the system now enforces the opposite: if a human wrote the post, the model is <em>forbidden</em> from touching it. That override is four lines of JavaScript and it is the single most important thing in this article.</p>
-</div>
+- **Notion** (free). This is your content calendar: one row per post.
+- **n8n**. A visual tool where you connect boxes into a recipe of steps. There's a free version you host yourself, or a paid cloud plan if you don't want to deal with servers.
+- **A scheduling tool** that can post to LinkedIn and Facebook for you. I use Zernio. Buffer works the same way.
+- **Telegram** (free), for the pings to your phone.
+- **Claude or ChatGPT**, only for the optional extras. The basic version needs no AI at all.
+- **Time:** a weekend for the basic version.
+- **Skill:** no coding, apart from one copy and paste in step 4.
+- **Money:** the tools are free or cheap, and the AI part is a rounding error. Infrastructure is not what this costs you. Time is.
 
-So: not a department that thinks. A department that *ships*. That turns out to be most of the job.
+## How it works
 
-## 01 · The shape of it
+Think of a small restaurant kitchen.
+
+You are the chef: you write the posts. Notion is the order board on the wall, one ticket per post. n8n is the kitchen porter who checks the board every morning at 08:00, takes every ticket that's marked ready, and carries it out. The scheduling tool is the waiter who serves it to the table, LinkedIn at 10:00 Riga time, and a copy to Facebook. Telegram is the little bell that rings in the kitchen when the plate is out, so you can go and talk to the guests.
+
+Two of the nine automations do nothing but watch the others. If anything breaks, they shout at me on Telegram. That sounds boring. It's the reason I trust the rest.
+
+And the one rule: **the machine never touches the words.** The text I approved is the text that goes out, character for character. These days a Claude session drafts two weeks of posts on Sundays, I read them all once, fix what's off, and approve the batch. After that, nothing is allowed to "improve" them.
+
+I learned this the hard way. Every version where a model wrote or polished the post on its own was technically fine and completely forgettable. Over a month it quietly sands your voice off.
+
+## Step 1: build the order board in Notion
+
+Make a Notion database with one row per post and three columns:
+
+- **Date**, the day it should go out.
+- **Approved**, a checkbox. This is the only switch. Nothing goes out without it.
+- **Status**, so you can see what's drafted, approved and posted.
+
+Inside each row's page, write the post under a simple heading, so the machine knows exactly where the post starts and stops:
+
+```
+=== FINAL POST ===
+Your post text, exactly as it should appear.
+
+=== FIRST COMMENT ===
+The comment that should go up right after the post.
+```
+
+**Done when:** next week's posts are in the table, each with a date, and none of them ticked yet.
+
+## Step 2: build the alarm first
+
+Before you automate anything, set up the part that tells you when it fails. In n8n, make a tiny automation that sends you a Telegram message whenever any other automation errors: which one, what went wrong, and a link to it. Then point every automation you build at it.
+
+It's two boxes. It's also what makes everything else safe, because a machine that silently stopped three weeks ago is worse than no machine.
+
+**Done when:** you break something on purpose and your phone buzzes.
+
+## Step 3: the morning run
+
+Now the porter. In n8n, make an automation that runs every weekday at 08:00:
+
+1. Look in Notion for posts dated today with **Approved** ticked.
+2. Take the text under `=== FINAL POST ===` and the text under `=== FIRST COMMENT ===`.
+3. Send both to your scheduling tool for a good hour that day. Mine posts at 10:00 Riga time and mirrors to Facebook.
+4. Mark the row as posted in Notion, so it never goes out twice.
+
+**Done when:** you tick a test post for tomorrow, and it appears in your scheduling tool by itself at 08:00.
+
+## Step 4: protect your words
+
+If you let an AI touch your post anywhere in the chain, even just to "format" it, it will eventually tighten a sentence, drop a comma or rewrite your ending. Asking it nicely not to doesn't work reliably.
+
+So the guarantee goes in the machine itself, not in the instructions: a last step that says "if a human wrote this post, use it exactly as written". It's four lines of code. You don't need to understand them, just paste them. They're in the developer section at the bottom.
+
+**Done when:** you compare a published post with your Notion text and they match exactly.
+
+## Step 5 (optional): a second language that doesn't sound translated
+
+I post in English and Latvian. Every tutorial says "ask the AI to translate". The result is grammatically perfect, and a native speaker smells it in one sentence: English rhythm wearing a Latvian coat.
+
+The fix is to never ask for a translation. Give the AI the facts and ask it to write a new post for that market. This is the prompt, and it works for any language:
+
+```
+DO NOT TRANSLATE. You are not given an English post to convert.
+You are given the SOURCE FACTS. COMPOSE THE POST FROM SCRATCH in Latvian,
+as a Latvian marketer writing for Latvians would.
+
+If a sentence in your draft maps word-for-word onto an English sentence,
+rewrite it.
+
+Different examples, different rhythm, different opening are all CORRECT.
+Same facts, same point, same voice.
+```
+
+Same facts, same point, same voice, and two posts that share no sentence structure at all. It's the most useful paragraph in the whole system.
+
+## Step 6: the reminder that actually matters
+
+The last automation checks every ten minutes, from 06:00 to 20:00, whether a post has just gone live. When it has, my phone says: "you are live, go and reply for 15 minutes".
+
+That ping is the real output of the whole system. Publishing on time is the easy part. The fifteen minutes you spend answering comments in the first hour still does more for reach than everything above.
+
+**Done when:** your phone tells you a post is live before you thought to check.
+
+## Where it goes wrong
+
+- **Saving a change isn't switching it on.** n8n keeps a draft and a live version of every automation. I lost a day to a post that scheduled itself for "now", in the wrong time zone, because the live version was still the old one. Publish after every change.
+- **The free database falls asleep.** Free database plans pause when they're barely used, and a machine that checks in once a morning is exactly that. One extra automation pokes it every six hours to keep it awake.
+- **The silent failure.** The crash isn't the danger. The danger is the step that quietly stops marking posts as done, so the same post gets picked up forever. This is why the alarm comes first.
+- **The AI drifts if you let it.** Any rule you really care about belongs in the machine, not in the prompt.
+- **Automation doesn't buy reach.** It buys you time. What you do with the first hour after posting still decides how far a post goes.
+
+## Start here today
+
+Make the Notion table from step 1 and write next week's posts into it. Don't automate anything yet. Just get used to writing a week ahead and ticking the box. That habit is most of the system, and the machine only makes it effortless.
+
+If you want the carousels too, they have their own article: [how my carousels are drawn in code](/blog/carousel-generator).
+
+<details>
+<summary>For your developer: the whole system, step by step</summary>
+
+### The shape of it
 
 <pre class="flow">  <b>NOTION</b>  content calendar        one row per post, per weekday
      │           topic · bucket · approved · the written post itself
@@ -54,7 +159,7 @@ So: not a department that thinks. A department that *ships*. That turns out to b
                  Telegram: "you are live, go and reply for 15 minutes"
 </pre>
 
-## 02 · The nine workflows
+### The nine automations
 
 <table>
   <thead><tr><th>Workflow</th><th>Trigger</th><th>What it owns</th></tr></thead>
@@ -71,15 +176,11 @@ So: not a department that thinks. A department that *ships*. That turns out to b
   </tbody>
 </table>
 
-Seven touch content. Two exist purely so the other seven fail loudly instead of quietly. Build those two *first* — a silent pipeline that stopped three weeks ago is worse than no pipeline.
+Seven touch content. Two exist purely so the other seven fail loudly instead of quietly. The monthly planner and the Latvian adapter are paused, so seven run live today. The publisher also turns each post into an X and Threads thread with Claude Haiku, three hours after LinkedIn.
 
-## 03 · The four pieces that actually matter
+### The verbatim override (step 4)
 
-Everything else is plumbing you can rebuild from the diagram. These four are the decisions.
-
-### 1. The verbatim override — the whole trick
-
-Prompt engineering cannot make a model reliably not-edit text you hand it. It will tighten a sentence, drop a comma, "improve" your ending. Over a month that quietly sands your voice off. So the guarantee lives in code, downstream of the model, where no amount of temperature can reach it:
+The model still runs: it produces the image brief and the metadata. It simply cannot win an argument about the text. Verified by md5 against the source, character for character, every run.
 
 ```
 // Pre-written post wins, verbatim — code-level guarantee against paraphrase.
@@ -91,11 +192,7 @@ try {
 } catch (e) {}
 ```
 
-Four lines. The model still runs — it produces the image brief, the metadata, the fallback draft if no human wrote one. It simply cannot win an argument about the text. Verified by md5 against the source: character for character, every run.
-
-### 2. Section markers turn a Notion page into a typed payload
-
-A Notion page is a bag of blocks. To get four different things out of one page without four different databases, mark the sections in the body and slice on the markers:
+### Slicing a Notion page on section markers
 
 ```
 === FINAL POST ===        the English post, verbatim
@@ -123,27 +220,9 @@ function sliceSection(testFn) {
   <p><b>The bug worth stealing the fix for:</b> the first version stopped only at the <em>same</em> marker type, so the Latvian post leaked onto the end of every English one. Any marker ends any section. One regex, one afternoon lost.</p>
 </div>
 
-### 3. The prompt that forbids translation
+### Deterministic art direction
 
-Every "AI localisation" tutorial says: ask the model to translate. The output is grammatically perfect and a native speaker smells it in one sentence — English rhythm wearing a Latvian coat. The fix is to remove translation from the table entirely:
-
-```
-DO NOT TRANSLATE. You are not given an English post to convert.
-You are given the SOURCE FACTS. COMPOSE THE POST FROM SCRATCH in Latvian,
-as a Latvian marketer writing for Latvians would.
-
-If a sentence in your draft maps word-for-word onto an English sentence,
-rewrite it.
-
-Different examples, different rhythm, different opening are all CORRECT.
-Same facts, same point, same voice.
-```
-
-Same source, two posts that share zero sentence structure. This ports to any second market — Polish, Estonian, Lithuanian, Spanish. It is the highest-leverage paragraph in the whole system.
-
-### 4. Deterministic art direction beats a creative model
-
-Asking a model to "design something on brand" gives you a different brand every day. So the mode is chosen by lookup — post type in, visual system out — and the model only fills in the details:
+The image style is picked by lookup, post type in, visual system out, and the model only fills in details. Charts are banned, because image models invent proportions. Personal stories get no generated image at all. Today most posts ship a carousel drawn in code from the post's own numbers instead.
 
 <table>
   <thead><tr><th>Mode</th><th>Accent</th><th>Used for</th><th>Look</th></tr></thead>
@@ -154,11 +233,7 @@ Asking a model to "design something on brand" gives you a different brand every 
   </tbody>
 </table>
 
-Two standing rules inside all three: **charts are banned** — image models invent proportions, so numbers get rendered as typography instead — and personal stories get no generated image at all. A real photograph outperforms anything a model makes, every time.
-
-## 04 · The database
-
-Three tables. That is the entire persistence layer.
+### The database
 
 ```
 create table content_log (
@@ -200,38 +275,8 @@ create index on content_log (status, scheduled_for);
 create index on content_log (golden_hour_pinged) where golden_hour_pinged = false;
 ```
 
-## 05 · What it replaced
+### Running cost
 
-<div class="cards">
-  <div class="card"><h4>The scheduler</h4><p>Picks the topic, holds the queue, posts at the local peak hour, in two languages, without a spreadsheet.</p></div>
-  <div class="card"><h4>The designer</h4><p>Every image and every carousel. Consistent because the system is deterministic, not because someone remembered the brand guide.</p></div>
-  <div class="card"><h4>The translator</h4><p>A native Latvian version of every post, composed rather than converted, ready twelve minutes after approval.</p></div>
-  <div class="card"><h4>The community manager</h4><p>Writes the first comment, posts it with the post, then tells me the hour that matters has started.</p></div>
-  <div class="card"><h4>The ops person</h4><p>Files everything, links the URNs back, and shouts on Telegram the second anything breaks.</p></div>
-  <div class="card"><h4>Not the writer</h4><p>Still me. Still the bottleneck. Still, on the evidence, the right call.</p></div>
-</div>
+n8n, a Postgres, a scheduling API and tokens. Claude Opus 5 lists at $5 per million input tokens and $25 per million output, and a day's run of this pipeline is a rounding error against one freelance invoice.
 
-Running cost is n8n, a Postgres you are probably already paying for, a scheduling API, and tokens. Claude Opus 5 lists at $5 per million input tokens and $25 per million output — a day's run of this pipeline is a rounding error against one freelance invoice. Do the arithmetic for your own volume; the honest answer is that infrastructure is not what this costs you. Time is.
-
-## 06 · Where it breaks
-
-- **Editing a workflow does not change what runs.** n8n keeps a draft and a published version. I lost a day to a post that scheduled itself to "now" in the wrong timezone because the publisher was still on its pre-change version. Publish after every single change.
-- **Free-tier Postgres pauses.** A pipeline that touches the database once each weekday morning is precisely the usage profile that gets suspended. Hence the keepalive.
-- **A silent pipeline is the real failure mode.** Not the crash — the branch that quietly never ticks "generated" and regenerates the same entry forever. Build the alerting before you build the features.
-- **The model will drift if you let it.** Any guarantee you care about belongs in code downstream of the model, not in the prompt.
-- **Automation does not buy reach.** Publishing on time is table stakes. The fifteen minutes you spend replying to comments in the first hour still does more for distribution than the entire system above.
-
-## 07 · Build it in a weekend
-
-1. **One table and one cron.** Read a row, post it, write the URN back. Get that working end to end before anything else exists.
-2. **Add the error workflow.** Point every workflow at it. Two nodes, and it is what makes the rest safe to build.
-3. **Add the human gate.** An email with an approval link beats a fully autonomous pipeline you are too nervous to leave running.
-4. **Add the verbatim override.** The moment you start hand-writing anything, protect it in code.
-5. **Add the second language.** Compose, never translate. Copy the prompt above.
-6. **Add the reminder.** The system's real output is not the post. It is you, on the platform, in the first hour.
-
-<hr>
-
-<div class="callout">
-  <p><b>One more thing.</b> The post that brought you here was written by a human, laid out by the art director in section 3, attached to a carousel built by a 200-line Python file, scheduled by workflow four, commented on by workflow four, and mirrored into Latvian by workflow six. The carousel generator has its own article: <a href="/blog/carousel-generator">how the carousels are drawn in code</a>.</p>
-</div>
+</details>

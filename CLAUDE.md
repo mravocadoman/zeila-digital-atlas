@@ -70,9 +70,14 @@ Five routes in `src/App.tsx` (all but `/retreats` and `/blog` mirrored under `/l
   - **Never hint at what the print-on-demand shop sells** (Rihards, 24 Oct): no portraits, canvas,
     glasses, theme collections or franchise wording, and never its name, anywhere in this repo.
   - `public/kits/*.html` are now forwarding stubs to the articles, so old DM and Featured links still land.
-  - Checks: `node src/lib/blog-core.test.ts` (parser and preview tags) and
-    `node scripts/check-articles.mjs` (every table, code block and number from the old kits survived, and
-    no shop hints).
+  - **How articles are written: `docs/blog-style.md`** (Rihards, 2026-10-26: "make so that normal humans can
+    understand and implement it"). Every article and future lead magnet is plain language for a non-developer:
+    hook, "What you need", "How it works", numbered steps with copy-paste prompts, "Where it goes wrong",
+    "Start here today", and all code/tables/internals folded into a `<details>` "For your developer" section.
+    `BlogArticle` adds a Copy button to every prompt and code box.
+  - Checks: `node src/lib/blog-core.test.ts` (parser and preview tags) and `node scripts/check-articles.mjs`
+    (the article shape, no developer jargon or em dashes in the main text, 900 to 2,400 words, no shop hints,
+    no kit leftovers).
 - `src/components/ui/` is stock shadcn — don't hand-edit, regenerate.
 
 ## Languages (EN / LV)

@@ -1031,3 +1031,14 @@ All colors MUST be HSL.
 .article-body .stat { font-weight: 800; font-size: clamp(2.2rem, 6vw, 3.4rem); line-height: 1; letter-spacing: -0.03em; color: #0277a8; margin: 0.4em 0; }
 .article-body span.hl { color: #8a5a00; font-weight: 800; }
 .article-body tr.hl td { background: rgba(245, 165, 36, 0.12); }
+/* "For your developer": the technical depth, folded away (docs/blog-style.md). */
+.article-body details { border: 1px solid #dfe5ea; border-radius: 8px; padding: 0 1.1rem; margin: 2.5em 0 0; background: #fff; }
+.article-body details[open] { padding-bottom: 0.5rem; }
+.article-body summary { cursor: pointer; font-weight: 700; color: #002138; padding: 1rem 0; }
+/* Copy buttons on prompt and code boxes, added by BlogArticle once the page is live. */
+.article-body pre { position: relative; }
+.article-body .copy-btn { position: absolute; top: 0.5rem; right: 0.5rem; font: 600 0.72rem/1 'Archivo', sans-serif; letter-spacing: 0.04em; color: #002138; background: #dfe8ef; border: 0; border-radius: 4px; padding: 0.4rem 0.6rem; cursor: pointer; }
+.article-body .copy-btn:hover { background: #ffffff; }
+/* Prompt boxes in the main text are prose: wrap them on phones. Code in the developer section keeps its lines. */
+.article-body > pre:not(.flow), .article-body > pre:not(.flow) code { white-space: pre-wrap; overflow-wrap: anywhere; }
+.article-body pre:not(.flow) { padding-top: 2.6rem; }

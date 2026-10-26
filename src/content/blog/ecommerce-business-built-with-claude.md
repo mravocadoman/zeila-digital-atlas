@@ -1,90 +1,80 @@
 ---
-title: 25 iterations on an AI product. Only four were about the AI.
-description: 25 changes to an AI print-on-demand product, logged and categorised in order. The generation worked early. Only four were about the AI.
+title: I started an ecommerce business with Claude. Here's the full build log
+description: 25 changes to my AI print-on-demand project, in order. Only four were about the AI. The full log, and a free template to keep your own.
 date: 2026-10-24
 topic: Build log
 drawing: sessions
 order: 4
 ---
 
-The full log from a print-on-demand ecommerce project I run — every change, categorised, in the order it happened. The generation worked early. Everything after that was operations.
+I built a print-on-demand ecommerce project with Claude, on the side. A customer uploads a photo, a model generates artwork from it, and the artwork gets printed and shipped.
 
-## 00 · Read this first
-
-Twenty-five iterations shipped on an AI product. Here is how many of them were about the AI:
+If you'd asked me what I spent the build on, I'd have said the AI. Sincerely. Then I counted my log, where I'd written down every change the day I shipped it.
 
 <p class="stat">4 of 25</p>
 
-That is the whole article in one number, and I would like you to sit with it before you read the log, because it is the opposite of what the internet told me to expect.
+Twenty-five changes, and four were about the AI. It was good enough to sell within the first handful. The other twenty-one were orders, revisions, refunds, legal wording, print quality, and stopping the same order going to the printer twice.
 
-The product is a print-on-demand side project: a customer uploads a photo, a model generates artwork from it, the artwork gets printed and shipped. The AI part — the part every course, thread and launch video treats as *the* product — was working well enough to sell from within the first handful of iterations. It has needed four meaningful changes since.
+In an AI product, the AI is the easy part. Running the business around it is the work. There are no revenue figures here: the point doesn't need them, and I won't make them up.
 
-The other twenty-one were order states, revision loops, integration glue, fulfilment edge cases, refunds, legal wording, print geometry, and stopping the same order being pushed to the printer twice.
+**What you'll have at the end:** a simple build log you fill in two minutes at a time, the habit of counting it so you see where your work really goes, and a checklist of the unglamorous work to plan for before you build anything with AI in it.
 
-<div class="callout">
-  <p><b>The thesis:</b> the generation was never the hard part. Getting a generated image through approval, revision, upscale, print and a courier without a human babysitting it — that was the hard part, and it is invisible in every "build an AI business" plan I have read.</p>
-</div>
+## What you need
 
-What this article is: the actual log, in order, with categories. What it is not: a case study with numbers. There are no revenue figures, order counts or conversion rates here, because the point I am making does not depend on them and inventing them would ruin it. Section 06 is the template, if you want to skip the story and take the tool.
+- **Notion** (free), or any spreadsheet. One table, four columns.
+- **Claude or ChatGPT**, only for the planning checklist in step 5. Optional.
+- **Time:** a few minutes to set up. After that, under two minutes each time you change something.
+- **Skill:** none. If you can fill in a table, you can do this.
+- **Money:** nothing.
 
-<hr>
+## How it works
 
-## 01 · The full log
+Think of a food diary.
 
-Twenty-five iterations, in the order they shipped. <span class="hl">Amber rows are the four AI ones.</span> "Why it happened" is the trigger — the thing that made the change necessary, which is usually more interesting than the change.
+Most people are sure they know what they eat. Then they write down every meal for a month, and the diary tells a different story. Memory tidies things up.
+
+A build log is a food diary for your business. Every time you change something, you add one row: a number, one category, what you changed, and why. Every ten rows, you count the categories. No single row teaches you much. The count does.
+
+The timing is the whole trick. Written on the day, the "why" holds the real reason: the order that broke, the customer who asked. Written a month later, it's a neat story where everything was part of a plan. More flattering, and useless.
+
+## My full log, all 25 changes
+
+In the order they shipped. <span class="hl">The highlighted rows are the four AI ones.</span> The categories are explained in step 2.
 
 <table>
 <thead>
-<tr><th>#</th><th>Category</th><th>What it was</th><th>Why it happened</th></tr>
+<tr><th>#</th><th>Category</th><th>What changed</th><th>Why</th></tr>
 </thead>
 <tbody>
-<tr><td>01</td><td>UX</td><td>Landing page launch</td><td>Needed a place to send traffic and something to test demand against. Nothing behind it yet worth defending.</td></tr>
-<tr><td>02</td><td>UX</td><td>Design polish for readability</td><td>The first version was legible to me and to nobody else. Line length, contrast and hierarchy, not aesthetics.</td></tr>
-<tr><td>03</td><td>Legal/IP</td><td>IP-safe copy rewrite</td><td>The original copy leaned on terms the business had no right to use. Rewrote everything in its own words and removed them. This is not a detail — it is the change that decides whether the business is allowed to exist.</td></tr>
-<tr><td>04</td><td>UX</td><td>Multi-step wizard</td><td>One long form asked for everything at once and people abandoned it. Split into steps so each screen asks one question.</td></tr>
-<tr><td>05</td><td>Integration</td><td>Shopify integration</td><td>Stopped hand-rolling checkout. Orders, payment and customer records move to a system that already handles tax, receipts and refunds.</td></tr>
-<tr><td>06</td><td>Integration</td><td>Printify integration</td><td>Same logic on the other end: stop being the printer. The order now leaves my system and enters a fulfilment network.</td></tr>
-<tr><td>07</td><td>UX</td><td>Second and third art style upsell</td><td>People who had already paid wanted another version. Offering it at the right moment turned one decision into a bigger one.</td></tr>
-<tr><td>08</td><td>Fulfilment</td><td>Shipping address flow</td><td>Addresses collected at the wrong moment, in the wrong shape, are the single most reliable way to produce an undeliverable parcel. Moved and restructured.</td></tr>
-<tr><td>09</td><td>Order state</td><td>Proper revision lifecycle</td><td>"Customer wants a change" had no state of its own. It lived in email and in my head. Gave revisions explicit states, limits and transitions.</td></tr>
-<tr><td>10</td><td>UX</td><td>Admin dashboard reorganised into phase tabs</td><td>The admin view listed orders. It needed to show <em>where</em> each order was stuck. Reorganised around lifecycle phases so the queue tells me what to do next.</td></tr>
-<tr class="hl"><td>11</td><td><span class="hl">AI</span></td><td>AI review layer</td><td>A generated image that is technically successful can still be obviously wrong. Added a model-based review pass before a human ever sees it.</td></tr>
-<tr class="hl"><td>12</td><td><span class="hl">AI</span></td><td>Photo quality gate</td><td>Bad input photos produce bad output, and the customer blames the output. Gate the upload instead of apologising for the result.</td></tr>
-<tr><td>13</td><td>Order state</td><td>Immutable approval snapshots</td><td>Once a customer approves, that exact version must be the thing that prints — not "whatever the latest file is". Approval now freezes a snapshot.</td></tr>
-<tr class="hl"><td>14</td><td><span class="hl">AI</span></td><td>4x upscale before print</td><td>Screen-resolution output is fine on a phone and unacceptable in print. Added an upscale step between approval and print.</td></tr>
-<tr><td>15</td><td>Edge case</td><td>Duplicate push guard with an atomic lock</td><td>The same order could be pushed to the printer twice — a retry, a double click, two tabs. Every duplicate is a real physical object with a real cost. Fixed with a proper lock, not a check.</td></tr>
-<tr class="hl"><td>16</td><td><span class="hl">AI</span></td><td>Known-defect detection</td><td>A specific, repeatable failure mode in the generation that needed detecting up front rather than discovering at revision time.</td></tr>
-<tr><td>17</td><td>Integration</td><td>One-click Shopify status sync</td><td>Two systems disagreeing about whether an order is fulfilled is how you get a support ticket. Pushed status back with one action instead of two logins.</td></tr>
-<tr><td>18</td><td>UX</td><td>Group orders for 3–4 people</td><td>Asked for repeatedly. Expanding from one subject to several changes the flow, the pricing and the review — a product decision, not a prompt change.</td></tr>
-<tr><td>19</td><td>UX</td><td>New collections</td><td>More reasons to choose, and more reasons to come back. Merchandising, not engineering.</td></tr>
-<tr><td>20</td><td>Fulfilment</td><td>48-hour delivery promise, revised down from 24</td><td>The 24-hour promise was true on a good day and a liability on a normal one. Revised the promise to match the system instead of forcing the system to match the promise.</td></tr>
-<tr><td>21</td><td>Order state</td><td>Refund escape hatch</td><td>Some orders should end. Without an explicit exit they sit in the queue forever, consuming attention and goodwill. Made "stop, refund, close" a first-class path.</td></tr>
-<tr><td>22</td><td>Fulfilment</td><td>Personalised insert card</td><td>A physical product benefits from something that makes it feel made for the buyer rather than generated. Cheap to add, disproportionate effect on how it lands.</td></tr>
-<tr><td>23</td><td>UX</td><td>Email improvements</td><td>Transactional email is the product for most of the customer's waiting time. Better clarity about what happens next, and when.</td></tr>
-<tr><td>24</td><td>Fulfilment</td><td>Cheaper print provider switch</td><td>Same output, better unit economics. Switching a provider is never just a switch — it is new sizes, new colour behaviour, new lead times.</td></tr>
-<tr><td>25</td><td>Print quality</td><td>Print edge settings</td><td>The edge of the print is a real design surface. Getting the edge settings right is the difference between a finished object and a cropped one.</td></tr>
+<tr><td>01</td><td>UX</td><td>Landing page launch</td><td>Somewhere to send visitors and test demand.</td></tr>
+<tr><td>02</td><td>UX</td><td>Design polish for readability</td><td>Readable to me and nobody else. Line length and contrast, not looks.</td></tr>
+<tr><td>03</td><td>Legal/IP</td><td>Rewrote the copy in its own words</td><td>It leaned on terms the business had no right to use.</td></tr>
+<tr><td>04</td><td>UX</td><td>Step-by-step order form</td><td>One long form asked for everything at once. People gave up.</td></tr>
+<tr><td>05</td><td>Integration</td><td>Connected Shopify</td><td>Stop building checkout. Shopify already handles payment, tax and refunds.</td></tr>
+<tr><td>06</td><td>Integration</td><td>Connected Printify</td><td>Stop being the printer. Orders go into a print network.</td></tr>
+<tr><td>07</td><td>UX</td><td>Offer a second and third art style</td><td>People who had already paid wanted another version.</td></tr>
+<tr><td>08</td><td>Fulfilment</td><td>Fixed the shipping address step</td><td>Wrong moment, wrong shape: the surest way to an undeliverable parcel.</td></tr>
+<tr><td>09</td><td>Order state</td><td>A proper process for revisions</td><td>Change requests lived in email and in my head.</td></tr>
+<tr><td>10</td><td>UX</td><td>Admin screen sorted by stage</td><td>I needed to see where each order was stuck.</td></tr>
+<tr class="hl"><td>11</td><td><span class="hl">AI</span></td><td>AI review layer</td><td>A technically fine image can still be obviously wrong.</td></tr>
+<tr class="hl"><td>12</td><td><span class="hl">AI</span></td><td>Photo quality gate</td><td>Bad photo, bad result, and the customer blames the result.</td></tr>
+<tr><td>13</td><td>Order state</td><td>Approval freezes a copy</td><td>The approved version must be exactly what prints.</td></tr>
+<tr class="hl"><td>14</td><td><span class="hl">AI</span></td><td>4x upscale before print</td><td>Fine on a phone, not good enough in print.</td></tr>
+<tr><td>15</td><td>Edge case</td><td>Stopped double orders to the printer</td><td>A retry or a double click could send the same order twice. Each duplicate is a real object that costs money.</td></tr>
+<tr class="hl"><td>16</td><td><span class="hl">AI</span></td><td>Known-defect detection</td><td>One specific mistake in the generated images kept repeating.</td></tr>
+<tr><td>17</td><td>Integration</td><td>One-click Shopify status sync</td><td>Two systems disagreeing on "fulfilled" is how you get a support ticket.</td></tr>
+<tr><td>18</td><td>UX</td><td>Group orders for 3–4 people</td><td>Asked for repeatedly. A product decision, not a prompt change.</td></tr>
+<tr><td>19</td><td>UX</td><td>New collections</td><td>More reasons to choose, and to come back.</td></tr>
+<tr><td>20</td><td>Fulfilment</td><td>48-hour delivery promise, revised down from 24</td><td>The 24-hour promise was true on a good day and a liability on a normal one.</td></tr>
+<tr><td>21</td><td>Order state</td><td>A refund exit</td><td>Some orders should end, not sit in the queue forever.</td></tr>
+<tr><td>22</td><td>Fulfilment</td><td>Personalised insert card</td><td>Feels made for the buyer, not generated. Cheap to add, big effect.</td></tr>
+<tr><td>23</td><td>UX</td><td>Better emails</td><td>While the customer waits, the emails are the product.</td></tr>
+<tr><td>24</td><td>Fulfilment</td><td>Switched to a cheaper print provider</td><td>Same output, better margins. New sizes, colours and lead times to learn.</td></tr>
+<tr><td>25</td><td>Print quality</td><td>Print edge settings</td><td>The difference between a finished product and a cropped one.</td></tr>
 </tbody>
 </table>
 
-<hr>
-
-## 02 · The category breakdown
-
-Count them and the shape appears immediately.
-
-<table>
-<thead><tr><th>Category</th><th>Count</th><th>Iterations</th><th>Share</th></tr></thead>
-<tbody>
-<tr><td>UX</td><td>8</td><td>01, 02, 04, 07, 10, 18, 19, 23</td><td>32%</td></tr>
-<tr><td>Fulfilment</td><td>4</td><td>08, 20, 22, 24</td><td>16%</td></tr>
-<tr class="hl"><td><span class="hl">AI</span></td><td>4</td><td>11, 12, 14, 16</td><td>16%</td></tr>
-<tr><td>Integration</td><td>3</td><td>05, 06, 17</td><td>12%</td></tr>
-<tr><td>Order state</td><td>3</td><td>09, 13, 21</td><td>12%</td></tr>
-<tr><td>Legal/IP</td><td>1</td><td>03</td><td>4%</td></tr>
-<tr><td>Print quality</td><td>1</td><td>25</td><td>4%</td></tr>
-<tr><td>Edge case</td><td>1</td><td>15</td><td>4%</td></tr>
-</tbody>
-</table>
+## What the count showed
 
 <pre class="flow">UX            <b>████████</b>  8
 Fulfilment    <b>████</b>      4
@@ -96,154 +86,35 @@ Print quality <b>█</b>         1
 Edge case     <b>█</b>         1
 </pre>
 
-Two readings of that chart, and both are true.
+The AI is 16% of the work on an AI product.
 
-<div class="cards">
-  <div class="card"><h4>The obvious one</h4><p>AI is 16% of the work on an AI product. Four changes out of twenty-five.</p></div>
-  <div class="card"><h4>The sharper one</h4><p>Group fulfilment, order state, integration, print quality and edge case together — the plumbing — and you get 12 of 25. Nearly half the log is moving an order safely from A to B.</p></div>
-</div>
+Add up fulfilment, order state, integration, print quality and the edge case, and you get 12 of 25. Nearly half the log is getting an order safely from A to B. Even the UX pile isn't soft work: the order form, the admin screen and group orders changed how the business runs, not how it looks.
 
-And the UX count is not soft work. Iterations 04, 10 and 18 are structural: a wizard, a queue reorganised around lifecycle phases, and a product scope change. "UX" in this log mostly means "the system finally matched how the work actually flows."
+What's missing says even more. There's no "switched the AI model" row. No "rewrote the prompt" row. I expected those to fill the log. They're not there.
 
-<div class="callout callout--cyan">
-  <p><b>What is missing from the chart is more interesting than what is on it.</b> There is no "model change" category. No "prompt engineering" category. No retraining, no fine-tuning, no evaluation harness rebuild. Those are the things I expected to dominate a log like this, and they are simply not here.</p>
-</div>
+The "build an AI business in 30 days" plans aren't lying. They describe changes 01 to 06 accurately and then stop, because that's where the interesting-looking part ends. You can't see change 15 from change 06.
 
-<hr>
+One honest caveat: this is one product, one person, one year, and the categories are mine. Move the boundaries and the percentages move. The plumbing outweighing the AI doesn't.
 
-## 03 · The four AI ones
+## The four AI changes, in plain words
 
-I picked these four because each one changes what the model does or what reaches it — a generation-path change, not a business-logic change wrapped around a model call. Iteration 18 (group orders) is arguably a fifth: it does affect the generation. I filed it under UX because the work was overwhelmingly flow, pricing and review, not the model. Iteration 24 involves image output but is a supplier decision. If you disagree with those two calls, you would have five and three respectively — the argument survives either way.
+I counted a change as AI only if it changed what the model does or what reaches it. Two calls are debatable: group orders (18) and the provider switch (24). Count those differently and you get five or three. The point survives.
 
-### 11 · AI review layer
+**The review layer (11).** "Generated" and "good enough" are different questions. An image can be clean and on-brief and still look wrong to a person in half a second. So a model checks every result first, and each bad one it catches is a revision that never happens. It's the only one of the four that makes the AI better, not just safer to run. It has [its own article](/blog/ai-review-layer).
 
-The first thing you learn shipping generated images to paying customers is that "the generation succeeded" and "the image is acceptable" are different questions. A result can be technically clean, correctly composed, entirely on-brief and still obviously wrong to a human in half a second.
+**The photo check (12).** Bad photo in, bad result out, and the customer blames the result. So the upload gets checked, and if the photo won't work, the customer is asked for another. People take that far better before they've seen a disappointing result.
 
-The review layer is a model pass that looks at the output before anyone else does and decides whether it should proceed. It is not quality scoring for its own sake — it exists so the queue that reaches a human contains fewer things a human has to reject. Every rejection caught here is a revision cycle that never happens.
+**The upscale (14).** An image that looks perfect on screen isn't ready to print at full size. A 4x upscale enlarges it so it stays sharp, and no better prompt fixes this. It runs after approval, so only the approved version gets enlarged.
 
-This is also the only one of the four that is genuinely about making the AI better rather than making it safer to operate.
-
-### 12 · Photo quality gate
-
-Garbage in, garbage out — except the customer supplied the garbage and will hold you responsible for the out.
-
-The gate moves the conversation to the front. Instead of generating from a poor input, delivering a poor result, absorbing a complaint, running a revision and generating again, the system says at upload time that this photo will not produce a good result and asks for another. The customer is more receptive to that feedback before they have paid emotionally than after they have seen a disappointing output.
-
-Note what kind of change this really is: it is an AI change whose entire purpose is to reduce operational load downstream. It belongs to the same family as the rest of the log.
-
-### 14 · 4x upscale before print
-
-An image that looks perfect in a browser preview is not an image you can print at full size. This is the single most common gap between "AI demo" and "AI product", and it is not solved by a better prompt.
-
-The upscale sits between approval and print, which is a deliberate position: the customer approves what they saw, and the system then produces the print-ready version of exactly that. Putting it earlier means upscaling work that gets revised away. Putting it later means it is not part of the frozen snapshot.
-
-### 16 · Known-defect detection
-
-The most narrow and most instructive of the four. One defect was a repeatable, identifiable failure mode in the generation — a specific thing that went wrong often enough to name.
-
-The lesson is not about that one defect. It is that mature AI work stops being "improve the model" and becomes "enumerate the known failure modes and detect each one before it reaches a customer." That is a completely different discipline. It looks like QA, not like machine learning, and it is where AI features go when a product grows up.
+**The known-defect check (16).** One specific mistake in the images came back often enough to get a name. Now the system catches it before a customer sees it. That's where AI work goes as a product grows up: not "make the model better" but "list the known failures and catch each one". It looks like quality control, not machine learning.
 
 <div class="callout">
-  <p>Three of the four AI iterations are gates and checks around generation. Only one improves generation itself. That ratio is the actual state of applied AI in a small product.</p>
+  <p>Three of the four AI changes are checks around the AI. Only one improves the AI itself.</p>
 </div>
 
-<hr>
+## Step 1: make the table
 
-## 04 · The ones that cost the most and looked like the least
-
-Nobody makes content about these. They are the four I would warn a past version of myself about.
-
-### 15 · The duplicate push with an atomic lock
-
-An order gets pushed to the printer. The request is slow. Someone clicks again, or a retry fires, or a second browser tab is open, or a webhook is redelivered. Now the same order exists twice in the fulfilment system.
-
-In a software product a duplicate record is an annoyance you clean up. In print-on-demand it is a physical object that gets manufactured, boxed and shipped, and someone pays for it. The failure has mass.
-
-The thing that makes this expensive is that the naive fix does not work. "Check whether it was already pushed, then push" is two operations with a gap between them, and the entire failure mode lives in that gap. The correct fix is an atomic lock: claim the right to push in a single indivisible operation, and only the claim-winner proceeds. Everything else is theatre.
-
-<div class="callout">
-  <p>If your AI product touches money, inventory or anything physical, work out where the duplicate can happen and lock it properly. This is the least glamorous paragraph in this article and possibly the most valuable.</p>
-</div>
-
-### 09 · The revision lifecycle
-
-Before iteration 09, revisions existed — customers asked for changes and got them. What did not exist was a *lifecycle*: defined states, defined transitions, defined limits, defined endings.
-
-Without that, "one more small change" has no natural stopping point and the order never closes. The customer is not being unreasonable; the system simply never told either party what "done" means. Giving revisions explicit states makes the boundary a property of the product rather than a conversation I have to have.
-
-### 09, 13, 21 · Order state as a whole
-
-Three separate iterations are really one long realisation: **the order is the product.**
-
-Not the image — the order. An order needs to know what it is waiting on, who it is waiting on, what version was approved, whether that version is frozen, and how it can end without being fulfilled. Once approval creates an immutable snapshot (13), "print the approved thing" stops being ambiguous. Once refunds are a real path (21), orders can end deliberately rather than by exhaustion.
-
-Every hour I spent on order state bought back hours of manual attention. Every hour I did not spend on it, I paid for later at a worse exchange rate.
-
-### 20 · Revising 24 hours down to 48
-
-The hardest one, because it is the only iteration where the change was to make the product sound worse.
-
-A 24-hour promise that holds most of the time is not a 24-hour promise — it is a 24-hour promise plus a queue of exceptions, each of which costs an apology, a support exchange and some trust. Moving to 48 hours converted a frequently-broken promise into a reliably-kept one.
-
-Every instinct in marketing pushes the other way: tighten the promise, look faster, win the comparison. But a promise is an operational commitment wearing a marketing costume, and the operations always win in the end. Revising the number down was a product improvement disguised as a downgrade.
-
-<hr>
-
-## 05 · What the "build an AI business in 30 days" plans leave out
-
-Those plans are not lying. They are describing iterations 01 through 06 accurately and then stopping, because that is where the interesting-looking part ends.
-
-<div class="cards">
-  <div class="card"><h4>Order state</h4><p>Where is this order, what is it waiting on, and how does it end? No plan mentions it. Three iterations here, and they were the ones that bought back my time.</p></div>
-  <div class="card"><h4>Revision loops</h4><p>Customers want changes. Without defined states and limits, "one more tweak" has no end and neither does the order.</p></div>
-  <div class="card"><h4>Idempotency</h4><p>The same action firing twice. In a physical product this manufactures a real object. Locks, not checks.</p></div>
-  <div class="card"><h4>Legal and IP wording</h4><p>One iteration, and it determines whether the business is permitted to exist at all. Not a growth lever — a licence to operate.</p></div>
-  <div class="card"><h4>Print and physical reality</h4><p>Resolution, edges, provider colour behaviour. The screen is not the product.</p></div>
-  <div class="card"><h4>Promises you can keep</h4><p>Delivery windows are operational commitments. Setting them by ambition rather than by capacity is a debt with interest.</p></div>
-  <div class="card"><h4>Exception paths</h4><p>Refunds, undeliverable addresses, unusable uploads. The happy path is a small fraction of the work.</p></div>
-  <div class="card"><h4>Your own admin view</h4><p>You are the bottleneck. A queue organised around lifecycle phases is a productivity feature for the person running it.</p></div>
-</div>
-
-There is a structural reason for the omission. A 30-day plan is written from the launch, and every category above only becomes visible *after* real orders start flowing through a real system with real failures. You cannot see iteration 15 from iteration 06. The plan is not incomplete out of dishonesty — it is incomplete because it stops at the exact point where the product starts.
-
-<div class="callout callout--cyan">
-  <p>If you want a sharper version of the advice: assume the AI part will work sooner than you expect and be a smaller share of the work than anyone told you. Budget your attention for order states, exceptions and fulfilment from day one.</p>
-</div>
-
-<hr>
-
-## 06 · The template
-
-This is the part worth stealing. The log above is not a retrospective I reconstructed — it exists because I recorded each iteration as I shipped it. That is the entire trick.
-
-### The columns
-
-<table>
-<thead><tr><th>Column</th><th>What goes in it</th><th>Why it earns its place</th></tr></thead>
-<tbody>
-<tr><td>#</td><td>Sequential number</td><td>Order matters more than dates. You want to see what came after what.</td></tr>
-<tr><td>Category</td><td>One label, from a fixed list</td><td>The categories are what turn a list into an argument. One label only — forcing the choice is the point.</td></tr>
-<tr><td>What it was</td><td>One line, plain language</td><td>If you cannot describe it in a line, it was two iterations.</td></tr>
-<tr><td>Why it happened</td><td>The trigger, not the justification</td><td>The most valuable column. "A customer did X" and "it broke when Y" are what you will want in six months.</td></tr>
-</tbody>
-</table>
-
-### The categories
-
-Mine are: `UX`, `integration`, `fulfilment`, `legal/IP`, `print quality`, `order state`, `edge case`, `AI`. Yours will differ — swap `fulfilment` and `print quality` for whatever your product physically or operationally has to get right. Keep `AI` as its own category even if you expect it to be large, because the whole value of the exercise is finding out that it is not.
-
-Keep the list under ten. A category list long enough to fit everything comfortably tells you nothing.
-
-### The one rule that makes it work
-
-<div class="callout">
-  <p><b>Log it when you do it, not at the end of the month.</b></p>
-  <p>Written at the time, the "why" column contains the actual trigger — the specific failure, the specific message, the specific thing that broke. Reconstructed a month later, it contains a tidy narrative in which everything you did was part of a plan. The second version is more flattering and completely useless.</p>
-</div>
-
-The entry should take under two minutes. If it takes longer, the template is too heavy and you will stop.
-
-### Paste this into Notion
+Make a table in Notion or a spreadsheet with four columns: the number, the category, what changed, and why. Or paste this whole block into a Notion page and build from it:
 
 <pre><code><b>ITERATION LOG</b>
 
@@ -282,26 +153,146 @@ Review:  every 10 rows, count the categories.
   2. Which thing you believed was the product isn't in the log much?
 </code></pre>
 
-The review step is not optional decoration. A log you never count is a diary. The counting is what produced this article.
+Number the rows instead of dating them. The order matters more than the date: you want to see what came after what.
 
-<hr>
+**Done when:** the empty table exists and you know where it lives.
 
-## 07 · The honest section
+## Step 2: pick your categories
 
-Everything above is one product, one person, one year. Please weight it accordingly.
+These are mine:
 
-**The sample is one.** A single print-on-demand side project run by one person. A team of six, a different market, or a product where the model output *is* the deliverable with no physical object attached would produce a different distribution. If your AI is doing something genuinely at the frontier of what models can do, your AI count will be higher than four and it should be.
+- **UX** (user experience): how the site feels to use.
+- **Integration:** two tools passing orders to each other.
+- **Fulfilment:** getting the product made and delivered.
+- **Legal/IP:** names and wording you're allowed to use. IP is intellectual property.
+- **Print quality:** how the product looks when it arrives.
+- **Order state:** where each order is, and how it ends.
+- **Edge case:** the rare failure that costs real money.
+- **AI:** anything that changes what the model does or what reaches it.
 
-**The categories are mine, not a standard.** I invented them for this product, and I made judgement calls inside them — I have already flagged iterations 18 and 24 as debatable. Change the category boundaries and the percentages move. That the plumbing outweighs the model is robust to those calls; the exact split is not.
+Swap fulfilment and print quality for whatever your business has to get right physically. Keep AI separate even if you expect it to be huge: finding out that it isn't is the point. And keep the list under ten. A list long enough to fit everything comfortably tells you nothing.
 
-**Categorising is retrospective even when logging is not.** I recorded the iterations as I shipped them. The category labels and the four-versus-twenty-one framing came later, looking back. That is an honest ordering, but it does mean the framing is a story told about the data rather than something the data announced on its own.
+**Done when:** you have one fixed list, and AI is on it.
 
-**Logging does not make you ship faster.** This is the claim I most want to avoid overselling. Keeping this log did not increase my velocity, sharpen my prioritisation, or reveal what to build next. Iteration 15 was not predicted by iteration 14.
+## Step 3: log it the day you ship it
+
+Every time you change something, add one row before you close the laptop. One line for what changed. For why, the trigger: what broke, who asked, what it cost.
+
+Give each row one category only. Forcing the choice is the point. If a change needs two lines to describe, it was two changes.
+
+The entry should take under two minutes. If it takes longer, your template is too heavy and you'll stop.
+
+**Done when:** your next change is in the table on the same day you made it.
+
+## Step 4: count every ten rows
+
+At rows 10, 20 and 30, count how many rows each category has. Then ask yourself two questions:
+
+1. Which category is bigger than you assumed?
+2. What did you believe was the product, and how often does it actually show up?
+
+A food diary you never read back changes nothing. Same here: the counting is what produced this article.
+
+**Done when:** you've counted your first ten rows and one number surprised you.
+
+## Step 5: before you build, plan for the boring work
+
+Assume the AI will work sooner than you expect and be a smaller share of the work than anyone told you. Plan for orders, exceptions and delivery from day one.
+
+Paste this into Claude or ChatGPT before you build anything:
+
+```
+I'm planning a small business with AI in it. Here it is in two sentences:
+[describe what you sell and how the AI is involved]
+
+Before I build anything, help me plan the work that ISN'T the AI.
+Go through this list one item at a time. For each one, ask me one
+question, wait for my answer, then tell me what I still need to decide.
+
+- Orders: where is each order, what is it waiting on, and how does it end?
+- Changes: when a customer asks for a change, how many are included,
+  and what counts as "done"?
+- Doubles: what happens if the same action fires twice
+  (a double click, a retry, two open tabs)?
+- Legal wording: am I using any names or terms I have no right to use?
+- The real world: what looks fine on a screen but fails once it's
+  made or delivered?
+- Promises: what delivery time can I keep on a normal day, not a good one?
+- Exceptions: refunds, undeliverable addresses, unusable uploads.
+- My own view: how will I see which orders are stuck?
+
+At the end, give me the list of decisions I still haven't made.
+```
+
+**Done when:** you have a written list of decisions about orders, refunds and delivery, before the first line of your product exists.
+
+## Where it goes wrong
+
+- **Promising your good days.** My 24-hour delivery promise held most of the time, so it came with a queue of exceptions, each costing an apology and some trust. Moving to 48 hours made the product sound worse and work better.
+- **Check, then act.** "See if this order already went to the printer, then send it" sounds safe. It isn't: the duplicate slips through the gap between the two. Your developer needs a proper lock, explained below.
+- **Changes with no finish line.** Before change 09, "one more small tweak" had no natural end, and neither did the order. The system never said what "done" means.
+- **Writing the log at the end of the month.** You'll remember a plan. You won't remember the trigger.
+- **Expecting the log to make you faster.** It won't. Change 15 wasn't predicted by change 14. What it does is stop you misremembering what you built. Without it, I'd have told you I spent the year on the AI.
+
+## Start here today
+
+Make the table from step 1 and fill in the last few things you changed in your business, from memory. Notice how hard the "why" column already is. That's the reason to log the next one on the day you do it.
+
+And if you're about to build something new, save your worry for the second order that goes to the printer while the first one is still on its way.
+
+<details>
+<summary>For your developer: the plumbing behind changes 09, 13, 14, 15 and 21</summary>
+
+### The breakdown, with shares
+
+<table>
+<thead><tr><th>Category</th><th>Count</th><th>Iterations</th><th>Share</th></tr></thead>
+<tbody>
+<tr><td>UX</td><td>8</td><td>01, 02, 04, 07, 10, 18, 19, 23</td><td>32%</td></tr>
+<tr><td>Fulfilment</td><td>4</td><td>08, 20, 22, 24</td><td>16%</td></tr>
+<tr class="hl"><td><span class="hl">AI</span></td><td>4</td><td>11, 12, 14, 16</td><td>16%</td></tr>
+<tr><td>Integration</td><td>3</td><td>05, 06, 17</td><td>12%</td></tr>
+<tr><td>Order state</td><td>3</td><td>09, 13, 21</td><td>12%</td></tr>
+<tr><td>Legal/IP</td><td>1</td><td>03</td><td>4%</td></tr>
+<tr><td>Print quality</td><td>1</td><td>25</td><td>4%</td></tr>
+<tr><td>Edge case</td><td>1</td><td>15</td><td>4%</td></tr>
+</tbody>
+</table>
 
 <div class="callout callout--cyan">
-  <p>What it does is narrower and still worth it: <b>it stops you misremembering what you built.</b> Without the log I would have told you — sincerely — that I spent the year working on the AI. The log says four out of twenty-five, and the log is right.</p>
+  <p><b>What is missing from the chart is more interesting than what is on it.</b> There is no "model change" category. No "prompt engineering" category. No retraining, no fine-tuning, no evaluation harness rebuild. Those are the things I expected to dominate a log like this, and they are simply not here.</p>
 </div>
 
-That gap between what I would have reported and what actually happened is the reason to keep one. Not speed. Accuracy about your own past.
+### 15 · The duplicate push with an atomic lock
 
-And if you are about to start something similar: the AI will probably work sooner than you fear. Save your worry for the second order that gets pushed to the printer while the first one is still in flight.
+An order gets pushed to the printer. The request is slow. Someone clicks again, or a retry fires, or a second browser tab is open, or a webhook is redelivered. Now the same order exists twice in the fulfilment system.
+
+In a software product a duplicate record is an annoyance you clean up. In print-on-demand it is a physical object that gets manufactured, boxed and shipped, and someone pays for it. The failure has mass.
+
+The thing that makes this expensive is that the naive fix does not work. "Check whether it was already pushed, then push" is two operations with a gap between them, and the entire failure mode lives in that gap. The correct fix is an atomic lock: claim the right to push in a single indivisible operation, and only the claim-winner proceeds. Everything else is theatre.
+
+<div class="callout">
+  <p>If your AI product touches money, inventory or anything physical, work out where the duplicate can happen and lock it properly. This is the least glamorous paragraph in this article and possibly the most valuable.</p>
+</div>
+
+**Idempotency:** the same action firing twice. In a physical product this manufactures a real object. Locks, not checks.
+
+### 09 · The revision lifecycle
+
+Before iteration 09, revisions existed — customers asked for changes and got them. What did not exist was a *lifecycle*: defined states, defined transitions, defined limits, defined endings.
+
+Without that, "one more small change" has no natural stopping point and the order never closes. The customer is not being unreasonable; the system simply never told either party what "done" means. Giving revisions explicit states makes the boundary a property of the product rather than a conversation I have to have.
+
+### 09, 13, 21 · Order state as a whole
+
+Three separate iterations are really one long realisation: **the order is the product.**
+
+Not the image — the order. An order needs to know what it is waiting on, who it is waiting on, what version was approved, whether that version is frozen, and how it can end without being fulfilled. Once approval creates an immutable snapshot (13), "print the approved thing" stops being ambiguous. Once refunds are a real path (21), orders can end deliberately rather than by exhaustion.
+
+Every hour I spent on order state bought back hours of manual attention. Every hour I did not spend on it, I paid for later at a worse exchange rate.
+
+### 14 · Where the upscale sits
+
+The upscale sits between approval and print, which is a deliberate position: the customer approves what they saw, and the system then produces the print-ready version of exactly that. Putting it earlier means upscaling work that gets revised away. Putting it later means it is not part of the frozen snapshot.
+
+</details>

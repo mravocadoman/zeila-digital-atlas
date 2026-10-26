@@ -1,69 +1,231 @@
 ---
-title: I built an AI that marks another AI's homework, and refunds the customer when it fails
-description: An AI checks every render against the photos and the brief, retries below 85%, and refunds the customer automatically when it keeps failing.
+title: My second AI marks the first one's homework, and refunds the customer when it fails
+description: Customers pay before the AI makes anything. A second AI checks each result against their photos and brief, retries below 85%, and refunds if it keeps failing.
 date: 2026-10-24
 topic: AI
 drawing: review
 order: 6
 ---
 
-A print-on-demand side project where the customer pays before a single pixel is generated. That only works if something checks the output before they see it — and pays them back when it cannot.
+In my print-on-demand ecommerce project, the customer pays before the AI has made anything. They upload photos, write what they want, pay, and a printed product arrives in the post.
 
-## 00 · Read this first
+In a normal shop you see the picture and you get the picture. Here there's no picture until the money has moved, and the AI in the middle never does the same thing twice.
 
-Selling non-deterministic output is a trust problem, not a tech problem.
+So a second AI marks the first one's homework, checking every result against the customer's own photos and brief. Below 85%, the work gets redone. After three failed tries, the money goes back on its own, **before the customer has written a single email.**
 
-The thing I run is a print-on-demand ecommerce project. The customer uploads photos, writes a specification of what they want, pays, and a physical printed product arrives. Between the payment and the parcel there is a generative model, and a generative model does not do the same thing twice.
+It works for anything an AI makes for customers: images, copy, transcripts, translations, tasks.
 
-Every piece of ordinary ecommerce infrastructure assumes it does. A SKU is a promise: you saw the picture, you get the picture. Here there is no picture until after the money moves. The customer is buying a probability distribution and hoping it lands on the good side of the curve.
+**What you'll have at the end:** a written definition of "good", a second AI that marks every result against it, a pass mark, a retry limit and a refund that fires by itself.
 
-<div class="callout">
-  <p><b>That is the actual product problem.</b> Not prompt quality. Not model choice. The question is: what do you put between the model's output and the customer's eyes so that the customer's trust does not depend on the model having a good day?</p>
-</div>
+## What you need
 
-My answer was to build a second AI whose only job is to mark the first one's homework — compare what came out against what the customer asked for, score it, and refuse to ship anything that fails. And behind that, a refund that fires on its own when the scoring keeps failing, before the customer has written a single email.
+- **The AI you already use** to make your product.
+- **A second AI for the marking.** Any chat AI that reads images and text, like Claude or ChatGPT, will do for a test by hand.
+- **A shop that takes payment first.** Mine runs on Shopify.
+- **A spreadsheet** for the marks.
+- **Time:** a weekend to set it up, then a week of watching.
+- **Skill:** the checklist, prompts and pass mark need no coding. Running it on every order and the automatic refund need a developer (their notes are at the bottom).
+- **Money:** each order runs the AI several times instead of once. That's why my customers pay first.
 
-This article is that architecture. Nothing here is specific to what I sell. If you sell anything that can fail in front of a customer — generated images, generated copy, transcripts, translations, agents doing tasks on someone's behalf — the shape transfers directly.
+## How it works
 
-## 01 · Purchase-first, and the unit economics maths
+Think of a classroom. The first AI is the student, the second is the teacher, and your definition of "good" is the marking sheet. Every piece of work gets a mark and a red-pen note saying exactly what's wrong. Below the pass mark, it goes back for another try. Three fails and the customer is refunded without asking.
 
-Almost every AI product does the same thing: give the generation away, hook the user on the magic, monetise later. Free tier, watermark, upgrade prompt. It is a reasonable strategy when inference is close to free and the marginal user costs you a rounding error.
+The teacher isn't trusted on its own either. A person looks at the winner before anything moves, then the customer approves it, and a saved copy of what they said yes to can never be changed. **Every step that can get it wrong has a step after it that can catch it.**
 
-Mine costs real money per unit. A single order runs:
+<pre class="flow">  photos checked  ──▶  customer pays
+         │
+         ▼
+  first AI makes several versions
+         │
+         ▼
+  second AI marks each one against the photos and the brief
+         │
+         ├─ <b>85% or more</b> ──▶ a person looks ──▶ customer approves ──▶ print
+         │
+         └─ <b>below 85%</b> ──▶ try again with the red-pen notes, up to 3 times
+                               │
+                               ▼
+                        still failing ──▶ <b>automatic refund</b>
+</pre>
 
-- **Vision analysis** of every uploaded customer photo
-- **Image generation**, and not once — several candidates per order
-- **A second model pass** scoring each candidate against the photos and the written spec
-- **4x upscaling** of the winner, because print resolution is unforgiving in a way screens are not
+## Step 1: decide who pays when the AI gets it wrong
 
-Stack those and free generation stops being a growth tactic and becomes a subsidy paid to people who will never buy. So I inverted it. **The customer pays through Shopify before anything runs.**
+Most AI products give the making away (a free tier, a watermark, an upgrade button) and charge later. That works when the AI costs next to nothing.
 
-<div class="callout callout--cyan">
-  <p><b>The arithmetic that decides it.</b> Free-first: you pay full generation cost for 100% of visitors who click the button, and you recover it from the fraction who convert. Purchase-first: you pay generation cost for 100% of paying customers, and 0% of everyone else. The break-even is not close. Unit economics are positive from order number one, without a funding round to bridge the gap.</p>
-</div>
+Mine costs real money on every order. An AI reads every uploaded photo, the first AI makes several versions, the second marks each one, and the winner is blown up to four times its size, because print is far less forgiving than a screen.
+
+Giving that away is a gift to people who'll never buy. So **the customer pays through Shopify before anything runs.** Free first, I'd pay for 100% of the people who click and win it back from the few who buy. Pay first, I pay for 100% of paying customers and 0% of everyone else. Every order pays for itself from the first one, with no investors needed.
 
 <table>
-  <tr><th>Dimension</th><th>Free-first (the default)</th><th>Purchase-first (this build)</th></tr>
-  <tr><td>Who pays for compute</td><td>You, for everyone</td><td>The customer, for themselves</td></tr>
-  <tr><td>Cost of a tyre-kicker</td><td>Full generation run</td><td>Zero</td></tr>
-  <tr><td>Funnel friction</td><td>Low — try before you buy</td><td>High — buy before you see</td></tr>
-  <tr><td>Where the work goes</td><td>Into acquisition volume</td><td>Into the wizard and the guarantee</td></tr>
-  <tr><td>What has to be excellent</td><td>The hook</td><td>The trust mechanics</td></tr>
-  <tr><td>Failure mode</td><td>Burn rate</td><td>Refunds and reputation</td></tr>
+  <tr><th></th><th>Free first (usual)</th><th>Pay first (mine)</th></tr>
+  <tr><td>Who pays for the AI</td><td>You, for everyone</td><td>The customer, for themselves</td></tr>
+  <tr><td>Cost of someone just looking</td><td>A full run</td><td>Nothing</td></tr>
+  <tr><td>How hard it is to buy</td><td>Easy: try, then buy</td><td>Hard: buy, then see</td></tr>
+  <tr><td>Where the work goes</td><td>More visitors</td><td>The order form and the guarantee</td></tr>
+  <tr><td>What has to be excellent</td><td>The first wow</td><td>The reasons to trust you</td></tr>
+  <tr><td>How it goes wrong</td><td>You run out of money</td><td>Refunds and reputation</td></tr>
 </table>
 
-The trade-off is honest and it is severe. A higher-friction funnel means the customisation wizard has to do real work — it is not decoration on the way to the checkout button, it is the entire pre-purchase experience. It has to set expectations accurately enough that the person paying knows roughly what they will get, and it has to gather enough input that the generation has a chance of matching that expectation.
+The catch: buying before you see is a big ask, so the order form has to set expectations and collect enough for the AI to deliver. Take the money first and you owe a guarantee. The next seven steps are that guarantee.
 
-And it means the post-purchase machinery has to be built to a standard that free-first products never need. If you take money first, you owe the customer a guarantee. That guarantee is sections 02 through 07.
+**Done when:** you can say in one sentence who pays for a bad result.
 
-## 02 · The review-layer architecture
+## Step 2: write down what "good" means
 
-Here is the whole path from card charged to print file, in order.
+"An AI checks the work" sounds solved. Checks it against what? Mine asks two separate questions, because the two ways this fails are unrelated.
+
+<div class="cards">
+  <div class="card"><h4>Does it match what they gave you?</h4><p>Does the person in the result match the customer's photos? There's evidence, so there's a right answer.</p></div>
+  <div class="card"><h4>Does it do what they asked?</h4><p>Does the result include everything the brief asked for? This checks their words, and what they meant by them.</p></div>
+</div>
+
+A faithful likeness can ignore half the brief. A result can follow every instruction and look like somebody else. Different problems, different fixes, and one blended "quality score" can't tell you which to fix.
+
+No photos in your product? The first question checks whatever evidence the customer gave you instead: their text, their recording, their notes.
+
+**Done when:** you have two short lists, one per question, of what a result must get right.
+
+## Step 3: make two versions and have a second AI mark them
+
+Make at least two versions of every order (mine makes several). One result from an AI that never does the same thing twice is a coin flip you're asking the customer to accept.
+
+Give each version, with the customer's photos and brief, to the second AI with this prompt. It isn't my production prompt word for word, but it asks for the same three things: two separate marks and a critique.
+
+```
+You are checking another AI's work before a paying customer sees it.
+
+You get:
+- THE CUSTOMER'S PHOTOS
+- THE CUSTOMER'S BRIEF, in their own words
+- THE RESULT the other AI made
+
+Answer two questions separately. Never blend them into one score.
+
+MATCHES THE PHOTOS: does the result match what is in the customer's photos?
+Give a percentage, where 100% is a perfect match.
+
+FOLLOWS THE BRIEF: does the result do everything the brief asked for?
+Give a percentage, where 100% means nothing was missed or ignored.
+
+Then write a short critique in plain language: what exactly is wrong,
+and under which question. Be specific enough that the next attempt
+can fix it. Do not tell me whether you like it.
+```
+
+Log both marks and the critique next to the order. **Don't act on them yet.**
+
+**Done when:** every new order has two marks and a critique in the spreadsheet.
+
+## Step 4: watch the marks for a week, then pick your pass mark
+
+For a week, judge every result yourself next to its marks. That's where your pass mark comes from, not from a blog post, mine included.
+
+Mine is 85%. It didn't come from a formula. I chose it for what it does:
+
+- **Too low,** say 60, and mediocre work passes on its own. The person at the end becomes the only real filter, and you've built an expensive diary.
+- **Too high,** say 97, and almost nothing passes. You burn three tries on fine orders, refund customers who'd have been happy, and the retries eat the margin charging first was meant to protect.
+- **At 85,** I can show a passing result to a person without hedging, and a retry stays the exception.
+
+<div class="callout">
+  <p><b>The pass mark is a business decision dressed up as a technical one.</b> It sets how much risk lands on the customer and how much you'll spend to avoid it. Change it when reality argues.</p>
+</div>
+
+**Done when:** your pass mark and your reason are written down.
+
+## Step 5: send failures back with the red-pen notes
+
+A failing mark is more useful than a passing one, because it comes with a reason. So don't just press the button again. Hand the AI its own marked homework:
+
+```
+Make this again. Your last attempt was marked below the pass mark.
+
+What the customer gave you:
+[the photos and the brief]
+
+The critique of your last attempt:
+[paste the critique]
+
+What has scored well and badly on similar orders before:
+[paste your notes, if you have them]
+
+Fix exactly what the critique names.
+```
+
+A useful critique sounds like "missing element X from the spec; likeness drifts on the upper face". Specific enough to fix.
+
+Keep every attempt, good and bad, with its mark. Mine feeds that record into future prompts automatically, so the next similar order doesn't repeat the failure. The no-code version is a running note you paste in. A bad result stops being money on fire and becomes a lesson. The AI models will be replaced. That record only gets more valuable.
+
+**Done when:** failed results go back with their critique, and your notes grow after every order.
+
+## Step 6: stop at three tries and refund automatically
+
+<p class="stat">3 failed tries → automatic refund</p>
+
+Not a support ticket. Not "contact us within 14 days". After three tries below the pass mark, the money goes back by itself, before the customer has to email anyone.
+
+Charging before you deliver is only fair if you build the way out. If every refund runs through a person with a reason to say no, you haven't built a business, you've built a complaint queue.
+
+<table>
+  <tr><th>Refund</th><th>Who has to act</th><th>What the customer feels</th></tr>
+  <tr><td>Standard policy</td><td>The customer notices, writes in and argues</td><td>Friction, exactly when they're already unhappy</td></tr>
+  <tr><td>Generous policy</td><td>The customer still asks, you say yes quickly</td><td>Better, but it's still their job</td></tr>
+  <tr class="hl"><td>Automatic</td><td>The system, on its own, at the third try</td><td>Refunded before they thought to ask</td></tr>
+</table>
+
+The cap also limits what one broken order can cost: three tries and it stops. It keeps you honest too: if the refund fires often, the AI is bad, and no reassuring copy will fix that.
+
+Switch the refund on **before** you tell anyone the guarantee exists. Your developer builds this one.
+
+**Done when:** a test order that fails three times refunds itself, and nobody touched it.
+
+## Step 7: check the photos before they pay
+
+The cheapest failure is the one that never starts. No marking turns a blurry photo taken from behind into a good result, so my shop checks photos **before the customer pays**:
+
+- **The angle.** Can the AI actually work from it? If not, the photo is turned away early, with a reason.
+- **The face.** Is it clearly visible? Without it, "does it match" can't be answered.
+- **The one-tap question.** One detail is spotted and then asked about: keep it or not?
+
+That last one is my favourite part, and it isn't technical at all. The detail changes whether the person in the result reads as themselves, and there's no right default. Guessing gets it wrong roughly half the time. Asking gets it right every time and costs one tap. **When the customer can answer better than the system can guess, ask.**
+
+"This photo won't work, here's why" feels like care before paying, and like a bait and switch after.
+
+No photos? Check whatever makes a good result impossible, like missing information, while the customer can still fix it for free.
+
+**Done when:** a bad photo is turned away, with a reason, before the checkout.
+
+## Step 8: keep a person, and the customer, at the end
+
+The marking catches wrong. It doesn't catch tasteless. So a person looks at the winner before anything moves. That isn't a step waiting to be automated away. It's where the judgement comes from.
+
+Then the customer approves it through a private link that stops working after a while, no account, no password. Their yes saves a copy of exactly what they approved, which can never be edited. That settles "that's not what I signed off on" before it starts. Their photos are deleted automatically once the order no longer needs them.
+
+**Done when:** nothing is printed without a person's look and the customer's yes, and you can show any customer exactly what they approved.
+
+## Where it goes wrong
+
+- **Checking a machine that doesn't work.** A filter can't add quality that was never made. If the first AI is weak, you've built an expensive way to learn that three times per order. Make it good first, then add the checker.
+- **Mistaking the mark for taste.** An 85 stands in for quality, it isn't quality. There will be results that score 90 and look lifeless, and ones that score 80 and are the best thing the system made that week.
+- **Sending the same order twice.** Retries and impatient double clicks will eventually try to send one order to the print company twice. Without a lock, that's two products shipped for one payment.
+- **Promising the ambitious number.** My delivery promise launched at 24 hours and is now 48. Nothing got slower. The honest number was 48, the ambitious one 24, and reality voted.
+- **Faking the proof.** My reviews section stays empty until there are real reviews. Fake one, and every other guarantee on the page becomes something to take on faith.
+
+## Start here today
+
+Don't build anything yet. Write the two lists from step 2. Paste one result you've already delivered into Claude or ChatGPT, with its brief and the prompt from step 3, and log the marks next to your own opinion. Do it for every order this week, and you'll know whether the marks agree with you, and roughly where your pass mark sits.
+
+How the product itself was built, change by change, is in [the full log of iterations on this AI product](/blog/ecommerce-business-built-with-claude).
+
+<details>
+<summary>For your developer: the pipeline, the scoring and the trust mechanics</summary>
+
+### The whole path, from card charged to print file
 
 <pre class="flow">  <b>SHOPIFY CHECKOUT</b>   money moves first
        │            order webhook · customer photos · written spec
        ▼
-  <b>PHOTO QUALITY GATE</b>   <i>(runs pre-purchase, see 05)</i>
+  <b>PHOTO QUALITY GATE</b>   <i>(runs pre-purchase)</i>
        │            angle · face visibility · one-tap question
        ▼
   <b>GENERATE × N</b>   several candidate renders per order
@@ -98,24 +260,7 @@ Here is the whole path from card charged to print file, in order.
 
 Read that top to bottom and you can see the design principle: **every step that can produce a wrong answer has a step after it that can catch the wrong answer.** Generation is checked by review. Review is checked by a human. The human is checked by the customer. The customer's approval is checked by an immutable record of exactly what they approved.
 
-The interesting part is not that a model generates images. Everybody has that. The interesting part is that nothing in the chain is trusted to be right on its own.
-
-## 03 · The scoring rubric, and why 85%
-
-"An AI scores the output" is the kind of sentence that sounds like a solved problem and is not. Scoring against what? Compared how? The rubric is the thing that does the work, and mine has two independent axes because the two ways this can fail are unrelated.
-
-<div class="cards">
-  <div class="card">
-    <h4>Likeness</h4>
-    <p>Does the rendered subject match the person in the uploaded photos? This is a comparison against evidence the customer supplied. It has a ground truth.</p>
-  </div>
-  <div class="card">
-    <h4>Instruction adherence</h4>
-    <p>Does the render do what the written specification asked for? This is a comparison against language the customer wrote. It has an intent, not a pixel.</p>
-  </div>
-</div>
-
-Keeping them separate matters because a render can be a beautiful, faithful likeness that ignores half of what the customer typed — and it can follow every written instruction perfectly while looking like somebody else entirely. Those are different bugs with different fixes. A single blended "quality score" would average them into uselessness and tell you nothing about what to correct on the next attempt.
+### The scoring rubric
 
 <table>
   <tr><th>Axis</th><th>Compared against</th><th>Failure it catches</th><th>Correction it implies</th></tr>
@@ -123,25 +268,7 @@ Keeping them separate matters because a render can be a beautiful, faithful like
   <tr><td>Adherence</td><td>Customer's written spec</td><td>Missing or ignored requested elements</td><td>Restate the spec explicitly in the next prompt</td></tr>
 </table>
 
-### Why the threshold sits at 85
-
-85% is not a number I derived from a formula, and I will not pretend otherwise. It is a threshold chosen deliberately for what it does to the two error types, and it moves if reality argues with it.
-
-- **Set it too low** — say 60 — and the gate stops being a gate. Mediocre renders auto-pass, the human curator becomes the only real filter, and you have built an expensive logging system.
-- **Set it too high** — say 97 — and almost nothing passes. You burn three attempts on orders that were fine, refund customers who would have been happy, and the compute cost of the retry loop eats the margin that purchase-first was supposed to protect.
-- **85 sits where auto-pass is defensible.** High enough that a passing render is one I am comfortable putting in front of a person without hedging; low enough that the retry loop is an exception rather than the default path.
-
-<div class="callout">
-  <p><b>The threshold is a business decision wearing a technical costume.</b> It encodes exactly how much risk you are willing to push onto the customer versus how much compute you are willing to spend to avoid it. Anyone who tells you their threshold came out of the data is describing the calibration, not the choice.</p>
-</div>
-
-One thing the score is *not*: a promise. Passing 85 means the render cleared an automated bar. It does not mean it is good. That is what section 09 is about.
-
-## 04 · What happens below threshold
-
-A failing score is more useful than a passing one, because it comes with a reason.
-
-The review model does not only emit a number. It writes a critique — what specifically is wrong, on which axis. That critique is then fed back into the next generation attempt as correction. The model is, quite literally, given its own marked homework and asked to try again with the corrections in hand.
+### What happens below threshold
 
 <pre class="flow">  attempt 1  ──▶  score: <b>below threshold</b>
                   critique: <i>"missing element X from the spec;
@@ -159,78 +286,6 @@ The review model does not only emit a number. It writes a critique — what spec
                        ▼
                   still failing ──▶ <b>AUTOMATIC REFUND</b>
 </pre>
-
-### The learning history is the part that compounds
-
-Per-order self-correction is nice. It fixes this order. What actually changes the economics is that **previous attempts — good and bad — are stored and fed into future prompts.**
-
-That converts a failed generation from a pure loss into a training signal. Under a naive setup, a bad render costs you compute and teaches you nothing; the next customer with a similar request walks into the identical failure. With a learning history, the system carries forward what worked and what did not, and the failure rate on that class of request bends downward over time.
-
-<div class="callout callout--cyan">
-  <p><b>Frame it as an asset.</b> Every order leaves behind a record of which prompt shapes produced high scores and which produced low ones. That record is the only thing in this stack that gets more valuable the longer it runs — the models will be replaced, the print provider might be replaced, the accumulated knowledge of what actually scores well does not get replaced.</p>
-</div>
-
-It also inverts the emotional experience of a bad generation. A failure is no longer money on fire. It is the system finding an edge it did not know about, and writing it down.
-
-## 05 · Gates before the money
-
-The cheapest failure is the one that never enters the pipeline. If the input is bad, no amount of scoring downstream will rescue the output — you will just spend three attempts and a refund proving that a blurry photo taken from behind cannot become a good print.
-
-So the quality gate runs **before the customer proceeds**, not after they pay.
-
-<div class="cards">
-  <div class="card">
-    <h4>Angle</h4>
-    <p>Is the subject shot from an angle the generation can actually work from? Rejected early, with a reason, not silently accepted.</p>
-  </div>
-  <div class="card">
-    <h4>Face visibility</h4>
-    <p>Is the face actually visible and usable as a likeness reference? Likeness scoring in section 03 is impossible without it.</p>
-  </div>
-  <div class="card">
-    <h4>The one-tap question</h4>
-    <p>Detected, then <em>asked about</em>: do you want this detail kept? Not guessed. This is one of the highest-regret details and the customer owns the answer.</p>
-  </div>
-</div>
-
-The one-tap question is my favourite thing in the entire build, because it is not a technical feature. It is the recognition that some choices are not the system's to make. Keeping or removing a personal detail changes whether the person in the render reads as themselves, and there is no correct default. Guessing gets it wrong roughly half the time. Asking gets it right every time and costs one tap.
-
-<div class="callout">
-  <p><b>The general rule:</b> when a detail materially changes whether the customer recognises themselves, and the system cannot infer the answer better than the customer can state it, <em>ask</em>. Every ambiguity you resolve at input time is one you do not have to detect, score, critique and regenerate later.</p>
-</div>
-
-Gates before the money also do something for the funnel that is easy to miss: they make the higher-friction purchase-first flow feel like diligence rather than obstruction. Being told "this photo will not work, here is why" before paying reads as competence. Being told it after paying reads as a bait and switch.
-
-## 06 · The refund escape hatch
-
-This is the section that makes the rest of it defensible.
-
-<p class="stat">3 failed generations → automatic refund</p>
-
-Not a support ticket. Not a policy page. Not "contact us within 14 days." After three attempts that fail to clear the threshold, the money goes back on its own, **before the customer has to email anyone.**
-
-<div class="callout">
-  <p><b>Charging before you deliver is only defensible if you build the way out.</b> If you take money up front for output you cannot guarantee, and the only route to a refund runs through a human who has an incentive to say no, you have not built a business model — you have built a complaint queue. The automatic refund is the price of admission for purchase-first.</p>
-</div>
-
-### Why automatic beats generous
-
-Plenty of companies have a generous refund policy. Very few have one that fires without being asked. The difference is where the burden sits.
-
-<table>
-  <tr><th>Model</th><th>Who acts</th><th>What the customer experiences</th></tr>
-  <tr><td>Standard policy</td><td>Customer must notice, write in, and argue</td><td>Friction exactly when they are already unhappy</td></tr>
-  <tr><td>Generous policy</td><td>Customer must still ask; you say yes quickly</td><td>Better, but the burden is still theirs</td></tr>
-  <tr><td>Automatic</td><td>The system, on its own, at attempt three</td><td>Refunded before they thought to ask</td></tr>
-</table>
-
-There is a second-order effect that matters more than the goodwill. An automatic refund puts a hard, self-enforcing ceiling on how much a broken order can cost you in compute — three attempts and it stops — and a hard floor under how badly it can damage the customer relationship. It converts an unbounded downside into a known, bounded one.
-
-It also keeps you honest. A refund that fires on its own is a metric you cannot ignore or explain away. If it fires often, the generation is bad, and no amount of reassuring copy on the product page will fix that.
-
-## 07 · Snapshots, signed links, and deleted photos
-
-Three mechanics that sound like plumbing and are actually the trust layer.
 
 ### Immutable approval snapshots
 
@@ -251,17 +306,13 @@ No accounts, no passwords, no login flow standing between a customer and approvi
 
 Customer photos are inputs, not inventory. Once the pipeline no longer needs them, they are deleted automatically. Nobody has to remember to run a cleanup, and the retention window is not a promise in a privacy policy that depends on somebody's diligence — it is behaviour of the system.
 
-<div class="callout callout--cyan">
-  <p><b>And the empty review section.</b> The reviews area on the site stays empty until there are real reviews. No seeded testimonials, no placeholder five-stars, no "trusted by thousands" over a stock photo. An empty review section is a small, unglamorous credibility signal — and the moment you fake it, every other guarantee on the page becomes something a visitor has to take on faith.</p>
-</div>
-
-### And the boring one that saves you
+### The duplicate-push guard
 
 A duplicate-push guard: an atomic lock ensuring the same order can never be pushed to the print provider twice. Retries, webhook replays and impatient clicks all try to do this eventually. Without the lock, the failure mode is two physical objects manufactured and shipped for one payment — an error that costs real money and cannot be undone with a database rollback.
 
-## 08 · The trust checklist
+### The full trust checklist
 
-Copy this. It applies to anything you sell that can fail in front of a customer — generated media, generated copy, transcription, translation, agents acting on someone's behalf.
+It applies to anything you sell that can fail in front of a customer — generated media, generated copy, transcription, translation, agents acting on someone's behalf.
 
 1. **Decide who pays for failure before you launch.** Free-first puts the cost of every bad output on you. Purchase-first puts it on the customer unless you build a way out. Both are valid. Choosing by accident is not.
 2. **Gate the inputs before you take the money.** Check the things that make good output impossible — resolution, angle, visibility, missing information — while the customer can still fix them for free.
@@ -288,41 +339,4 @@ Copy this. It applies to anything you sell that can fail in front of a customer 
   <p><b>If you implement three of these, implement 5, 9 and 12.</b> Score the output against the customer's own inputs, feed the critique back into the retry, and refund automatically at the cap. That is the minimum viable version of everything above.</p>
 </div>
 
-## 09 · The honest section
-
-What this does not do.
-
-### It does not have taste
-
-The review layer can tell you a render resembles the person in the photos and includes the elements the spec asked for. It cannot tell you the result is *good*. Composition, tone, whether something is subtly awful in a way that is obvious to a human in half a second — none of that is in the rubric, and I do not believe I could put it there.
-
-### A human still curates
-
-Which is exactly why there is a person in the loop before fulfilment. Not as a legacy step waiting to be automated away — as the component that supplies the judgement the scoring cannot. And the customer approves before anything is printed, which makes them the final reviewer of a chain that already has two.
-
-### Scoring correlates with quality. It does not equal it.
-
-An 85 is a proxy. It is a useful proxy, chosen and tuned to be useful, and it is still a proxy. There will be renders that score 90 and are lifeless, and renders that score 80 and are the best thing the system has made that week. Anyone selling you a scoring layer as a guarantee of quality is selling you a correlation and calling it a contract.
-
-### And none of it helps if the underlying generation is bad
-
-This is the one people skip. A review layer is a filter, and a filter cannot add quality that was never generated. If the base generation is weak, all this architecture buys you is an expensive, well-instrumented way to discover that three times per order and issue a refund.
-
-<div class="callout">
-  <p><b>Build the generation first.</b> Get the output good enough that a reasonable person would be happy with a random sample of it. <em>Then</em> add the review layer to catch the tail. In that order. Reversed, you have built quality control for a factory that does not work.</p>
-</div>
-
-<hr>
-
-### What I would tell you to build in a weekend
-
-1. **Generate two candidates instead of one.** Nothing else. Just stop shipping a single sample of a random process.
-2. **Add a scoring pass.** One model, one prompt, comparing output to the customer's inputs. Log the score next to the order; do not act on it yet.
-3. **Watch the scores for a week** against outputs you have judged yourself. That is where your threshold comes from — not from a blog post, mine included.
-4. **Turn on the retry with the critique fed back.** Cap it at three.
-5. **Automate the refund at the cap** before you tell anyone the guarantee exists.
-6. **Then add the input gates**, and watch how many of the failures you were catching downstream simply stop happening.
-
-<div class="callout">
-  <p><b>One more thing.</b> The delivery promise on this project launched at 24 hours and is now 48. Not because the pipeline got slower — because the honest number was 48 and the ambitious one was 24, and reality voted. Every mechanic in this article exists for the same reason: it is cheaper to build the system that tells you the truth than to keep managing the consequences of a promise you cannot keep.</p>
-</div>
+</details>
