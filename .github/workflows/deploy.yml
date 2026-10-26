@@ -1,7 +1,6 @@
 name: Deploy
 
-# main -> SiteGround (rihardszeila.com), once the SG_* secrets exist. Until then this does
-# nothing and Lovable keeps serving the site. Same shape as marketingaskola.lv's deploy.
+# main -> SiteGround (rihardszeila.com). Same shape as marketingaskola.lv's deploy.
 # See "Hosting" in CLAUDE.md.
 
 on:
@@ -31,7 +30,7 @@ jobs:
     steps:
       - name: Skip until SiteGround is set up
         if: env.HAS_SG != 'true'
-        run: echo "::notice::No SG_* secrets yet, so nothing is deployed. Lovable still serves the site."
+        run: echo "::error::No SG_* secrets, so nothing was deployed."; exit 1
 
       - uses: actions/checkout@v4
         if: env.HAS_SG == 'true'

@@ -1,6 +1,6 @@
 # rihardszeila.com: the Vite build served by Apache on SiteGround.
 # Vite copies this file from public/ into dist/, and the deploy workflow rsyncs dist/ to the
-# web root. Lovable and `vite preview` ignore it. See "Hosting" in CLAUDE.md.
+# web root. `vite preview` ignores it. See "Hosting" in CLAUDE.md.
 
 Options -Indexes
 DirectoryIndex index.html

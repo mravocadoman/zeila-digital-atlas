@@ -212,44 +212,32 @@ that lifted the strip from 2.40:1 to 12.85:1 contrast. Don't drop the invert.
 - **`.env` is committed on purpose.** It holds only `VITE_`-prefixed values — the Supabase
   URL, project ref, and the `anon` key — all of which Vite bakes into the client bundle
   anyway. Nothing secret is in it; don't "fix" it by gitignoring, that just breaks builds.
-- `lovable-tagger` is still a devDependency wired into `vite.config.ts` (dev mode only).
-  Harmless; remove it only when Lovable is fully retired.
-- **Hosting stays on Lovable; deploys happen by pushing to `main`.** rihardszeila.com is
-  the custom domain on the published Lovable app (`zeila-digital-atlas.lovable.app`,
-  185.158.133.1, Cloudflare in front, DNS at Namecheap). Lovable mirrors GitHub `main`, so
-  the release step is `git push origin main` — nothing is deployed until you push.
-  **Lovable republishes on push.** Confirmed 2026-10-10: `f10e436` was live before
-  anyone touched Publish. Earlier notes in this file claimed deploys lagged; that was
-  the broken check below, not a real lag. **But not always:** on 2026-10-14 `2c31e6a`
-  reached Lovable (`get_project` showed it as `latest_commit_sha`) and was still not live
-  10 minutes later; `deploy_project` published it in ~30s. So after a push, run the
-  check below, and if it fails, publish rather than wait. **Publish only once
-  `get_project` shows your commit as `latest_commit_sha`**: `deploy_project` ships whatever
-  Lovable has mirrored, and calling it a minute after the push re-published the previous
-  commit (`0d63a4f`, same day).
+- **Hosting is SiteGround, deployed by GitHub Actions on every push to `main`** (since 2026-10-26;
+  Lovable retired, it was too expensive for what it did). `.github/workflows/deploy.yml` runs these steps:
+  1. `npm ci`, the two blog checks and `npm run build`.
+  2. rsync of `dist/` over SSH into `www/rihardszeila.com/public_html` (`--delete`, `.well-known` kept).
+  3. A file-count check on the server, a cache flush (`site-tools-client domain-all update id=1 flush_cache=1`)
+     and a smoke test against the server's IP.
 
-  **Do not verify by comparing bundle hashes.** Lovable builds on its own machine with
-  its own dependency resolution, so `assets/index-*.js` never matches a local `npm run
-  build` even when the source is identical — the live bundle runs ~45 kB larger and the
-  diff is entirely minifier identifiers (`p4` vs `z$`, `Wc` vs `Mc`). (Since 2026-10-14 the
-  bundle is `main-*.js`, not `index-*.js`: two HTML entries share `main.tsx`, see `/retreats`.) The hash check
-  reports "not deployed" 100% of the time and is how two false deploy reports happened.
-
-  Verify with a string that only exists in the commit you just pushed:
-
-  ```sh
-  B=$(curl -s https://rihardszeila.com | grep -oE 'assets/[a-z]+-[A-Za-z0-9_-]*\.js' | head -1)
-  curl -s "https://rihardszeila.com/$B" | grep -c "some copy unique to this commit"
-  ```
-
-  Check the *old* string is gone too — a non-zero count on the new string alone can't
-  tell a fresh deploy from a bundle that happens to contain both. Pick a string no JSX tag
-  splits ("built to <em>outlast</em>" is two literals in the bundle and never matches),
-  and grep the file, not `echo "$bundle"`: zsh's echo chokes on the bundle's escapes.
-
-  When the Lovable MCP connector is attached, `get_project` reports `latest_commit_sha`
-  (whether the GitHub mirror caught up) and `deploy_project` publishes without opening
-  the editor. Project `8429d805-0601-4a02-b9ce-60c38237c9d0`.
+  A red run shows which step died. `gh workflow run deploy.yml` redeploys without a commit.
+  - **SSH:** `u410-pxfgugn3qhhi@gnldm1126.siteground.biz`, port 18765, key `~/.ssh/rihardszeila_deploy`
+    (no passphrase; public half imported in Site Tools → Devs → SSH Keys Manager as `github-deploy`). The
+    same values are the repo's `SG_HOST`, `SG_PORT`, `SG_USER`, `SG_PATH` and `SG_SSH_KEY` secrets.
+  - **DNS is at SiteGround** (`ns1/ns2.siteground.net`, set at the Namecheap registrar). The A records for
+    `@` and `www` point to `35.214.201.215`. The A records still sitting in Namecheap's own zone are unused.
+    Mail for the domain now routes to SiteGround (MX `mailspamprotection.com`); the old Namecheap email
+    forwarding no longer applies, so any `@rihardszeila.com` forward lives in Site Tools → Email → Forwarders.
+  - **TLS** is a Let's Encrypt wildcard (`*.rihardszeila.com` + apex) that SiteGround issues and renews.
+  - **`public/.htaccess`** forces https without www, strips trailing slashes, serves `/retreats` and
+    `/blog/<slug>` as their own preview files (`DirectorySlash Off` + an `index.html` rewrite), falls back to
+    the SPA, and caches `/assets` for a year. Tested on a local Apache 2.4 and on the server.
+    **SiteGround's nginx serves files that exist before `.htaccess` runs**, so the `/kits/*.html` 301s never
+    fire: the forwarding stubs answer instead, and they're what makes old kit links work.
+  - **Check a deploy** by asking for a title only the new commit has:
+    `curl -s https://rihardszeila.com/blog/<slug> | grep -o '<title>[^<]*'`. The deploy's smoke test does
+    the same against the server.
+  - SiteGround's bot challenge sometimes answers datacenter IPs (GitHub runners) with a 202. The smoke test
+    treats that as a warning, not a failure.
 - **`useScrollAnimation` must never be the only thing making content visible.** Consumers
   gate sections behind `opacity-0`, so an IntersectionObserver that doesn't fire means
   content is invisible *forever*, not just un-animated. The hook now starts visible when
