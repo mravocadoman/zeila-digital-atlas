@@ -986,10 +986,10 @@ All colors MUST be HSL.
   .rt-btn:active { transform: none; }
 }
 
-/* ---------- Blog article body (warm white page) ----------
+/* ---------- Blog article body (white page) ----------
    Prose handles the type; these set the colours for a light page and style the
    blocks the converted kits carry. Bright cyan is never small text on white:
-   links and stats use #0277a8, which passes AA on #fbfaf7. */
+   links and stats use #0277a8, which passes AA on white. */
 .article-body {
   --tw-prose-body: #1d2a36;
   --tw-prose-headings: #002138;
@@ -1027,6 +1027,9 @@ All colors MUST be HSL.
 .article-body a.card { text-decoration: none; color: #1d2a36; }
 .article-body a.card:hover { border-color: #0277a8; }
 .article-body a.card b { display: block; }
+/* Diagrams are drawn on white, so on the white page they sit unframed. */
+.article-body .diagram { margin: 2em 0; }
+.article-body .diagram img { display: block; width: 100%; height: auto; margin: 0; }
 .article-body a.card span { display: block; margin-top: 0.35em; font-size: 0.8em; color: #5b6b78; }
 .article-body .stat { font-weight: 800; font-size: clamp(2.2rem, 6vw, 3.4rem); line-height: 1; letter-spacing: -0.03em; color: #0277a8; margin: 0.4em 0; }
 .article-body span.hl { color: #8a5a00; font-weight: 800; }

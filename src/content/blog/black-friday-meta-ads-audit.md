@@ -56,6 +56,8 @@ A few words come up in every step:
 - **Checkouts started** are people who reached your checkout and began filling it in.
 - **Frequency** is how many times the average person has seen the ad.
 
+<figure class="diagram"><img src="/img/blog/rz-audit-before.webp" alt="Before Black Friday: check the count (Meta 68, shop 54), ramp the budget slowly (+20% every 3 days), and write your stop rules before the sale starts." width="1536" height="1024" loading="lazy"></figure>
+
 ## Step 1: check Meta's count against your real orders
 
 **What it checks:** Meta's purchase count against the orders your shop actually recorded, day by day, for the last 14 days.
@@ -135,6 +137,8 @@ If a number is missing, say so. Never guess a number.
 ```
 
 **Done when:** every active ad sits in one of the three lists, and you've decided what to do with each dead one.
+
+<figure class="diagram"><img src="/img/blog/rz-audit-leaks.webp" alt="Where the money leaks: sales counted twice because Meta reports more than the shop, tired ads seen 2.5 or more times, and a checkout leak where the page needs fixing, not the ad." width="1536" height="1024" loading="lazy"></figure>
 
 ## Step 4: find the tired ads
 

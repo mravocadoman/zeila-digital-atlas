@@ -48,6 +48,8 @@ That is the whole Monday task.
   <b>REPORT</b>   what changed · the numbers · live now · needs you · couldn't verify
 </pre>
 
+<figure class="diagram"><img src="/img/blog/rz-monday-review.webp" alt="The Monday review in three moves: read the numbers in order, cost per sale first; make one call per ad, kill, scale or hold; then report what changed and why." width="1536" height="1024" loading="lazy"></figure>
+
 ## The rules it follows
 
 The thresholds are from my account. The logic travels; your numbers will be different.
@@ -66,6 +68,8 @@ Never rank ads on Meta's plain "clicks", "CTR" or "CPC". Those count likes and p
 An ad under 3 days old, or with under 30 link clicks, is **untested**, whatever it spent. Don't kill it.
 
 There's one exception. Zero checkouts after 30 link clicks is dead at any age. On my account about one in ten link clicks starts a checkout, so 30 clicks with no checkout at all means something is wrong. If far fewer of your clicks start a checkout, raise the 30 to match.
+
+<figure class="diagram"><img src="/img/blog/rz-monday-too-early.webp" alt="Wait, stop or fix the page: an ad under 3 days or 30 clicks is untested, so hold it; 30 clicks and no checkout is dead, so stop it; many checkouts but few sales is a page problem." width="1536" height="1024" loading="lazy"></figure>
 
 ### Kill
 

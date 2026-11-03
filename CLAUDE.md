@@ -63,7 +63,7 @@ Five routes in `src/App.tsx` (all but `/retreats` and `/blog` mirrored under `/l
     if needed, one drawing.
   - **Styled blocks** are plain HTML in the Markdown, styled under `.article-body` in index.css:
     `.callout` (amber) / `.callout callout--cyan`, `.stat`, `.cards` > `.card`, `pre.flow`, `tr.hl` /
-    `span.hl`. The article body is warm white; links and stats use `#0277a8`, never bright cyan.
+    `span.hl`. The article body is white (diagrams sit unframed on it); links and stats use `#0277a8`, never bright cyan.
   - **Link previews:** the `blogPreviews` plugin in `vite.config.ts` writes `dist/blog/<slug>/index.html`
     with each article's own tags, the same trick as `/retreats`. Images are `public/og/blog-<slug>.jpg`
     (1200×630, rendered from an HTML card with `scripts/shoot.mjs`).

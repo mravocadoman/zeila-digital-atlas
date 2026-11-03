@@ -8,7 +8,7 @@ import BlogCard from "@/components/blog/BlogCard";
 import NotFound from "./NotFound";
 
 /**
- * Title on navy, the article on warm white. Nothing here waits on an animation:
+ * Title on navy, the article on white. Nothing here waits on an animation:
  * this is the page a LinkedIn DM lands on, and it has to read on the first paint.
  */
 const BlogArticle = () => {
@@ -69,7 +69,7 @@ const BlogArticle = () => {
           </div>
         </header>
 
-        <div className="bg-[#fbfaf7] px-6 lg:px-16 py-12 lg:py-16">
+        <div className="bg-white px-6 lg:px-16 py-12 lg:py-16">
           <article
             ref={body}
             className="article-body prose prose-lg mx-auto max-w-[680px]"
