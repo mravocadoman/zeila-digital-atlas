@@ -45,9 +45,7 @@ assert.ok(out.includes('property="og:image" content="https://rihardszeila.com/og
 assert.ok(out.includes('property="og:image:width" content="1200"'));
 assert.ok(out.includes('property="og:image:height" content="630"'));
 assert.ok(out.includes('name="twitter:title" content="A &amp; &quot;B&quot;"'));
-assert.ok(out.includes('hreflang="en" href="https://rihardszeila.com/blog/x"'));
-assert.ok(out.includes('hreflang="x-default" href="https://rihardszeila.com/blog/x"'));
-assert.ok(!out.includes('hreflang="lv"'));
+assert.ok(!out.includes('hreflang'));  // English-only site since 2026-11-21: no alternates
 // no head tag still carries the homepage card (the Person JSON-LD keeps it, rightly: it's the author)
 assert.ok(!/<title>[^<]*Paid Growth|(og|twitter):(title|description)" content="[^"]*Paid Growth/.test(out));
 assert.ok(!/(og|twitter):image" content="[^"]*headshot/.test(out));

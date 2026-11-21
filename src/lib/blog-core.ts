@@ -67,11 +67,6 @@ export const previewHtml = (
   let out = base.replace(/<title>[^<]*<\/title>/, `<title>${t}</title>`);
   out = set(out, "name", "description", d);
   out = out.replace(/(<link rel="canonical" href=")[^"]*(")/, (_, a, b) => `${a}${m.url}${b}`);
-  out = out.replace(/\s*<link rel="alternate" hreflang="lv"[^>]*>/, "");
-  out = out.replace(
-    /(<link rel="alternate" hreflang="(?:en|x-default)" href=")[^"]*(")/g,
-    (_, a, b) => `${a}${m.url}${b}`,
-  );
   out = set(out, "property", "og:type", "article");
   out = set(out, "property", "og:url", m.url);
   out = set(out, "property", "og:title", t);
