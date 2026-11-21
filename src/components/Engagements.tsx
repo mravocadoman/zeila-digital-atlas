@@ -9,9 +9,9 @@ import retainerGfx from "@/assets/gfx/retainer.webp";
 import trainingGfx from "@/assets/gfx/training.webp";
 
 /**
- * TODO (Rihards): pricing is described by shape only, no figures. If you want
- * a floor published ("audits from EUR X"), edit the `price` lines below and the
- * pricing answer in FAQ.tsx.
+ * Only the fractional retainer publishes figures (three tiers, set by Rihards
+ * 2026-11-21). The other engagements are still priced by shape; keep the
+ * pricing answer in FAQ.tsx in step with any change here.
  */
 const getEngagements = (t: T) => [
   {
@@ -71,10 +71,15 @@ const getEngagements = (t: T) => [
     title: t("Fractional growth lead", "Izaugsmes vadītājs uz nepilnu slodzi"),
     forWho: t("In-house teams who want a sparring partner", "Komandām, kurām blakus vajag pieredzējušu padomdevēju"),
     body: t(
-      "Monthly. I stay close to the account without taking it over. Reviews, creative direction, and someone senior to argue with before you spend.",
-      "Ikmēneša sadarbība. Sekoju līdzi kontam, to nepārņemot: pārskati, ieteikumi reklāmām un pieredzējis cilvēks, ar ko izrunāt lēmumus, pirms tu tērē naudu.",
+      "Monthly, at three depths: a senior second opinion before you spend, one growth system built and run for you, or a stand-in head of growth who builds the whole AI stack and trains your team.",
+      "Ikmēneša sadarbībai ir trīs līmeņi: pieredzējis padomdevējs, kurš izvērtē lēmumus, pirms tu tērē naudu, speciālists, kurš izveido un vada vienu konkrētu izaugsmes sistēmu, vai izaugsmes vadītājs tavā komandā, kurš izveido visu MI sistēmu un apmāca tavu komandu.",
     ),
-    price: t("Monthly retainer", "Ikmēneša maksa"),
+    price: t("Monthly retainer, 3-month minimum", "Mēneša maksa, sadarbība vismaz trīs mēnešus"),
+    tiers: [
+      { name: t("Advisor", "Padomdevējs"), scope: t("half a day a week", "puse dienas nedēļā"), amount: t("€2,400/mo", "2 400 € mēnesī") },
+      { name: t("Operator", "Ieviesējs"), scope: t("one day a week", "viena diena nedēļā"), amount: t("€5,000/mo", "5 000 € mēnesī") },
+      { name: t("Embedded", "Tavā komandā"), scope: t("two days a week", "divas dienas nedēļā"), amount: t("€10,500/mo", "10 500 € mēnesī") },
+    ],
     deliverables: [
       t("Weekly working sessions with your marketers", "Iknedēļas tikšanās ar tavu mārketinga komandu"),
       t("Ad account reviews and scaling decisions", "Reklāmas kontu pārskati un lēmumi par budžeta palielināšanu"),
@@ -178,6 +183,19 @@ const EngagementRow = ({ e, index }: { e: Engagement; index: number }) => {
         <p className="body-clean text-base text-foreground/90 pt-3 border-t border-border">
           {e.price}
         </p>
+        {"tiers" in e && e.tiers && (
+          <ul className="mt-2 space-y-1">
+            {e.tiers.map((tier) => (
+              <li key={tier.name} className="flex justify-between items-baseline gap-3 body-clean text-base">
+                <span className="min-w-0 text-foreground/90">
+                  {tier.name}
+                  <span className="block text-sm text-foreground/60">{tier.scope}</span>
+                </span>
+                <span className="font-semibold tabular-nums whitespace-nowrap">{tier.amount}</span>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
     </article>
   );

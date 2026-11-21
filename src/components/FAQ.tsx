@@ -8,17 +8,16 @@ import {
 import { T, useLang } from "@/i18n/lang";
 
 /**
- * TODO (Rihards): the pricing answer describes structure but publishes no
- * figures — I'm not inventing your rates. If you want a floor stated
- * ("audits from €X"), edit the first answer and the `price` lines in
- * Engagements.tsx to match.
+ * The pricing answer states the three fractional retainer tiers published in
+ * Engagements.tsx (set by Rihards 2026-11-21). Audits, projects and training
+ * are still priced by shape; keep both files in step.
  */
 const faqs = (t: T) => [
   {
     q: t("How does pricing work?", "Cik tas maksā?"),
     a: t(
-      "Audits are a fixed fee. Projects are quoted as a fixed project price once the scope is written, so the number doesn't move mid-engagement. Retainers and training are monthly or per-program. You get the price in writing after the discovery call, before any work starts. I don't do hourly.",
-      "Auditam ir fiksēta cena. Projektiem cenu nosakām, kad darba apjoms ir aprakstīts, un pēc tam tā vairs nemainās. Ilgtermiņa sadarbībai un apmācībām maksa ir reizi mēnesī vai par programmu. Cenu tu saņem rakstiski pēc iepazīšanās sarunas, pirms sākam darbu. Pēc stundām nestrādāju.",
+      "Audits are a fixed fee. Projects are quoted as a fixed project price once the scope is written, so the number doesn't move mid-engagement. The fractional retainer has three published levels: €2,400, €5,000 or €10,500 a month, for half a day, one day or two days a week, with a three-month minimum. Training is priced per program. You get every price in writing after the discovery call, before any work starts. I don't do hourly.",
+      "Auditam ir fiksēta cena. Projekta cenu nosakām pēc darba apjoma izvērtēšanas, un tā vairs nemainās. Ilgtermiņa sadarbībai ir trīs līmeņi: 2 400 €, 5 000 € vai 10 500 € mēnesī, atkarībā no tā, cik daudz laika veltu tavam uzņēmumam: pusi dienas, vienu vai divas dienas nedēļā. Minimālais sadarbības termiņš ir trīs mēneši. Apmācību cena ir atkarīga no programmas. Visas cenas tu saņem rakstiski pēc iepazīšanās sarunas, pirms sākam darbu. Pēc stundām nestrādāju.",
     ),
   },
   {
@@ -46,14 +45,14 @@ const faqs = (t: T) => [
     q: t("Which languages do you work in?", "Kādās valodās tu strādā?"),
     a: t(
       "English and Latvian, natively. Also Latgalian, and professional working Russian and Polish.",
-      "Latviski un angliski — brīvi. Runāju arī latgaliski, un darba līmenī — krieviski un poliski.",
+      "Latviski un angliski runāju brīvi, protu arī latgaliski, bet krieviski un poliski runāju darba līmenī.",
     ),
   },
   {
     q: t("How fast can you start?", "Cik ātri vari sākt?"),
     a: t(
       "Audits usually within two weeks. Build projects depend on the current book. I'll tell you honestly on the discovery call. I reply to enquiries within two business days.",
-      "Auditu parasti varu sākt divu nedēļu laikā. Lielākiem projektiem tas atkarīgs no noslodzes — iepazīšanās sarunā pateikšu godīgi. Uz pieteikumiem atbildu divu darba dienu laikā.",
+      "Auditu parasti varu sākt divu nedēļu laikā. Lielākiem projektiem tas atkarīgs no noslodzes, un iepazīšanās sarunā to pateikšu godīgi. Uz pieteikumiem atbildu divu darba dienu laikā.",
     ),
   },
 ];
