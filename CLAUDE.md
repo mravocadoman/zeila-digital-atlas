@@ -236,10 +236,11 @@ that lifted the strip from 2.40:1 to 12.85:1 contrast. Don't drop the invert.
 - `dist/assets/main-*.js` is ~806 kB, one chunk. The blog (marked + articles) is lazy-loaded into its own chunk so other pages never download it; keep it that way when adding articles.
 - **Analytics are env-gated.** `src/lib/analytics.ts` injects GA4 only when
   `VITE_GA4_ID` is set in `.env`. It's empty, so nothing is measured yet.
-- **Only the fractional retainer is priced.** Since 2026-11-21 the Fractional growth lead row in
-  `Engagements.tsx` publishes three tiers (Advisor EUR 2,400, Operator EUR 5,000, Embedded EUR 10,500
-  a month, 3-month minimum), and the FAQ pricing answer states them. Audits, projects, strategy and
-  training stay priced by shape. Change figures only on Rihards' word, in both files at once.
+- **Only the fractional retainer is priced.** The Fractional growth lead row in `Engagements.tsx`
+  publishes two tiers, Advisor EUR 2,400 and Operator EUR 5,000 a month (3-month minimum), for companies
+  spending EUR 20K+ a month on ads; the FAQ pricing answer states the same. A two-day Embedded tier
+  (EUR 10,500) was published and withdrawn on 2026-11-21 until a first Operator client renews. Audits,
+  projects, strategy and training stay priced by shape. Change figures only on Rihards' word, in both files.
 - The homepage is ~12,900 px at 375 px wide. That's *longer* than the pre-rebuild
   page, but the composition inverted: ~44% offer where it used to be ~45% résumé.
 - `synthwave-v1` (tag) and `archive/synthwave-v1` (branch) hold the pre-rebuild site

@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { useReveal } from "@/hooks/use-reveal";
-import { T, useLang } from "@/i18n/lang";
 
 import advisoryGfx from "@/assets/gfx/advisory.webp";
 import auditGfx from "@/assets/gfx/audit.webp";
@@ -9,98 +8,83 @@ import retainerGfx from "@/assets/gfx/retainer.webp";
 import trainingGfx from "@/assets/gfx/training.webp";
 
 /**
- * Only the fractional retainer publishes figures (three tiers, set by Rihards
- * 2026-11-21). The other engagements are still priced by shape; keep the
- * pricing answer in FAQ.tsx in step with any change here.
+ * Only the fractional retainer publishes figures: Advisor and Operator, for companies
+ * spending EUR 20K+ a month on ads (Rihards, 2026-11-21; the two-day Embedded tier was
+ * dropped the same day until a first Operator client renews). Keep the pricing answer
+ * in FAQ.tsx in step with any change here.
  */
-const getEngagements = (t: T) => [
+const getEngagements = () => [
   {
-    kind: t("Advisory", "Konsultācijas"),
+    kind: "Advisory",
     gfx: advisoryGfx,
-    title: t("Strategy consulting", "Stratēģiskās konsultācijas"),
-    forWho: t("Founders and marketing leads with a decision to make", "Uzņēmumu un mārketinga vadītājiem, kuriem jāpieņem svarīgs lēmums"),
-    body: t(
-      "You don't need another pair of hands in the account. You need someone who has already made this mistake. Channel strategy, budget allocation, agency decisions, whether to build in-house.",
-      "Tev nevajag cilvēku, kas klikšķina reklāmas kontā. Vajag kādu, kurš šo kļūdu jau ir pieļāvis. Kanālu izvēle, budžeta sadale, darbs ar aģentūru, savas komandas veidošana.",
-    ),
-    price: t("Per session or day rate", "Maksa par sesiju vai dienu"),
+    title: "Strategy consulting",
+    forWho: "Founders and marketing leads with a decision to make",
+    body: "You don't need another pair of hands in the account. You need someone who has already made this mistake. Channel strategy, budget allocation, agency decisions, whether to build in-house.",
+    price: "Per session or day rate",
     deliverables: [
-      t("Working sessions on the decision in front of you", "Darba sesijas tieši par tavu jautājumu"),
-      t("A written recommendation you can take to the board", "Rakstisks ieteikums, ko var likt priekšā valdei"),
-      t("Follow-up while you act on it, not just the one call", "Esmu blakus arī tad, kad tu lēmumu ievies, ne tikai sarunas laikā"),
+      "Working sessions on the decision in front of you",
+      "A written recommendation you can take to the board",
+      "Follow-up while you act on it, not just the one call",
     ],
     featured: false,
   },
   {
-    kind: t("Fixed scope", "Vienreizējs darbs"),
+    kind: "Fixed scope",
     gfx: auditGfx,
-    title: t("Account audit", "Reklāmas konta audits"),
-    forWho: t("Brands already spending, unsure where it leaks", "Uzņēmumiem, kas jau reklamējas, bet nezina, kur aizplūst nauda"),
-    body: t(
-      "I go through the ad account, tracking setup, and funnel, then tell you what's costing you money, in priority order.",
-      "Izskatu reklāmas kontu, mērīšanas iestatījumus un pārdošanas piltuvi un pasaku, kas tev patiesībā izmaksā naudu, sākot ar svarīgāko.",
-    ),
-    price: t("Fixed fee · 1–2 weeks", "Fiksēta cena · 1–2 nedēļas"),
+    title: "Account audit",
+    forWho: "Brands already spending, unsure where it leaks",
+    body: "I go through the ad account, tracking setup, and funnel, then tell you what's costing you money, in priority order.",
+    price: "Fixed fee · 1–2 weeks",
     deliverables: [
-      t("Written findings on account structure, creative, and measurement", "Rakstisks ziņojums par konta struktūru, reklāmām un mērīšanu"),
-      t("A prioritised fix list, most expensive problem first", "Labojumu saraksts — dārgākā problēma pirmajā vietā"),
-      t("A 90-minute call to walk your team through it", "90 minūšu saruna, kurā visu izrunājam ar tavu komandu"),
+      "Written findings on account structure, creative, and measurement",
+      "A prioritised fix list, most expensive problem first",
+      "A 90-minute call to walk your team through it",
     ],
     featured: false,
   },
   {
-    kind: t("Project", "Projekts"),
+    kind: "Project",
     gfx: buildGfx,
-    title: t("Build & handover", "Sistēmas izveide un nodošana"),
-    forWho: t("Teams that need the system built once, properly", "Komandām, kurām sistēmu vajag izveidot vienreiz un kārtīgi"),
-    body: t(
-      "The core engagement. I build the campaign structure, funnel, and tracking, run it until the numbers are stable, then hand it over documented so your team owns it.",
-      "Galvenais pakalpojums. Izveidoju kampaņu struktūru, pārdošanas piltuvi un mērīšanu, vadu to, līdz rezultāti ir stabili, un tad nododu tavai komandai kopā ar visu dokumentāciju.",
-    ),
-    price: t("Project fee · 6–12 weeks", "Projekta cena · 6–12 nedēļas"),
+    title: "Build & handover",
+    forWho: "Teams that need the system built once, properly",
+    body: "The core engagement. I build the campaign structure, funnel, and tracking, run it until the numbers are stable, then hand it over documented so your team owns it.",
+    price: "Project fee · 6–12 weeks",
     deliverables: [
-      t("Campaign and funnel architecture, built and live", "Kampaņu un piltuves struktūra — izveidota un strādā"),
-      t("Tracking and reporting your team can read", "Mērīšana un atskaites, ko komanda saprot"),
-      t("SOPs and a handover session, so you keep running it", "Instrukcijas un apmācība — tālāk to vadi pats"),
+      "Campaign and funnel architecture, built and live",
+      "Tracking and reporting your team can read",
+      "SOPs and a handover session, so you keep running it",
     ],
     featured: true,
   },
   {
-    kind: t("Ongoing", "Ilgtermiņā"),
+    kind: "Ongoing",
     gfx: retainerGfx,
-    title: t("Fractional growth lead", "Izaugsmes vadītājs uz nepilnu slodzi"),
-    forWho: t("In-house teams who want a sparring partner", "Komandām, kurām blakus vajag pieredzējušu padomdevēju"),
-    body: t(
-      "Monthly, at three depths: a senior second opinion before you spend, one growth system built and run for you, or a stand-in head of growth who builds the whole AI stack and trains your team.",
-      "Ikmēneša sadarbībai ir trīs līmeņi: pieredzējis padomdevējs, kurš izvērtē lēmumus, pirms tu tērē naudu, speciālists, kurš izveido un vada vienu konkrētu izaugsmes sistēmu, vai izaugsmes vadītājs tavā komandā, kurš izveido visu MI sistēmu un apmāca tavu komandu.",
-    ),
-    price: t("Monthly retainer, 3-month minimum", "Mēneša maksa, sadarbība vismaz trīs mēnešus"),
+    title: "Fractional growth lead",
+    forWho: "Companies spending €20K+ a month on ads, or with a growth target to match",
+    body: "Monthly, at two depths: a senior second opinion before you spend, or one growth system built and run for you, then handed to your team.",
+    price: "Monthly retainer, 3-month minimum",
     tiers: [
-      { name: t("Advisor", "Padomdevējs"), scope: t("half a day a week", "puse dienas nedēļā"), amount: t("€2,400/mo", "2 400 € mēnesī") },
-      { name: t("Operator", "Ieviesējs"), scope: t("one day a week", "viena diena nedēļā"), amount: t("€5,000/mo", "5 000 € mēnesī") },
-      { name: t("Embedded", "Tavā komandā"), scope: t("two days a week", "divas dienas nedēļā"), amount: t("€10,500/mo", "10 500 € mēnesī") },
+      { name: "Advisor", scope: "half a day a week", amount: "€2,400/mo" },
+      { name: "Operator", scope: "one day a week", amount: "€5,000/mo" },
     ],
     deliverables: [
-      t("Weekly working sessions with your marketers", "Iknedēļas tikšanās ar tavu mārketinga komandu"),
-      t("Ad account reviews and scaling decisions", "Reklāmas kontu pārskati un lēmumi par budžeta palielināšanu"),
-      t("On call for the decisions that cost money", "Pieejams, kad jāpieņem lēmumi, kas maksā naudu"),
+      "Weekly working sessions with your marketers",
+      "Ad account reviews and scaling decisions",
+      "On call for the decisions that cost money",
     ],
     featured: false,
   },
   {
-    kind: t("Training", "Apmācības"),
+    kind: "Training",
     gfx: trainingGfx,
-    title: t("Team training & workshops", "Apmācības un darbnīcas komandām"),
-    forWho: t("Companies, universities, and EU-funded programs", "Uzņēmumiem, augstskolām un ES finansētām programmām"),
-    body: t(
-      "The same material I teach on the Riga Business School MBA, adapted to your channels and tools. One-day intensives through semester-long modules.",
-      "Tas pats, ko mācu Rīgas Biznesa skolas MBA studentiem, tikai pielāgots taviem kanāliem un rīkiem. No vienas dienas intensīvajiem kursiem līdz semestra garumā kursiem.",
-    ),
-    price: t("Per program", "Cena atkarīga no programmas"),
+    title: "Team training & workshops",
+    forWho: "Companies, universities, and EU-funded programs",
+    body: "The same material I teach on the Riga Business School MBA, adapted to your channels and tools. One-day intensives through semester-long modules.",
+    price: "Per program",
     deliverables: [
-      t("Meta Ads intensives and multi-session courses", "Meta reklāmu intensīvie kursi un kursi vairākās nodarbībās"),
-      t("Custom MBA / BBA modules with assessments", "MBA / BBA kursi ar pārbaudījumiem"),
-      t("Recordings and playbooks so it sticks", "Ieraksti un rokasgrāmatas, lai zināšanas neaizmirstas"),
+      "Meta Ads intensives and multi-session courses",
+      "Custom MBA / BBA modules with assessments",
+      "Recordings and playbooks so it sticks",
     ],
     featured: false,
   },
@@ -119,7 +103,6 @@ type Engagement = ReturnType<typeof getEngagements>[number];
  */
 const EngagementRow = ({ e, index }: { e: Engagement; index: number }) => {
   const row = useReveal<HTMLElement>("card");
-  const { t } = useLang();
 
   return (
     <article
@@ -149,7 +132,7 @@ const EngagementRow = ({ e, index }: { e: Engagement; index: number }) => {
           <span className="eyebrow">{e.kind}</span>
           {e.featured && (
             <span className="body-clean text-[0.68rem] font-semibold text-[hsl(320_100%_65%)] uppercase tracking-wider">
-              {t("Most common", "Visbiežāk izvēlas")}
+              {"Most common"}
             </span>
           )}
         </div>
@@ -166,7 +149,7 @@ const EngagementRow = ({ e, index }: { e: Engagement; index: number }) => {
 
       <div className="min-w-0">
         <span className="eyebrow block mb-2.5 text-muted-foreground">
-          {t("What you get", "Ko tu saņem")}
+          {"What you get"}
         </span>
         <ul className="space-y-1.5 mb-3">
           {e.deliverables.map((d) => (
@@ -203,8 +186,7 @@ const EngagementRow = ({ e, index }: { e: Engagement; index: number }) => {
 
 const Engagements = () => {
   const reveal = useReveal<HTMLElement>();
-  const { t } = useLang();
-  const engagements = getEngagements(t);
+  const engagements = getEngagements();
 
   return (
     <section
@@ -213,15 +195,12 @@ const Engagements = () => {
       className={`py-12 lg:py-24 px-6 lg:px-16 bg-sunken section-rule ${reveal.className}`}
     >
       <div className="max-w-6xl mx-auto">
-        <span className="eyebrow block mb-4">{t("What you get", "Pakalpojumi")}</span>
+        <span className="eyebrow block mb-4">{"What you get"}</span>
         <h2 className="heading-elegant text-3xl lg:text-5xl mb-4 max-w-3xl">
-          {t("Five ways to work together.", "Piecas sadarbības iespējas.")}
+          {"Five ways to work together."}
         </h2>
         <p className="body-clean text-muted-foreground text-lg lg:text-xl max-w-2xl mb-8 lg:mb-10">
-          {t(
-            "Every one of them ends with your team able to run the thing themselves. That's the point of the work, and it is included.",
-            "Katra no tām beidzas ar to, ka tava komanda visu spēj vadīt pati. Tāds ir mērķis, un tas ir iekļauts cenā.",
-          )}
+          {"Every one of them ends with your team able to run the thing themselves. That's the point of the work, and it is included."}
         </p>
 
         <div className="border-b border-border">
@@ -240,7 +219,7 @@ const Engagements = () => {
             }
             className="bg-primary text-background hover:bg-primary/90 px-8 py-6 rounded-md font-bold text-sm lg:text-base uppercase tracking-wider"
           >
-            {t("Book a consultation", "Pieteikties konsultācijai")}
+            {"Book a consultation"}
           </Button>
         </div>
       </div>
