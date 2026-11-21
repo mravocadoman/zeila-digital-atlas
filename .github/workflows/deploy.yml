@@ -101,7 +101,7 @@ jobs:
           get() { curl -sk --max-time 20 --resolve "rihardszeila.com:443:$ip" -o /tmp/page -w '%{http_code}' "https://rihardszeila.com$1"; }
           fail=0
           # The HTML is the app shell, so check the <title>s: each preview page carries its own.
-          for check in "/|Paid Growth Consultant" "/about|About Rihards Zeila" "/blog|Blog | Rihards Zeila" \
+          for check in "/|Paid Growth Consultant" "/about|Paid Growth Consultant" "/blog|Blog | Rihards Zeila" \
                        "/blog/meta-ads-seven-rules|seven rules" "/retreats|The Season Residency"; do
             path=${check%%|*}; want=${check#*|}; code=$(get "$path")
             if [ "$code" = "202" ]; then echo "::warning::SiteGround's bot challenge answered $path; check it from a normal network."; continue; fi
