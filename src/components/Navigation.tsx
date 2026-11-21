@@ -1,19 +1,12 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import LanguageSwitch from "@/components/LanguageSwitch";
-import { basePath, LV_BLOG, useLang } from "@/i18n/lang";
+import { useLang } from "@/i18n/lang";
 
-/** The blog is English only; the Latvian menu points at marketingaskola.lv's blog. */
-const BlogLink = ({ lang, className, onClick }: { lang: string; className: string; onClick?: () => void }) =>
-  lang === "lv" ? (
-    <a href={LV_BLOG} className={className} onClick={onClick}>
-      Blogs
-    </a>
-  ) : (
-    <Link to="/blog" className={className} onClick={onClick}>
-      Blog
-    </Link>
-  );
+const BlogLink = ({ className, onClick }: { className: string; onClick?: () => void }) => (
+  <Link to="/blog" className={className} onClick={onClick}>
+    Blog
+  </Link>
+);
 
 const Navigation = () => {
   const [isVisible, setIsVisible] = useState(true);
@@ -21,8 +14,8 @@ const Navigation = () => {
   const [lastScrollY, setLastScrollY] = useState(0);
   const location = useLocation();
   const navigate = useNavigate();
-  const { lang, t, to } = useLang();
-  const onHome = basePath(location.pathname) === "/";
+  const { t, to } = useLang();
+  const onHome = location.pathname === "/";
 
   const navItems = [
     { label: t("Who it's for", "Kam es palīdzu"), id: "who-for" },
@@ -77,7 +70,7 @@ const Navigation = () => {
                 {item.label}
               </button>
             ))}
-            <BlogLink lang={lang} className="body-clean text-muted-foreground hover:text-foreground text-sm transition-colors" />
+            <BlogLink className="body-clean text-muted-foreground hover:text-foreground text-sm transition-colors" />
             <Link
               to={to("/about")}
               className="body-clean text-muted-foreground hover:text-foreground text-sm transition-colors"
@@ -90,11 +83,9 @@ const Navigation = () => {
             >
               {t("Book a consultation", "Pieteikties konsultācijai")}
             </button>
-            <LanguageSwitch />
           </div>
 
           <div className="xl:hidden flex items-center gap-2">
-          <LanguageSwitch />
           <button
             className="text-foreground p-2"
             aria-label={t("Menu", "Izvēlne")}
@@ -125,7 +116,6 @@ const Navigation = () => {
               </button>
             ))}
             <BlogLink
-              lang={lang}
               onClick={() => setMenuOpen(false)}
               className="body-clean text-muted-foreground hover:text-foreground py-2.5 transition-colors"
             />

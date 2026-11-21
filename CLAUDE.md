@@ -13,7 +13,7 @@ npm run lint
 
 ## Layout
 
-Five routes in `src/App.tsx` (all but `/retreats` and `/blog` mirrored under `/lv`, see Languages), plus a NotFound catch-all:
+Five routes in `src/App.tsx`, English only (see Languages), plus a NotFound catch-all:
 
 - `/` — the consultation-led homepage (`pages/Index.tsx`). Section order matters: it
   runs offer → proof → process → credibility → close.
@@ -55,8 +55,7 @@ Five routes in `src/App.tsx` (all but `/retreats` and `/blog` mirrored under `/l
     and scroll timelines fire.
 - `/blog`, `/blog/:slug` — added 2026-10-24, the destination for the LinkedIn lead-magnet posts.
   It replaced the standalone kit pages. Design: `docs/superpowers/specs/2026-10-24-blog-design.md`.
-  **English only.** Latvian articles live on marketingaskola.lv/blogs: the `/lv` menu's "Blogs" and the
-  LV flag on blog pages (`LV_BLOG` in `i18n/lang.tsx`) go there, never to a `/lv/blog`.
+  **English only.** Latvian articles live on marketingaskola.lv/blogs.
   - **Articles** are `src/content/blog/<slug>.md` with flat front matter (`title`, `description` ≤160,
     `date`, `topic`, `drawing`, `order`), parsed by `src/lib/blog-core.ts` and rendered with `marked`.
     `drawing` keys a line drawing in `components/blog/drawings.tsx`. A new article is one file plus,
@@ -80,27 +79,18 @@ Five routes in `src/App.tsx` (all but `/retreats` and `/blog` mirrored under `/l
     no kit leftovers).
 - `src/components/ui/` is stock shadcn — don't hand-edit, regenerate.
 
-## Languages (EN / LV)
+## Languages
 
-Added 2026-09-29. English lives at `/`, Latvian mirrors every route under `/lv`
-(`/lv`, `/lv/about`, `/lv/work-with-me`) — same components, the URL prefix picks the copy.
+**English only since 2026-11-21.** The Latvian `/lv` mirror (added 2026-09-29) was removed because
+it read badly (Rihards). Latvian content belongs on marketingaskola.lv, not here.
 
-- `src/i18n/lang.tsx` — `useLang()` returns `{ lang, t, to }`. Copy is written inline as
-  `t("English", "Latviski")` right next to the original, so editing one language makes the
-  other visibly stale. `to("/about")` localises internal links; always use it for `<Link>`s.
-- Data arrays that hold copy are functions of `t` (`const faqs = (t: T) => [...]`).
-- `usePageMeta(title, description)` sets `<html lang>`, the title, the description and the
-  **canonical** — index.html hard-codes the English canonical, and without the override
-  every `/lv` page would be declared a duplicate of `/`. hreflang links are in index.html,
-  `/lv` URLs are in `public/sitemap.xml`.
-- `LanguageSwitch` — both flags, current one lit, top-right of the nav (and of the
-  `/work-with-me` header). Flags are inline SVG because Windows shows flag emoji as letters.
-- Latvian copy is written as Latvian, not translated line-by-line — short sentences, everyday
-  words, no calques ("datplūsma", "nekā lieka", "melnā kaste"). It addresses the reader
-  informally as "tu" (Rihards' call, 2026-09-30) — keep new copy in that register. Numerals stay in English format (`36.34`)
-  because `useCountUp` parses `,` as a thousands separator.
-- The desktop nav collapses to the hamburger below `xl` (was `lg`, before that `md`). The Blog item
-  (2026-10-24) made the menu wrap at 1024 px in both languages and at 1280 px in Latvian.
+- Old `/lv` URLs 301 to the English page in `public/.htaccess`, and `FromLatvian` in `App.tsx`
+  does the same client-side. hreflang tags and the `/lv` sitemap entries are gone.
+- `useLang()` in `src/i18n/lang.tsx` still returns `{ lang, t, to }` so every call site compiles:
+  `t("English", "Latviski")` returns the English argument and `to(path)` returns the path. Drop the
+  Latvian argument from a file when you next edit it; don't add new Latvian strings.
+- The desktop nav collapses to the hamburger below `xl`; that breakpoint was set for the longer
+  Latvian labels and could move back to `lg` if the English menu fits.
 
 ## Type system
 

@@ -36,11 +36,9 @@ const Footer = () => {
               <Link to={to("/work-with-me")} className="body-clean text-body text-muted-foreground hover:text-foreground transition-colors block">
                 {t("Training & workshops", "Apmācības un darbnīcas")}
               </Link>
-              {lang === "en" && (
-                <Link to="/blog" className="body-clean text-body text-muted-foreground hover:text-foreground transition-colors block">
+                              <Link to="/blog" className="body-clean text-body text-muted-foreground hover:text-foreground transition-colors block">
                   Blog
                 </Link>
-              )}
               <Link to={to("/about")} className="body-clean text-body text-muted-foreground hover:text-foreground transition-colors block">
                 {t("About & full CV", "Par mani un CV")}
               </Link>

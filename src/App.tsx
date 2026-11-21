@@ -3,7 +3,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import Index from "./pages/Index";
 import WorkWithMe from "./pages/WorkWithMe";
 import About from "./pages/About";
@@ -12,6 +12,12 @@ import Retreats from "./pages/Retreats";
 const Blog = lazy(() => import("./pages/Blog"));
 const BlogArticle = lazy(() => import("./pages/BlogArticle"));
 import NotFound from "./pages/NotFound";
+
+/** /lv/about -> /about, /lv -> /, keeping any #section. .htaccess does the same with a 301. */
+const FromLatvian = () => {
+  const { pathname, hash } = useLocation();
+  return <Navigate to={(pathname.replace(/^\/lv/, "") || "/") + hash} replace />;
+};
 
 const queryClient = new QueryClient();
 
@@ -31,10 +37,8 @@ const App = () => (
           {/* English only; Latvian articles live on marketingaskola.lv/blogs */}
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogArticle />} />
-          {/* Latvian mirrors — same components, copy chosen by the /lv prefix */}
-          <Route path="/lv" element={<Index />} />
-          <Route path="/lv/about" element={<About />} />
-          <Route path="/lv/work-with-me" element={<WorkWithMe />} />
+          {/* The Latvian mirror is gone (2026-11-21); old /lv links land on the English page */}
+          <Route path="/lv/*" element={<FromLatvian />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

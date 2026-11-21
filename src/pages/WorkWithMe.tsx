@@ -9,7 +9,6 @@ import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 import headshot from "@/assets/rihards-about.webp";
-import LanguageSwitch from "@/components/LanguageSwitch";
 import { T, useLang, usePageMeta } from "@/i18n/lang";
 
 import rbsLogo from "@/assets/partners/rbs-logo.webp";
@@ -326,7 +325,6 @@ const WorkWithMe = () => {
             {t("Digital Marketing Training", "Digitālā mārketinga apmācības")}
           </div>
           <div className="flex items-center gap-3">
-            <LanguageSwitch />
             <button onClick={scrollToForm} className="wwm-cta px-4 py-2 text-sm hidden sm:block">
               {t("Book a training", "Pieteikt apmācības")}
             </button>

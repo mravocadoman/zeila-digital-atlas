@@ -30,6 +30,10 @@ DirectorySlash Off
   RewriteRule ^kits/cheap-leads-postmortem\.html$ /blog/cheap-leads-post-mortem [R=301,L]
   RewriteRule ^kits/ai-review-layer\.html$ /blog/ai-review-layer [R=301,L]
 
+  # The Latvian /lv mirror was removed (21 Nov 2026). Old links land on the English page.
+  RewriteRule ^lv/?$ / [R=301,L]
+  RewriteRule ^lv/(.*)$ /$1 [R=301,L]
+
   # No trailing slashes: the canonical URLs have none.
   RewriteRule ^(.+)/$ /$1 [R=301,L]
 
