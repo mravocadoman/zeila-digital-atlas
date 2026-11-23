@@ -132,8 +132,8 @@ const programs = (t: T) => [
   { org: "RISEBA University", role: "BBA Lecturer, Social Media & Meta Ads", period: "2023 – 2024" },
   { org: "University of Lusaka", role: "Guest Lecturer (Erasmus+)", period: "May 2024" },
   { org: "LIFT Program (EU-funded)", role: "Course leader — Meta Ads & Automation for SMEs", period: "Nov 2024 – Jun 2026" },
-  { org: "International Trade Centre", role: "Workshop facilitator — Digital marketing for exporters", period: "2023" },
-  { org: "Latvijas Digitālo ekspertu biedrība", role: "Trainer — Digital marketing programs", period: "2023" },
+  { org: "International Trade Centre", role: "Workshop facilitator — Digital marketing for exporters", period: "2019" },
+  { org: "Latvijas Digitālo ekspertu biedrība", role: "Trainer — Digital marketing programs", period: "2019 – 2020" },
   { org: "Vidusdaugavas NVO centrs", role: "Digital campaign workshop leader", period: "2023" },
   { org: "Medijpratējs", role: "Trainer — Media & digital literacy", period: "2022 – 2023" },
 ];

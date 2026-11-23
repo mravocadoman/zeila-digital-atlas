@@ -21,7 +21,7 @@ const highlights = () => [
   {
     org: "International Trade Centre",
     role: "Workshop facilitator — Kenya, Palestine, Gambia, Jordan",
-    period: "2019, 2023",
+    period: "2019",
   },
   {
     org: "RISEBA University",
