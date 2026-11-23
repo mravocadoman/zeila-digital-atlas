@@ -1,9 +1,7 @@
 import { Button } from "@/components/ui/button";
 import headshotImage from "@/assets/rihards-headshot.webp";
-import { useLang } from "@/i18n/lang";
 
 const Hero = () => {
-  const { t } = useLang();
   const scrollTo = (id: string) =>
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
@@ -16,36 +14,27 @@ const Hero = () => {
               className="eyebrow block mb-5 rise"
               style={{ animationDelay: "0.05s" }}
             >
-              {t("Paid growth consulting · Riga", "Reklāma un izaugsme · Rīga")}
+              {"Paid growth consulting · Riga"}
             </span>
 
             <h1
               className="heading-elegant text-foreground text-4xl sm:text-5xl lg:text-6xl leading-[1.08] mb-6 rise"
               style={{ animationDelay: "0.15s" }}
             >
-              {t(
-                "I help you make money from ads and teach your team to run it themselves.",
-                "Palīdzu tev nopelnīt ar reklāmu un iemācu komandai to darīt pašai.",
-              )}
+              {"I help you make money from ads and teach your team to run it themselves."}
             </h1>
 
             <p
               className="body-clean text-muted-foreground text-lg lg:text-xl leading-relaxed max-w-xl mb-4 rise"
               style={{ animationDelay: "0.28s" }}
             >
-              {t(
-                "I sort out the ad account, the funnel and the tracking. After that your team runs it.",
-                "Sakārtoju reklāmas kontu, pārdošanas piltuvi un mērīšanu. Pēc tam komanda to vada pati.",
-              )}
+              {"I sort out the ad account, the funnel and the tracking. After that your team runs it."}
             </p>
             <p
               className="body-clean text-muted-foreground text-lg lg:text-xl leading-relaxed max-w-xl mb-8 rise"
               style={{ animationDelay: "0.36s" }}
             >
-              {t(
-                "Ten years in the industry and up to $5M a year in ad spend. I teach digital marketing on the Riga Business School MBA. I work with e-commerce brands, SMEs and in-house marketing teams.",
-                "Desmit gadi nozarē un līdz $5M reklāmas budžeta gadā. Mācu digitālo mārketingu Rīgas Biznesa skolas MBA programmā. Strādāju ar e-veikaliem, maziem un vidējiem uzņēmumiem un mārketinga komandām.",
-              )}
+              {"Ten years in the industry and up to $5M a year in ad spend. I taught digital marketing on the Riga Business School MBA from 2021 to 2026. I work with e-commerce brands, SMEs and in-house marketing teams."}
             </p>
 
             <div
@@ -57,7 +46,7 @@ const Hero = () => {
                 onClick={() => scrollTo("contact")}
                 className="bg-primary text-background hover:bg-primary/90 transition-all px-8 py-6 rounded-md font-bold text-sm lg:text-base uppercase tracking-wider"
               >
-                {t("Book a consultation", "Pieteikties konsultācijai")}
+                {"Book a consultation"}
               </Button>
               <Button
                 size="lg"
@@ -65,7 +54,7 @@ const Hero = () => {
                 onClick={() => scrollTo("engagements")}
                 className="bg-background border border-border text-foreground hover:border-primary hover:bg-background transition-all px-8 py-6 rounded-md font-bold text-sm lg:text-base uppercase tracking-wider"
               >
-                {t("See how we'd work", "Kā varam sadarboties")}
+                {"See how we'd work"}
               </Button>
             </div>
           </div>
@@ -79,10 +68,7 @@ const Hero = () => {
             <div className="hero-stage w-56 sm:w-72 lg:w-full lg:max-w-md mx-auto">
               <img
                 src={headshotImage}
-                alt={t(
-                  "Rihards Zeila, paid growth consultant and MBA lecturer based in Riga, Latvia",
-                  "Rihards Zeila, reklāmas konsultants un MBA lektors Rīgā",
-                )}
+                alt={"Rihards Zeila, paid growth consultant based in Riga, Latvia"}
                 loading="eager"
                 width="900"
                 height="1200"

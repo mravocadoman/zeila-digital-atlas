@@ -79,7 +79,7 @@ const getEngagements = () => [
     gfx: trainingGfx,
     title: "Team training & workshops",
     forWho: "Companies, universities, and EU-funded programs",
-    body: "The same material I teach on the Riga Business School MBA, adapted to your channels and tools. One-day intensives through semester-long modules.",
+    body: "The same material I taught on the Riga Business School MBA, adapted to your channels and tools. One-day intensives through semester-long modules.",
     price: "Per program",
     deliverables: [
       "Meta Ads intensives and multi-session courses",

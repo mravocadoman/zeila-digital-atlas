@@ -1,43 +1,43 @@
 import { useReveal } from "@/hooks/use-reveal";
 import { Link } from "react-router-dom";
-import { T, useLang } from "@/i18n/lang";
+import { useLang } from "@/i18n/lang";
 
 /**
  * The teaching CV, compressed from a 2,357px résumé into credibility for the
  * consulting offer. The exhaustive list (25+ lectures, podcasts, panels) lives
  * on /about — this is the top five, chosen for what a buyer would recognise.
  */
-const highlights = (t: T) => [
+const highlights = () => [
   {
-    org: t("Riga Business School", "Rīgas Biznesa skola"),
-    role: t("MBA Lecturer, Digital Marketing", "MBA lektors digitālajā mārketingā"),
-    period: t("2021–present", "2021–šobrīd"),
+    org: "Riga Business School",
+    role: "MBA Lecturer, Digital Marketing",
+    period: "2021–2026",
   },
   {
-    org: t("LIFT Program (EU-funded)", "LIFT programma (ES finansēta)"),
-    role: t("Course leader — Meta Ads & automation for SMEs", "Kursu vadītājs — Meta reklāma un automatizācija uzņēmējiem"),
-    period: t("2024–present", "2024–šobrīd"),
+    org: "LIFT Program (EU-funded)",
+    role: "Course leader — Meta Ads & automation for SMEs",
+    period: "2024–2026",
   },
   {
-    org: t("International Trade Centre", "Starptautiskais tirdzniecības centrs (ITC)"),
-    role: t("Workshop facilitator — Kenya, Palestine, Gambia, Jordan", "Darbnīcu vadītājs — Kenija, Palestīna, Gambija, Jordānija"),
+    org: "International Trade Centre",
+    role: "Workshop facilitator — Kenya, Palestine, Gambia, Jordan",
     period: "2019, 2023",
   },
   {
-    org: t("RISEBA University", "Augstskola RISEBA"),
-    role: t("BBA Lecturer, Social Media & Meta Ads", "BBA lektors — sociālie mediji un Meta reklāma"),
+    org: "RISEBA University",
+    role: "BBA Lecturer, Social Media & Meta Ads",
     period: "2023–2024",
   },
   {
-    org: t("University of Lusaka", "Lusakas Universitāte (Zambija)"),
-    role: t("Guest Lecturer (Erasmus+)", "Vieslektors (Erasmus+)"),
+    org: "University of Lusaka",
+    role: "Guest Lecturer (Erasmus+)",
     period: "2024",
   },
 ];
 
 const TeachingEdge = () => {
   const reveal = useReveal<HTMLElement>();
-  const { t, to } = useLang();
+  const { to } = useLang();
   return (
   <section
     id="teaching"
@@ -46,27 +46,21 @@ const TeachingEdge = () => {
   >
     <div className="max-w-6xl mx-auto grid lg:grid-cols-[1fr_1.15fr] gap-10 lg:gap-16 items-start">
       <div>
-        <span className="eyebrow block mb-4">{t("Why me", "Kāpēc tieši es")}</span>
+        <span className="eyebrow block mb-4">{"Why me"}</span>
         <h2 className="heading-elegant text-3xl lg:text-5xl mb-6">
-          {t("I teach this at MBA level. That's the difference.", "Es to mācu MBA studentiem. Tur ir atšķirība.")}
+          {"I've taught this at MBA level. That's the difference."}
         </h2>
         <p className="body-clean text-muted-foreground text-lg lg:text-xl leading-relaxed mb-4">
-          {t(
-            "Most consultants can run your ads. Far fewer can explain the reasoning clearly enough that your team can take over. That's the only version of this that leaves you better off in a year.",
-            "Reklāmas tev var palaist daudzi. Daudz retāk kāds spēj visu izskaidrot tik skaidri, lai tava komanda varētu darbu pārņemt. Un tikai tā pēc gada tu būsi labākā situācijā nekā šodien.",
-          )}
+          {"Most consultants can run your ads. Far fewer can explain the reasoning clearly enough that your team can take over. That's the only version of this that leaves you better off in a year."}
         </p>
         <p className="body-clean text-muted-foreground text-lg lg:text-xl leading-relaxed">
-          {t(
-            "I've been building the curriculum for that handover since 2021, in front of MBA students who ask hard questions and EU program participants who have to use it on Monday.",
-            "Kopš 2021. gada to mācu MBA studentiem, kas uzdod neērtus jautājumus, un ES programmu dalībniekiem, kuriem viss jāpielieto jau nākamajā pirmdienā.",
-          )}
+          {"I built the curriculum for that handover from 2021 to 2026, in front of MBA students who ask hard questions and EU program participants who have to use it on Monday."}
         </p>
       </div>
 
       <div>
         <ul className="divide-y divide-border border-y border-border">
-          {highlights(t).map((h) => (
+          {highlights().map((h) => (
             <li
               key={h.org}
               className="py-4 grid sm:grid-cols-[1fr_auto] gap-1 sm:gap-6 items-baseline"
@@ -88,7 +82,7 @@ const TeachingEdge = () => {
           to={to("/about")}
           className="body-clean inline-block mt-6 text-primary hover:text-foreground transition-colors font-semibold"
         >
-          {t("Full teaching history, career, and credentials →", "Visa pasniegšanas pieredze, karjera un izglītība →")}
+          {"Full teaching history, career, and credentials →"}
         </Link>
       </div>
     </div>

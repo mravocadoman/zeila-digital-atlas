@@ -49,7 +49,7 @@ const stats = [
   { value: "10+", label: "years in paid media" },
   { value: "$5M+", label: "ad spend managed a year" },
   { value: "20+", label: "marketing programs taught" },
-  { value: "MBA", label: "lecturer, Riga Business School" },
+  { value: "MBA", label: "lecturer, Riga Business School, 2021 to 2026" },
 ];
 
 const menu = [
