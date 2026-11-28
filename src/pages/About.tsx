@@ -16,12 +16,9 @@ import Footer from "@/components/Footer";
  * credentials all moved here intact.
  */
 const About = () => {
-  const { t, to } = useLang();
+  const { to } = useLang();
   usePageMeta(
-    t(
-      "About Rihards Zeila — career, teaching, and credentials",
-      "Par Rihardu Zeilu — karjera, lekcijas un izglītība",
-    ),
+    "About Rihards Zeila — career, teaching, and credentials",
   );
 
   useEffect(() => {
@@ -35,20 +32,14 @@ const About = () => {
         <section className="px-6 lg:px-16 pt-28 pb-10 lg:pt-36 lg:pb-14">
           <div className="max-w-6xl mx-auto grid lg:grid-cols-[1.5fr_1fr] gap-10 lg:gap-16 items-center">
             <div>
-              <span className="eyebrow block mb-4">{t("About", "Par mani")}</span>
+              <span className="eyebrow block mb-4">{"About"}</span>
               <h1 className="heading-elegant text-4xl lg:text-6xl mb-6">
-                {t(
-                  "Ten years of paid media, teaching, and a lot of airports.",
-                  "Desmit gadi reklāmā, lekciju zālēs un lidostās.",
-                )}
+                {"Twelve years of paid media, teaching, and a lot of airports."}
               </h1>
               <p className="body-clean text-muted-foreground text-lg lg:text-xl max-w-2xl leading-relaxed">
-                {t(
-                  "The full record: every lecture, workshop, panel and podcast, the career timeline, and the credentials behind it. If you're here to hire rather than to read,",
-                  "Šeit ir viss: katra lekcija, darbnīca, diskusija un podkāsts, karjeras gaita un izglītība. Ja tu meklē nevis CV, bet palīdzību savam uzņēmumam,",
-                )}{" "}
+                {"The full record: every lecture, workshop, panel and podcast, the career timeline, and the credentials behind it. If you're here to hire rather than to read,"}{" "}
                 <Link to={to("/#engagements")} className="text-primary hover:underline">
-                  {t("the work I do is over here", "sadarbības iespējas atradīsi šeit")}
+                  {"the work I do is over here"}
                 </Link>
                 .
               </p>
@@ -68,13 +59,10 @@ const About = () => {
 
         <section className="px-6 lg:px-16 py-16 lg:py-24 bg-sunken">
           <div className="max-w-3xl mx-auto">
-            <span className="eyebrow block mb-4">{t("One more reference", "Vēl viena atsauksme")}</span>
+            <span className="eyebrow block mb-4">{"One more reference"}</span>
             <figure>
               <blockquote className="body-clean text-muted-foreground text-lg lg:text-xl leading-relaxed mb-5">
-                &ldquo;{t(
-                  "Goal-oriented, brave and active professional who always strives for growth and development, while maintaining the belief that work should bring joy and be interesting. Rihards has excellent sales and persuasion skills. He creates a pleasant, open and friendly first impression.",
-                  "Mērķtiecīgs, drosmīgs un aktīvs profesionālis, kurš vienmēr grib augt un uzskata, ka darbam jābūt interesantam un jāsagādā prieks. Rihardam ir izcilas pārdošanas un pārliecināšanas prasmes, un jau pirmajā tikšanās reizē viņš atstāj patīkamu, atvērtu un draudzīgu iespaidu.",
-                )}&rdquo;
+                &ldquo;{"Goal-oriented, brave and active professional who always strives for growth and development, while maintaining the belief that work should bring joy and be interesting. Rihards has excellent sales and persuasion skills. He creates a pleasant, open and friendly first impression."}&rdquo;
               </blockquote>
               <figcaption className="body-clean">
                 <span className="font-semibold text-foreground">Evita Jaunozola</span>
@@ -87,13 +75,13 @@ const About = () => {
         <section className="px-6 lg:px-16 py-16 lg:py-24">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="heading-elegant text-2xl lg:text-4xl mb-6">
-              {t("Got what you came for?", "Atradi, ko meklēji?")}
+              {"Got what you came for?"}
             </h2>
             <Link
               to={to("/#contact")}
               className="body-clean inline-block bg-primary text-background px-8 py-4 rounded-md font-bold text-sm lg:text-base uppercase tracking-wider hover:bg-primary/90 transition-colors"
             >
-              {t("Book a consultation", "Pieteikties konsultācijai")}
+              {"Book a consultation"}
             </Link>
           </div>
         </section>

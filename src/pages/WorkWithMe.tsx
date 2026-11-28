@@ -287,7 +287,7 @@ const WorkWithMe = () => {
               )}
             </h1>
             <p className="text-lg md:text-xl wwm-muted leading-relaxed max-w-2xl">
-              {"Taught on the Riga Business School MBA from 2021 to 2026. Led courses for the EU-funded LIFT program. Workshop facilitator for the International Trade Centre. Ten years in the trenches, up to $5M/year of ad spend managed, packaged into training your team will use on Monday morning."}
+              {"Taught on the Riga Business School MBA from 2021 to 2026. Led courses for the EU-funded LIFT program. Workshop facilitator for the International Trade Centre. Twelve years in the trenches, up to $5M/year of ad spend managed, packaged into training your team will use on Monday morning."}
             </p>
             <div className="flex flex-wrap gap-3 pt-2">
               <button onClick={scrollToForm} className="wwm-cta px-6 py-3 inline-flex items-center gap-2">

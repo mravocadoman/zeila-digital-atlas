@@ -8,68 +8,68 @@ import retainerGfx from "@/assets/gfx/retainer.webp";
 import trainingGfx from "@/assets/gfx/training.webp";
 
 /**
- * Only the fractional retainer publishes figures: Advisor and Operator, for companies
- * spending EUR 20K+ a month on ads (Rihards, 2026-11-21; the two-day Embedded tier was
- * dropped the same day until a first Operator client renews). Keep the pricing answer
- * in FAQ.tsx in step with any change here.
+ * The AI marketing team offer (Rihards, 2026-11-28, from the Founder OS foundations doc): a first helper, the team
+ * build, then run-and-improve. Only the retainer publishes figures (lowered to European rates on 2026-11-28); the
+ * first helper and the build are quoted by scope until Rihards confirms prices. Keep the pricing answer in FAQ.tsx
+ * in step with any change here.
  */
 const getEngagements = () => [
   {
     kind: "Advisory",
     gfx: advisoryGfx,
-    title: "Strategy consulting",
-    forWho: "Founders and marketing leads with a decision to make",
-    body: "You don't need another pair of hands in the account. You need someone who has already made this mistake. Channel strategy, budget allocation, agency decisions, whether to build in-house.",
-    price: "Per session or day rate",
+    title: "AI strategy session",
+    forWho: "Founders and marketing leads deciding what to automate",
+    body: "We go through a week of your marketing work and decide what a helper should do, what to cut, and what stays with a person.",
+    price: "Per session",
     deliverables: [
-      "Working sessions on the decision in front of you",
-      "A written recommendation you can take to the board",
-      "Follow-up while you act on it, not just the one call",
+      "Your week mapped, with the hours each job takes",
+      "The first three helpers worth building, in order",
+      "What stays in human hands, and why",
     ],
     featured: false,
   },
   {
     kind: "Fixed scope",
     gfx: auditGfx,
-    title: "Account audit",
-    forWho: "Brands already spending, unsure where it leaks",
-    body: "I go through the ad account, tracking setup, and funnel, then tell you what's costing you money, in priority order.",
-    price: "Fixed fee · 1–2 weeks",
+    title: "First helper",
+    forWho: "Teams that want to see it work before committing",
+    body: "One helper built for your account in a week, usually the morning ad check: real orders against what the platform reports, losing campaigns flagged, five lines on why.",
+    price: "Fixed fee · 1 week",
     deliverables: [
-      "Written findings on account structure, creative, and measurement",
-      "A prioritised fix list, most expensive problem first",
-      "A 90-minute call to walk your team through it",
+      "One helper live on your account",
+      "Its rules written down in plain words",
+      "A walk-through so your team can change them",
     ],
     featured: false,
   },
   {
     kind: "Project",
     gfx: buildGfx,
-    title: "Build & handover",
-    forWho: "Teams that need the system built once, properly",
-    body: "The core engagement. I build the campaign structure, funnel, and tracking, run it until the numbers are stable, then hand it over documented so your team owns it.",
-    price: "Project fee · 6–12 weeks",
+    title: "AI marketing team",
+    forWho: "Teams spending their week on reporting, posting and follow-ups",
+    body: "The core engagement. Four to six helpers mapped, built and tested on your accounts: the ad checks, the content pipeline, lead routing and follow-up drafts, with a second AI checking anything a customer sees. Then I hand it to your team.",
+    price: "Project fee · 4–6 weeks",
     deliverables: [
-      "Campaign and funnel architecture, built and live",
-      "Tracking and reporting your team can read",
-      "SOPs and a handover session, so you keep running it",
+      "Four to six helpers, built and live",
+      "Written rules and alerts for each one",
+      "A handover session, so your team runs it",
     ],
     featured: true,
   },
   {
     kind: "Ongoing",
     gfx: retainerGfx,
-    title: "Fractional growth lead",
-    forWho: "Companies spending €20K+ a month on ads, or with a growth target to match",
-    body: "Monthly, at two depths: a senior second opinion before you spend, or one growth system built and run for you, then handed to your team.",
+    title: "Run and improve",
+    forWho: "Teams that want the helpers watched and growing",
+    body: "Monthly, at two depths: a senior second opinion on what the helpers report, or me in the system every week, adding helpers and tuning the rules.",
     price: "Monthly retainer, 3-month minimum",
     tiers: [
       { name: "Advisor", scope: "half a day a week", amount: "€1,200/mo" },
       { name: "Operator", scope: "one day a week", amount: "€2,400/mo" },
     ],
     deliverables: [
-      "Weekly working sessions with your marketers",
-      "Ad account reviews and scaling decisions",
+      "A weekly review of what the helpers caught",
+      "New helpers as your team finds more repetitive work",
       "On call for the decisions that cost money",
     ],
     featured: false,
@@ -79,11 +79,11 @@ const getEngagements = () => [
     gfx: trainingGfx,
     title: "Team training & workshops",
     forWho: "Companies, universities, and EU-funded programs",
-    body: "The same material I taught on the Riga Business School MBA, adapted to your channels and tools. One-day intensives through semester-long modules.",
+    body: "Your team learns to build its own helpers with Claude and n8n, from the same material I taught on the Riga Business School MBA. One-day workshops through multi-session courses.",
     price: "Per program",
     deliverables: [
-      "Meta Ads intensives and multi-session courses",
-      "Custom MBA / BBA modules with assessments",
+      "Workshops where each person builds a working helper",
+      "Meta ads intensives and multi-session courses",
       "Recordings and playbooks so it sticks",
     ],
     featured: false,
@@ -200,7 +200,7 @@ const Engagements = () => {
           {"Five ways to work together."}
         </h2>
         <p className="body-clean text-muted-foreground text-lg lg:text-xl max-w-2xl mb-8 lg:mb-10">
-          {"Every one of them ends with your team able to run the thing themselves. That's the point of the work, and it is included."}
+          {"Every one of them ends with your team running the helpers themselves. That handover is the point of the work, and it is included."}
         </p>
 
         <div className="border-b border-border">

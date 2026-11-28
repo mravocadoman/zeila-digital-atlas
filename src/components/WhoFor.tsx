@@ -1,34 +1,24 @@
 import { useReveal } from "@/hooks/use-reveal";
-import { T, useLang } from "@/i18n/lang";
 
 import scalingGfx from "@/assets/gfx/scaling.webp";
 import plateauGfx from "@/assets/gfx/plateau.webp";
 import systemGfx from "@/assets/gfx/system.webp";
 
-const audiences = (t: T) => [
+const audiences = () => [
   {
     gfx: scalingGfx,
-    title: t("E-commerce brands scaling up", "E-veikali, kas aug"),
-    body: t(
-      "You're spending real money, €20k a month and climbing, and the returns are getting less predictable as the budget grows. Nine times in ten the fix is in the account structure and the tracking, before anyone touches the creative.",
-      "Reklāmā tu jau iegulda nopietnu naudu, €20k mēnesī un vairāk, bet, budžetam augot, rezultātu kļūst arvien grūtāk paredzēt. Deviņos gadījumos no desmit problēma ir kampaņu struktūrā un mērīšanā, nevis pašās reklāmās.",
-    ),
+    title: "E-commerce brands spending on ads",
+    body: "You spend real money on ads and someone checks the numbers by hand, often days late. A morning check against real orders catches the losing campaign the next day, with five lines on why.",
   },
   {
     gfx: plateauGfx,
-    title: t("SMEs stuck at a plateau", "Uzņēmumi, kas iestrēguši uz vietas"),
-    body: t(
-      "Ads work sometimes and you can't say why. There's no funnel behind the traffic and no reliable way to tell which euro did the work.",
-      "Reklāmas reizēm nostrādā, bet nav skaidrs, kāpēc. Aiz tām nav pārdošanas piltuves, un nav iespējams pateikt, kurš iztērētais eiro atnesa klientu.",
-    ),
+    title: "Small teams doing everything",
+    body: "One to five marketers doing the reporting, the posting, the lead follow-ups and the ads. The repetitive half of that week can run on its own, with a person approving what matters.",
   },
   {
     gfx: systemGfx,
-    title: t("In-house teams without a system", "Mārketinga komandas bez sistēmas"),
-    body: t(
-      "You have marketers, not a machine. You want the process written down and the team able to run it, so you are never locked into an agency again.",
-      "Cilvēki tev ir, sistēmas nav. Gribi, lai process ir pierakstīts un komanda to vada pati, lai vairs nebūtu jāpaļaujas uz kārtējo aģentūru.",
-    ),
+    title: "Teams that tried AI and stopped trusting it",
+    body: "You asked a chatbot for a campaign plan and couldn't tell whether the answer was right. Helpers built on written rules, by someone who has bought ads for 12 years, give answers you can check.",
   },
 ];
 
@@ -73,7 +63,6 @@ const AudienceCard = ({
 
 const WhoFor = () => {
   const reveal = useReveal<HTMLElement>();
-  const { t } = useLang();
 
   return (
     <section
@@ -82,19 +71,16 @@ const WhoFor = () => {
       className={`py-12 lg:py-24 px-6 lg:px-16 section-rule ${reveal.className}`}
     >
       <div className="max-w-6xl mx-auto">
-        <span className="eyebrow block mb-4">{t("Who this is for", "Kam es palīdzu")}</span>
+        <span className="eyebrow block mb-4">{"Who this is for"}</span>
         <h2 className="heading-elegant text-3xl lg:text-5xl mb-4 max-w-3xl">
-          {t("Three situations where I earn my fee.", "Trīs situācijas, kurās esmu savas naudas vērts.")}
+          {"Three teams these helpers pay for themselves in."}
         </h2>
         <p className="body-clean text-muted-foreground text-lg lg:text-xl max-w-2xl mb-8 lg:mb-12">
-          {t(
-            "If none of these sound like you, say so in the form anyway. I'll tell you straight if it isn't a fit.",
-            "Ja neatpazīsti sevi nevienā no tām, tāpat uzraksti, un godīgi pateikšu, vai varu palīdzēt.",
-          )}
+          {"If none of these sound like you, say so in the form anyway. I'll tell you straight if it isn't a fit."}
         </p>
 
         <div className="grid md:grid-cols-3 gap-4 lg:gap-6">
-          {audiences(t).map((a) => (
+          {audiences().map((a) => (
             <AudienceCard key={a.title} {...a} />
           ))}
         </div>

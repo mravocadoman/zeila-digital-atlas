@@ -4,7 +4,7 @@ import { FaTiktok } from "react-icons/fa";
 import { useLang } from "@/i18n/lang";
 
 const Footer = () => {
-  const { lang, t, to } = useLang();
+  const { to } = useLang();
   return (
     <footer className="py-8 lg:py-12 px-6 border-t border-border">
       <div className="max-w-7xl mx-auto">
@@ -13,44 +13,41 @@ const Footer = () => {
           <div className="animate-fade-in" style={{ animationDelay: '0.1s', animationFillMode: 'both' }}>
             <h3 className="heading-elegant text-large mb-4">Rihards Zeila</h3>
             <p className="body-clean text-body text-muted-foreground leading-relaxed">
-              {t(
-                "I help you make money from ads and teach your team to run it themselves.",
-                "Palīdzu tev nopelnīt ar reklāmu un iemācu komandai to darīt pašai.",
-              )}
+              {"I build the AI helpers that run your marketing, then hand them to your team."}
             </p>
           </div>
 
           {/* Quick Links */}
           <div className="animate-fade-in" style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>
-            <h4 className="body-clean font-semibold mb-4 text-large">{t("Quick Links", "Navigācija")}</h4>
+            <h4 className="body-clean font-semibold mb-4 text-large">{"Quick Links"}</h4>
             <nav className="space-y-2">
               <Link to={to("/#engagements")} className="body-clean text-body text-muted-foreground hover:text-foreground transition-colors block">
-                {t("What you get", "Pakalpojumi")}
+                {"What you get"}
               </Link>
               <Link to={to("/#case-studies")} className="body-clean text-body text-muted-foreground hover:text-foreground transition-colors block">
-                {t("Case studies", "Rezultāti")}
+                {"Case studies"}
               </Link>
               <Link to={to("/#faq")} className="body-clean text-body text-muted-foreground hover:text-foreground transition-colors block">
-                {t("FAQ", "Jautājumi")}
+                {"FAQ"}
               </Link>
               <Link to={to("/work-with-me")} className="body-clean text-body text-muted-foreground hover:text-foreground transition-colors block">
-                {t("Training & workshops", "Apmācības un darbnīcas")}
+                {"Training & workshops"}
               </Link>
                               <Link to="/blog" className="body-clean text-body text-muted-foreground hover:text-foreground transition-colors block">
                   Blog
                 </Link>
               <Link to={to("/about")} className="body-clean text-body text-muted-foreground hover:text-foreground transition-colors block">
-                {t("About & full CV", "Par mani un CV")}
+                {"About & full CV"}
               </Link>
               <Link to={to("/#contact")} className="body-clean text-body text-muted-foreground hover:text-foreground transition-colors block">
-                {t("Contact", "Kontakti")}
+                {"Contact"}
               </Link>
             </nav>
           </div>
 
           {/* Contact & Social */}
           <div className="animate-fade-in" style={{ animationDelay: '0.3s', animationFillMode: 'both' }}>
-            <h4 className="body-clean font-semibold mb-4 text-large">{t("Connect", "Sazināties")}</h4>
+            <h4 className="body-clean font-semibold mb-4 text-large">{"Connect"}</h4>
             <div className="space-y-3 mb-6">
               <a href="mailto:rihards.zeila@gmail.com" className="flex items-center gap-2 text-body text-muted-foreground hover:text-foreground transition-colors">
                 <Mail className="w-5 h-5" />
@@ -105,10 +102,10 @@ const Footer = () => {
 
         <div className="pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="body-clean text-body text-muted-foreground">
-            © 2026 Rihards Zeila. {t("All rights reserved.", "Visas tiesības aizsargātas.")}
+            © 2026 Rihards Zeila. {"All rights reserved."}
           </p>
           <p className="body-clean text-body text-muted-foreground">
-            {t("Designed by", "Izstrādāja")}{" "}
+            {"Designed by"}{" "}
             <a 
               href="https://marketingaskola.lv" 
               target="_blank" 

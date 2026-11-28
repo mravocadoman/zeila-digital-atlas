@@ -15,8 +15,10 @@ npm run lint
 
 Five routes in `src/App.tsx`, English only (see Languages), plus a NotFound catch-all:
 
-- `/` — the consultation-led homepage (`pages/Index.tsx`). Section order matters: it
-  runs offer → proof → process → credibility → close.
+- `/` — the homepage (`pages/Index.tsx`), rebuilt 2026-11-28 around one offer: "AI marketing team,
+  installed" (helpers built for a client's team, then handed over). The account audit offer is gone; the
+  ladder is strategy session → first helper → AI marketing team → run and improve → training. Section order
+  matters: it runs offer → proof → process → credibility → close.
 - `/about` — everything CV-shaped that doesn't sell a consultation: SpeakingTeaching,
   Timeline, Credentials. Nothing was deleted in the 2026-09-09 rebuild, it moved here.
 - `/work-with-me` — the training landing page, kept as a subordinate deep link for
@@ -243,7 +245,7 @@ that lifted the strip from 2.40:1 to 12.85:1 contrast. Don't drop the invert.
 - `dist/assets/main-*.js` is ~806 kB, one chunk. The blog (marked + articles) is lazy-loaded into its own chunk so other pages never download it; keep it that way when adding articles.
 - **Analytics are env-gated.** `src/lib/analytics.ts` injects GA4 only when
   `VITE_GA4_ID` is set in `.env`. It's empty, so nothing is measured yet.
-- **Only the fractional retainer is priced.** The Fractional growth lead row in `Engagements.tsx`
+- **Only the retainer is priced.** The "Run and improve" row in `Engagements.tsx`
   publishes two tiers, Advisor EUR 1,200 and Operator EUR 2,400 a month (3-month minimum), for companies
   spending EUR 20K+ a month on ads; the FAQ pricing answer states the same. Lowered from EUR 2,400 / 5,000 on
   2026-11-28 (Rihards: "adjust these prices down to European prices, I'm not nearly well known"), about EUR 550

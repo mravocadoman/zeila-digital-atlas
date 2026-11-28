@@ -21,8 +21,8 @@ const Index = () => {
   const { hash } = useLocation();
 
   usePageMeta(
-    "Rihards Zeila — Paid Growth Consultant, Riga",
-    "I build paid-growth systems for e-commerce and SME teams, then train the team to run them. Taught on the Riga Business School MBA, 2021 to 2026. $5M+ annual ad spend managed.",
+    "Rihards Zeila — AI Marketing Teams, Riga",
+    "I build the AI helpers that run your marketing: a morning ad check against real orders, the content pipeline, lead routing. 12 years buying ads, up to $5M a year.",
   );
 
   // Arriving from /about with /#engagements etc.

@@ -12,7 +12,7 @@ const ISSUE = [
   ["A story from the week", "Something that happened in an ad account I run, with the numbers, told the way it happened."],
   ["One system", "The setup behind it: the rule, the prompt or the automation, explained so you can copy it."],
   ["Two or three useful links", "What changed in Meta ads or in AI tools that week, and whether it matters for your account."],
-  ["One invitation, at most", "When I have something worth inviting you to, a guide, an audit slot or a call, it is in one clearly marked place."],
+  ["One invitation, at most", "When I have something worth inviting you to, a guide, a first-helper slot or a call, it is in one clearly marked place."],
 ];
 
 const FAQ = [

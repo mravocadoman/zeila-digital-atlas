@@ -1,7 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import headshotImage from "@/assets/rihards-headshot.webp";
 
 const Hero = () => {
+  const navigate = useNavigate();
   const scrollTo = (id: string) =>
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
@@ -14,27 +16,27 @@ const Hero = () => {
               className="eyebrow block mb-5 rise"
               style={{ animationDelay: "0.05s" }}
             >
-              {"Paid growth consulting · Riga"}
+              {"AI marketing teams · Riga"}
             </span>
 
             <h1
               className="heading-elegant text-foreground text-4xl sm:text-5xl lg:text-6xl leading-[1.08] mb-6 rise"
               style={{ animationDelay: "0.15s" }}
             >
-              {"I help you make money from ads and teach your team to run it themselves."}
+              {"I build the AI helpers that run your marketing, then hand them to your team."}
             </h1>
 
             <p
               className="body-clean text-muted-foreground text-lg lg:text-xl leading-relaxed max-w-xl mb-4 rise"
               style={{ animationDelay: "0.28s" }}
             >
-              {"I sort out the ad account, the funnel and the tracking. After that your team runs it."}
+              {"Every morning an AI checks your ads against real orders and tells you what is losing money. Posts go out on their own, leads get routed, quiet clients get a follow-up draft, and a person approves what matters."}
             </p>
             <p
               className="body-clean text-muted-foreground text-lg lg:text-xl leading-relaxed max-w-xl mb-8 rise"
               style={{ animationDelay: "0.36s" }}
             >
-              {"Ten years in the industry and up to $5M a year in ad spend. I taught digital marketing on the Riga Business School MBA from 2021 to 2026. I work with e-commerce brands, SMEs and in-house marketing teams."}
+              {"I have bought ads for 12 years, up to $5M a year, and I run two businesses on 40+ of these helpers. I taught digital marketing on the Riga Business School MBA from 2021 to 2026."}
             </p>
 
             <div
@@ -43,10 +45,10 @@ const Hero = () => {
             >
               <Button
                 size="lg"
-                onClick={() => scrollTo("contact")}
+                onClick={() => navigate("/apply?from=hero")}
                 className="bg-primary text-background hover:bg-primary/90 transition-all px-8 py-6 rounded-md font-bold text-sm lg:text-base uppercase tracking-wider"
               >
-                {"Book a consultation"}
+                {"Apply to work with me"}
               </Button>
               <Button
                 size="lg"
@@ -54,7 +56,7 @@ const Hero = () => {
                 onClick={() => scrollTo("engagements")}
                 className="bg-background border border-border text-foreground hover:border-primary hover:bg-background transition-all px-8 py-6 rounded-md font-bold text-sm lg:text-base uppercase tracking-wider"
               >
-                {"See how we'd work"}
+                {"See what the helpers do"}
               </Button>
             </div>
           </div>
@@ -68,7 +70,7 @@ const Hero = () => {
             <div className="hero-stage w-56 sm:w-72 lg:w-full lg:max-w-md mx-auto">
               <img
                 src={headshotImage}
-                alt={"Rihards Zeila, paid growth consultant based in Riga, Latvia"}
+                alt={"Rihards Zeila, who builds AI marketing teams, based in Riga, Latvia"}
                 loading="eager"
                 width="900"
                 height="1200"

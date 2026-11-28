@@ -7,22 +7,21 @@ import {
 } from "@/components/ui/accordion";
 
 /**
- * The pricing answer states the two fractional retainer tiers published in
- * Engagements.tsx. Audits, projects and training are still priced by shape;
- * keep both files in step.
+ * The pricing answer states the run-and-improve retainer published in Engagements.tsx. The first helper, the team
+ * build and training are priced by scope; keep both files in step.
  */
 const faqs = () => [
   {
     q: "How does pricing work?",
-    a: "Audits are a fixed fee. Projects are quoted as a fixed project price once the scope is written, so the number doesn't move mid-engagement. The fractional retainer has two published levels: €1,200 or €2,400 a month, for half a day or one day a week, with a three-month minimum. It suits companies spending €20K+ a month on ads, or with a growth target to match. Training is priced per program. You get every price in writing after the discovery call, before any work starts. I don't do hourly.",
+    a: "The first helper is a fixed fee, agreed after a short call. The AI marketing team build is quoted as one fixed project price once your week is mapped, so the number doesn't move mid-build. Run and improve has two published levels: €1,200 or €2,400 a month, for half a day or one day a week, with a three-month minimum. Training is priced per program. You get every price in writing before any work starts. I don't do hourly.",
   },
   {
-    q: "Do you take over our ad account, or work through our team?",
-    a: "Through your team wherever possible. I'll work directly in the account during a build, but your people keep access and watch the reasoning as it happens. The handover is the deliverable, so a black box would defeat it.",
+    q: "Will an AI be making changes in our ad account?",
+    a: "Only inside rules you have read and agreed to, and the first helpers change nothing at all: they check the numbers and report. Anything that moves budget, pauses ads or reaches a customer has a written rule, a person who approves it, or both. Your people keep access and can switch any helper off.",
   },
   {
-    q: "What's the minimum ad spend for this to be worth it?",
-    a: "Roughly €10k a month, or a credible plan to get there. Below that the constraint is usually offer and creative volume rather than account structure, and you'd be paying me to fix the wrong thing.",
+    q: "Which tools do the helpers run on?",
+    a: "Mostly Claude and n8n, connected to the tools you already use: Meta and Google ads, your shop or CRM, Notion or Sheets, email and Telegram or Slack. Where your data stays and who can see it is agreed before anything is built.",
   },
   {
     q: "Remote, in person, or both?",
@@ -34,7 +33,7 @@ const faqs = () => [
   },
   {
     q: "How fast can you start?",
-    a: "Audits usually within two weeks. Build projects depend on the current book. I'll tell you honestly on the discovery call. I reply to enquiries within two business days.",
+    a: "The first helper usually within two weeks. Team builds depend on the current book, and I'll tell you on the first call. I reply to applications within one working day.",
   },
 ];
 

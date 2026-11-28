@@ -13,7 +13,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { postForm } from "@/lib/api";
 
 // One application for consulting (Founder OS: all roads lead to one application). Spend is asked first and routes:
-// under €10K to free resources, €10K to €20K to the audit, €20K+ to a fit call. `?from=` tags where they came from.
+// under €10K to free resources, €10K to €20K to the first helper, €20K+ to a fit call. `?from=` tags where they came from.
 const Apply = () => {
   usePageMeta(
     "Apply | Rihards Zeila",
@@ -103,8 +103,8 @@ const Apply = () => {
 
               {route === "audit" && (
                 <p className="body-clean text-muted-foreground border-l-2 border-primary pl-4">
-                  At €10K to €20K a month, the fixed-fee account audit is usually the right first step. Apply and we will
-                  look at whether that or the retainer fits.
+                  At €10K to €20K a month, a first helper built in a week is usually the right first step. Apply and we
+                  will look at whether that or a full team build fits.
                 </p>
               )}
 
@@ -127,9 +127,9 @@ const Apply = () => {
                   <div>
                     <h2 className="heading-elegant text-2xl mb-2">At this budget, start with the free guides</h2>
                     <p className="body-clean text-muted-foreground">
-                      My consulting is built for accounts spending €20K or more a month, so it would cost you more than
-                      it saves. These guides cover what I would tell you first, and if you want a second pair of eyes on
-                      the account, a fixed-fee audit is the smaller step.
+                      A full AI marketing team is built for teams spending €20K or more a month on ads, so it would cost
+                      you more than it saves. These guides show how to build your first helper yourself, and if you want
+                      one built for you, a single helper in a week is the smaller step.
                     </p>
                   </div>
                   <ul className="flex flex-col gap-2">
@@ -139,7 +139,7 @@ const Apply = () => {
                       </li>
                     ))}
                   </ul>
-                  <Link to="/#contact" className="body-clean underline decoration-primary underline-offset-4 self-start">Ask about an audit</Link>
+                  <Link to="/#contact" className="body-clean underline decoration-primary underline-offset-4 self-start">Ask about a first helper</Link>
                   <NewsletterSignup source="apply-under-10k" compact />
                 </div>
               )}
