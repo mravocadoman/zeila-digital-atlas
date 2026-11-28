@@ -46,6 +46,8 @@ export default defineConfig(() => ({
   server: {
     host: "::",
     port: 8080,
+    // The form endpoints are PHP (public/api). Run `npm run api` beside `npm run dev` to try the forms locally.
+    proxy: { "/api": "http://localhost:8090" },
   },
   plugins: [react(), blogPreviews()],
   build: {

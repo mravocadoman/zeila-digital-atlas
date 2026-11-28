@@ -169,12 +169,20 @@ the thing that was removed on purpose.
 
 ## Backend
 
-Supabase project `nxbphdutlskrslzbcknd`. **No database tables** — the only backend is
-one edge function, `supabase/functions/send-contact-email`, which the contact form calls
-via `supabase.functions.invoke`. It sends through Resend using the `RESEND_API_KEY`
-secret set in the Supabase dashboard (not in this repo).
+**No Lovable, no Supabase since 2026-11-28** (Rihards: "let's move completely away from lovable"). The forms post to
+three PHP files in `public/api/`, which Vite copies into `dist/` and the deploy rsyncs to SiteGround (PHP 8.2):
 
-Deploy it with `supabase functions deploy send-contact-email` after `supabase link`.
+- `contact.php` (contact form and /work-with-me), `apply.php` (/apply) mail Rihards at rihards.zeila@gmail.com through
+  SiteGround's own `mail()`, from forms@rihardszeila.com with the visitor as Reply-To.
+- `newsletter.php` adds the reader to the Sender group "Rihards Zeila (EN)" (`dN2qwz`) through the Sender API.
+- `_rz.php` holds the shared validation and the Sender call; `.htaccess` refuses to serve anything under `api/_`.
+- The only secret, `SENDER_API_TOKEN`, is a GitHub Actions secret. The deploy writes it to `rz-secrets.json` in the
+  folder above `public_html`, which the web cannot reach and rsync never touches. Rihards sets it with
+  `gh secret set SENDER_API_TOKEN` (it reads the value from stdin; never paste it in chat).
+- Checks: `php tests/api.test.php` (validation and the Sender logic with a fake HTTP call). Local forms: `npm run api`
+  (php -S on 8090) beside `npm run dev`, which proxies `/api`.
+- The old Lovable Cloud project (Supabase `nxbphdutlskrslzbcknd`, Lovable project 8429d805) is no longer called by
+  anything; delete it in Lovable once the new endpoints are live.
 
 ## Photography
 
@@ -199,9 +207,8 @@ that lifted the strip from 2.40:1 to 12.85:1 contrast. Don't drop the invert.
 
 ## Gotchas
 
-- **`.env` is committed on purpose.** It holds only `VITE_`-prefixed values — the Supabase
-  URL, project ref, and the `anon` key — all of which Vite bakes into the client bundle
-  anyway. Nothing secret is in it; don't "fix" it by gitignoring, that just breaks builds.
+- **`.env` is committed on purpose.** It holds only `VITE_`-prefixed values (today just the empty GA4 id), which
+  Vite bakes into the client bundle anyway. Nothing secret is in it; don't "fix" it by gitignoring.
 - **Hosting is SiteGround, deployed by GitHub Actions on every push to `main`** (since 2026-10-26;
   Lovable retired, it was too expensive for what it did). `.github/workflows/deploy.yml` runs these steps:
   1. `npm ci`, the two blog checks and `npm run build`.
@@ -237,8 +244,10 @@ that lifted the strip from 2.40:1 to 12.85:1 contrast. Don't drop the invert.
 - **Analytics are env-gated.** `src/lib/analytics.ts` injects GA4 only when
   `VITE_GA4_ID` is set in `.env`. It's empty, so nothing is measured yet.
 - **Only the fractional retainer is priced.** The Fractional growth lead row in `Engagements.tsx`
-  publishes two tiers, Advisor EUR 2,400 and Operator EUR 5,000 a month (3-month minimum), for companies
-  spending EUR 20K+ a month on ads; the FAQ pricing answer states the same. A two-day Embedded tier
+  publishes two tiers, Advisor EUR 1,200 and Operator EUR 2,400 a month (3-month minimum), for companies
+  spending EUR 20K+ a month on ads; the FAQ pricing answer states the same. Lowered from EUR 2,400 / 5,000 on
+  2026-11-28 (Rihards: "adjust these prices down to European prices, I'm not nearly well known"), about EUR 550
+  per working day. A two-day Embedded tier
   (EUR 10,500) was published and withdrawn on 2026-11-21 until a first Operator client renews. Audits,
   projects, strategy and training stay priced by shape. Change figures only on Rihards' word, in both files.
 - The homepage is ~12,900 px at 375 px wide. That's *longer* than the pre-rebuild

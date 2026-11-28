@@ -55,5 +55,20 @@ If they want the deep version, it is there, folded away at the end, for their de
 
 ## The end of every article
 
-The page itself adds the "Book a consultation" box and the other articles. The article ends on "Start here
-today" or the developer section, never on a sales line.
+The page itself adds the invitation box and the other articles. The article ends on "Start here today" or the
+developer section, never on a sales line. The box is picked by `cta` in the front matter: `consult` (the default),
+`audit` (the fixed-fee audit, for readers who are not ready for a retainer) or `newsletter`. Every article also gets
+the one-line newsletter signup above "More articles", unless its `cta` is already the newsletter.
+
+## Packaging (articles dated after 28 Nov 2026)
+
+From the Founder OS course: the title, description and preview image are decided before the body, and an article is
+found through one keyphrase. `node scripts/check-articles.mjs` enforces the first three:
+
+- **Title of 55 characters or fewer**, so search results show it whole.
+- **One keyphrase** of two words or more, used in the slug, the title, the description, the first paragraph and the
+  preview image's alt text. The check looks for two consecutive slug words in the description.
+- **A `cta` line** in the front matter, chosen on purpose for this article.
+- **One offer in the middle**, once the reader has had the first useful step: a single sentence pointing at the
+  matching box at the end, never a link to a sales page.
+- **Read next**: the last line of "Start here today" names the one article to read after this one.

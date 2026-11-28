@@ -21,6 +21,12 @@ assert.equal(parseArticle("x", head + '<div class="callout">' + "w ".repeat(220)
 assert.equal(parseArticle("x", head.replace("---\n", "---\norder: 3\n") + "w").order, 3);
 assert.throws(() => parseArticle("x", head.replace("description: D\n", "") + "w"), /x: missing description/);
 
+// the call to action under the article: consultation unless the front matter picks another
+assert.equal(a.cta, "consult");
+assert.equal(parseArticle("x", head.replace("---\n", "---\ncta: audit\n") + "w").cta, "audit");
+assert.equal(parseArticle("x", head.replace("---\n", "---\ncta: newsletter\n") + "w").cta, "newsletter");
+assert.throws(() => parseArticle("x", head.replace("---\n", "---\ncta: webinar\n") + "w"), /x: unknown cta webinar/);
+
 // newest first, then order; input untouched
 const mk = (date: string, order: number) => ({ ...a, date, order });
 const list = [mk("2026-10-26", 2), mk("2026-10-26", 1), mk("2026-11-01", 5)];

@@ -11,6 +11,8 @@ import Retreats from "./pages/Retreats";
 // The blog (marked + every article) loads only when someone opens it, not on every page.
 const Blog = lazy(() => import("./pages/Blog"));
 const BlogArticle = lazy(() => import("./pages/BlogArticle"));
+const Newsletter = lazy(() => import("./pages/Newsletter"));
+const Apply = lazy(() => import("./pages/Apply"));
 import NotFound from "./pages/NotFound";
 
 /** /lv/about -> /about, /lv -> /, keeping any #section. .htaccess does the same with a 301. */
@@ -37,6 +39,8 @@ const App = () => (
           {/* English only; Latvian articles live on marketingaskola.lv/blogs */}
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogArticle />} />
+          <Route path="/newsletter" element={<Newsletter />} />
+          <Route path="/apply" element={<Apply />} />
           {/* The Latvian mirror is gone (2026-11-21); old /lv links land on the English page */}
           <Route path="/lv/*" element={<FromLatvian />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

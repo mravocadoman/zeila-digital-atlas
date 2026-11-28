@@ -14,7 +14,7 @@ import {
 const faqs = () => [
   {
     q: "How does pricing work?",
-    a: "Audits are a fixed fee. Projects are quoted as a fixed project price once the scope is written, so the number doesn't move mid-engagement. The fractional retainer has two published levels: €2,400 or €5,000 a month, for half a day or one day a week, with a three-month minimum. It suits companies spending €20K+ a month on ads, or with a growth target to match. Training is priced per program. You get every price in writing after the discovery call, before any work starts. I don't do hourly.",
+    a: "Audits are a fixed fee. Projects are quoted as a fixed project price once the scope is written, so the number doesn't move mid-engagement. The fractional retainer has two published levels: €1,200 or €2,400 a month, for half a day or one day a week, with a three-month minimum. It suits companies spending €20K+ a month on ads, or with a growth target to match. Training is priced per program. You get every price in writing after the discovery call, before any work starts. I don't do hourly.",
   },
   {
     q: "Do you take over our ad account, or work through our team?",

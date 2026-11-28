@@ -46,6 +46,8 @@ jobs:
         run: |
           npm ci
           node src/lib/blog-core.test.ts
+          node src/lib/apply-core.test.ts
+          php tests/api.test.php
           node scripts/check-articles.mjs
           npm run build
           test -f dist/.htaccess && test -f dist/blog/meta-ads-seven-rules/index.html
@@ -67,6 +69,18 @@ jobs:
             echo "ssh attempt $i failed; retrying in 20s"; sleep 20
             [ "$i" = 5 ] && { echo "::error::could not reach $SG_HOST:$SG_PORT"; exit 1; }
           done
+
+      - name: Write the form endpoints' secrets
+        if: env.HAS_SG == 'true'
+        env:
+          SENDER_API_TOKEN: ${{ secrets.SENDER_API_TOKEN }}
+        run: |
+          # public/api/newsletter.php reads rz-secrets.json from the folder above the web root, which the
+          # web cannot serve and rsync --delete never touches. The token lives only in this repo secret.
+          if [ -z "$SENDER_API_TOKEN" ]; then echo "::warning::No SENDER_API_TOKEN secret: newsletter signups will answer 502."; exit 0; fi
+          jq -n --arg t "$SENDER_API_TOKEN" '{SENDER_API_TOKEN: $t}' | \
+            ssh -i ~/.ssh/deploy_key -p "$SG_PORT" "$SG_USER@$SG_HOST" \
+            "umask 077 && cat > \"\$(dirname '$SG_PATH')/rz-secrets.json\""
 
       - name: rsync dist to the web root
         if: env.HAS_SG == 'true'
@@ -116,6 +130,17 @@ jobs:
             202*) echo "::warning::bot challenge on /kits/ads.html";;
             *) echo "::error::/kits/ads.html gave $loc"; fail=1;;
           esac
+          # The form endpoints (28 Nov 2026): a bot-trap signup answers 200 without touching Sender, and the
+          # shared helper is never served.
+          nl=$(curl -sk --max-time 20 --resolve "rihardszeila.com:443:$ip" -o /tmp/page -w '%{http_code}' -H 'Content-Type: application/json' \
+            -d '{"email":"smoke@example.com","source":"deploy","website":"bot"}' https://rihardszeila.com/api/newsletter.php)
+          case "$nl" in
+            200) grep -q '"ok":true' /tmp/page && echo "ok /api/newsletter.php" || { echo "::error::/api/newsletter.php said $(cat /tmp/page)"; fail=1; };;
+            202) echo "::warning::bot challenge on /api/newsletter.php";;
+            *) echo "::error::/api/newsletter.php gave $nl"; fail=1;;
+          esac
+          helper=$(curl -sk --max-time 20 --resolve "rihardszeila.com:443:$ip" -o /dev/null -w '%{http_code}' https://rihardszeila.com/api/_rz.php)
+          case "$helper" in 403|404) echo "ok /api/_rz.php is not served ($helper)";; 202) echo "::warning::bot challenge on /api/_rz.php";; *) echo "::error::/api/_rz.php gave $helper"; fail=1;; esac
           # The Latvian mirror was removed (21 Nov 2026): old /lv links must 301 to the English page.
           lv=$(curl -sk --max-time 20 --resolve "rihardszeila.com:443:$ip" -o /dev/null -w '%{http_code} %{redirect_url}' https://rihardszeila.com/lv/about)
           case "$lv" in

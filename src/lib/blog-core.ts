@@ -4,6 +4,10 @@
  * import-free and use only erasable TypeScript, so Node can run it as is.
  */
 
+/** What the box under an article asks for: a consultation (default), the fixed-fee audit, or the newsletter. */
+export const CTA_KINDS = ["consult", "audit", "newsletter"] as const;
+export type ArticleCtaKind = (typeof CTA_KINDS)[number];
+
 export type Article = {
   slug: string;
   title: string;
@@ -12,6 +16,7 @@ export type Article = {
   topic: string;
   drawing: string;
   order: number;
+  cta: ArticleCtaKind;
   body: string; // Markdown, may hold the styled-block HTML
   readingMinutes: number;
 };
@@ -27,6 +32,8 @@ export const parseArticle = (slug: string, raw: string): Article => {
     if (i > 0) meta[line.slice(0, i).trim()] = line.slice(i + 1).trim();
   }
   for (const k of REQUIRED) if (!meta[k]) throw new Error(`${slug}: missing ${k}`);
+  const cta = (meta.cta || "consult") as ArticleCtaKind;
+  if (!CTA_KINDS.includes(cta)) throw new Error(`${slug}: unknown cta ${meta.cta}`);
   const body = m?.[2] ?? raw;
   const words = body.replace(/<[^>]+>/g, " ").split(/\s+/).filter(Boolean).length;
   return {
@@ -37,6 +44,7 @@ export const parseArticle = (slug: string, raw: string): Article => {
     topic: meta.topic,
     drawing: meta.drawing,
     order: meta.order ? Number(meta.order) : 99,
+    cta,
     body,
     readingMinutes: Math.max(1, Math.ceil(words / 220)),
   };

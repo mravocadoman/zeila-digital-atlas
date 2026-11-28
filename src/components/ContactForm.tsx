@@ -5,14 +5,12 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import VideoBackdrop from "@/components/VideoBackdrop";
 import { useToast } from "@/hooks/use-toast";
-import { supabase } from "@/integrations/supabase/client";
+import { postForm } from "@/lib/api";
 import { Mail, Phone, MapPin, Linkedin, Instagram, Facebook } from "lucide-react";
 import { FaTiktok } from "react-icons/fa";
-import { useLang } from "@/i18n/lang";
 
 const ContactForm = () => {
   const { toast } = useToast();
-  const { t } = useLang();
   const [isSubmitting, setIsSubmitting] = useState(false);
   // Spam traps. Bots fill every field they find and submit instantly; people
   // leave a field they cannot see empty and take longer than a few seconds.
@@ -22,7 +20,9 @@ const ContactForm = () => {
     name: "",
     email: "",
     type: "",
-    message: ""
+    message: "",
+    source: "",
+    spend: ""
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -34,10 +34,10 @@ const ContactForm = () => {
     const tooFast = Date.now() - mountedAt.current < 3000;
     if (botField || tooFast) {
       toast({
-        title: t("Message Sent!", "Ziņa nosūtīta!"),
-        description: t("Thank you for reaching out. I'll get back to you soon.", "Paldies! Atbildēšu tuvāko divu darba dienu laikā.")
+        title: "Message Sent!",
+        description: "Thank you for reaching out. I'll get back to you soon."
       });
-      setFormData({ name: "", email: "", type: "", message: "" });
+      setFormData({ name: "", email: "", type: "", message: "", source: "", spend: "" });
       setBotField("");
       mountedAt.current = Date.now();
       return;
@@ -46,8 +46,8 @@ const ContactForm = () => {
     // Basic validation
     if (!formData.name || !formData.email || !formData.type || !formData.message) {
       toast({
-        title: t("Missing Information", "Trūkst informācijas"),
-        description: t("Please fill in all fields", "Lūdzu, aizpildi visus laukus"),
+        title: "Missing Information",
+        description: "Please fill in all fields",
         variant: "destructive"
       });
       return;
@@ -57,8 +57,8 @@ const ContactForm = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.email)) {
       toast({
-        title: t("Invalid Email", "Nederīgs e-pasts"),
-        description: t("Please enter a valid email address", "Lūdzu, ievadi derīgu e-pasta adresi"),
+        title: "Invalid Email",
+        description: "Please enter a valid email address",
         variant: "destructive"
       });
       return;
@@ -67,26 +67,20 @@ const ContactForm = () => {
     setIsSubmitting(true);
 
     try {
-      const { error } = await supabase.functions.invoke('send-contact-email', {
-        body: formData
-      });
-
-      if (error) throw error;
+      const res = await postForm("contact", formData);
+      if (!res.ok) throw new Error(res.error);
 
       toast({
-        title: t("Message Sent!", "Ziņa nosūtīta!"),
-        description: t("Thank you for reaching out. I'll get back to you soon.", "Paldies! Atbildēšu tuvāko divu darba dienu laikā.")
+        title: "Message Sent!",
+        description: "Thank you for reaching out. I'll get back to you soon."
       });
 
-      setFormData({ name: "", email: "", type: "", message: "" });
-    } catch (error: any) {
+      setFormData({ name: "", email: "", type: "", message: "", source: "", spend: "" });
+    } catch (error) {
       console.error("Error sending email:", error);
       toast({
-        title: t("Error", "Kļūda"),
-        description: t(
-          "Failed to send message. Please try again or email directly.",
-          "Ziņu neizdevās nosūtīt. Mēģini vēlreiz vai raksti man uz e-pastu.",
-        ),
+        title: "Error",
+        description: "Failed to send message. Please try again or email directly.",
         variant: "destructive"
       });
     } finally {
@@ -100,12 +94,9 @@ const ContactForm = () => {
 
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="text-center mb-8 lg:mb-12 animate-fade-in">
-          <h2 className="heading-elegant text-3xl lg:text-display mb-4 lg:mb-6">{t("Book a consultation", "Pieteikties konsultācijai")}</h2>
+          <h2 className="heading-elegant text-3xl lg:text-display mb-4 lg:mb-6">Book a consultation</h2>
           <p className="body-clean text-base lg:text-large text-muted-foreground">
-            {t(
-              "Tell me about the account and where it’s stuck. I reply within two business days.",
-              "Pastāsti, kā šobrīd strādā tavas reklāmas un kur tās ir iestrēgušas. Atbildēšu divu darba dienu laikā.",
-            )}
+            {"Tell me about the account and where it’s stuck. I reply within two business days."}
           </p>
         </div>
 
@@ -113,7 +104,7 @@ const ContactForm = () => {
           {/* Contact Info */}
           <div className="animate-fade-in" style={{ animationDelay: '0.1s', animationFillMode: 'both' }}>
             <div className="card-luxury h-full">
-              <h3 className="heading-elegant text-xl lg:text-2xl mb-6">{t("Get in Touch", "Kontakti")}</h3>
+              <h3 className="heading-elegant text-xl lg:text-2xl mb-6">{"Get in Touch"}</h3>
               
               <div className="space-y-5 mb-8">
                 <a href="tel:+37126673384" className="flex items-center gap-4 text-muted-foreground hover:text-foreground transition-colors group">
@@ -134,12 +125,12 @@ const ContactForm = () => {
                   <div className="p-3 rounded-sm bg-primary/10">
                     <MapPin className="w-5 h-5 text-primary" />
                   </div>
-                  <span className="body-clean text-body lg:text-large">{t("Riga, Latvia (Remote in winters)", "Rīga, Latvija (ziemās attālināti)")}</span>
+                  <span className="body-clean text-body lg:text-large">{"Riga, Latvia (Remote in winters)"}</span>
                 </div>
               </div>
 
               <div className="pt-6 border-t border-border">
-                <h4 className="body-clean font-semibold mb-4 text-large">{t("Follow Me", "Sociālie tīkli")}</h4>
+                <h4 className="body-clean font-semibold mb-4 text-large">{"Follow Me"}</h4>
                 <div className="flex gap-4">
                   <a href="https://www.linkedin.com/in/rihards-ze/" target="_blank" rel="noopener noreferrer" className="p-3 rounded-sm bg-muted/50 text-muted-foreground hover:text-foreground hover:bg-muted transition-colors" aria-label="LinkedIn profile">
                     <Linkedin className="w-5 h-5" />
@@ -160,7 +151,7 @@ const ContactForm = () => {
 
           {/* Contact Form */}
           <div className="card-luxury animate-fade-in" style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>
-            <h3 className="heading-elegant text-xl lg:text-2xl mb-6">{t("Send a Message", "Uzraksti man")}</h3>
+            <h3 className="heading-elegant text-xl lg:text-2xl mb-6">{"Send a Message"}</h3>
             <form onSubmit={handleSubmit} className="space-y-4 lg:space-y-5">
               {/* Honeypot. Positioned off-screen rather than display:none, which
                   bots check for, and kept out of the tab order and the a11y tree. */}
@@ -174,7 +165,7 @@ const ContactForm = () => {
                   overflow: "hidden"
                 }}
               >
-                <label htmlFor="rz-hp-field">{t("Leave this field empty", "Atstāj šo lauku tukšu")}</label>
+                <label htmlFor="rz-hp-field">{"Leave this field empty"}</label>
                 <input
                   id="rz-hp-field"
                   name="rz-hp-field"
@@ -191,7 +182,7 @@ const ContactForm = () => {
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
                   <label htmlFor="name" className="body-clean block mb-2 text-base lg:text-lg font-medium">
-                    {t("Name", "Vārds")}
+                    {"Name"}
                   </label>
                   <Input
                     id="name"
@@ -199,14 +190,14 @@ const ContactForm = () => {
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     className="bg-background border-border focus:border-primary text-base lg:text-lg"
-                    placeholder={t("Your name", "Tavs vārds")}
+                    placeholder={"Your name"}
                     required
                   />
                 </div>
 
                 <div>
                   <label htmlFor="email" className="body-clean block mb-2 text-base lg:text-lg font-medium">
-                    {t("Email", "E-pasts")}
+                    {"Email"}
                   </label>
                   <Input
                     id="email"
@@ -214,7 +205,7 @@ const ContactForm = () => {
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     className="bg-background border-border focus:border-primary text-base lg:text-lg"
-                    placeholder={t("your.email@example.com", "tavs.epasts@piemers.lv")}
+                    placeholder={"your.email@example.com"}
                     required
                   />
                 </div>
@@ -222,31 +213,69 @@ const ContactForm = () => {
 
               <div>
                 <label htmlFor="type" className="body-clean block mb-2 text-base lg:text-lg font-medium">
-                  {t("Type of Inquiry", "Pieprasījuma veids")}
+                  {"Type of Inquiry"}
                 </label>
                 <Select value={formData.type} onValueChange={(value) => setFormData({ ...formData, type: value })}>
                   <SelectTrigger className="bg-background border-border focus:border-primary text-base lg:text-lg" id="type">
-                    <SelectValue placeholder={t("What are you after?", "Izvēlies")} />
+                    <SelectValue placeholder={"What are you after?"} />
                   </SelectTrigger>
                   <SelectContent className="bg-card border-border text-base lg:text-lg">
-                    <SelectItem value="project">{t("Consulting project", "Konsultācijas vai projekts")}</SelectItem>
-                    <SelectItem value="corporate-training">{t("Team training / workshop", "Komandas apmācības / darbnīca")}</SelectItem>
-                    <SelectItem value="speaking">{t("Speaking engagement", "Uzstāšanās konferencē vai pasākumā")}</SelectItem>
-                    <SelectItem value="other">{t("Something else", "Cits")}</SelectItem>
+                    <SelectItem value="project">{"Consulting project"}</SelectItem>
+                    <SelectItem value="corporate-training">{"Team training / workshop"}</SelectItem>
+                    <SelectItem value="speaking">{"Speaking engagement"}</SelectItem>
+                    <SelectItem value="other">{"Something else"}</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
 
+              <div className="grid sm:grid-cols-2 gap-4">
+                <div>
+                  <label htmlFor="source" className="body-clean block mb-2 text-base lg:text-lg font-medium">
+                    Where did you find me? <span className="text-muted-foreground font-normal">(optional)</span>
+                  </label>
+                  <Select value={formData.source} onValueChange={(value) => setFormData({ ...formData, source: value })}>
+                    <SelectTrigger className="bg-background border-border focus:border-primary text-base lg:text-lg" id="source">
+                      <SelectValue placeholder="Choose one" />
+                    </SelectTrigger>
+                    <SelectContent className="bg-card border-border text-base lg:text-lg">
+                      <SelectItem value="linkedin-post">A LinkedIn post</SelectItem>
+                      <SelectItem value="linkedin-profile">My LinkedIn profile</SelectItem>
+                      <SelectItem value="blog">A blog article</SelectItem>
+                      <SelectItem value="newsletter">The newsletter</SelectItem>
+                      <SelectItem value="google">Google</SelectItem>
+                      <SelectItem value="referral">Someone recommended you</SelectItem>
+                      <SelectItem value="other">Somewhere else</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div>
+                  <label htmlFor="spend" className="body-clean block mb-2 text-base lg:text-lg font-medium">
+                    Monthly ad spend <span className="text-muted-foreground font-normal">(optional)</span>
+                  </label>
+                  <Select value={formData.spend} onValueChange={(value) => setFormData({ ...formData, spend: value })}>
+                    <SelectTrigger className="bg-background border-border focus:border-primary text-base lg:text-lg" id="spend">
+                      <SelectValue placeholder="Choose a range" />
+                    </SelectTrigger>
+                    <SelectContent className="bg-card border-border text-base lg:text-lg">
+                      <SelectItem value="under-10k">Under €10K</SelectItem>
+                      <SelectItem value="10k-20k">€10K to €20K</SelectItem>
+                      <SelectItem value="20k-50k">€20K to €50K</SelectItem>
+                      <SelectItem value="50k-plus">€50K or more</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+
               <div>
                 <label htmlFor="message" className="body-clean block mb-2 text-base lg:text-lg font-medium">
-                  {t("Message", "Ziņa")}
+                  {"Message"}
                 </label>
                 <Textarea
                   id="message"
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   className="bg-background border-border focus:border-primary min-h-[120px] text-base lg:text-lg"
-                  placeholder={t("Tell me about your project or opportunity...", "Īsi par savu uzņēmumu un to, ar ko varu palīdzēt...")}
+                  placeholder={"Tell me about your project or opportunity..."}
                   required
                 />
               </div>
@@ -257,7 +286,7 @@ const ContactForm = () => {
                 disabled={isSubmitting}
                 className="w-full bg-foreground text-background hover:bg-foreground/90 transition-colors uppercase hover-scale"
               >
-                {isSubmitting ? t("Sending...", "Sūta...") : t("Send Message", "Nosūtīt ziņu")}
+                {isSubmitting ? "Sending..." : "Send Message"}
               </Button>
             </form>
           </div>

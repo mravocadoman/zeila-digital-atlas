@@ -1,10 +1,12 @@
-// Checks every blog article against docs/blog-style.md: node scripts/check-articles.mjs
+// Checks every blog article against docs/blog-style.md: node scripts/check-articles.mjs [articles dir]
 // The parts a script can see: the article's shape, no jargon or em dashes in the main text, no dangling
 // "section 06" references, no kit leftovers, and no hint at what the print-on-demand shop sells.
 // Never add the shop's real names here: they must not appear anywhere in this repo.
 import { readdirSync, readFileSync } from "node:fs";
 
-const DIR = "src/content/blog";
+const DIR = process.argv[2] || "src/content/blog";
+// Packaging rules (docs/blog-style.md, Founder OS) apply to articles dated after this day; older ones predate them.
+const PACKAGING_FROM = "2026-11-28";
 // Words and phrasings that give the product away. Wrapped, mirrored edges only exist on gallery canvas;
 // wall-size printing points at wall art.
 const HINTS = /portrait|canvas|glasses|commission(ing)? certificate|theme collection|franchise|wrapped edge|mirror setting|edge mirror|wall size|on a wall/i;
@@ -46,6 +48,17 @@ for (const file of readdirSync(DIR).filter((f) => f.endsWith(".md"))) {
 
   const kitWord = md.match(KIT_WORDING);
   if (kitWord) problems.push(`${slug}: kit wording "${kitWord[0]}"`);
+
+  const meta = Object.fromEntries([...md.matchAll(/^(\w+): (.*)$/gm)].map((m) => [m[1], m[2].trim()]));
+  if ((meta.date || "") > PACKAGING_FROM) {
+    if ((meta.title || "").length > 55) problems.push(`${slug}: title is ${meta.title.length} characters (55 or fewer, so search shows it whole)`);
+    if (!meta.cta) problems.push(`${slug}: no cta line in the front matter (consult, audit or newsletter)`);
+    const words = slug.split("-");
+    const pairs = words.slice(1).map((w, i) => `${words[i]} ${w}`);
+    if (!pairs.some((k) => (meta.description || "").toLowerCase().includes(k))) {
+      problems.push(`${slug}: the description shares no two-word keyphrase with the slug`);
+    }
+  }
 
   const ref = text.match(/\bsections? \d{1,2}\b|\bsee \d{2}\b/i);
   if (ref) problems.push(`${slug}: numbered reference "${ref[0]}"; name the section instead`);

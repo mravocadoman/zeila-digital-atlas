@@ -6,7 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { useToast } from "@/hooks/use-toast";
-import { supabase } from "@/integrations/supabase/client";
+import { postForm } from "@/lib/api";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 import headshot from "@/assets/rihards-about.webp";
 import { T, useLang, usePageMeta } from "@/i18n/lang";
@@ -237,8 +237,8 @@ const WorkWithMe = () => {
     }
     setSubmitting(true);
     try {
-      const { error } = await supabase.functions.invoke("send-contact-email", { body: form });
-      if (error) throw error;
+      const res = await postForm("contact", form);
+      if (!res.ok) throw new Error(res.error);
       toast({
         title: "Request sent",
         description: "Thanks. I'll get back to you within 2 business days.",

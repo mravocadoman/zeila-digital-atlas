@@ -64,8 +64,8 @@ const getEngagements = () => [
     body: "Monthly, at two depths: a senior second opinion before you spend, or one growth system built and run for you, then handed to your team.",
     price: "Monthly retainer, 3-month minimum",
     tiers: [
-      { name: "Advisor", scope: "half a day a week", amount: "€2,400/mo" },
-      { name: "Operator", scope: "one day a week", amount: "€5,000/mo" },
+      { name: "Advisor", scope: "half a day a week", amount: "€1,200/mo" },
+      { name: "Operator", scope: "one day a week", amount: "€2,400/mo" },
     ],
     deliverables: [
       "Weekly working sessions with your marketers",
